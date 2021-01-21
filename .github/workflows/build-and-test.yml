@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
-    - uses: jwlawson/actions-setup-cmake@v1.3
+    - uses: jwlawson/actions-setup-cmake@v1.6
     - uses: seanmiddleditch/gha-setup-ninja@master
     - name: Install GCC-10  and Clang-10 on Linux
       run: |
@@ -34,7 +34,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: jwlawson/actions-setup-cmake@v1.3
+    - uses: jwlawson/actions-setup-cmake@v1.6
 
     - name: Configure & Build (MSVC)
       run: |
