@@ -36,7 +36,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 	)
 
 	if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-		target_compile_options(${PROJECT_NAME}
+		target_compile_options(test_simple_log
 			PRIVATE -pthread
 		)
 	endif()
