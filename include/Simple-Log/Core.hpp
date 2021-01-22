@@ -38,7 +38,11 @@ namespace sl::log
 		
 		void log(Record record)
 		{
-			m_Records.push(std::move(record));
+			// we will reject newly generated records, after run has become false
+			if (m_WorkerRun)
+			{
+				m_Records.push(std::move(record));
+			}
 		}
 
 		template <class TSink, class... TArgs>
@@ -67,7 +71,7 @@ namespace sl::log
 
 			void operator ()() const
 			{
-				while (m_Run)
+				while (m_Run || !m_Records.isEmpty())
 				{
 					if (auto optRecord = m_Records.take(std::chrono::milliseconds{ 200 }))
 					{
