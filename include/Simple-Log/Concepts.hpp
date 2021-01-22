@@ -8,9 +8,15 @@
 
 #pragma once
 
+#include <concepts>
+#include <type_traits>
+#include <string>
+#include <ostream>
 
 namespace sl::log
 {
+	class Record;
+	
 	enum class Severity
 	{
 		info,
@@ -19,6 +25,12 @@ namespace sl::log
 		error,
 		fatal
 	};
+
+	template <class T>
+	concept RecordFormatter = (std::movable<T> || std::copyable<T>) && std::invocable<T, std::ostream&, const Record&>;
+
+	template <class T>
+	concept RecordFilter = (std::movable<T> || std::copyable<T>) && std::predicate<T, const Record&>;
 	
 }
 
