@@ -9,22 +9,11 @@
 #pragma once
 
 #include <concepts>
-#include <type_traits>
-#include <string>
 #include <ostream>
 
 namespace sl::log
 {
 	class Record;
-	
-	enum class Severity
-	{
-		info,
-		hint,
-		warning,
-		error,
-		fatal
-	};
 
 	template <class T>
 	concept RecordFormatter = (std::movable<T> || std::copyable<T>) && std::invocable<T, std::ostream&, const Record&>;

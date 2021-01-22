@@ -12,6 +12,15 @@
 
 namespace sl::log
 {
+	enum class Severity
+	{
+		info,
+		hint,
+		warning,
+		error,
+		fatal
+	};
+	
 	class Record
 	{
 	public:
