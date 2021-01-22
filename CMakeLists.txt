@@ -14,6 +14,12 @@ target_compile_features(
 	cxx_std_20
 )
 
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+	target_link_options(${PROJECT_NAME}
+		INTERFACE -pthread
+	)
+endif()
+
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 	include(CTest)
 
@@ -34,10 +40,4 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 		NAME SimpleLogTestSuite
 		COMMAND test_simple_log
 	)
-
-	if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-		target_compile_options(test_simple_log
-			PRIVATE -pthread
-		)
-	endif()
 endif()
