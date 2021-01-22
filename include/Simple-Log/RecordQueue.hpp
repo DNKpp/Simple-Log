@@ -32,18 +32,20 @@ namespace sl::log
 
 		std::optional<Record> take(std::optional<std::chrono::milliseconds> waitingDuration = std::nullopt)
 		{
-			if (std::scoped_lock lock{ m_RecordMx }; !std::empty(m_QueuedRecords))
-				return takeAsOpt();
-
+			auto isQueueNotEmpty = [&records = m_QueuedRecords](){ return !std::empty(records); };
+			
 			std::unique_lock lock{ m_RecordMx };
 			if (waitingDuration)
-				m_PushVar.wait_for(lock, *waitingDuration);
-			else
-				m_PushVar.wait(lock);
-
-			if (!std::empty(m_QueuedRecords))
-				return takeAsOpt();
-			return std::nullopt;
+			{
+				if (m_PushVar.wait_for(lock, *waitingDuration, isQueueNotEmpty))
+				{
+					return takeNextAsOpt();
+				}
+				return std::nullopt;
+			}
+			
+			m_PushVar.wait(lock, isQueueNotEmpty);
+			return takeNextAsOpt();
 		}
 
 		bool isEmpty() const noexcept
@@ -53,7 +55,7 @@ namespace sl::log
 		}
 	
 	private:
-		std::optional<Record> takeAsOpt()
+		std::optional<Record> takeNextAsOpt()
 		{
 			auto record = std::move(m_QueuedRecords.front());
 			m_QueuedRecords.pop();
