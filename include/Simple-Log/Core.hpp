@@ -25,21 +25,34 @@ namespace sl::log
 	{
 	public:
 		Core() noexcept :
-			m_Worker{ m_WorkerRun, m_Records, m_SinkMx, m_Sinks }
+			m_Worker{ m_WorkerInstruction, m_Records, m_SinkMx, m_Sinks }
 		{
 			m_WorkerFuture = std::async(std::launch::async, m_Worker);
 		}
 
-		~Core()
+		~Core() noexcept
 		{
-			m_WorkerRun = false;
-			m_WorkerFuture.wait();
+			try
+			{
+				m_WorkerInstruction = Instruction::quit;
+				m_WorkerFuture.wait();
+			}
+			catch (...)
+			{
+				m_WorkerInstruction = Instruction::forceQuit;
+			}
 		}
+
+		Core(const Core&) = delete;
+		Core& operator =(const Core&) = delete;
+
+		Core(Core&&) = delete;
+		Core& operator =(Core&&) = delete;
 		
 		void log(Record record)
 		{
-			// we will reject newly generated records, after run has become false
-			if (m_WorkerRun)
+			// will reject newly generated records, after run has become false
+			if (m_WorkerInstruction == Instruction::run)
 			{
 				m_Records.push(std::move(record));
 			}
@@ -57,12 +70,19 @@ namespace sl::log
 	
 	private:
 		using SinkContainer = std::vector<std::unique_ptr<ISink>>;
+
+		enum class Instruction
+		{
+			run,
+			quit,
+			forceQuit
+		};
 		
 		class Worker
 		{
 		public:
-			Worker(const std::atomic_bool& run, RecordQueue& records, std::mutex& sinkMx, const SinkContainer& sinks) :
-				m_Run{ run },
+			Worker(const std::atomic<Instruction>& instruction, RecordQueue& records, std::mutex& sinkMx, const SinkContainer& sinks) :
+				m_Instruction{ instruction },
 				m_Records{ records },
 				m_SinkMx{ sinkMx },
 				m_Sinks{ sinks }
@@ -71,7 +91,10 @@ namespace sl::log
 
 			void operator ()() const
 			{
-				while (m_Run || !m_Records.isEmpty())
+				for (auto instruction = m_Instruction.load();
+					instruction != Instruction::forceQuit &&
+					(instruction != Instruction::quit || !m_Records.isEmpty());
+					instruction = m_Instruction)
 				{
 					if (auto optRecord = m_Records.take(std::chrono::milliseconds{ 200 }))
 					{
@@ -87,7 +110,7 @@ namespace sl::log
 			}
 		
 		private:
-			const std::atomic_bool& m_Run;
+			const std::atomic<Instruction>& m_Instruction;
 
 			RecordQueue& m_Records;
 
@@ -100,7 +123,7 @@ namespace sl::log
 		std::mutex m_SinkMx;
 		SinkContainer m_Sinks;
 
-		std::atomic_bool m_WorkerRun{ true };
+		std::atomic<Instruction> m_WorkerInstruction{ Instruction::run };
 		Worker m_Worker;
 		std::future<void> m_WorkerFuture;
 	};
