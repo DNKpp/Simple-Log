@@ -8,11 +8,17 @@
 
 #pragma once
 
+#include <any>
 #include <string>
+#include <version>
+
+#ifdef __cpp_lib_source_location
+	#include <source_location>
+#endif
 
 namespace sl::log
 {
-	enum class Severity
+	enum class SeverityLevel
 	{
 		info,
 		hint,
@@ -20,12 +26,19 @@ namespace sl::log
 		error,
 		fatal
 	};
-	
+
 	class Record
 	{
-	public:
+	public:		
 		std::string message;
-		
+
+#ifdef __cpp_lib_source_location
+		std::source_location sourceLocation;
+#endif
+
+		std::any severity;
+		std::any channel;
+		std::any userData;
 	};
 }
 
