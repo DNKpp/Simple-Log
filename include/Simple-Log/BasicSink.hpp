@@ -56,7 +56,7 @@ namespace sl::log
 
 		void log(const Record& record) override
 		{
-			std::scoped_lock lock{ m_FilterMx, m_FormatterMx };
+			std::scoped_lock lock{ m_FilterMx, m_FormatterMx, m_WriteAccessMx };
 			if (m_Filter(record))
 			{
 				m_Formatter(m_Stream, record);
@@ -89,6 +89,9 @@ namespace sl::log
 			std::scoped_lock lock{ m_FilterMx };
 			m_Filter = defaultFilter();
 		}
+
+	protected:
+		std::mutex m_WriteAccessMx;
 
 	private:
 		std::ostream& m_Stream;
