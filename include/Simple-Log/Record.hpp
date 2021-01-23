@@ -9,6 +9,7 @@
 #pragma once
 
 #include <any>
+#include <chrono>
 #include <string>
 #include <version>
 
@@ -29,9 +30,9 @@ namespace sl::log
 
 	class Record
 	{
-	public:		
+	public:
 		std::string message;
-
+		std::chrono::steady_clock::time_point time;
 #ifdef __cpp_lib_source_location
 		std::source_location sourceLocation;
 #endif
