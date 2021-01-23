@@ -18,7 +18,7 @@
 namespace sl::log
 {
 	class Logger;
-	
+
 	class RecordBuilder
 	{
 	public:
@@ -28,7 +28,7 @@ namespace sl::log
 #else
 		RecordBuilder(std::string msg) :
 #endif
-			m_Stream{ std::move(msg) }  // NOLINT(performance-move-const-arg)	new ostringstream in c++20 added
+			m_Stream{ std::move(msg) } // NOLINT(performance-move-const-arg)	new ostringstream ctor added in c++20
 		{
 		}
 
@@ -58,7 +58,7 @@ namespace sl::log
 		{
 			*this = std::move(other);
 		}
-		
+
 		RecordBuilder& operator =(RecordBuilder&& other) noexcept
 		{
 			using std::swap;
@@ -72,7 +72,7 @@ namespace sl::log
 		RecordBuilder& operator =(const RecordBuilder&) = delete;
 
 		template <class T>
-		RecordBuilder& operator <<(T&& data) noexcept(noexcept(m_Stream << std::forward<T>(data)))
+		RecordBuilder& operator <<(T&& data)
 		{
 			m_Stream << std::forward<T>(data);
 			return *this;
@@ -92,7 +92,12 @@ namespace sl::log
 	class Logger
 	{
 	public:
-		Logger(Core& core, SeverityLevel defaultSeverityLvl, std::any defaultChannel = {}, std::any defaultUserData = {}) noexcept :
+		Logger(
+			Core& core,
+			SeverityLevel defaultSeverityLvl,
+			std::any defaultChannel = {},
+			std::any defaultUserData = {}
+		) noexcept :
 			m_Core{ &core },
 			m_DefaultSeverityLvl{ defaultSeverityLvl },
 			m_DefaultChannel{ std::move(defaultChannel) },
@@ -136,8 +141,8 @@ namespace sl::log
 		{
 			try
 			{
-				m_Record.message = std::move(m_Stream).str();	//.str() has an overload for && of the underlying ostringstream
-				m_Logger->log(std::move(m_Record));	
+				m_Record.message = std::move(m_Stream).str();
+				m_Logger->log(std::move(m_Record));
 			}
 			catch (...)
 			{
