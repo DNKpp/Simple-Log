@@ -66,6 +66,11 @@ namespace sl::log
 			m_RotationRule = rule;
 		}
 
+		[[nodiscard]] const RotationRule& rotationRule() const noexcept
+		{
+			return m_RotationRule;
+		}
+
 		void setCleanupRule(CleanupRule rule) noexcept
 		{
 			m_CleanupRule = rule;
