@@ -28,7 +28,7 @@ TEST_CASE(" ", "[Core]")
 	Logger log{ core, SeverityLevel::info };
 
 	log << "Hello," << "World!";
-	sink.setFormatter([](std::ostream& out, const Record& rec) { out << "yes" << rec.message; });
+	//sink.setFormatter([](std::ostream& out, const Record& rec) { out << "yes" << rec.message; });
 	sink.setFilter([](const Record& rec){ return rec.message != "Hello, World!"; });
 
 	for (int i = 0; i < 10; ++i)

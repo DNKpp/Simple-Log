@@ -9,6 +9,7 @@
 #pragma once
 
 #include <functional>
+#include <iomanip>
 #include <mutex>
 #include <ostream>
 #include <string>
@@ -29,6 +30,25 @@ namespace sl::log
 		{
 			return [](std::ostream& out, const Record& rec)
 			{
+				using namespace std::chrono;
+
+				const auto now = system_clock::now();
+				const auto today = now.time_since_epoch() % hours{ 24 };
+				const auto hour = duration_cast<hours>(today);
+				const auto minute = duration_cast<minutes>(today) % hours{ 1 };
+				const auto second = duration_cast<seconds>(today) % minutes{ 1 };
+				const auto millisecond = duration_cast<milliseconds>(today) % seconds{ 1 };
+				out << std::setfill('0') <<
+					std::setw(2) << hour.count() << ":" <<
+					std::setw(2) << minute.count() << ":" <<
+					std::setw(2) << second.count() << "." <<
+					std::setw(3) << millisecond.count() <<
+					" >>> ";
+
+				if (auto* sevLvlPtr = std::any_cast<SeverityLevel>(&rec.severity))
+				{
+					out << *sevLvlPtr << "::";
+				}
 				out << rec.message;
 			};
 		}
