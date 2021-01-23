@@ -9,15 +9,34 @@
 
 #include "Simple-Log/Core.hpp"
 #include "Simple-Log/BasicSink.hpp"
+#include "Simple-Log/FileSink.hpp"
+#include "Simple-Log/Logger.hpp"
+#include "Simple-Log/StringPattern.hpp"
+
+using namespace sl::log;
+
+inline Core core;
 
 TEST_CASE(" ", "[Core]")
 {
-	using namespace sl::log;
 
-	Core core;
-	core.makeSink<BasicSink>(std::cout);
+	auto& sink = core.makeSink<BasicSink>(std::cout);
+	auto& fileSink = core.makeSink<FileSink>("test-%Y-%m-%d_%3N.log");
+	fileSink.setRotationRule({ .fileSize = 0 });
+	fileSink.setMaxDirectorySize(1);
 
-	std::this_thread::sleep_for(std::chrono::seconds{ 1 });
+	Logger log{ core, SeverityLevel::info };
 
-	core.log({ "Hello, World!" });
+	log << "Hello," << "World!";
+	sink.setFormatter([](std::ostream& out, const Record& rec) { out << "yes" << rec.message; });
+	sink.setFilter([](const Record& rec){ return rec.message != "Hello, World!"; });
+
+	for (int i = 0; i < 10; ++i)
+	{
+		log << "log: " << i;
+	}
+
+	StringPattern pattern{ "hfkjdfk%m%N%3243Nfjlksdjfldsk%H-%M-%S%555JN" };
+
+	std::this_thread::sleep_for(std::chrono::seconds{ 2 });
 }
