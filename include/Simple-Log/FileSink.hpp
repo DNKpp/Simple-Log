@@ -25,8 +25,6 @@ namespace sl::log
 		using Super = BasicSink;
 
 	public:
-		using FileStateHandler = std::function<void(std::ostream&)>;
-		
 		struct RotationRule
 		{
 			std::optional<std::size_t> fileSize;
@@ -121,6 +119,8 @@ namespace sl::log
 		}
 
 	private:
+		using FileStateHandler = std::function<void(std::ostream&)>;
+		
 		StringPattern m_FileNamePattern;
 		std::filesystem::path m_Directory;
 		std::ofstream m_FileStream;
