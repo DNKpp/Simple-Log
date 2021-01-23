@@ -9,9 +9,9 @@
 #pragma once
 
 #include <functional>
+#include <mutex>
 #include <ostream>
 #include <string>
-#include <mutex>
 
 #include "Concepts.hpp"
 #include "ISink.hpp"
@@ -92,7 +92,7 @@ namespace sl::log
 
 	private:
 		std::ostream& m_Stream;
-		
+
 		std::mutex m_FormatterMx;
 		Formatter_t m_Formatter;
 		std::mutex m_FilterMx;
