@@ -16,7 +16,7 @@ target_compile_features(
 
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 	target_link_options(${PROJECT_NAME}
-		INTERFACE -pthread
+		INTERFACE -pthread -latomic
 	)
 endif()
 
