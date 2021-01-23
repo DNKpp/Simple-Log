@@ -42,7 +42,6 @@ namespace sl::log
 			m_FileNamePattern{ std::move(fileNamePattern) },
 			m_Directory{ std::move(directory.remove_filename()) }
 		{
-			openFile();
 		}
 
 		~FileSink() noexcept
@@ -109,7 +108,11 @@ namespace sl::log
 
 		void log(const Record& rec) override
 		{
-			if (shallRotate())
+			if (!m_FileStream.is_open())
+			{
+				openFile();
+			}
+			else if (shallRotate())
 			{
 				closeFile();
 				openFile();
