@@ -23,7 +23,7 @@ TEST_CASE(" ", "[Core]")
 	auto& sink = core.makeSink<BasicSink>(std::cout);
 	auto& fileSink = core.makeSink<FileSink>("test-%Y-%m-%d_%3N.log");
 	fileSink.setRotationRule({ .fileSize = 0 });
-	fileSink.setMaxDirectorySize(1);
+	fileSink.setCleanupRule({.fileCount = 3});
 
 	Logger log{ core, SeverityLevel::info };
 

@@ -23,14 +23,20 @@ namespace sl::log
 		public BasicSink
 	{
 		using Super = BasicSink;
-	
+
 	public:
 		struct RotationRule
 		{
 			std::optional<std::size_t> fileSize;
 			std::optional<std::chrono::seconds> duration;
 		};
-		
+
+		struct CleanupRule
+		{
+			std::optional<std::size_t> directorySize;
+			std::optional<std::size_t> fileCount;
+		};
+
 		FileSink(std::string fileNamePattern, std::filesystem::path directory = std::filesystem::current_path()) :
 			BasicSink{ m_FileStream },
 			m_FileNamePattern{ std::move(fileNamePattern) },
@@ -60,6 +66,16 @@ namespace sl::log
 			m_RotationRule = rule;
 		}
 
+		void setCleanupRule(CleanupRule rule) noexcept
+		{
+			m_CleanupRule = rule;
+		}
+
+		[[nodiscard]] const CleanupRule& cleanupRule() const noexcept
+		{
+			return m_CleanupRule;
+		}
+
 		void log(const Record& rec) override
 		{
 			if (shallRotate())
@@ -67,18 +83,8 @@ namespace sl::log
 				closeFile();
 				openFile();
 			}
-			
+
 			Super::log(rec);
-		}
-
-		void setMaxDirectorySize(std::optional<std::size_t> size) noexcept
-		{
-			m_MaxDirFileSize = size;
-		}
-
-		[[nodiscard]] const std::optional<std::size_t>& maxDirectorySize() const noexcept
-		{
-			return m_MaxDirFileSize;
 		}
 
 	private:
@@ -86,9 +92,13 @@ namespace sl::log
 		std::filesystem::path m_Directory;
 		std::ofstream m_FileStream;
 		std::optional<std::filesystem::path> m_CurrentFilePath;
-		std::optional<std::size_t> m_MaxDirFileSize;
+
+		// rotation related
 		std::chrono::steady_clock::time_point m_FileOpeningTime;
 		RotationRule m_RotationRule;
+
+		// cleanup related
+		CleanupRule m_CleanupRule;
 
 		void openFile()
 		{
@@ -110,8 +120,6 @@ namespace sl::log
 
 		void removeFilesIfNecessary()
 		{
-			if (!m_MaxDirFileSize)
-				return;
 			// ToDo: use c++20 ranges::view
 			auto directoryItr = std::filesystem::directory_iterator(m_CurrentFilePath->parent_path());
 
@@ -126,13 +134,34 @@ namespace sl::log
 			}
 
 			std::ranges::sort(files, std::greater(), [](const auto& file) { return last_write_time(file); });
+			fulfillFileCountCleanup(files);
+			fulfillDirectorySizeCleanup(files);
+		}
+
+		void fulfillFileCountCleanup(std::vector<std::filesystem::directory_entry>& files) const
+		{
+			if (!m_CleanupRule.fileCount)
+				return;
+			while (*m_CleanupRule.fileCount < std::size(files))
+			{
+				auto& file = files.back();
+				remove(file);
+				files.pop_back();
+			}
+		}
+
+		void fulfillDirectorySizeCleanup(std::vector<std::filesystem::directory_entry>& files) const
+		{
+			if (!m_CleanupRule.directorySize)
+				return;
+
 			auto size = std::accumulate(
 										std::begin(files),
 										std::end(files),
 										0ull,
 										[](auto value, const auto& file) { return value + file.file_size(); }
 										);
-			while (*m_MaxDirFileSize < size)
+			while (*m_CleanupRule.directorySize < size)
 			{
 				auto& file = files.back();
 				size -= file_size(file);
@@ -144,7 +173,7 @@ namespace sl::log
 		[[nodiscard]] bool shallRotate() const
 		{
 			assert(m_FileStream.is_open() && m_CurrentFilePath && !std::empty(*m_CurrentFilePath));
-			
+
 			return m_RotationRule.fileSize && *m_RotationRule.fileSize < file_size(*m_CurrentFilePath) ||
 				m_RotationRule.duration && m_FileOpeningTime + *m_RotationRule.duration < std::chrono::steady_clock::now();
 		}
