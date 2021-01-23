@@ -20,6 +20,9 @@ namespace sl::log
 
 	template <class T>
 	concept RecordFilter = (std::movable<T> || std::copyable<T>) && std::predicate<T, const Record&>;
+
+	template <class T>
+	concept FileStateHandler = (std::movable<T> || std::copyable<T>) && std::invocable<T, std::ostream&, const Record&>;
 	
 }
 

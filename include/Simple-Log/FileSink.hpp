@@ -25,6 +25,8 @@ namespace sl::log
 		using Super = BasicSink;
 
 	public:
+		using FileStateHandler = std::function<void(std::ostream&)>;
+		
 		struct RotationRule
 		{
 			std::optional<std::size_t> fileSize;
@@ -81,6 +83,32 @@ namespace sl::log
 			return m_CleanupRule;
 		}
 
+		template <log::FileStateHandler THandler>
+		void setOpeningHandler(THandler&& handler) noexcept
+		{
+			std::scoped_lock lock{ m_OpeningHandlerMx };
+			m_OpeningHandler = std::forward<THandler>(handler);
+		}
+
+		void removeOpeningHandler() noexcept
+		{
+			std::scoped_lock lock{ m_OpeningHandlerMx };
+			m_OpeningHandler = makeNoOpFileStateHandler();
+		}
+
+		template <log::FileStateHandler THandler>
+		void setClosingHandler(THandler&& handler) noexcept
+		{
+			std::scoped_lock lock{ m_ClosingHandlerMx };
+			m_ClosingHandler = std::forward<THandler>(handler);
+		}
+
+		void removeClosingHandler() noexcept
+		{
+			std::scoped_lock lock{ m_ClosingHandlerMx };
+			m_ClosingHandler = makeNoOpFileStateHandler();
+		}
+
 		void log(const Record& rec) override
 		{
 			if (shallRotate())
@@ -105,6 +133,17 @@ namespace sl::log
 		// cleanup related
 		std::atomic<CleanupRule> m_CleanupRule;
 
+		// File Handler
+		std::mutex m_OpeningHandlerMx;
+		FileStateHandler m_OpeningHandler{ makeNoOpFileStateHandler() };
+		std::mutex m_ClosingHandlerMx;
+		FileStateHandler m_ClosingHandler{ makeNoOpFileStateHandler() };
+
+		static FileStateHandler makeNoOpFileStateHandler() noexcept
+		{
+			return [](std::ostream&) {};
+		}
+
 		void openFile()
 		{
 			auto filePath = m_Directory;
@@ -112,12 +151,22 @@ namespace sl::log
 			m_FileStream.open(filePath);
 			m_CurrentFilePath = std::move(filePath);
 			m_FileOpeningTime = std::chrono::steady_clock::now();
+
+			{
+				std::scoped_lock lock{ m_OpeningHandlerMx, m_WriteAccessMx };
+				m_OpeningHandler(m_FileStream);
+			}
 		}
 
 		void closeFile()
 		{
 			assert(m_FileStream.is_open() && "FileStream must be open.");
 			assert(m_CurrentFilePath && !std::empty(*m_CurrentFilePath));
+
+			{
+				std::scoped_lock lock{ m_ClosingHandlerMx, m_WriteAccessMx };
+				m_ClosingHandler(m_FileStream);
+			}
 			m_FileStream.close();
 
 			removeFilesIfNecessary();
