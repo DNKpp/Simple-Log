@@ -21,15 +21,40 @@
 
 namespace sl::log
 {
+	/**
+	 * \brief This class is the central point of the whole library. It acts like a broker between the (multiple) Logger s on the frontend and the (multiple) Sink s on the backend. Due to this there must at least one
+	 * instance of Core during the whole program runtime, but it isn't restricted to exist uniquely. It can be totally fine to create one global Core, which will be used for general logging purposes, and multiple others for a
+	 * much lesser scope, like state logging on entity level.
+	 *
+	 * \details Each instance of Core consists of the following:
+	 * \li one BlockingQueue in which all Records will get added
+	 * \li multiple Sink objects
+	 * \li one Worker thread, which will pull Records from that BlockingQueue and hand them over to the Sinks
+	 *
+	 * Due to this the Core is thread-safe by design.
+	 *
+	 * It is fine to add Sinks during later stages of your program. This hasn't necessarily to be done right after Core's creation. When Core goes out of scope, or is about to get destructed otherwise, it will block any new Records which could be
+	 * pushed into but will also let the Worker finish its work. Therefor it will wait in the destructor, unless there is an exception throwing, in which case Core will force the Worker to quit its work instantly.
+	 *
+	 * Core instances are neither copy- nor movable.
+	 */
 	class Core
 	{
 	public:
+		/**
+		 * \brief Default Constructor
+		 * \details The internal Worker thread will directly start running.
+		 */
 		Core() noexcept :
 			m_Worker{ m_WorkerInstruction, m_Records, m_SinkMx, m_Sinks }
 		{
 			m_WorkerFuture = std::async(std::launch::async, m_Worker);
 		}
 
+		/**
+		 * \brief Destructor
+		 * \details Will block until the internal Record queue is empty or an exception rises, which will then force the Worker thread to quit.
+		 */
 		~Core() noexcept
 		{
 			try
@@ -43,12 +68,29 @@ namespace sl::log
 			}
 		}
 
+		/**
+		 * \brief Deleted copy constructor
+		 */
 		Core(const Core&) = delete;
+		/**
+		 * \brief Deleted copy assign operator
+		 */
 		Core& operator =(const Core&) = delete;
 
+		/**
+		 * \brief Deleted move constructor
+		 */
 		Core(Core&&) = delete;
+		/**
+		 * \brief Deleted move assign operator
+		 */
 		Core& operator =(Core&&) = delete;
 
+		/**
+		 * \brief Queues the Record internally
+		 * \details This function should not be called directly on logging purposes. It serves as a simple interface for the corresponding Logger objects.
+		 * \param record The record which will be queued
+		 */
 		void log(Record record)
 		{
 			// will reject newly generated records, after run has become false
@@ -58,6 +100,14 @@ namespace sl::log
 			}
 		}
 
+		/**
+		 * \brief Sink factory function
+		 * \details This function creates a new Sink object and returns a reference to the caller. This Sink will be linked to and managed by the called Core instance.
+		 * \tparam TSink Concrete Sink type
+		 * \tparam TArgs Constructor argument types (will be deducted automatically)
+		 * \param args The constructor arguments for the newly generated Sink object. Will be forwarded as is.
+		 * \return reference to the managed Sink object
+		 */
 		template <class TSink, class... TArgs>
 		TSink& makeSink(TArgs&&... args)
 		{
