@@ -62,22 +62,24 @@ namespace sl::log
 
 		void setRotationRule(RotationRule rule) noexcept
 		{
+			std::scoped_lock lock{ m_RotationRuleMx };
 			m_RotationRule = rule;
 		}
 
 		[[nodiscard]] RotationRule rotationRule() const noexcept
 		{
-			return m_RotationRule;
+			return load(m_RotationRule, m_RotationRuleMx);
 		}
 
 		void setCleanupRule(CleanupRule rule) noexcept
 		{
+			std::scoped_lock lock{ m_CleanupRuleMx };
 			m_CleanupRule = rule;
 		}
 
 		[[nodiscard]] CleanupRule cleanupRule() const noexcept
 		{
-			return m_CleanupRule;
+			return load(m_CleanupRule, m_CleanupRuleMx);
 		}
 
 		template <log::FileStateHandler THandler>
@@ -131,10 +133,12 @@ namespace sl::log
 
 		// rotation related
 		std::atomic<std::chrono::steady_clock::time_point> m_FileOpeningTime;
-		std::atomic<RotationRule> m_RotationRule;
+		mutable std::mutex m_RotationRuleMx;
+		RotationRule m_RotationRule;
 
 		// cleanup related
-		std::atomic<CleanupRule> m_CleanupRule;
+		mutable std::mutex m_CleanupRuleMx;
+		CleanupRule m_CleanupRule;
 
 		// File Handler
 		std::mutex m_OpeningHandlerMx;
@@ -195,9 +199,16 @@ namespace sl::log
 			fulfillDirectorySizeCleanup(files);
 		}
 
+		template <class T, class TMutex>
+		static T load(const T& object, TMutex& mutex)
+		{
+			std::scoped_lock lock{ mutex };
+			return object;
+		}
+
 		void fulfillFileCountCleanup(std::vector<std::filesystem::directory_entry>& files) const
 		{
-			auto cleanupRule = m_CleanupRule.load();
+			auto cleanupRule = load(m_CleanupRule, m_CleanupRuleMx);
 			if (!cleanupRule.fileCount)
 				return;
 			
@@ -211,7 +222,7 @@ namespace sl::log
 
 		void fulfillDirectorySizeCleanup(std::vector<std::filesystem::directory_entry>& files) const
 		{
-			auto cleanupRule = m_CleanupRule.load();
+			auto cleanupRule = load(m_CleanupRule, m_CleanupRuleMx);
 			if (!cleanupRule.directorySize)
 				return;
 
@@ -234,7 +245,7 @@ namespace sl::log
 		{
 			assert(m_FileStream.is_open() && m_CurrentFilePath && !std::empty(*m_CurrentFilePath));
 
-			auto rotationRule = m_RotationRule.load();
+			auto rotationRule = load(m_RotationRule, m_RotationRuleMx);
 			return rotationRule.fileSize && *rotationRule.fileSize < file_size(*m_CurrentFilePath) ||
 				rotationRule.duration && m_FileOpeningTime.load() + *rotationRule.duration < std::chrono::steady_clock::now();
 		}
