@@ -19,6 +19,12 @@ namespace sl::log
 {
 	struct SetSeverity
 	{
+		template <class T>
+		explicit SetSeverity(T&& data) :
+			severity{ std::forward<T>(data) }
+		{
+		}
+		
 		std::any severity;
 	};
 
@@ -26,6 +32,12 @@ namespace sl::log
 
 	struct SetChannel
 	{
+		template <class T>
+		explicit SetChannel(T&& data) :
+			channel{ std::forward<T>(data) }
+		{
+		}
+		
 		std::any channel;
 	};
 
@@ -33,6 +45,12 @@ namespace sl::log
 
 	struct SetUserData
 	{
+		template <class T>
+		explicit SetUserData(T&& data) :
+			userData{ std::forward<T>(data) }
+		{
+		}
+		
 		std::any userData;
 	};
 
