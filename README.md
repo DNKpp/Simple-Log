@@ -1,6 +1,5 @@
 # Simple-Log C++20 library
 ![Build & Run Test](https://github.com/DNKpp/Simple-Log/workflows/Build%20&%20Run%20Test/badge.svg)
-
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/55561677ef904762a567b432eb4382b9)](https://www.codacy.com/gh/DNKpp/Simple-Log/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DNKpp/Simple-Log&amp;utm_campaign=Badge_Grade)
 
 ## Author
@@ -19,7 +18,6 @@ Mail: [DNKpp2011@gmail.com](mailto:dnkpp2011@gmail.com)
 ```
 
 ## Description
-
 
 ## Simple usage example
 ```cpp
