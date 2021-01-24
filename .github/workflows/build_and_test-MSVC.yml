@@ -1,0 +1,18 @@
+name: Build & Test - MSVC
+
+on: [push]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: jwlawson/actions-setup-cmake@v1.6
+
+    - name: Configure & Build
+      run: |
+        cmake . -Bbuild_msvc
+        cmake --build build_msvc
+    - name: Test
+      run:
+        cmake --build build_msvc --target RUN_TESTS

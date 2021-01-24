@@ -1,0 +1,23 @@
+name: Build & Test - GCC-10
+
+on: [push]
+
+jobs:
+  build-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: jwlawson/actions-setup-cmake@v1.6
+    - uses: seanmiddleditch/gha-setup-ninja@master
+    - name: Install GCC-10
+      run: |
+        sudo apt-get update
+        sudo apt install g++-10
+        sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+    - name: Configure & Build
+      run: |
+        cmake . -Bbuild_gcc -G "Ninja Multi-Config"
+        cmake --build build_gcc
+    - name: Test
+      run: 
+        cmake --build build_gcc --target test
