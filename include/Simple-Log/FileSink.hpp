@@ -246,8 +246,8 @@ namespace sl::log
 			assert(m_FileStream.is_open() && m_CurrentFilePath && !std::empty(*m_CurrentFilePath));
 
 			auto rotationRule = load(m_RotationRule, m_RotationRuleMx);
-			return rotationRule.fileSize && *rotationRule.fileSize < file_size(*m_CurrentFilePath) ||
-				rotationRule.duration && m_FileOpeningTime.load() + *rotationRule.duration < std::chrono::steady_clock::now();
+			return (rotationRule.fileSize && *rotationRule.fileSize < file_size(*m_CurrentFilePath)) ||
+				(rotationRule.duration && m_FileOpeningTime.load() + *rotationRule.duration < std::chrono::steady_clock::now());
 		}
 	};
 }
