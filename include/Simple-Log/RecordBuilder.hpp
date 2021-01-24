@@ -24,7 +24,7 @@ namespace sl::log
 			severity{ std::forward<T>(data) }
 		{
 		}
-		
+
 		std::any severity;
 	};
 
@@ -37,7 +37,7 @@ namespace sl::log
 			channel{ std::forward<T>(data) }
 		{
 		}
-		
+
 		std::any channel;
 	};
 
@@ -50,7 +50,7 @@ namespace sl::log
 			userData{ std::forward<T>(data) }
 		{
 		}
-		
+
 		std::any userData;
 	};
 
@@ -92,7 +92,7 @@ namespace sl::log
 			using std::swap;
 			swap(m_Record, other.m_Record);
 			swap(m_Stream, other.m_Stream);
-			m_LogCallback = std::exchange(other.m_LogCallback, nullptr);
+			m_LogCallback = std::exchange(other.m_LogCallback, {});
 			return *this;
 		}
 
@@ -141,7 +141,7 @@ namespace sl::log
 	private:
 		Record m_Record;
 		std::ostringstream m_Stream;
-		std::function<void(Record)> m_LogCallback;
+		LogCallback_t m_LogCallback;
 	};
 }
 
