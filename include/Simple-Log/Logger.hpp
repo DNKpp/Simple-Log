@@ -27,12 +27,12 @@ namespace sl::log
 	public:
 		Logger(
 			Core& core,
-			SeverityLevel defaultSeverityLvl,
+			std::any defaultSeverityLvl = {},
 			std::any defaultChannel = {},
 			std::any defaultUserData = {}
 		) noexcept :
 			m_Core{ &core },
-			m_DefaultSeverityLvl{ defaultSeverityLvl },
+			m_DefaultSeverityLvl{ std::move(defaultSeverityLvl) },
 			m_DefaultChannel{ std::move(defaultChannel) },
 			m_DefaultUserData{ std::move(defaultUserData) }
 		{
@@ -73,7 +73,7 @@ namespace sl::log
 
 	private:
 		Core* m_Core = nullptr;
-		SeverityLevel m_DefaultSeverityLvl;
+		std::any m_DefaultSeverityLvl;
 		std::any m_DefaultChannel;
 		std::any m_DefaultUserData;
 	};
