@@ -10,118 +10,17 @@
 
 #include <any>
 #include <cassert>
-#include <sstream>
+
+#ifdef __cpp_lib_source_location
+#include <source_location>
+#endif
 
 #include "Core.hpp"
 #include "Record.hpp"
+#include "RecordBuilder.hpp"
 
 namespace sl::log
 {
-	struct SetSeverity
-	{
-		std::any severity;
-	};
-	using SetSev = SetSeverity;
-
-	struct SetChannel
-	{
-		std::any channel;
-	};
-	using SetChan = SetChannel;
-
-	struct SetUserData
-	{
-		std::any userData;
-	};
-	using SetData = SetUserData;
-	
-	class RecordBuilder
-	{
-	public:
-		using LogCallback_t = std::function<void(Record)>;
-
-		explicit RecordBuilder(LogCallback_t cb) noexcept :
-			m_LogCallback{ std::move(cb) }
-		{
-		}
-
-		~RecordBuilder() noexcept
-		{
-			if (m_LogCallback)
-			{
-				try
-				{
-					m_Record.message = std::move(m_Stream).str();
-					m_LogCallback(std::move(m_Record));
-				}
-				catch (...)
-				{
-				}
-			}
-		}
-
-		RecordBuilder(RecordBuilder&& other) noexcept
-		{
-			*this = std::move(other);
-		}
-
-		RecordBuilder& operator =(RecordBuilder&& other) noexcept
-		{
-			using std::swap;
-			swap(m_Record, other.m_Record);
-			swap(m_Stream, other.m_Stream);
-			m_LogCallback = std::exchange(other.m_LogCallback, nullptr);
-			return *this;
-		}
-
-		RecordBuilder(const RecordBuilder&) = delete;
-		RecordBuilder& operator =(const RecordBuilder&) = delete;
-
-		[[nodiscard]] Record& record() noexcept
-		{
-			return m_Record;
-		}
-
-		[[nodiscard]] const Record& record() const noexcept
-		{
-			return m_Record;
-		}
-
-		template <class T>
-		requires requires (T&& data)
-		{
-			{ std::declval<std::ostringstream>() << std::forward<T>(data) };
-		}
-		RecordBuilder& operator <<(T&& data)
-		{
-			m_Stream << std::forward<T>(data);
-			return *this;
-		}
-
-		RecordBuilder& operator <<(SetSeverity setSev) noexcept
-		{
-			m_Record.severity = std::move(setSev.severity);
-			return *this;
-		}
-
-		RecordBuilder& operator <<(SetChannel setChannel) noexcept
-		{
-			m_Record.channel = std::move(setChannel.channel);
-			return *this;
-		}
-
-		RecordBuilder& operator <<(SetUserData setUserData) noexcept
-		{
-			m_Record.channel = std::move(setUserData.userData);
-			return *this;
-		}
-
-	private:
-		Record m_Record;
-		std::ostringstream m_Stream;
-		std::function<void(Record)> m_LogCallback;
-	};
-
 	class Logger
 	{
 	public:
