@@ -8,19 +8,19 @@
 
 #pragma once
 
-#include <memory>
-#include <vector>
-#include <mutex>
 #include <algorithm>
 #include <execution>
 #include <future>
+#include <memory>
+#include <mutex>
+#include <vector>
 
 #include "ISink.hpp"
 #include "Record.hpp"
 #include "RecordQueue.hpp"
 
 namespace sl::log
-{	
+{
 	class Core
 	{
 	public:
@@ -48,7 +48,7 @@ namespace sl::log
 
 		Core(Core&&) = delete;
 		Core& operator =(Core&&) = delete;
-		
+
 		void log(Record record)
 		{
 			// will reject newly generated records, after run has become false
@@ -67,7 +67,7 @@ namespace sl::log
 			m_Sinks.emplace_back(std::move(sink));
 			return ref;
 		}
-	
+
 	private:
 		using SinkContainer = std::vector<std::unique_ptr<ISink>>;
 
@@ -77,11 +77,16 @@ namespace sl::log
 			quit,
 			forceQuit
 		};
-		
+
 		class Worker
 		{
 		public:
-			Worker(const std::atomic<Instruction>& instruction, RecordQueue& records, std::mutex& sinkMx, const SinkContainer& sinks) :
+			Worker(
+				const std::atomic<Instruction>& instruction,
+				RecordQueue& records,
+				std::mutex& sinkMx,
+				const SinkContainer& sinks
+			) :
 				m_Instruction{ instruction },
 				m_Records{ records },
 				m_SinkMx{ sinkMx },
@@ -99,16 +104,19 @@ namespace sl::log
 					if (auto optRecord = m_Records.take(std::chrono::milliseconds{ 200 }))
 					{
 						std::scoped_lock lock{ m_SinkMx };
-						std::for_each(std::execution::par, std::begin(m_Sinks), std::end(m_Sinks),
-							[&record = *optRecord](auto& sink)
-							{
-								sink->log(record);
-							}
-						);
+						std::for_each(
+									std::execution::par,
+									std::begin(m_Sinks),
+									std::end(m_Sinks),
+									[&record = *optRecord](auto& sink)
+									{
+										sink->log(record);
+									}
+									);
 					}
 				}
 			}
-		
+
 		private:
 			const std::atomic<Instruction>& m_Instruction;
 
