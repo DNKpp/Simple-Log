@@ -17,26 +17,37 @@ using namespace sl::log;
 
 inline Core core;
 
+enum class Channel
+{
+	test
+};
+
 TEST_CASE(" ", "[Core]")
 {
 
 	auto& sink = core.makeSink<BasicSink>(std::cout);
 	auto& fileSink = core.makeSink<FileSink>("test-%Y-%m-%d_%3N.log");
-	fileSink.setRotationRule({ .fileSize = 0 });
-	fileSink.setCleanupRule({.fileCount = 3});
+	fileSink.setRotationRule({ .fileSize = 10 * 1024 * 1024 });
+	fileSink.setCleanupRule({.fileCount = 20});
+	fileSink.setFilter([](const Record& rec)
+	{
+		if (auto channel = std::any_cast<Channel>(&rec.channel); channel && *channel == Channel::test)
+			return false;
+		return true;
+	});
 
 	Logger log{ core, SeverityLevel::info };
 
-	log << "Hello," << "World!";
+	log() << SetSeverity(SeverityLevel::debug) << "Hello," << SetChannel(Channel::test) << "World!";
+	log() << "Hello, Zhavok!";
+	
 	//sink.setFormatter([](std::ostream& out, const Record& rec) { out << "yes" << rec.message; });
-	sink.setFilter([](const Record& rec){ return rec.message != "Hello, World!"; });
+	//sink.setFilter([](const Record& rec){ return rec.message != "Hello, World!"; });
 
-	for (int i = 0; i < 10; ++i)
+	for (int i = 0; i < 1000; ++i)
 	{
-		log << "log: " << i;
+		log() << "log: " << i;
 	}
-
-	StringPattern pattern{ "hfkjdfk%m%N%3243Nfjlksdjfldsk%H-%M-%S%555JN" };
 
 	std::this_thread::sleep_for(std::chrono::seconds{ 2 });
 }

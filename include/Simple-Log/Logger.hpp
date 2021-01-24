@@ -17,51 +17,48 @@
 
 namespace sl::log
 {
-	class Logger;
+	struct SetSeverity
+	{
+		std::any severity;
+	};
+	using SetSev = SetSeverity;
 
+	struct SetChannel
+	{
+		std::any channel;
+	};
+	using SetChan = SetChannel;
+
+	struct SetUserData
+	{
+		std::any userData;
+	};
+	using SetData = SetUserData;
+	
 	class RecordBuilder
 	{
 	public:
-#ifdef __cpp_lib_source_location
-		RecordBuilder(const std::source_location& srcLoc = std::source_location::current()) noexcept
-			m_Record{ .sourceLocation = srcLoc },
-#else
-		RecordBuilder() noexcept
-#endif
-		{
-		}
-		
-#ifdef __cpp_lib_source_location
-		RecordBuilder(std::string msg, const std::source_location& srcLoc = std::source_location::current()) :
-			m_Record{ .sourceLocation = srcLoc },
-#else
-		RecordBuilder(std::string msg) :
-#endif
-			m_Stream{ std::move(msg) } // NOLINT(performance-move-const-arg)	new ostringstream ctor added in c++20
+		using LogCallback_t = std::function<void(Record)>;
+
+		explicit RecordBuilder(LogCallback_t cb) noexcept :
+			m_LogCallback{ std::move(cb) }
 		{
 		}
 
-#ifdef __cpp_lib_source_location
-		RecordBuilder(std::string_view msg, const std::source_location& srcLoc = std::source_location::current()) :
-			m_Record{ .sourceLocation = srcLoc },
-#else
-		RecordBuilder(std::string_view msg)
-#endif
+		~RecordBuilder() noexcept
 		{
-			m_Stream << msg;
+			if (m_LogCallback)
+			{
+				try
+				{
+					m_Record.message = std::move(m_Stream).str();
+					m_LogCallback(std::move(m_Record));
+				}
+				catch (...)
+				{
+				}
+			}
 		}
-
-#ifdef __cpp_lib_source_location
-		RecordBuilder(const char* msg, const std::source_location& srcLoc = std::source_location::current()) :
-			m_Record{ .sourceLocation = srcLoc },
-#else
-		RecordBuilder(const char* msg)
-#endif
-		{
-			m_Stream << msg;
-		}
-
-		~RecordBuilder() noexcept;
 
 		RecordBuilder(RecordBuilder&& other) noexcept
 		{
@@ -73,24 +70,12 @@ namespace sl::log
 			using std::swap;
 			swap(m_Record, other.m_Record);
 			swap(m_Stream, other.m_Stream);
-			m_Logger = std::exchange(other.m_Logger, nullptr);
+			m_LogCallback = std::exchange(other.m_LogCallback, nullptr);
 			return *this;
 		}
 
 		RecordBuilder(const RecordBuilder&) = delete;
 		RecordBuilder& operator =(const RecordBuilder&) = delete;
-
-		template <class T>
-		RecordBuilder& operator <<(T&& data)
-		{
-			m_Stream << std::forward<T>(data);
-			return *this;
-		}
-
-		void setupTargetLogger(Logger& logger) noexcept
-		{
-			m_Logger = &logger;
-		}
 
 		[[nodiscard]] Record& record() noexcept
 		{
@@ -102,10 +87,39 @@ namespace sl::log
 			return m_Record;
 		}
 
+		template <class T>
+		requires requires (T&& data)
+		{
+			{ std::declval<std::ostringstream>() << std::forward<T>(data) };
+		}
+		RecordBuilder& operator <<(T&& data)
+		{
+			m_Stream << std::forward<T>(data);
+			return *this;
+		}
+
+		RecordBuilder& operator <<(SetSeverity setSev) noexcept
+		{
+			m_Record.severity = std::move(setSev.severity);
+			return *this;
+		}
+
+		RecordBuilder& operator <<(SetChannel setChannel) noexcept
+		{
+			m_Record.channel = std::move(setChannel.channel);
+			return *this;
+		}
+
+		RecordBuilder& operator <<(SetUserData setUserData) noexcept
+		{
+			m_Record.channel = std::move(setUserData.userData);
+			return *this;
+		}
+
 	private:
 		Record m_Record;
 		std::ostringstream m_Stream;
-		Logger* m_Logger = nullptr;
+		std::function<void(Record)> m_LogCallback;
 	};
 
 	class Logger
@@ -131,22 +145,29 @@ namespace sl::log
 		Logger(Logger&&) noexcept = default;
 		Logger& operator =(Logger&&) noexcept = default;
 
+		// ReSharper disable once CppMemberFunctionMayBeConst
+		// Logger should semantically not be const, when writing to the logs
 		void log(Record rec)
 		{
 			assert(m_Core);
 			m_Core->log(std::move(rec));
 		}
 
-		RecordBuilder makeRecordBuilder() noexcept
+#ifdef __cpp_lib_source_location
+		RecordBuilder operator ()(const std::source_location& srcLoc = std::source_location::current())
+#else
+		RecordBuilder operator ()()
+#endif
 		{
-			RecordBuilder builder;
-			setupRecordBuilder(builder);
-			return builder;
-		}
+			RecordBuilder builder{ [&logger = *this](Record rec) { logger.log(std::move(rec)); } };
+			builder.record().severity = m_DefaultSeverityLvl;
+			builder.record().channel = m_DefaultChannel;
+			builder.record().userData = m_DefaultUserData;
 
-		RecordBuilder operator <<(RecordBuilder builder) noexcept
-		{
-			setupRecordBuilder(builder);
+#ifdef __cpp_lib_source_location
+			builder.record().sourceLocation = srcLoc;
+#endif
+
 			return builder;
 		}
 
@@ -155,84 +176,7 @@ namespace sl::log
 		SeverityLevel m_DefaultSeverityLvl;
 		std::any m_DefaultChannel;
 		std::any m_DefaultUserData;
-
-		void setupRecordBuilder(RecordBuilder& builder) noexcept
-		{
-			builder.record().severity = m_DefaultSeverityLvl;
-			builder.record().channel = m_DefaultChannel;
-			builder.record().userData = m_DefaultUserData;
-			builder.setupTargetLogger(*this);
-		}
 	};
-
-	inline RecordBuilder::~RecordBuilder() noexcept
-	{
-		if (m_Logger)
-		{
-			try
-			{
-				m_Record.message = std::move(m_Stream).str();
-				m_Logger->log(std::move(m_Record));
-			}
-			catch (...)
-			{
-			}
-		}
-	}
-
-	struct SetSeverity
-	{
-		std::any severity;
-	};
-	
-	inline RecordBuilder& operator <<(RecordBuilder& recBuilder, SetSeverity setSev) noexcept
-	{
-		recBuilder.record().severity = std::move(setSev.severity);
-		return recBuilder;
-	}
-
-	inline RecordBuilder operator <<(Logger& logger, SetSeverity setSev) noexcept
-	{
-		auto recBuilder = logger.makeRecordBuilder();
-		recBuilder.record().severity = std::move(setSev.severity);
-		return recBuilder;
-	}
-
-	struct SetChannel
-	{
-		std::any channel;
-	};
-	
-	inline RecordBuilder& operator <<(RecordBuilder& recBuilder, SetChannel setChannel) noexcept
-	{
-		recBuilder.record().channel = std::move(setChannel.channel);
-		return recBuilder;
-	}
-
-	inline RecordBuilder operator <<(Logger& logger, SetChannel setChannel) noexcept
-	{
-		auto recBuilder = logger.makeRecordBuilder();
-		recBuilder.record().channel = std::move(setChannel.channel);
-		return recBuilder;
-	}
-
-	struct SetUserData
-	{
-		std::any userData;
-	};
-	
-	inline RecordBuilder& operator <<(RecordBuilder& recBuilder, SetUserData setUserData) noexcept
-	{
-		recBuilder.record().channel = std::move(setUserData.userData);
-		return recBuilder;
-	}
-
-	inline RecordBuilder operator <<(Logger& logger, SetUserData setUserData) noexcept
-	{
-		auto recBuilder = logger.makeRecordBuilder();
-		recBuilder.record().channel = std::move(setUserData.userData);
-		return recBuilder;
-	}
 }
 
 #endif
