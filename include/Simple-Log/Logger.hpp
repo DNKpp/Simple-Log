@@ -23,6 +23,15 @@ namespace sl::log
 	{
 	public:
 #ifdef __cpp_lib_source_location
+		RecordBuilder(const std::source_location& srcLoc = std::source_location::current()) noexcept
+			m_Record{ .sourceLocation = srcLoc },
+#else
+		RecordBuilder() noexcept
+#endif
+		{
+		}
+		
+#ifdef __cpp_lib_source_location
 		RecordBuilder(std::string msg, const std::source_location& srcLoc = std::source_location::current()) :
 			m_Record{ .sourceLocation = srcLoc },
 #else
@@ -83,6 +92,16 @@ namespace sl::log
 			m_Logger = &logger;
 		}
 
+		[[nodiscard]] Record& record() noexcept
+		{
+			return m_Record;
+		}
+
+		[[nodiscard]] const Record& record() const noexcept
+		{
+			return m_Record;
+		}
+
 	private:
 		Record m_Record;
 		std::ostringstream m_Stream;
@@ -112,20 +131,23 @@ namespace sl::log
 		Logger(Logger&&) noexcept = default;
 		Logger& operator =(Logger&&) noexcept = default;
 
-		RecordBuilder operator <<(RecordBuilder builder) noexcept
+		void log(Record rec)
 		{
-			builder.setupTargetLogger(*this);
+			assert(m_Core);
+			m_Core->log(std::move(rec));
+		}
+
+		RecordBuilder makeRecordBuilder() noexcept
+		{
+			RecordBuilder builder;
+			setupRecordBuilder(builder);
 			return builder;
 		}
 
-		void log(Record rec)
+		RecordBuilder operator <<(RecordBuilder builder) noexcept
 		{
-			rec.severity = m_DefaultSeverityLvl;
-			rec.channel = m_DefaultChannel;
-			rec.userData = m_DefaultUserData;
-
-			assert(m_Core);
-			m_Core->log(std::move(rec));
+			setupRecordBuilder(builder);
+			return builder;
 		}
 
 	private:
@@ -133,6 +155,14 @@ namespace sl::log
 		SeverityLevel m_DefaultSeverityLvl;
 		std::any m_DefaultChannel;
 		std::any m_DefaultUserData;
+
+		void setupRecordBuilder(RecordBuilder& builder) noexcept
+		{
+			builder.record().severity = m_DefaultSeverityLvl;
+			builder.record().channel = m_DefaultChannel;
+			builder.record().userData = m_DefaultUserData;
+			builder.setupTargetLogger(*this);
+		}
 	};
 
 	inline RecordBuilder::~RecordBuilder() noexcept
@@ -148,6 +178,60 @@ namespace sl::log
 			{
 			}
 		}
+	}
+
+	struct SetSeverity
+	{
+		std::any severity;
+	};
+	
+	inline RecordBuilder& operator <<(RecordBuilder& recBuilder, SetSeverity setSev) noexcept
+	{
+		recBuilder.record().severity = std::move(setSev.severity);
+		return recBuilder;
+	}
+
+	inline RecordBuilder operator <<(Logger& logger, SetSeverity setSev) noexcept
+	{
+		auto recBuilder = logger.makeRecordBuilder();
+		recBuilder.record().severity = std::move(setSev.severity);
+		return recBuilder;
+	}
+
+	struct SetChannel
+	{
+		std::any channel;
+	};
+	
+	inline RecordBuilder& operator <<(RecordBuilder& recBuilder, SetChannel setChannel) noexcept
+	{
+		recBuilder.record().channel = std::move(setChannel.channel);
+		return recBuilder;
+	}
+
+	inline RecordBuilder operator <<(Logger& logger, SetChannel setChannel) noexcept
+	{
+		auto recBuilder = logger.makeRecordBuilder();
+		recBuilder.record().channel = std::move(setChannel.channel);
+		return recBuilder;
+	}
+
+	struct SetUserData
+	{
+		std::any userData;
+	};
+	
+	inline RecordBuilder& operator <<(RecordBuilder& recBuilder, SetUserData setUserData) noexcept
+	{
+		recBuilder.record().channel = std::move(setUserData.userData);
+		return recBuilder;
+	}
+
+	inline RecordBuilder operator <<(Logger& logger, SetUserData setUserData) noexcept
+	{
+		auto recBuilder = logger.makeRecordBuilder();
+		recBuilder.record().channel = std::move(setUserData.userData);
+		return recBuilder;
 	}
 }
 
