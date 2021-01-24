@@ -9,6 +9,7 @@
 #pragma once
 
 #include <any>
+#include <chrono>
 #include <functional>
 #include <sstream>
 
@@ -43,6 +44,7 @@ namespace sl::log
 		using LogCallback_t = std::function<void(Record)>;
 
 		explicit RecordBuilder(LogCallback_t cb) noexcept :
+			m_Record{ .time = std::chrono::system_clock::now() },
 			m_LogCallback{ std::move(cb) }
 		{
 		}

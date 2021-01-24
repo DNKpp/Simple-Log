@@ -32,8 +32,7 @@ namespace sl::log
 			{
 				using namespace std::chrono;
 
-				const auto now = system_clock::now();
-				const auto today = now.time_since_epoch() % hours{ 24 };
+				const auto today = rec.time.time_since_epoch() % hours{ 24 };
 				const auto hour = duration_cast<hours>(today);
 				const auto minute = duration_cast<minutes>(today) % hours{ 1 };
 				const auto second = duration_cast<seconds>(today) % minutes{ 1 };
