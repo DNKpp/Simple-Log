@@ -92,7 +92,7 @@ namespace sl::log
 		void removeOpeningHandler() noexcept
 		{
 			std::scoped_lock lock{ m_OpeningHandlerMx };
-			m_OpeningHandler = makeNoOpFileStateHandler();
+			m_OpeningHandler = nullptr;
 		}
 
 		template <log::FileStateHandler THandler>
@@ -105,7 +105,7 @@ namespace sl::log
 		void removeClosingHandler() noexcept
 		{
 			std::scoped_lock lock{ m_ClosingHandlerMx };
-			m_ClosingHandler = makeNoOpFileStateHandler();
+			m_ClosingHandler = nullptr;
 		}
 
 		void log(const Record& rec) override
@@ -124,7 +124,7 @@ namespace sl::log
 		}
 
 	private:
-		using FileStateHandler = std::function<void(std::ostream&)>;
+		using FileStateHandler = std::function<std::string()>;
 		
 		StringPattern m_FileNamePattern;
 		std::filesystem::path m_Directory;
@@ -142,14 +142,9 @@ namespace sl::log
 
 		// File Handler
 		std::mutex m_OpeningHandlerMx;
-		FileStateHandler m_OpeningHandler{ makeNoOpFileStateHandler() };
+		FileStateHandler m_OpeningHandler;
 		std::mutex m_ClosingHandlerMx;
-		FileStateHandler m_ClosingHandler{ makeNoOpFileStateHandler() };
-
-		static FileStateHandler makeNoOpFileStateHandler() noexcept
-		{
-			return [](std::ostream&) {};
-		}
+		FileStateHandler m_ClosingHandler;
 
 		void openFile()
 		{
@@ -159,9 +154,9 @@ namespace sl::log
 			m_CurrentFilePath = std::move(filePath);
 			m_FileOpeningTime = std::chrono::steady_clock::now();
 
+			if (std::scoped_lock lock{ m_OpeningHandlerMx }; m_OpeningHandler)
 			{
-				std::scoped_lock lock{ m_OpeningHandlerMx, m_WriteAccessMx };
-				m_OpeningHandler(m_FileStream);
+				writeToStream(m_OpeningHandler());
 			}
 		}
 
@@ -170,9 +165,9 @@ namespace sl::log
 			assert(m_FileStream.is_open() && "FileStream must be open.");
 			assert(m_CurrentFilePath && !std::empty(*m_CurrentFilePath));
 
+			if (std::scoped_lock lock{ m_ClosingHandlerMx }; m_ClosingHandler)
 			{
-				std::scoped_lock lock{ m_ClosingHandlerMx, m_WriteAccessMx };
-				m_ClosingHandler(m_FileStream);
+				writeToStream(m_ClosingHandler());
 			}
 			m_FileStream.close();
 
