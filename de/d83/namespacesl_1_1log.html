@@ -106,6 +106,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html">Logger</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A collection of logging related information.  <a href="../../de/df8/classsl_1_1log_1_1_record.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d68/structsl_1_1log_1_1_set_severity.html">SetSeverity</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,10 +123,6 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a290dc9d1a7f3d559a88368e77c0aa870"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d83/namespacesl_1_1log.html#a290dc9d1a7f3d559a88368e77c0aa870">Formatter_t</a> = std::function&lt; void(std::ostream &amp;, const <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a> &amp;)&gt;</td></tr>
-<tr class="separator:a290dc9d1a7f3d559a88368e77c0aa870"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0764c9b458dd9113a10aead7c3cf22c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d83/namespacesl_1_1log.html#aa0764c9b458dd9113a10aead7c3cf22c">Filter_t</a> = std::function&lt; bool(const <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a> &amp;)&gt;</td></tr>
-<tr class="separator:aa0764c9b458dd9113a10aead7c3cf22c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80b8e97666c179bde6a8a99ed3e6c2a8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d83/namespacesl_1_1log.html#a80b8e97666c179bde6a8a99ed3e6c2a8">SetSev</a> = <a class="el" href="../../dd/d68/structsl_1_1log_1_1_set_severity.html">SetSeverity</a></td></tr>
 <tr class="separator:a80b8e97666c179bde6a8a99ed3e6c2a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8b4896f9b22a32a135a3dbe9d10773a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d83/namespacesl_1_1log.html#aa8b4896f9b22a32a135a3dbe9d10773a">SetChan</a> = <a class="el" href="../../d5/dbf/structsl_1_1log_1_1_set_channel.html">SetChannel</a></td></tr>
@@ -145,11 +142,13 @@ Enumerations</h2></td></tr>
 , <a class="el" href="../../de/d83/namespacesl_1_1log.html#afe0223554b07283db048dd7c700c5ac8adf6402fd9ecc60f5a2159fdf45711cd4">fatal</a>
 <br />
  }</td></tr>
+<tr class="memdesc:afe0223554b07283db048dd7c700c5ac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple severity level enum type.  <a href="../../de/d83/namespacesl_1_1log.html#afe0223554b07283db048dd7c700c5ac8">More...</a><br /></td></tr>
 <tr class="separator:afe0223554b07283db048dd7c700c5ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a3ceb6be99f86348cdd2598ec0a022b35"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d83/namespacesl_1_1log.html#a3ceb6be99f86348cdd2598ec0a022b35">operator&lt;&lt;</a> (std::ostream &amp;out, <a class="el" href="../../de/d83/namespacesl_1_1log.html#afe0223554b07283db048dd7c700c5ac8">SeverityLevel</a> lvl)</td></tr>
+<tr class="memdesc:a3ceb6be99f86348cdd2598ec0a022b35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operator &lt;&lt; overload for the default severity type.  <a href="../../de/d83/namespacesl_1_1log.html#a3ceb6be99f86348cdd2598ec0a022b35">More...</a><br /></td></tr>
 <tr class="separator:a3ceb6be99f86348cdd2598ec0a022b35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -165,34 +164,6 @@ Variables</h2></td></tr>
 <tr class="separator:a1c5760e773e9a0c3ab0d608139bce497"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="aa0764c9b458dd9113a10aead7c3cf22c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0764c9b458dd9113a10aead7c3cf22c">&#9670;&nbsp;</a></span>Filter_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="../../de/d83/namespacesl_1_1log.html#aa0764c9b458dd9113a10aead7c3cf22c">sl::log::Filter_t</a> = typedef std::function&lt;bool(const <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp;)&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a290dc9d1a7f3d559a88368e77c0aa870"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a290dc9d1a7f3d559a88368e77c0aa870">&#9670;&nbsp;</a></span>Formatter_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="../../de/d83/namespacesl_1_1log.html#a290dc9d1a7f3d559a88368e77c0aa870">sl::log::Formatter_t</a> = typedef std::function&lt;void(std::ostream&amp;, const <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp;)&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="aa8b4896f9b22a32a135a3dbe9d10773a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa8b4896f9b22a32a135a3dbe9d10773a">&#9670;&nbsp;</a></span>SetChan</h2>
 
@@ -255,6 +226,9 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>A simple severity level enum type. </p>
+<p>This type serves as a default solution for severity levels but doesn't have to be used. You are free to declare your custom enum type or anything more exotic you can imagine. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="afe0223554b07283db048dd7c700c5ac8acaf9b6b99962bf5c2264824231d7a40c"></a>info&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="afe0223554b07283db048dd7c700c5ac8aad42f6697b035b7580e4fef93be20b4d"></a>debug&#160;</td><td class="fielddoc"></td></tr>
@@ -272,6 +246,9 @@ Variables</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::ostream&amp; sl::log::operator&lt;&lt; </td>
@@ -291,7 +268,22 @@ Variables</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p>Operator &lt;&lt; overload for the default severity type. </p>
+<p>This is a simple overload for the library provided SeverityLevel, which will be used in the default formatter if such a type is detected. It simply translates the enum value name to a string representation. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>the stream object </td></tr>
+    <tr><td class="paramname">lvl</td><td>the severity level </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns the parameter out as reference </dd></dl>
 
 </div>
 </div>

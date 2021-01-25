@@ -1,6 +1,8 @@
 var files_dup =
 [
-    [ "BasicSink.hpp", "d7/df9/_basic_sink_8hpp.html", "d7/df9/_basic_sink_8hpp" ],
+    [ "BasicSink.hpp", "d7/df9/_basic_sink_8hpp.html", [
+      [ "BasicSink", "dd/d48/classsl_1_1log_1_1_basic_sink.html", "dd/d48/classsl_1_1log_1_1_basic_sink" ]
+    ] ],
     [ "Concepts.hpp", "d9/db9/_concepts_8hpp.html", "d9/db9/_concepts_8hpp" ],
     [ "Core.hpp", "d5/d8e/_core_8hpp.html", [
       [ "Core", "d4/df3/classsl_1_1log_1_1_core.html", "d4/df3/classsl_1_1log_1_1_core" ]

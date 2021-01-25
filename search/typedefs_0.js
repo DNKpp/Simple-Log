@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['filter_5ft_165',['Filter_t',['../de/d83/namespacesl_1_1log.html#aa0764c9b458dd9113a10aead7c3cf22c',1,'sl::log']]],
-  ['formatter_5ft_166',['Formatter_t',['../de/d83/namespacesl_1_1log.html#a290dc9d1a7f3d559a88368e77c0aa870',1,'sl::log']]]
+  ['logcallback_5ft_163',['LogCallback_t',['../db/d9a/classsl_1_1log_1_1_record_builder.html#a109a0f2b8b60e290b89dfe903fbf827a',1,'sl::log::RecordBuilder']]]
 ];

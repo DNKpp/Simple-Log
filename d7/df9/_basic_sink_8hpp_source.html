@@ -106,128 +106,126 @@ $(document).ready(function(){initNavTree('d7/df9/_basic_sink_8hpp_source.html','
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
 <div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="../../dd/d2c/namespacesl.html">   20</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/d83/namespacesl_1_1log.html">sl::log</a></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../de/d83/namespacesl_1_1log.html#a290dc9d1a7f3d559a88368e77c0aa870">   22</a></span>&#160;    <span class="keyword">using</span> <a class="code" href="../../de/d83/namespacesl_1_1log.html#a290dc9d1a7f3d559a88368e77c0aa870">Formatter_t</a> = std::function&lt;void(std::ostream&amp;, <span class="keyword">const</span> <a class="code" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp;)&gt;;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../de/d83/namespacesl_1_1log.html#aa0764c9b458dd9113a10aead7c3cf22c">   23</a></span>&#160;    <span class="keyword">using</span> <a class="code" href="../../de/d83/namespacesl_1_1log.html#aa0764c9b458dd9113a10aead7c3cf22c">Filter_t</a> = std::function&lt;bool(<span class="keyword">const</span> <a class="code" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp;)&gt;;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">   25</a></span>&#160;    <span class="keyword">class </span><a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a> :</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">public</span> <a class="code" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">ISink</a></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#adbfa495338613eb4399a78bdd4b6e520">   29</a></span>&#160;        <span class="keyword">static</span> <span class="keyword">auto</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#adbfa495338613eb4399a78bdd4b6e520">defaultFormatter</a>() noexcept</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordflow">return</span> [](std::ostream&amp; out, <span class="keyword">const</span> <a class="code" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp; rec)</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <span class="keyword">using namespace </span>std::chrono;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> today = rec.time.time_since_epoch() % hours{ 24 };</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> hour = duration_cast&lt;hours&gt;(today);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> minute = duration_cast&lt;minutes&gt;(today) % hours{ 1 };</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> second = duration_cast&lt;seconds&gt;(today) % minutes{ 1 };</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> millisecond = duration_cast&lt;milliseconds&gt;(today) % seconds{ 1 };</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                out &lt;&lt; std::setfill(<span class="charliteral">&#39;0&#39;</span>) &lt;&lt;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    std::setw(2) &lt;&lt; hour.count() &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    std::setw(2) &lt;&lt; minute.count() &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                    std::setw(2) &lt;&lt; second.count() &lt;&lt; <span class="stringliteral">&quot;.&quot;</span> &lt;&lt;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    std::setw(3) &lt;&lt; millisecond.count() &lt;&lt;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    <span class="stringliteral">&quot; &gt;&gt;&gt; &quot;</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordflow">if</span> (<span class="keyword">auto</span>* sevLvlPtr = std::any_cast&lt;SeverityLevel&gt;(&amp;rec.severity))</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    out &lt;&lt; *sevLvlPtr &lt;&lt; <span class="stringliteral">&quot;::&quot;</span>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                out &lt;&lt; rec.message;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            };</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a6e248162852bba5b43cd0bb02d3fff2d">   55</a></span>&#160;        <span class="keyword">static</span> <span class="keyword">auto</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a6e248162852bba5b43cd0bb02d3fff2d">defaultFilter</a>() noexcept</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">return</span> [](<span class="keyword">const</span> <a class="code" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp; rec) { <span class="keywordflow">return</span> <span class="keyword">true</span>; };</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a95c50515b3872c2d0e89cdd261ba7e6d">   61</a></span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a95c50515b3872c2d0e89cdd261ba7e6d">BasicSink</a>(std::ostream&amp; stream) :</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            m_Stream{ stream }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            m_Formatter = <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#adbfa495338613eb4399a78bdd4b6e520">defaultFormatter</a>();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            m_Filter = <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a6e248162852bba5b43cd0bb02d3fff2d">defaultFilter</a>();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ada502f2e87c953afedcf248459a50695">   68</a></span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ada502f2e87c953afedcf248459a50695">~BasicSink</a>() noexcept = default;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">   22</a></span>&#160;    <span class="keyword">class </span><a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a> :</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">public</span> <a class="code" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">ISink</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#adbfa495338613eb4399a78bdd4b6e520">   26</a></span>&#160;        <span class="keyword">static</span> <span class="keyword">auto</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#adbfa495338613eb4399a78bdd4b6e520">defaultFormatter</a>() noexcept</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">return</span> [](std::ostream&amp; out, <span class="keyword">const</span> <a class="code" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp; rec)</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                <span class="keyword">using namespace </span>std::chrono;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> today = rec.time.time_since_epoch() % hours{ 24 };</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> hour = duration_cast&lt;hours&gt;(today);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> minute = duration_cast&lt;minutes&gt;(today) % hours{ 1 };</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> second = duration_cast&lt;seconds&gt;(today) % minutes{ 1 };</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> millisecond = duration_cast&lt;milliseconds&gt;(today) % seconds{ 1 };</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                out &lt;&lt; std::setfill(<span class="charliteral">&#39;0&#39;</span>) &lt;&lt;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                    std::setw(2) &lt;&lt; hour.count() &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    std::setw(2) &lt;&lt; minute.count() &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    std::setw(2) &lt;&lt; second.count() &lt;&lt; <span class="stringliteral">&quot;.&quot;</span> &lt;&lt;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    std::setw(3) &lt;&lt; millisecond.count() &lt;&lt;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    <span class="stringliteral">&quot; &gt;&gt;&gt; &quot;</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                <span class="keywordflow">if</span> (<span class="keyword">auto</span>* sevLvlPtr = std::any_cast&lt;SeverityLevel&gt;(&amp;rec.severity))</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    out &lt;&lt; *sevLvlPtr &lt;&lt; <span class="stringliteral">&quot;::&quot;</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                out &lt;&lt; rec.message;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            };</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a6e248162852bba5b43cd0bb02d3fff2d">   52</a></span>&#160;        <span class="keyword">static</span> <span class="keyword">auto</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a6e248162852bba5b43cd0bb02d3fff2d">defaultFilter</a>() noexcept</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">return</span> [](<span class="keyword">const</span> <a class="code" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp; rec) { <span class="keywordflow">return</span> <span class="keyword">true</span>; };</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a95c50515b3872c2d0e89cdd261ba7e6d">   58</a></span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a95c50515b3872c2d0e89cdd261ba7e6d">BasicSink</a>(std::ostream&amp; stream) :</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            m_Stream{ stream }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            m_Formatter = <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#adbfa495338613eb4399a78bdd4b6e520">defaultFormatter</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            m_Filter = <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a6e248162852bba5b43cd0bb02d3fff2d">defaultFilter</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ada502f2e87c953afedcf248459a50695">   65</a></span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ada502f2e87c953afedcf248459a50695">~BasicSink</a>() noexcept = default;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a32bea518439de8c943796dbb59c3329a">   67</a></span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>(const <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>&amp;) = delete;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a64693c89bbd187e925392f160a5517f7">   68</a></span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>&amp; operator =(const <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>&amp;) = delete;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a32bea518439de8c943796dbb59c3329a">   70</a></span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>(const <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>&amp;) = delete;</div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a64693c89bbd187e925392f160a5517f7">   71</a></span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>&amp; operator =(const <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>&amp;) = delete;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa40ad483b6c543551520b830efbc1deb">   70</a></span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>(<a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>&amp;&amp;) = delete;</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a35fdd0beb06b04c706bc809decdfc3b1">   71</a></span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>&amp; operator =(<a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>&amp;&amp;) = delete;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa40ad483b6c543551520b830efbc1deb">   73</a></span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>(<a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>&amp;&amp;) = delete;</div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a35fdd0beb06b04c706bc809decdfc3b1">   74</a></span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>&amp; operator =(<a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a>&amp;&amp;) = delete;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#af9d8b7269771e540e4b153d68b3a1827">   76</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#af9d8b7269771e540e4b153d68b3a1827">log</a>(const <a class="code" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp; record)<span class="keyword"> override</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">        </span>{</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            std::scoped_lock lock{ m_FilterMx, m_FormatterMx, <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a52264e3de55ee192e5e43c8bdc728841">m_WriteAccessMx</a> };</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">if</span> (m_Filter(record))</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                m_Formatter(m_Stream, record);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                m_Stream &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keyword">template</span> &lt;RecordFormatter TFormatter&gt;</div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa5b20c8183e3095386068b7285acb409">   87</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa5b20c8183e3095386068b7285acb409">setFormatter</a>(TFormatter&amp;&amp; formatter) noexcept</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            std::scoped_lock lock{ m_FormatterMx };</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            m_Formatter = std::forward&lt;TFormatter&gt;(formatter);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a0821e06af0260b57fd9f8137763383a5">   93</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a0821e06af0260b57fd9f8137763383a5">removeFormatter</a>() noexcept</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            std::scoped_lock lock{ m_FormatterMx };</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            m_Formatter = <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#adbfa495338613eb4399a78bdd4b6e520">defaultFormatter</a>();</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keyword">template</span> &lt;RecordFilter TFilter&gt;</div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a8140a475ee9664587d85b9d5988ce51c">  100</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a8140a475ee9664587d85b9d5988ce51c">setFilter</a>(TFilter&amp;&amp; filter) noexcept</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            std::scoped_lock lock{ m_FilterMx };</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            m_Filter = std::forward&lt;TFilter&gt;(filter);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a4d25ae4841ade6f451cb338ce9ceeb11">  106</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a4d25ae4841ade6f451cb338ce9ceeb11">removeFilter</a>() noexcept</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            std::scoped_lock lock{ m_FilterMx };</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            m_Filter = <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a6e248162852bba5b43cd0bb02d3fff2d">defaultFilter</a>();</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#af9d8b7269771e540e4b153d68b3a1827">   73</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#af9d8b7269771e540e4b153d68b3a1827">log</a>(const <a class="code" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp; record)<span class="keyword"> override</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">        </span>{</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            std::scoped_lock lock{ m_FilterMx, m_FormatterMx, <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a52264e3de55ee192e5e43c8bdc728841">m_WriteAccessMx</a> };</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">if</span> (m_Filter(record))</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                m_Formatter(m_Stream, record);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                m_Stream &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keyword">template</span> &lt;RecordFormatter TFormatter&gt;</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa5b20c8183e3095386068b7285acb409">   84</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa5b20c8183e3095386068b7285acb409">setFormatter</a>(TFormatter&amp;&amp; formatter) noexcept</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            std::scoped_lock lock{ m_FormatterMx };</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            m_Formatter = std::forward&lt;TFormatter&gt;(formatter);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a0821e06af0260b57fd9f8137763383a5">   90</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a0821e06af0260b57fd9f8137763383a5">removeFormatter</a>() noexcept</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            std::scoped_lock lock{ m_FormatterMx };</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            m_Formatter = <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#adbfa495338613eb4399a78bdd4b6e520">defaultFormatter</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keyword">template</span> &lt;RecordFilter TFilter&gt;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a8140a475ee9664587d85b9d5988ce51c">   97</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a8140a475ee9664587d85b9d5988ce51c">setFilter</a>(TFilter&amp;&amp; filter) noexcept</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            std::scoped_lock lock{ m_FilterMx };</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            m_Filter = std::forward&lt;TFilter&gt;(filter);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a4d25ae4841ade6f451cb338ce9ceeb11">  103</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a4d25ae4841ade6f451cb338ce9ceeb11">removeFilter</a>() noexcept</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            std::scoped_lock lock{ m_FilterMx };</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            m_Filter = <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a6e248162852bba5b43cd0bb02d3fff2d">defaultFilter</a>();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a52264e3de55ee192e5e43c8bdc728841">  110</a></span>&#160;        std::mutex <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a52264e3de55ee192e5e43c8bdc728841">m_WriteAccessMx</a>;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a52264e3de55ee192e5e43c8bdc728841">  113</a></span>&#160;        std::mutex <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a52264e3de55ee192e5e43c8bdc728841">m_WriteAccessMx</a>;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keyword">using</span> Formatter_t = std::function&lt;void(std::ostream&amp;, <span class="keyword">const</span> <a class="code" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp;)&gt;;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keyword">using</span> Filter_t = std::function&lt;bool(<span class="keyword">const</span> <a class="code" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp;)&gt;;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        std::ostream&amp; m_Stream;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        std::mutex m_FormatterMx;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <a class="code" href="../../de/d83/namespacesl_1_1log.html#a290dc9d1a7f3d559a88368e77c0aa870">Formatter_t</a> m_Formatter;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        Formatter_t m_Formatter;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        std::mutex m_FilterMx;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <a class="code" href="../../de/d83/namespacesl_1_1log.html#aa0764c9b458dd9113a10aead7c3cf22c">Filter_t</a> m_Filter;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        Filter_t m_Filter;</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    };</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="a_concepts_8hpp_html"><div class="ttname"><a href="../../d9/db9/_concepts_8hpp.html">Concepts.hpp</a></div></div>
 <div class="ttc" id="a_i_sink_8hpp_html"><div class="ttname"><a href="../../d2/d5f/_i_sink_8hpp.html">ISink.hpp</a></div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a></div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:27</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a0821e06af0260b57fd9f8137763383a5"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a0821e06af0260b57fd9f8137763383a5">sl::log::BasicSink::removeFormatter</a></div><div class="ttdeci">void removeFormatter() noexcept</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:93</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a4d25ae4841ade6f451cb338ce9ceeb11"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a4d25ae4841ade6f451cb338ce9ceeb11">sl::log::BasicSink::removeFilter</a></div><div class="ttdeci">void removeFilter() noexcept</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:106</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a52264e3de55ee192e5e43c8bdc728841"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a52264e3de55ee192e5e43c8bdc728841">sl::log::BasicSink::m_WriteAccessMx</a></div><div class="ttdeci">std::mutex m_WriteAccessMx</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:113</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a6e248162852bba5b43cd0bb02d3fff2d"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a6e248162852bba5b43cd0bb02d3fff2d">sl::log::BasicSink::defaultFilter</a></div><div class="ttdeci">static auto defaultFilter() noexcept</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:55</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a8140a475ee9664587d85b9d5988ce51c"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a8140a475ee9664587d85b9d5988ce51c">sl::log::BasicSink::setFilter</a></div><div class="ttdeci">void setFilter(TFilter &amp;&amp;filter) noexcept</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:100</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a95c50515b3872c2d0e89cdd261ba7e6d"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a95c50515b3872c2d0e89cdd261ba7e6d">sl::log::BasicSink::BasicSink</a></div><div class="ttdeci">BasicSink(std::ostream &amp;stream)</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:61</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_aa5b20c8183e3095386068b7285acb409"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa5b20c8183e3095386068b7285acb409">sl::log::BasicSink::setFormatter</a></div><div class="ttdeci">void setFormatter(TFormatter &amp;&amp;formatter) noexcept</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:87</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a></div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:24</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a0821e06af0260b57fd9f8137763383a5"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a0821e06af0260b57fd9f8137763383a5">sl::log::BasicSink::removeFormatter</a></div><div class="ttdeci">void removeFormatter() noexcept</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:90</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a4d25ae4841ade6f451cb338ce9ceeb11"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a4d25ae4841ade6f451cb338ce9ceeb11">sl::log::BasicSink::removeFilter</a></div><div class="ttdeci">void removeFilter() noexcept</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:103</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a52264e3de55ee192e5e43c8bdc728841"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a52264e3de55ee192e5e43c8bdc728841">sl::log::BasicSink::m_WriteAccessMx</a></div><div class="ttdeci">std::mutex m_WriteAccessMx</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:110</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a6e248162852bba5b43cd0bb02d3fff2d"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a6e248162852bba5b43cd0bb02d3fff2d">sl::log::BasicSink::defaultFilter</a></div><div class="ttdeci">static auto defaultFilter() noexcept</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:52</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a8140a475ee9664587d85b9d5988ce51c"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a8140a475ee9664587d85b9d5988ce51c">sl::log::BasicSink::setFilter</a></div><div class="ttdeci">void setFilter(TFilter &amp;&amp;filter) noexcept</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:97</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a95c50515b3872c2d0e89cdd261ba7e6d"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a95c50515b3872c2d0e89cdd261ba7e6d">sl::log::BasicSink::BasicSink</a></div><div class="ttdeci">BasicSink(std::ostream &amp;stream)</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:58</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_aa5b20c8183e3095386068b7285acb409"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa5b20c8183e3095386068b7285acb409">sl::log::BasicSink::setFormatter</a></div><div class="ttdeci">void setFormatter(TFormatter &amp;&amp;formatter) noexcept</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:84</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_ada502f2e87c953afedcf248459a50695"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ada502f2e87c953afedcf248459a50695">sl::log::BasicSink::~BasicSink</a></div><div class="ttdeci">~BasicSink() noexcept=default</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_adbfa495338613eb4399a78bdd4b6e520"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#adbfa495338613eb4399a78bdd4b6e520">sl::log::BasicSink::defaultFormatter</a></div><div class="ttdeci">static auto defaultFormatter() noexcept</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:29</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_af9d8b7269771e540e4b153d68b3a1827"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#af9d8b7269771e540e4b153d68b3a1827">sl::log::BasicSink::log</a></div><div class="ttdeci">void log(const Record &amp;record) override</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:76</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_adbfa495338613eb4399a78bdd4b6e520"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#adbfa495338613eb4399a78bdd4b6e520">sl::log::BasicSink::defaultFormatter</a></div><div class="ttdeci">static auto defaultFormatter() noexcept</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:26</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_af9d8b7269771e540e4b153d68b3a1827"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#af9d8b7269771e540e4b153d68b3a1827">sl::log::BasicSink::log</a></div><div class="ttdeci">void log(const Record &amp;record) override</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:73</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_i_sink_html"><div class="ttname"><a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">sl::log::ISink</a></div><div class="ttdef"><b>Definition:</b> ISink.hpp:16</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_record_html"><div class="ttname"><a href="../../de/df8/classsl_1_1log_1_1_record.html">sl::log::Record</a></div><div class="ttdef"><b>Definition:</b> Record.hpp:40</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_record_html"><div class="ttname"><a href="../../de/df8/classsl_1_1log_1_1_record.html">sl::log::Record</a></div><div class="ttdoc">A collection of logging related information.</div><div class="ttdef"><b>Definition:</b> Record.hpp:55</div></div>
 <div class="ttc" id="anamespacesl_1_1log_html"><div class="ttname"><a href="../../de/d83/namespacesl_1_1log.html">sl::log</a></div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:21</div></div>
-<div class="ttc" id="anamespacesl_1_1log_html_a290dc9d1a7f3d559a88368e77c0aa870"><div class="ttname"><a href="../../de/d83/namespacesl_1_1log.html#a290dc9d1a7f3d559a88368e77c0aa870">sl::log::Formatter_t</a></div><div class="ttdeci">std::function&lt; void(std::ostream &amp;, const Record &amp;)&gt; Formatter_t</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:22</div></div>
-<div class="ttc" id="anamespacesl_1_1log_html_aa0764c9b458dd9113a10aead7c3cf22c"><div class="ttname"><a href="../../de/d83/namespacesl_1_1log.html#aa0764c9b458dd9113a10aead7c3cf22c">sl::log::Filter_t</a></div><div class="ttdeci">std::function&lt; bool(const Record &amp;)&gt; Filter_t</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:23</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -12,8 +12,6 @@ var namespacesl_1_1log =
     [ "RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html", "db/d9a/classsl_1_1log_1_1_record_builder" ],
     [ "RecordQueue", "d1/de1/classsl_1_1log_1_1_record_queue.html", "d1/de1/classsl_1_1log_1_1_record_queue" ],
     [ "StringPattern", "d1/d81/classsl_1_1log_1_1_string_pattern.html", "d1/d81/classsl_1_1log_1_1_string_pattern" ],
-    [ "Filter_t", "de/d83/namespacesl_1_1log.html#aa0764c9b458dd9113a10aead7c3cf22c", null ],
-    [ "Formatter_t", "de/d83/namespacesl_1_1log.html#a290dc9d1a7f3d559a88368e77c0aa870", null ],
     [ "SetChan", "de/d83/namespacesl_1_1log.html#aa8b4896f9b22a32a135a3dbe9d10773a", null ],
     [ "SetData", "de/d83/namespacesl_1_1log.html#a4896959b4b7383b1b87891cda069ff54", null ],
     [ "SetSev", "de/d83/namespacesl_1_1log.html#a80b8e97666c179bde6a8a99ed3e6c2a8", null ],
