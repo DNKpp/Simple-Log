@@ -19,9 +19,6 @@
 
 namespace sl::log
 {
-	using Formatter_t = std::function<void(std::ostream&, const Record&)>;
-	using Filter_t = std::function<bool(const Record&)>;
-
 	class BasicSink :
 		public ISink
 	{
@@ -113,6 +110,9 @@ namespace sl::log
 		std::mutex m_WriteAccessMx;
 
 	private:
+		using Formatter_t = std::function<void(std::ostream&, const Record&)>;
+		using Filter_t = std::function<bool(const Record&)>;
+
 		std::ostream& m_Stream;
 
 		std::mutex m_FormatterMx;
