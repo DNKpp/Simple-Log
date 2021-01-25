@@ -23,5 +23,5 @@ var classsl_1_1log_1_1_file_sink =
     [ "setFormatter", "dc/dd6/classsl_1_1log_1_1_file_sink.html#aa5b20c8183e3095386068b7285acb409", null ],
     [ "setOpeningHandler", "dc/dd6/classsl_1_1log_1_1_file_sink.html#ad9ebc9685442704ed6495096114bfe7b", null ],
     [ "setRotationRule", "dc/dd6/classsl_1_1log_1_1_file_sink.html#aab91b06f62031230308562208b5731bb", null ],
-    [ "m_WriteAccessMx", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a52264e3de55ee192e5e43c8bdc728841", null ]
+    [ "writeToStream", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a7fee5bf8a9c8a453d7236433d884702d", null ]
 ];

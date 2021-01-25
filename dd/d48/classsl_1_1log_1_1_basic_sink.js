@@ -13,5 +13,5 @@ var classsl_1_1log_1_1_basic_sink =
     [ "removeFormatter", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a0821e06af0260b57fd9f8137763383a5", null ],
     [ "setFilter", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a8140a475ee9664587d85b9d5988ce51c", null ],
     [ "setFormatter", "dd/d48/classsl_1_1log_1_1_basic_sink.html#aa5b20c8183e3095386068b7285acb409", null ],
-    [ "m_WriteAccessMx", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a52264e3de55ee192e5e43c8bdc728841", null ]
+    [ "writeToStream", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a7fee5bf8a9c8a453d7236433d884702d", null ]
 ];

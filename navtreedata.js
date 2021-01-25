@@ -31,6 +31,7 @@ var NAVTREE =
       [ "Description", "index.html#autotoc_md3", null ],
       [ "Simple usage example", "index.html#autotoc_md4", null ]
     ] ],
+    [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [

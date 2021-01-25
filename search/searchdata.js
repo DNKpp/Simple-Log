@@ -4,12 +4,13 @@ var indexSectionsWithContent =
   1: "bcfilrs",
   2: "s",
   3: "bcfilrs",
-  4: "bcdfilmnoprst~",
+  4: "bcdfilmnoprstw~",
   5: "cdfmrstu",
   6: "ls",
   7: "s",
   8: "defhiw",
-  9: "s"
+  9: "s",
+  10: "s"
 };
 
 var indexSectionNames =
@@ -23,7 +24,8 @@ var indexSectionNames =
   6: "typedefs",
   7: "enums",
   8: "enumvalues",
-  9: "pages"
+  9: "groups",
+  10: "pages"
 };
 
 var indexSectionLabels =
@@ -37,6 +39,7 @@ var indexSectionLabels =
   6: "Typedefs",
   7: "Enumerations",
   8: "Enumerator",
-  9: "Pages"
+  9: "Modules",
+  10: "Pages"
 };
 

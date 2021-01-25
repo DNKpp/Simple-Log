@@ -86,9 +86,12 @@ $(document).ready(function(){initNavTree('d8/dda/classsl_1_1log_1_1_i_sink.html'
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="../../da/d88/classsl_1_1log_1_1_i_sink-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">sl::log::ISink Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+<div class="title">sl::log::ISink Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span><div class="ingroups"><a class="el" href="../../df/d3a/group__sink.html">Sink</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Sink interface class.  
+ <a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d2/d5f/_i_sink_8hpp_source.html">ISink.hpp</a>&gt;</code></p>
 <div class="dynheader">
@@ -97,7 +100,7 @@ Inheritance diagram for sl::log::ISink:</div>
  <div class="center">
   <img src="../../d8/dda/classsl_1_1log_1_1_i_sink.png" usemap="#sl::log::ISink_map" alt=""/>
   <map id="sl::log::ISink_map" name="sl::log::ISink_map">
-<area href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html" alt="sl::log::BasicSink" shape="rect" coords="0,56,105,80"/>
+<area href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html" title="std::ostream orientated Sink class" alt="sl::log::BasicSink" shape="rect" coords="0,56,105,80"/>
 <area href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html" alt="sl::log::FileSink" shape="rect" coords="0,112,105,136"/>
   </map>
 </div></div>
@@ -105,11 +108,16 @@ Inheritance diagram for sl::log::ISink:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a05106cfb08145ccab76690d3a657c518"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a05106cfb08145ccab76690d3a657c518">~ISink</a> () noexcept=default</td></tr>
+<tr class="memdesc:a05106cfb08145ccab76690d3a657c518"><td class="mdescLeft">&#160;</td><td class="mdescRight">virtual default destructor  <a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a05106cfb08145ccab76690d3a657c518">More...</a><br /></td></tr>
 <tr class="separator:a05106cfb08145ccab76690d3a657c518"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a4266729858bd1be0701f26eb12caf6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a4a4266729858bd1be0701f26eb12caf6">log</a> (const <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a> &amp;record)=0</td></tr>
+<tr class="memdesc:a4a4266729858bd1be0701f26eb12caf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">virtual log function  <a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a4a4266729858bd1be0701f26eb12caf6">More...</a><br /></td></tr>
 <tr class="separator:a4a4266729858bd1be0701f26eb12caf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Sink interface class. </p>
+<p>The interface class for each derived Sink type. If you want to implement your custom Sink type, have a look at <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html" title="std::ostream orientated Sink class">BasicSink</a> first. This might be a better starting point for customizations. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a05106cfb08145ccab76690d3a657c518"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a05106cfb08145ccab76690d3a657c518">&#9670;&nbsp;</a></span>~ISink()</h2>
 
@@ -132,6 +140,8 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>virtual default destructor </p>
 
 </div>
 </div>
@@ -159,6 +169,14 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>virtual log function </p>
+<p>Will be called from the Worker thread. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">record</td><td>The record about to be processed by the sink </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#af9d8b7269771e540e4b153d68b3a1827">sl::log::BasicSink</a>, and <a class="el" href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html#a3401e4217ea78e5679440f7df2ff2ad8">sl::log::FileSink</a>.</p>
 
