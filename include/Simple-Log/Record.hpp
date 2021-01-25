@@ -29,7 +29,7 @@ namespace sl::log
 		fatal
 	};
 
-	std::ostream& operator <<(std::ostream& out, SeverityLevel lvl)
+	inline std::ostream& operator <<(std::ostream& out, SeverityLevel lvl)
 	{
 		constexpr const char* str[] = { "info", "debug", "hint", "warning", "error", "fatal" };
 		out << str[static_cast<std::size_t>(lvl)];
