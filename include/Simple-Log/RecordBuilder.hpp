@@ -17,6 +17,10 @@
 
 namespace sl::log
 {
+	/** \addtogroup record
+	 * @{
+	 */
+
 	struct SetSeverity
 	{
 		template <class T>
@@ -143,6 +147,8 @@ namespace sl::log
 		std::ostringstream m_Stream;
 		LogCallback_t m_LogCallback;
 	};
+
+	/** @}*/
 }
 
 #endif

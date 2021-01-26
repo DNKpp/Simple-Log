@@ -19,6 +19,10 @@
 
 namespace sl::log
 {
+	/** \addtogroup sink
+	 * @{
+	 */
+	
 	class FileSink :
 		public BasicSink
 	{
@@ -245,6 +249,8 @@ namespace sl::log
 				(rotationRule.duration && m_FileOpeningTime.load() + *rotationRule.duration < std::chrono::steady_clock::now());
 		}
 	};
+
+	/** @}*/
 }
 
 #endif

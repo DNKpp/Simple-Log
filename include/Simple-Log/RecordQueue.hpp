@@ -18,6 +18,10 @@
 
 namespace sl::log
 {
+	/** \addtogroup record
+	 * @{
+	 */
+	
 	class RecordQueue
 	{
 	public:
@@ -66,6 +70,8 @@ namespace sl::log
 		std::queue<Record> m_QueuedRecords;
 		std::condition_variable m_PushVar;
 	};
+	
+	/** @}*/
 }
 
 #endif

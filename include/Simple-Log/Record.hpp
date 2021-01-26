@@ -19,6 +19,10 @@
 
 namespace sl::log
 {
+	/** \addtogroup record
+	 * @{
+	 */
+
 	/**
 	 * \brief A simple severity level enum type
 	 * \details This type serves as a default solution for severity levels but doesn't have to be used. You are free to declare your custom enum type or anything more exotic you can imagine.
@@ -80,6 +84,8 @@ namespace sl::log
 		 */
 		std::any userData;
 	};
+
+	/** @}*/
 }
 
 #endif
