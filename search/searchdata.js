@@ -9,7 +9,7 @@ var indexSectionsWithContent =
   6: "ls",
   7: "s",
   8: "defhiw",
-  9: "s",
+  9: "rs",
   10: "s"
 };
 

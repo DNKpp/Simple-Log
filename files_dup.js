@@ -6,7 +6,6 @@ var files_dup =
       [ "Core", "d4/df3/classsl_1_1log_1_1_core.html", "d4/df3/classsl_1_1log_1_1_core" ]
     ] ],
     [ "FileSink.hpp", "d8/d6c/_file_sink_8hpp.html", [
-      [ "FileSink", "dc/dd6/classsl_1_1log_1_1_file_sink.html", "dc/dd6/classsl_1_1log_1_1_file_sink" ],
       [ "RotationRule", "d0/d82/structsl_1_1log_1_1_file_sink_1_1_rotation_rule.html", "d0/d82/structsl_1_1log_1_1_file_sink_1_1_rotation_rule" ],
       [ "CleanupRule", "dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html", "dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule" ]
     ] ],
@@ -16,9 +15,7 @@ var files_dup =
     ] ],
     [ "Record.hpp", "dc/d79/_record_8hpp.html", "dc/d79/_record_8hpp" ],
     [ "RecordBuilder.hpp", "dc/d3b/_record_builder_8hpp.html", "dc/d3b/_record_builder_8hpp" ],
-    [ "RecordQueue.hpp", "da/d8d/_record_queue_8hpp.html", [
-      [ "RecordQueue", "d1/de1/classsl_1_1log_1_1_record_queue.html", "d1/de1/classsl_1_1log_1_1_record_queue" ]
-    ] ],
+    [ "RecordQueue.hpp", "da/d8d/_record_queue_8hpp.html", null ],
     [ "StringPattern.hpp", "d4/d47/_string_pattern_8hpp.html", [
       [ "StringPattern", "d1/d81/classsl_1_1log_1_1_string_pattern.html", "d1/d81/classsl_1_1log_1_1_string_pattern" ]
     ] ]
