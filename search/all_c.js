@@ -2,10 +2,10 @@ var searchData=
 [
   ['readme_2emd_36',['README.md',['../d9/dd6/_r_e_a_d_m_e_8md.html',1,'']]],
   ['record_37',['Record',['../d0/de9/group__record.html',1,'']]],
-  ['record_38',['record',['../db/d9a/classsl_1_1log_1_1_record_builder.html#a0bb1da5ac997c14a2dd911e272e7877c',1,'sl::log::RecordBuilder::record() const noexcept'],['../db/d9a/classsl_1_1log_1_1_record_builder.html#a169023bc7f831bf6041d1450654280ac',1,'sl::log::RecordBuilder::record() noexcept']]],
+  ['record_38',['record',['../db/d9a/classsl_1_1log_1_1_record_builder.html#a169023bc7f831bf6041d1450654280ac',1,'sl::log::RecordBuilder::record() noexcept'],['../db/d9a/classsl_1_1log_1_1_record_builder.html#a0bb1da5ac997c14a2dd911e272e7877c',1,'sl::log::RecordBuilder::record() const noexcept']]],
   ['record_39',['Record',['../de/df8/classsl_1_1log_1_1_record.html',1,'sl::log']]],
   ['record_2ehpp_40',['Record.hpp',['../dc/d79/_record_8hpp.html',1,'']]],
-  ['recordbuilder_41',['RecordBuilder',['../db/d9a/classsl_1_1log_1_1_record_builder.html#af53c3d036049da5e642ecff74bfa08c0',1,'sl::log::RecordBuilder::RecordBuilder(RecordBuilder &amp;&amp;other) noexcept'],['../db/d9a/classsl_1_1log_1_1_record_builder.html#ab9e6f076cdf00480a660fc9a58c8a2b8',1,'sl::log::RecordBuilder::RecordBuilder(const RecordBuilder &amp;)=delete'],['../db/d9a/classsl_1_1log_1_1_record_builder.html#a6544a528f14262ee7332f55c025b476b',1,'sl::log::RecordBuilder::RecordBuilder(LogCallback_t cb) noexcept'],['../db/d9a/classsl_1_1log_1_1_record_builder.html',1,'sl::log::RecordBuilder']]],
+  ['recordbuilder_41',['RecordBuilder',['../db/d9a/classsl_1_1log_1_1_record_builder.html#af53c3d036049da5e642ecff74bfa08c0',1,'sl::log::RecordBuilder::RecordBuilder()'],['../d2/dce/group___record_builder.html',1,'(Global Namespace)'],['../db/d9a/classsl_1_1log_1_1_record_builder.html#ab9e6f076cdf00480a660fc9a58c8a2b8',1,'sl::log::RecordBuilder::RecordBuilder(const RecordBuilder &amp;)=delete'],['../db/d9a/classsl_1_1log_1_1_record_builder.html#a6544a528f14262ee7332f55c025b476b',1,'sl::log::RecordBuilder::RecordBuilder(LogCallback_t cb) noexcept'],['../db/d9a/classsl_1_1log_1_1_record_builder.html',1,'sl::log::RecordBuilder']]],
   ['recordbuilder_2ehpp_42',['RecordBuilder.hpp',['../dc/d3b/_record_builder_8hpp.html',1,'']]],
   ['recordfilter_43',['RecordFilter',['../de/d83/namespacesl_1_1log.html#a173cf894beb59aceb9ccdf836a3ad066',1,'sl::log']]],
   ['recordformatter_44',['RecordFormatter',['../de/d83/namespacesl_1_1log.html#a13c8fe3cae8406c36d09aae63410e649',1,'sl::log']]],

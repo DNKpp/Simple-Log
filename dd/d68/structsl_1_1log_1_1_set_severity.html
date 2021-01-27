@@ -87,9 +87,12 @@ $(document).ready(function(){initNavTree('dd/d68/structsl_1_1log_1_1_set_severit
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="../../dd/d54/structsl_1_1log_1_1_set_severity-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">sl::log::SetSeverity Struct Reference<div class="ingroups"><a class="el" href="../../d0/de9/group__record.html">Record</a></div></div>  </div>
+<div class="title">sl::log::SetSeverity Struct Reference<div class="ingroups"><a class="el" href="../../d0/de9/group__record.html">Record</a> &raquo; <a class="el" href="../../d2/dce/group___record_builder.html">RecordBuilder</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Manipulates the severity level of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  
+ <a href="../../dd/d68/structsl_1_1log_1_1_set_severity.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../dc/d3b/_record_builder_8hpp_source.html">RecordBuilder.hpp</a>&gt;</code></p>
 <table class="memberdecls">
@@ -97,6 +100,7 @@ $(document).ready(function(){initNavTree('dd/d68/structsl_1_1log_1_1_set_severit
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab78f3c1adaa84c2fdeb3a200229b03bc"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
 <tr class="memitem:ab78f3c1adaa84c2fdeb3a200229b03bc"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d68/structsl_1_1log_1_1_set_severity.html#ab78f3c1adaa84c2fdeb3a200229b03bc">SetSeverity</a> (T &amp;&amp;data)</td></tr>
+<tr class="memdesc:ab78f3c1adaa84c2fdeb3a200229b03bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor accepting severity data.  <a href="../../dd/d68/structsl_1_1log_1_1_set_severity.html#ab78f3c1adaa84c2fdeb3a200229b03bc">More...</a><br /></td></tr>
 <tr class="separator:ab78f3c1adaa84c2fdeb3a200229b03bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -104,7 +108,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aef269f5ab771928f295f041d9d38dac8"><td class="memItemLeft" align="right" valign="top">std::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d68/structsl_1_1log_1_1_set_severity.html#aef269f5ab771928f295f041d9d38dac8">severity</a></td></tr>
 <tr class="separator:aef269f5ab771928f295f041d9d38dac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Manipulates the severity level of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object. </p>
+<p>This type is generally designed to be directly used in logging expressions and just stores data which will be hand-over to a <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> instance. In fact this is just a helper struct for which <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> provides an overload of operator &lt;&lt;, which will then modify the severity level of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab78f3c1adaa84c2fdeb3a200229b03bc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab78f3c1adaa84c2fdeb3a200229b03bc">&#9670;&nbsp;</a></span>SetSeverity()</h2>
 
@@ -130,6 +137,20 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Constructor accepting severity data. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>T must be implicit convertible to std::any. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Severity data. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

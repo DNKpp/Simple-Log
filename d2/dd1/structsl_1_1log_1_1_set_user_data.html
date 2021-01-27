@@ -87,9 +87,12 @@ $(document).ready(function(){initNavTree('d2/dd1/structsl_1_1log_1_1_set_user_da
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="../../da/d4b/structsl_1_1log_1_1_set_user_data-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">sl::log::SetUserData Struct Reference<div class="ingroups"><a class="el" href="../../d0/de9/group__record.html">Record</a></div></div>  </div>
+<div class="title">sl::log::SetUserData Struct Reference<div class="ingroups"><a class="el" href="../../d0/de9/group__record.html">Record</a> &raquo; <a class="el" href="../../d2/dce/group___record_builder.html">RecordBuilder</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Manipulates the user data of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  
+ <a href="../../d2/dd1/structsl_1_1log_1_1_set_user_data.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../dc/d3b/_record_builder_8hpp_source.html">RecordBuilder.hpp</a>&gt;</code></p>
 <table class="memberdecls">
@@ -97,6 +100,7 @@ $(document).ready(function(){initNavTree('d2/dd1/structsl_1_1log_1_1_set_user_da
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae7afb94411580f0a47dd26760d06fd0f"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
 <tr class="memitem:ae7afb94411580f0a47dd26760d06fd0f"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d2/dd1/structsl_1_1log_1_1_set_user_data.html#ae7afb94411580f0a47dd26760d06fd0f">SetUserData</a> (T &amp;&amp;data)</td></tr>
+<tr class="memdesc:ae7afb94411580f0a47dd26760d06fd0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor accepting user data.  <a href="../../d2/dd1/structsl_1_1log_1_1_set_user_data.html#ae7afb94411580f0a47dd26760d06fd0f">More...</a><br /></td></tr>
 <tr class="separator:ae7afb94411580f0a47dd26760d06fd0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -104,7 +108,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:af594b50eb7def52857b82b484be99b59"><td class="memItemLeft" align="right" valign="top">std::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dd1/structsl_1_1log_1_1_set_user_data.html#af594b50eb7def52857b82b484be99b59">userData</a></td></tr>
 <tr class="separator:af594b50eb7def52857b82b484be99b59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Manipulates the user data of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object. </p>
+<p>This type is generally designed to be directly used in logging expressions and just stores data which will be hand-over to a <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> instance. In fact this is just a helper struct for which <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> provides an overload of operator &lt;&lt;, which will then modify the user data of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae7afb94411580f0a47dd26760d06fd0f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae7afb94411580f0a47dd26760d06fd0f">&#9670;&nbsp;</a></span>SetUserData()</h2>
 
@@ -130,6 +137,20 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Constructor accepting user data. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>T must be implicit convertible to std::any. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>User data. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
