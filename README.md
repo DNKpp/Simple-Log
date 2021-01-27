@@ -22,6 +22,7 @@ Mail: [DNKpp2011@gmail.com](mailto:dnkpp2011@gmail.com)
 ```
 
 ## Description
+Currently under development, thus not stable.
 
 ## Simple usage example
 ```cpp
