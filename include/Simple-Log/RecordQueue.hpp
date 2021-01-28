@@ -10,21 +10,31 @@
 
 #include "Record.hpp"
 
-#include <queue>
+#include <chrono>
+#include <condition_variable>
 #include <mutex>
 #include <optional>
-#include <condition_variable>
-#include <chrono>
+#include <queue>
 
 namespace sl::log
 {
 	/** \addtogroup record
 	 * @{
 	 */
-	
+
+	/**
+	 * \brief Storage for Record s
+	 * \details This class is a simple representation of a blocking queue. Its take() function blocks until an element is present in the internal queue or
+	 * the duration exceeded. Each function is thread-safe by design.
+	 */
 	class RecordQueue
 	{
 	public:
+		/**
+		 * \brief Pushes Record s to the internal queue
+		 * \details Thread-safe
+		 * \param record The queued Record object.
+		 */
 		void push(Record record)
 		{
 			{
@@ -34,10 +44,18 @@ namespace sl::log
 			m_PushVar.notify_one();
 		}
 
+		/**
+		 * \brief Takes the first Record from the queue
+		 * \details Thread-safe
+		 * If the internal queue is not empty, this functions takes the first element and returns it. If the queue is empty, this function will block until a new Record gets pushed into the queue
+		 * or the duration exceeds.
+		 * \param waitingDuration The max waiting duration for an element.
+		 * \return Returns an element as optional. Might be nullopt.
+		 */
 		std::optional<Record> take(std::optional<std::chrono::milliseconds> waitingDuration = std::nullopt)
 		{
-			auto isQueueNotEmpty = [&records = m_QueuedRecords](){ return !std::empty(records); };
-			
+			auto isQueueNotEmpty = [&records = m_QueuedRecords]() { return !std::empty(records); };
+
 			std::unique_lock lock{ m_RecordMx };
 			if (waitingDuration)
 			{
@@ -47,17 +65,22 @@ namespace sl::log
 				}
 				return std::nullopt;
 			}
-			
+
 			m_PushVar.wait(lock, isQueueNotEmpty);
 			return takeNextAsOpt();
 		}
 
+		/**
+		 * \brief Checks if the internal queue is empty
+		 * \details Thread-safe
+		 * \return Returns true if is empty.
+		 */
 		bool isEmpty() const noexcept
 		{
 			std::scoped_lock lock{ m_RecordMx };
 			return std::empty(m_QueuedRecords);
 		}
-	
+
 	private:
 		std::optional<Record> takeNextAsOpt()
 		{
@@ -65,12 +88,12 @@ namespace sl::log
 			m_QueuedRecords.pop();
 			return std::optional<Record>{ std::in_place, std::move(record) };
 		}
-		
+
 		mutable std::mutex m_RecordMx;
 		std::queue<Record> m_QueuedRecords;
 		std::condition_variable m_PushVar;
 	};
-	
+
 	/** @}*/
 }
 
