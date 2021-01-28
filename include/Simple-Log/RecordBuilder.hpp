@@ -115,9 +115,10 @@ namespace sl::log
 	 */
 	class RecordBuilder
 	{
-	public:
+	private:
 		using LogCallback_t = std::function<void(Record)>;
 
+	public:
 		/**
 		 * \brief Constructor
 		 * \details This constructor requires a callback to the associated Logger objects log function. The callback should have the following signature:
