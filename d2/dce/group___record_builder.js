@@ -13,7 +13,6 @@ var group___record_builder =
       [ "userData", "d2/dd1/structsl_1_1log_1_1_set_user_data.html#af594b50eb7def52857b82b484be99b59", null ]
     ] ],
     [ "RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html", [
-      [ "LogCallback_t", "db/d9a/classsl_1_1log_1_1_record_builder.html#a109a0f2b8b60e290b89dfe903fbf827a", null ],
       [ "RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html#a6544a528f14262ee7332f55c025b476b", null ],
       [ "~RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html#a9ab9481b250c60aa33726abedb42330a", null ],
       [ "RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html#af53c3d036049da5e642ecff74bfa08c0", null ],
