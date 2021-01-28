@@ -139,7 +139,7 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Helper class for building new Records. </p>
-<p>This is class provides the simple and elegant interface for making logging expressions. Its objects are non-copyable but movable. When a <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object gets destroyed (mainly because going out of scope) it will automatically send its created <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> to the designated <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html">Logger</a> object. Users should not instantiate objects themselves, but should instead use the <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html">Logger</a> objects. </p>
+<p>This is class provides the simple and elegant interface for making logging expressions. Its objects are non-copyable but movable. When a <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object gets destroyed (mainly because going out of scope) it will automatically send its created <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> to the designated <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> object. Users should not instantiate objects themselves, but should instead use the <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> objects. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6544a528f14262ee7332f55c025b476b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6544a528f14262ee7332f55c025b476b">&#9670;&nbsp;</a></span>RecordBuilder() <span class="overload">[1/3]</span></h2>
@@ -166,10 +166,10 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructor. </p>
-<p>This constructor requires a callback to the associated <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html">Logger</a> objects log function. The callback should have the following signature: </p><div class="fragment"><div class="line">void(Record)</div>
+<p>This constructor requires a callback to the associated <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> objects log function. The callback should have the following signature: </p><div class="fragment"><div class="line">void(Record)</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cb</td><td>Callback to the associated <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html">Logger</a> object </td></tr>
+    <tr><td class="paramname">cb</td><td>Callback to the associated <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> object </td></tr>
   </table>
   </dd>
 </dl>
@@ -200,7 +200,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Destructor. </p>
-<p>If <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> is valid (in fact, if a callback is installed) it moves its created <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> object to the <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html">Logger</a> object. </p>
+<p>If <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> is valid (in fact, if a callback is installed) it moves its created <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> object to the <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> object. </p>
 
 </div>
 </div>
