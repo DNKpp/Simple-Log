@@ -54,28 +54,6 @@ namespace sl::log::detail
 
 	using Generator = std::variant<StringGenerator, IncNumberGenerator, DateTimeGenerator>;
 
-	[[nodiscard]] inline std::vector<Generator> makeTokenGeneratorsFromPatternString(std::string_view patternString)
-	{
-		std::vector<Generator> generators;
-
-		const std::regex regEx{ "%(Y|m|d|H|M|S|\\d*N)" };
-		std::transform(
-						std::cregex_token_iterator{
-							patternString.data(),
-							patternString.data() + std::size(patternString),
-							regEx,
-							{ -1, 0 }
-						},
-						std::cregex_token_iterator{},
-						std::back_inserter(generators),
-						[](const auto& match)
-						{
-							return makeGeneratorFromMatch({ match.first, match.second });
-						}
-					);
-		return generators;
-	}
-
 	[[nodiscard]] inline Generator makeGeneratorFromMatch(std::string_view token)
 	{
 		if (token.starts_with('%'))
@@ -103,6 +81,28 @@ namespace sl::log::detail
 
 		// treat everything else as const substring, even if it contains a %
 		return StringGenerator{ token };
+	}
+
+	[[nodiscard]] inline std::vector<Generator> makeTokenGeneratorsFromPatternString(std::string_view patternString)
+	{
+		std::vector<Generator> generators;
+
+		const std::regex regEx{ "%(Y|m|d|H|M|S|\\d*N)" };
+		std::transform(
+						std::cregex_token_iterator{
+							patternString.data(),
+							patternString.data() + std::size(patternString),
+							regEx,
+							{ -1, 0 }
+						},
+						std::cregex_token_iterator{},
+						std::back_inserter(generators),
+						[](const auto& match)
+						{
+							return makeGeneratorFromMatch({ match.first, match.second });
+						}
+					);
+		return generators;
 	}
 }
 
