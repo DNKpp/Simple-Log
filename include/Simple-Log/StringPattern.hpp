@@ -11,9 +11,10 @@
 #include <algorithm>
 #include <charconv>
 #include <chrono>
-#include <functional>
 #include <iomanip>
+#include <regex>
 #include <sstream>
+#include <variant>
 
 namespace sl::log::detail
 {
@@ -50,92 +51,104 @@ namespace sl::log::detail
 			stream << str;
 		}
 	};
+
+	using Generator = std::variant<StringGenerator, IncNumberGenerator, DateTimeGenerator>;
+
+	[[nodiscard]] inline std::vector<Generator> makeTokenGeneratorsFromPatternString(std::string_view patternString)
+	{
+		std::vector<Generator> generators;
+
+		const std::regex regEx{ "%(Y|m|d|H|M|S|\\d*N)" };
+		std::transform(
+						std::cregex_token_iterator{
+							patternString.data(),
+							patternString.data() + std::size(patternString),
+							regEx,
+							{ -1, 0 }
+						},
+						std::cregex_token_iterator{},
+						std::back_inserter(generators),
+						[](const auto& match)
+						{
+							return makeGeneratorFromMatch({ match.first, match.second });
+						}
+					);
+		return generators;
+	}
+
+	[[nodiscard]] inline Generator makeGeneratorFromMatch(std::string_view token)
+	{
+		if (token.starts_with('%'))
+		{
+			// ReSharper disable once CppDefaultCaseNotHandledInSwitchStatement
+			switch (token.back())
+			{
+			case 'H': // hour (2 digits)
+			case 'M': // minute (2 digits)
+			case 'S': // second (2 digits)
+
+			case 'Y': // year (4 digits)
+			case 'm': // month (2 digits)
+			case 'd': // day of month
+			case 'j': // day of year
+				return DateTimeGenerator{ { std::cbegin(token), std::cbegin(token) + 2 } };
+
+			case 'N':
+				token.remove_prefix(1);
+				std::size_t width = 0;
+				std::from_chars(token.data(), &token.back(), width);
+				return IncNumberGenerator{ .minWidth = width };
+			}
+		}
+
+		// treat everything else as const substring, even if it contains a %
+		return StringGenerator{ token };
+	}
 }
 
 namespace sl::log
 {
+	/**
+	 * \brief Helper class for generating patterned strings
+	 * \details Tokenize the pattern string and creates generators, which will then create the actual substrings on demand.
+	 */
 	class StringPattern
 	{
 	public:
-		StringPattern(std::string patternString) :
+		/**
+		 * \brief Constructor
+		 * \param patternString Pattern
+		 */
+		explicit StringPattern(std::string patternString) :
 			m_PatternString{ std::move(patternString) },
-			m_TokenGenerators{ makeTokenGeneratorsFromPatternString() }
+			m_TokenGenerators{ detail::makeTokenGeneratorsFromPatternString(m_PatternString) }
 		{
 		}
 
+		/**
+		 * \brief Creates a new string
+		 * \details The returned string will be created on demand and follows the pattern string rules.
+		 * \return Generated string.
+		 */
 		std::string next()
 		{
 			std::ostringstream ss;
 			for (auto& token : m_TokenGenerators)
 			{
-				token(ss);
+				std::visit(
+							[&ss](auto& generator)
+							{
+								generator(ss);
+							},
+							token
+						);
 			}
 			return std::move(ss).str();
 		}
 
 	private:
 		std::string m_PatternString;
-
-		using Generator = std::function<void(std::ostream&)>;
-		std::vector<Generator> m_TokenGenerators;
-
-		std::vector<Generator> makeTokenGeneratorsFromPatternString()
-		{
-			std::vector<Generator> generators;
-
-			for (auto itr = std::begin(m_PatternString), end = std::end(m_PatternString); itr != end;)
-			{
-				auto tokenBegin = std::ranges::find(itr, end, '%');
-				if (itr != tokenBegin)
-				{
-					generators.emplace_back(detail::StringGenerator{ { itr, tokenBegin } });
-				}
-
-				if (std::distance(tokenBegin, end) < 2)
-				{
-					break;
-				}
-				itr = tokenBegin + 1;
-
-				switch (*(tokenBegin + 1))
-				{
-				case 'H': // hour (2 digits)
-				case 'M': // minute (2 digits)
-				case 'S': // second (2 digits)
-
-				case 'Y': // year (4 digits)
-				case 'm': // month (2 digits)
-				case 'd': // day of month
-				case 'j': // day of year
-					generators.emplace_back(detail::DateTimeGenerator{ { tokenBegin, itr + 1 } });
-					itr = tokenBegin + 2;
-					break;
-
-				case 'N': // IncNumber
-					generators.emplace_back(detail::IncNumberGenerator{ .minWidth = 0 });
-					itr = tokenBegin + 2;
-					break;
-				default: // IncNumber with custom width
-					auto tokenEnd = std::ranges::find(tokenBegin + 1, end, 'N');
-					// from_chars perform conversions until the first not convertible sign is detected, but in this case it should fail when there is any non-convertible sign
-					// between %...N, thus I'll pre-check it here
-					if (tokenEnd != end && std::ranges::all_of(
-																tokenBegin + 1,
-																tokenEnd,
-																[](char c) { return '0' <= c && c <= '9'; }
-															))
-					{
-						std::size_t width = 0;
-						if (auto [p, ec] = std::from_chars(&*(tokenBegin + 1), &*tokenEnd, width); ec == std::errc())
-						{
-							generators.emplace_back(detail::IncNumberGenerator{ .minWidth = width });
-							itr = tokenEnd + 1;
-						}
-					}
-				}
-			}
-			return generators;
-		}
+		std::vector<detail::Generator> m_TokenGenerators;
 	};
 }
 
