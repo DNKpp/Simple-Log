@@ -38,7 +38,7 @@ namespace sl::log
 		 * \param defaultChannel Default channel for generated Records.
 		 * \param defaultUserData Default user data for generated Records.
 		 */
-		Logger(
+		explicit Logger(
 			Core& core,
 			std::any defaultSeverityLvl = {},
 			std::any defaultChannel = {},
