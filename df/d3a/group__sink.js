@@ -32,7 +32,7 @@ var group__sink =
       [ "cleanupRule", "dc/dd6/classsl_1_1log_1_1_file_sink.html#ad84fda12af9a1d8cd10118c4b7e9d4ca", null ],
       [ "defaultFilter", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a6e248162852bba5b43cd0bb02d3fff2d", null ],
       [ "defaultFormatter", "dc/dd6/classsl_1_1log_1_1_file_sink.html#adbfa495338613eb4399a78bdd4b6e520", null ],
-      [ "log", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a3401e4217ea78e5679440f7df2ff2ad8", null ],
+      [ "log", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a659a25a7970fc2106d80ce4af2bdef85", null ],
       [ "operator=", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a395d2933f68d878de5449b132c88b837", null ],
       [ "operator=", "dc/dd6/classsl_1_1log_1_1_file_sink.html#adbb471614ea069d6da65696529ee77d1", null ],
       [ "removeClosingHandler", "dc/dd6/classsl_1_1log_1_1_file_sink.html#af356ce8730e877761edec58cd38b80fa", null ],
