@@ -22,7 +22,7 @@ namespace sl::log
 	/** \addtogroup sink
 	 * @{
 	 */
-	
+
 	/**
 	 * \brief Class for logging into files 
 	 * \details Instances of this class are linked to a specific file and writes every Record into it. Users can setup \ref Rotation "rotation" and cleanup rules.
@@ -170,7 +170,7 @@ namespace sl::log
 		 * \tparam THandler Type of handler (automatically deduced)
 		 * \param handler invokable handler object
 		 */
-		template <log::FileStateHandler THandler>
+		template <FileStateHandler THandler>
 		void setOpeningHandler(THandler&& handler) noexcept
 		{
 			std::scoped_lock lock{ m_OpeningHandlerMx };
@@ -191,7 +191,7 @@ namespace sl::log
 		 * \tparam THandler Type of handler (automatically deduced)
 		 * \param handler invokable handler object
 		 */
-		template <log::FileStateHandler THandler>
+		template <FileStateHandler THandler>
 		void setClosingHandler(THandler&& handler) noexcept
 		{
 			std::scoped_lock lock{ m_ClosingHandlerMx };
@@ -230,7 +230,7 @@ namespace sl::log
 
 	private:
 		using FileStateHandler = std::function<std::string()>;
-		
+
 		StringPattern m_FileNamePattern;
 		std::filesystem::path m_Directory;
 		std::ofstream m_FileStream;
@@ -311,7 +311,7 @@ namespace sl::log
 			auto cleanupRule = load(m_CleanupRule, m_CleanupRuleMx);
 			if (!cleanupRule.fileCount)
 				return;
-			
+
 			while (*cleanupRule.fileCount < std::size(files))
 			{
 				auto& file = files.back();
