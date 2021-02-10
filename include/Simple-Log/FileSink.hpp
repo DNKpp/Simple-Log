@@ -58,6 +58,14 @@ namespace sl::log
 	 * \section Cleanup Cleanup
 	 * While \ref Rotation "rotation" is used for indicating when to switch files, CleanupRule s are used for determining when to delete old files. Cleanup process will watch at the currently provided directory
 	 * and will only observe files with equally file extensions as provided in the file name pattern. If no extension (e.g. \c .abcd) is used, all files without an extension will be observed.
+	 *
+	 * \section FileStateHandler File state handler
+	 * These handler are used to generate messages on state changes for the internal managed file. Users can provide invokable objects, which will be called and shall return a std::string, which will then written synchronized
+	 * to the std::fstream. The synchronization is the reason, why the user is not allowed to write to the stream themselves.\n
+	 * Handlers shall have the following signature:
+	 * \code{.cpp}
+	 * std::string()
+	 * \endcode
 	 */
 
 	class FileSink :
@@ -167,6 +175,7 @@ namespace sl::log
 
 		/**
 		 * \brief Applies a new handler for opening files
+		 * \details For further details look at \ref FileStateHandler "file state handler".
 		 * \tparam THandler Type of handler (automatically deduced)
 		 * \param handler invokable handler object
 		 */
@@ -188,6 +197,7 @@ namespace sl::log
 
 		/**
 		 * \brief Applies a new handler for closing files
+		 * \details For further details look at \ref FileStateHandler "file state handler".
 		 * \tparam THandler Type of handler (automatically deduced)
 		 * \param handler invokable handler object
 		 */
