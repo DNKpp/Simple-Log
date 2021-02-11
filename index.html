@@ -111,42 +111,45 @@ Installation with CMake</h1>
 <div class="line">    simple_log</div>
 <div class="line">)</div>
 </div><!-- fragment --><p> This will add the the include path "&lt;simple_log_install_dir&gt;/include", thus you are able to include all headers via</p>
-<div class="fragment"><div class="line"> {#include}</div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="d0/d08/_simple-_log_8hpp.html">Simple-Log/Simple-Log.hpp</a>&gt;</span></div>
+<div class="ttc" id="a_simple-_log_8hpp_html"><div class="ttname"><a href="d0/d08/_simple-_log_8hpp.html">Simple-Log.hpp</a></div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
+Simple usage example</h1>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="d0/d08/_simple-_log_8hpp.html">Simple-Log/Simple-Log.hpp</a>&gt;</span></div>
 <div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"> </div>
-<div class="line"> </div>
-<div class="line">## Simple usage example</div>
-<div class="line">```cpp</div>
-<div class="line">#include &lt;Simple-Log/Simple-Log.hpp&gt;</div>
-<div class="line"> </div>
-<div class="line">#include &lt;iostream&gt;</div>
-<div class="line">#include &lt;memory&gt;</div>
-<div class="line"> </div>
-<div class="line">inline std::unique_ptr&lt;sl::log::Core&gt; makeLoggingCore()</div>
+<div class="line"><span class="keyword">inline</span> std::unique_ptr&lt;sl::log::Core&gt; makeLoggingCore()</div>
 <div class="line">{</div>
-<div class="line">    /* an sl::log::Core is non-copy and non-movable, thus we will store it in an unique_ptr, so we</div>
-<div class="line">     * can safely move it into our global.*/</div>
-<div class="line">    auto core = std::make_unique&lt;sl::log::Core&gt;();</div>
+<div class="line">    <span class="comment">/* an sl::log::Core is non-copy and non-movable, thus we will store it in an unique_ptr, so we</span></div>
+<div class="line"><span class="comment">     * can safely move it into our global.*/</span></div>
+<div class="line">    <span class="keyword">auto</span> core = std::make_unique&lt;sl::log::Core&gt;();</div>
 <div class="line"> </div>
-<div class="line">    /* register a BasicSink and link it to the std::cout stream. This will simply print all incoming</div>
-<div class="line">    messages onto the console.*/</div>
-<div class="line">    core-&gt;makeSink&lt;sl::log::BasicSink&gt;(std::cout);</div>
-<div class="line">    return core;</div>
+<div class="line">    <span class="comment">/* register a BasicSink and link it to the std::cout stream. This will simply print all incoming</span></div>
+<div class="line"><span class="comment">    messages onto the console.*/</span></div>
+<div class="line">    core-&gt;makeSink&lt;<a class="code" href="dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&gt;(std::cout);</div>
+<div class="line">    <span class="keywordflow">return</span> core;</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line">/* For conveniences we will simply store the core and default logger as a global. Feel free to do it otherwise.</div>
-<div class="line">Just make sure the Core instance doesn&#39;t get destructed before all related Logger instances.*/</div>
-<div class="line">inline std::unique_ptr&lt;sl::log::Core&gt; gLoggingCore{ makeLoggingCore() };</div>
-<div class="line">inline sl::log::Logger gLog{ *gLoggingCore, sl::log::SeverityLevel::info };</div>
+<div class="line"><span class="comment">/* For conveniences we will simply store the core and default logger as a global. Feel free to do it otherwise.</span></div>
+<div class="line"><span class="comment">Just make sure the Core instance doesn&#39;t get destructed before all related Logger instances.*/</span></div>
+<div class="line"><span class="keyword">inline</span> std::unique_ptr&lt;sl::log::Core&gt; gLoggingCore{ makeLoggingCore() };</div>
+<div class="line"><span class="keyword">inline</span> <a class="code" href="df/da8/classsl_1_1log_1_1_logger.html">sl::log::Logger</a> gLog{ *gLoggingCore, <a class="code" href="d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8acaf9b6b99962bf5c2264824231d7a40c">sl::log::SeverityLevel::info</a> };</div>
 <div class="line"> </div>
-<div class="line">int main()</div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">    gLog() &lt;&lt; &quot;Hello, World!&quot;;  // This will print this message with the &quot;info&quot; severity</div>
-<div class="line">    // creates a record with severity level &quot;debug&quot;.</div>
-<div class="line">    gLog() &lt;&lt; &quot;Mighty debug message&quot; &lt;&lt; sl::log::SetSev{ sl::log::SeverityLevel::debug };</div>
+<div class="line">    gLog() &lt;&lt; <span class="stringliteral">&quot;Hello, World!&quot;</span>;  <span class="comment">// This will print this message with the &quot;info&quot; severity</span></div>
+<div class="line">    <span class="comment">// creates a record with severity level &quot;debug&quot;.</span></div>
+<div class="line">    gLog() &lt;&lt; <span class="stringliteral">&quot;Mighty debug message&quot;</span> &lt;&lt; <a class="code" href="dd/d68/structsl_1_1log_1_1_set_severity.html">sl::log::SetSev</a>{ <a class="code" href="d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8aad42f6697b035b7580e4fef93be20b4d">sl::log::SeverityLevel::debug</a> };</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line">/*Core will make sure, that all pending Records will be processed before it gets destructed.*/</div>
+<div class="line"><span class="comment">/*Core will make sure, that all pending Records will be processed before it gets destructed.*/</span></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html"><div class="ttname"><a href="dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a></div><div class="ttdoc">std::ostream orientated Sink class</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:35</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_logger_html"><div class="ttname"><a href="df/da8/classsl_1_1log_1_1_logger.html">sl::log::Logger</a></div><div class="ttdoc">Convenience class for generating Record s.</div><div class="ttdef"><b>Definition:</b> Logger.hpp:31</div></div>
+<div class="ttc" id="agroup__record_html_ggafe0223554b07283db048dd7c700c5ac8aad42f6697b035b7580e4fef93be20b4d"><div class="ttname"><a href="d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8aad42f6697b035b7580e4fef93be20b4d">sl::log::SeverityLevel::debug</a></div><div class="ttdeci">@ debug</div></div>
+<div class="ttc" id="agroup__record_html_ggafe0223554b07283db048dd7c700c5ac8acaf9b6b99962bf5c2264824231d7a40c"><div class="ttname"><a href="d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8acaf9b6b99962bf5c2264824231d7a40c">sl::log::SeverityLevel::info</a></div><div class="ttdeci">@ info</div></div>
+<div class="ttc" id="astructsl_1_1log_1_1_set_severity_html"><div class="ttname"><a href="dd/d68/structsl_1_1log_1_1_set_severity.html">sl::log::SetSeverity</a></div><div class="ttdoc">Manipulates the severity level of the current RecordBuilder object.</div><div class="ttdef"><b>Definition:</b> RecordBuilder.hpp:35</div></div>
 </div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
