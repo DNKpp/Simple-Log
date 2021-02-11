@@ -36,9 +36,9 @@ target_link_libraries(
 ```
 This will add the the include path "<simple_log_install_dir>/include", thus you are able to include all headers via
 
-```#include <Simple-Log/Simple-Log.hpp>```
-
-
+```cpp
+#include <Simple-Log/Simple-Log.hpp>
+```
 
 ## Simple usage example
 ```cpp
