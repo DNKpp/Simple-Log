@@ -87,20 +87,24 @@ namespace sl::log::detail
 	{
 		std::vector<Generator> generators;
 
-		const std::regex regEx{ "%(Y|m|d|H|M|S|\\d*N)" };
-		std::transform(
-						std::cregex_token_iterator{
-							patternString.data(),
-							patternString.data() + std::size(patternString),
-							regEx,
-							{ -1, 0 }
-						},
-						std::cregex_token_iterator{},
-						std::back_inserter(generators),
-						[](const auto& match)
+		// ToDo: use ranges
+		const std::regex regEx{ "%(Y|m|d|H|M|S|j|\\d*N)" };
+		std::for_each(
+					std::cregex_token_iterator
+					{
+						patternString.data(),
+						patternString.data() + std::size(patternString),
+						regEx,
+						{ -1, 0 }
+					},
+					std::cregex_token_iterator{},
+					[&generators](const auto& match)
+					{
+						if (match.length() != 0)
 						{
-							return makeGeneratorFromMatch({ match.first, match.second });
+							generators.emplace_back(makeGeneratorFromMatch({ match.first, match.second }));
 						}
+					}
 					);
 		return generators;
 	}
