@@ -25,7 +25,7 @@ Mail: [DNKpp2011@gmail.com](mailto:dnkpp2011@gmail.com)
 Currently under development, thus not stable.
 
 ## Installation with CMake
-This library can integrated into your project easily via CMake target_link_libraries command.
+This library can easily be integrated into your project via CMake target_link_libraries command.
 
 ```cmake
 target_link_libraries(
