@@ -108,7 +108,7 @@ $(document).ready(function(){initNavTree('d4/d47/_string_pattern_8hpp_source.htm
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">struct </span>IncNumberGenerator</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        std::size_t minWidth = 0;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">int</span> minWidth = 0;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        std::uint32_t current = 1;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">void</span> operator()(std::ostream&amp; stream)</div>
@@ -161,7 +161,7 @@ $(document).ready(function(){initNavTree('d4/d47/_string_pattern_8hpp_source.htm
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">case</span> <span class="charliteral">&#39;N&#39;</span>:</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                token.remove_prefix(1);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                std::size_t width = 0;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keywordtype">int</span> width = 0;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                std::from_chars(token.data(), &amp;token.back(), width);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">return</span> IncNumberGenerator{ .minWidth = width };</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            }</div>
