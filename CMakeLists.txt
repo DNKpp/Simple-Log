@@ -34,7 +34,8 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 	add_executable(
 		test_simple_log
 		${CMAKE_CURRENT_SOURCE_DIR}/test/main.cpp
-		${CMAKE_CURRENT_SOURCE_DIR}/test/LogTest.cpp
+		${CMAKE_CURRENT_SOURCE_DIR}/test/StringPatternTest.cpp
+		#${CMAKE_CURRENT_SOURCE_DIR}/test/LogTest.cpp
 	)
 
 	target_link_libraries(

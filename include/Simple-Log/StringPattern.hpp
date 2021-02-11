@@ -67,8 +67,8 @@ namespace sl::log::detail
 
 			case 'Y': // year (4 digits)
 			case 'm': // month (2 digits)
-			case 'd': // day of month
-			case 'j': // day of year
+			case 'd': // day of month (2 digits)
+			case 'j': // day of year (3 digits)
 				return DateTimeGenerator{ { std::cbegin(token), std::cbegin(token) + 2 } };
 
 			case 'N':
