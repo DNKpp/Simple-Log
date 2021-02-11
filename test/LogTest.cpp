@@ -7,11 +7,7 @@
 
 #include <iostream>
 
-#include "Simple-Log/Core.hpp"
-#include "Simple-Log/BasicSink.hpp"
-#include "Simple-Log/FileSink.hpp"
-#include "Simple-Log/Logger.hpp"
-#include "Simple-Log/StringPattern.hpp"
+#include "Simple-Log/Simple-Log.hpp"
 
 using namespace sl::log;
 
