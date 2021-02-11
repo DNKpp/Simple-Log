@@ -320,3 +320,31 @@ SCENARIO("make generators from pattern string", "[makeTokenGeneratorsFromPattern
 		}
 	}
 }
+
+SCENARIO("generate string via pattern", "[StringPattern]")
+{
+	WHEN("providing constant pattern")
+	{
+		constexpr const char* str{ "Hello, World!" };
+		StringPattern pattern{ str };
+		THEN("receiving constant strings each time")
+		{
+			REQUIRE(pattern.next() == str);
+			REQUIRE(pattern.next() == str);
+			REQUIRE(pattern.next() == str);
+		}
+	}
+
+	WHEN("providing inc number pattern")
+	{
+		using namespace std::string_literals;
+		constexpr const char* str{ "Hello, World!" };
+		StringPattern pattern{ str + "%N"s };
+		THEN("receiving updated strings each time")
+		{
+			REQUIRE(pattern.next() == str + "1"s);
+			REQUIRE(pattern.next() == str + "2"s);
+			REQUIRE(pattern.next() == str + "3"s);
+		}
+	}
+}
