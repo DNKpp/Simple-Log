@@ -103,8 +103,21 @@ License</h1>
 Description</h1>
 <p>Currently under development, thus not stable.</p>
 <h1><a class="anchor" id="autotoc_md4"></a>
-Simple usage example</h1>
-<div class="fragment"></div><!-- fragment --> </div></div><!-- PageDoc -->
+Installation with CMake</h1>
+<p>This library can integrated into your project easily via CMake target_link_libraries command.</p>
+<div class="fragment"><div class="line">target_link_libraries(</div>
+<div class="line">    &lt;your_target_name&gt;</div>
+<div class="line">    PRIVATE</div>
+<div class="line">    simple_log</div>
+<div class="line">)</div>
+</div><!-- fragment --><p> This will add the the include path "&lt;simple_log_install_dir&gt;/include", thus you are able to include all headers via</p>
+<div class="fragment"><div class="line"> {#include}</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">## Simple usage example</div>
+<div class="line">```cpp</div>
+</div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

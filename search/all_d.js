@@ -19,8 +19,9 @@ var searchData=
   ['severity_72',['severity',['../de/df8/classsl_1_1log_1_1_record.html#a425205fbab35e42d87a9eb5f43a44b7f',1,'sl::log::Record::severity()'],['../dd/d68/structsl_1_1log_1_1_set_severity.html#aef269f5ab771928f295f041d9d38dac8',1,'sl::log::SetSeverity::severity()']]],
   ['severitylevel_73',['SeverityLevel',['../d0/de9/group__record.html#gafe0223554b07283db048dd7c700c5ac8',1,'sl::log']]],
   ['simple_2dlog_20c_2b_2b20_20library_74',['Simple-Log C++20 library',['../index.html',1,'']]],
-  ['sink_75',['Sink',['../df/d3a/group__sink.html',1,'']]],
-  ['sl_76',['sl',['../dd/d2c/namespacesl.html',1,'']]],
-  ['stringpattern_77',['StringPattern',['../d1/d81/classsl_1_1log_1_1_string_pattern.html',1,'sl::log::StringPattern'],['../d1/d81/classsl_1_1log_1_1_string_pattern.html#a527ec73a1607f2f43c4ced45cc974852',1,'sl::log::StringPattern::StringPattern()']]],
-  ['stringpattern_2ehpp_78',['StringPattern.hpp',['../d4/d47/_string_pattern_8hpp.html',1,'']]]
+  ['simple_2dlog_2ehpp_75',['Simple-Log.hpp',['../d0/d08/_simple-_log_8hpp.html',1,'']]],
+  ['sink_76',['Sink',['../df/d3a/group__sink.html',1,'']]],
+  ['sl_77',['sl',['../dd/d2c/namespacesl.html',1,'']]],
+  ['stringpattern_78',['StringPattern',['../d1/d81/classsl_1_1log_1_1_string_pattern.html',1,'sl::log::StringPattern'],['../d1/d81/classsl_1_1log_1_1_string_pattern.html#a527ec73a1607f2f43c4ced45cc974852',1,'sl::log::StringPattern::StringPattern()']]],
+  ['stringpattern_2ehpp_79',['StringPattern.hpp',['../d4/d47/_string_pattern_8hpp.html',1,'']]]
 ];

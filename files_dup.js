@@ -16,6 +16,7 @@ var files_dup =
     [ "Record.hpp", "dc/d79/_record_8hpp.html", "dc/d79/_record_8hpp" ],
     [ "RecordBuilder.hpp", "dc/d3b/_record_builder_8hpp.html", "dc/d3b/_record_builder_8hpp" ],
     [ "RecordQueue.hpp", "da/d8d/_record_queue_8hpp.html", null ],
+    [ "Simple-Log.hpp", "d0/d08/_simple-_log_8hpp.html", null ],
     [ "StringPattern.hpp", "d4/d47/_string_pattern_8hpp.html", [
       [ "StringPattern", "d1/d81/classsl_1_1log_1_1_string_pattern.html", "d1/d81/classsl_1_1log_1_1_string_pattern" ]
     ] ]

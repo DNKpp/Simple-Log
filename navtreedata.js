@@ -29,7 +29,7 @@ var NAVTREE =
       [ "Author", "index.html#autotoc_md1", null ],
       [ "License", "index.html#autotoc_md2", null ],
       [ "Description", "index.html#autotoc_md3", null ],
-      [ "Simple usage example", "index.html#autotoc_md4", null ]
+      [ "Installation with CMake", "index.html#autotoc_md4", null ]
     ] ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
