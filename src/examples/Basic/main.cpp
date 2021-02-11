@@ -3,9 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          https://www.boost.org/LICENSE_1_0.txt)
 
-#include <Simple-Log/Core.hpp>
-#include <Simple-Log/BasicSink.hpp>
-#include <Simple-Log/Logger.hpp>
+#include <Simple-Log/Simple-Log.hpp>
 
 #include <iostream>
 #include <memory>
