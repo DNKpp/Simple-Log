@@ -117,6 +117,36 @@ Installation with CMake</h1>
 <div class="line"> </div>
 <div class="line">## Simple usage example</div>
 <div class="line">```cpp</div>
+<div class="line">#include &lt;Simple-Log/Simple-Log.hpp&gt;</div>
+<div class="line"> </div>
+<div class="line">#include &lt;iostream&gt;</div>
+<div class="line">#include &lt;memory&gt;</div>
+<div class="line"> </div>
+<div class="line">inline std::unique_ptr&lt;sl::log::Core&gt; makeLoggingCore()</div>
+<div class="line">{</div>
+<div class="line">    /* an sl::log::Core is non-copy and non-movable, thus we will store it in an unique_ptr, so we</div>
+<div class="line">     * can safely move it into our global.*/</div>
+<div class="line">    auto core = std::make_unique&lt;sl::log::Core&gt;();</div>
+<div class="line"> </div>
+<div class="line">    /* register a BasicSink and link it to the std::cout stream. This will simply print all incoming</div>
+<div class="line">    messages onto the console.*/</div>
+<div class="line">    core-&gt;makeSink&lt;sl::log::BasicSink&gt;(std::cout);</div>
+<div class="line">    return core;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">/* For conveniences we will simply store the core and default logger as a global. Feel free to do it otherwise.</div>
+<div class="line">Just make sure the Core instance doesn&#39;t get destructed before all related Logger instances.*/</div>
+<div class="line">inline std::unique_ptr&lt;sl::log::Core&gt; gLoggingCore{ makeLoggingCore() };</div>
+<div class="line">inline sl::log::Logger gLog{ *gLoggingCore, sl::log::SeverityLevel::info };</div>
+<div class="line"> </div>
+<div class="line">int main()</div>
+<div class="line">{</div>
+<div class="line">    gLog() &lt;&lt; &quot;Hello, World!&quot;;  // This will print this message with the &quot;info&quot; severity</div>
+<div class="line">    // creates a record with severity level &quot;debug&quot;.</div>
+<div class="line">    gLog() &lt;&lt; &quot;Mighty debug message&quot; &lt;&lt; sl::log::SetSev{ sl::log::SeverityLevel::debug };</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">/*Core will make sure, that all pending Records will be processed before it gets destructed.*/</div>
 </div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
