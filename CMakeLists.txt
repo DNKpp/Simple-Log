@@ -22,6 +22,14 @@ endif()
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 	include(CTest)
+	include(FetchContent)
+
+	FetchContent_Declare(
+	  catch2
+	  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+	  GIT_TAG        origin/v2.x
+	)
+	FetchContent_MakeAvailable(catch2)
 
 	add_executable(
 		test_simple_log
@@ -33,6 +41,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 		test_simple_log
 		PRIVATE
 		simple_log
+		Catch2::Catch2
 	)
 
 	enable_testing()
