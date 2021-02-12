@@ -3,8 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          https://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef SL_LOG_PROJECTION_HPP
-#define SL_LOG_PROJECTION_HPP
+#ifndef SL_LOG_PROJECTIONS_HPP
+#define SL_LOG_PROJECTIONS_HPP
 
 #pragma once
 
@@ -52,6 +52,15 @@ namespace sl::log
 
 	template <class TUserDataType>
 	inline TransformedProjection userDataTransProjection{ &Record::severity, AnyTransformer<TUserDataType>{} };
+
+	struct DeducePointer
+	{
+		template <Pointer T>
+		auto& operator ()(T obj) const noexcept
+		{
+			return *obj;
+		}
+	};
 }
 
 #endif
