@@ -52,7 +52,7 @@ namespace sl::log::proj
 	inline const Transformer channelCast{ &Record::channel, AnyTransformer<TChannelType>{} };
 
 	template <class TUserDataType>
-	inline const Transformer userDataCast{ &Record::severity, AnyTransformer<TUserDataType>{} };
+	inline const Transformer userDataCast{ &Record::userData, AnyTransformer<TUserDataType>{} };
 
 	struct
 	{
