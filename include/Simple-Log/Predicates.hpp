@@ -13,13 +13,13 @@
 
 #include "Concepts.hpp"
 
-namespace sl::log
+namespace sl::log::pred
 {
 	template <std::equality_comparable T>
-	class Equals
+	class EqualsToConstant
 	{
 	public:
-		explicit Equals(T to) :
+		explicit EqualsToConstant(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -33,11 +33,29 @@ namespace sl::log
 		T m_To;
 	};
 
-	template <std::totally_ordered T>
-	class Less
+	template <std::equality_comparable T>
+	class NotEqualsToConstant
 	{
 	public:
-		explicit Less(T to) :
+		explicit NotEqualsToConstant(T to) :
+			m_To{ std::move(to) }
+		{
+		}
+
+		bool operator ()(const T& other) const
+		{
+			return other != m_To;
+		}
+
+	private:
+		T m_To;
+	};
+
+	template <std::totally_ordered T>
+	class LessToConstant
+	{
+	public:
+		explicit LessToConstant(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -52,10 +70,10 @@ namespace sl::log
 	};
 
 	template <std::totally_ordered T>
-	class Greater
+	class GreaterToConstant
 	{
 	public:
-		explicit Greater(T to) :
+		explicit GreaterToConstant(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -70,10 +88,10 @@ namespace sl::log
 	};
 
 	template <std::totally_ordered T>
-	class LessEquals
+	class LessEqualsToConstant
 	{
 	public:
-		explicit LessEquals(T to) :
+		explicit LessEqualsToConstant(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -88,10 +106,10 @@ namespace sl::log
 	};
 
 	template <std::totally_ordered T>
-	class GreaterEquals
+	class GreaterEqualsToConstant
 	{
 	public:
-		explicit GreaterEquals(T to) :
+		explicit GreaterEqualsToConstant(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -106,14 +124,13 @@ namespace sl::log
 	};
 
 	template <std::totally_ordered T>
-	class Between
+	class BetweenConstants
 	{
 	public:
-		explicit Between(T one, T two)
+		explicit BetweenConstants(T one, T two) :
+			m_Low{ std::min(one, two) },
+			m_High{ std::max(two, one) }
 		{
-			auto [min, max] = std::minmax(one, two);
-			m_Low = min;
-			m_High = max;
 		}
 
 		bool operator ()(const T& other) const
@@ -126,14 +143,7 @@ namespace sl::log
 		T m_High;
 	};
 
-	struct NotNullptr
-	{
-		template <Pointer T>
-		bool operator ()(T obj) const noexcept
-		{
-			return obj != nullptr;
-		}
-	};
+	inline const NotEqualsToConstant<const void*> notNullptr{ nullptr };
 }
 
 #endif

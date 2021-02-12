@@ -75,9 +75,9 @@ namespace sl::log
 	auto makeChannelFilter(TUnaryPredicate&& predicate)
 	{
 		return Filter2{
-			channelTransProjection<TChannel>,
-			NotNullptr{},
-			DeducePointer{},
+			proj::channelCast<TChannel>,
+			pred::notNullptr,
+			proj::deducePointer,
 			std::forward<TUnaryPredicate>(predicate)
 		};
 	}
@@ -86,9 +86,9 @@ namespace sl::log
 	auto makeSeverityFilter(TUnaryPredicate&& predicate)
 	{
 		return Filter2{
-			severityTransProjection<TSeverity>,
-			NotNullptr{},
-			DeducePointer{},
+			proj::severityCast<TSeverity>,
+			pred::notNullptr,
+			proj::deducePointer,
 			std::forward<TUnaryPredicate>(predicate)
 		};
 	}
@@ -97,9 +97,9 @@ namespace sl::log
 	auto makeUserDataFilter(TUnaryPredicate&& predicate)
 	{
 		return Filter2{
-			userDataTransProjection<TUserData>,
-			NotNullptr{},
-			DeducePointer{},
+			proj::userDataCast<TUserData>,
+			pred::notNullptr,
+			proj::deducePointer,
 			std::forward<TUnaryPredicate>(predicate)
 		};
 	}
@@ -154,11 +154,12 @@ namespace sl::log
 	{
 	public:
 		explicit FilterChain(TFilter ...filter) :
-			FilterChain(TAlgorithm{}, std::forward<TFilter>(filter)...)
+			m_Algorithm{},
+			m_Filter{ std::forward<TFilter>(filter)... }
 		{
 		}
 
-		explicit FilterChain(TAlgorithm algorithm, TFilter&& ...filter) :
+		explicit FilterChain(TAlgorithm algorithm, TFilter ...filter) :
 			m_Algorithm(std::move(algorithm)),
 			m_Filter{ std::forward<TFilter>(filter)... }
 		{
@@ -175,11 +176,32 @@ namespace sl::log
 		std::array<std::function<bool(const Record&)>, sizeof...(TFilter)> m_Filter;
 	};
 
-	template <std::predicate<const Record&>... TFilter>
-	using FilterDisjunction = FilterChain<FilterAllOf, TFilter...>;
+	//ToDo: Clang currently doesn't support alias CTAD: http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1814r0.html
+	//template <std::predicate<const Record&>... TFilter>
+	//using FilterDisjunction = FilterChain<FilterAllOf, TFilter...>;
+	// 
+	//template <std::predicate<const Record&>... TFilter>
+	//using FilterConjunction = FilterChain<FilterAnyOf, TFilter...>;
 
 	template <std::predicate<const Record&>... TFilter>
-	using FilterConjunction = FilterChain<FilterAnyOf, TFilter...>;
+	struct FilterDisjunction :
+		FilterChain<FilterAnyOf, TFilter...>
+	{
+		explicit FilterDisjunction(TFilter ... filter) :
+			FilterChain<FilterAnyOf, TFilter...>{ FilterAllOf{}, std::move(filter)... }
+		{
+		}
+	};
+
+	template <std::predicate<const Record&>... TFilter>
+	struct FilterConjunction :
+		FilterChain<FilterAllOf, TFilter...>
+	{
+		explicit FilterConjunction(TFilter ... filter) :
+			FilterChain<FilterAllOf, TFilter...>{ FilterAllOf{}, std::move(filter)... }
+		{
+		}
+	};
 }
 
 #endif

@@ -13,19 +13,19 @@
 
 #include "Record.hpp"
 
-namespace sl::log
+namespace sl::log::proj
 {
 	template <class TProjection, class TTransform>
-	class TransformedProjection
+	class Transformer
 	{
 	public:
-		explicit TransformedProjection(TProjection projection, TTransform transform) :
+		explicit Transformer(TProjection projection, TTransform transform) :
 			m_Projection{ std::move(projection) },
 			m_Transform{ std::move(transform) }
 		{
 		}
 
-		auto operator ()(const Record& rec)
+		auto operator ()(const Record& rec) const
 		{
 			return std::invoke(m_Transform, std::invoke(m_Projection, rec));
 		}
@@ -45,22 +45,22 @@ namespace sl::log
 	};
 
 	template <class TSeverityType>
-	inline TransformedProjection severityTransProjection{ &Record::severity, AnyTransformer<TSeverityType>{} };
+	inline const Transformer severityCast{ &Record::severity, AnyTransformer<TSeverityType>{} };
 
 	template <class TChannelType>
-	inline TransformedProjection channelTransProjection{ &Record::channel, AnyTransformer<TChannelType>{} };
+	inline const Transformer channelCast{ &Record::channel, AnyTransformer<TChannelType>{} };
 
 	template <class TUserDataType>
-	inline TransformedProjection userDataTransProjection{ &Record::severity, AnyTransformer<TUserDataType>{} };
+	inline const Transformer userDataCast{ &Record::severity, AnyTransformer<TUserDataType>{} };
 
-	struct DeducePointer
+	struct
 	{
 		template <Pointer T>
 		auto& operator ()(T obj) const noexcept
 		{
 			return *obj;
 		}
-	};
+	} inline const deducePointer;
 }
 
 #endif
