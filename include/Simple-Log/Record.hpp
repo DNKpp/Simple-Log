@@ -10,6 +10,7 @@
 
 #include <any>
 #include <chrono>
+#include <ostream>
 #include <string>
 #include <version>
 

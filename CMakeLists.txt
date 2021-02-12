@@ -1,5 +1,10 @@
 cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
+
 project(simple_log)
+
+option(SIMPLE_LOG_BUILD_EXAMPLES "Enables example building" OFF)
+
+set(ExamplesDir "${CMAKE_CURRENT_SOURCE_DIR}/src/examples/")
 
 add_library(${PROJECT_NAME} INTERFACE)
 target_include_directories(
@@ -50,4 +55,19 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 		NAME SimpleLogTestSuite
 		COMMAND test_simple_log
 	)
+endif()
+
+if (SIMPLE_LOG_BUILD_EXAMPLES)
+
+	add_executable(
+		example_simple_log_basic
+		${ExamplesDir}Basic/main.cpp
+	)
+
+	target_link_libraries(
+		example_simple_log_basic
+		PRIVATE
+		simple_log
+	)
+
 endif()
