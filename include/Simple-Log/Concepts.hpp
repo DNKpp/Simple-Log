@@ -16,13 +16,13 @@ namespace sl::log
 	class Record;
 
 	template <class T>
-	concept RecordFormatter = (std::movable<T> || std::copyable<T>) && std::invocable<T, std::ostream&, const Record&>;
+	concept RecordFormatter = std::invocable<T, std::ostream&, const Record&>;
 
 	template <class T>
-	concept RecordFilter = (std::movable<T> || std::copyable<T>) && std::predicate<T, const Record&>;
+	concept RecordFilter = std::predicate<T, const Record&>;
 
 	template <class T>
-	concept FileStateHandler = (std::movable<T> || std::copyable<T>) && std::invocable<T, std::ostream&, const Record&>;
+	concept FileStateHandler = std::invocable<T, std::ostream&, const Record&>;
 
 	template <class T>
 	concept Pointer = std::is_pointer_v<T>;
