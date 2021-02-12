@@ -11,6 +11,7 @@
 #include <any>
 #include <functional>
 
+#include "Concepts.hpp"
 #include "Record.hpp"
 
 namespace sl::log::proj
