@@ -62,7 +62,7 @@ namespace sl::log
 					std::setw(3) << millisecond.count() <<
 					" >>> ";
 
-				out << rec.severity();
+				out << rec.severity() << ":: ";
 				out << rec.message();
 			};
 		}
