@@ -19,12 +19,13 @@ namespace sl::log::pred
 	class EqualsToConstant
 	{
 	public:
-		explicit EqualsToConstant(T to) :
+		constexpr explicit EqualsToConstant(T to) :
 			m_To{ std::move(to) }
 		{
 		}
 
-		bool operator ()(const T& other) const
+		template <std::equality_comparable_with<T> U>
+		constexpr bool operator ()(const U& other) const
 		{
 			return other == m_To;
 		}
@@ -37,12 +38,13 @@ namespace sl::log::pred
 	class NotEqualsToConstant
 	{
 	public:
-		explicit NotEqualsToConstant(T to) :
+		constexpr explicit NotEqualsToConstant(T to) :
 			m_To{ std::move(to) }
 		{
 		}
 
-		bool operator ()(const T& other) const
+		template <std::equality_comparable_with<T> U>
+		constexpr bool operator ()(const U& other) const
 		{
 			return other != m_To;
 		}
@@ -55,12 +57,13 @@ namespace sl::log::pred
 	class LessToConstant
 	{
 	public:
-		explicit LessToConstant(T to) :
+		constexpr explicit LessToConstant(T to) :
 			m_To{ std::move(to) }
 		{
 		}
 
-		bool operator ()(const T& other) const
+		template <std::totally_ordered_with<T> U>
+		constexpr bool operator ()(const U& other) const
 		{
 			return other < m_To;
 		}
@@ -73,12 +76,13 @@ namespace sl::log::pred
 	class GreaterToConstant
 	{
 	public:
-		explicit GreaterToConstant(T to) :
+		constexpr explicit GreaterToConstant(T to) :
 			m_To{ std::move(to) }
 		{
 		}
 
-		bool operator ()(const T& other) const
+		template <std::totally_ordered_with<T> U>
+		constexpr bool operator ()(const U& other) const
 		{
 			return other > m_To;
 		}
@@ -91,12 +95,13 @@ namespace sl::log::pred
 	class LessEqualsToConstant
 	{
 	public:
-		explicit LessEqualsToConstant(T to) :
+		constexpr explicit LessEqualsToConstant(T to) :
 			m_To{ std::move(to) }
 		{
 		}
 
-		bool operator ()(const T& other) const
+		template <std::totally_ordered_with<T> U>
+		constexpr bool operator ()(const U& other) const
 		{
 			return other <= m_To;
 		}
@@ -109,12 +114,13 @@ namespace sl::log::pred
 	class GreaterEqualsToConstant
 	{
 	public:
-		explicit GreaterEqualsToConstant(T to) :
+		constexpr explicit GreaterEqualsToConstant(T to) :
 			m_To{ std::move(to) }
 		{
 		}
 
-		bool operator ()(const T& other) const
+		template <std::totally_ordered_with<T> U>
+		constexpr bool operator ()(const U& other) const
 		{
 			return other >= m_To;
 		}
@@ -127,13 +133,35 @@ namespace sl::log::pred
 	class BetweenConstants
 	{
 	public:
-		explicit BetweenConstants(T one, T two) :
+		constexpr explicit BetweenConstants(T one, T two) :
 			m_Low{ std::min(one, two) },
 			m_High{ std::max(two, one) }
 		{
 		}
 
-		bool operator ()(const T& other) const
+		template <std::totally_ordered_with<T> U>
+		constexpr bool operator ()(const U& other) const
+		{
+			return m_Low < other && other < m_High;
+		}
+
+	private:
+		T m_Low;
+		T m_High;
+	};
+
+	template <std::totally_ordered T>
+	class BetweenEqualsConstants
+	{
+	public:
+		constexpr explicit BetweenEqualsConstants(T one, T two) :
+			m_Low{ std::min(one, two) },
+			m_High{ std::max(two, one) }
+		{
+		}
+
+		template <std::totally_ordered_with<T> U>
+		constexpr bool operator ()(const U& other) const
 		{
 			return m_Low <= other && other <= m_High;
 		}
@@ -142,8 +170,6 @@ namespace sl::log::pred
 		T m_Low;
 		T m_High;
 	};
-
-	inline const NotEqualsToConstant<const void*> notNullptr{ nullptr };
 }
 
 #endif
