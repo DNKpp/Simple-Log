@@ -8,7 +8,6 @@
 
 #pragma once
 
-#include <any>
 #include <functional>
 #include <sstream>
 
@@ -25,20 +24,29 @@ namespace sl::log
 	 */
 
 	/**
-	 * \brief Manipulates the severity level of the current RecordBuilder object
-	 * \details This type is generally designed to be directly used in logging expressions and just stores data which will be hand-over to a RecordBuilder instance.
-	 * In fact this is just a helper struct for which RecordBuilder provides an overload of operator <<, which will then modify the severity level of the current RecordBuilder object.
-	 * \ingroup Test
+	 * \brief Manipulates the channel of the current RecordBuilder object
+	 * \tparam TSeverityLevel Severity level type which must later on be convertible to Record's severity level type.
+	 * \details This type is generally designed to be directly used in logging expressions. When handed-over to a RecordBuilder instance by operator <<,
+	 * it will then manipulate the severity level data of its constructing Record object.
 	 */
 	template <class TSeverityLevel>
 	class SetSev
 	{
 	public:
+		/**
+		 * \brief Constructor accepting severity level data
+		 * \param data Severity level data.
+		 */
 		explicit SetSev(TSeverityLevel data) noexcept(std::is_nothrow_move_constructible_v<TSeverityLevel>) :
 			m_Data{ std::move(data) }
 		{
 		}
-		
+
+		/**
+		 * \brief Changes severity level of the passed Record object
+		 * \tparam TRecord Used Record type.
+		 * \param rec The Record which is about to change
+		 */
 		template <Record TRecord>
 		void operator ()(TRecord& rec)
 		{
@@ -51,8 +59,9 @@ namespace sl::log
 
 	/**
 	 * \brief Manipulates the channel of the current RecordBuilder object
-	 * \details This type is generally designed to be directly used in logging expressions and just stores data which will be hand-over to a RecordBuilder instance.
-	 * In fact this is just a helper struct for which RecordBuilder provides an overload of operator <<, which will then modify the channel of the current RecordBuilder object.
+	 * \tparam TChannel Channel type which must later on be convertible to Record's channel type.
+	 * \details This type is generally designed to be directly used in logging expressions. When handed-over to a RecordBuilder instance by operator <<,
+	 * it will then manipulate the Channel data of its constructing Record object.
 	 */
 	template <class TChannel>
 	class SetChan
@@ -67,6 +76,11 @@ namespace sl::log
 		{
 		}
 
+		/**
+		 * \brief Changes channel of the passed Record object
+		 * \tparam TRecord Used Record type.
+		 * \param rec The Record which is about to change
+		 */
 		template <Record TRecord>
 		void operator ()(TRecord& rec)
 		{
@@ -98,6 +112,7 @@ namespace sl::log
 
 	/**
 	 * \brief Helper class for building new Records
+	 * \tparam TRecord Used Record type.
 	 * \details This is class provides the simple and elegant interface for making logging expressions. Its objects are non-copyable but movable.
 	 * When a RecordBuilder object gets destroyed (mainly because going out of scope) it will automatically send its created Record to the designated Logger object. Users should not instantiate
 	 * objects themselves, but should instead use the Logger objects.
@@ -109,18 +124,19 @@ namespace sl::log
 		using Record_t = TRecord;
 		using SeverityLevel_t = typename Record_t::SeverityLevel_t;
 		using Channel_t = typename Record_t::Channel_t;
-	
+
 	private:
 		using LogCallback_t = std::function<void(Record_t)>;
 
 	public:
 		/**
 		 * \brief Constructor
+		 * \param prefabRec Prefabricated Record
+		 * \param cb Callback to the associated Logger object
 		 * \details This constructor requires a callback to the associated Logger objects log function. The callback should have the following signature:
 		 * \code
 		 * void(Record)
 		 * \endcode
-		 * \param cb Callback to the associated Logger object
 		 */
 		explicit RecordBuilder(Record_t prefabRec, LogCallback_t cb) noexcept :
 			m_Record{ std::move(prefabRec) },
@@ -158,7 +174,7 @@ namespace sl::log
 		}
 
 		/**
-		 * \brief Move assignment operator
+		 * \brief Move-assign operator
 		 * \details Transfers ownership of other's data to this object. If other has an installed callback, it will be cleared.
 		 * \param other Another RecordBuilder object
 		 * \return Returns a reference to this.
@@ -177,14 +193,15 @@ namespace sl::log
 		 */
 		RecordBuilder(const RecordBuilder&) = delete;
 		/**
-		 * \brief Deleted copy assign operator
+		 * \brief Deleted copy-assign operator
 		 */
 		RecordBuilder& operator =(const RecordBuilder&) = delete;
 
 		/**
 		 * \brief Accessor to the internal record object
 		 */
-		[[nodiscard]] Record_t& record() noexcept
+		[[nodiscard]]
+		Record_t& record() noexcept
 		{
 			return m_Record;
 		}
@@ -192,7 +209,8 @@ namespace sl::log
 		/**
 		 * \brief Const accessor to the internal record object
 		 */
-		[[nodiscard]] const Record_t& record() const noexcept
+		[[nodiscard]]
+		const Record_t& record() const noexcept
 		{
 			return m_Record;
 		}
@@ -221,7 +239,7 @@ namespace sl::log
 		 * \return Returns a reference to this.
 		 */
 		template <std::invocable<Record_t&> TAction>
-		RecordBuilder& operator <<(TAction action) noexcept
+		RecordBuilder& operator <<(TAction action)
 		{
 			std::invoke(action, m_Record);
 			return *this;
