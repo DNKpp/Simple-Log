@@ -7,34 +7,45 @@
 
 #include <iostream>
 
-#include "Simple-Log/Simple-Log.hpp"
+#include "Simple-Log/PresetTypes.hpp"
 
 using namespace sl::log;
 
-inline Core core;
+inline pre::Core_t core;
 
 enum class Channel
 {
 	test
 };
 
+struct Formatter
+{
+	template <Record TRecord>
+	void operator ()(std::ostream& out, const TRecord& rec)
+	{
+		
+	}
+};
+
 TEST_CASE(" ", "[Core]")
 {
 
-	auto& sink = core.makeSink<BasicSink>(std::cout);
-	auto& fileSink = core.makeSink<FileSink>("test-%Y-%m-%d_%3N.log");
-	fileSink.setRotationRule({ .fileSize = 10 * 1024 * 1024 });
-	fileSink.setCleanupRule({.fileCount = 20});
-	fileSink.setFilter([](const Record& rec)
-	{
-		if (auto channel = std::any_cast<Channel>(&rec.channel); channel && *channel == Channel::test)
-			return false;
-		return true;
-	});
+	auto& sink = core.makeSink<pre::BasicSink_t>(std::cout);
+	//auto& fileSink = core.makeSink<FileSink>("test-%Y-%m-%d_%3N.log");
+	//fileSink.setRotationRule({ .fileSize = 10 * 1024 * 1024 });
+	//fileSink.setCleanupRule({.fileCount = 20});
+	//fileSink.setFilter([](const Record& rec)
+	//{
+	//	if (auto channel = std::any_cast<Channel>(&rec.channel); channel && *channel == Channel::test)
+	//		return false;
+	//	return true;
+	//});
 
-	Logger log{ core, SeverityLevel::info };
+	//fileSink.setFormatter(Formatter{});
 
-	log() << SetSeverity(SeverityLevel::debug) << "Hello," << SetChannel(Channel::test) << "World!";
+	pre::Logger_t log{ core, pre::SeverityLevel::info };
+
+	log() << SetSev(pre::SeverityLevel::debug) << "Hello," << SetChan("test") << "World!";
 	log() << "Hello, Zhavok!";
 	
 	//sink.setFormatter([](std::ostream& out, const Record& rec) { out << "yes" << rec.message; });

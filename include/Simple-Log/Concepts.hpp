@@ -10,19 +10,46 @@
 
 #include <concepts>
 #include <ostream>
+#include <string>
 
 namespace sl::log
 {
-	class Record;
+	template <class T1>
+	concept NotVoid = !std::is_same_v<T1, void>;
 
 	template <class T>
-	concept RecordFormatter = (std::movable<T> || std::copyable<T>) && std::invocable<T, std::ostream&, const Record&>;
+	concept Record =
+		std::movable<T> &&
+		requires(T rec)
+		{
+			typename T::Message_t;
+			typename T::TimePoint_t;
+			typename T::SeverityLevel_t;
+			typename T::Channel_t;
+		} &&
+		requires(const T& rec)
+		{
+			{ rec.message() } -> NotVoid;
+			{ rec.severity() } -> NotVoid;
+			{ rec.channel() } -> NotVoid;
+			{ rec.timePoint() } -> NotVoid;
+		} &&
+		requires (T& rec)
+		{
+			{ rec.setMessage(std::declval<typename T::Message_t>()) };
+			{ rec.setTimePoint(std::declval<typename T::TimePoint_t>()) };
+			{ rec.setSeverity(std::declval<typename T::SeverityLevel_t>()) };
+			{ rec.setChannel(std::declval<typename T::Channel_t>()) };
+		};
+
+	template <class T, class TRecord>
+	concept RecordFormatterFor = Record<TRecord> && std::invocable<T, std::ostream&, const TRecord&>;
+
+	template <class T, class TRecord>
+	concept RecordFilterFor = Record<TRecord> && std::predicate<T, const TRecord&>;
 
 	template <class T>
-	concept RecordFilter = (std::movable<T> || std::copyable<T>) && std::predicate<T, const Record&>;
-
-	template <class T>
-	concept FileStateHandler = (std::movable<T> || std::copyable<T>) && std::invocable<T, std::ostream&, const Record&>;
+	concept FileStateHandler = std::invocable<T> && std::convertible_to<std::invoke_result_t<T>, std::string>;
 	
 }
 

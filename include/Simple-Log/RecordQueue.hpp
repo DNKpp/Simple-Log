@@ -8,13 +8,13 @@
 
 #pragma once
 
-#include "Record.hpp"
-
 #include <chrono>
 #include <condition_variable>
 #include <mutex>
 #include <optional>
 #include <queue>
+
+#include "Concepts.hpp"
 
 namespace sl::log
 {
@@ -27,15 +27,18 @@ namespace sl::log
 	 * \details This class is a simple representation of a blocking queue. Its take() function blocks until an element is present in the internal queue or
 	 * the duration exceeded. Each function is thread-safe by design.
 	 */
+	template <Record TRecord>
 	class RecordQueue
 	{
 	public:
+		using Record_t = TRecord;
+
 		/**
 		 * \brief Pushes Record s to the internal queue
 		 * \details Thread-safe
 		 * \param record The queued Record object.
 		 */
-		void push(Record record)
+		void push(Record_t record)
 		{
 			{
 				std::scoped_lock lock{ m_RecordMx };
@@ -52,7 +55,7 @@ namespace sl::log
 		 * \param waitingDuration The max waiting duration for an element.
 		 * \return Returns an element as optional. Might be nullopt.
 		 */
-		std::optional<Record> take(std::optional<std::chrono::milliseconds> waitingDuration = std::nullopt)
+		std::optional<Record_t> take(std::optional<std::chrono::milliseconds> waitingDuration = std::nullopt)
 		{
 			auto isQueueNotEmpty = [&records = m_QueuedRecords]() { return !std::empty(records); };
 
@@ -82,15 +85,15 @@ namespace sl::log
 		}
 
 	private:
-		std::optional<Record> takeNextAsOpt()
+		std::optional<Record_t> takeNextAsOpt()
 		{
 			auto record = std::move(m_QueuedRecords.front());
 			m_QueuedRecords.pop();
-			return std::optional<Record>{ std::in_place, std::move(record) };
+			return std::optional<Record_t>{ std::in_place, std::move(record) };
 		}
 
 		mutable std::mutex m_RecordMx;
-		std::queue<Record> m_QueuedRecords;
+		std::queue<Record_t> m_QueuedRecords;
 		std::condition_variable m_PushVar;
 	};
 

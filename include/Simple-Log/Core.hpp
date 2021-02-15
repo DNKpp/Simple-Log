@@ -15,8 +15,8 @@
 #include <mutex>
 #include <vector>
 
+#include "Concepts.hpp"
 #include "ISink.hpp"
-#include "Record.hpp"
 #include "RecordQueue.hpp"
 
 namespace sl::log
@@ -38,8 +38,17 @@ namespace sl::log
 	 *
 	 * Core instances are neither copy- nor movable.
 	 */
+	template <Record TRecord>
 	class Core
 	{
+	public:
+		using Record_t = TRecord;
+
+	private:
+		using ISink_t = ISink<Record_t>;
+		using RecordQueue_t = RecordQueue<Record_t>;
+		using SinkContainer_t = std::vector<std::unique_ptr<ISink_t>>;
+
 	public:
 		/**
 		 * \brief Default Constructor
@@ -91,7 +100,7 @@ namespace sl::log
 		 * \details This function should not be called directly on logging purposes. It serves as a simple interface for the corresponding Logger objects.
 		 * \param record The record which will be queued
 		 */
-		void log(Record record)
+		void log(Record_t record)
 		{
 			// will reject newly generated records, after run has become false
 			if (m_WorkerInstruction == Instruction::run)
@@ -108,7 +117,8 @@ namespace sl::log
 		 * \param args The constructor arguments for the newly generated Sink object. Will be forwarded as is.
 		 * \return reference to the managed Sink object
 		 */
-		template <class TSink, class... TArgs>
+		template <std::derived_from<ISink_t> TSink, class... TArgs>
+		requires std::constructible_from<TSink, TArgs...>
 		TSink& makeSink(TArgs&&... args)
 		{
 			auto sink = std::make_unique<TSink>(std::forward<TArgs>(args)...);
@@ -119,8 +129,6 @@ namespace sl::log
 		}
 
 	private:
-		using SinkContainer = std::vector<std::unique_ptr<ISink>>;
-
 		enum class Instruction
 		{
 			run,
@@ -133,9 +141,9 @@ namespace sl::log
 		public:
 			Worker(
 				const std::atomic<Instruction>& instruction,
-				RecordQueue& records,
+				RecordQueue_t& records,
 				std::mutex& sinkMx,
-				const SinkContainer& sinks
+				const SinkContainer_t& sinks
 			) :
 				m_Instruction{ instruction },
 				m_Records{ records },
@@ -170,16 +178,16 @@ namespace sl::log
 		private:
 			const std::atomic<Instruction>& m_Instruction;
 
-			RecordQueue& m_Records;
+			RecordQueue_t& m_Records;
 
 			std::mutex& m_SinkMx;
-			const SinkContainer& m_Sinks;
+			const SinkContainer_t& m_Sinks;
 		};
 
-		RecordQueue m_Records;
+		RecordQueue_t m_Records;
 
 		std::mutex m_SinkMx;
-		SinkContainer m_Sinks;
+		SinkContainer_t m_Sinks;
 
 		std::atomic<Instruction> m_WorkerInstruction{ Instruction::run };
 		Worker m_Worker;

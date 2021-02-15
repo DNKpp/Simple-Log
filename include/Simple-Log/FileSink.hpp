@@ -67,13 +67,17 @@ namespace sl::log
 	 * std::string()
 	 * \endcode
 	 */
-
+	template <Record TRecord>
 	class FileSink :
-		public BasicSink
+		public BasicSink<TRecord>
 	{
-		using Super = BasicSink;
+		using Super = BasicSink<TRecord>;
 
 	public:
+		using typename Super::Record_t;
+		using typename Super::Formatter_t;
+		using typename Super::Filter_t;
+
 		/**
 		 * \brief Type for configuring FileSink rotation rules
 		 */
@@ -223,7 +227,7 @@ namespace sl::log
 		 * BasicSink::log function.
 		 * \param record Record object
 		 */
-		void log(const Record& record) override
+		void log(const Record_t& record) override
 		{
 			if (!m_FileStream.is_open())
 			{
@@ -271,7 +275,7 @@ namespace sl::log
 
 			if (std::scoped_lock lock{ m_OpeningHandlerMx }; m_OpeningHandler)
 			{
-				writeToStream(m_OpeningHandler());
+				Super::writeToStream(m_OpeningHandler());
 			}
 		}
 
@@ -282,7 +286,7 @@ namespace sl::log
 
 			if (std::scoped_lock lock{ m_ClosingHandlerMx }; m_ClosingHandler)
 			{
-				writeToStream(m_ClosingHandler());
+				Super::writeToStream(m_ClosingHandler());
 			}
 			m_FileStream.close();
 

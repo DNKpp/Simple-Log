@@ -9,11 +9,10 @@
 #pragma once
 
 #include <any>
-#include <chrono>
 #include <functional>
 #include <sstream>
 
-#include "Record.hpp"
+#include "Concepts.hpp"
 
 namespace sl::log
 {
@@ -31,81 +30,52 @@ namespace sl::log
 	 * In fact this is just a helper struct for which RecordBuilder provides an overload of operator <<, which will then modify the severity level of the current RecordBuilder object.
 	 * \ingroup Test
 	 */
-	struct SetSeverity
+	template <class TSeverityLevel>
+	class SetSev
 	{
-		/**
-		 * \brief Constructor accepting severity data
-		 * \tparam T T must be implicit convertible to std::any.
-		 * \param data Severity data.
-		 */
-		template <class T>
-		explicit SetSeverity(T&& data) :
-			severity{ std::forward<T>(data) }
+	public:
+		explicit SetSev(TSeverityLevel data) noexcept(std::is_nothrow_move_constructible_v<TSeverityLevel>) :
+			m_Data{ std::move(data) }
 		{
 		}
+		
+		template <Record TRecord>
+		void operator ()(TRecord& rec)
+		{
+			rec.setSeverity(std::move(m_Data));
+		}
 
-		std::any severity;
+	private:
+		TSeverityLevel m_Data;
 	};
-
-	/**
-	 * \brief Manipulates the severity level of the current RecordBuilder object
-	 * \details This is a typedef for SetSeverity
-	 */
-	using SetSev = SetSeverity;
 
 	/**
 	 * \brief Manipulates the channel of the current RecordBuilder object
 	 * \details This type is generally designed to be directly used in logging expressions and just stores data which will be hand-over to a RecordBuilder instance.
 	 * In fact this is just a helper struct for which RecordBuilder provides an overload of operator <<, which will then modify the channel of the current RecordBuilder object.
 	 */
-	struct SetChannel
+	template <class TChannel>
+	class SetChan
 	{
+	public:
 		/**
 		 * \brief Constructor accepting channel data
-		 * \tparam T T must be implicit convertible to std::any.
 		 * \param data Channel data.
 		 */
-		template <class T>
-		explicit SetChannel(T&& data) :
-			channel{ std::forward<T>(data) }
+		explicit SetChan(TChannel data) noexcept(std::is_nothrow_move_constructible_v<TChannel>) :
+			m_Data{ std::move(data) }
 		{
 		}
 
-		std::any channel;
-	};
-
-	/**
-	 * \brief Manipulates the channel of the current RecordBuilder object
-	 * \details This is a typedef for SetChannel
-	 */
-	using SetChan = SetChannel;
-
-	/**
-	 * \brief Manipulates the user data of the current RecordBuilder object
-	 * \details This type is generally designed to be directly used in logging expressions and just stores data which will be hand-over to a RecordBuilder instance.
-	 * In fact this is just a helper struct for which RecordBuilder provides an overload of operator <<, which will then modify the user data of the current RecordBuilder object.
-	 */
-	struct SetUserData
-	{
-		/**
-		 * \brief Constructor accepting user data
-		 * \tparam T T must be implicit convertible to std::any.
-		 * \param data User data.
-		 */
-		template <class T>
-		explicit SetUserData(T&& data) :
-			userData{ std::forward<T>(data) }
+		template <Record TRecord>
+		void operator ()(TRecord& rec)
 		{
+			rec.setChannel(std::move(m_Data));
 		}
 
-		std::any userData;
+	private:
+		TChannel m_Data;
 	};
-
-	/**
-	 * \brief Manipulates the user data of the current RecordBuilder object
-	 * \details This is a typedef for SetUserData
-	 */
-	using SetData = SetUserData;
 
 	/**
 	 * \brief Helper class for building new Records
@@ -113,10 +83,16 @@ namespace sl::log
 	 * When a RecordBuilder object gets destroyed (mainly because going out of scope) it will automatically send its created Record to the designated Logger object. Users should not instantiate
 	 * objects themselves, but should instead use the Logger objects.
 	 */
+	template <Record TRecord>
 	class RecordBuilder
 	{
+	public:
+		using Record_t = TRecord;
+		using SeverityLevel_t = typename Record_t::SeverityLevel_t;
+		using Channel_t = typename Record_t::Channel_t;
+	
 	private:
-		using LogCallback_t = std::function<void(Record)>;
+		using LogCallback_t = std::function<void(Record_t)>;
 
 	public:
 		/**
@@ -127,8 +103,8 @@ namespace sl::log
 		 * \endcode
 		 * \param cb Callback to the associated Logger object
 		 */
-		explicit RecordBuilder(LogCallback_t cb) noexcept :
-			m_Record{ .time = std::chrono::system_clock::now() },
+		explicit RecordBuilder(Record_t prefabRec, LogCallback_t cb) noexcept :
+			m_Record{ std::move(prefabRec) },
 			m_LogCallback{ std::move(cb) }
 		{
 		}
@@ -143,7 +119,7 @@ namespace sl::log
 			{
 				try
 				{
-					m_Record.message = std::move(m_Stream).str();
+					m_Record.setMessage(std::move(m_Stream).str());
 					m_LogCallback(std::move(m_Record));
 				}
 				catch (...)
@@ -189,7 +165,7 @@ namespace sl::log
 		/**
 		 * \brief Accessor to the internal record object
 		 */
-		[[nodiscard]] Record& record() noexcept
+		[[nodiscard]] Record_t& record() noexcept
 		{
 			return m_Record;
 		}
@@ -197,7 +173,7 @@ namespace sl::log
 		/**
 		 * \brief Const accessor to the internal record object
 		 */
-		[[nodiscard]] const Record& record() const noexcept
+		[[nodiscard]] const Record_t& record() const noexcept
 		{
 			return m_Record;
 		}
@@ -221,43 +197,19 @@ namespace sl::log
 		}
 
 		/**
-		 * \brief Special output operator overload for SetSeverity
-		 * \details Manipulates the severity level of the Record created by this RecordBuilder instance.
-		 * \param setSev Holds the concrete severity level.
+		 * \brief Special output operator overload for actions on Record
+		 * \param action Action which will be applied to the internal Record object.
 		 * \return Returns a reference to this.
 		 */
-		RecordBuilder& operator <<(SetSeverity setSev) noexcept
+		template <std::invocable<Record_t&> TAction>
+		RecordBuilder& operator <<(TAction action) noexcept
 		{
-			m_Record.severity = std::move(setSev.severity);
-			return *this;
-		}
-
-		/**
-		 * \brief Special output operator overload for SetChannel
-		 * \details Manipulates the channel of the Record created by this RecordBuilder instance.
-		 * \param setChannel Holds the concrete channel.
-		 * \return Returns a reference to this.
-		 */
-		RecordBuilder& operator <<(SetChannel setChannel) noexcept
-		{
-			m_Record.channel = std::move(setChannel.channel);
-			return *this;
-		}
-
-		/**
-		 * \brief Special output operator overload for SetUserData
-		 * \details Manipulates the user data of the Record created by this RecordBuilder instance.
-		 * \param setUserData Holds the concrete user data.
-		 * \return Returns a reference to this.
-		 */
-		RecordBuilder& operator <<(SetUserData setUserData) noexcept
-		{
-			m_Record.channel = std::move(setUserData.userData);
+			std::invoke(action, m_Record);
 			return *this;
 		}
 
 	private:
-		Record m_Record;
+		Record_t m_Record;
 		std::ostringstream m_Stream;
 		LogCallback_t m_LogCallback;
 	};

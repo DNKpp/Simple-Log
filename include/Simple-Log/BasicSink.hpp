@@ -12,7 +12,6 @@
 #include <iomanip>
 #include <mutex>
 #include <ostream>
-#include <string>
 
 #include "Concepts.hpp"
 #include "ISink.hpp"
@@ -30,21 +29,31 @@ namespace sl::log
 	 *
 	 *	This class offers everything you'll need to print messages into console via std::cout or std::cerr.
 	 */
+	template <Record TRecord>
 	class BasicSink :
-		public ISink
+		public ISink<TRecord>
 	{
+		using Super = ISink<TRecord>;
+
+	public:
+		using typename Super::Record_t;
+		using Formatter_t = std::function<void(std::ostream&, const Record_t&)>;
+		using Filter_t = std::function<bool(const Record_t&)>;
+
 	protected:
 		static auto defaultFormatter() noexcept
 		{
-			return [](std::ostream& out, const Record& rec)
+			return [](std::ostream& out, const Record_t& rec)
 			{
 				using namespace std::chrono;
+				using namespace std::chrono_literals;
 
-				const auto today = rec.time.time_since_epoch() % hours{ 24 };
+				// ToDo: replace with c++20 chrono and format
+				const auto today = rec.timePoint().time_since_epoch() % 24h;
 				const auto hour = duration_cast<hours>(today);
-				const auto minute = duration_cast<minutes>(today) % hours{ 1 };
-				const auto second = duration_cast<seconds>(today) % minutes{ 1 };
-				const auto millisecond = duration_cast<milliseconds>(today) % seconds{ 1 };
+				const auto minute = duration_cast<minutes>(today) % 1h;
+				const auto second = duration_cast<seconds>(today) % 1min;
+				const auto millisecond = duration_cast<milliseconds>(today) % 1s;
 				out << std::setfill('0') <<
 					std::setw(2) << hour.count() << ":" <<
 					std::setw(2) << minute.count() << ":" <<
@@ -52,17 +61,14 @@ namespace sl::log
 					std::setw(3) << millisecond.count() <<
 					" >>> ";
 
-				if (auto* sevLvlPtr = std::any_cast<SeverityLevel>(&rec.severity))
-				{
-					out << *sevLvlPtr << "::";
-				}
-				out << rec.message;
+				out << rec.severity();
+				out << rec.message();
 			};
 		}
 
 		static auto defaultFilter() noexcept
 		{
-			return [](const Record& rec) { return true; };
+			return [](const Record_t& rec) { return true; };
 		}
 
 	public:
@@ -110,12 +116,12 @@ namespace sl::log
 		 *	The active formatter will be used to hand-over the necessary information of the Record object to the stream object.
 		 * \param record Record object
 		 */
-		void log(const Record& record) override
+		void log(const Record_t& record) override
 		{
 			std::scoped_lock lock{ m_FilterMx, m_FormatterMx, m_StreamMx };
-			if (m_Filter(record))
+			if (std::invoke(m_Filter, record))
 			{
-				m_Formatter(m_Stream, record);
+				std::invoke(m_Formatter, m_Stream, record);
 				m_Stream << std::endl;
 			}
 		}
@@ -138,7 +144,7 @@ namespace sl::log
 		 * \tparam TFormatter Type of the passed formatter (automatically deduced)
 		 * \param formatter An invokable formatter object
 		 */
-		template <RecordFormatter TFormatter>
+		template <RecordFormatterFor<Record_t> TFormatter>
 		void setFormatter(TFormatter&& formatter) noexcept
 		{
 			std::scoped_lock lock{ m_FormatterMx };
@@ -165,7 +171,7 @@ namespace sl::log
 		 * \tparam TFilter  Type of the passed filter (automatically deduced)
 		 * \param filter  An invokable filter object
 		 */
-		template <RecordFilter TFilter>
+		template <RecordFilterFor<Record_t> TFilter>
 		void setFilter(TFilter&& filter) noexcept
 		{
 			std::scoped_lock lock{ m_FilterMx };
@@ -197,9 +203,6 @@ namespace sl::log
 		}
 
 	private:
-		using Formatter_t = std::function<void(std::ostream&, const Record&)>;
-		using Filter_t = std::function<bool(const Record&)>;
-
 		std::mutex m_StreamMx;
 		std::ostream& m_Stream;
 

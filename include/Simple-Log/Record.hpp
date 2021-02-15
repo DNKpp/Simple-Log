@@ -8,7 +8,6 @@
 
 #pragma once
 
-#include <any>
 #include <chrono>
 #include <ostream>
 #include <string>
@@ -25,65 +24,96 @@ namespace sl::log
 	 */
 
 	/**
-	 * \brief A simple severity level enum type
-	 * \details This type serves as a default solution for severity levels but doesn't have to be used. You are free to declare your custom enum type or anything more exotic you can imagine.
-	 */
-	enum class SeverityLevel
-	{
-		info,
-		debug,
-		hint,
-		warning,
-		error,
-		fatal
-	};
-
-	/**
-	 * \brief Operator << overload for the default severity type
-	 * \details This is a simple overload for the library provided SeverityLevel, which will be used in the default formatter if such a type is detected. It simply translates the enum value name to a string representation.
-	 * \param out the stream object
-	 * \param lvl the severity level
-	 * \return Returns the parameter out as reference
-	 */
-	inline std::ostream& operator <<(std::ostream& out, SeverityLevel lvl)
-	{
-		constexpr const char* str[] = { "info", "debug", "hint", "warning", "error", "fatal" };
-		out << str[static_cast<std::size_t>(lvl)];
-		return out;
-	}
-
-	/**
 	 * \brief A collection of logging related information
 	 * \details This class serves as a simple collection of all the gathered information during a logging action.
 	 */
-	class Record
+	template <class TSeverityLevel,
+			class TChannel,
+			class TMessage = std::string,
+			class TTimePoint = std::chrono::system_clock::time_point
+	>
+	class BaseRecord
 	{
 	public:
-		/**
-		 * \brief Stores the logged message.
-		 */
-		std::string message;
-
-		/**
-		 * \brief Stores the time point when the Record was made.
-		 */
-		std::chrono::system_clock::time_point time;
+		using Message_t = TMessage;
+		using SeverityLevel_t = TSeverityLevel;
+		using Channel_t = TChannel;
+		using TimePoint_t = TTimePoint;
 #ifdef __cpp_lib_source_location
-		std::source_location sourceLocation;
+		using SourceLocation_t = std::source_location;
 #endif
 
-		/**
-		 * \brief Stores the Record s severity level. Can be of any type.
-		 */
-		std::any severity;
-		/**
-		 * \brief Stores the Record s related channel. Can be of any type.
-		 */
-		std::any channel;
-		/**
-		 * \brief Stores additional user data. Can be of any type.
-		 */
-		std::any userData;
+		[[nodiscard]]
+		std::string_view message() const noexcept
+		{
+			return m_Message;
+		}
+
+		template <std::convertible_to<Message_t> UMessage>
+		void setMessage(UMessage&& msg)
+		{
+			m_Message = std::forward<UMessage>(msg);
+		}
+
+		[[nodiscard]]
+		const TimePoint_t& timePoint() const noexcept
+		{
+			return m_TimePoint;
+		}
+
+		template <std::convertible_to<TimePoint_t> UTimePoint>
+		void setTimePoint(UTimePoint&& timePoint)
+		{
+			m_TimePoint = std::forward<UTimePoint>(timePoint);
+		}
+
+		[[nodiscard]]
+		const SeverityLevel_t& severity() const noexcept
+		{
+			return m_Severity;
+		}
+
+		template <std::convertible_to<SeverityLevel_t> USeverityLevel>
+		void setSeverity(USeverityLevel&& severity)
+		{
+			m_Severity = std::forward<USeverityLevel>(severity);
+		}
+
+		[[nodiscard]]
+		const Channel_t& channel() const noexcept
+		{
+			return m_Channel;
+		}
+
+		template <std::convertible_to<Channel_t> UChannel>
+		void setChannel(UChannel&& channel)
+		{
+			m_Channel = std::forward<UChannel>(channel);
+		}
+
+#ifdef __cpp_lib_source_location
+		[[nodiscard]]
+		const SourceLocation_t& sourceLocation() const noexcept
+		{
+			return m_SourceLocation;
+		}
+
+		template <std::convertible_to<SourceLocation_t> USourceLocation>
+		void setChannel(USourceLocation&& sourceLocation)
+		{
+			m_SourceLocation = std::forward<USourceLocation>(sourceLocation);
+		}
+#endif
+
+	private:
+		Message_t m_Message{};
+		TimePoint_t m_TimePoint{};
+		SeverityLevel_t m_Severity{};
+		Channel_t m_Channel{};
+
+#ifdef __cpp_lib_source_location
+		SourceLocation_t m_SourceLocation;
+#endif
 	};
 
 	/** @}*/
