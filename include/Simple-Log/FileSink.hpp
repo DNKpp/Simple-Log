@@ -103,7 +103,7 @@ namespace sl::log
 		 * \param directory			The directory where all files of this sink will be generated.
 		 */
 		FileSink(std::string fileNamePattern, std::filesystem::path directory = std::filesystem::current_path()) :
-			BasicSink{ m_FileStream },
+			Super{ m_FileStream },
 			m_FileNamePattern{ std::move(fileNamePattern) },
 			m_Directory{ std::move(directory.remove_filename()) }
 		{
