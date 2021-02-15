@@ -24,7 +24,8 @@ namespace sl::log
 	 */
 
 	/**
-	 * \brief Class for logging into files 
+	 * \brief Class for logging into files
+	 * \tparam TRecord Used Record type.
 	 * \details Instances of this class are linked to a specific file and writes every Record into it. Users can setup \ref Rotation "rotation" and cleanup rules.
 	 *
 	 * \section FileNamePattern File name pattern
@@ -68,6 +69,7 @@ namespace sl::log
 	 * \endcode
 	 */
 	template <Record TRecord>
+	// ReSharper disable once CppClassCanBeFinal
 	class FileSink :
 		public BasicSink<TRecord>
 	{
@@ -102,7 +104,7 @@ namespace sl::log
 		 * \param fileNamePattern	Pattern string from which new file names will be generated.
 		 * \param directory			The directory where all files of this sink will be generated.
 		 */
-		FileSink(std::string fileNamePattern, std::filesystem::path directory = std::filesystem::current_path()) :
+		explicit FileSink(std::string fileNamePattern, std::filesystem::path directory = std::filesystem::current_path()) :
 			Super{ m_FileStream },
 			m_FileNamePattern{ std::move(fileNamePattern) },
 			m_Directory{ std::move(directory.remove_filename()) }
@@ -154,7 +156,8 @@ namespace sl::log
 		/**
 		 * \brief Returns a copy of the current RotationRule configuration
 		 */
-		[[nodiscard]] RotationRule rotationRule() const noexcept
+		[[nodiscard]]
+		RotationRule rotationRule() const noexcept
 		{
 			return load(m_RotationRule, m_RotationRuleMx);
 		}
@@ -172,7 +175,8 @@ namespace sl::log
 		/**
 		 * \brief Returns a copy of the current CleanupRule configuration
 		 */
-		[[nodiscard]] CleanupRule cleanupRule() const noexcept
+		[[nodiscard]]
+		CleanupRule cleanupRule() const noexcept
 		{
 			return load(m_CleanupRule, m_CleanupRuleMx);
 		}
@@ -355,7 +359,8 @@ namespace sl::log
 			}
 		}
 
-		[[nodiscard]] bool shallRotate() const
+		[[nodiscard]]
+		bool shallRotate() const
 		{
 			assert(m_FileStream.is_open() && m_CurrentFilePath && !std::empty(*m_CurrentFilePath));
 
