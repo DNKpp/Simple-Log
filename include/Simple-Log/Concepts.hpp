@@ -14,9 +14,21 @@
 
 namespace sl::log
 {
+	/** \addtogroup concepts
+	 * @{
+	 */
+
+	/**
+	 * \brief Concept checking for void type
+	 * \details Mainly used checking for non-void return types.
+	 */
 	template <class T1>
 	concept NotVoid = !std::is_same_v<T1, void>;
 
+	/**
+	 * \brief Concept for Record types
+	 * \details This concept contains the specifications which all Record types must implement.
+	*/
 	template <class T>
 	concept Record =
 		std::movable<T> &&
@@ -34,7 +46,7 @@ namespace sl::log
 			{ rec.channel() } -> NotVoid;
 			{ rec.timePoint() } -> NotVoid;
 		} &&
-		requires (T& rec)
+		requires(T& rec)
 		{
 			{ rec.setMessage(std::declval<typename T::Message_t>()) };
 			{ rec.setTimePoint(std::declval<typename T::TimePoint_t>()) };
@@ -42,15 +54,25 @@ namespace sl::log
 			{ rec.setChannel(std::declval<typename T::Channel_t>()) };
 		};
 
+	/**
+	 * \brief Concept for invokable formatter objects
+	*/
 	template <class T, class TRecord>
 	concept RecordFormatterFor = Record<TRecord> && std::invocable<T, std::ostream&, const TRecord&>;
 
+	/**
+	 * \brief Concept for invokable filter objects
+	*/
 	template <class T, class TRecord>
 	concept RecordFilterFor = Record<TRecord> && std::predicate<T, const TRecord&>;
 
+	/**
+	 * \brief Concept for invokable file state handler objects
+	*/
 	template <class T>
 	concept FileStateHandler = std::invocable<T> && std::convertible_to<std::invoke_result_t<T>, std::string>;
-	
+
+	/** @}*/
 }
 
 #endif
