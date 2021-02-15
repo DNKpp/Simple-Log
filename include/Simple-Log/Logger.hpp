@@ -8,7 +8,6 @@
 
 #pragma once
 
-#include <any>
 #include <cassert>
 #include <version>
 
@@ -18,15 +17,15 @@
 
 #include "Concepts.hpp"
 #include "Core.hpp"
-#include "Record.hpp"
 #include "RecordBuilder.hpp"
 
 namespace sl::log
 {
 	/**
 	 * \brief Convenience class for generating Record s
+	 * \attention The corresponding Core instance must outlive all related Logger instances.
 	 * \details This class is in fact a template for upcoming Record s. It stores default settings (e.g. severity level and channel) for newly generated Record s. Using its operator () users can start building Record s
-	 * in an effective and elegant manner.
+	 * in an effective and elegant manner. Logger instances are rather lightweight, thus could be instantiated on class level, but it is also fine using the same instance in the whole program.
 	 */
 	template <Record TRecord>
 	class Logger
@@ -35,6 +34,7 @@ namespace sl::log
 		using Record_t = TRecord;
 		using SeverityLevel_t = typename Record_t::SeverityLevel_t;
 		using Channel_t = typename Record_t::Channel_t;
+		using UserData_t = typename Record_t::UserData_t;
 		using Core_t = Core<Record_t>;
 		using RecordBuilder_t = RecordBuilder<Record_t>;
 
@@ -66,7 +66,7 @@ namespace sl::log
 		 */
 		Logger(const Logger&) noexcept = default;
 		/**
-		 * \brief Copy assign operator
+		 * \brief Copy-assign operator
 		 */
 		Logger& operator =(const Logger&) noexcept = default;
 
@@ -75,23 +75,24 @@ namespace sl::log
 		 */
 		Logger(Logger&&) noexcept = default;
 		/**
-		 * \brief Move assign operator
+		 * \brief Move-assign operator
 		 */
 		Logger& operator =(Logger&&) noexcept = default;
 
 		/**
 		 * \brief Creates a new instance of RecordBuilder
-		 * \details This is the entry point for producing new Record s. The returned RecordBuilder object will be pre-initialized with each default values,
+		 * \details This is the entry point for producing new Record s. The returned RecordBuilder object will be pre-initialized with each values set to Logger's default,
 		 * which might be overriden during the Record building process. 
 		 * \return Newly created RecordBuilder instance.
 		 */
+		[[nodiscard]]
 #ifdef __cpp_lib_source_location
 		RecordBuilder_t operator ()(const std::source_location& srcLoc = std::source_location::current())
 #else
 		RecordBuilder_t operator ()()
 #endif
 		{
-			assert(m_Core);
+			assert(m_Core && "Pointer to core instance must be set.");
 			Record_t prefabRec;
 			prefabRec.setTimePoint(std::chrono::system_clock::now());
 			prefabRec.setSeverity(m_DefaultSeverityLvl);
@@ -119,7 +120,8 @@ namespace sl::log
 		 * \brief Getter for the default severity level
 		 * \return Returns a const reference to the default severity level.
 		 */
-		[[nodiscard]] const SeverityLevel_t& defaultSeverityLevel() const noexcept
+		[[nodiscard]]
+		const SeverityLevel_t& defaultSeverityLevel() const noexcept
 		{
 			return m_DefaultSeverityLvl;
 		}
@@ -138,7 +140,8 @@ namespace sl::log
 		 * \brief Getter for the default channel
 		 * \return Returns a const reference to the default channel.
 		 */
-		[[nodiscard]] const Channel_t& defaultChannel() const noexcept
+		[[nodiscard]]
+		const Channel_t& defaultChannel() const noexcept
 		{
 			return m_DefaultChannel;
 		}
