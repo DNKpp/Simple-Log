@@ -21,14 +21,14 @@ namespace sl::log::detail
 	{
 	public:
 		template <class TTuple, Record TRecord>
-		bool operator ()(TTuple& tuple, const TRecord& record)
+		constexpr bool operator ()(TTuple& tuple, const TRecord& record)
 		{
 			return invoke<0>(tuple, record);
 		}
 
 	private:
 		template <std::size_t Index, class TTuple, Record TRecord>
-		bool invoke(TTuple& tuple, const TRecord& record)
+		constexpr bool invoke(TTuple& tuple, const TRecord& record)
 		{
 			if constexpr (Index < std::tuple_size_v<TTuple>)
 			{
@@ -46,14 +46,14 @@ namespace sl::log::detail
 	{
 	public:
 		template <class TTuple, Record TRecord>
-		bool operator ()(TTuple& tuple, const TRecord& record)
+		constexpr bool operator ()(TTuple& tuple, const TRecord& record)
 		{
 			return invoke<0>(tuple, record);
 		}
 
 	private:
 		template <std::size_t Index, class TTuple, Record TRecord>
-		bool invoke(TTuple& tuple, const TRecord& record)
+		constexpr bool invoke(TTuple& tuple, const TRecord& record)
 		{
 			if constexpr (Index < std::tuple_size_v<TTuple>)
 			{
@@ -71,10 +71,10 @@ namespace sl::log::detail
 		private TupleAnyOf
 	{
 		using Super = TupleAnyOf;
-		
+
 	public:
 		template <class TTuple, Record TRecord>
-		bool operator ()(TTuple& tuple, const TRecord& record)
+		constexpr bool operator ()(TTuple& tuple, const TRecord& record)
 		{
 			return !Super::operator()(tuple, record);
 		}
@@ -105,7 +105,7 @@ namespace sl::log
 	private:
 		Projection_t m_Projection;
 		UnaryPredicate_t m_Predicate;
-	};	
+	};
 
 	template <class TAlgorithm, class... TFilter>
 	class FilterChain
@@ -146,7 +146,7 @@ namespace sl::log
 		public FilterChain<detail::TupleAnyOf, TFilter...>
 	{
 		using Algorithm = detail::TupleAnyOf;
-	
+
 	public:
 		constexpr explicit FilterDisjunction(TFilter ... filter) :
 			FilterChain<Algorithm, TFilter...>{ std::move(filter)... }
@@ -159,7 +159,7 @@ namespace sl::log
 		public FilterChain<detail::TupleAnyOf, TFilter...>
 	{
 		using Algorithm = detail::TupleAnyOf;
-	
+
 	public:
 		constexpr explicit FilterConjunction(TFilter ... filter) :
 			FilterChain<Algorithm, TFilter...>{ std::move(filter)... }
