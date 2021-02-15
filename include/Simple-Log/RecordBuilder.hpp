@@ -37,7 +37,7 @@ namespace sl::log
 		 * \brief Constructor accepting severity level data
 		 * \param data Severity level data.
 		 */
-		explicit SetSev(TSeverityLevel data) noexcept(std::is_nothrow_move_constructible_v<TSeverityLevel>) :
+		explicit constexpr SetSev(TSeverityLevel data) noexcept(std::is_nothrow_move_constructible_v<TSeverityLevel>) :
 			m_Data{ std::move(data) }
 		{
 		}
@@ -48,9 +48,9 @@ namespace sl::log
 		 * \param rec The Record which is about to change
 		 */
 		template <Record TRecord>
-		void operator ()(TRecord& rec)
+		void operator ()(TRecord& rec) const
 		{
-			rec.setSeverity(std::move(m_Data));
+			rec.setSeverity(m_Data);
 		}
 
 	private:
@@ -71,7 +71,7 @@ namespace sl::log
 		 * \brief Constructor accepting channel data
 		 * \param data Channel data.
 		 */
-		explicit SetChan(TChannel data) noexcept(std::is_nothrow_move_constructible_v<TChannel>) :
+		explicit constexpr SetChan(TChannel data) noexcept(std::is_nothrow_move_constructible_v<TChannel>) :
 			m_Data{ std::move(data) }
 		{
 		}
@@ -82,9 +82,9 @@ namespace sl::log
 		 * \param rec The Record which is about to change
 		 */
 		template <Record TRecord>
-		void operator ()(TRecord& rec)
+		void operator ()(TRecord& rec) const
 		{
-			rec.setChannel(std::move(m_Data));
+			rec.setChannel(m_Data);
 		}
 
 	private:
