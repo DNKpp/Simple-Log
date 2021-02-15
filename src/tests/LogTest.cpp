@@ -7,33 +7,53 @@
 
 #include <concepts>
 #include <iostream>
-#include "Simple-Log/Simple-Log.hpp"
+#include "Simple-Log/PresetTypes.hpp"
 
 using namespace sl::log;
 
-inline Core core;
+using Record_t = BaseRecord<pre::SeverityLevel, std::string, std::string, std::chrono::system_clock::time_point>;
+inline Core<Record_t> core;
 
 enum class Channel
 {
 	test
 };
 
+struct Formatter
+{
+	template <Record TRecord>
+	void operator ()(std::ostream& out, const TRecord& rec)
+	{
+	}
+};
+
+using Sev = pre::SetSev;
+
 TEST_CASE(" ", "[Core]")
 {
-	auto& sink = core.makeSink<BasicSink>(std::cout);
-	auto& fileSink = core.makeSink<FileSink>("test-%Y-%m-%d_%3N.log");
+	auto& sink = core.makeSink<BasicSink<Record_t>>(std::cout);
+	auto& fileSink = core.makeSink<FileSink<Record_t>>("test-%Y-%m-%d_%3N.log");
 	fileSink.setRotationRule({ .fileSize = 10 * 1024 * 1024 });
 	fileSink.setCleanupRule({ .fileCount = 20 });
 
-	auto f{ makeChannelFilter<Channel>(pred::LessToConstant{ Channel::test }) };
-	FilterConjunction c{ f, f };
-	fileSink.setFilter(c);
+	fileSink.setFilter(
+		FilterAllOf
+		{
+			ProjectionFilter{ &Record_t::severity, pred::LessToConstant{ pre::SeverityLevel::info }},
+			ProjectionFilter{ &Record_t::channel, pred::NotEqualsToConstant{ "test" } },
+			makeChannelFilterFor<Record_t>(pred::NotEqualsToConstant{ "test" })
+		}
+	);
+
+	//auto f{ makeChannelFilter<Channel>(pred::LessToConstant{ Channel::test }) };
+	//FilterConjunction c{ f, f };
+	//fileSink.setFilter(c);
 	//fileSink.setFilter(Filter{ &Record::time, EqualsToConstant{ std::chrono::steady_clock::now() }});
+	
+	Logger<Record_t> log{ core, pre::SeverityLevel::info };
 
-	Logger log{ core, SeverityLevel::info };
-
-	log() << SetSeverity(SeverityLevel::debug) << "Hello," << SetChannel(Channel::test) << "World!";
-	log() << "Hello, Zhavok!";
+	log() << SetSev(pre::SeverityLevel::debug) << "Hello," << SetChan("test") << "World!";
+	log() << "Hello, Zhavok!" << Sev::error;
 
 	//sink.setFormatter([](std::ostream& out, const Record& rec) { out << "yes" << rec.message; });
 	//sink.setFilter([](const Record& rec){ return rec.message != "Hello, World!"; });

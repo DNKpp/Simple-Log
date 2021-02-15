@@ -11,7 +11,6 @@
 #include "Concepts.hpp"
 #include "Filters.hpp"
 #include "Predicates.hpp"
-#include "Projections.hpp"
 
 #include "StringPattern.hpp"
 
