@@ -11,7 +11,8 @@
 
 using namespace sl::log;
 
-inline pre::Core_t core;
+using Record_t = BaseRecord<pre::SeverityLevel, std::string, std::string, std::chrono::system_clock::time_point, int>;
+inline Core<Record_t> core;
 
 enum class Channel
 {
@@ -30,7 +31,7 @@ struct Formatter
 TEST_CASE(" ", "[Core]")
 {
 
-	auto& sink = core.makeSink<pre::BasicSink_t>(std::cout);
+	auto& sink = core.makeSink<BasicSink<Record_t>>(std::cout);
 	//auto& fileSink = core.makeSink<FileSink>("test-%Y-%m-%d_%3N.log");
 	//fileSink.setRotationRule({ .fileSize = 10 * 1024 * 1024 });
 	//fileSink.setCleanupRule({.fileCount = 20});
@@ -43,10 +44,10 @@ TEST_CASE(" ", "[Core]")
 
 	//fileSink.setFormatter(Formatter{});
 
-	pre::Logger_t log{ core, pre::SeverityLevel::info };
+	Logger<Record_t> log{ core, pre::SeverityLevel::info };
 
 	log() << SetSev(pre::SeverityLevel::debug) << "Hello," << SetChan("test") << "World!";
-	log() << "Hello, Zhavok!";
+	log() << "Hello, Zhavok!" << SetData(1337);
 	
 	//sink.setFormatter([](std::ostream& out, const Record& rec) { out << "yes" << rec.message; });
 	//sink.setFilter([](const Record& rec){ return rec.message != "Hello, World!"; });

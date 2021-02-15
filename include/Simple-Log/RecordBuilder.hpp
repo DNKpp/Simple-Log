@@ -77,6 +77,25 @@ namespace sl::log
 		TChannel m_Data;
 	};
 
+	template <class TUserData>
+	class SetData
+	{
+	public:
+		explicit SetData(TUserData data) noexcept(std::is_nothrow_move_constructible_v<TUserData>) :
+			m_Data{ std::move(data) }
+		{
+		}
+
+		template <Record TRecord>
+		void operator ()(TRecord& rec)
+		{
+			rec.setUserData(std::move(m_Data));
+		}
+
+	private:
+		TUserData m_Data;
+	};
+
 	/**
 	 * \brief Helper class for building new Records
 	 * \details This is class provides the simple and elegant interface for making logging expressions. Its objects are non-copyable but movable.

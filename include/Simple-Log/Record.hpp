@@ -11,6 +11,7 @@
 #include <chrono>
 #include <ostream>
 #include <string>
+#include <tuple>
 #include <version>
 
 #ifdef __cpp_lib_source_location
@@ -27,10 +28,11 @@ namespace sl::log
 	 * \brief A collection of logging related information
 	 * \details This class serves as a simple collection of all the gathered information during a logging action.
 	 */
-	template <class TSeverityLevel,
-			class TChannel,
-			class TMessage = std::string,
-			class TTimePoint = std::chrono::system_clock::time_point
+	template <std::semiregular TSeverityLevel,
+			std::semiregular TChannel,
+			std::semiregular TMessage = std::string,
+			std::semiregular TTimePoint = std::chrono::system_clock::time_point,
+			std::semiregular... TUserData
 	>
 	class BaseRecord
 	{
@@ -39,6 +41,7 @@ namespace sl::log
 		using SeverityLevel_t = TSeverityLevel;
 		using Channel_t = TChannel;
 		using TimePoint_t = TTimePoint;
+		using UserData_t = std::tuple<TUserData...>;
 #ifdef __cpp_lib_source_location
 		using SourceLocation_t = std::source_location;
 #endif
@@ -105,12 +108,29 @@ namespace sl::log
 		}
 #endif
 
+		// ToDo: enable when SetDataAt<index> is possible
+		//template <std::size_t Index, std::semiregular UUserData>
+		//requires requires
+		//{
+		//	Index < std::tuple_size_v<UserData_t>;
+		//} && std::convertible_to<UUserData, std::tuple_element_t<Index, UserData_t>>
+		//void setUserData(UUserData&& userData)
+		//{
+		//	setUserData(std::get<Index>(m_UserData), std::forward<UUserData>(userData));
+		//}
+
+		template <std::semiregular UUserData>
+		void setUserData(UUserData&& userData)
+		{
+			std::get<UUserData>(m_UserData) = std::forward<UUserData>(userData);
+		}
+
 	private:
 		Message_t m_Message{};
 		TimePoint_t m_TimePoint{};
 		SeverityLevel_t m_Severity{};
 		Channel_t m_Channel{};
-
+		UserData_t m_UserData;
 #ifdef __cpp_lib_source_location
 		SourceLocation_t m_SourceLocation;
 #endif
