@@ -142,26 +142,39 @@ namespace sl::log
 	//using FilterConjunction = FilterChain<FilterAnyOf, TFilter...>;
 
 	template <class... TFilter>
-	class FilterDisjunction :
+	class FilterAllOf :
 		public FilterChain<detail::TupleAnyOf, TFilter...>
 	{
 		using Algorithm = detail::TupleAnyOf;
 
 	public:
-		constexpr explicit FilterDisjunction(TFilter ... filter) :
+		constexpr explicit FilterAllOf(TFilter ... filter) :
 			FilterChain<Algorithm, TFilter...>{ std::move(filter)... }
 		{
 		}
 	};
 
 	template <class... TFilter>
-	class FilterConjunction :
+	class FilterAnyOf :
 		public FilterChain<detail::TupleAnyOf, TFilter...>
 	{
 		using Algorithm = detail::TupleAnyOf;
 
 	public:
-		constexpr explicit FilterConjunction(TFilter ... filter) :
+		constexpr explicit FilterAnyOf(TFilter ... filter) :
+			FilterChain<Algorithm, TFilter...>{ std::move(filter)... }
+		{
+		}
+	};
+
+	template <class... TFilter>
+	class FilterNoneOf :
+		public FilterChain<detail::TupleNoneOf, TFilter...>
+	{
+		using Algorithm = detail::TupleNoneOf;
+
+	public:
+		constexpr explicit FilterNoneOf(TFilter ... filter) :
 			FilterChain<Algorithm, TFilter...>{ std::move(filter)... }
 		{
 		}

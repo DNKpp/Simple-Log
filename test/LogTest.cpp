@@ -37,7 +37,7 @@ TEST_CASE(" ", "[Core]")
 	fileSink.setCleanupRule({ .fileCount = 20 });
 
 	fileSink.setFilter(
-		FilterConjunction
+		FilterAllOf
 		{
 			ProjectionFilter{ &Record_t::severity, pred::LessToConstant{ pre::SeverityLevel::info }},
 			ProjectionFilter{ &Record_t::channel, pred::NotEqualsToConstant{ "test" } },
