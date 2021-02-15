@@ -25,6 +25,7 @@ namespace sl::log::pre
 		error,
 		fatal
 	};
+	using enum SeverityLevel;
 
 	/**
 	 * \brief Operator << overload for the default severity type
