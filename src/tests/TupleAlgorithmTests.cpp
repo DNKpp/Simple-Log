@@ -10,14 +10,11 @@
 
 using namespace sl::log;
 
-//inline auto trueCb = [](auto& rec) { return true;  };
-//inline auto falseCb = [](auto& rec) { return false; };
+constexpr auto trueCb = [](auto& rec) { return true;  };
+constexpr auto falseCb = [](auto& rec) { return false; };
 
 SCENARIO("TupleAllOf", "[filters/tuple-algorithms]")
 {
-	auto trueCb = [](auto& rec) { return true; };
-	auto falseCb = [](auto& rec) { return false; };
-
 	detail::TupleAllOf algorithm;
 	pre::Record_t record;
 
@@ -104,9 +101,6 @@ SCENARIO("TupleAllOf", "[filters/tuple-algorithms]")
 
 SCENARIO("TupleAnyOf", "[filters/tuple-algorithms]")
 {
-	auto trueCb = [](auto& rec) { return true; };
-	auto falseCb = [](auto& rec) { return false; };
-
 	detail::TupleAnyOf algorithm;
 	pre::Record_t record;
 
@@ -193,9 +187,6 @@ SCENARIO("TupleAnyOf", "[filters/tuple-algorithms]")
 
 SCENARIO("TupleNoneOf", "[filters/tuple-algorithms]")
 {
-	auto trueCb = [](auto& rec) { return true; };
-	auto falseCb = [](auto& rec) { return false; };
-
 	detail::TupleNoneOf algorithm;
 	pre::Record_t record;
 
