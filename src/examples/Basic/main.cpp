@@ -9,7 +9,7 @@
 #include <iostream>
 #include <memory>
 
-/* let's use a namepsace alias for convenience; be aware: if you use cmath, msvc will bloat your global namespace with a log function declaration.
+/* let's use a namepsace alias for convenience; be aware: if you use cmath, some stl implementations will bloat your global namespace with a log function declaration (c-relict).
 Thus to make it compatible with all compilers, I'll use logging as alias instead.
 
 All preset type alias are located in the sl::log::pre namespace, thus they do not interfere with the actual library if you don't want them to.
