@@ -24,7 +24,6 @@ struct Formatter
 	template <Record TRecord>
 	void operator ()(std::ostream& out, const TRecord& rec)
 	{
-		
 	}
 };
 
@@ -32,17 +31,16 @@ TEST_CASE(" ", "[Core]")
 {
 
 	auto& sink = core.makeSink<BasicSink<Record_t>>(std::cout);
-	//auto& fileSink = core.makeSink<FileSink>("test-%Y-%m-%d_%3N.log");
-	//fileSink.setRotationRule({ .fileSize = 10 * 1024 * 1024 });
-	//fileSink.setCleanupRule({.fileCount = 20});
-	//fileSink.setFilter([](const Record& rec)
-	//{
-	//	if (auto channel = std::any_cast<Channel>(&rec.channel); channel && *channel == Channel::test)
-	//		return false;
-	//	return true;
-	//});
+	auto& fileSink = core.makeSink<FileSink<Record_t>>("test-%Y-%m-%d_%3N.log");
+	fileSink.setRotationRule({ .fileSize = 10 * 1024 * 1024 });
+	fileSink.setCleanupRule({.fileCount = 20});
+	fileSink.setFilter([](const Record_t& rec)
+	{
+		return rec.channel() == "test";
+	});
 
-	//fileSink.setFormatter(Formatter{});
+	fileSink.setFormatter(Formatter{});
+	fileSink.removeFormatter();
 
 	Logger<Record_t> log{ core, pre::SeverityLevel::info };
 
