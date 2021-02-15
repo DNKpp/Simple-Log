@@ -24,10 +24,11 @@ namespace sl::log
 
 	/**
 	 * \brief std::ostream orientated Sink class
+	 * \tparam TRecord Used Record type.
 	 * \details This Sink class uses a std::ostream reference for printing each recorded message and offers options to manipulate its behaviour: e.g. filtering and formatting messages. Due to the thread-safe design it is totally
 	 *	fine changing settings during program runtime. 
 	 *
-	 *	This class offers everything you'll need to print messages into console via std::cout or std::cerr.
+	 *	This class offers everything you'll need to print messages into console via std::cout, std::cerr or any other std::ostream object. For file related logging FileSink might be more suitable.
 	 */
 	template <Record TRecord>
 	class BasicSink :
@@ -74,9 +75,9 @@ namespace sl::log
 	public:
 		/**
 		 * \brief Constructor
-		 * \param stream The stream object, which will be used for printing formatted messages
+		 * \param stream The stream object, which will receive finally formatted messages
 		 */
-		BasicSink(std::ostream& stream) :
+		explicit BasicSink(std::ostream& stream) :
 			m_Stream{ stream }
 		{
 			m_Formatter = defaultFormatter();
@@ -90,23 +91,19 @@ namespace sl::log
 
 		/**
 		 * \brief Deleted copy constructor
-		 * \details
 		 */
 		BasicSink(const BasicSink&) = delete;
 		/**
 		 * \brief Deleted copy assign operator
-		 * \details
 		 */
 		BasicSink& operator =(const BasicSink&) = delete;
 
 		/**
 		 * \brief Deleted move constructor
-		 * \details
 		 */
 		BasicSink(BasicSink&&) = delete;
 		/**
 		 * \brief Deleted move assign operator
-		 * \details
 		 */
 		BasicSink& operator =(BasicSink&&) = delete;
 
@@ -129,7 +126,7 @@ namespace sl::log
 		/**
 		 * \brief Sets the active formatter
 		 * \details It's the formatters job to:
-		 * \li extract the necessary information from the Record
+		 * \li extract the necessary information from Records
 		 * \li pass the extracted infos to the stream object
 		 *
 		 * This design decision is motivated by the fact, that it would be unnecessarily inefficient letting the formatter creating a temporary string object, which would simply get passed to the internal stream.
