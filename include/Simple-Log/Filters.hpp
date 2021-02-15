@@ -21,14 +21,14 @@ namespace sl::log::detail
 	{
 	public:
 		template <class TTuple, Record TRecord>
-		constexpr bool operator ()(TTuple& tuple, const TRecord& record)
+		constexpr bool operator ()(TTuple& tuple, const TRecord& record) const
 		{
 			return invoke<0>(tuple, record);
 		}
 
 	private:
 		template <std::size_t Index, class TTuple, Record TRecord>
-		constexpr bool invoke(TTuple& tuple, const TRecord& record)
+		constexpr bool invoke(TTuple& tuple, const TRecord& record) const
 		{
 			if constexpr (Index < std::tuple_size_v<TTuple>)
 			{
@@ -46,14 +46,14 @@ namespace sl::log::detail
 	{
 	public:
 		template <class TTuple, Record TRecord>
-		constexpr bool operator ()(TTuple& tuple, const TRecord& record)
+		constexpr bool operator ()(TTuple& tuple, const TRecord& record) const
 		{
 			return invoke<0>(tuple, record);
 		}
 
 	private:
 		template <std::size_t Index, class TTuple, Record TRecord>
-		constexpr bool invoke(TTuple& tuple, const TRecord& record)
+		constexpr bool invoke(TTuple& tuple, const TRecord& record) const
 		{
 			if constexpr (Index < std::tuple_size_v<TTuple>)
 			{
@@ -74,7 +74,7 @@ namespace sl::log::detail
 
 	public:
 		template <class TTuple, Record TRecord>
-		constexpr bool operator ()(TTuple& tuple, const TRecord& record)
+		constexpr bool operator ()(TTuple& tuple, const TRecord& record) const
 		{
 			return !Super::operator()(tuple, record);
 		}
