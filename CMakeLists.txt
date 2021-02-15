@@ -40,6 +40,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 	add_executable(
 		test_simple_log
 		${TestsDir}/main.cpp
+		${TestsDir}/FilterTests.cpp
 		${TestsDir}/PredicateTests.cpp
 		${TestsDir}/ProjectionTests.cpp
 		${TestsDir}/StringPatternTest.cpp
