@@ -37,7 +37,13 @@
 			"remoteCopyBuildOutput": false,
 			"remoteCopySourcesMethod": "rsync",
 			"addressSanitizerRuntimeFlags": "detect_leaks=0",
-			"variables": []
+			"variables": [
+				{
+					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
+					"value": "True",
+					"type": "BOOL"
+				}
+			]
 		},
 		{
 			"name": "Linux-GCC-Release",
@@ -91,7 +97,13 @@
 			"remoteCopyBuildOutput": false,
 			"remoteCopySourcesMethod": "rsync",
 			"addressSanitizerRuntimeFlags": "detect_leaks=0",
-			"variables": []
+			"variables": [
+				{
+					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
+					"value": "True",
+					"type": "BOOL"
+				}
+			]
 		},
 		{
 			"name": "Linux-Clang-Release",
@@ -124,7 +136,13 @@
 			"buildCommandArgs": "",
 			"ctestCommandArgs": "",
 			"inheritEnvironments": [ "clang_cl_x64_x64" ],
-			"variables": []
+			"variables": [
+				{
+					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
+					"value": "True",
+					"type": "BOOL"
+				}
+			]
 		},
 		{
 			"name": "x64-Clang-Release",

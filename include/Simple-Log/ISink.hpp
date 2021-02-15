@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "Record.hpp"
+#include "Concepts.hpp"
 
 namespace sl::log
 {
@@ -18,11 +18,27 @@ namespace sl::log
 
 	/**
 	 * \brief Sink interface class
+	 * \tparam TRecord Used Record type.
 	 * \details The interface class for each derived Sink type. If you want to implement your custom Sink type, have a look at BasicSink first. This might be a better starting point for customizations.
 	 */
+	template <Record TRecord>
 	class ISink
 	{
 	public:
+		/**
+		 * \brief Used Record type.
+		 */
+		using Record_t = TRecord;
+
+		/**
+		 * \brief Deleted copy-constructor
+		 */
+		ISink(const ISink&) = delete;
+		/**
+		 * \brief Deleted copy-assign operator
+		 */
+		ISink& operator =(const ISink&) = delete;
+
 		/**
 		 * \brief virtual default destructor
 		 */
@@ -33,7 +49,21 @@ namespace sl::log
 		 * \details Will be called from the Worker thread.
 		 * \param record The record about to be processed by the sink
 		 */
-		virtual void log(const Record& record) = 0;
+		virtual void log(const Record_t& record) = 0;
+
+	protected:
+		/**
+		 * \brief Default constructor
+		 */
+		ISink() = default;
+		/**
+		 * \brief Default move-constructor
+		 */
+		ISink(ISink&&) = default;
+		/**
+		 * \brief Default move-assign operator
+		 */
+		ISink& operator =(ISink&&) = default;
 	};
 
 	/** @}*/
