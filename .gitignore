@@ -1,5 +1,5 @@
-/.vs
-/test/out
-/docs
-Testing
-build
+.vs/
+docs/
+out/
+
+*.user
