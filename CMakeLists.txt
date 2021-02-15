@@ -42,7 +42,7 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 		${TestsDir}/main.cpp
 		${TestsDir}/FilterTests.cpp
 		${TestsDir}/PredicateTests.cpp
-		${TestsDir}/ProjectionTests.cpp
+		
 		${TestsDir}/StringPatternTest.cpp
 		#${CMAKE_CURRENT_SOURCE_DIR}/test/LogTest.cpp
 	)
