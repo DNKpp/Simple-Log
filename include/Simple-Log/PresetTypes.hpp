@@ -45,6 +45,18 @@ namespace sl::log::pre
 		return out;
 	}
 
+	struct SetSev
+	{
+		using SetSev_t = log::SetSev<SeverityLevel>;
+		
+		constexpr static SetSev_t debug{ SeverityLevel::debug };
+		constexpr static SetSev_t info{ SeverityLevel::info };
+		constexpr static SetSev_t hint{ SeverityLevel::hint };
+		constexpr static SetSev_t warning{ SeverityLevel::warning };
+		constexpr static SetSev_t error{ SeverityLevel::error };
+		constexpr static SetSev_t fatal{ SeverityLevel::fatal };
+	};
+
 	/**
 	 * \brief Prepared Record type
 	 * \details Record_t is an type alias for the BaseRecord and uses SeverityLevel as severity level type and std::string as channel identifier.
