@@ -23,6 +23,7 @@ namespace sl::log
 {
 	/**
 	 * \brief Convenience class for generating Record s
+	 * \tparam TRecord Used Record type.
 	 * \attention The corresponding Core instance must outlive all related Logger instances.
 	 * \details This class is in fact a template for upcoming Record s. It stores default settings (e.g. severity level and channel) for newly generated Record s. Using its operator () users can start building Record s
 	 * in an effective and elegant manner. Logger instances are rather lightweight, thus could be instantiated on class level, but it is also fine using the same instance in the whole program.
