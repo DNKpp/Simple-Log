@@ -27,6 +27,8 @@ struct Formatter
 	}
 };
 
+using Sev = pre::SetSev;
+
 TEST_CASE(" ", "[Core]")
 {
 
@@ -45,7 +47,7 @@ TEST_CASE(" ", "[Core]")
 	Logger<Record_t> log{ core, pre::SeverityLevel::info };
 
 	log() << SetSev(pre::SeverityLevel::debug) << "Hello," << SetChan("test") << "World!";
-	log() << "Hello, Zhavok!";
+	log() << "Hello, Zhavok!" << Sev::error;
 	
 	//sink.setFormatter([](std::ostream& out, const Record& rec) { out << "yes" << rec.message; });
 	//sink.setFilter([](const Record& rec){ return rec.message != "Hello, World!"; });
