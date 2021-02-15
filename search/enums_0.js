@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['severitylevel_181',['SeverityLevel',['../d0/de9/group__record.html#gafe0223554b07283db048dd7c700c5ac8',1,'sl::log']]]
+  ['severitylevel_221',['SeverityLevel',['../df/d5b/group___prepared_types.html#ga1233009dc7a50b2f4d4a14c7e9b087d2',1,'sl::log::pre']]]
 ];

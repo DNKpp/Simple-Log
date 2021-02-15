@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['userdata_82',['userData',['../de/df8/classsl_1_1log_1_1_record.html#a635e2c9e0b0dbdff23d1e4f91514732c',1,'sl::log::Record::userData()'],['../d2/dd1/structsl_1_1log_1_1_set_user_data.html#af594b50eb7def52857b82b484be99b59',1,'sl::log::SetUserData::userData()']]]
+  ['warning_101',['warning',['../df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html#a88e9c1cda3901a3bef4979d111b97695',1,'sl::log::pre::SetSev::warning()'],['../df/d5b/group___prepared_types.html#gga1233009dc7a50b2f4d4a14c7e9b087d2a7b83d3f08fa392b79e3f553b585971cd',1,'sl::log::pre::warning()']]],
+  ['writetostream_102',['writeToStream',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a01b37a48110effd9fdfadfacc05e17c2',1,'sl::log::BasicSink']]]
 ];

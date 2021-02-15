@@ -1,16 +1,19 @@
 var searchData=
 [
-  ['setchannel_145',['SetChannel',['../d5/dbf/structsl_1_1log_1_1_set_channel.html#a70d202d741aa5f980420da72ad0bde49',1,'sl::log::SetChannel']]],
-  ['setcleanuprule_146',['setCleanupRule',['../dc/dd6/classsl_1_1log_1_1_file_sink.html#aba6d8910fdcc4b2726e4e92606168a05',1,'sl::log::FileSink']]],
-  ['setclosinghandler_147',['setClosingHandler',['../dc/dd6/classsl_1_1log_1_1_file_sink.html#a4d84a9588cfacfc62673503d81f60d05',1,'sl::log::FileSink']]],
-  ['setdefaultchannel_148',['setDefaultChannel',['../df/da8/classsl_1_1log_1_1_logger.html#a9467ec65c93eeb061d9129252156b59e',1,'sl::log::Logger']]],
-  ['setdefaultseveritylevel_149',['setDefaultSeverityLevel',['../df/da8/classsl_1_1log_1_1_logger.html#a109385e75309103338b5db23815b291d',1,'sl::log::Logger']]],
-  ['setdefaultuserdata_150',['setDefaultUserData',['../df/da8/classsl_1_1log_1_1_logger.html#a844b39190e2a90785ad22443b9563f6c',1,'sl::log::Logger']]],
-  ['setfilter_151',['setFilter',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a8140a475ee9664587d85b9d5988ce51c',1,'sl::log::BasicSink']]],
-  ['setformatter_152',['setFormatter',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa5b20c8183e3095386068b7285acb409',1,'sl::log::BasicSink']]],
-  ['setopeninghandler_153',['setOpeningHandler',['../dc/dd6/classsl_1_1log_1_1_file_sink.html#ad9ebc9685442704ed6495096114bfe7b',1,'sl::log::FileSink']]],
-  ['setrotationrule_154',['setRotationRule',['../dc/dd6/classsl_1_1log_1_1_file_sink.html#aab91b06f62031230308562208b5731bb',1,'sl::log::FileSink']]],
-  ['setseverity_155',['SetSeverity',['../dd/d68/structsl_1_1log_1_1_set_severity.html#ab78f3c1adaa84c2fdeb3a200229b03bc',1,'sl::log::SetSeverity']]],
-  ['setuserdata_156',['SetUserData',['../d2/dd1/structsl_1_1log_1_1_set_user_data.html#ae7afb94411580f0a47dd26760d06fd0f',1,'sl::log::SetUserData']]],
-  ['stringpattern_157',['StringPattern',['../d1/d81/classsl_1_1log_1_1_string_pattern.html#a527ec73a1607f2f43c4ced45cc974852',1,'sl::log::StringPattern']]]
+  ['setchan_167',['SetChan',['../d9/d84/classsl_1_1log_1_1_set_chan.html#a6f0986452d5b3aa26d872b518ccb6f54',1,'sl::log::SetChan']]],
+  ['setchannel_168',['setChannel',['../dd/d7a/classsl_1_1log_1_1_base_record.html#a338a10a75755881359786346721e255f',1,'sl::log::BaseRecord']]],
+  ['setcleanuprule_169',['setCleanupRule',['../dc/dd6/classsl_1_1log_1_1_file_sink.html#acb679127860e4e6823d35c51dc00f054',1,'sl::log::FileSink']]],
+  ['setclosinghandler_170',['setClosingHandler',['../dc/dd6/classsl_1_1log_1_1_file_sink.html#af6002436e41630f6851958cacefb658b',1,'sl::log::FileSink']]],
+  ['setdefaultchannel_171',['setDefaultChannel',['../df/da8/classsl_1_1log_1_1_logger.html#a1e79446ef43407c6bd5a35be5ef801ce',1,'sl::log::Logger']]],
+  ['setdefaultseveritylevel_172',['setDefaultSeverityLevel',['../df/da8/classsl_1_1log_1_1_logger.html#a8fbfeb2b2a102f3c39103f8e90debcbc',1,'sl::log::Logger']]],
+  ['setfilter_173',['setFilter',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a1ae19a6fe284f7a59929918d180c3bf1',1,'sl::log::BasicSink']]],
+  ['setformatter_174',['setFormatter',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#ae9c781514bb81f5d6856047613877f16',1,'sl::log::BasicSink']]],
+  ['setmessage_175',['setMessage',['../dd/d7a/classsl_1_1log_1_1_base_record.html#aedf882a4689b91227bb84ce016de25e3',1,'sl::log::BaseRecord']]],
+  ['setopeninghandler_176',['setOpeningHandler',['../dc/dd6/classsl_1_1log_1_1_file_sink.html#a01f6d5df2c0e9dee1b8908d6b3fbddb6',1,'sl::log::FileSink']]],
+  ['setrotationrule_177',['setRotationRule',['../dc/dd6/classsl_1_1log_1_1_file_sink.html#a4d13807625e2ad764355ab95988b788d',1,'sl::log::FileSink']]],
+  ['setsev_178',['SetSev',['../d5/df7/classsl_1_1log_1_1_set_sev.html#a3d6746ebdc8b6d8728480bf00814fce0',1,'sl::log::SetSev']]],
+  ['setseverity_179',['setSeverity',['../dd/d7a/classsl_1_1log_1_1_base_record.html#a60ddca7b8e345c07bdea25ec1752bcda',1,'sl::log::BaseRecord']]],
+  ['settimepoint_180',['setTimePoint',['../dd/d7a/classsl_1_1log_1_1_base_record.html#ac7558030528a941cc20c0831212aca6e',1,'sl::log::BaseRecord']]],
+  ['severity_181',['severity',['../dd/d7a/classsl_1_1log_1_1_base_record.html#ac16302bcf25d27c7497612e10fd53c3f',1,'sl::log::BaseRecord']]],
+  ['stringpattern_182',['StringPattern',['../d1/d81/classsl_1_1log_1_1_string_pattern.html#a527ec73a1607f2f43c4ced45cc974852',1,'sl::log::StringPattern']]]
 ];

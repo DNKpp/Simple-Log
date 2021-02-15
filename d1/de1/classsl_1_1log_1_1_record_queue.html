@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simple-Log: sl::log::RecordQueue Class Reference</title>
+<title>Simple-Log: sl::log::RecordQueue&lt; TRecord &gt; Class Template Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -83,45 +83,79 @@ $(document).ready(function(){initNavTree('d1/de1/classsl_1_1log_1_1_record_queue
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="../../d8/d1d/classsl_1_1log_1_1_record_queue-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">sl::log::RecordQueue Class Reference<div class="ingroups"><a class="el" href="../../d0/de9/group__record.html">Record</a></div></div>  </div>
+<div class="title">sl::log::RecordQueue&lt; TRecord &gt; Class Template Reference<div class="ingroups"><a class="el" href="../../d0/de9/group__record.html">Record</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Storage for <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> s.  
+<p>Storage for Record s.  
  <a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../da/d8d/_record_queue_8hpp_source.html">RecordQueue.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a9bfdaa527ad874a72e14eccf169b3bab"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab">Record_t</a> = TRecord</td></tr>
+<tr class="separator:a9bfdaa527ad874a72e14eccf169b3bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae6b9d4ba88553bd544c9714e6286c6fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#ae6b9d4ba88553bd544c9714e6286c6fd">push</a> (<a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a> record)</td></tr>
-<tr class="memdesc:ae6b9d4ba88553bd544c9714e6286c6fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> s to the internal queue.  <a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#ae6b9d4ba88553bd544c9714e6286c6fd">More...</a><br /></td></tr>
-<tr class="separator:ae6b9d4ba88553bd544c9714e6286c6fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affd3cf46e4ebd27343524367c18f5b7b"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#affd3cf46e4ebd27343524367c18f5b7b">take</a> (std::optional&lt; std::chrono::milliseconds &gt; waitingDuration=std::nullopt)</td></tr>
-<tr class="memdesc:affd3cf46e4ebd27343524367c18f5b7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes the first <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> from the queue.  <a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#affd3cf46e4ebd27343524367c18f5b7b">More...</a><br /></td></tr>
-<tr class="separator:affd3cf46e4ebd27343524367c18f5b7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00f9cbca3d3aea90b14f2f9892480cb1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a00f9cbca3d3aea90b14f2f9892480cb1">isEmpty</a> () const noexcept</td></tr>
-<tr class="memdesc:a00f9cbca3d3aea90b14f2f9892480cb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the internal queue is empty.  <a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a00f9cbca3d3aea90b14f2f9892480cb1">More...</a><br /></td></tr>
-<tr class="separator:a00f9cbca3d3aea90b14f2f9892480cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b33e0216d87d6ee94af3c872007c4d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9b33e0216d87d6ee94af3c872007c4d1">push</a> (<a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab">Record_t</a> record)</td></tr>
+<tr class="memdesc:a9b33e0216d87d6ee94af3c872007c4d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes Record s to the internal queue.  <a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9b33e0216d87d6ee94af3c872007c4d1">More...</a><br /></td></tr>
+<tr class="separator:a9b33e0216d87d6ee94af3c872007c4d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b6bcbb58a14a851bbd396a9227ecb01"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab">Record_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a8b6bcbb58a14a851bbd396a9227ecb01">take</a> (std::optional&lt; std::chrono::milliseconds &gt; waitingDuration=std::nullopt)</td></tr>
+<tr class="memdesc:a8b6bcbb58a14a851bbd396a9227ecb01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes the first Record from the queue.  <a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a8b6bcbb58a14a851bbd396a9227ecb01">More...</a><br /></td></tr>
+<tr class="separator:a8b6bcbb58a14a851bbd396a9227ecb01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0046f89e2f50b4b31bfd48a8e128076"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#aa0046f89e2f50b4b31bfd48a8e128076">isEmpty</a> () const noexcept</td></tr>
+<tr class="memdesc:aa0046f89e2f50b4b31bfd48a8e128076"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the internal queue is empty.  <a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#aa0046f89e2f50b4b31bfd48a8e128076">More...</a><br /></td></tr>
+<tr class="separator:aa0046f89e2f50b4b31bfd48a8e128076"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Storage for <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> s. </p>
-<p>This class is a simple representation of a blocking queue. Its <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#affd3cf46e4ebd27343524367c18f5b7b" title="Takes the first Record from the queue.">take()</a> function blocks until an element is present in the internal queue or the duration exceeded. Each function is thread-safe by design. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a00f9cbca3d3aea90b14f2f9892480cb1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00f9cbca3d3aea90b14f2f9892480cb1">&#9670;&nbsp;</a></span>isEmpty()</h2>
+<div class="textblock"><h3>template&lt;Record TRecord&gt;<br />
+class sl::log::RecordQueue&lt; TRecord &gt;</h3>
+
+<p>Storage for Record s. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TRecord</td><td>Used Record type.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This class is a simple representation of a blocking queue. Its <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a8b6bcbb58a14a851bbd396a9227ecb01" title="Takes the first Record from the queue.">take()</a> function blocks until an element is present in the internal queue or the duration exceeded. Each function is thread-safe by design. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a9bfdaa527ad874a72e14eccf169b3bab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bfdaa527ad874a72e14eccf169b3bab">&#9670;&nbsp;</a></span>Record_t</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html">sl::log::RecordQueue</a>&lt; TRecord &gt;::<a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab">Record_t</a> =  TRecord</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa0046f89e2f50b4b31bfd48a8e128076"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0046f89e2f50b4b31bfd48a8e128076">&#9670;&nbsp;</a></span>isEmpty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool sl::log::RecordQueue::isEmpty </td>
+          <td class="memname">bool <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html">sl::log::RecordQueue</a>&lt; TRecord &gt;::isEmpty </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -139,19 +173,21 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae6b9d4ba88553bd544c9714e6286c6fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6b9d4ba88553bd544c9714e6286c6fd">&#9670;&nbsp;</a></span>push()</h2>
+<a id="a9b33e0216d87d6ee94af3c872007c4d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b33e0216d87d6ee94af3c872007c4d1">&#9670;&nbsp;</a></span>push()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void sl::log::RecordQueue::push </td>
+          <td class="memname">void <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html">sl::log::RecordQueue</a>&lt; TRecord &gt;::push </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab">Record_t</a>&#160;</td>
           <td class="paramname"><em>record</em></td><td>)</td>
           <td></td>
         </tr>
@@ -163,27 +199,29 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Pushes <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> s to the internal queue. </p>
+<p>Pushes Record s to the internal queue. </p>
 <p>Thread-safe </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">record</td><td>The queued <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> object. </td></tr>
+    <tr><td class="paramname">record</td><td>The queued Record object. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="affd3cf46e4ebd27343524367c18f5b7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affd3cf46e4ebd27343524367c18f5b7b">&#9670;&nbsp;</a></span>take()</h2>
+<a id="a8b6bcbb58a14a851bbd396a9227ecb01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b6bcbb58a14a851bbd396a9227ecb01">&#9670;&nbsp;</a></span>take()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt;<a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&gt; sl::log::RecordQueue::take </td>
+          <td class="memname">std::optional&lt;<a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab">Record_t</a>&gt; <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html">sl::log::RecordQueue</a>&lt; TRecord &gt;::take </td>
           <td>(</td>
           <td class="paramtype">std::optional&lt; std::chrono::milliseconds &gt;&#160;</td>
           <td class="paramname"><em>waitingDuration</em> = <code>std::nullopt</code></td><td>)</td>
@@ -197,8 +235,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Takes the first <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> from the queue. </p>
-<p>Thread-safe If the internal queue is not empty, this functions takes the first element and returns it. If the queue is empty, this function will block until a new <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> gets pushed into the queue or the duration exceeds. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Takes the first Record from the queue. </p>
+<p>Thread-safe If the internal queue is not empty, this functions takes the first element and returns it. If the queue is empty, this function will block until a new Record gets pushed into the queue or the duration exceeds. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">waitingDuration</td><td>The max waiting duration for an element. </td></tr>
   </table>

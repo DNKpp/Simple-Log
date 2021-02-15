@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simple-Log: sl::log::Core Class Reference</title>
+<title>Simple-Log: sl::log::Core&lt; TRecord &gt; Class Template Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -84,68 +84,103 @@ $(document).ready(function(){initNavTree('d4/df3/classsl_1_1log_1_1_core.html','
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="../../d4/db9/classsl_1_1log_1_1_core-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">sl::log::Core Class Reference</div>  </div>
+<div class="title">sl::log::Core&lt; TRecord &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This class is the central point of the whole library. It acts like a broker between the (multiple) <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> s on the frontend and the (multiple) Sink s on the backend. Due to this there must at least one instance of <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="This class is the central point of the whole library. It acts like a broker between the (multiple) Lo...">Core</a> during the whole program runtime, but it isn't restricted to exist uniquely. It can be totally fine to create one global <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="This class is the central point of the whole library. It acts like a broker between the (multiple) Lo...">Core</a>, which will be used for general logging purposes, and multiple others for a much lesser scope, like state logging on entity level.  
+<p>The central point of the whole library. Needs to be instantiated at least once.  
  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d5/d8e/_core_8hpp_source.html">Core.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:aa43f564cd56d8c5b878dcc99d0505d19"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">Record_t</a> = TRecord</td></tr>
+<tr class="separator:aa43f564cd56d8c5b878dcc99d0505d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3c8a32387672d348e60dbd9d9d8de95a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a3c8a32387672d348e60dbd9d9d8de95a">Core</a> () noexcept</td></tr>
-<tr class="memdesc:a3c8a32387672d348e60dbd9d9d8de95a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default Constructor.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#a3c8a32387672d348e60dbd9d9d8de95a">More...</a><br /></td></tr>
-<tr class="separator:a3c8a32387672d348e60dbd9d9d8de95a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4acb95fd35050128f981a2c7a97f2dcb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a4acb95fd35050128f981a2c7a97f2dcb">~Core</a> () noexcept</td></tr>
-<tr class="memdesc:a4acb95fd35050128f981a2c7a97f2dcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#a4acb95fd35050128f981a2c7a97f2dcb">More...</a><br /></td></tr>
-<tr class="separator:a4acb95fd35050128f981a2c7a97f2dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae850d4c666486599786027e0999816be"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#ae850d4c666486599786027e0999816be">Core</a> (const <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;)=delete</td></tr>
-<tr class="memdesc:ae850d4c666486599786027e0999816be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted copy constructor.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#ae850d4c666486599786027e0999816be">More...</a><br /></td></tr>
-<tr class="separator:ae850d4c666486599786027e0999816be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70d39bc4d927135c261a45f95673a491"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a70d39bc4d927135c261a45f95673a491">operator=</a> (const <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;)=delete</td></tr>
-<tr class="memdesc:a70d39bc4d927135c261a45f95673a491"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted copy assign operator.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#a70d39bc4d927135c261a45f95673a491">More...</a><br /></td></tr>
-<tr class="separator:a70d39bc4d927135c261a45f95673a491"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40638dcd69f2b144c1fb2feeac52059e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a40638dcd69f2b144c1fb2feeac52059e">Core</a> (<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;&amp;)=delete</td></tr>
-<tr class="memdesc:a40638dcd69f2b144c1fb2feeac52059e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted move constructor.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#a40638dcd69f2b144c1fb2feeac52059e">More...</a><br /></td></tr>
-<tr class="separator:a40638dcd69f2b144c1fb2feeac52059e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2df2dab4092f63aff2d63785ef24c8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#af2df2dab4092f63aff2d63785ef24c8f">operator=</a> (<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;&amp;)=delete</td></tr>
-<tr class="memdesc:af2df2dab4092f63aff2d63785ef24c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted move assign operator.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#af2df2dab4092f63aff2d63785ef24c8f">More...</a><br /></td></tr>
-<tr class="separator:af2df2dab4092f63aff2d63785ef24c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bdde9f894fd72ef7b9c51a37e6ad403"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a6bdde9f894fd72ef7b9c51a37e6ad403">log</a> (<a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a> record)</td></tr>
-<tr class="memdesc:a6bdde9f894fd72ef7b9c51a37e6ad403"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues the <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> internally.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#a6bdde9f894fd72ef7b9c51a37e6ad403">More...</a><br /></td></tr>
-<tr class="separator:a6bdde9f894fd72ef7b9c51a37e6ad403"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8afe8935a99dfe62746688610b763c09"><td class="memTemplParams" colspan="2">template&lt;class TSink , class... TArgs&gt; </td></tr>
-<tr class="memitem:a8afe8935a99dfe62746688610b763c09"><td class="memTemplItemLeft" align="right" valign="top">TSink &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a8afe8935a99dfe62746688610b763c09">makeSink</a> (TArgs &amp;&amp;... args)</td></tr>
-<tr class="memdesc:a8afe8935a99dfe62746688610b763c09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sink factory function.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#a8afe8935a99dfe62746688610b763c09">More...</a><br /></td></tr>
-<tr class="separator:a8afe8935a99dfe62746688610b763c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac33638d6ad36d3fdd1492c49831300f2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#ac33638d6ad36d3fdd1492c49831300f2">Core</a> () noexcept</td></tr>
+<tr class="memdesc:ac33638d6ad36d3fdd1492c49831300f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default Constructor.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#ac33638d6ad36d3fdd1492c49831300f2">More...</a><br /></td></tr>
+<tr class="separator:ac33638d6ad36d3fdd1492c49831300f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcfb0b306ce0de6a5df5acfb01d881cf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#abcfb0b306ce0de6a5df5acfb01d881cf">~Core</a> () noexcept</td></tr>
+<tr class="memdesc:abcfb0b306ce0de6a5df5acfb01d881cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#abcfb0b306ce0de6a5df5acfb01d881cf">More...</a><br /></td></tr>
+<tr class="separator:abcfb0b306ce0de6a5df5acfb01d881cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f1e1c2bfbd72e1bcc6c2d20e79b406d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a8f1e1c2bfbd72e1bcc6c2d20e79b406d">Core</a> (const <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a8f1e1c2bfbd72e1bcc6c2d20e79b406d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted copy constructor.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#a8f1e1c2bfbd72e1bcc6c2d20e79b406d">More...</a><br /></td></tr>
+<tr class="separator:a8f1e1c2bfbd72e1bcc6c2d20e79b406d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc78afd80397c528f5db37929dd29f88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#adc78afd80397c528f5db37929dd29f88">operator=</a> (const <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;)=delete</td></tr>
+<tr class="memdesc:adc78afd80397c528f5db37929dd29f88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted copy assign operator.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#adc78afd80397c528f5db37929dd29f88">More...</a><br /></td></tr>
+<tr class="separator:adc78afd80397c528f5db37929dd29f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac274dbc45f334449d626d4cce1f54137"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#ac274dbc45f334449d626d4cce1f54137">Core</a> (<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;&amp;)=delete</td></tr>
+<tr class="memdesc:ac274dbc45f334449d626d4cce1f54137"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted move constructor.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#ac274dbc45f334449d626d4cce1f54137">More...</a><br /></td></tr>
+<tr class="separator:ac274dbc45f334449d626d4cce1f54137"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7c105bac33fd9bf5e9b4f3df5156a0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#ab7c105bac33fd9bf5e9b4f3df5156a0d">operator=</a> (<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;&amp;)=delete</td></tr>
+<tr class="memdesc:ab7c105bac33fd9bf5e9b4f3df5156a0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted move assign operator.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#ab7c105bac33fd9bf5e9b4f3df5156a0d">More...</a><br /></td></tr>
+<tr class="separator:ab7c105bac33fd9bf5e9b4f3df5156a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac978894c8846ae6539d9f57ad2d4f8ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#ac978894c8846ae6539d9f57ad2d4f8ed">log</a> (<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">Record_t</a> record)</td></tr>
+<tr class="memdesc:ac978894c8846ae6539d9f57ad2d4f8ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues the Record internally.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#ac978894c8846ae6539d9f57ad2d4f8ed">More...</a><br /></td></tr>
+<tr class="separator:ac978894c8846ae6539d9f57ad2d4f8ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad828429edf3e849e9e88042c43a7da2e"><td class="memTemplParams" colspan="2">template&lt;std::derived_from&lt; ISink_t &gt; TSink, class... TArgs&gt; </td></tr>
+<tr class="memitem:ad828429edf3e849e9e88042c43a7da2e"><td class="memTemplItemLeft" align="right" valign="top">requires std::constructible_from&lt; TSink, TArgs... &gt; TSink &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#ad828429edf3e849e9e88042c43a7da2e">makeSink</a> (TArgs &amp;&amp;... args)</td></tr>
+<tr class="memdesc:ad828429edf3e849e9e88042c43a7da2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sink factory function.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#ad828429edf3e849e9e88042c43a7da2e">More...</a><br /></td></tr>
+<tr class="separator:ad828429edf3e849e9e88042c43a7da2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class is the central point of the whole library. It acts like a broker between the (multiple) <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> s on the frontend and the (multiple) Sink s on the backend. Due to this there must at least one instance of <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="This class is the central point of the whole library. It acts like a broker between the (multiple) Lo...">Core</a> during the whole program runtime, but it isn't restricted to exist uniquely. It can be totally fine to create one global <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="This class is the central point of the whole library. It acts like a broker between the (multiple) Lo...">Core</a>, which will be used for general logging purposes, and multiple others for a much lesser scope, like state logging on entity level. </p>
-<p>Each instance of <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="This class is the central point of the whole library. It acts like a broker between the (multiple) Lo...">Core</a> consists of the following: </p><ul>
+<div class="textblock"><h3>template&lt;Record TRecord&gt;<br />
+class sl::log::Core&lt; TRecord &gt;</h3>
+
+<p>The central point of the whole library. Needs to be instantiated at least once. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TRecord</td><td>Used Record type.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Objects of this class act like a broker between the (multiple) <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> s on the frontend and the (multiple) Sink s on the backend. Due to this there must at least one living instance of <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> during the whole program runtime, but it isn't restricted to exist uniquely. It can be totally fine to create one global <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a>, which will be used for general logging purposes, and multiple others for a much lesser scope, like state logging on entity level. <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> will be permanently linked to one specific <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance, thus <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instances must outlive their corresponding <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> s.</p>
+<p>Each instance of <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> consists of the following: </p><ul>
 <li>one BlockingQueue in which all Records will get added </li>
 <li>multiple Sink objects </li>
 <li>one Worker thread, which will pull Records from that BlockingQueue and hand them over to the Sinks</li>
 </ul>
-<p>Due to this the <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="This class is the central point of the whole library. It acts like a broker between the (multiple) Lo...">Core</a> is thread-safe by design.</p>
-<p>It is fine to add Sinks during later stages of your program. This hasn't necessarily to be done right after <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="This class is the central point of the whole library. It acts like a broker between the (multiple) Lo...">Core</a>'s creation. When <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="This class is the central point of the whole library. It acts like a broker between the (multiple) Lo...">Core</a> goes out of scope, or is about to get destructed otherwise, it will block any new Records which could be pushed into but will also let the Worker finish its work. Therefor it will wait in the destructor, unless there is an exception throwing, in which case <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="This class is the central point of the whole library. It acts like a broker between the (multiple) Lo...">Core</a> will force the Worker to quit its work instantly.</p>
-<p><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="This class is the central point of the whole library. It acts like a broker between the (multiple) Lo...">Core</a> instances are neither copy- nor movable. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a3c8a32387672d348e60dbd9d9d8de95a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c8a32387672d348e60dbd9d9d8de95a">&#9670;&nbsp;</a></span>Core() <span class="overload">[1/3]</span></h2>
+<p>Due to this the <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> is thread-safe by design.</p>
+<p>It is fine to add Sinks during later stages of your program. This hasn't necessarily to be done right after <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a>'s creation. When <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> goes out of scope, or is about to get destructed otherwise, it will block any new Records which could be pushed into but will also let the Worker finish its work. Therefor it will wait in the destructor, unless there is an exception throwing, in which case <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> will force the Worker to quit its work instantly.</p>
+<p><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instances are neither copy- nor movable. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="aa43f564cd56d8c5b878dcc99d0505d19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa43f564cd56d8c5b878dcc99d0505d19">&#9670;&nbsp;</a></span>Record_t</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">Record_t</a> =  TRecord</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ac33638d6ad36d3fdd1492c49831300f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac33638d6ad36d3fdd1492c49831300f2">&#9670;&nbsp;</a></span>Core() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">sl::log::Core::Core </td>
+          <td class="memname"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -163,17 +198,19 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4acb95fd35050128f981a2c7a97f2dcb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4acb95fd35050128f981a2c7a97f2dcb">&#9670;&nbsp;</a></span>~Core()</h2>
+<a id="abcfb0b306ce0de6a5df5acfb01d881cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcfb0b306ce0de6a5df5acfb01d881cf">&#9670;&nbsp;</a></span>~Core()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">sl::log::Core::~Core </td>
+          <td class="memname"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::~<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -187,23 +224,25 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Destructor. </p>
-<p>Will block until the internal <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> queue is empty or an exception rises, which will then force the Worker thread to quit. </p>
+<p>Will block until the internal Record queue is empty or an exception rises, which will then force the Worker thread to quit. </p>
 
 </div>
 </div>
-<a id="ae850d4c666486599786027e0999816be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae850d4c666486599786027e0999816be">&#9670;&nbsp;</a></span>Core() <span class="overload">[2/3]</span></h2>
+<a id="a8f1e1c2bfbd72e1bcc6c2d20e79b406d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f1e1c2bfbd72e1bcc6c2d20e79b406d">&#9670;&nbsp;</a></span>Core() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">sl::log::Core::Core </td>
+          <td class="memname"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&lt; TRecord &gt; &amp;&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -219,19 +258,21 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a40638dcd69f2b144c1fb2feeac52059e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40638dcd69f2b144c1fb2feeac52059e">&#9670;&nbsp;</a></span>Core() <span class="overload">[3/3]</span></h2>
+<a id="ac274dbc45f334449d626d4cce1f54137"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac274dbc45f334449d626d4cce1f54137">&#9670;&nbsp;</a></span>Core() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">sl::log::Core::Core </td>
+          <td class="memname"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&lt; TRecord &gt; &amp;&amp;&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -248,19 +289,21 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6bdde9f894fd72ef7b9c51a37e6ad403"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6bdde9f894fd72ef7b9c51a37e6ad403">&#9670;&nbsp;</a></span>log()</h2>
+<a id="ac978894c8846ae6539d9f57ad2d4f8ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac978894c8846ae6539d9f57ad2d4f8ed">&#9670;&nbsp;</a></span>log()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void sl::log::Core::log </td>
+          <td class="memname">void <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::log </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">Record_t</a>&#160;</td>
           <td class="paramname"><em>record</em></td><td>)</td>
           <td></td>
         </tr>
@@ -272,29 +315,32 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Queues the <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> internally. </p>
-<p>This function should not be called directly on logging purposes. It serves as a simple interface for the corresponding <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> objects. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Queues the Record internally. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">record</td><td>The record which will be queued </td></tr>
+    <tr><td class="paramname">record</td><td>The record which will be queued</td></tr>
   </table>
   </dd>
 </dl>
+<p>This function should not be called directly on logging purposes. It serves as a simple interface for the corresponding <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> objects. </p>
 
 </div>
 </div>
-<a id="a8afe8935a99dfe62746688610b763c09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8afe8935a99dfe62746688610b763c09">&#9670;&nbsp;</a></span>makeSink()</h2>
+<a id="ad828429edf3e849e9e88042c43a7da2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad828429edf3e849e9e88042c43a7da2e">&#9670;&nbsp;</a></span>makeSink()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class TSink , class... TArgs&gt; </div>
+template&lt;Record TRecord&gt; </div>
+<div class="memtemplate">
+template&lt;std::derived_from&lt; ISink_t &gt; TSink, class... TArgs&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">TSink&amp; sl::log::Core::makeSink </td>
+          <td class="memname">requires std::constructible_from&lt;TSink, TArgs...&gt; TSink&amp; <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::makeSink </td>
           <td>(</td>
           <td class="paramtype">TArgs &amp;&amp;...&#160;</td>
           <td class="paramname"><em>args</em></td><td>)</td>
@@ -309,7 +355,7 @@ template&lt;class TSink , class... TArgs&gt; </div>
 </div><div class="memdoc">
 
 <p>Sink factory function. </p>
-<p>This function creates a new Sink object and returns a reference to the caller. This Sink will be linked to and managed by the called <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="This class is the central point of the whole library. It acts like a broker between the (multiple) Lo...">Core</a> instance. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">TSink</td><td>Concrete Sink type </td></tr>
     <tr><td class="paramname">TArgs</td><td>Constructor argument types (will be deducted automatically) </td></tr>
@@ -322,23 +368,26 @@ template&lt;class TSink , class... TArgs&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>reference to the managed Sink object </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>reference to the managed Sink object</dd></dl>
+<p>This function creates a new Sink object and returns a reference to the caller. This Sink will be linked to and managed by the called <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance. </p>
 
 </div>
 </div>
-<a id="a70d39bc4d927135c261a45f95673a491"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a70d39bc4d927135c261a45f95673a491">&#9670;&nbsp;</a></span>operator=() <span class="overload">[1/2]</span></h2>
+<a id="adc78afd80397c528f5db37929dd29f88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc78afd80397c528f5db37929dd29f88">&#9670;&nbsp;</a></span>operator=() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&amp; sl::log::Core::operator= </td>
+          <td class="memname"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&amp; <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::operator= </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&lt; TRecord &gt; &amp;&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -354,19 +403,21 @@ template&lt;class TSink , class... TArgs&gt; </div>
 
 </div>
 </div>
-<a id="af2df2dab4092f63aff2d63785ef24c8f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2df2dab4092f63aff2d63785ef24c8f">&#9670;&nbsp;</a></span>operator=() <span class="overload">[2/2]</span></h2>
+<a id="ab7c105bac33fd9bf5e9b4f3df5156a0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7c105bac33fd9bf5e9b4f3df5156a0d">&#9670;&nbsp;</a></span>operator=() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&amp; sl::log::Core::operator= </td>
+          <td class="memname"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&amp; <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::operator= </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;&amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&lt; TRecord &gt; &amp;&amp;&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>

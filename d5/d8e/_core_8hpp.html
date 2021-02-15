@@ -95,16 +95,16 @@ $(document).ready(function(){initNavTree('d5/d8e/_core_8hpp.html','../../'); ini
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;mutex&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/db9/_concepts_8hpp_source.html">Concepts.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d2/d5f/_i_sink_8hpp_source.html">ISink.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../dc/d79/_record_8hpp_source.html">Record.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../da/d8d/_record_queue_8hpp_source.html">RecordQueue.hpp</a>&quot;</code><br />
 </div>
 <p><a href="../../d5/d8e/_core_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is the central point of the whole library. It acts like a broker between the (multiple) <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> s on the frontend and the (multiple) Sink s on the backend. Due to this there must at least one instance of <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="This class is the central point of the whole library. It acts like a broker between the (multiple) Lo...">Core</a> during the whole program runtime, but it isn't restricted to exist uniquely. It can be totally fine to create one global <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="This class is the central point of the whole library. It acts like a broker between the (multiple) Lo...">Core</a>, which will be used for general logging purposes, and multiple others for a much lesser scope, like state logging on entity level.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core&lt; TRecord &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The central point of the whole library. Needs to be instantiated at least once.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>

@@ -13,8 +13,9 @@ var files_dup =
     [ "Logger.hpp", "d3/de3/_logger_8hpp.html", [
       [ "Logger", "df/da8/classsl_1_1log_1_1_logger.html", "df/da8/classsl_1_1log_1_1_logger" ]
     ] ],
-    [ "Record.hpp", "dc/d79/_record_8hpp.html", "dc/d79/_record_8hpp" ],
-    [ "RecordBuilder.hpp", "dc/d3b/_record_builder_8hpp.html", "dc/d3b/_record_builder_8hpp" ],
+    [ "PresetTypes.hpp", "d7/d89/_preset_types_8hpp.html", "d7/d89/_preset_types_8hpp" ],
+    [ "Record.hpp", "dc/d79/_record_8hpp.html", null ],
+    [ "RecordBuilder.hpp", "dc/d3b/_record_builder_8hpp.html", null ],
     [ "RecordQueue.hpp", "da/d8d/_record_queue_8hpp.html", null ],
     [ "Simple-Log.hpp", "d0/d08/_simple-_log_8hpp.html", null ],
     [ "StringPattern.hpp", "d4/d47/_string_pattern_8hpp.html", [

@@ -1,30 +1,20 @@
 var namespacesl_1_1log =
 [
+    [ "pre", "d5/d4f/namespacesl_1_1log_1_1pre.html", "d5/d4f/namespacesl_1_1log_1_1pre" ],
     [ "BasicSink", "dd/d48/classsl_1_1log_1_1_basic_sink.html", "dd/d48/classsl_1_1log_1_1_basic_sink" ],
     [ "Core", "d4/df3/classsl_1_1log_1_1_core.html", "d4/df3/classsl_1_1log_1_1_core" ],
     [ "FileSink", "dc/dd6/classsl_1_1log_1_1_file_sink.html", "dc/dd6/classsl_1_1log_1_1_file_sink" ],
     [ "ISink", "d8/dda/classsl_1_1log_1_1_i_sink.html", "d8/dda/classsl_1_1log_1_1_i_sink" ],
     [ "Logger", "df/da8/classsl_1_1log_1_1_logger.html", "df/da8/classsl_1_1log_1_1_logger" ],
-    [ "Record", "de/df8/classsl_1_1log_1_1_record.html", "de/df8/classsl_1_1log_1_1_record" ],
-    [ "SetSeverity", "dd/d68/structsl_1_1log_1_1_set_severity.html", "dd/d68/structsl_1_1log_1_1_set_severity" ],
-    [ "SetChannel", "d5/dbf/structsl_1_1log_1_1_set_channel.html", "d5/dbf/structsl_1_1log_1_1_set_channel" ],
-    [ "SetUserData", "d2/dd1/structsl_1_1log_1_1_set_user_data.html", "d2/dd1/structsl_1_1log_1_1_set_user_data" ],
+    [ "BaseRecord", "dd/d7a/classsl_1_1log_1_1_base_record.html", "dd/d7a/classsl_1_1log_1_1_base_record" ],
+    [ "SetSev", "d5/df7/classsl_1_1log_1_1_set_sev.html", "d5/df7/classsl_1_1log_1_1_set_sev" ],
+    [ "SetChan", "d9/d84/classsl_1_1log_1_1_set_chan.html", "d9/d84/classsl_1_1log_1_1_set_chan" ],
     [ "RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html", "db/d9a/classsl_1_1log_1_1_record_builder" ],
     [ "RecordQueue", "d1/de1/classsl_1_1log_1_1_record_queue.html", "d1/de1/classsl_1_1log_1_1_record_queue" ],
     [ "StringPattern", "d1/d81/classsl_1_1log_1_1_string_pattern.html", "d1/d81/classsl_1_1log_1_1_string_pattern" ],
-    [ "SetChan", "d2/dce/group___record_builder.html#gaa8b4896f9b22a32a135a3dbe9d10773a", null ],
-    [ "SetData", "d2/dce/group___record_builder.html#ga4896959b4b7383b1b87891cda069ff54", null ],
-    [ "SetSev", "d2/dce/group___record_builder.html#ga80b8e97666c179bde6a8a99ed3e6c2a8", null ],
-    [ "SeverityLevel", "d0/de9/group__record.html#gafe0223554b07283db048dd7c700c5ac8", [
-      [ "info", "d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8acaf9b6b99962bf5c2264824231d7a40c", null ],
-      [ "debug", "d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8aad42f6697b035b7580e4fef93be20b4d", null ],
-      [ "hint", "d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8aee2faeed038501c1deab01c7b54f2fa9", null ],
-      [ "warning", "d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8a7b83d3f08fa392b79e3f553b585971cd", null ],
-      [ "error", "d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8acb5e100e5a9a3e7f6d1fd97512215282", null ],
-      [ "fatal", "d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8adf6402fd9ecc60f5a2159fdf45711cd4", null ]
-    ] ],
-    [ "operator<<", "d0/de9/group__record.html#ga3ceb6be99f86348cdd2598ec0a022b35", null ],
-    [ "FileStateHandler", "de/d83/namespacesl_1_1log.html#a1c5760e773e9a0c3ab0d608139bce497", null ],
-    [ "RecordFilter", "de/d83/namespacesl_1_1log.html#a173cf894beb59aceb9ccdf836a3ad066", null ],
-    [ "RecordFormatter", "de/d83/namespacesl_1_1log.html#a13c8fe3cae8406c36d09aae63410e649", null ]
+    [ "FileStateHandler", "d4/df0/group__concepts.html#ga1c5760e773e9a0c3ab0d608139bce497", null ],
+    [ "NotVoid", "d4/df0/group__concepts.html#ga020e0b2248bb393589aa5e0495384493", null ],
+    [ "Record", "d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081", null ],
+    [ "RecordFilterFor", "d4/df0/group__concepts.html#ga37ddba3404d4136b7f370c8b5c4261b0", null ],
+    [ "RecordFormatterFor", "d4/df0/group__concepts.html#ga524680d39e771fd1fa808e92614a355b", null ]
 ];

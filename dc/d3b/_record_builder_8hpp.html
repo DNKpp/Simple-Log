@@ -84,32 +84,26 @@ $(document).ready(function(){initNavTree('dc/d3b/_record_builder_8hpp.html','../
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
 <div class="title">RecordBuilder.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;any&gt;</code><br />
-<code>#include &lt;chrono&gt;</code><br />
-<code>#include &lt;functional&gt;</code><br />
+<div class="textblock"><code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
-<code>#include &quot;<a class="el" href="../../dc/d79/_record_8hpp_source.html">Record.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/db9/_concepts_8hpp_source.html">Concepts.hpp</a>&quot;</code><br />
 </div>
 <p><a href="../../dc/d3b/_record_builder_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d68/structsl_1_1log_1_1_set_severity.html">sl::log::SetSeverity</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the severity level of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../dd/d68/structsl_1_1log_1_1_set_severity.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df7/classsl_1_1log_1_1_set_sev.html">sl::log::SetSev&lt; TSeverityLevel &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the channel of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../d5/df7/classsl_1_1log_1_1_set_sev.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dbf/structsl_1_1log_1_1_set_channel.html">sl::log::SetChannel</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the channel of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../d5/dbf/structsl_1_1log_1_1_set_channel.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d84/classsl_1_1log_1_1_set_chan.html">sl::log::SetChan&lt; TChannel &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the channel of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../d9/d84/classsl_1_1log_1_1_set_chan.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dd1/structsl_1_1log_1_1_set_user_data.html">sl::log::SetUserData</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the user data of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../d2/dd1/structsl_1_1log_1_1_set_user_data.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html">sl::log::RecordBuilder</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html">sl::log::RecordBuilder&lt; TRecord &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper class for building new Records.  <a href="../../db/d9a/classsl_1_1log_1_1_record_builder.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -119,18 +113,6 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:de/d83/namespacesl_1_1log"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d83/namespacesl_1_1log.html">sl::log</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ga80b8e97666c179bde6a8a99ed3e6c2a8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dce/group___record_builder.html#ga80b8e97666c179bde6a8a99ed3e6c2a8">sl::log::SetSev</a> = SetSeverity</td></tr>
-<tr class="memdesc:ga80b8e97666c179bde6a8a99ed3e6c2a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the severity level of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../d2/dce/group___record_builder.html#ga80b8e97666c179bde6a8a99ed3e6c2a8">More...</a><br /></td></tr>
-<tr class="separator:ga80b8e97666c179bde6a8a99ed3e6c2a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa8b4896f9b22a32a135a3dbe9d10773a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dce/group___record_builder.html#gaa8b4896f9b22a32a135a3dbe9d10773a">sl::log::SetChan</a> = SetChannel</td></tr>
-<tr class="memdesc:gaa8b4896f9b22a32a135a3dbe9d10773a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the channel of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../d2/dce/group___record_builder.html#gaa8b4896f9b22a32a135a3dbe9d10773a">More...</a><br /></td></tr>
-<tr class="separator:gaa8b4896f9b22a32a135a3dbe9d10773a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4896959b4b7383b1b87891cda069ff54"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dce/group___record_builder.html#ga4896959b4b7383b1b87891cda069ff54">sl::log::SetData</a> = SetUserData</td></tr>
-<tr class="memdesc:ga4896959b4b7383b1b87891cda069ff54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the user data of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../d2/dce/group___record_builder.html#ga4896959b4b7383b1b87891cda069ff54">More...</a><br /></td></tr>
-<tr class="separator:ga4896959b4b7383b1b87891cda069ff54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

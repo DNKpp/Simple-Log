@@ -83,23 +83,26 @@ $(document).ready(function(){initNavTree('de/d83/namespacesl_1_1log.html','../..
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">sl::log Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:d5/d4f/namespacesl_1_1log_1_1pre"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4f/namespacesl_1_1log_1_1pre.html">pre</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">std::ostream orientated Sink class  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This class is the central point of the whole library. It acts like a broker between the (multiple) <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> s on the frontend and the (multiple) Sink s on the backend. Due to this there must at least one instance of <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="This class is the central point of the whole library. It acts like a broker between the (multiple) Lo...">Core</a> during the whole program runtime, but it isn't restricted to exist uniquely. It can be totally fine to create one global <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="This class is the central point of the whole library. It acts like a broker between the (multiple) Lo...">Core</a>, which will be used for general logging purposes, and multiple others for a much lesser scope, like state logging on entity level.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The central point of the whole library. Needs to be instantiated at least once.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html">FileSink</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class for logging into files.  <a href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html#details">More...</a><br /></td></tr>
@@ -108,124 +111,50 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sink interface class.  <a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html">Logger</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience class for generating <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> s.  <a href="../../df/da8/classsl_1_1log_1_1_logger.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience class for generating Record s.  <a href="../../df/da8/classsl_1_1log_1_1_logger.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A collection of logging related information.  <a href="../../de/df8/classsl_1_1log_1_1_record.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d7a/classsl_1_1log_1_1_base_record.html">BaseRecord</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A collection of logging related information.  <a href="../../dd/d7a/classsl_1_1log_1_1_base_record.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d68/structsl_1_1log_1_1_set_severity.html">SetSeverity</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the severity level of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../dd/d68/structsl_1_1log_1_1_set_severity.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df7/classsl_1_1log_1_1_set_sev.html">SetSev</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the channel of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../d5/df7/classsl_1_1log_1_1_set_sev.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dbf/structsl_1_1log_1_1_set_channel.html">SetChannel</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the channel of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../d5/dbf/structsl_1_1log_1_1_set_channel.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dd1/structsl_1_1log_1_1_set_user_data.html">SetUserData</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the user data of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../d2/dd1/structsl_1_1log_1_1_set_user_data.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d84/classsl_1_1log_1_1_set_chan.html">SetChan</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the channel of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../d9/d84/classsl_1_1log_1_1_set_chan.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html">RecordBuilder</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper class for building new Records.  <a href="../../db/d9a/classsl_1_1log_1_1_record_builder.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html">RecordQueue</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Storage for <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html" title="A collection of logging related information.">Record</a> s.  <a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Storage for Record s.  <a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html">StringPattern</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper class for generating patterned strings.  <a href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ga80b8e97666c179bde6a8a99ed3e6c2a8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dce/group___record_builder.html#ga80b8e97666c179bde6a8a99ed3e6c2a8">SetSev</a> = <a class="el" href="../../dd/d68/structsl_1_1log_1_1_set_severity.html">SetSeverity</a></td></tr>
-<tr class="memdesc:ga80b8e97666c179bde6a8a99ed3e6c2a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the severity level of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../d2/dce/group___record_builder.html#ga80b8e97666c179bde6a8a99ed3e6c2a8">More...</a><br /></td></tr>
-<tr class="separator:ga80b8e97666c179bde6a8a99ed3e6c2a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa8b4896f9b22a32a135a3dbe9d10773a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dce/group___record_builder.html#gaa8b4896f9b22a32a135a3dbe9d10773a">SetChan</a> = <a class="el" href="../../d5/dbf/structsl_1_1log_1_1_set_channel.html">SetChannel</a></td></tr>
-<tr class="memdesc:gaa8b4896f9b22a32a135a3dbe9d10773a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the channel of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../d2/dce/group___record_builder.html#gaa8b4896f9b22a32a135a3dbe9d10773a">More...</a><br /></td></tr>
-<tr class="separator:gaa8b4896f9b22a32a135a3dbe9d10773a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4896959b4b7383b1b87891cda069ff54"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dce/group___record_builder.html#ga4896959b4b7383b1b87891cda069ff54">SetData</a> = <a class="el" href="../../d2/dd1/structsl_1_1log_1_1_set_user_data.html">SetUserData</a></td></tr>
-<tr class="memdesc:ga4896959b4b7383b1b87891cda069ff54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manipulates the user data of the current <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object.  <a href="../../d2/dce/group___record_builder.html#ga4896959b4b7383b1b87891cda069ff54">More...</a><br /></td></tr>
-<tr class="separator:ga4896959b4b7383b1b87891cda069ff54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:gafe0223554b07283db048dd7c700c5ac8"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/de9/group__record.html#gafe0223554b07283db048dd7c700c5ac8">SeverityLevel</a> { <br />
-&#160;&#160;<a class="el" href="../../d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8acaf9b6b99962bf5c2264824231d7a40c">info</a>
-, <a class="el" href="../../d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8aad42f6697b035b7580e4fef93be20b4d">debug</a>
-, <a class="el" href="../../d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8aee2faeed038501c1deab01c7b54f2fa9">hint</a>
-, <a class="el" href="../../d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8a7b83d3f08fa392b79e3f553b585971cd">warning</a>
-, <br />
-&#160;&#160;<a class="el" href="../../d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8acb5e100e5a9a3e7f6d1fd97512215282">error</a>
-, <a class="el" href="../../d0/de9/group__record.html#ggafe0223554b07283db048dd7c700c5ac8adf6402fd9ecc60f5a2159fdf45711cd4">fatal</a>
-<br />
- }</td></tr>
-<tr class="memdesc:gafe0223554b07283db048dd7c700c5ac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple severity level enum type.  <a href="../../d0/de9/group__record.html#gafe0223554b07283db048dd7c700c5ac8">More...</a><br /></td></tr>
-<tr class="separator:gafe0223554b07283db048dd7c700c5ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ga3ceb6be99f86348cdd2598ec0a022b35"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/de9/group__record.html#ga3ceb6be99f86348cdd2598ec0a022b35">operator&lt;&lt;</a> (std::ostream &amp;out, <a class="el" href="../../d0/de9/group__record.html#gafe0223554b07283db048dd7c700c5ac8">SeverityLevel</a> lvl)</td></tr>
-<tr class="memdesc:ga3ceb6be99f86348cdd2598ec0a022b35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operator &lt;&lt; overload for the default severity type.  <a href="../../d0/de9/group__record.html#ga3ceb6be99f86348cdd2598ec0a022b35">More...</a><br /></td></tr>
-<tr class="separator:ga3ceb6be99f86348cdd2598ec0a022b35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a13c8fe3cae8406c36d09aae63410e649"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
-<tr class="memitem:a13c8fe3cae8406c36d09aae63410e649"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d83/namespacesl_1_1log.html#a13c8fe3cae8406c36d09aae63410e649">RecordFormatter</a> = (std::movable&lt;T&gt; || std::copyable&lt;T&gt;) &amp;&amp; std::invocable&lt;T, std::ostream&amp;, const <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp;&gt;</td></tr>
-<tr class="separator:a13c8fe3cae8406c36d09aae63410e649"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a173cf894beb59aceb9ccdf836a3ad066"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
-<tr class="memitem:a173cf894beb59aceb9ccdf836a3ad066"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d83/namespacesl_1_1log.html#a173cf894beb59aceb9ccdf836a3ad066">RecordFilter</a> = (std::movable&lt;T&gt; || std::copyable&lt;T&gt;) &amp;&amp; std::predicate&lt;T, const <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp;&gt;</td></tr>
-<tr class="separator:a173cf894beb59aceb9ccdf836a3ad066"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
-<tr class="memitem:a1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d83/namespacesl_1_1log.html#a1c5760e773e9a0c3ab0d608139bce497">FileStateHandler</a> = (std::movable&lt;T&gt; || std::copyable&lt;T&gt;) &amp;&amp; std::invocable&lt;T, std::ostream&amp;, const <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp;&gt;</td></tr>
-<tr class="separator:a1c5760e773e9a0c3ab0d608139bce497"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga020e0b2248bb393589aa5e0495384493"><td class="memTemplParams" colspan="2">template&lt;class T1 &gt; </td></tr>
+<tr class="memitem:ga020e0b2248bb393589aa5e0495384493"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df0/group__concepts.html#ga020e0b2248bb393589aa5e0495384493">NotVoid</a> = !std::is_same_v&lt;T1, void&gt;</td></tr>
+<tr class="memdesc:ga020e0b2248bb393589aa5e0495384493"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept checking for void type.  <a href="../../d4/df0/group__concepts.html#ga020e0b2248bb393589aa5e0495384493">More...</a><br /></td></tr>
+<tr class="separator:ga020e0b2248bb393589aa5e0495384493"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e49931624e51b19627bef18ff763081"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:ga7e49931624e51b19627bef18ff763081"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081">Record</a></td></tr>
+<tr class="memdesc:ga7e49931624e51b19627bef18ff763081"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for Record types.  <a href="../../d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081">More...</a><br /></td></tr>
+<tr class="separator:ga7e49931624e51b19627bef18ff763081"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga524680d39e771fd1fa808e92614a355b"><td class="memTemplParams" colspan="2">template&lt;class T , class TRecord &gt; </td></tr>
+<tr class="memitem:ga524680d39e771fd1fa808e92614a355b"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df0/group__concepts.html#ga524680d39e771fd1fa808e92614a355b">RecordFormatterFor</a> = <a class="el" href="../../d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081">Record</a>&lt;TRecord&gt; &amp;&amp; std::invocable&lt;T, std::ostream&amp;, const TRecord&amp;&gt;</td></tr>
+<tr class="memdesc:ga524680d39e771fd1fa808e92614a355b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable formatter objects.  <a href="../../d4/df0/group__concepts.html#ga524680d39e771fd1fa808e92614a355b">More...</a><br /></td></tr>
+<tr class="separator:ga524680d39e771fd1fa808e92614a355b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga37ddba3404d4136b7f370c8b5c4261b0"><td class="memTemplParams" colspan="2">template&lt;class T , class TRecord &gt; </td></tr>
+<tr class="memitem:ga37ddba3404d4136b7f370c8b5c4261b0"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df0/group__concepts.html#ga37ddba3404d4136b7f370c8b5c4261b0">RecordFilterFor</a> = <a class="el" href="../../d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081">Record</a>&lt;TRecord&gt; &amp;&amp; std::predicate&lt;T, const TRecord&amp;&gt;</td></tr>
+<tr class="memdesc:ga37ddba3404d4136b7f370c8b5c4261b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable filter objects.  <a href="../../d4/df0/group__concepts.html#ga37ddba3404d4136b7f370c8b5c4261b0">More...</a><br /></td></tr>
+<tr class="separator:ga37ddba3404d4136b7f370c8b5c4261b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df0/group__concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">FileStateHandler</a> = std::invocable&lt;T&gt; &amp;&amp; std::convertible_to&lt;std::invoke_result_t&lt;T&gt;, std::string&gt;</td></tr>
+<tr class="memdesc:ga1c5760e773e9a0c3ab0d608139bce497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable file state handler objects.  <a href="../../d4/df0/group__concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">More...</a><br /></td></tr>
+<tr class="separator:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a1c5760e773e9a0c3ab0d608139bce497"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c5760e773e9a0c3ab0d608139bce497">&#9670;&nbsp;</a></span>FileStateHandler</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">concept sl::log::FileStateHandler = (std::movable&lt;T&gt; || std::copyable&lt;T&gt;) &amp;&amp; std::invocable&lt;T, std::ostream&amp;, const <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp;&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a173cf894beb59aceb9ccdf836a3ad066"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a173cf894beb59aceb9ccdf836a3ad066">&#9670;&nbsp;</a></span>RecordFilter</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">concept sl::log::RecordFilter = (std::movable&lt;T&gt; || std::copyable&lt;T&gt;) &amp;&amp; std::predicate&lt;T, const <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp;&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a13c8fe3cae8406c36d09aae63410e649"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13c8fe3cae8406c36d09aae63410e649">&#9670;&nbsp;</a></span>RecordFormatter</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">concept sl::log::RecordFormatter = (std::movable&lt;T&gt; || std::copyable&lt;T&gt;) &amp;&amp; std::invocable&lt;T, std::ostream&amp;, const <a class="el" href="../../de/df8/classsl_1_1log_1_1_record.html">Record</a>&amp;&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

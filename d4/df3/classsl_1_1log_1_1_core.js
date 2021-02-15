@@ -1,11 +1,12 @@
 var classsl_1_1log_1_1_core =
 [
-    [ "Core", "d4/df3/classsl_1_1log_1_1_core.html#a3c8a32387672d348e60dbd9d9d8de95a", null ],
-    [ "~Core", "d4/df3/classsl_1_1log_1_1_core.html#a4acb95fd35050128f981a2c7a97f2dcb", null ],
-    [ "Core", "d4/df3/classsl_1_1log_1_1_core.html#ae850d4c666486599786027e0999816be", null ],
-    [ "Core", "d4/df3/classsl_1_1log_1_1_core.html#a40638dcd69f2b144c1fb2feeac52059e", null ],
-    [ "log", "d4/df3/classsl_1_1log_1_1_core.html#a6bdde9f894fd72ef7b9c51a37e6ad403", null ],
-    [ "makeSink", "d4/df3/classsl_1_1log_1_1_core.html#a8afe8935a99dfe62746688610b763c09", null ],
-    [ "operator=", "d4/df3/classsl_1_1log_1_1_core.html#a70d39bc4d927135c261a45f95673a491", null ],
-    [ "operator=", "d4/df3/classsl_1_1log_1_1_core.html#af2df2dab4092f63aff2d63785ef24c8f", null ]
+    [ "Record_t", "d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19", null ],
+    [ "Core", "d4/df3/classsl_1_1log_1_1_core.html#ac33638d6ad36d3fdd1492c49831300f2", null ],
+    [ "~Core", "d4/df3/classsl_1_1log_1_1_core.html#abcfb0b306ce0de6a5df5acfb01d881cf", null ],
+    [ "Core", "d4/df3/classsl_1_1log_1_1_core.html#a8f1e1c2bfbd72e1bcc6c2d20e79b406d", null ],
+    [ "Core", "d4/df3/classsl_1_1log_1_1_core.html#ac274dbc45f334449d626d4cce1f54137", null ],
+    [ "log", "d4/df3/classsl_1_1log_1_1_core.html#ac978894c8846ae6539d9f57ad2d4f8ed", null ],
+    [ "makeSink", "d4/df3/classsl_1_1log_1_1_core.html#ad828429edf3e849e9e88042c43a7da2e", null ],
+    [ "operator=", "d4/df3/classsl_1_1log_1_1_core.html#adc78afd80397c528f5db37929dd29f88", null ],
+    [ "operator=", "d4/df3/classsl_1_1log_1_1_core.html#ab7c105bac33fd9bf5e9b4f3df5156a0d", null ]
 ];

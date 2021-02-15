@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['recordfilter_173',['RecordFilter',['../de/d83/namespacesl_1_1log.html#a173cf894beb59aceb9ccdf836a3ad066',1,'sl::log']]],
-  ['recordformatter_174',['RecordFormatter',['../de/d83/namespacesl_1_1log.html#a13c8fe3cae8406c36d09aae63410e649',1,'sl::log']]]
+  ['info_201',['info',['../df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html#acda87749221fecce4433364ff8926dc7',1,'sl::log::pre::SetSev']]]
 ];

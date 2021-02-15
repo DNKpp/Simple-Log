@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['time_176',['time',['../de/df8/classsl_1_1log_1_1_record.html#adddeb04998797aa4473aa989bf5f0d0d',1,'sl::log::Record']]]
+  ['record_203',['Record',['../d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081',1,'sl::log']]],
+  ['recordfilterfor_204',['RecordFilterFor',['../d4/df0/group__concepts.html#ga37ddba3404d4136b7f370c8b5c4261b0',1,'sl::log']]],
+  ['recordformatterfor_205',['RecordFormatterFor',['../d4/df0/group__concepts.html#ga524680d39e771fd1fa808e92614a355b',1,'sl::log']]]
 ];

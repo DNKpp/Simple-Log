@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simple-Log: sl::log::FileSink::CleanupRule Struct Reference</title>
+<title>Simple-Log: sl::log::FileSink&lt; TRecord &gt;::CleanupRule Struct Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -86,7 +86,7 @@ $(document).ready(function(){initNavTree('dc/d9c/structsl_1_1log_1_1_file_sink_1
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="../../dd/dd8/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">sl::log::FileSink::CleanupRule Struct Reference</div>  </div>
+<div class="title">sl::log::FileSink&lt; TRecord &gt;::CleanupRule Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -97,36 +97,43 @@ $(document).ready(function(){initNavTree('dc/d9c/structsl_1_1log_1_1_file_sink_1
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ac57b3e0bb5319a0ad0f825fbb049dcea"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html#ac57b3e0bb5319a0ad0f825fbb049dcea">directorySize</a></td></tr>
-<tr class="separator:ac57b3e0bb5319a0ad0f825fbb049dcea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e3f6dc110e3dbc8fe89225551ead99c"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html#a0e3f6dc110e3dbc8fe89225551ead99c">fileCount</a></td></tr>
-<tr class="separator:a0e3f6dc110e3dbc8fe89225551ead99c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed6d3aa7dce332c56aa8ab32f58c3a20"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html#aed6d3aa7dce332c56aa8ab32f58c3a20">directorySize</a></td></tr>
+<tr class="separator:aed6d3aa7dce332c56aa8ab32f58c3a20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28107c8c9d34b5dfca7dc136c6d8dc90"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html#a28107c8c9d34b5dfca7dc136c6d8dc90">fileCount</a></td></tr>
+<tr class="separator:a28107c8c9d34b5dfca7dc136c6d8dc90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Type for configuring <a class="el" href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html" title="Class for logging into files.">FileSink</a> cleanup rules. </p>
+<div class="textblock"><h3>template&lt;Record TRecord&gt;<br />
+struct sl::log::FileSink&lt; TRecord &gt;::CleanupRule</h3>
+
+<p>Type for configuring <a class="el" href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html" title="Class for logging into files.">FileSink</a> cleanup rules. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="ac57b3e0bb5319a0ad0f825fbb049dcea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac57b3e0bb5319a0ad0f825fbb049dcea">&#9670;&nbsp;</a></span>directorySize</h2>
+<a id="aed6d3aa7dce332c56aa8ab32f58c3a20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed6d3aa7dce332c56aa8ab32f58c3a20">&#9670;&nbsp;</a></span>directorySize</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt;std::size_t&gt; sl::log::FileSink::CleanupRule::directorySize</td>
+          <td class="memname">std::optional&lt;std::size_t&gt; <a class="el" href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html">sl::log::FileSink</a>&lt; TRecord &gt;::CleanupRule::directorySize</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a0e3f6dc110e3dbc8fe89225551ead99c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e3f6dc110e3dbc8fe89225551ead99c">&#9670;&nbsp;</a></span>fileCount</h2>
+<a id="a28107c8c9d34b5dfca7dc136c6d8dc90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28107c8c9d34b5dfca7dc136c6d8dc90">&#9670;&nbsp;</a></span>fileCount</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt;std::size_t&gt; sl::log::FileSink::CleanupRule::fileCount</td>
+          <td class="memname">std::optional&lt;std::size_t&gt; <a class="el" href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html">sl::log::FileSink</a>&lt; TRecord &gt;::CleanupRule::fileCount</td>
         </tr>
       </table>
 </div><div class="memdoc">

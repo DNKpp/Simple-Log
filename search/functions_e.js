@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['_7ebasicsink_160',['~BasicSink',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#ada502f2e87c953afedcf248459a50695',1,'sl::log::BasicSink']]],
-  ['_7ecore_161',['~Core',['../d4/df3/classsl_1_1log_1_1_core.html#a4acb95fd35050128f981a2c7a97f2dcb',1,'sl::log::Core']]],
-  ['_7efilesink_162',['~FileSink',['../dc/dd6/classsl_1_1log_1_1_file_sink.html#a68bcbe40ad0546fc74b95743dad6ee6e',1,'sl::log::FileSink']]],
-  ['_7eisink_163',['~ISink',['../d8/dda/classsl_1_1log_1_1_i_sink.html#a05106cfb08145ccab76690d3a657c518',1,'sl::log::ISink']]],
-  ['_7elogger_164',['~Logger',['../df/da8/classsl_1_1log_1_1_logger.html#a307970a79c429a74ecd55f78cddf7029',1,'sl::log::Logger']]],
-  ['_7erecordbuilder_165',['~RecordBuilder',['../db/d9a/classsl_1_1log_1_1_record_builder.html#a9ab9481b250c60aa33726abedb42330a',1,'sl::log::RecordBuilder']]]
+  ['_7ebasicsink_186',['~BasicSink',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a3d32a8ae46419eaae763ac001935bcd2',1,'sl::log::BasicSink']]],
+  ['_7ecore_187',['~Core',['../d4/df3/classsl_1_1log_1_1_core.html#abcfb0b306ce0de6a5df5acfb01d881cf',1,'sl::log::Core']]],
+  ['_7efilesink_188',['~FileSink',['../dc/dd6/classsl_1_1log_1_1_file_sink.html#a6ae297d43cb827d3d0401cdfb0a69a70',1,'sl::log::FileSink']]],
+  ['_7eisink_189',['~ISink',['../d8/dda/classsl_1_1log_1_1_i_sink.html#a33d8137c0f9f0e0a7e77f8fa461c9a2b',1,'sl::log::ISink']]],
+  ['_7elogger_190',['~Logger',['../df/da8/classsl_1_1log_1_1_logger.html#ab1c8c7bad269dee57b0de0a7dfb5ccee',1,'sl::log::Logger']]],
+  ['_7erecordbuilder_191',['~RecordBuilder',['../db/d9a/classsl_1_1log_1_1_record_builder.html#aa91db3e07ed07aba4793678525764ad7',1,'sl::log::RecordBuilder']]]
 ];

@@ -98,27 +98,56 @@ $(document).ready(function(){initNavTree('d9/db9/_concepts_8hpp_source.html','..
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;concepts&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;ostream&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/d83/namespacesl_1_1log.html">sl::log</a></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">class </span>Record;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="../../de/d83/namespacesl_1_1log.html#a13c8fe3cae8406c36d09aae63410e649">   19</a></span>&#160;    concept <a class="code" href="../../de/d83/namespacesl_1_1log.html#a13c8fe3cae8406c36d09aae63410e649">RecordFormatter</a> = (std::movable&lt;T&gt; || std::copyable&lt;T&gt;) &amp;&amp; std::invocable&lt;T, std::ostream&amp;, const Record&amp;&gt;;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../de/d83/namespacesl_1_1log.html#a173cf894beb59aceb9ccdf836a3ad066">   22</a></span>&#160;    concept <a class="code" href="../../de/d83/namespacesl_1_1log.html#a173cf894beb59aceb9ccdf836a3ad066">RecordFilter</a> = (std::movable&lt;T&gt; || std::copyable&lt;T&gt;) &amp;&amp; std::predicate&lt;T, const Record&amp;&gt;;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../de/d83/namespacesl_1_1log.html#a1c5760e773e9a0c3ab0d608139bce497">   25</a></span>&#160;    concept <a class="code" href="../../de/d83/namespacesl_1_1log.html#a1c5760e773e9a0c3ab0d608139bce497">FileStateHandler</a> = (std::movable&lt;T&gt; || std::copyable&lt;T&gt;) &amp;&amp; std::invocable&lt;T, std::ostream&amp;, const Record&amp;&gt;;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="anamespacesl_1_1log_html"><div class="ttname"><a href="../../de/d83/namespacesl_1_1log.html">sl::log</a></div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:21</div></div>
-<div class="ttc" id="anamespacesl_1_1log_html_a13c8fe3cae8406c36d09aae63410e649"><div class="ttname"><a href="../../de/d83/namespacesl_1_1log.html#a13c8fe3cae8406c36d09aae63410e649">sl::log::RecordFormatter</a></div><div class="ttdeci">concept RecordFormatter</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:19</div></div>
-<div class="ttc" id="anamespacesl_1_1log_html_a173cf894beb59aceb9ccdf836a3ad066"><div class="ttname"><a href="../../de/d83/namespacesl_1_1log.html#a173cf894beb59aceb9ccdf836a3ad066">sl::log::RecordFilter</a></div><div class="ttdeci">concept RecordFilter</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:22</div></div>
-<div class="ttc" id="anamespacesl_1_1log_html_a1c5760e773e9a0c3ab0d608139bce497"><div class="ttname"><a href="../../de/d83/namespacesl_1_1log.html#a1c5760e773e9a0c3ab0d608139bce497">sl::log::FileStateHandler</a></div><div class="ttdeci">concept FileStateHandler</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:25</div></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/d83/namespacesl_1_1log.html">sl::log</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T1&gt;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../d4/df0/group__concepts.html#ga020e0b2248bb393589aa5e0495384493">   26</a></span>&#160;    concept <a class="code" href="../../d4/df0/group__concepts.html#ga020e0b2248bb393589aa5e0495384493">NotVoid</a> = !std::is_same_v&lt;T1, void&gt;;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="../../d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081">   33</a></span>&#160;    concept <a class="code" href="../../d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081">Record</a> =</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        std::movable&lt;T&gt; &amp;&amp;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        requires(T rec)</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keyword">typename</span> T::Message_t;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keyword">typename</span> T::TimePoint_t;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keyword">typename</span> T::SeverityLevel_t;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keyword">typename</span> T::Channel_t;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        } &amp;&amp;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        requires(<span class="keyword">const</span> T&amp; rec)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            { rec.message() } -&gt; <a class="code" href="../../d4/df0/group__concepts.html#ga020e0b2248bb393589aa5e0495384493">NotVoid</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            { rec.severity() } -&gt; <a class="code" href="../../d4/df0/group__concepts.html#ga020e0b2248bb393589aa5e0495384493">NotVoid</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            { rec.channel() } -&gt; <a class="code" href="../../d4/df0/group__concepts.html#ga020e0b2248bb393589aa5e0495384493">NotVoid</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            { rec.timePoint() } -&gt; <a class="code" href="../../d4/df0/group__concepts.html#ga020e0b2248bb393589aa5e0495384493">NotVoid</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        } &amp;&amp;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        requires(T&amp; rec)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            { rec.setMessage(std::declval&lt;typename T::Message_t&gt;()) };</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            { rec.setTimePoint(std::declval&lt;typename T::TimePoint_t&gt;()) };</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            { rec.setSeverity(std::declval&lt;typename T::SeverityLevel_t&gt;()) };</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            { rec.setChannel(std::declval&lt;typename T::Channel_t&gt;()) };</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        };</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keyword">class</span> TRecord&gt;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../d4/df0/group__concepts.html#ga524680d39e771fd1fa808e92614a355b">   61</a></span>&#160;    concept <a class="code" href="../../d4/df0/group__concepts.html#ga524680d39e771fd1fa808e92614a355b">RecordFormatterFor</a> = Record&lt;TRecord&gt; &amp;&amp; std::invocable&lt;T, std::ostream&amp;, const TRecord&amp;&gt;;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keyword">class</span> TRecord&gt;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../d4/df0/group__concepts.html#ga37ddba3404d4136b7f370c8b5c4261b0">   67</a></span>&#160;    concept <a class="code" href="../../d4/df0/group__concepts.html#ga37ddba3404d4136b7f370c8b5c4261b0">RecordFilterFor</a> = Record&lt;TRecord&gt; &amp;&amp; std::predicate&lt;T, const TRecord&amp;&gt;;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="../../d4/df0/group__concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">   73</a></span>&#160;    concept <a class="code" href="../../d4/df0/group__concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">FileStateHandler</a> = std::invocable&lt;T&gt; &amp;&amp; std::convertible_to&lt;std::invoke_result_t&lt;T&gt;, std::string&gt;;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="agroup__concepts_html_ga020e0b2248bb393589aa5e0495384493"><div class="ttname"><a href="../../d4/df0/group__concepts.html#ga020e0b2248bb393589aa5e0495384493">sl::log::NotVoid</a></div><div class="ttdeci">concept NotVoid</div><div class="ttdoc">Concept checking for void type.</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:26</div></div>
+<div class="ttc" id="agroup__concepts_html_ga1c5760e773e9a0c3ab0d608139bce497"><div class="ttname"><a href="../../d4/df0/group__concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">sl::log::FileStateHandler</a></div><div class="ttdeci">concept FileStateHandler</div><div class="ttdoc">Concept for invokable file state handler objects.</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:73</div></div>
+<div class="ttc" id="agroup__concepts_html_ga37ddba3404d4136b7f370c8b5c4261b0"><div class="ttname"><a href="../../d4/df0/group__concepts.html#ga37ddba3404d4136b7f370c8b5c4261b0">sl::log::RecordFilterFor</a></div><div class="ttdeci">concept RecordFilterFor</div><div class="ttdoc">Concept for invokable filter objects.</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:67</div></div>
+<div class="ttc" id="agroup__concepts_html_ga524680d39e771fd1fa808e92614a355b"><div class="ttname"><a href="../../d4/df0/group__concepts.html#ga524680d39e771fd1fa808e92614a355b">sl::log::RecordFormatterFor</a></div><div class="ttdeci">concept RecordFormatterFor</div><div class="ttdoc">Concept for invokable formatter objects.</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:61</div></div>
+<div class="ttc" id="agroup__concepts_html_ga7e49931624e51b19627bef18ff763081"><div class="ttname"><a href="../../d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081">sl::log::Record</a></div><div class="ttdeci">concept Record</div><div class="ttdoc">Concept for Record types.</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:33</div></div>
+<div class="ttc" id="anamespacesl_1_1log_html"><div class="ttname"><a href="../../de/d83/namespacesl_1_1log.html">sl::log</a></div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
