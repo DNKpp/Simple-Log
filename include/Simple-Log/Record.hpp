@@ -31,8 +31,7 @@ namespace sl::log
 	template <std::semiregular TSeverityLevel,
 			std::semiregular TChannel,
 			std::semiregular TMessage = std::string,
-			std::semiregular TTimePoint = std::chrono::system_clock::time_point,
-			std::semiregular... TUserData
+			std::semiregular TTimePoint = std::chrono::system_clock::time_point
 	>
 	class BaseRecord
 	{
@@ -41,7 +40,6 @@ namespace sl::log
 		using SeverityLevel_t = TSeverityLevel;
 		using Channel_t = TChannel;
 		using TimePoint_t = TTimePoint;
-		using UserData_t = std::tuple<TUserData...>;
 #ifdef __cpp_lib_source_location
 		using SourceLocation_t = std::source_location;
 #endif
@@ -108,29 +106,11 @@ namespace sl::log
 		}
 #endif
 
-		// ToDo: enable when SetDataAt<index> is possible
-		//template <std::size_t Index, std::semiregular UUserData>
-		//requires requires
-		//{
-		//	Index < std::tuple_size_v<UserData_t>;
-		//} && std::convertible_to<UUserData, std::tuple_element_t<Index, UserData_t>>
-		//void setUserData(UUserData&& userData)
-		//{
-		//	setUserData(std::get<Index>(m_UserData), std::forward<UUserData>(userData));
-		//}
-
-		template <std::semiregular UUserData>
-		void setUserData(UUserData&& userData)
-		{
-			std::get<UUserData>(m_UserData) = std::forward<UUserData>(userData);
-		}
-
 	private:
 		Message_t m_Message{};
 		TimePoint_t m_TimePoint{};
 		SeverityLevel_t m_Severity{};
 		Channel_t m_Channel{};
-		UserData_t m_UserData;
 #ifdef __cpp_lib_source_location
 		SourceLocation_t m_SourceLocation;
 #endif

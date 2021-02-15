@@ -11,7 +11,7 @@
 
 using namespace sl::log;
 
-using Record_t = BaseRecord<pre::SeverityLevel, std::string, std::string, std::chrono::system_clock::time_point, int>;
+using Record_t = BaseRecord<pre::SeverityLevel, std::string, std::string, std::chrono::system_clock::time_point>;
 inline Core<Record_t> core;
 
 enum class Channel
@@ -45,7 +45,7 @@ TEST_CASE(" ", "[Core]")
 	Logger<Record_t> log{ core, pre::SeverityLevel::info };
 
 	log() << SetSev(pre::SeverityLevel::debug) << "Hello," << SetChan("test") << "World!";
-	log() << "Hello, Zhavok!" << SetData(1337);
+	log() << "Hello, Zhavok!";
 	
 	//sink.setFormatter([](std::ostream& out, const Record& rec) { out << "yes" << rec.message; });
 	//sink.setFilter([](const Record& rec){ return rec.message != "Hello, World!"; });

@@ -35,7 +35,6 @@ namespace sl::log
 		using Record_t = TRecord;
 		using SeverityLevel_t = typename Record_t::SeverityLevel_t;
 		using Channel_t = typename Record_t::Channel_t;
-		using UserData_t = typename Record_t::UserData_t;
 		using Core_t = Core<Record_t>;
 		using RecordBuilder_t = RecordBuilder<Record_t>;
 
