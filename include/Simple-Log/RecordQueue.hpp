@@ -24,6 +24,7 @@ namespace sl::log
 
 	/**
 	 * \brief Storage for Record s
+	 * \tparam TRecord Used Record type.
 	 * \details This class is a simple representation of a blocking queue. Its take() function blocks until an element is present in the internal queue or
 	 * the duration exceeded. Each function is thread-safe by design.
 	 */
@@ -55,6 +56,7 @@ namespace sl::log
 		 * \param waitingDuration The max waiting duration for an element.
 		 * \return Returns an element as optional. Might be nullopt.
 		 */
+		[[nodiscard]]
 		std::optional<Record_t> take(std::optional<std::chrono::milliseconds> waitingDuration = std::nullopt)
 		{
 			auto isQueueNotEmpty = [&records = m_QueuedRecords]() { return !std::empty(records); };
