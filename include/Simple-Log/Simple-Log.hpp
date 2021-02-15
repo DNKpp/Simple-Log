@@ -15,13 +15,13 @@
 #include "Record.hpp"
 #include "RecordBuilder.hpp"
 
-#include "RecordQueue.hpp"
 #include "Core.hpp"
+#include "RecordQueue.hpp"
 
 #include "Logger.hpp"
 
-#include "ISink.hpp"
 #include "BasicSink.hpp"
 #include "FileSink.hpp"
+#include "ISink.hpp"
 
 #endif
