@@ -194,6 +194,89 @@ SCENARIO("test between values predicate", "[total-ordering-predicates]")
 		pred::BetweenConstants<int> between{ value, value };
 		GIVEN("equal values")
 		{
+			THEN("returns false")
+			{
+				REQUIRE_FALSE(between(value));
+			}
+		}
+
+		GIVEN("lesser value")
+		{
+			--value;
+			THEN("returns false")
+			{
+				REQUIRE_FALSE(between(value));
+			}
+		}
+
+		GIVEN("greater value")
+		{
+			++value;
+			THEN("returns false")
+			{
+				REQUIRE_FALSE(between(value));
+			}
+		}
+	}
+	
+	WHEN("testing for between two distinct values")
+	{
+		int value = 1337;
+		pred::BetweenConstants<int> between{ value, value + 2 };
+		GIVEN("value equals low")
+		{
+			THEN("returns false")
+			{
+				REQUIRE_FALSE(between(value));
+			}
+		}
+
+		GIVEN("value equals high")
+		{
+			value += 2;
+			THEN("returns false")
+			{
+				REQUIRE_FALSE(between(value));
+			}
+		}
+
+		GIVEN("value between low and high")
+		{
+			value += 1;
+			THEN("returns true")
+			{
+				REQUIRE(between(value));
+			}
+		}
+
+		GIVEN("lesser than low")
+		{
+			--value;
+			THEN("returns false")
+			{
+				REQUIRE_FALSE(between(value));
+			}
+		}
+
+		GIVEN("greater value")
+		{
+			value += 3;
+			THEN("returns false")
+			{
+				REQUIRE_FALSE(between(value));
+			}
+		}
+	}
+}
+
+SCENARIO("test between-equals values predicate", "[total-ordering-predicates]")
+{
+	WHEN("testing for between two equal values")
+	{
+		int value = 1337;
+		pred::BetweenEqualsConstants<int> between{ value, value };
+		GIVEN("equal values")
+		{
 			THEN("returns true")
 			{
 				REQUIRE(between(value));
@@ -212,7 +295,7 @@ SCENARIO("test between values predicate", "[total-ordering-predicates]")
 		GIVEN("greater value")
 		{
 			++value;
-			THEN("returns true")
+			THEN("returns false")
 			{
 				REQUIRE_FALSE(between(value));
 			}
@@ -222,7 +305,7 @@ SCENARIO("test between values predicate", "[total-ordering-predicates]")
 	WHEN("testing for between two distrinct values")
 	{
 		int value = 1337;
-		pred::BetweenConstants<int> between{ value, value + 2 };
+		pred::BetweenEqualsConstants<int> between{ value, value + 2 };
 		GIVEN("value equals low")
 		{
 			THEN("returns true")
@@ -261,7 +344,7 @@ SCENARIO("test between values predicate", "[total-ordering-predicates]")
 		GIVEN("greater value")
 		{
 			value += 3;
-			THEN("returns true")
+			THEN("returns false")
 			{
 				REQUIRE_FALSE(between(value));
 			}
