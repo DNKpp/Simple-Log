@@ -42,13 +42,13 @@ This will add the the include path "<simple_log_install_dir>/include", thus you 
 
 ## Simple usage example
 ```cpp
-// This is the header of preset types, thus you'll have a easy start getting used to the library.
+// This header contains preset types, which users can use to get an easy start with the library.
 #include <Simple-Log/PresetTypes.hpp>
 
 #include <iostream>
 #include <memory>
 
-/* let's use a namepsace alias for convenience; be aware: if you use cmath, some implementations will bloat your global namespace with a log function declaration (c-relict).
+/* let's use a namespace alias for convenience; be aware: if you use cmath, some stl implementations will bloat your global namespace with a log function declaration (c-relict).
 Thus to make it compatible with all compilers, I'll use logging as alias instead.
 
 All preset type alias are located in the sl::log::pre namespace, thus they do not interfere with the actual library if you don't want them to.
