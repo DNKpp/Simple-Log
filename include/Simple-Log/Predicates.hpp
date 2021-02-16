@@ -16,10 +16,10 @@
 namespace sl::log::pred
 {
 	template <std::equality_comparable T>
-	class EqualsToConstant
+	class Equal
 	{
 	public:
-		constexpr explicit EqualsToConstant(T to) :
+		constexpr explicit Equal(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -35,10 +35,10 @@ namespace sl::log::pred
 	};
 
 	template <std::equality_comparable T>
-	class NotEqualsToConstant
+	class NotEqual
 	{
 	public:
-		constexpr explicit NotEqualsToConstant(T to) :
+		constexpr explicit NotEqual(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -54,10 +54,10 @@ namespace sl::log::pred
 	};
 
 	template <std::totally_ordered T>
-	class LessToConstant
+	class Less
 	{
 	public:
-		constexpr explicit LessToConstant(T to) :
+		constexpr explicit Less(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -73,10 +73,10 @@ namespace sl::log::pred
 	};
 
 	template <std::totally_ordered T>
-	class GreaterToConstant
+	class Greater
 	{
 	public:
-		constexpr explicit GreaterToConstant(T to) :
+		constexpr explicit Greater(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -92,10 +92,10 @@ namespace sl::log::pred
 	};
 
 	template <std::totally_ordered T>
-	class LessEqualsToConstant
+	class LessEqual
 	{
 	public:
-		constexpr explicit LessEqualsToConstant(T to) :
+		constexpr explicit LessEqual(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -111,10 +111,10 @@ namespace sl::log::pred
 	};
 
 	template <std::totally_ordered T>
-	class GreaterEqualsToConstant
+	class GreaterEqual
 	{
 	public:
-		constexpr explicit GreaterEqualsToConstant(T to) :
+		constexpr explicit GreaterEqual(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -130,10 +130,10 @@ namespace sl::log::pred
 	};
 
 	template <std::totally_ordered T>
-	class BetweenConstants
+	class Between
 	{
 	public:
-		constexpr explicit BetweenConstants(T one, T two) :
+		constexpr explicit Between(T one, T two) :
 			m_Low{ std::min(one, two) },
 			m_High{ std::max(two, one) }
 		{
@@ -151,10 +151,10 @@ namespace sl::log::pred
 	};
 
 	template <std::totally_ordered T>
-	class BetweenEqualsConstants
+	class BetweenEqual
 	{
 	public:
-		constexpr explicit BetweenEqualsConstants(T one, T two) :
+		constexpr explicit BetweenEqual(T one, T two) :
 			m_Low{ std::min(one, two) },
 			m_High{ std::max(two, one) }
 		{

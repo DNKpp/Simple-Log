@@ -41,14 +41,14 @@ TEST_CASE(" ", "[Core]")
 		{
 			ProjectionFilter{ &Record_t::severity, pred::LessToConstant{ pre::SeverityLevel::info }},
 			ProjectionFilter{ &Record_t::channel, pred::NotEqualsToConstant{ "test" } },
-			makeChannelFilterFor<Record_t>(pred::NotEqualsToConstant{ "test" })
+			makeChannelFilterFor<Record_t>(pred::NotEqualsToConstant{ "test" })	// gleicher Effekt wie die Zeile davor
 		}
 	);
 
-	//auto f{ makeChannelFilter<Channel>(pred::LessToConstant{ Channel::test }) };
+	//auto f{ makeChannelFilter<Channel>(pred::Less{ Channel::test }) };
 	//FilterConjunction c{ f, f };
 	//fileSink.setFilter(c);
-	//fileSink.setFilter(Filter{ &Record::time, EqualsToConstant{ std::chrono::steady_clock::now() }});
+	//fileSink.setFilter(Filter{ &Record::time, Equals{ std::chrono::steady_clock::now() }});
 	
 	Logger<Record_t> log{ core, pre::SeverityLevel::info };
 
