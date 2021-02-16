@@ -16,10 +16,10 @@
 namespace sl::log::pred
 {
 	template <std::equality_comparable T>
-	class Equal
+	class EqualsTo
 	{
 	public:
-		constexpr explicit Equal(T to) :
+		constexpr explicit EqualsTo(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -35,10 +35,10 @@ namespace sl::log::pred
 	};
 
 	template <std::equality_comparable T>
-	class NotEqual
+	class NotEquals
 	{
 	public:
-		constexpr explicit NotEqual(T to) :
+		constexpr explicit NotEquals(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -92,10 +92,10 @@ namespace sl::log::pred
 	};
 
 	template <std::totally_ordered T>
-	class LessEqual
+	class LessEquals
 	{
 	public:
-		constexpr explicit LessEqual(T to) :
+		constexpr explicit LessEquals(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -151,10 +151,10 @@ namespace sl::log::pred
 	};
 
 	template <std::totally_ordered T>
-	class BetweenEqual
+	class BetweenEquals
 	{
 	public:
-		constexpr explicit BetweenEqual(T one, T two) :
+		constexpr explicit BetweenEquals(T one, T two) :
 			m_Low{ std::min(one, two) },
 			m_High{ std::max(two, one) }
 		{
