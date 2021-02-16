@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['setchan_120',['SetChan',['../d9/d84/classsl_1_1log_1_1_set_chan.html',1,'sl::log']]],
-  ['setsev_121',['SetSev',['../df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html',1,'sl::log::pre::SetSev'],['../d5/df7/classsl_1_1log_1_1_set_sev.html',1,'sl::log::SetSev&lt; TSeverityLevel &gt;']]],
-  ['stringpattern_122',['StringPattern',['../d1/d81/classsl_1_1log_1_1_string_pattern.html',1,'sl::log']]]
+  ['less_151',['Less',['../d0/d1e/classsl_1_1log_1_1pred_1_1_less.html',1,'sl::log::pred']]],
+  ['lessequals_152',['LessEquals',['../d5/d6d/classsl_1_1log_1_1pred_1_1_less_equals.html',1,'sl::log::pred']]],
+  ['logger_153',['Logger',['../df/da8/classsl_1_1log_1_1_logger.html',1,'sl::log']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['warning_101',['warning',['../df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html#a88e9c1cda3901a3bef4979d111b97695',1,'sl::log::pre::SetSev::warning()'],['../df/d5b/group___prepared_types.html#gga1233009dc7a50b2f4d4a14c7e9b087d2a7b83d3f08fa392b79e3f553b585971cd',1,'sl::log::pre::warning()']]],
-  ['writetostream_102',['writeToStream',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a01b37a48110effd9fdfadfacc05e17c2',1,'sl::log::BasicSink']]]
+  ['take_122',['take',['../d1/de1/classsl_1_1log_1_1_record_queue.html#a8b6bcbb58a14a851bbd396a9227ecb01',1,'sl::log::RecordQueue']]],
+  ['timepoint_123',['timePoint',['../dd/d7a/classsl_1_1log_1_1_base_record.html#a9783369731c6f2c3b64b49913e80c231',1,'sl::log::BaseRecord']]],
+  ['timepoint_5ft_124',['TimePoint_t',['../dd/d7a/classsl_1_1log_1_1_base_record.html#aa4dc29db0018fdb7b2582e003e56929c',1,'sl::log::BaseRecord']]]
 ];

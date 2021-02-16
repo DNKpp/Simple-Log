@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['log_150',['log',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a91ceda33a64d55c7bb64c1d35818193a',1,'sl::log::BasicSink::log()'],['../d4/df3/classsl_1_1log_1_1_core.html#ac978894c8846ae6539d9f57ad2d4f8ed',1,'sl::log::Core::log()'],['../dc/dd6/classsl_1_1log_1_1_file_sink.html#a4dc012d004471dfbe3bf7670899ee652',1,'sl::log::FileSink::log()'],['../d8/dda/classsl_1_1log_1_1_i_sink.html#a35ba629214d49e3afe4de5612b13ea2c',1,'sl::log::ISink::log()']]],
-  ['logger_151',['Logger',['../df/da8/classsl_1_1log_1_1_logger.html#a86be5ee39202fb79329ca446b2858fb3',1,'sl::log::Logger::Logger(Core_t &amp;core, SeverityLevel_t defaultSeverityLvl={}, Channel_t defaultChannel={}) noexcept'],['../df/da8/classsl_1_1log_1_1_logger.html#a9374cda991759e957419fd80f8b7e4e0',1,'sl::log::Logger::Logger(const Logger &amp;) noexcept=default'],['../df/da8/classsl_1_1log_1_1_logger.html#a10b2845fb1d73b0ee7ee2e7fc38b5abe',1,'sl::log::Logger::Logger(Logger &amp;&amp;) noexcept=default']]]
+  ['greater_198',['Greater',['../d5/d49/classsl_1_1log_1_1pred_1_1_greater.html#a1cdde9b5643639abf14a040e08e5237f',1,'sl::log::pred::Greater']]],
+  ['greaterequal_199',['GreaterEqual',['../dd/d00/classsl_1_1log_1_1pred_1_1_greater_equal.html#ade57b27b675cfa9483992d2c547d1751',1,'sl::log::pred::GreaterEqual']]]
 ];

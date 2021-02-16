@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['log_36',['log',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a91ceda33a64d55c7bb64c1d35818193a',1,'sl::log::BasicSink::log()'],['../d4/df3/classsl_1_1log_1_1_core.html#ac978894c8846ae6539d9f57ad2d4f8ed',1,'sl::log::Core::log()'],['../dc/dd6/classsl_1_1log_1_1_file_sink.html#a4dc012d004471dfbe3bf7670899ee652',1,'sl::log::FileSink::log()'],['../d8/dda/classsl_1_1log_1_1_i_sink.html#a35ba629214d49e3afe4de5612b13ea2c',1,'sl::log::ISink::log()']]],
-  ['logger_37',['Logger',['../df/da8/classsl_1_1log_1_1_logger.html#a86be5ee39202fb79329ca446b2858fb3',1,'sl::log::Logger::Logger(Core_t &amp;core, SeverityLevel_t defaultSeverityLvl={}, Channel_t defaultChannel={}) noexcept'],['../df/da8/classsl_1_1log_1_1_logger.html#a9374cda991759e957419fd80f8b7e4e0',1,'sl::log::Logger::Logger(const Logger &amp;) noexcept=default'],['../df/da8/classsl_1_1log_1_1_logger.html#a10b2845fb1d73b0ee7ee2e7fc38b5abe',1,'sl::log::Logger::Logger(Logger &amp;&amp;) noexcept=default'],['../df/da8/classsl_1_1log_1_1_logger.html',1,'sl::log::Logger&lt; TRecord &gt;']]],
-  ['logger_2ehpp_38',['Logger.hpp',['../d3/de3/_logger_8hpp.html',1,'']]],
-  ['logger_5ft_39',['Logger_t',['../df/d5b/group___prepared_types.html#ga056916e99d3c6cb4490a14821ccf1a35',1,'sl::log::pre']]]
+  ['info_44',['info',['../df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html#acda87749221fecce4433364ff8926dc7',1,'sl::log::pre::SetSev::info()'],['../df/d5b/group___prepared_types.html#gga1233009dc7a50b2f4d4a14c7e9b087d2acaf9b6b99962bf5c2264824231d7a40c',1,'sl::log::pre::info()']]],
+  ['isempty_45',['isEmpty',['../d1/de1/classsl_1_1log_1_1_record_queue.html#aa0046f89e2f50b4b31bfd48a8e128076',1,'sl::log::RecordQueue']]],
+  ['isink_46',['ISink',['../d8/dda/classsl_1_1log_1_1_i_sink.html#abfaca8044c6895350a496b13982de363',1,'sl::log::ISink::ISink(const ISink &amp;)=delete'],['../d8/dda/classsl_1_1log_1_1_i_sink.html#aa9ba223d8652631e3f3d5fd5dcc2f760',1,'sl::log::ISink::ISink()=default'],['../d8/dda/classsl_1_1log_1_1_i_sink.html#aa63347f0758cd2b1583da994c8e89903',1,'sl::log::ISink::ISink(ISink &amp;&amp;)=default'],['../d8/dda/classsl_1_1log_1_1_i_sink.html',1,'sl::log::ISink&lt; TRecord &gt;']]],
+  ['isink_2ehpp_47',['ISink.hpp',['../d2/d5f/_i_sink_8hpp.html',1,'']]],
+  ['isink_5ft_48',['ISink_t',['../df/d5b/group___prepared_types.html#ga441c31c9fe7ec7745acfa5cd24a5e6c6',1,'sl::log::pre']]]
 ];

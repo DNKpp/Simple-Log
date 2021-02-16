@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['logger_115',['Logger',['../df/da8/classsl_1_1log_1_1_logger.html',1,'sl::log']]]
+  ['greater_148',['Greater',['../d5/d49/classsl_1_1log_1_1pred_1_1_greater.html',1,'sl::log::pred']]],
+  ['greaterequal_149',['GreaterEqual',['../dd/d00/classsl_1_1log_1_1pred_1_1_greater_equal.html',1,'sl::log::pred']]]
 ];
