@@ -109,9 +109,9 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a79bcd6c20d3b5a2839836515696ccdc6"><td class="memItemLeft" align="right" valign="top">std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d7a/classsl_1_1log_1_1_base_record.html#a79bcd6c20d3b5a2839836515696ccdc6">message</a> () const noexcept</td></tr>
-<tr class="memdesc:a79bcd6c20d3b5a2839836515696ccdc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const access to the message string.  <a href="../../dd/d7a/classsl_1_1log_1_1_base_record.html#a79bcd6c20d3b5a2839836515696ccdc6">More...</a><br /></td></tr>
-<tr class="separator:a79bcd6c20d3b5a2839836515696ccdc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a439f27449dc191ac46071bc1097b2469"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dd/d7a/classsl_1_1log_1_1_base_record.html#a756f90f181a5cd126679a9e37c0d36bd">Message_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d7a/classsl_1_1log_1_1_base_record.html#a439f27449dc191ac46071bc1097b2469">message</a> () const noexcept</td></tr>
+<tr class="memdesc:a439f27449dc191ac46071bc1097b2469"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const access to the message.  <a href="../../dd/d7a/classsl_1_1log_1_1_base_record.html#a439f27449dc191ac46071bc1097b2469">More...</a><br /></td></tr>
+<tr class="separator:a439f27449dc191ac46071bc1097b2469"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedf882a4689b91227bb84ce016de25e3"><td class="memTemplParams" colspan="2">template&lt;std::convertible_to&lt; Message_t &gt; UMessage&gt; </td></tr>
 <tr class="memitem:aedf882a4689b91227bb84ce016de25e3"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d7a/classsl_1_1log_1_1_base_record.html#aedf882a4689b91227bb84ce016de25e3">setMessage</a> (UMessage &amp;&amp;msg)</td></tr>
 <tr class="memdesc:aedf882a4689b91227bb84ce016de25e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the message string.  <a href="../../dd/d7a/classsl_1_1log_1_1_base_record.html#aedf882a4689b91227bb84ce016de25e3">More...</a><br /></td></tr>
@@ -249,8 +249,8 @@ template&lt;std::semiregular TSeverityLevel, std::semiregular TChannel, std::sem
 
 </div>
 </div>
-<a id="a79bcd6c20d3b5a2839836515696ccdc6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79bcd6c20d3b5a2839836515696ccdc6">&#9670;&nbsp;</a></span>message()</h2>
+<a id="a439f27449dc191ac46071bc1097b2469"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a439f27449dc191ac46071bc1097b2469">&#9670;&nbsp;</a></span>message()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -261,7 +261,7 @@ template&lt;std::semiregular TSeverityLevel, std::semiregular TChannel, std::sem
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string_view <a class="el" href="../../dd/d7a/classsl_1_1log_1_1_base_record.html">sl::log::BaseRecord</a>&lt; TSeverityLevel, TChannel, TMessage, TTimePoint &gt;::message </td>
+          <td class="memname">const <a class="el" href="../../dd/d7a/classsl_1_1log_1_1_base_record.html#a756f90f181a5cd126679a9e37c0d36bd">Message_t</a>&amp; <a class="el" href="../../dd/d7a/classsl_1_1log_1_1_base_record.html">sl::log::BaseRecord</a>&lt; TSeverityLevel, TChannel, TMessage, TTimePoint &gt;::message </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -274,8 +274,8 @@ template&lt;std::semiregular TSeverityLevel, std::semiregular TChannel, std::sem
 </table>
 </div><div class="memdoc">
 
-<p>Const access to the message string. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns the stored message as std::string_view </dd></dl>
+<p>Const access to the message. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns the stored message </dd></dl>
 
 </div>
 </div>
