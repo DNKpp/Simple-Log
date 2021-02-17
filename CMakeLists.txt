@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
 project(simple_log)
 
@@ -26,53 +26,5 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clan
 	)
 endif()
 
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-	include(CTest)
-	include(FetchContent)
-
-	FetchContent_Declare(
-	  catch2
-	  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-	  GIT_TAG        origin/v2.x
-	)
-	FetchContent_MakeAvailable(catch2)
-
-	add_executable(
-		test_simple_log
-		${TestsDir}/main.cpp
-		${TestsDir}/TupleAlgorithmTests.cpp
-		${TestsDir}/PredicateTests.cpp
-		${TestsDir}/FilterTests.cpp
-		
-		${TestsDir}/StringPatternTest.cpp
-		#${CMAKE_CURRENT_SOURCE_DIR}/test/LogTest.cpp
-	)
-
-	target_link_libraries(
-		test_simple_log
-		PRIVATE
-		simple_log
-		Catch2::Catch2
-	)
-
-	enable_testing()
-	add_test(
-		NAME SimpleLogTestSuite
-		COMMAND test_simple_log
-	)
-endif()
-
-if (SIMPLE_LOG_BUILD_EXAMPLES)
-
-	add_executable(
-		example_simple_log_basic
-		${ExamplesDir}Basic/main.cpp
-	)
-
-	target_link_libraries(
-		example_simple_log_basic
-		PRIVATE
-		simple_log
-	)
-
-endif()
+add_subdirectory(${TestsDir})
+add_subdirectory(${ExamplesDir})

@@ -15,6 +15,11 @@
 					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
 					"value": "True",
 					"type": "BOOL"
+				},
+				{
+					"name": "SIMPLE_LOG_BUILD_TESTS",
+					"value": "True",
+					"type": "BOOL"
 				}
 			]
 		},
@@ -42,6 +47,11 @@
 					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
 					"value": "True",
 					"type": "BOOL"
+				},
+				{
+					"name": "SIMPLE_LOG_BUILD_TESTS",
+					"value": "True",
+					"type": "BOOL"
 				}
 			]
 		},
@@ -55,7 +65,6 @@
 			"buildCommandArgs": "",
 			"ctestCommandArgs": "",
 			"inheritEnvironments": [ "linux_x64" ],
-			"variables": [],
 			"remoteMachineName": "${defaultRemoteMachineName}",
 			"remoteCMakeListsRoot": "$HOME/.vs/${projectDirName}/${workspaceHash}/src",
 			"remoteBuildRoot": "$HOME/.vs/${projectDirName}/${workspaceHash}/out/build/${name}",
@@ -64,7 +73,19 @@
 			"rsyncCommandArgs": "-t --delete --delete-excluded",
 			"remoteCopyBuildOutput": false,
 			"remoteCopySourcesMethod": "rsync",
-			"addressSanitizerRuntimeFlags": "detect_leaks=0"
+			"addressSanitizerRuntimeFlags": "detect_leaks=0",
+			"variables": [
+				{
+					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
+					"value": "True",
+					"type": "BOOL"
+				},
+				{
+					"name": "SIMPLE_LOG_BUILD_TESTS",
+					"value": "True",
+					"type": "BOOL"
+				}
+			]
 		},
 		{
 			"name": "x64-Release",
@@ -76,7 +97,18 @@
 			"buildCommandArgs": "",
 			"ctestCommandArgs": "",
 			"inheritEnvironments": [ "msvc_x64_x64" ],
-			"variables": []
+			"variables": [
+				{
+					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
+					"value": "True",
+					"type": "BOOL"
+				},
+				{
+					"name": "SIMPLE_LOG_BUILD_TESTS",
+					"value": "True",
+					"type": "BOOL"
+				}
+			]
 		},
 		{
 			"name": "Linux-Clang-Debug",
@@ -102,6 +134,11 @@
 					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
 					"value": "True",
 					"type": "BOOL"
+				},
+				{
+					"name": "SIMPLE_LOG_BUILD_TESTS",
+					"value": "True",
+					"type": "BOOL"
 				}
 			]
 		},
@@ -124,7 +161,18 @@
 			"remoteCopyBuildOutput": false,
 			"remoteCopySourcesMethod": "rsync",
 			"addressSanitizerRuntimeFlags": "detect_leaks=0",
-			"variables": []
+			"variables": [
+				{
+					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
+					"value": "True",
+					"type": "BOOL"
+				},
+				{
+					"name": "SIMPLE_LOG_BUILD_TESTS",
+					"value": "True",
+					"type": "BOOL"
+				}
+			]
 		},
 		{
 			"name": "x64-Clang-Debug",
@@ -141,6 +189,11 @@
 					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
 					"value": "True",
 					"type": "BOOL"
+				},
+				{
+					"name": "SIMPLE_LOG_BUILD_TESTS",
+					"value": "True",
+					"type": "BOOL"
 				}
 			]
 		},
@@ -154,7 +207,18 @@
 			"buildCommandArgs": "",
 			"ctestCommandArgs": "",
 			"inheritEnvironments": [ "clang_cl_x64_x64" ],
-			"variables": []
+			"variables": [
+				{
+					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
+					"value": "True",
+					"type": "BOOL"
+				},
+				{
+					"name": "SIMPLE_LOG_BUILD_TESTS",
+					"value": "True",
+					"type": "BOOL"
+				}
+			]
 		},
 		{
 			"name": "x64-ReleaseWithDebInfo",
@@ -166,7 +230,18 @@
 			"buildCommandArgs": "",
 			"ctestCommandArgs": "",
 			"inheritEnvironments": [ "msvc_x64_x64" ],
-			"variables": []
+			"variables": [
+				{
+					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
+					"value": "True",
+					"type": "BOOL"
+				},
+				{
+					"name": "SIMPLE_LOG_BUILD_TESTS",
+					"value": "True",
+					"type": "BOOL"
+				}
+			]
 		}
 	]
 }
