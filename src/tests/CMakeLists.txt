@@ -18,6 +18,7 @@ add_executable(
 	TupleAlgorithmTests.cpp
 	PredicateTests.cpp
 	FilterTests.cpp
+	RecordQueueTests.cpp
 	StringPatternTest.cpp
 	#LogTest.cpp
 )
