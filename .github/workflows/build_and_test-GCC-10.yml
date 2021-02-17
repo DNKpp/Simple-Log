@@ -7,7 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: jwlawson/actions-setup-cmake@v1.6
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.7
+      with:
+        cmake-version: '3.19.x'
+
     - uses: seanmiddleditch/gha-setup-ninja@master
     - name: Install GCC-10
       run: |
@@ -16,7 +20,7 @@ jobs:
         sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
     - name: Configure & Build
       run: |
-        cmake . -Bbuild_gcc -G "Ninja Multi-Config"
+        cmake . -Bbuild_gcc -G "Ninja Multi-Config" -DSIMPLE_LOG_BUILD_EXAMPLES=ON
         cmake --build build_gcc
     - name: Test
       run: 

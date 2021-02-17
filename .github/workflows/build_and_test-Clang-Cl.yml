@@ -7,11 +7,14 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: jwlawson/actions-setup-cmake@v1.6
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.7
+      with:
+        cmake-version: '3.19.x'
 
     - name: Configure & Build
       run: |
-        cmake . -Bbuild_clang-cl -T clangcl
+        cmake . -Bbuild_clang-cl -T clangcl -DSIMPLE_LOG_BUILD_EXAMPLES=ON
         cmake --build build_clang-cl
     - name: Test (Clang-Cl)
       run:

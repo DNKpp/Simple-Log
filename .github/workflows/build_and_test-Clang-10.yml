@@ -7,7 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: jwlawson/actions-setup-cmake@v1.6
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.7
+      with:
+        cmake-version: '3.19.x'
+
     - uses: seanmiddleditch/gha-setup-ninja@master
     - name: Install Clang-10
       run: |
@@ -15,7 +19,7 @@ jobs:
         sudo apt install clang-10
     - name: Configure & Build
       run: |
-        cmake . -Bbuild_clang -DCMAKE_C_COMPILER=$(which clang-10) -DCMAKE_CXX_COMPILER=$(which clang++-10)
+        cmake . -Bbuild_clang -DCMAKE_C_COMPILER=$(which clang-10) -DCMAKE_CXX_COMPILER=$(which clang++-10) -DSIMPLE_LOG_BUILD_EXAMPLES=ON
         cmake --build build_clang
     - name: Test
       run:
