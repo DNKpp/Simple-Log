@@ -51,6 +51,20 @@ namespace sl::log
 		 */
 		virtual void log(const Record_t& record) = 0;
 
+		/**
+		 * \brief Enables or disables the Sink object
+		 * \details Disabled Sinks will not handle any incoming Record s
+		 * \param enable True will enable the Sink object.
+		 */
+		virtual void enable(bool enable = true) noexcept = 0;
+
+		/**
+		 * \brief Checks if the Sink object is enabled.
+		 * \return Returns true if object is enabled.
+		 */
+		[[nodiscard]]
+		virtual bool isEnabled() const noexcept = 0;
+
 	protected:
 		/**
 		 * \brief Default constructor
@@ -64,6 +78,89 @@ namespace sl::log
 		 * \brief Default move-assign operator
 		 */
 		ISink& operator =(ISink&&) = default;
+	};
+
+	/**
+	 * \brief Wrapper class which disables Sinks on construction and enables them on destruction
+	 * \tparam TRecord Record type
+	 * \tparam TSink Sink type
+	 * \details This helper class is useful when you want to get sure, that your Sinks will be finally setup before they are going to handle any records.
+	 * Instances of this class are movable but not copyable.
+	 */
+	template <Record TRecord, std::derived_from<ISink<TRecord>> TSink>
+	class ScopedSinkDisabling
+	{
+	public:
+		/**
+		 * \brief Constructor which disables passed sink
+		 * \param sink 
+		 */
+		ScopedSinkDisabling(TSink& sink) noexcept :
+			m_Sink{ &sink }
+		{
+			m_Sink->enable(false);
+		}
+
+		/**
+		 * \brief Constructor which enables passed sink
+		 */
+		~ScopedSinkDisabling() noexcept
+		{
+			if (m_Sink)
+			{
+				m_Sink->enable();
+				m_Sink = nullptr;
+			}
+		}
+
+		/**
+		 * \brief Deleted copy constructor
+		 */
+		ScopedSinkDisabling(const ScopedSinkDisabling&) = delete;
+
+		/**
+		 * \brief Deleted copy-assign operator
+		 */
+		ScopedSinkDisabling& operator =(const ScopedSinkDisabling&) = delete;
+
+		/**
+		 * \brief Move constructor
+		 */
+		ScopedSinkDisabling(ScopedSinkDisabling&& other) noexcept
+		{
+			*this = std::move(other);
+		}
+
+		/**
+		 * \brief Move-assign operator
+		 */
+		ScopedSinkDisabling& operator =(ScopedSinkDisabling&& other) noexcept
+		{
+			using std::swap;
+			swap(m_Sink, other.m_Sink);
+			return *this;
+		}
+
+		/**
+		 * \brief Dereferencing operator
+		 * \return Reference to the internal Sink object.
+		 */
+		TSink& operator *() const noexcept
+		{
+			return *m_Sink;
+		}
+
+		/**
+		 * \brief Dereferencing operator
+		 * \return Pointer to the internal Sink object.
+		 */
+		TSink* operator ->() const noexcept
+		{
+			return m_Sink;
+		}
+
+	private:
+		TSink* m_Sink = nullptr;
 	};
 
 	/** @}*/

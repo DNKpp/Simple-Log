@@ -225,13 +225,14 @@ namespace sl::log
 			m_ClosingHandler = nullptr;
 		}
 
+	protected:
 		/**
 		 * \brief Filters, formats and writes the passed record to the internal stream
 		 * \details This function prints the passed record to the internal file. In forehand \ref Rotation "rotation" will be checked if a new file shall be opened. Internally uses to the
 		 * BasicSink::log function.
 		 * \param record Record object
 		 */
-		void log(const Record_t& record) override
+		bool logDerived(const Record_t& record) override
 		{
 			if (!m_FileStream.is_open())
 			{
@@ -242,8 +243,7 @@ namespace sl::log
 				closeFile();
 				openFile();
 			}
-
-			Super::log(record);
+			return true;
 		}
 
 	private:

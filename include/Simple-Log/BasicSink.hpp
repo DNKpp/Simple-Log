@@ -108,19 +108,41 @@ namespace sl::log
 		BasicSink& operator =(BasicSink&&) = delete;
 
 		/**
-		 * \brief Filters, formats and writes the passed record to the internal stream
+		 * \brief Filters, formats and writes the passed record to the internal stream if this instance is enabled.
 		 * \details This function prints the passed record to the internal stream object. In forehand, the active filter provides feedback if the record should be passed to the stream or not. If not, the call has no effect to any state.
 		 *	The active formatter will be used to hand-over the necessary information of the Record object to the stream object.
 		 * \param record Record object
 		 */
-		void log(const Record_t& record) override
+		void log(const Record_t& record) final override
 		{
-			std::scoped_lock lock{ m_FilterMx, m_FormatterMx, m_StreamMx };
-			if (std::invoke(m_Filter, record))
+			if (m_Enabled && logDerived(record))
 			{
-				std::invoke(m_Formatter, m_Stream, record);
-				m_Stream << std::endl;
+				if (std::scoped_lock lock{ m_FilterMx, m_FormatterMx, m_StreamMx }; std::invoke(m_Filter, record))
+				{
+					std::invoke(m_Formatter, m_Stream, record);
+					m_Stream << std::endl;
+				}
 			}
+		}
+
+		/**
+		 * \brief Enables or disables the Sink object
+		 * \details Disabled Sinks will not handle any incoming Record s
+		 * \param enable True will enable the Sink object.
+		 */
+		void enable(bool enable = true) noexcept final override
+		{
+			m_Enabled = enable;
+		}
+
+		/**
+		 * \brief Checks if the Sink object is enabled.
+		 * \return Returns true if object is enabled.
+		 */
+		[[nodiscard]]
+		bool isEnabled() const noexcept final override
+		{
+			return m_Enabled;
 		}
 
 		/**
@@ -185,7 +207,6 @@ namespace sl::log
 		}
 
 	protected:
-
 		/**
 		 * \brief Writes to the internal stream
 		 * \details This functions writes directly to the stream object. No filter or formatter will be involved. This might be useful for writing custom header or footer data to the stream.
@@ -199,6 +220,17 @@ namespace sl::log
 			m_Stream << std::forward<TData>(data);
 		}
 
+		/**
+		 * \brief This function gets called before the actual writing.
+		 * \details Subclasses may override this function if they want to perform any action before the actual logging process or apply custom filtering conditions (beside BasicSink s filter property).
+		 * \param record The Record object.
+		 * \return If false is returned, the Record will be skipped.
+		 */
+		virtual bool logDerived(const Record_t& record)
+		{
+			return true;
+		}
+
 	private:
 		std::mutex m_StreamMx;
 		std::ostream& m_Stream;
@@ -207,6 +239,7 @@ namespace sl::log
 		Formatter_t m_Formatter;
 		std::mutex m_FilterMx;
 		Filter_t m_Filter;
+		std::atomic_bool m_Enabled{ false };
 	};
 
 	/** @}*/

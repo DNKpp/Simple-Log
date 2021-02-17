@@ -41,6 +41,7 @@ namespace sl::log
 	 *
 	 * Core instances are neither copy- nor movable.
 	 */
+
 	template <Record TRecord>
 	class Core
 	{
@@ -113,7 +114,7 @@ namespace sl::log
 		}
 
 		/**
-		 * \brief Sink factory function
+		 * \brief Creates Sink and registers it at this Core instance
 		 * \tparam TSink Concrete Sink type
 		 * \tparam TArgs Constructor argument types (will be deducted automatically)
 		 * \param args The constructor arguments for the newly generated Sink object. Will be forwarded as is.
@@ -124,10 +125,26 @@ namespace sl::log
 		requires std::constructible_from<TSink, TArgs...>
 		TSink& makeSink(TArgs&&... args)
 		{
-			auto sink = std::make_unique<TSink>(std::forward<TArgs>(args)...);
-			auto& ref = *sink;
-			std::scoped_lock lock{ m_SinkMx };
-			m_Sinks.emplace_back(std::move(sink));
+			auto& ref = makeSinkImpl<TSink>(std::forward<TArgs>(args)...);
+			ref.enable();
+			return ref;
+		}
+
+		/**
+		 * \brief Creates Sink disabled and registers it at this Core instance
+		 * \tparam TSink Concrete Sink type
+		 * \tparam TArgs Constructor argument types (will be deducted automatically)
+		 * \param args The constructor arguments for the newly generated Sink object. Will be forwarded as is.
+		 * \return Wrapped reference to the managed Sink object.
+		 * \details This function creates a new disabled Sink object and returns a wrapped reference to the caller. When this wrapper goes out of scope or gets destructed otherwise,
+		 * the attached Sink will become enabled. Use this if you want to make sure, that no messages will be handled before your Sink is finally setup.
+		 * This Sink will be linked to and managed by the called Core instance.
+		 */
+		template <std::derived_from<ISink_t> TSink, class... TArgs>
+		requires std::constructible_from<TSink, TArgs...>
+		ScopedSinkDisabling<Record_t, TSink> makeDisabledSink(TArgs&&... args)
+		{
+			auto& ref = makeSinkImpl<TSink>(std::forward<TArgs>(args)...);
 			return ref;
 		}
 
@@ -195,6 +212,17 @@ namespace sl::log
 		std::atomic<Instruction> m_WorkerInstruction{ Instruction::run };
 		Worker m_Worker;
 		std::future<void> m_WorkerFuture;
+
+		template <std::derived_from<ISink_t> TSink, class... TArgs>
+		requires std::constructible_from<TSink, TArgs...>
+		TSink& makeSinkImpl(TArgs&&... args)
+		{
+			auto sink = std::make_unique<TSink>(std::forward<TArgs>(args)...);
+			auto& ref = *sink;
+			std::scoped_lock lock{ m_SinkMx };
+			m_Sinks.emplace_back(std::move(sink));
+			return ref;
+		}
 	};
 }
 
