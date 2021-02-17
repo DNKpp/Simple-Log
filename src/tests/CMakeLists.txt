@@ -14,10 +14,10 @@ FetchContent_MakeAvailable(catch2)
 add_executable(
 	${PROJECT_NAME}
 	main.cpp
+	BaseRecordTests.cpp
 	TupleAlgorithmTests.cpp
 	PredicateTests.cpp
 	FilterTests.cpp
-		
 	StringPatternTest.cpp
 	#LogTest.cpp
 )
