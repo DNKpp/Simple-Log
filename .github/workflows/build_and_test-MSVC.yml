@@ -12,7 +12,7 @@ jobs:
     - name: Configure & Build
       run: |
         cmake . -Bbuild_msvc
-        cmake --build build_msvc
+        cmake --build build_msvc -DSIMPLE_LOG_BUILD_EXAMPLES=ON SIMPLE_LOG_BUILD_TEST=ON
     - name: Test
       run:
         cmake --build build_msvc --target RUN_TESTS
