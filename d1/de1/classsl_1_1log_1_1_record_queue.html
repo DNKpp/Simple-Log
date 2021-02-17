@@ -109,9 +109,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8b6bcbb58a14a851bbd396a9227ecb01"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab">Record_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a8b6bcbb58a14a851bbd396a9227ecb01">take</a> (std::optional&lt; std::chrono::milliseconds &gt; waitingDuration=std::nullopt)</td></tr>
 <tr class="memdesc:a8b6bcbb58a14a851bbd396a9227ecb01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes the first Record from the queue.  <a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a8b6bcbb58a14a851bbd396a9227ecb01">More...</a><br /></td></tr>
 <tr class="separator:a8b6bcbb58a14a851bbd396a9227ecb01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0046f89e2f50b4b31bfd48a8e128076"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#aa0046f89e2f50b4b31bfd48a8e128076">isEmpty</a> () const noexcept</td></tr>
-<tr class="memdesc:aa0046f89e2f50b4b31bfd48a8e128076"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the internal queue is empty.  <a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#aa0046f89e2f50b4b31bfd48a8e128076">More...</a><br /></td></tr>
-<tr class="separator:aa0046f89e2f50b4b31bfd48a8e128076"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9edb42e48cea7c3084dbd8a5fded2d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#ad9edb42e48cea7c3084dbd8a5fded2d4">empty</a> () const noexcept</td></tr>
+<tr class="memdesc:ad9edb42e48cea7c3084dbd8a5fded2d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the internal queue is empty.  <a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#ad9edb42e48cea7c3084dbd8a5fded2d4">More...</a><br /></td></tr>
+<tr class="separator:ad9edb42e48cea7c3084dbd8a5fded2d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3631ae5c0b3987bebf3bb8132b87d62b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a3631ae5c0b3987bebf3bb8132b87d62b">size</a> () const noexcept</td></tr>
+<tr class="memdesc:a3631ae5c0b3987bebf3bb8132b87d62b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks size of the internal queue.  <a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a3631ae5c0b3987bebf3bb8132b87d62b">More...</a><br /></td></tr>
+<tr class="separator:a3631ae5c0b3987bebf3bb8132b87d62b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;Record TRecord&gt;<br />
@@ -143,8 +146,8 @@ template&lt;Record TRecord&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa0046f89e2f50b4b31bfd48a8e128076"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0046f89e2f50b4b31bfd48a8e128076">&#9670;&nbsp;</a></span>isEmpty()</h2>
+<a id="ad9edb42e48cea7c3084dbd8a5fded2d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9edb42e48cea7c3084dbd8a5fded2d4">&#9670;&nbsp;</a></span>empty()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -155,7 +158,7 @@ template&lt;Record TRecord&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html">sl::log::RecordQueue</a>&lt; TRecord &gt;::isEmpty </td>
+          <td class="memname">bool <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html">sl::log::RecordQueue</a>&lt; TRecord &gt;::empty </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -206,6 +209,36 @@ template&lt;Record TRecord&gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a3631ae5c0b3987bebf3bb8132b87d62b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3631ae5c0b3987bebf3bb8132b87d62b">&#9670;&nbsp;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html">sl::log::RecordQueue</a>&lt; TRecord &gt;::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks size of the internal queue. </p>
+<p>Thread-safe </p><dl class="section return"><dt>Returns</dt><dd>Returns size </dd></dl>
 
 </div>
 </div>

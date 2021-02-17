@@ -24,7 +24,8 @@ var searchData=
   ['simple_2dlog_20c_2b_2b20_20library_124',['Simple-Log C++20 library',['../index.html',1,'']]],
   ['simple_2dlog_2ehpp_125',['Simple-Log.hpp',['../d0/d08/_simple-_log_8hpp.html',1,'']]],
   ['sink_126',['Sink',['../df/d3a/group__sink.html',1,'']]],
-  ['sl_127',['sl',['../dd/d2c/namespacesl.html',1,'']]],
-  ['stringpattern_128',['StringPattern',['../d1/d81/classsl_1_1log_1_1_string_pattern.html',1,'sl::log::StringPattern'],['../d1/d81/classsl_1_1log_1_1_string_pattern.html#a527ec73a1607f2f43c4ced45cc974852',1,'sl::log::StringPattern::StringPattern()']]],
-  ['stringpattern_2ehpp_129',['StringPattern.hpp',['../d4/d47/_string_pattern_8hpp.html',1,'']]]
+  ['size_127',['size',['../d1/de1/classsl_1_1log_1_1_record_queue.html#a3631ae5c0b3987bebf3bb8132b87d62b',1,'sl::log::RecordQueue']]],
+  ['sl_128',['sl',['../dd/d2c/namespacesl.html',1,'']]],
+  ['stringpattern_129',['StringPattern',['../d1/d81/classsl_1_1log_1_1_string_pattern.html',1,'sl::log::StringPattern'],['../d1/d81/classsl_1_1log_1_1_string_pattern.html#a527ec73a1607f2f43c4ced45cc974852',1,'sl::log::StringPattern::StringPattern()']]],
+  ['stringpattern_2ehpp_130',['StringPattern.hpp',['../d4/d47/_string_pattern_8hpp.html',1,'']]]
 ];
