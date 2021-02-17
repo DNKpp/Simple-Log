@@ -14,16 +14,7 @@ var files_dup =
     [ "Logger.hpp", "d3/de3/_logger_8hpp.html", [
       [ "Logger", "df/da8/classsl_1_1log_1_1_logger.html", "df/da8/classsl_1_1log_1_1_logger" ]
     ] ],
-    [ "Predicates.hpp", "d4/d46/_predicates_8hpp.html", [
-      [ "EqualsTo", "de/d3a/classsl_1_1log_1_1_equals_to.html", "de/d3a/classsl_1_1log_1_1_equals_to" ],
-      [ "NotEquals", "d7/d21/classsl_1_1log_1_1_not_equals.html", "d7/d21/classsl_1_1log_1_1_not_equals" ],
-      [ "Less", "d6/deb/classsl_1_1log_1_1_less.html", "d6/deb/classsl_1_1log_1_1_less" ],
-      [ "Greater", "d5/d69/classsl_1_1log_1_1_greater.html", "d5/d69/classsl_1_1log_1_1_greater" ],
-      [ "LessEquals", "df/d10/classsl_1_1log_1_1_less_equals.html", "df/d10/classsl_1_1log_1_1_less_equals" ],
-      [ "GreaterEqual", "db/ddb/classsl_1_1log_1_1_greater_equal.html", "db/ddb/classsl_1_1log_1_1_greater_equal" ],
-      [ "Between", "d3/d9b/classsl_1_1log_1_1_between.html", "d3/d9b/classsl_1_1log_1_1_between" ],
-      [ "BetweenEquals", "db/da1/classsl_1_1log_1_1_between_equals.html", "db/da1/classsl_1_1log_1_1_between_equals" ]
-    ] ],
+    [ "Predicates.hpp", "d4/d46/_predicates_8hpp.html", null ],
     [ "PresetTypes.hpp", "d7/d89/_preset_types_8hpp.html", "d7/d89/_preset_types_8hpp" ],
     [ "Record.hpp", "dc/d79/_record_8hpp.html", null ],
     [ "RecordBuilder.hpp", "dc/d3b/_record_builder_8hpp.html", null ],
