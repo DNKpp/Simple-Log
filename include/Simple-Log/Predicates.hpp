@@ -13,7 +13,7 @@
 
 #include "Concepts.hpp"
 
-namespace sl::log::pred
+namespace sl::log
 {
 	template <std::equality_comparable T>
 	class EqualsTo

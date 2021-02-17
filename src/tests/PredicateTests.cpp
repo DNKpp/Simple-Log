@@ -14,7 +14,7 @@ SCENARIO("test equality comparing predicates", "[equality-predicates]")
 	WHEN("testing for equality")
 	{
 		int value = 1337;
-		pred::EqualsTo<int> equals{ value };
+		EqualsTo<int> equals{ value };
 		GIVEN("equal value")
 		{
 			THEN("returns true")
@@ -36,7 +36,7 @@ SCENARIO("test equality comparing predicates", "[equality-predicates]")
 	WHEN("testing for non-equality")
 	{
 		int value = 1337;
-		pred::NotEquals<int> notEquals{ value };
+		NotEquals<int> notEquals{ value };
 		GIVEN("equal value")
 		{
 			THEN("returns false")
@@ -61,7 +61,7 @@ SCENARIO("test less ordering predicates", "[total-ordering-predicates]")
 	WHEN("testing for less")
 	{
 		int value = 1337;
-		pred::Less<int> less{ value };
+		Less<int> less{ value };
 		GIVEN("equal value")
 		{
 			THEN("returns false")
@@ -92,7 +92,7 @@ SCENARIO("test less ordering predicates", "[total-ordering-predicates]")
 	WHEN("testing for less-equals")
 	{
 		int value = 1337;
-		pred::LessEquals<int> lessEquals{ value };
+		LessEquals<int> lessEquals{ value };
 		GIVEN("equal value")
 		{
 			THEN("returns true")
@@ -126,7 +126,7 @@ SCENARIO("test greater ordering predicates", "[total-ordering-predicates]")
 	WHEN("testing for greater")
 	{
 		int value = 1337;
-		pred::Greater<int> greater{ value };
+		Greater<int> greater{ value };
 		GIVEN("equal value")
 		{
 			THEN("returns false")
@@ -157,7 +157,7 @@ SCENARIO("test greater ordering predicates", "[total-ordering-predicates]")
 	WHEN("testing for greater-equals")
 	{
 		int value = 1337;
-		pred::GreaterEqual<int> greaterEquals{ value };
+		GreaterEqual<int> greaterEquals{ value };
 		GIVEN("equal value")
 		{
 			THEN("returns true")
@@ -191,7 +191,7 @@ SCENARIO("test between values predicate", "[total-ordering-predicates]")
 	WHEN("testing for between two equal values")
 	{
 		int value = 1337;
-		pred::Between<int> between{ value, value };
+		Between<int> between{ value, value };
 		GIVEN("equal values")
 		{
 			THEN("returns false")
@@ -222,7 +222,7 @@ SCENARIO("test between values predicate", "[total-ordering-predicates]")
 	WHEN("testing for between two distinct values")
 	{
 		int value = 1337;
-		pred::Between<int> between{ value, value + 2 };
+		Between<int> between{ value, value + 2 };
 		GIVEN("value equals low")
 		{
 			THEN("returns false")
@@ -274,7 +274,7 @@ SCENARIO("test between-equals values predicate", "[total-ordering-predicates]")
 	WHEN("testing for between two equal values")
 	{
 		int value = 1337;
-		pred::BetweenEquals<int> between{ value, value };
+		BetweenEquals<int> between{ value, value };
 		GIVEN("equal values")
 		{
 			THEN("returns true")
@@ -305,7 +305,7 @@ SCENARIO("test between-equals values predicate", "[total-ordering-predicates]")
 	WHEN("testing for between two distrinct values")
 	{
 		int value = 1337;
-		pred::BetweenEquals<int> between{ value, value + 2 };
+		BetweenEquals<int> between{ value, value + 2 };
 		GIVEN("value equals low")
 		{
 			THEN("returns true")

@@ -20,7 +20,7 @@ SCENARIO("test ProjectionFilter", "[filters]")
 	
 	WHEN("hand-over message projection and querying for that string")
 	{
-		ProjectionFilter filter{ &pre::Record_t::message, pred::EqualsTo{ str }};
+		ProjectionFilter filter{ &pre::Record_t::message, EqualsTo{ str }};
 		THEN("returns true")
 		{
 			REQUIRE(filter(record));
@@ -29,7 +29,7 @@ SCENARIO("test ProjectionFilter", "[filters]")
 
 	WHEN("hand-over message projection and querying for another string")
 	{
-		ProjectionFilter filter{ &pre::Record_t::message, pred::EqualsTo{ str + std::string("_not") }};
+		ProjectionFilter filter{ &pre::Record_t::message, EqualsTo{ str + std::string("_not") }};
 		THEN("returns false")
 		{
 			REQUIRE_FALSE(filter(record));
