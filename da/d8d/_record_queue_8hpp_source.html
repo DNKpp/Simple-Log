@@ -140,41 +140,44 @@ $(document).ready(function(){initNavTree('da/d8d/_record_queue_8hpp_source.html'
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">return</span> takeNextAsOpt();</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#ad9edb42e48cea7c3084dbd8a5fded2d4">   83</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#ad9edb42e48cea7c3084dbd8a5fded2d4">empty</a>() const noexcept</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            std::scoped_lock lock{ m_RecordMx };</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">return</span> std::empty(m_QueuedRecords);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a5cead06ef00abe47041528f8bc400849">   94</a></span>&#160;        std::size_t <a class="code" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a5cead06ef00abe47041528f8bc400849">size</a>() const noexcept</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            std::scoped_lock lock{ m_RecordMx };</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">return</span> std::size(m_QueuedRecords);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        std::optional&lt;Record_t&gt; takeNextAsOpt()</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keyword">auto</span> record = std::move(m_QueuedRecords.front());</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            m_QueuedRecords.pop();</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">return</span> std::optional&lt;Record_t&gt;{ std::in_place, std::move(record) };</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keyword">mutable</span> std::mutex m_RecordMx;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        std::queue&lt;Record_t&gt; m_QueuedRecords;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        std::condition_variable m_PushVar;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    };</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        [[nodiscard]]</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#ad9edb42e48cea7c3084dbd8a5fded2d4">   84</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#ad9edb42e48cea7c3084dbd8a5fded2d4">empty</a>() const noexcept</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            std::scoped_lock lock{ m_RecordMx };</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">return</span> std::empty(m_QueuedRecords);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        [[nodiscard]]</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a5cead06ef00abe47041528f8bc400849">   96</a></span>&#160;        std::size_t <a class="code" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a5cead06ef00abe47041528f8bc400849">size</a>() const noexcept</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            std::scoped_lock lock{ m_RecordMx };</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">return</span> std::size(m_QueuedRecords);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        [[nodiscard]]</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        std::optional&lt;Record_t&gt; takeNextAsOpt()</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keyword">auto</span> record = std::move(m_QueuedRecords.front());</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            m_QueuedRecords.pop();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">return</span> std::optional&lt;Record_t&gt;{ std::in_place, std::move(record) };</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">mutable</span> std::mutex m_RecordMx;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        std::queue&lt;Record_t&gt; m_QueuedRecords;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        std::condition_variable m_PushVar;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    };</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="a_concepts_8hpp_html"><div class="ttname"><a href="../../d9/db9/_concepts_8hpp.html">Concepts.hpp</a></div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_record_queue_html"><div class="ttname"><a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html">sl::log::RecordQueue</a></div><div class="ttdoc">Storage for Record s.</div><div class="ttdef"><b>Definition:</b> RecordQueue.hpp:33</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_record_queue_html_a5cead06ef00abe47041528f8bc400849"><div class="ttname"><a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a5cead06ef00abe47041528f8bc400849">sl::log::RecordQueue::size</a></div><div class="ttdeci">std::size_t size() const noexcept</div><div class="ttdoc">Checks size of the internal queue.</div><div class="ttdef"><b>Definition:</b> RecordQueue.hpp:94</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_record_queue_html_a5cead06ef00abe47041528f8bc400849"><div class="ttname"><a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a5cead06ef00abe47041528f8bc400849">sl::log::RecordQueue::size</a></div><div class="ttdeci">std::size_t size() const noexcept</div><div class="ttdoc">Checks size of the internal queue.</div><div class="ttdef"><b>Definition:</b> RecordQueue.hpp:96</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_record_queue_html_a8b6bcbb58a14a851bbd396a9227ecb01"><div class="ttname"><a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a8b6bcbb58a14a851bbd396a9227ecb01">sl::log::RecordQueue::take</a></div><div class="ttdeci">std::optional&lt; Record_t &gt; take(std::optional&lt; std::chrono::milliseconds &gt; waitingDuration=std::nullopt)</div><div class="ttdoc">Takes the first Record from the queue.</div><div class="ttdef"><b>Definition:</b> RecordQueue.hpp:60</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_record_queue_html_a9b33e0216d87d6ee94af3c872007c4d1"><div class="ttname"><a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9b33e0216d87d6ee94af3c872007c4d1">sl::log::RecordQueue::push</a></div><div class="ttdeci">void push(Record_t record)</div><div class="ttdoc">Pushes Record s to the internal queue.</div><div class="ttdef"><b>Definition:</b> RecordQueue.hpp:42</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_record_queue_html_a9bfdaa527ad874a72e14eccf169b3bab"><div class="ttname"><a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab">sl::log::RecordQueue::Record_t</a></div><div class="ttdeci">TRecord Record_t</div><div class="ttdef"><b>Definition:</b> RecordQueue.hpp:35</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_record_queue_html_ad9edb42e48cea7c3084dbd8a5fded2d4"><div class="ttname"><a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#ad9edb42e48cea7c3084dbd8a5fded2d4">sl::log::RecordQueue::empty</a></div><div class="ttdeci">bool empty() const noexcept</div><div class="ttdoc">Checks if the internal queue is empty.</div><div class="ttdef"><b>Definition:</b> RecordQueue.hpp:83</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_record_queue_html_ad9edb42e48cea7c3084dbd8a5fded2d4"><div class="ttname"><a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#ad9edb42e48cea7c3084dbd8a5fded2d4">sl::log::RecordQueue::empty</a></div><div class="ttdeci">bool empty() const noexcept</div><div class="ttdoc">Checks if the internal queue is empty.</div><div class="ttdef"><b>Definition:</b> RecordQueue.hpp:84</div></div>
 <div class="ttc" id="anamespacesl_1_1log_html"><div class="ttname"><a href="../../de/d83/namespacesl_1_1log.html">sl::log</a></div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
