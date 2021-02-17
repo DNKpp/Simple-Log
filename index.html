@@ -110,10 +110,29 @@ Installation with CMake</h1>
 <div class="line">    PRIVATE</div>
 <div class="line">    simple_log</div>
 <div class="line">)</div>
-</div><!-- fragment --><p> This will add the the include path "&lt;simple_log_install_dir&gt;/include", thus you are able to include all headers via</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="d0/d08/_simple-_log_8hpp.html">Simple-Log/Simple-Log.hpp</a>&gt;</span></div>
+</div><!-- fragment --><p> This will add the the include path "&lt;simple_log_install_dir&gt;/include", thus you are able to include all headers via </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="d0/d08/_simple-_log_8hpp.html">Simple-Log/Simple-Log.hpp</a>&gt;</span></div>
 <div class="ttc" id="a_simple-_log_8hpp_html"><div class="ttname"><a href="d0/d08/_simple-_log_8hpp.html">Simple-Log.hpp</a></div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+FetchContent</h2>
+<p>It is possible fetching this library via CMakes FetchContent module.</p>
+<div class="fragment"><div class="line">cmake_minimum_required(VERSION 3.14 FATAL_ERROR)</div>
+<div class="line"> </div>
+<div class="line">project(&lt;your_project_name&gt;)</div>
+<div class="line"> </div>
+<div class="line">include(FetchContent)</div>
+<div class="line"> </div>
+<div class="line">FetchContent_Declare(</div>
+<div class="line">    simple_log</div>
+<div class="line">    GIT_REPOSITORY  https://github.com/DNKpp/Simple-Log</div>
+<div class="line">    GIT_TAG     origin/master</div>
+<div class="line">)</div>
+<div class="line">FetchContent_MakeAvailable(simple_log)</div>
+<div class="line"> </div>
+<div class="line">target_link_libraries(</div>
+<div class="line">    &lt;your_target_name&gt;</div>
+<div class="line">    PRIVATE simple_log</div>
+<div class="line">)</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
 Simple usage example</h1>
 <div class="fragment"><div class="line"><span class="comment">// This header contains preset types, which users can use to get an easy start with the library.</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="d7/d89/_preset_types_8hpp.html">Simple-Log/PresetTypes.hpp</a>&gt;</span></div>
