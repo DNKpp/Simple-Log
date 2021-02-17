@@ -35,9 +35,31 @@ target_link_libraries(
 )
 ```
 This will add the the include path "<simple_log_install_dir>/include", thus you are able to include all headers via
-
 ```cpp
 #include <Simple-Log/Simple-Log.hpp>
+```
+
+### FetchContent
+It is possible fetching this library via CMakes FetchContent module.
+
+```cmake
+cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
+
+project(<your_project_name>)
+
+include(FetchContent)
+
+FetchContent_Declare(
+	simple_log
+	GIT_REPOSITORY	https://github.com/DNKpp/Simple-Log
+	GIT_TAG		origin/master
+)
+FetchContent_MakeAvailable(simple_log)
+
+target_link_libraries(
+	<your_target_name>
+	PRIVATE simple_log
+)
 ```
 
 ## Simple usage example
