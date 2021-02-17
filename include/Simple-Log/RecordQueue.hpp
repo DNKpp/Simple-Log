@@ -91,7 +91,7 @@ namespace sl::log
 		 * \details Thread-safe
 		 * \return Returns size
 		 */
-		bool size() const noexcept
+		std::size_t size() const noexcept
 		{
 			std::scoped_lock lock{ m_RecordMx };
 			return std::size(m_QueuedRecords);
