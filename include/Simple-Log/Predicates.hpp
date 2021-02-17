@@ -15,6 +15,17 @@
 
 namespace sl::log
 {
+	/** \addtogroup filter
+	 * @{
+	 */
+	
+	/** \addtogroup predicates
+	 * @{
+	 */
+
+	/**
+	 * \brief Compares equality with constant at invocation
+	 */
 	template <std::equality_comparable T>
 	class EqualsTo
 	{
@@ -34,6 +45,9 @@ namespace sl::log
 		T m_To;
 	};
 
+	/**
+	 * \brief Compares non-equality with constant at invocation
+	 */
 	template <std::equality_comparable T>
 	class NotEquals
 	{
@@ -53,6 +67,9 @@ namespace sl::log
 		T m_To;
 	};
 
+	/**
+	 * \brief Compares less-ordering with constant at invocation
+	 */
 	template <std::totally_ordered T>
 	class Less
 	{
@@ -72,6 +89,9 @@ namespace sl::log
 		T m_To;
 	};
 
+	/**
+	 * \brief Compares greater-ordering with constant at invocation
+	 */
 	template <std::totally_ordered T>
 	class Greater
 	{
@@ -91,6 +111,9 @@ namespace sl::log
 		T m_To;
 	};
 
+	/**
+	 * \brief Compares less-equality-ordering with constant at invocation
+	 */
 	template <std::totally_ordered T>
 	class LessEquals
 	{
@@ -110,6 +133,9 @@ namespace sl::log
 		T m_To;
 	};
 
+	/**
+	 * \brief Compares greater-equality-ordering with constant at invocation
+	 */
 	template <std::totally_ordered T>
 	class GreaterEqual
 	{
@@ -129,6 +155,9 @@ namespace sl::log
 		T m_To;
 	};
 
+	/**
+	 * \brief Compares less-ordering with high and greater-ordering with low constant at invocation
+	 */
 	template <std::totally_ordered T>
 	class Between
 	{
@@ -150,6 +179,9 @@ namespace sl::log
 		T m_High;
 	};
 
+	/**
+	 * \brief Compares less-equality-ordering with high and greater-equality-ordering with low constant at invocation
+	 */
 	template <std::totally_ordered T>
 	class BetweenEquals
 	{
@@ -170,6 +202,10 @@ namespace sl::log
 		T m_Low;
 		T m_High;
 	};
+
+	/** @}*/
+
+	/** @}*/
 }
 
 #endif
