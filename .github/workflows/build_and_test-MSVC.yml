@@ -7,7 +7,10 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: jwlawson/actions-setup-cmake@v1.6
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.7
+      with:
+        cmake-version: '3.19.x'
 
     - name: Configure & Build
       run: |
