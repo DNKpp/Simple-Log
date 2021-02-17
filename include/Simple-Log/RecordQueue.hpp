@@ -80,10 +80,21 @@ namespace sl::log
 		 * \details Thread-safe
 		 * \return Returns true if is empty.
 		 */
-		bool isEmpty() const noexcept
+		bool empty() const noexcept
 		{
 			std::scoped_lock lock{ m_RecordMx };
 			return std::empty(m_QueuedRecords);
+		}
+
+		/**
+		 * \brief Checks size of the internal queue
+		 * \details Thread-safe
+		 * \return Returns size
+		 */
+		bool size() const noexcept
+		{
+			std::scoped_lock lock{ m_RecordMx };
+			return std::size(m_QueuedRecords);
 		}
 
 	private:

@@ -176,7 +176,7 @@ namespace sl::log
 			{
 				for (auto instruction = m_Instruction.load();
 					instruction != Instruction::forceQuit &&
-					(instruction != Instruction::quit || !m_Records.isEmpty());
+					(instruction != Instruction::quit || !std::empty(m_Records));
 					instruction = m_Instruction)
 				{
 					if (auto optRecord = m_Records.take(std::chrono::milliseconds{ 200 }))
