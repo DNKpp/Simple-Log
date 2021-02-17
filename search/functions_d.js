@@ -16,6 +16,6 @@ var searchData=
   ['setseverity_257',['setSeverity',['../dd/d7a/classsl_1_1log_1_1_base_record.html#a60ddca7b8e345c07bdea25ec1752bcda',1,'sl::log::BaseRecord']]],
   ['settimepoint_258',['setTimePoint',['../dd/d7a/classsl_1_1log_1_1_base_record.html#ac7558030528a941cc20c0831212aca6e',1,'sl::log::BaseRecord']]],
   ['severity_259',['severity',['../dd/d7a/classsl_1_1log_1_1_base_record.html#ac16302bcf25d27c7497612e10fd53c3f',1,'sl::log::BaseRecord']]],
-  ['size_260',['size',['../d1/de1/classsl_1_1log_1_1_record_queue.html#a3631ae5c0b3987bebf3bb8132b87d62b',1,'sl::log::RecordQueue']]],
+  ['size_260',['size',['../d1/de1/classsl_1_1log_1_1_record_queue.html#a5cead06ef00abe47041528f8bc400849',1,'sl::log::RecordQueue']]],
   ['stringpattern_261',['StringPattern',['../d1/d81/classsl_1_1log_1_1_string_pattern.html#a527ec73a1607f2f43c4ced45cc974852',1,'sl::log::StringPattern']]]
 ];
