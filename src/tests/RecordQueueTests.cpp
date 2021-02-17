@@ -97,7 +97,7 @@ SCENARIO("push/take - blocking", "[RecordQueue]")
 		}
 	}
 
-	WHEN("requesting Records on non-empty queue")
+	WHEN("requesting Records on empty queue")
 	{
 		AND_WHEN("pushing value afterwards")
 		{
