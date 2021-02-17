@@ -48,11 +48,11 @@ namespace sl::log
 #endif
 
 		/**
-		 * \brief Const access to the message string
-		 * \return Returns the stored message as std::string_view
+		 * \brief Const access to the message
+		 * \return Returns the stored message
 		 */
 		[[nodiscard]]
-		std::string_view message() const noexcept
+		const Message_t& message() const noexcept
 		{
 			return m_Message;
 		}
