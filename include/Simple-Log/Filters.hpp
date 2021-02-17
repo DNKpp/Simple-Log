@@ -195,9 +195,9 @@ namespace sl::log
 	 */
 	template <class... TFilter>
 	class FilterAllOf :
-		public FilterChain<detail::TupleAnyOf, TFilter...>
+		public FilterChain<detail::TupleAllOf, TFilter...>
 	{
-		using Algorithm = detail::TupleAnyOf;
+		using Algorithm = detail::TupleAllOf;
 
 	public:
 		/**
