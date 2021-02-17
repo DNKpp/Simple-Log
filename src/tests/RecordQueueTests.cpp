@@ -105,7 +105,6 @@ SCENARIO("push/take - blocking", "[RecordQueue]")
 			{
 				std::chrono::milliseconds waitDuration{ 100 };
 				auto records = generateRecordsWithIncrMsg(10);
-				RecordQueue<Record_t> queue;
 				for (std::size_t i = 0; i < std::size(records); ++i)
 				{
 					std::atomic_bool finished{ false };
