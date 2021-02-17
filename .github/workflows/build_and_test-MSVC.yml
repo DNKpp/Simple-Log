@@ -14,7 +14,7 @@ jobs:
 
     - name: Configure & Build
       run: |
-        cmake . -Bbuild_msvc -DSIMPLE_LOG_BUILD_EXAMPLES=ON -DSIMPLE_LOG_BUILD_TEST=ON
+        cmake . -Bbuild_msvc -DSIMPLE_LOG_BUILD_EXAMPLES=ON -DSIMPLE_LOG_BUILD_TESTS=ON
         cmake --build build_msvc
     - name: Test
       run:
