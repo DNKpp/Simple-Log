@@ -12,9 +12,10 @@ var searchData=
   ['filterallof_33',['FilterAllOf',['../d4/deb/classsl_1_1log_1_1_filter_all_of.html#a979ce624aee9fc12083f6efe4147c879',1,'sl::log::FilterAllOf::FilterAllOf()'],['../d4/deb/classsl_1_1log_1_1_filter_all_of.html',1,'sl::log::FilterAllOf&lt; TFilter &gt;']]],
   ['filteranyof_34',['FilterAnyOf',['../d3/d63/classsl_1_1log_1_1_filter_any_of.html#a96c4e2e7be686c53e7f47be87b7b3b7a',1,'sl::log::FilterAnyOf::FilterAnyOf()'],['../d3/d63/classsl_1_1log_1_1_filter_any_of.html',1,'sl::log::FilterAnyOf&lt; TFilter &gt;']]],
   ['filterchain_35',['FilterChain',['../d7/d40/classsl_1_1log_1_1_filter_chain.html#a35ed0b7b0027ebbd84ba082302366c30',1,'sl::log::FilterChain::FilterChain(TFilter ...filter)'],['../d7/d40/classsl_1_1log_1_1_filter_chain.html#a026486b0e7b0d645d18484269643e9eb',1,'sl::log::FilterChain::FilterChain(TAlgorithm algorithm, TFilter ...filter)'],['../d7/d40/classsl_1_1log_1_1_filter_chain.html',1,'sl::log::FilterChain&lt; TAlgorithm, TFilter &gt;']]],
-  ['filterchain_3c_20detail_3a_3atupleanyof_2c_20tfilter_2e_2e_2e_20_3e_36',['FilterChain&lt; detail::TupleAnyOf, TFilter... &gt;',['../d7/d40/classsl_1_1log_1_1_filter_chain.html',1,'sl::log']]],
-  ['filterchain_3c_20detail_3a_3atuplenoneof_2c_20tfilter_2e_2e_2e_20_3e_37',['FilterChain&lt; detail::TupleNoneOf, TFilter... &gt;',['../d7/d40/classsl_1_1log_1_1_filter_chain.html',1,'sl::log']]],
-  ['filternoneof_38',['FilterNoneOf',['../de/db4/classsl_1_1log_1_1_filter_none_of.html#a3f16bb9a5423704c6584176f579bcd62',1,'sl::log::FilterNoneOf::FilterNoneOf()'],['../de/db4/classsl_1_1log_1_1_filter_none_of.html',1,'sl::log::FilterNoneOf&lt; TFilter &gt;']]],
-  ['filters_2ehpp_39',['Filters.hpp',['../de/d95/_filters_8hpp.html',1,'']]],
-  ['formatter_5ft_40',['Formatter_t',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a21b0bd544583a35d23f225e015fc59bb',1,'sl::log::BasicSink']]]
+  ['filterchain_3c_20detail_3a_3atupleallof_2c_20tfilter_2e_2e_2e_20_3e_36',['FilterChain&lt; detail::TupleAllOf, TFilter... &gt;',['../d7/d40/classsl_1_1log_1_1_filter_chain.html',1,'sl::log']]],
+  ['filterchain_3c_20detail_3a_3atupleanyof_2c_20tfilter_2e_2e_2e_20_3e_37',['FilterChain&lt; detail::TupleAnyOf, TFilter... &gt;',['../d7/d40/classsl_1_1log_1_1_filter_chain.html',1,'sl::log']]],
+  ['filterchain_3c_20detail_3a_3atuplenoneof_2c_20tfilter_2e_2e_2e_20_3e_38',['FilterChain&lt; detail::TupleNoneOf, TFilter... &gt;',['../d7/d40/classsl_1_1log_1_1_filter_chain.html',1,'sl::log']]],
+  ['filternoneof_39',['FilterNoneOf',['../de/db4/classsl_1_1log_1_1_filter_none_of.html#a3f16bb9a5423704c6584176f579bcd62',1,'sl::log::FilterNoneOf::FilterNoneOf()'],['../de/db4/classsl_1_1log_1_1_filter_none_of.html',1,'sl::log::FilterNoneOf&lt; TFilter &gt;']]],
+  ['filters_2ehpp_40',['Filters.hpp',['../de/d95/_filters_8hpp.html',1,'']]],
+  ['formatter_5ft_41',['Formatter_t',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a21b0bd544583a35d23f225e015fc59bb',1,'sl::log::BasicSink']]]
 ];

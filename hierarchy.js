@@ -7,8 +7,10 @@ var hierarchy =
     [ "sl::log::Core< TRecord >", "d4/df3/classsl_1_1log_1_1_core.html", null ],
     [ "sl::log::EqualsTo< T >", "de/d3a/classsl_1_1log_1_1_equals_to.html", null ],
     [ "sl::log::FilterChain< TAlgorithm, TFilter >", "d7/d40/classsl_1_1log_1_1_filter_chain.html", null ],
+    [ "sl::log::FilterChain< detail::TupleAllOf, TFilter... >", "d7/d40/classsl_1_1log_1_1_filter_chain.html", [
+      [ "sl::log::FilterAllOf< TFilter >", "d4/deb/classsl_1_1log_1_1_filter_all_of.html", null ]
+    ] ],
     [ "sl::log::FilterChain< detail::TupleAnyOf, TFilter... >", "d7/d40/classsl_1_1log_1_1_filter_chain.html", [
-      [ "sl::log::FilterAllOf< TFilter >", "d4/deb/classsl_1_1log_1_1_filter_all_of.html", null ],
       [ "sl::log::FilterAnyOf< TFilter >", "d3/d63/classsl_1_1log_1_1_filter_any_of.html", null ]
     ] ],
     [ "sl::log::FilterChain< detail::TupleNoneOf, TFilter... >", "d7/d40/classsl_1_1log_1_1_filter_chain.html", [

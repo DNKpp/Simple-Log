@@ -231,9 +231,9 @@ $(document).ready(function(){initNavTree('de/d95/_filters_8hpp_source.html','../
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span>... TFilter&gt;</div>
 <div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="../../d4/deb/classsl_1_1log_1_1_filter_all_of.html">  197</a></span>&#160;    <span class="keyword">class </span><a class="code" href="../../d4/deb/classsl_1_1log_1_1_filter_all_of.html">FilterAllOf</a> :</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keyword">public</span> <a class="code" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html">FilterChain</a>&lt;detail::TupleAnyOf, TFilter...&gt;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keyword">public</span> <a class="code" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html">FilterChain</a>&lt;detail::TupleAllOf, TFilter...&gt;</div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    {</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keyword">using</span> Algorithm = detail::TupleAnyOf;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keyword">using</span> Algorithm = detail::TupleAllOf;</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="../../d4/deb/classsl_1_1log_1_1_filter_all_of.html#a979ce624aee9fc12083f6efe4147c879">  207</a></span>&#160;        constexpr <span class="keyword">explicit</span> <a class="code" href="../../d4/deb/classsl_1_1log_1_1_filter_all_of.html#a979ce624aee9fc12083f6efe4147c879">FilterAllOf</a>(TFilter ... filter) :</div>
