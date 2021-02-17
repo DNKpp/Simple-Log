@@ -80,6 +80,7 @@ namespace sl::log
 		 * \details Thread-safe
 		 * \return Returns true if is empty.
 		 */
+		[[nodiscard]]
 		bool empty() const noexcept
 		{
 			std::scoped_lock lock{ m_RecordMx };
@@ -91,6 +92,7 @@ namespace sl::log
 		 * \details Thread-safe
 		 * \return Returns size
 		 */
+		[[nodiscard]]
 		std::size_t size() const noexcept
 		{
 			std::scoped_lock lock{ m_RecordMx };
@@ -98,6 +100,7 @@ namespace sl::log
 		}
 
 	private:
+		[[nodiscard]]
 		std::optional<Record_t> takeNextAsOpt()
 		{
 			auto record = std::move(m_QueuedRecords.front());
