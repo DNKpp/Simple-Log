@@ -127,8 +127,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac978894c8846ae6539d9f57ad2d4f8ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad828429edf3e849e9e88042c43a7da2e"><td class="memTemplParams" colspan="2">template&lt;std::derived_from&lt; ISink_t &gt; TSink, class... TArgs&gt; </td></tr>
 <tr class="memitem:ad828429edf3e849e9e88042c43a7da2e"><td class="memTemplItemLeft" align="right" valign="top">requires std::constructible_from&lt; TSink, TArgs... &gt; TSink &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#ad828429edf3e849e9e88042c43a7da2e">makeSink</a> (TArgs &amp;&amp;... args)</td></tr>
-<tr class="memdesc:ad828429edf3e849e9e88042c43a7da2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sink factory function.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#ad828429edf3e849e9e88042c43a7da2e">More...</a><br /></td></tr>
+<tr class="memdesc:ad828429edf3e849e9e88042c43a7da2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates Sink and registers it at this <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#ad828429edf3e849e9e88042c43a7da2e">More...</a><br /></td></tr>
 <tr class="separator:ad828429edf3e849e9e88042c43a7da2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3af914cb7a7eeec70b3e06211d110fc4"><td class="memTemplParams" colspan="2">template&lt;std::derived_from&lt; ISink_t &gt; TSink, class... TArgs&gt; </td></tr>
+<tr class="memitem:a3af914cb7a7eeec70b3e06211d110fc4"><td class="memTemplItemLeft" align="right" valign="top">requires std::constructible_from&lt; TSink, TArgs... &gt; <a class="el" href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html">ScopedSinkDisabling</a>&lt; <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">Record_t</a>, TSink &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4">makeDisabledSink</a> (TArgs &amp;&amp;... args)</td></tr>
+<tr class="memdesc:a3af914cb7a7eeec70b3e06211d110fc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates Sink disabled and registers it at this <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4">More...</a><br /></td></tr>
+<tr class="separator:a3af914cb7a7eeec70b3e06211d110fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;Record TRecord&gt;<br />
@@ -326,6 +330,53 @@ template&lt;Record TRecord&gt; </div>
 
 </div>
 </div>
+<a id="a3af914cb7a7eeec70b3e06211d110fc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3af914cb7a7eeec70b3e06211d110fc4">&#9670;&nbsp;</a></span>makeDisabledSink()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
+<div class="memtemplate">
+template&lt;std::derived_from&lt; ISink_t &gt; TSink, class... TArgs&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">requires std::constructible_from&lt;TSink, TArgs...&gt; <a class="el" href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html">ScopedSinkDisabling</a>&lt;<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">Record_t</a>, TSink&gt; <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::makeDisabledSink </td>
+          <td>(</td>
+          <td class="paramtype">TArgs &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates Sink disabled and registers it at this <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TSink</td><td>Concrete Sink type </td></tr>
+    <tr><td class="paramname">TArgs</td><td>Constructor argument types (will be deducted automatically) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>The constructor arguments for the newly generated Sink object. Will be forwarded as is. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Wrapped reference to the managed Sink object.</dd></dl>
+<p>This function creates a new disabled Sink object and returns a wrapped reference to the caller. When this wrapper goes out of scope or gets destructed otherwise, the attached Sink will become enabled. Use this if you want to make sure, that no messages will be handled before your Sink is finally setup. This Sink will be linked to and managed by the called <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance. </p>
+
+</div>
+</div>
 <a id="ad828429edf3e849e9e88042c43a7da2e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad828429edf3e849e9e88042c43a7da2e">&#9670;&nbsp;</a></span>makeSink()</h2>
 
@@ -354,7 +405,7 @@ template&lt;std::derived_from&lt; ISink_t &gt; TSink, class... TArgs&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Sink factory function. </p>
+<p>Creates Sink and registers it at this <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">TSink</td><td>Concrete Sink type </td></tr>

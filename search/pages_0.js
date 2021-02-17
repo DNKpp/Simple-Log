@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['simple_2dlog_20c_2b_2b20_20library_298',['Simple-Log C++20 library',['../index.html',1,'']]]
+  ['simple_2dlog_20c_2b_2b20_20library_315',['Simple-Log C++20 library',['../index.html',1,'']]]
 ];

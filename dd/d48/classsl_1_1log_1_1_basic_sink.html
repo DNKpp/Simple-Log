@@ -138,9 +138,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a178d025d68851df3dcbd67706cd97ff4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a178d025d68851df3dcbd67706cd97ff4">operator=</a> (<a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a> &amp;&amp;)=delete</td></tr>
 <tr class="memdesc:a178d025d68851df3dcbd67706cd97ff4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted move assign operator.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a178d025d68851df3dcbd67706cd97ff4">More...</a><br /></td></tr>
 <tr class="separator:a178d025d68851df3dcbd67706cd97ff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91ceda33a64d55c7bb64c1d35818193a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a91ceda33a64d55c7bb64c1d35818193a">log</a> (const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;record) override</td></tr>
-<tr class="memdesc:a91ceda33a64d55c7bb64c1d35818193a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters, formats and writes the passed record to the internal stream.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a91ceda33a64d55c7bb64c1d35818193a">More...</a><br /></td></tr>
-<tr class="separator:a91ceda33a64d55c7bb64c1d35818193a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a751bd1367c8492449c4e83f3588ee2af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a751bd1367c8492449c4e83f3588ee2af">log</a> (const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;record) final override</td></tr>
+<tr class="memdesc:a751bd1367c8492449c4e83f3588ee2af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters, formats and writes the passed record to the internal stream if this instance is enabled.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a751bd1367c8492449c4e83f3588ee2af">More...</a><br /></td></tr>
+<tr class="separator:a751bd1367c8492449c4e83f3588ee2af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfa142c4cbcd5fda6a7b354d82b23eee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#adfa142c4cbcd5fda6a7b354d82b23eee">enable</a> (bool enable=true) noexcept final override</td></tr>
+<tr class="memdesc:adfa142c4cbcd5fda6a7b354d82b23eee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables the Sink object.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#adfa142c4cbcd5fda6a7b354d82b23eee">More...</a><br /></td></tr>
+<tr class="separator:adfa142c4cbcd5fda6a7b354d82b23eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44f6e8ea8f784d42280bfd824990edec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a44f6e8ea8f784d42280bfd824990edec">isEnabled</a> () const noexcept final override</td></tr>
+<tr class="memdesc:a44f6e8ea8f784d42280bfd824990edec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the Sink object is enabled.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a44f6e8ea8f784d42280bfd824990edec">More...</a><br /></td></tr>
+<tr class="separator:a44f6e8ea8f784d42280bfd824990edec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9c781514bb81f5d6856047613877f16"><td class="memTemplParams" colspan="2">template&lt;RecordFormatterFor&lt; Record_t &gt; TFormatter&gt; </td></tr>
 <tr class="memitem:ae9c781514bb81f5d6856047613877f16"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ae9c781514bb81f5d6856047613877f16">setFormatter</a> (TFormatter &amp;&amp;formatter) noexcept</td></tr>
 <tr class="memdesc:ae9c781514bb81f5d6856047613877f16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the active formatter.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ae9c781514bb81f5d6856047613877f16">More...</a><br /></td></tr>
@@ -162,6 +168,9 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a01b37a48110effd9fdfadfacc05e17c2"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a01b37a48110effd9fdfadfacc05e17c2">writeToStream</a> (TData &amp;&amp;data)</td></tr>
 <tr class="memdesc:a01b37a48110effd9fdfadfacc05e17c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes to the internal stream.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a01b37a48110effd9fdfadfacc05e17c2">More...</a><br /></td></tr>
 <tr class="separator:a01b37a48110effd9fdfadfacc05e17c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa58c3a763630e7738a6e61b8b90e33b4"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa58c3a763630e7738a6e61b8b90e33b4">logDerived</a> (const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;record)</td></tr>
+<tr class="memdesc:aa58c3a763630e7738a6e61b8b90e33b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function gets called before the actual writing.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa58c3a763630e7738a6e61b8b90e33b4">More...</a><br /></td></tr>
+<tr class="separator:aa58c3a763630e7738a6e61b8b90e33b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
 Static Protected Member Functions</h2></td></tr>
@@ -415,8 +424,78 @@ template&lt;Record TRecord&gt; </div>
 
 </div>
 </div>
-<a id="a91ceda33a64d55c7bb64c1d35818193a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91ceda33a64d55c7bb64c1d35818193a">&#9670;&nbsp;</a></span>log()</h2>
+<a id="adfa142c4cbcd5fda6a7b354d82b23eee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfa142c4cbcd5fda6a7b354d82b23eee">&#9670;&nbsp;</a></span>enable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::enable </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enable</em> = <code>true</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">final</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Enables or disables the Sink object. </p>
+<p>Disabled Sinks will not handle any incoming Record s </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enable</td><td>True will enable the Sink object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a392f4f1912b6a15d2ff4401d70a4170b">sl::log::ISink&lt; TRecord &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a44f6e8ea8f784d42280bfd824990edec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44f6e8ea8f784d42280bfd824990edec">&#9670;&nbsp;</a></span>isEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::isEnabled </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">final</span><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Checks if the Sink object is enabled. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if object is enabled. </dd></dl>
+
+<p>Implements <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a423855fc43c04f2785399330f38a4005">sl::log::ISink&lt; TRecord &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a751bd1367c8492449c4e83f3588ee2af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a751bd1367c8492449c4e83f3588ee2af">&#9670;&nbsp;</a></span>log()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -436,12 +515,12 @@ template&lt;Record TRecord&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">final</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Filters, formats and writes the passed record to the internal stream. </p>
+<p>Filters, formats and writes the passed record to the internal stream if this instance is enabled. </p>
 <p>This function prints the passed record to the internal stream object. In forehand, the active filter provides feedback if the record should be passed to the stream or not. If not, the call has no effect to any state. The active formatter will be used to hand-over the necessary information of the Record object to the stream object. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">record</td><td>Record object </td></tr>
@@ -451,7 +530,44 @@ template&lt;Record TRecord&gt; </div>
 
 <p>Implements <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a35ba629214d49e3afe4de5612b13ea2c">sl::log::ISink&lt; TRecord &gt;</a>.</p>
 
-<p>Reimplemented in <a class="el" href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html#a4dc012d004471dfbe3bf7670899ee652">sl::log::FileSink&lt; TRecord &gt;</a>.</p>
+</div>
+</div>
+<a id="aa58c3a763630e7738a6e61b8b90e33b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa58c3a763630e7738a6e61b8b90e33b4">&#9670;&nbsp;</a></span>logDerived()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::logDerived </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>record</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function gets called before the actual writing. </p>
+<p>Subclasses may override this function if they want to perform any action before the actual logging process or apply custom filtering conditions (beside <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html" title="std::ostream orientated Sink class">BasicSink</a> s filter property). </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">record</td><td>The Record object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If false is returned, the Record will be skipped. </dd></dl>
+
+<p>Reimplemented in <a class="el" href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html#aabdad51a7125261d37d75f97b3603c15">sl::log::FileSink&lt; TRecord &gt;</a>.</p>
 
 </div>
 </div>

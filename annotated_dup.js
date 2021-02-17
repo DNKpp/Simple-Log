@@ -14,6 +14,7 @@ var annotated_dup =
         [ "FilterAnyOf", "d3/d63/classsl_1_1log_1_1_filter_any_of.html", "d3/d63/classsl_1_1log_1_1_filter_any_of" ],
         [ "FilterNoneOf", "de/db4/classsl_1_1log_1_1_filter_none_of.html", "de/db4/classsl_1_1log_1_1_filter_none_of" ],
         [ "ISink", "d8/dda/classsl_1_1log_1_1_i_sink.html", "d8/dda/classsl_1_1log_1_1_i_sink" ],
+        [ "ScopedSinkDisabling", "d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html", "d0/d40/classsl_1_1log_1_1_scoped_sink_disabling" ],
         [ "Logger", "df/da8/classsl_1_1log_1_1_logger.html", "df/da8/classsl_1_1log_1_1_logger" ],
         [ "EqualsTo", "de/d3a/classsl_1_1log_1_1_equals_to.html", "de/d3a/classsl_1_1log_1_1_equals_to" ],
         [ "NotEquals", "d7/d21/classsl_1_1log_1_1_not_equals.html", "d7/d21/classsl_1_1log_1_1_not_equals" ],

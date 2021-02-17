@@ -32,6 +32,7 @@ var hierarchy =
     [ "sl::log::RecordQueue< TRecord >", "d1/de1/classsl_1_1log_1_1_record_queue.html", null ],
     [ "sl::log::RecordQueue< Record_t >", "d1/de1/classsl_1_1log_1_1_record_queue.html", null ],
     [ "sl::log::FileSink< TRecord >::RotationRule", "d0/d82/structsl_1_1log_1_1_file_sink_1_1_rotation_rule.html", null ],
+    [ "sl::log::ScopedSinkDisabling< TRecord, TSink >", "d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html", null ],
     [ "sl::log::SetChan< TChannel >", "d9/d84/classsl_1_1log_1_1_set_chan.html", null ],
     [ "sl::log::pre::SetSev", "df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html", null ],
     [ "sl::log::SetSev< TSeverityLevel >", "d5/df7/classsl_1_1log_1_1_set_sev.html", null ],
