@@ -15,11 +15,6 @@
 					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
 					"value": "True",
 					"type": "BOOL"
-				},
-				{
-					"name": "SIMPLE_LOG_BUILD_TESTS",
-					"value": "True",
-					"type": "BOOL"
 				}
 			]
 		},
@@ -45,11 +40,6 @@
 			"variables": [
 				{
 					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
-					"value": "True",
-					"type": "BOOL"
-				},
-				{
-					"name": "SIMPLE_LOG_BUILD_TESTS",
 					"value": "True",
 					"type": "BOOL"
 				}
@@ -79,11 +69,6 @@
 					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
 					"value": "True",
 					"type": "BOOL"
-				},
-				{
-					"name": "SIMPLE_LOG_BUILD_TESTS",
-					"value": "True",
-					"type": "BOOL"
 				}
 			]
 		},
@@ -100,11 +85,6 @@
 			"variables": [
 				{
 					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
-					"value": "True",
-					"type": "BOOL"
-				},
-				{
-					"name": "SIMPLE_LOG_BUILD_TESTS",
 					"value": "True",
 					"type": "BOOL"
 				}
@@ -134,11 +114,6 @@
 					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
 					"value": "True",
 					"type": "BOOL"
-				},
-				{
-					"name": "SIMPLE_LOG_BUILD_TESTS",
-					"value": "True",
-					"type": "BOOL"
 				}
 			]
 		},
@@ -166,11 +141,6 @@
 					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
 					"value": "True",
 					"type": "BOOL"
-				},
-				{
-					"name": "SIMPLE_LOG_BUILD_TESTS",
-					"value": "True",
-					"type": "BOOL"
 				}
 			]
 		},
@@ -187,11 +157,6 @@
 			"variables": [
 				{
 					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
-					"value": "True",
-					"type": "BOOL"
-				},
-				{
-					"name": "SIMPLE_LOG_BUILD_TESTS",
 					"value": "True",
 					"type": "BOOL"
 				}
@@ -212,11 +177,6 @@
 					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
 					"value": "True",
 					"type": "BOOL"
-				},
-				{
-					"name": "SIMPLE_LOG_BUILD_TESTS",
-					"value": "True",
-					"type": "BOOL"
 				}
 			]
 		},
@@ -233,11 +193,6 @@
 			"variables": [
 				{
 					"name": "SIMPLE_LOG_BUILD_EXAMPLES",
-					"value": "True",
-					"type": "BOOL"
-				},
-				{
-					"name": "SIMPLE_LOG_BUILD_TESTS",
 					"value": "True",
 					"type": "BOOL"
 				}

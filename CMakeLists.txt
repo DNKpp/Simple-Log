@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
 project(simple_log)
 
+include(CTest)
+
 option(SIMPLE_LOG_BUILD_EXAMPLES "Enables example building" OFF)
 
 set(TestsDir "${CMAKE_CURRENT_SOURCE_DIR}/src/tests/")
@@ -26,5 +28,10 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clan
 	)
 endif()
 
-add_subdirectory(${TestsDir})
-add_subdirectory(${ExamplesDir})
+if (BUILD_TESTING)
+	add_subdirectory(${TestsDir})
+endif()
+
+if (SIMPLE_LOG_BUILD_EXAMPLES)
+	add_subdirectory(${ExamplesDir})
+endif()
