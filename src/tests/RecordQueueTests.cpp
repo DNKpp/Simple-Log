@@ -8,32 +8,40 @@
 #include "Simple-Log/Record.hpp"
 #include "Simple-Log/RecordQueue.hpp"
 
+#include <future>
+
 using namespace sl::log;
+
+using Record_t = BaseRecord<int, int, int>;
+
+static std::vector<Record_t> generateRecordsWithIncrMsg(std::size_t count)
+{
+	std::vector<Record_t> records;
+	records.reserve(count);
+	std::ranges::generate_n(
+							std::back_inserter(records),
+							count,
+							[i = 0]() mutable
+							{
+								Record_t record;
+								record.setMessage(i++);
+								return record;
+							}
+							);
+	return records;
+}
 
 SCENARIO("size/empty/push/take - non-blocking", "[RecordQueue]")
 {
-	using Record_t = BaseRecord<int, int, int>;
-
 	RecordQueue<Record_t> queue;
 	REQUIRE(std::empty(queue));
 	REQUIRE(std::size(queue) == 0);
 
 	WHEN("pushing new Records")
 	{
-		std::vector<Record_t> records;
-		std::ranges::generate_n(
-								std::back_inserter(records),
-								10,
-								[i = 0]() mutable
-								{
-									Record_t record;
-									record.setMessage(i);
-									return record;
-								}
-								);
-		
 		THEN("queue will grow")
 		{
+			auto records = generateRecordsWithIncrMsg(10);
 			for (std::size_t i = 0; i < std::size(records); ++i)
 			{
 				queue.push(records[i]);
@@ -48,7 +56,7 @@ SCENARIO("size/empty/push/take - non-blocking", "[RecordQueue]")
 				{
 					for (std::size_t i = 0; i < std::size(records); ++i)
 					{
-						REQUIRE(std::empty(queue));
+						REQUIRE(!std::empty(queue));
 						auto expectedSize = std::size(records) - i;
 						REQUIRE(std::size(queue) == expectedSize);
 						auto rec = queue.take();
@@ -56,6 +64,72 @@ SCENARIO("size/empty/push/take - non-blocking", "[RecordQueue]")
 						REQUIRE(rec);
 						REQUIRE(rec->message() == records[i].message());
 					}
+				}
+			}
+		}
+	}
+}
+
+SCENARIO("push/take - blocking", "[RecordQueue]")
+{
+	RecordQueue<Record_t> queue;
+	REQUIRE(std::empty(queue));
+	REQUIRE(std::size(queue) == 0);
+
+	WHEN("requesting Records on empty queue")
+	{
+		THEN("will wait and break after some time")
+		{
+			std::chrono::milliseconds duration{ 100 };
+
+			for (int i = 1; i < 5; ++i)
+			{
+				auto actualDuration = i * duration;
+				auto begin = std::chrono::steady_clock::now();
+				auto record = queue.take(actualDuration);
+
+				REQUIRE(record == std::nullopt);
+
+				auto end = std::chrono::steady_clock::now();
+				auto diff = end - begin;
+				REQUIRE(actualDuration <= diff);
+			}
+		}
+	}
+
+	WHEN("requesting Records on non-empty queue")
+	{
+		AND_WHEN("pushing value afterwards")
+		{
+			THEN("will wait and return record")
+			{
+				std::chrono::milliseconds waitDuration{ 100 };
+				auto records = generateRecordsWithIncrMsg(10);
+				RecordQueue<Record_t> queue;
+				for (std::size_t i = 0; i < std::size(records); ++i)
+				{
+					std::atomic_bool finished{ false };
+					auto future = std::async(
+											std::launch::async,
+											[&queue, &finished]()
+											{
+												auto rec = queue.take();
+												finished = true;
+												return rec;
+											}
+											);
+
+					std::this_thread::sleep_for(waitDuration);
+					REQUIRE(finished == false);
+
+					queue.push(records[i]);
+
+					auto futureState = future.wait_for(waitDuration);
+					REQUIRE(futureState == std::future_status::ready);
+
+					auto record = future.get();
+					REQUIRE(record != std::nullopt);
+					REQUIRE(record->message() == i);
 				}
 			}
 		}
