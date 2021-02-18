@@ -21,6 +21,7 @@ add_executable(
 	RecordQueueTests.cpp
 	StringPatternTest.cpp
 	BasicSinkTests.cpp
+	FlushPolicyTests.cpp
 	#LogTest.cpp
 )
 
