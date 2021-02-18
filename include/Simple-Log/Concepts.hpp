@@ -72,6 +72,18 @@ namespace sl::log
 	template <class T>
 	concept FileStateHandler = std::invocable<T> && std::convertible_to<std::invoke_result_t<T>, std::string>;
 
+	/**
+	 * \brief Concept for invokable flush policies
+	*/
+	template <class T, class TRecord>
+	concept FlushPolicyFor =
+		Record<TRecord> &&
+		std::predicate<T, const TRecord&, std::size_t> &&
+		requires (T policy)
+		{
+			{ policy.flushed() };
+		};
+
 	/** @}*/
 }
 
