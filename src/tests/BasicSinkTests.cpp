@@ -9,6 +9,7 @@
 #include "Simple-Log/Record.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <ranges>
 #include <sstream>
 #include <string_view>
@@ -192,9 +193,9 @@ SCENARIO("formatting", "[BasicSink]")
 	{
 		const auto* overridingStr = "my overriding message!";
 		sink.setFormatter(
-						[overridingStr](std::ostream& out, const Record_t& record)
+						[overridingStr](const Record_t& record) -> std::string
 						{
-							out << overridingStr;
+							return overridingStr;
 						}
 						);
 
@@ -214,6 +215,72 @@ SCENARIO("formatting", "[BasicSink]")
 			{
 				REQUIRE(logAndCountString(sink, out, "Hello, World!") == 1);
 				REQUIRE(countString(out, overridingStr) == 0);
+			}
+		}
+	}
+}
+
+struct Policy
+{
+	bool operator ()(const Record_t& rec, std::size_t byteCount) const noexcept
+	{
+		assert(invocationCount);
+		++(*invocationCount);
+		return (*invocationCount & 1ull) != 0;
+	}
+
+	void flushed() const noexcept
+	{
+		assert(flushedSignalCount);
+		++(*flushedSignalCount);
+	}
+
+	std::size_t* invocationCount;
+	std::size_t* flushedSignalCount;
+};
+
+SCENARIO("flush-policy", "[BasicSink]")
+{
+	std::ostringstream out;
+	BasicSink_t sink{ out };
+
+	REQUIRE(std::empty(out.str()));
+
+	std::size_t invocationCount = 0;
+	std::size_t flushedSignalCount = 0;
+
+	Policy policy{ &invocationCount, &flushedSignalCount };
+
+	WHEN("enabled")
+	{
+		sink.setFlushPolicy(policy);
+		sink.enable();
+
+		THEN("Policiy is invoked for each Record")
+		{
+			Record_t dummy;
+			for (std::size_t i = 1; i <= 10; ++i)
+			{
+				sink.log(dummy);
+				REQUIRE(invocationCount == i);
+				auto flushedCountExpected = (i + 1) / 2;
+				REQUIRE(flushedSignalCount == flushedCountExpected);
+			}
+		}
+	}
+
+	WHEN("disabled")
+	{
+		sink.setFlushPolicy(policy);
+
+		THEN("Policiy is not invoked at all")
+		{
+			Record_t dummy;
+			for (std::size_t i = 1; i <= 10; ++i)
+			{
+				sink.log(dummy);
+				REQUIRE(invocationCount == 0);
+				REQUIRE(flushedSignalCount == 0);
 			}
 		}
 	}
