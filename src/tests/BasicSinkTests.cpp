@@ -192,9 +192,9 @@ SCENARIO("formatting", "[BasicSink]")
 	{
 		const auto* overridingStr = "my overriding message!";
 		sink.setFormatter(
-						[overridingStr](std::ostream& out, const Record_t& record)
+						[overridingStr](const Record_t& record) -> std::string
 						{
-							out << overridingStr;
+							return overridingStr;
 						}
 						);
 

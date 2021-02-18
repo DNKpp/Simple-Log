@@ -9,8 +9,8 @@
 #pragma once
 
 #include <concepts>
-#include <ostream>
 #include <string>
+#include <string_view>
 
 namespace sl::log
 {
@@ -58,7 +58,10 @@ namespace sl::log
 	 * \brief Concept for invokable formatter objects
 	*/
 	template <class T, class TRecord>
-	concept RecordFormatterFor = Record<TRecord> && std::invocable<T, std::ostream&, const TRecord&>;
+	concept RecordFormatterFor =
+		Record<TRecord> &&
+		std::invocable<T, const TRecord&> &&
+		std::same_as<std::invoke_result_t<T, const TRecord&>, std::string>;
 
 	/**
 	 * \brief Concept for invokable filter objects

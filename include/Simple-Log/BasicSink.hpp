@@ -14,6 +14,7 @@
 #include <memory>
 #include <mutex>
 #include <ostream>
+#include <sstream>
 
 #include "Concepts.hpp"
 #include "FlushPolicies.hpp"
@@ -41,14 +42,14 @@ namespace sl::log
 
 	public:
 		using typename Super::Record_t;
-		using Formatter_t = std::function<void(std::ostream&, const Record_t&)>;
+		using Formatter_t = std::function<std::string(const Record_t&)>;
 		using Filter_t = std::function<bool(const Record_t&)>;
 		using FlushPolicy_t = std::unique_ptr<detail::AbstractFlushPolicyWrapper<Record_t>>;
 
 	protected:
-		static auto defaultFormatter() noexcept
+		static Formatter_t defaultFormatter() noexcept
 		{
-			return [](std::ostream& out, const Record_t& rec)
+			return [](const Record_t& rec)
 			{
 				using namespace std::chrono;
 				using namespace std::chrono_literals;
@@ -59,6 +60,8 @@ namespace sl::log
 				const auto minute = duration_cast<minutes>(today) % 1h;
 				const auto second = duration_cast<seconds>(today) % 1min;
 				const auto millisecond = duration_cast<milliseconds>(today) % 1s;
+
+				std::ostringstream out;
 				out << std::setfill('0') <<
 					std::setw(2) << hour.count() << ":" <<
 					std::setw(2) << minute.count() << ":" <<
@@ -68,6 +71,7 @@ namespace sl::log
 
 				out << rec.severity() << ":: ";
 				out << rec.message();
+				return std::move(out).str();
 			};
 		}
 
@@ -97,8 +101,12 @@ namespace sl::log
 
 		/**
 		 * \brief Default destructor
+		 * \details Flushes the internal stream
 		 */
-		~BasicSink() noexcept = default;
+		~BasicSink() noexcept
+		{
+			m_Stream.flush();
+		}
 
 		/**
 		 * \brief Deleted copy constructor
@@ -130,10 +138,10 @@ namespace sl::log
 			{
 				if (std::scoped_lock lock{ m_FilterMx, m_FormatterMx, m_StreamMx }; std::invoke(m_Filter, record))
 				{
-					const auto posBefore = m_Stream.tellp();
-					std::invoke(m_Formatter, m_Stream, record);
-					const auto posAfter = m_Stream.tellp();
-					handleNewlineAndFlush(record, posAfter - posBefore);
+					auto message = std::invoke(m_Formatter, record);
+					auto size = std::size(message) * sizeof(decltype(message)::value_type);
+					m_Stream << message;
+					handleNewlineAndFlush(record, size);
 				}
 			}
 		}
