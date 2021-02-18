@@ -70,7 +70,7 @@ namespace sl::log::detail
 	struct ConstantInvokable
 	{
 		template <class... TArgs>
-		constexpr bool operator()(TArgs&&...) const noexcept
+		constexpr auto operator()(TArgs&&...) const noexcept
 		{
 			return Constant;
 		}
