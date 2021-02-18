@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <atomic>
 #include <functional>
 #include <iomanip>
 #include <mutex>

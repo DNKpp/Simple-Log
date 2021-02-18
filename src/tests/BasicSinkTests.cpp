@@ -196,8 +196,8 @@ SCENARIO("formatting", "[BasicSink]")
 						{
 							out << overridingStr;
 						}
-					);
-		
+						);
+
 		AND_WHEN("receiving Record")
 		{
 			THEN("formatter overrides outgoing message")
