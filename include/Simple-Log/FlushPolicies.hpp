@@ -75,6 +75,24 @@ namespace sl::log::detail
 			return Constant;
 		}
 	};
+
+	struct PredProjInvocation
+	{
+		template <class TPredicate, class TProjection, class TProjected, class... TArgs>
+		constexpr auto operator ()(TPredicate& pred, TProjection& proj, const TProjected& projected, TArgs&&... args) const
+		{
+			return std::invoke(pred, std::invoke(proj, projected), std::forward<TArgs>(args)...);
+		}
+	};
+
+	struct PredProjInvocationIgnoreArgs
+	{
+		template <class TPredicate, class TProjection, class TProjected, class... TArgs>
+		constexpr auto operator ()(TPredicate& pred, TProjection& proj, const TProjected& projected, TArgs&&...) const
+		{
+			return std::invoke(pred, std::invoke(proj, projected));
+		}
+	};
 }
 
 namespace sl::log
@@ -90,24 +108,37 @@ namespace sl::log
 
 	/**
 	 * \brief A customizable FlushPolicy class
-	 * \tparam TPredicate The predicate must be invokable with the used Record type and must boolean-comparable results.
+	 * \tparam TPredicate The predicate must be invokable with the result of TProjection and must boolean-comparable results.
+	 * \tparam TProjection The projection must be invokable with the used Record type and must return something non-void.
+	 * \tparam TInvocationRule This type is used for internal determination how to chain the invocations.
 	 *
 	 * \details This is a customizable class when a Flush-Policy does not carrie any internal state which has to be reset after flushing happened. In other words,
-	 * users can pass any type of invokable, which fulfill the requirements, but will never receive the flushed() signal. If you need to act on that signal, users can simply
+	 * users can pass any type of predicate, which fulfills the requirements, but will never receive the flushed() signal. If you need to act on that signal, users can simply
 	 * write their own FlushPolicy class. There is no base class FlushPolicies must inherit from.
+	 * Additionally it is possible to use a projection, which will be invoked before the actual predicate. This projection must accept an object of the used Record type as single parameter.
 	 */
-	template <class TPredicate>
+	template <class TPredicate, class TProjection = std::identity, class TInvocationRule = detail::PredProjInvocation>
 	class FlushPolicy
 	{
 	public:
 		using Predicate_t = std::remove_cvref_t<TPredicate>;
+		using Projection_t = std::remove_cvref_t<TProjection>;
+		using InvocationRule_t = std::remove_cvref_t<TInvocationRule>;
 
 		/**
 		 * \brief Constructor
 		 * \param predicate Used predicate. May be default constructed via default argument.
+		 * \param projection Used projection. May be default constructed via default argument.
+		 * \param invocation Used invocation rule. May be default constructed via default argument.
 		 */
-		explicit FlushPolicy(TPredicate predicate = Predicate_t{}):
-			m_Predicate{ std::move(predicate) }
+		explicit FlushPolicy(
+			TPredicate predicate = Predicate_t{},
+			TProjection projection = Projection_t{},
+			TInvocationRule invocation = InvocationRule_t{}
+		) :
+			m_Predicate{ std::move(predicate) },
+			m_Projection{ std::move(projection) },
+			m_Invocation{ std::move(invocation) }
 		{
 		}
 
@@ -131,12 +162,12 @@ namespace sl::log
 		 * \param record The current handled Record object
 		 * \param messageByteSize The size of the current handled message in bytes
 		 * \return Returns the result of the predicate invocation
-		 * \details Just invokes the predicate with the provided arguments.
+		 * \details Just invokes the predicate with the result of the invoked projection and messageByteSize
 		 */
 		template <Record TRecord>
 		bool operator ()(const TRecord& record, std::size_t messageByteSize)
 		{
-			return std::invoke(m_Predicate, record, messageByteSize);
+			return m_Invocation(m_Predicate, m_Projection, record, messageByteSize);
 		}
 
 		/**
@@ -148,12 +179,75 @@ namespace sl::log
 
 	private:
 		Predicate_t m_Predicate;
+		Projection_t m_Projection;
+		//[[no_unique_address]]
+		InvocationRule_t m_Invocation;
 	};
 
 	/**
 	 * \brief A Flush-Policy which returns always true
 	 */
 	using AlwaysFlushPolicy = FlushPolicy<detail::ConstantInvokable<true>>;
+
+	/**
+	 * \brief Factory function for creating Flush-Policies based on Record::severity member
+	 * \tparam TRecord Concrete Record type on which to apply the projection
+	 * \tparam TUnaryPredicate Invokable type, which has to accept objects the actual Record::SeverityLevel_t type
+	 * \param predicate Predicate object
+	 * \return Flush-Policy object
+	 * \details This is the preferable way creating a Flush-Policies based on the Record::severity member, because the predicate becomes strong checked via
+	 * concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will
+	 * potentially result in harder to read error message. 
+	 */
+	template <Record TRecord, std::predicate<const typename TRecord::SeverityLevel_t&> TUnaryPredicate>
+	constexpr auto makeSeverityFlushPolicyFor(TUnaryPredicate&& predicate)
+	{
+		return FlushPolicy{
+			std::forward<TUnaryPredicate>(predicate),
+			&TRecord::severity,
+			detail::PredProjInvocationIgnoreArgs{}
+		};
+	}
+
+	/**
+	 * \brief Factory function for creating Flush-Policies based on Record::channel member
+	 * \tparam TRecord Concrete Record type on which to apply the projection
+	 * \tparam TUnaryPredicate Invokable type, which has to accept objects the actual Record::Channel_t type
+	 * \param predicate Predicate object
+	 * \return Flush-Policy object
+	 * \details This is the preferable way creating a Flush-Policies based on the Record::channel member, because the predicate becomes strong checked via
+	 * concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will
+	 * potentially result in harder to read error message. 
+	 */
+	template <Record TRecord, std::predicate<const typename TRecord::Channel_t&> TUnaryPredicate>
+	constexpr auto makeChannelFlushPolicyFor(TUnaryPredicate&& predicate)
+	{
+		return FlushPolicy{
+			std::forward<TUnaryPredicate>(predicate),
+			&TRecord::channel,
+			detail::PredProjInvocationIgnoreArgs{}
+		};
+	}
+
+	/**
+	 * \brief Factory function for creating Flush-Policies based on Record::timePoint member
+	 * \tparam TRecord Concrete Record type on which to apply the projection
+	 * \tparam TUnaryPredicate Invokable type, which has to accept objects the actual Record::TimePoint_t type
+	 * \param predicate Predicate object
+	 * \return Flush-Policy object
+	 * \details This is the preferable way creating a Flush-Policies based on the Record::timePoint member, because the predicate becomes strong checked via
+	 * concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will
+	 * potentially result in harder to read error message. 
+	 */
+	template <Record TRecord, std::predicate<const typename TRecord::TimePoint_t&> TUnaryPredicate>
+	constexpr auto makeTimePointFlushPolicyFor(TUnaryPredicate&& predicate)
+	{
+		return FlushPolicy{
+			std::forward<TUnaryPredicate>(predicate),
+			&TRecord::timePoint,
+			detail::PredProjInvocationIgnoreArgs{}
+		};
+	}
 
 	/**
 	 * \brief A Flush-Policy which acts on a durations

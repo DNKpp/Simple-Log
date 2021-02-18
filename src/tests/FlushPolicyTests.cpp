@@ -10,6 +10,7 @@
 
 #include "Simple-Log/FlushPolicies.hpp"
 #include "Simple-Log/Record.hpp"
+#include "Simple-Log/Predicates.hpp"
 
 using namespace sl::log;
 
@@ -53,6 +54,59 @@ TEST_CASE("AlwaysFlushPolicy", "[Flush-Policies]")
 		REQUIRE(policy(dummy, 0));
 	}
 }
+
+TEST_CASE("makeSeverityFlushPolicyFor", "[Flush-Policies]")
+{
+	auto policy = makeSeverityFlushPolicyFor<Record_t>(Less{ 5 });
+	Record_t record;
+	for (int i = 0; i < 5; ++i)
+	{
+		record.setSeverity(i);
+		REQUIRE(policy(record, 0));
+	}
+
+	for (int i = 6; i < 10; ++i)
+	{
+		record.setSeverity(i);
+		REQUIRE_FALSE(policy(record, 0));
+	}
+}
+
+TEST_CASE("makeChannelFlushPolicyFor", "[Flush-Policies]")
+{
+	auto policy = makeChannelFlushPolicyFor<Record_t>(Less{ 5 });
+	Record_t record;
+	for (int i = 0; i < 5; ++i)
+	{
+		record.setChannel(i);
+		REQUIRE(policy(record, 0));
+	}
+
+	for (int i = 6; i < 10; ++i)
+	{
+		record.setChannel(i);
+		REQUIRE_FALSE(policy(record, 0));
+	}
+}
+
+TEST_CASE("makeTimePointFlushPolicyFor", "[Flush-Policies]")
+{
+	using Record2_t = BaseRecord<int, int, int, int>;
+	auto policy = makeTimePointFlushPolicyFor<Record2_t>(Less{ 5 });
+	Record2_t record;
+	for (int i = 0; i < 5; ++i)
+	{
+		record.setTimePoint(i);
+		REQUIRE(policy(record, 0));
+	}
+
+	for (int i = 6; i < 10; ++i)
+	{
+		record.setTimePoint(i);
+		REQUIRE_FALSE(policy(record, 0));
+	}
+}
+
 
 TEST_CASE("ByteCountFlushPolicy", "[Flush-Policies]")
 {
