@@ -227,6 +227,12 @@ namespace sl::log
 			m_Filter = defaultFilter();
 		}
 
+
+		/**
+		 * \brief Sets the active Flush-Policy
+		 * \tparam TPolicy   Type of the passed Flush-Policy (automatically deduced)
+		 * \param policy The new Flush-Policy object
+		 */
 		template <FlushPolicyFor<Record_t> TPolicy>
 		void setFlushPolicy(TPolicy&& policy) noexcept
 		{
@@ -234,6 +240,10 @@ namespace sl::log
 			m_FlushPolicy = std::make_unique<detail::FlushPolicyWrapper<TRecord, TPolicy>>(std::forward<TPolicy>(policy));
 		}
 
+		/**
+		 * \brief Replaces the current Flush-Policy with the default one
+		 * \details The default Flush-Policy flushes after each handled Record.
+		 */
 		void removeFlushPolicy() noexcept
 		{
 			std::scoped_lock lock{ m_FlushPolicyMx };
