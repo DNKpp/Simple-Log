@@ -139,7 +139,7 @@ namespace sl::log
 				if (std::scoped_lock lock{ m_FilterMx, m_FormatterMx, m_StreamMx }; std::invoke(m_Filter, record))
 				{
 					auto message = std::invoke(m_Formatter, record);
-					auto size = std::size(message) * sizeof(decltype(message)::value_type);
+					auto size = std::size(message) * sizeof(typename decltype(message)::value_type);
 					m_Stream << message;
 					handleNewlineAndFlush(record, size);
 				}
