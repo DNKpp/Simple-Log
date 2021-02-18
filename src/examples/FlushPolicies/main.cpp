@@ -19,12 +19,14 @@ inline std::unique_ptr<logging::Core_t> makeLoggingCore()
 	auto consoleSink = core->makeDisabledSink<logging::BasicSink_t>(std::cout);
 
 	consoleSink->setFlushPolicy(
-		sl::log::makeSeverityFlushPolicyFor<logging::Record_t>(sl::log::Greater{ logging::SeverityLevel::error })		// performs flush if Record with error level has been handled.
+		// flush if Record with SeverityLevel error or above has been handled
+		sl::log::makeSeverityFlushPolicyFor<logging::Record_t>(sl::log::Greater{ logging::SeverityLevel::error })
 	);
 
 	// note: this will override the previous policy
 	consoleSink->setFlushPolicy(
-		sl::log::ByteCountFlushPolicy{ 100 }	// performs flush when the threshold of 100 bytes is exceeded
+		// flush when the threshold of 100 bytes is exceeded
+		sl::log::ByteCountFlushPolicy{ 100 }
 	);
 	return core;
 }
