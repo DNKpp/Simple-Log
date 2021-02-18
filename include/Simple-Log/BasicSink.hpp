@@ -11,10 +11,12 @@
 #include <atomic>
 #include <functional>
 #include <iomanip>
+#include <memory>
 #include <mutex>
 #include <ostream>
 
 #include "Concepts.hpp"
+#include "FlushPolicies.hpp"
 #include "ISink.hpp"
 
 namespace sl::log
@@ -41,6 +43,7 @@ namespace sl::log
 		using typename Super::Record_t;
 		using Formatter_t = std::function<void(std::ostream&, const Record_t&)>;
 		using Filter_t = std::function<bool(const Record_t&)>;
+		using FlushPolicy_t = std::unique_ptr<detail::AbstractFlushPolicyWrapper<Record_t>>;
 
 	protected:
 		static auto defaultFormatter() noexcept
@@ -73,13 +76,20 @@ namespace sl::log
 			return [](const Record_t& rec) { return true; };
 		}
 
+		[[nodiscard]]
+		static constexpr FlushPolicy_t defaultFlushPolicy() noexcept
+		{
+			return std::make_unique<detail::FlushPolicyWrapper<Record_t, AlwaysFlushPolicy>>();
+		}
+
 	public:
 		/**
 		 * \brief Constructor
 		 * \param stream The stream object, which will receive finally formatted messages
 		 */
 		explicit BasicSink(std::ostream& stream) :
-			m_Stream{ stream }
+			m_Stream{ stream },
+			m_FlushPolicy{ defaultFlushPolicy() }
 		{
 			m_Formatter = defaultFormatter();
 			m_Filter = defaultFilter();
@@ -120,8 +130,10 @@ namespace sl::log
 			{
 				if (std::scoped_lock lock{ m_FilterMx, m_FormatterMx, m_StreamMx }; std::invoke(m_Filter, record))
 				{
+					const auto posBefore = m_Stream.tellp();
 					std::invoke(m_Formatter, m_Stream, record);
-					m_Stream << std::endl;
+					const auto posAfter = m_Stream.tellp();
+					handleNewlineAndFlush(record, posAfter - posBefore);
 				}
 			}
 		}
@@ -207,6 +219,19 @@ namespace sl::log
 			m_Filter = defaultFilter();
 		}
 
+		template <FlushPolicyFor<Record_t> TPolicy>
+		void setFlushPolicy(TPolicy&& policy) noexcept
+		{
+			std::scoped_lock lock{ m_FlushPolicyMx };
+			m_FlushPolicy = std::make_unique<detail::FlushPolicyWrapper<TRecord, TPolicy>>(std::forward<TPolicy>(policy));
+		}
+
+		void removeFlushPolicy() noexcept
+		{
+			std::scoped_lock lock{ m_FlushPolicyMx };
+			m_FlushPolicy = defaultFlushPolicy();
+		}
+
 	protected:
 		/**
 		 * \brief Writes to the internal stream
@@ -219,6 +244,7 @@ namespace sl::log
 		{
 			std::scoped_lock lock{ m_StreamMx };
 			m_Stream << std::forward<TData>(data);
+			handleNewlineAndFlush();
 		}
 
 		/**
@@ -238,9 +264,30 @@ namespace sl::log
 
 		std::mutex m_FormatterMx;
 		Formatter_t m_Formatter;
+
 		std::mutex m_FilterMx;
 		Filter_t m_Filter;
+
+		std::mutex m_FlushPolicyMx;
+		FlushPolicy_t m_FlushPolicy;
+
 		std::atomic_bool m_Enabled{ false };
+
+		void handleNewlineAndFlush(const Record_t& record, std::size_t messageByteSize)
+		{
+			if (messageByteSize == 0)
+				return;
+
+			if (std::scoped_lock lock{ m_FlushPolicyMx }; std::invoke(*m_FlushPolicy, record, messageByteSize))
+			{
+				m_Stream << std::endl;
+				m_FlushPolicy->flushed();
+			}
+			else
+			{
+				m_Stream << "\n";
+			}
+		}
 	};
 
 	/** @}*/
