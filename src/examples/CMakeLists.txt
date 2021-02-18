@@ -4,3 +4,4 @@ project(simple_log_examples)
 
 add_subdirectory(Basic)
 add_subdirectory(Filtering)
+add_subdirectory(FlushPolicies)
