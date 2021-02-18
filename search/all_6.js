@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['hint_46',['hint',['../df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html#a48de3fd8273129e04e22975e780ec966',1,'sl::log::pre::SetSev::hint()'],['../df/d5b/group___prepared_types.html#gga1233009dc7a50b2f4d4a14c7e9b087d2aee2faeed038501c1deab01c7b54f2fa9',1,'sl::log::pre::hint()']]]
+  ['greater_55',['Greater',['../d5/d69/classsl_1_1log_1_1_greater.html#a14747db81645decfac94fca52f8fa558',1,'sl::log::Greater::Greater()'],['../d5/d69/classsl_1_1log_1_1_greater.html',1,'sl::log::Greater&lt; T &gt;']]],
+  ['greaterequal_56',['GreaterEqual',['../db/ddb/classsl_1_1log_1_1_greater_equal.html#af52a4977e112c57a237a435aa965e02b',1,'sl::log::GreaterEqual::GreaterEqual()'],['../db/ddb/classsl_1_1log_1_1_greater_equal.html',1,'sl::log::GreaterEqual&lt; T &gt;']]]
 ];

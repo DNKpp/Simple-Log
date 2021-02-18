@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['message_5ft_295',['Message_t',['../dd/d7a/classsl_1_1log_1_1_base_record.html#a756f90f181a5cd126679a9e37c0d36bd',1,'sl::log::BaseRecord']]]
+  ['invocationrule_5ft_330',['InvocationRule_t',['../d8/df6/classsl_1_1log_1_1_flush_policy.html#a668675b87bf5ec1f42d1ac63cb44f40b',1,'sl::log::FlushPolicy']]],
+  ['isink_5ft_331',['ISink_t',['../df/d5b/group___prepared_types.html#ga441c31c9fe7ec7745acfa5cd24a5e6c6',1,'sl::log::pre']]]
 ];

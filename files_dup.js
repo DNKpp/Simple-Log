@@ -10,6 +10,7 @@ var files_dup =
       [ "CleanupRule", "dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html", "dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule" ]
     ] ],
     [ "Filters.hpp", "de/d95/_filters_8hpp.html", "de/d95/_filters_8hpp" ],
+    [ "FlushPolicies.hpp", "dc/d59/_flush_policies_8hpp.html", "dc/d59/_flush_policies_8hpp" ],
     [ "ISink.hpp", "d2/d5f/_i_sink_8hpp.html", null ],
     [ "Logger.hpp", "d3/de3/_logger_8hpp.html", [
       [ "Logger", "df/da8/classsl_1_1log_1_1_logger.html", "df/da8/classsl_1_1log_1_1_logger" ]

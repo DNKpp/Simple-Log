@@ -1,5 +1,27 @@
 var searchData=
 [
-  ['greater_44',['Greater',['../d5/d69/classsl_1_1log_1_1_greater.html#a14747db81645decfac94fca52f8fa558',1,'sl::log::Greater::Greater()'],['../d5/d69/classsl_1_1log_1_1_greater.html',1,'sl::log::Greater&lt; T &gt;']]],
-  ['greaterequal_45',['GreaterEqual',['../db/ddb/classsl_1_1log_1_1_greater_equal.html#af52a4977e112c57a237a435aa965e02b',1,'sl::log::GreaterEqual::GreaterEqual()'],['../db/ddb/classsl_1_1log_1_1_greater_equal.html',1,'sl::log::GreaterEqual&lt; T &gt;']]]
+  ['fatal_31',['fatal',['../df/d5b/group___prepared_types.html#gga1233009dc7a50b2f4d4a14c7e9b087d2adf6402fd9ecc60f5a2159fdf45711cd4',1,'sl::log::pre::fatal()'],['../df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html#a94228bbd1cd7052a352adabd0a0f2da1',1,'sl::log::pre::SetSev::fatal()']]],
+  ['filecount_32',['fileCount',['../dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html#a28107c8c9d34b5dfca7dc136c6d8dc90',1,'sl::log::FileSink::CleanupRule']]],
+  ['filesink_33',['FileSink',['../dc/dd6/classsl_1_1log_1_1_file_sink.html#a028e36291df85f0da12a9bdf89d99363',1,'sl::log::FileSink::FileSink(FileSink &amp;&amp;)=delete'],['../dc/dd6/classsl_1_1log_1_1_file_sink.html#ac316441be075b974c94e3f9c37e55ff3',1,'sl::log::FileSink::FileSink(const FileSink &amp;)=delete'],['../dc/dd6/classsl_1_1log_1_1_file_sink.html#a6a317ccf34b1bb1960ae94922126cef0',1,'sl::log::FileSink::FileSink(std::string fileNamePattern, std::filesystem::path directory=std::filesystem::current_path())'],['../dc/dd6/classsl_1_1log_1_1_file_sink.html',1,'sl::log::FileSink&lt; TRecord &gt;']]],
+  ['filesink_2ehpp_34',['FileSink.hpp',['../d8/d6c/_file_sink_8hpp.html',1,'']]],
+  ['filesink_5ft_35',['FileSink_t',['../df/d5b/group___prepared_types.html#ga99c4108152ca0187e2a4c4d1359ef33d',1,'sl::log::pre']]],
+  ['filesize_36',['fileSize',['../d0/d82/structsl_1_1log_1_1_file_sink_1_1_rotation_rule.html#aab34a4c2eb258cd0cadc8c751735b66d',1,'sl::log::FileSink::RotationRule']]],
+  ['filestatehandler_37',['FileStateHandler',['../d4/df0/group__concepts.html#ga1c5760e773e9a0c3ab0d608139bce497',1,'sl::log']]],
+  ['filter_38',['Filter',['../d4/d38/group__filter.html',1,'']]],
+  ['filter_5ft_39',['Filter_t',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381',1,'sl::log::BasicSink']]],
+  ['filterallof_40',['FilterAllOf',['../d4/deb/classsl_1_1log_1_1_filter_all_of.html#a979ce624aee9fc12083f6efe4147c879',1,'sl::log::FilterAllOf::FilterAllOf()'],['../d4/deb/classsl_1_1log_1_1_filter_all_of.html',1,'sl::log::FilterAllOf&lt; TFilter &gt;']]],
+  ['filteranyof_41',['FilterAnyOf',['../d3/d63/classsl_1_1log_1_1_filter_any_of.html#a96c4e2e7be686c53e7f47be87b7b3b7a',1,'sl::log::FilterAnyOf::FilterAnyOf()'],['../d3/d63/classsl_1_1log_1_1_filter_any_of.html',1,'sl::log::FilterAnyOf&lt; TFilter &gt;']]],
+  ['filterchain_42',['FilterChain',['../d7/d40/classsl_1_1log_1_1_filter_chain.html#a35ed0b7b0027ebbd84ba082302366c30',1,'sl::log::FilterChain::FilterChain(TFilter ...filter)'],['../d7/d40/classsl_1_1log_1_1_filter_chain.html#a026486b0e7b0d645d18484269643e9eb',1,'sl::log::FilterChain::FilterChain(TAlgorithm algorithm, TFilter ...filter)'],['../d7/d40/classsl_1_1log_1_1_filter_chain.html',1,'sl::log::FilterChain&lt; TAlgorithm, TFilter &gt;']]],
+  ['filterchain_3c_20detail_3a_3atupleallof_2c_20tfilter_2e_2e_2e_20_3e_43',['FilterChain&lt; detail::TupleAllOf, TFilter... &gt;',['../d7/d40/classsl_1_1log_1_1_filter_chain.html',1,'sl::log']]],
+  ['filterchain_3c_20detail_3a_3atupleanyof_2c_20tfilter_2e_2e_2e_20_3e_44',['FilterChain&lt; detail::TupleAnyOf, TFilter... &gt;',['../d7/d40/classsl_1_1log_1_1_filter_chain.html',1,'sl::log']]],
+  ['filterchain_3c_20detail_3a_3atuplenoneof_2c_20tfilter_2e_2e_2e_20_3e_45',['FilterChain&lt; detail::TupleNoneOf, TFilter... &gt;',['../d7/d40/classsl_1_1log_1_1_filter_chain.html',1,'sl::log']]],
+  ['filternoneof_46',['FilterNoneOf',['../de/db4/classsl_1_1log_1_1_filter_none_of.html#a3f16bb9a5423704c6584176f579bcd62',1,'sl::log::FilterNoneOf::FilterNoneOf()'],['../de/db4/classsl_1_1log_1_1_filter_none_of.html',1,'sl::log::FilterNoneOf&lt; TFilter &gt;']]],
+  ['filters_2ehpp_47',['Filters.hpp',['../de/d95/_filters_8hpp.html',1,'']]],
+  ['flush_2dpolicy_48',['Flush-Policy',['../d5/dfa/group___flush-_policy.html',1,'']]],
+  ['flushed_49',['flushed',['../d4/d87/classsl_1_1log_1_1_byte_count_flush_policy.html#a7c8e27c19ba1e79d0da4ed496d5577a5',1,'sl::log::ByteCountFlushPolicy::flushed()'],['../dc/d25/classsl_1_1log_1_1_timed_flush_policy.html#a768a50ca9e238031f876d3b3fc43b0e7',1,'sl::log::TimedFlushPolicy::flushed()'],['../d8/df6/classsl_1_1log_1_1_flush_policy.html#a453609f8f165dea0c7ee6158f0278f44',1,'sl::log::FlushPolicy::flushed()']]],
+  ['flushpolicies_2ehpp_50',['FlushPolicies.hpp',['../dc/d59/_flush_policies_8hpp.html',1,'']]],
+  ['flushpolicy_51',['FlushPolicy',['../d8/df6/classsl_1_1log_1_1_flush_policy.html#a7d16d9962aadec2833386cccd139dc26',1,'sl::log::FlushPolicy::FlushPolicy(TPredicate predicate=Predicate_t{}, TProjection projection=Projection_t{}, TInvocationRule invocation=InvocationRule_t{})'],['../d8/df6/classsl_1_1log_1_1_flush_policy.html#a2cbb2510dfa0788c5f9f68b9dd030107',1,'sl::log::FlushPolicy::FlushPolicy(std::in_place_t _, TArgs &amp;&amp;... args)'],['../d8/df6/classsl_1_1log_1_1_flush_policy.html',1,'sl::log::FlushPolicy&lt; TPredicate, TProjection, TInvocationRule &gt;']]],
+  ['flushpolicy_5ft_52',['FlushPolicy_t',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a9f4e4d88cbb51b678e535d37ee50bcaf',1,'sl::log::BasicSink']]],
+  ['flushpolicyfor_53',['FlushPolicyFor',['../d4/df0/group__concepts.html#gaf5daeadaa8a98715671cee34171d5380',1,'sl::log']]],
+  ['formatter_5ft_54',['Formatter_t',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596',1,'sl::log::BasicSink']]]
 ];

@@ -3,6 +3,7 @@ var hierarchy =
     [ "sl::log::BaseRecord< TSeverityLevel, TChannel, TMessage, TTimePoint >", "dd/d7a/classsl_1_1log_1_1_base_record.html", null ],
     [ "sl::log::Between< T >", "d3/d9b/classsl_1_1log_1_1_between.html", null ],
     [ "sl::log::BetweenEquals< T >", "db/da1/classsl_1_1log_1_1_between_equals.html", null ],
+    [ "sl::log::ByteCountFlushPolicy", "d4/d87/classsl_1_1log_1_1_byte_count_flush_policy.html", null ],
     [ "sl::log::FileSink< TRecord >::CleanupRule", "dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html", null ],
     [ "sl::log::Core< TRecord >", "d4/df3/classsl_1_1log_1_1_core.html", null ],
     [ "sl::log::EqualsTo< T >", "de/d3a/classsl_1_1log_1_1_equals_to.html", null ],
@@ -16,6 +17,7 @@ var hierarchy =
     [ "sl::log::FilterChain< detail::TupleNoneOf, TFilter... >", "d7/d40/classsl_1_1log_1_1_filter_chain.html", [
       [ "sl::log::FilterNoneOf< TFilter >", "de/db4/classsl_1_1log_1_1_filter_none_of.html", null ]
     ] ],
+    [ "sl::log::FlushPolicy< TPredicate, TProjection, TInvocationRule >", "d8/df6/classsl_1_1log_1_1_flush_policy.html", null ],
     [ "sl::log::Greater< T >", "d5/d69/classsl_1_1log_1_1_greater.html", null ],
     [ "sl::log::GreaterEqual< T >", "db/ddb/classsl_1_1log_1_1_greater_equal.html", null ],
     [ "sl::log::ISink< TRecord >", "d8/dda/classsl_1_1log_1_1_i_sink.html", [
@@ -36,5 +38,6 @@ var hierarchy =
     [ "sl::log::SetChan< TChannel >", "d9/d84/classsl_1_1log_1_1_set_chan.html", null ],
     [ "sl::log::pre::SetSev", "df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html", null ],
     [ "sl::log::SetSev< TSeverityLevel >", "d5/df7/classsl_1_1log_1_1_set_sev.html", null ],
-    [ "sl::log::StringPattern", "d1/d81/classsl_1_1log_1_1_string_pattern.html", null ]
+    [ "sl::log::StringPattern", "d1/d81/classsl_1_1log_1_1_string_pattern.html", null ],
+    [ "sl::log::TimedFlushPolicy", "dc/d25/classsl_1_1log_1_1_timed_flush_policy.html", null ]
 ];

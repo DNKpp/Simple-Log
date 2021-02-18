@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['isink_5ft_293',['ISink_t',['../df/d5b/group___prepared_types.html#ga441c31c9fe7ec7745acfa5cd24a5e6c6',1,'sl::log::pre']]]
+  ['duration_5ft_325',['Duration_t',['../dc/d25/classsl_1_1log_1_1_timed_flush_policy.html#ae03932db275d4efd340727c9dbe2bd52',1,'sl::log::TimedFlushPolicy']]]
 ];

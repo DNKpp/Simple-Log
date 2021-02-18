@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['basicsink_5ft_287',['BasicSink_t',['../df/d5b/group___prepared_types.html#ga099a00be4e155fcbb4c5f6378d56612e',1,'sl::log::pre']]]
+  ['alwaysflushpolicy_320',['AlwaysFlushPolicy',['../d5/dfa/group___flush-_policy.html#gaa231417ed2bdea57eaab58c82f2939f4',1,'sl::log']]]
 ];

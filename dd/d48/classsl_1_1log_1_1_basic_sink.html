@@ -110,10 +110,12 @@ Inheritance diagram for sl::log::BasicSink&lt; TRecord &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a21b0bd544583a35d23f225e015fc59bb"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a21b0bd544583a35d23f225e015fc59bb">Formatter_t</a> = std::function&lt; void(std::ostream &amp;, const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;)&gt;</td></tr>
-<tr class="separator:a21b0bd544583a35d23f225e015fc59bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84c4f321caf9c3c4c2586c7698206596"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596">Formatter_t</a> = std::function&lt; std::string(const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;)&gt;</td></tr>
+<tr class="separator:a84c4f321caf9c3c4c2586c7698206596"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30f3e717d2ba9ffae23cb19b3c53e381"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381">Filter_t</a> = std::function&lt; bool(const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;)&gt;</td></tr>
 <tr class="separator:a30f3e717d2ba9ffae23cb19b3c53e381"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f4e4d88cbb51b678e535d37ee50bcaf"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a9f4e4d88cbb51b678e535d37ee50bcaf">FlushPolicy_t</a> = std::unique_ptr&lt; detail::AbstractFlushPolicyWrapper&lt; <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &gt; &gt;</td></tr>
+<tr class="separator:a9f4e4d88cbb51b678e535d37ee50bcaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad79d9e5f6c4e07be42c84a281dc45082"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> = TRecord</td></tr>
 <tr class="memdesc:ad79d9e5f6c4e07be42c84a281dc45082"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used Record type.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">More...</a><br /></td></tr>
 <tr class="separator:ad79d9e5f6c4e07be42c84a281dc45082"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,9 +125,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a77e2fd9a42c954effed159f2c83a4cb0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a77e2fd9a42c954effed159f2c83a4cb0">BasicSink</a> (std::ostream &amp;stream)</td></tr>
 <tr class="memdesc:a77e2fd9a42c954effed159f2c83a4cb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a77e2fd9a42c954effed159f2c83a4cb0">More...</a><br /></td></tr>
 <tr class="separator:a77e2fd9a42c954effed159f2c83a4cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d32a8ae46419eaae763ac001935bcd2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a3d32a8ae46419eaae763ac001935bcd2">~BasicSink</a> () noexcept=default</td></tr>
-<tr class="memdesc:a3d32a8ae46419eaae763ac001935bcd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a3d32a8ae46419eaae763ac001935bcd2">More...</a><br /></td></tr>
-<tr class="separator:a3d32a8ae46419eaae763ac001935bcd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bc226051f5b260e2975d7a253a89f5d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a7bc226051f5b260e2975d7a253a89f5d">~BasicSink</a> () noexcept</td></tr>
+<tr class="memdesc:a7bc226051f5b260e2975d7a253a89f5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a7bc226051f5b260e2975d7a253a89f5d">More...</a><br /></td></tr>
+<tr class="separator:a7bc226051f5b260e2975d7a253a89f5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9befd674f26382887b07f8e46277be18"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a9befd674f26382887b07f8e46277be18">BasicSink</a> (const <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a> &amp;)=delete</td></tr>
 <tr class="memdesc:a9befd674f26382887b07f8e46277be18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted copy constructor.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a9befd674f26382887b07f8e46277be18">More...</a><br /></td></tr>
 <tr class="separator:a9befd674f26382887b07f8e46277be18"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,6 +163,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a42ec066fa02a2d798517934eea7330d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a42ec066fa02a2d798517934eea7330d4">removeFilter</a> () noexcept</td></tr>
 <tr class="memdesc:a42ec066fa02a2d798517934eea7330d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces the active filter with the default one.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a42ec066fa02a2d798517934eea7330d4">More...</a><br /></td></tr>
 <tr class="separator:a42ec066fa02a2d798517934eea7330d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab571dba0bae50ace5604f08a8d3ad5fe"><td class="memTemplParams" colspan="2">template&lt;FlushPolicyFor&lt; Record_t &gt; TPolicy&gt; </td></tr>
+<tr class="memitem:ab571dba0bae50ace5604f08a8d3ad5fe"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ab571dba0bae50ace5604f08a8d3ad5fe">setFlushPolicy</a> (TPolicy &amp;&amp;policy) noexcept</td></tr>
+<tr class="memdesc:ab571dba0bae50ace5604f08a8d3ad5fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the active Flush-Policy.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ab571dba0bae50ace5604f08a8d3ad5fe">More...</a><br /></td></tr>
+<tr class="separator:ab571dba0bae50ace5604f08a8d3ad5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bfb39f251515ade3e356d533246d1a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a7bfb39f251515ade3e356d533246d1a0">removeFlushPolicy</a> () noexcept</td></tr>
+<tr class="memdesc:a7bfb39f251515ade3e356d533246d1a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces the current Flush-Policy with the default one.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a7bfb39f251515ade3e356d533246d1a0">More...</a><br /></td></tr>
+<tr class="separator:a7bfb39f251515ade3e356d533246d1a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -174,10 +183,12 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
 Static Protected Member Functions</h2></td></tr>
-<tr class="memitem:a4ecae2165680635005b16a340ad4e421"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a4ecae2165680635005b16a340ad4e421">defaultFormatter</a> () noexcept</td></tr>
-<tr class="separator:a4ecae2165680635005b16a340ad4e421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca15b6bd754f4cb1b27c547b4656e082"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596">Formatter_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aca15b6bd754f4cb1b27c547b4656e082">defaultFormatter</a> () noexcept</td></tr>
+<tr class="separator:aca15b6bd754f4cb1b27c547b4656e082"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9743500310741828c2e021b69045cbac"><td class="memItemLeft" align="right" valign="top">static auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a9743500310741828c2e021b69045cbac">defaultFilter</a> () noexcept</td></tr>
 <tr class="separator:a9743500310741828c2e021b69045cbac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e5b379e5907f8a0a38001cbc060f777"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a9f4e4d88cbb51b678e535d37ee50bcaf">FlushPolicy_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a1e5b379e5907f8a0a38001cbc060f777">defaultFlushPolicy</a> () noexcept</td></tr>
+<tr class="separator:a1e5b379e5907f8a0a38001cbc060f777"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;Record TRecord&gt;<br />
@@ -209,8 +220,8 @@ template&lt;Record TRecord&gt; </div>
 
 </div>
 </div>
-<a id="a21b0bd544583a35d23f225e015fc59bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21b0bd544583a35d23f225e015fc59bb">&#9670;&nbsp;</a></span>Formatter_t</h2>
+<a id="a9f4e4d88cbb51b678e535d37ee50bcaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f4e4d88cbb51b678e535d37ee50bcaf">&#9670;&nbsp;</a></span>FlushPolicy_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -218,7 +229,23 @@ template&lt;Record TRecord&gt; </div>
 template&lt;Record TRecord&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::<a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a21b0bd544583a35d23f225e015fc59bb">Formatter_t</a> =  std::function&lt;void(std::ostream&amp;, const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a>&amp;)&gt;</td>
+          <td class="memname">using <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::<a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a9f4e4d88cbb51b678e535d37ee50bcaf">FlushPolicy_t</a> =  std::unique_ptr&lt;detail::AbstractFlushPolicyWrapper&lt;<a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a>&gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a84c4f321caf9c3c4c2586c7698206596"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84c4f321caf9c3c4c2586c7698206596">&#9670;&nbsp;</a></span>Formatter_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::<a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596">Formatter_t</a> =  std::function&lt;std::string(const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a>&amp;)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -280,8 +307,8 @@ template&lt;Record TRecord&gt; </div>
 
 </div>
 </div>
-<a id="a3d32a8ae46419eaae763ac001935bcd2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d32a8ae46419eaae763ac001935bcd2">&#9670;&nbsp;</a></span>~BasicSink()</h2>
+<a id="a7bc226051f5b260e2975d7a253a89f5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bc226051f5b260e2975d7a253a89f5d">&#9670;&nbsp;</a></span>~BasicSink()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -300,12 +327,13 @@ template&lt;Record TRecord&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Default destructor. </p>
+<p>Flushes the internal stream </p>
 
 </div>
 </div>
@@ -397,8 +425,8 @@ template&lt;Record TRecord&gt; </div>
 
 </div>
 </div>
-<a id="a4ecae2165680635005b16a340ad4e421"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ecae2165680635005b16a340ad4e421">&#9670;&nbsp;</a></span>defaultFormatter()</h2>
+<a id="a1e5b379e5907f8a0a38001cbc060f777"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e5b379e5907f8a0a38001cbc060f777">&#9670;&nbsp;</a></span>defaultFlushPolicy()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -409,7 +437,34 @@ template&lt;Record TRecord&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static auto <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::defaultFormatter </td>
+          <td class="memname">static constexpr <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a9f4e4d88cbb51b678e535d37ee50bcaf">FlushPolicy_t</a> <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::defaultFlushPolicy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span><span class="mlabel">protected</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aca15b6bd754f4cb1b27c547b4656e082"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca15b6bd754f4cb1b27c547b4656e082">&#9670;&nbsp;</a></span>defaultFormatter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596">Formatter_t</a> <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::defaultFormatter </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -660,6 +715,36 @@ template&lt;Record TRecord&gt; </div>
 
 </div>
 </div>
+<a id="a7bfb39f251515ade3e356d533246d1a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bfb39f251515ade3e356d533246d1a0">&#9670;&nbsp;</a></span>removeFlushPolicy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::removeFlushPolicy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Replaces the current Flush-Policy with the default one. </p>
+<p>The default Flush-Policy flushes after each handled Record. </p>
+
+</div>
+</div>
 <a id="abb58ac95a0a1ad03bedd1e52756d2b0c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abb58ac95a0a1ad03bedd1e52756d2b0c">&#9670;&nbsp;</a></span>removeFormatter()</h2>
 
@@ -730,6 +815,50 @@ template&lt;RecordFilterFor&lt; Record_t &gt; TFilter&gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">filter</td><td>An invokable filter object </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab571dba0bae50ace5604f08a8d3ad5fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab571dba0bae50ace5604f08a8d3ad5fe">&#9670;&nbsp;</a></span>setFlushPolicy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
+<div class="memtemplate">
+template&lt;FlushPolicyFor&lt; Record_t &gt; TPolicy&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::setFlushPolicy </td>
+          <td>(</td>
+          <td class="paramtype">TPolicy &amp;&amp;&#160;</td>
+          <td class="paramname"><em>policy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the active Flush-Policy. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TPolicy</td><td>Type of the passed Flush-Policy (automatically deduced) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">policy</td><td>The new Flush-Policy object </td></tr>
   </table>
   </dd>
 </dl>

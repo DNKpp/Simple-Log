@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['projection_5ft_296',['Projection_t',['../d4/d36/classsl_1_1log_1_1_projection_filter.html#ae58e1705b3fda54376a92e20cff1ec6f',1,'sl::log::ProjectionFilter']]]
+  ['logger_5ft_332',['Logger_t',['../df/d5b/group___prepared_types.html#ga056916e99d3c6cb4490a14821ccf1a35',1,'sl::log::pre']]]
 ];

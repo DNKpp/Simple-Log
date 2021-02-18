@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['filesink_5ft_290',['FileSink_t',['../df/d5b/group___prepared_types.html#ga99c4108152ca0187e2a4c4d1359ef33d',1,'sl::log::pre']]],
-  ['filter_5ft_291',['Filter_t',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381',1,'sl::log::BasicSink']]],
-  ['formatter_5ft_292',['Formatter_t',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a21b0bd544583a35d23f225e015fc59bb',1,'sl::log::BasicSink']]]
+  ['channel_5ft_322',['Channel_t',['../df/da8/classsl_1_1log_1_1_logger.html#a8829a599efd5cd8f09d53d666e08352f',1,'sl::log::Logger::Channel_t()'],['../dd/d7a/classsl_1_1log_1_1_base_record.html#a60afd39a9a13ca50e6aabc4a828b170e',1,'sl::log::BaseRecord::Channel_t()'],['../db/d9a/classsl_1_1log_1_1_record_builder.html#a665c4ea92e11899cf197b09236590684',1,'sl::log::RecordBuilder::Channel_t()']]],
+  ['clock_5ft_323',['Clock_t',['../dc/d25/classsl_1_1log_1_1_timed_flush_policy.html#adb42f7cbd8a8febd6dc6ca1d43520e22',1,'sl::log::TimedFlushPolicy']]],
+  ['core_5ft_324',['Core_t',['../df/da8/classsl_1_1log_1_1_logger.html#a985392f2f06e1fa0fd6ae2f42c462d7e',1,'sl::log::Logger::Core_t()'],['../df/d5b/group___prepared_types.html#ga62237602874e49e1c35f1da9c2393e48',1,'sl::log::pre::Core_t()']]]
 ];

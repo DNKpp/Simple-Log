@@ -1,10 +1,13 @@
 var searchData=
 [
-  ['debug_15',['debug',['../df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html#ae6d70a8615ce48b1f567e32cd6d31753',1,'sl::log::pre::SetSev::debug()'],['../df/d5b/group___prepared_types.html#gga1233009dc7a50b2f4d4a14c7e9b087d2aad42f6697b035b7580e4fef93be20b4d',1,'sl::log::pre::debug()']]],
-  ['defaultchannel_16',['defaultChannel',['../df/da8/classsl_1_1log_1_1_logger.html#aba49bd146399559270ed84f2247e8b56',1,'sl::log::Logger']]],
-  ['defaultfilter_17',['defaultFilter',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a9743500310741828c2e021b69045cbac',1,'sl::log::BasicSink']]],
-  ['defaultformatter_18',['defaultFormatter',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a4ecae2165680635005b16a340ad4e421',1,'sl::log::BasicSink']]],
-  ['defaultseveritylevel_19',['defaultSeverityLevel',['../df/da8/classsl_1_1log_1_1_logger.html#a1ea4fbe883c9e1905172dd06358850bd',1,'sl::log::Logger']]],
-  ['directorysize_20',['directorySize',['../dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html#aed6d3aa7dce332c56aa8ab32f58c3a20',1,'sl::log::FileSink::CleanupRule']]],
-  ['duration_21',['duration',['../d0/d82/structsl_1_1log_1_1_file_sink_1_1_rotation_rule.html#a428518ce06a596ceabeb0727c3cc6400',1,'sl::log::FileSink::RotationRule']]]
+  ['channel_8',['channel',['../dd/d7a/classsl_1_1log_1_1_base_record.html#ab17c7d6a539408838aa576261ddef9eb',1,'sl::log::BaseRecord']]],
+  ['channel_5ft_9',['Channel_t',['../df/da8/classsl_1_1log_1_1_logger.html#a8829a599efd5cd8f09d53d666e08352f',1,'sl::log::Logger::Channel_t()'],['../dd/d7a/classsl_1_1log_1_1_base_record.html#a60afd39a9a13ca50e6aabc4a828b170e',1,'sl::log::BaseRecord::Channel_t()'],['../db/d9a/classsl_1_1log_1_1_record_builder.html#a665c4ea92e11899cf197b09236590684',1,'sl::log::RecordBuilder::Channel_t()']]],
+  ['cleanuprule_10',['cleanupRule',['../dc/dd6/classsl_1_1log_1_1_file_sink.html#a75bd4b06fe74fb331b82c542b6451c7c',1,'sl::log::FileSink']]],
+  ['cleanuprule_11',['CleanupRule',['../dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html',1,'sl::log::FileSink']]],
+  ['clock_5ft_12',['Clock_t',['../dc/d25/classsl_1_1log_1_1_timed_flush_policy.html#adb42f7cbd8a8febd6dc6ca1d43520e22',1,'sl::log::TimedFlushPolicy']]],
+  ['concepts_13',['Concepts',['../d4/df0/group__concepts.html',1,'']]],
+  ['concepts_2ehpp_14',['Concepts.hpp',['../d9/db9/_concepts_8hpp.html',1,'']]],
+  ['core_15',['Core',['../d4/df3/classsl_1_1log_1_1_core.html#ac33638d6ad36d3fdd1492c49831300f2',1,'sl::log::Core::Core() noexcept'],['../d4/df3/classsl_1_1log_1_1_core.html#a8f1e1c2bfbd72e1bcc6c2d20e79b406d',1,'sl::log::Core::Core(const Core &amp;)=delete'],['../d4/df3/classsl_1_1log_1_1_core.html#ac274dbc45f334449d626d4cce1f54137',1,'sl::log::Core::Core(Core &amp;&amp;)=delete'],['../d4/df3/classsl_1_1log_1_1_core.html',1,'sl::log::Core&lt; TRecord &gt;']]],
+  ['core_2ehpp_16',['Core.hpp',['../d5/d8e/_core_8hpp.html',1,'']]],
+  ['core_5ft_17',['Core_t',['../df/da8/classsl_1_1log_1_1_logger.html#a985392f2f06e1fa0fd6ae2f42c462d7e',1,'sl::log::Logger::Core_t()'],['../df/d5b/group___prepared_types.html#ga62237602874e49e1c35f1da9c2393e48',1,'sl::log::pre::Core_t()']]]
 ];

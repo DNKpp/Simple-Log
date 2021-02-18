@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('de/d83/namespacesl_1_1log.html','../..
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -122,6 +123,15 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/db4/classsl_1_1log_1_1_filter_none_of.html">FilterNoneOf</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience type for chaining multiple filter with NOR.  <a href="../../de/db4/classsl_1_1log_1_1_filter_none_of.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html">FlushPolicy</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A customizable <a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html" title="A customizable FlushPolicy class.">FlushPolicy</a> class.  <a href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d25/classsl_1_1log_1_1_timed_flush_policy.html">TimedFlushPolicy</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Flush-Policy which acts on a durations.  <a href="../../dc/d25/classsl_1_1log_1_1_timed_flush_policy.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d87/classsl_1_1log_1_1_byte_count_flush_policy.html">ByteCountFlushPolicy</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Flush-Policy which acts on accumulated byte count.  <a href="../../d4/d87/classsl_1_1log_1_1_byte_count_flush_policy.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">ISink</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sink interface class.  <a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#details">More...</a><br /></td></tr>
@@ -175,6 +185,12 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper class for generating patterned strings.  <a href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:gaa231417ed2bdea57eaab58c82f2939f4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dfa/group___flush-_policy.html#gaa231417ed2bdea57eaab58c82f2939f4">AlwaysFlushPolicy</a> = <a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html">FlushPolicy</a>&lt; detail::ConstantInvokable&lt; true &gt; &gt;</td></tr>
+<tr class="memdesc:gaa231417ed2bdea57eaab58c82f2939f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">A Flush-Policy which returns always true.  <a href="../../d5/dfa/group___flush-_policy.html#gaa231417ed2bdea57eaab58c82f2939f4">More...</a><br /></td></tr>
+<tr class="separator:gaa231417ed2bdea57eaab58c82f2939f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga24e7670965f3f000d4df436c0054d92f"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const typename TRecord::Message_t &amp; &gt; TUnaryPredicate&gt; </td></tr>
@@ -193,6 +209,18 @@ Functions</h2></td></tr>
 <tr class="memitem:ga73263b59074d4b554ea36b6d488785ea"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/d38/group__filter.html#ga73263b59074d4b554ea36b6d488785ea">makeTimePointFilterFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
 <tr class="memdesc:ga73263b59074d4b554ea36b6d488785ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating <a class="el" href="../../d4/d36/classsl_1_1log_1_1_projection_filter.html" title="Combines a projection on Record type with a predicate into an invokable object.">ProjectionFilter</a> of Record::timePoint member.  <a href="../../d4/d38/group__filter.html#ga73263b59074d4b554ea36b6d488785ea">More...</a><br /></td></tr>
 <tr class="separator:ga73263b59074d4b554ea36b6d488785ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab9b3e1b941de7c29475debaa1b6a1cac"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const typename TRecord::SeverityLevel_t &amp; &gt; TUnaryPredicate&gt; </td></tr>
+<tr class="memitem:gab9b3e1b941de7c29475debaa1b6a1cac"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dfa/group___flush-_policy.html#gab9b3e1b941de7c29475debaa1b6a1cac">makeSeverityFlushPolicyFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
+<tr class="memdesc:gab9b3e1b941de7c29475debaa1b6a1cac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating Flush-Policies based on Record::severity member.  <a href="../../d5/dfa/group___flush-_policy.html#gab9b3e1b941de7c29475debaa1b6a1cac">More...</a><br /></td></tr>
+<tr class="separator:gab9b3e1b941de7c29475debaa1b6a1cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga14bfb1b391c85b40d7a1e6a99e16d495"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const typename TRecord::Channel_t &amp; &gt; TUnaryPredicate&gt; </td></tr>
+<tr class="memitem:ga14bfb1b391c85b40d7a1e6a99e16d495"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dfa/group___flush-_policy.html#ga14bfb1b391c85b40d7a1e6a99e16d495">makeChannelFlushPolicyFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
+<tr class="memdesc:ga14bfb1b391c85b40d7a1e6a99e16d495"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating Flush-Policies based on Record::channel member.  <a href="../../d5/dfa/group___flush-_policy.html#ga14bfb1b391c85b40d7a1e6a99e16d495">More...</a><br /></td></tr>
+<tr class="separator:ga14bfb1b391c85b40d7a1e6a99e16d495"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafc0f3598ec58dda217e635c7fe2abe4f"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const typename TRecord::TimePoint_t &amp; &gt; TUnaryPredicate&gt; </td></tr>
+<tr class="memitem:gafc0f3598ec58dda217e635c7fe2abe4f"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dfa/group___flush-_policy.html#gafc0f3598ec58dda217e635c7fe2abe4f">makeTimePointFlushPolicyFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
+<tr class="memdesc:gafc0f3598ec58dda217e635c7fe2abe4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating Flush-Policies based on Record::timePoint member.  <a href="../../d5/dfa/group___flush-_policy.html#gafc0f3598ec58dda217e635c7fe2abe4f">More...</a><br /></td></tr>
+<tr class="separator:gafc0f3598ec58dda217e635c7fe2abe4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -205,7 +233,7 @@ Variables</h2></td></tr>
 <tr class="memdesc:ga7e49931624e51b19627bef18ff763081"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for Record types.  <a href="../../d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081">More...</a><br /></td></tr>
 <tr class="separator:ga7e49931624e51b19627bef18ff763081"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga524680d39e771fd1fa808e92614a355b"><td class="memTemplParams" colspan="2">template&lt;class T , class TRecord &gt; </td></tr>
-<tr class="memitem:ga524680d39e771fd1fa808e92614a355b"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df0/group__concepts.html#ga524680d39e771fd1fa808e92614a355b">RecordFormatterFor</a> = <a class="el" href="../../d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081">Record</a>&lt;TRecord&gt; &amp;&amp; std::invocable&lt;T, std::ostream&amp;, const TRecord&amp;&gt;</td></tr>
+<tr class="memitem:ga524680d39e771fd1fa808e92614a355b"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df0/group__concepts.html#ga524680d39e771fd1fa808e92614a355b">RecordFormatterFor</a></td></tr>
 <tr class="memdesc:ga524680d39e771fd1fa808e92614a355b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable formatter objects.  <a href="../../d4/df0/group__concepts.html#ga524680d39e771fd1fa808e92614a355b">More...</a><br /></td></tr>
 <tr class="separator:ga524680d39e771fd1fa808e92614a355b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga37ddba3404d4136b7f370c8b5c4261b0"><td class="memTemplParams" colspan="2">template&lt;class T , class TRecord &gt; </td></tr>
@@ -216,6 +244,10 @@ Variables</h2></td></tr>
 <tr class="memitem:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df0/group__concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">FileStateHandler</a> = std::invocable&lt;T&gt; &amp;&amp; std::convertible_to&lt;std::invoke_result_t&lt;T&gt;, std::string&gt;</td></tr>
 <tr class="memdesc:ga1c5760e773e9a0c3ab0d608139bce497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable file state handler objects.  <a href="../../d4/df0/group__concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">More...</a><br /></td></tr>
 <tr class="separator:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf5daeadaa8a98715671cee34171d5380"><td class="memTemplParams" colspan="2">template&lt;class T , class TRecord &gt; </td></tr>
+<tr class="memitem:gaf5daeadaa8a98715671cee34171d5380"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df0/group__concepts.html#gaf5daeadaa8a98715671cee34171d5380">FlushPolicyFor</a></td></tr>
+<tr class="memdesc:gaf5daeadaa8a98715671cee34171d5380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable flush policies.  <a href="../../d4/df0/group__concepts.html#gaf5daeadaa8a98715671cee34171d5380">More...</a><br /></td></tr>
+<tr class="separator:gaf5daeadaa8a98715671cee34171d5380"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

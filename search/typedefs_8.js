@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['setsev_5ft_299',['SetSev_t',['../df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html#a55bb316e2ab424d2941e0ab86b04b219',1,'sl::log::pre::SetSev']]],
-  ['severitylevel_5ft_300',['SeverityLevel_t',['../df/da8/classsl_1_1log_1_1_logger.html#aa28d961913948749cb7fd2f544e27035',1,'sl::log::Logger::SeverityLevel_t()'],['../dd/d7a/classsl_1_1log_1_1_base_record.html#a85f1936e05df490e17c1ab601aecc38e',1,'sl::log::BaseRecord::SeverityLevel_t()'],['../db/d9a/classsl_1_1log_1_1_record_builder.html#a47508529cfd40837f1f269001649f731',1,'sl::log::RecordBuilder::SeverityLevel_t()']]]
+  ['predicate_5ft_334',['Predicate_t',['../d8/df6/classsl_1_1log_1_1_flush_policy.html#a35204bbc45e2b51854f41c5a20280b02',1,'sl::log::FlushPolicy']]],
+  ['projection_5ft_335',['Projection_t',['../d4/d36/classsl_1_1log_1_1_projection_filter.html#ae58e1705b3fda54376a92e20cff1ec6f',1,'sl::log::ProjectionFilter::Projection_t()'],['../d8/df6/classsl_1_1log_1_1_flush_policy.html#ad6484050ce99a625f2dd0eb575c1572f',1,'sl::log::FlushPolicy::Projection_t()']]]
 ];

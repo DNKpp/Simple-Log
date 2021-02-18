@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['less_52',['Less',['../d6/deb/classsl_1_1log_1_1_less.html#ae2fe185d02f8ed3dd993f9fb43375474',1,'sl::log::Less::Less()'],['../d6/deb/classsl_1_1log_1_1_less.html',1,'sl::log::Less&lt; T &gt;']]],
-  ['lessequals_53',['LessEquals',['../df/d10/classsl_1_1log_1_1_less_equals.html#ad7e802e601a4c4dff8e1bc7e660e4cf6',1,'sl::log::LessEquals::LessEquals()'],['../df/d10/classsl_1_1log_1_1_less_equals.html',1,'sl::log::LessEquals&lt; T &gt;']]],
-  ['log_54',['log',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a751bd1367c8492449c4e83f3588ee2af',1,'sl::log::BasicSink::log()'],['../d4/df3/classsl_1_1log_1_1_core.html#ac978894c8846ae6539d9f57ad2d4f8ed',1,'sl::log::Core::log()'],['../d8/dda/classsl_1_1log_1_1_i_sink.html#a35ba629214d49e3afe4de5612b13ea2c',1,'sl::log::ISink::log()']]],
-  ['logderived_55',['logDerived',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa58c3a763630e7738a6e61b8b90e33b4',1,'sl::log::BasicSink::logDerived()'],['../dc/dd6/classsl_1_1log_1_1_file_sink.html#aabdad51a7125261d37d75f97b3603c15',1,'sl::log::FileSink::logDerived()']]],
-  ['logger_56',['Logger',['../df/da8/classsl_1_1log_1_1_logger.html#a86be5ee39202fb79329ca446b2858fb3',1,'sl::log::Logger::Logger(Core_t &amp;core, SeverityLevel_t defaultSeverityLvl={}, Channel_t defaultChannel={}) noexcept'],['../df/da8/classsl_1_1log_1_1_logger.html#a9374cda991759e957419fd80f8b7e4e0',1,'sl::log::Logger::Logger(const Logger &amp;) noexcept=default'],['../df/da8/classsl_1_1log_1_1_logger.html#a10b2845fb1d73b0ee7ee2e7fc38b5abe',1,'sl::log::Logger::Logger(Logger &amp;&amp;) noexcept=default'],['../df/da8/classsl_1_1log_1_1_logger.html',1,'sl::log::Logger&lt; TRecord &gt;']]],
-  ['logger_2ehpp_57',['Logger.hpp',['../d3/de3/_logger_8hpp.html',1,'']]],
-  ['logger_5ft_58',['Logger_t',['../df/d5b/group___prepared_types.html#ga056916e99d3c6cb4490a14821ccf1a35',1,'sl::log::pre']]]
+  ['info_58',['info',['../df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html#acda87749221fecce4433364ff8926dc7',1,'sl::log::pre::SetSev::info()'],['../df/d5b/group___prepared_types.html#gga1233009dc7a50b2f4d4a14c7e9b087d2acaf9b6b99962bf5c2264824231d7a40c',1,'sl::log::pre::info()']]],
+  ['invocationrule_5ft_59',['InvocationRule_t',['../d8/df6/classsl_1_1log_1_1_flush_policy.html#a668675b87bf5ec1f42d1ac63cb44f40b',1,'sl::log::FlushPolicy']]],
+  ['isenabled_60',['isEnabled',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a44f6e8ea8f784d42280bfd824990edec',1,'sl::log::BasicSink::isEnabled()'],['../d8/dda/classsl_1_1log_1_1_i_sink.html#a423855fc43c04f2785399330f38a4005',1,'sl::log::ISink::isEnabled() const noexcept=0']]],
+  ['isink_61',['ISink',['../d8/dda/classsl_1_1log_1_1_i_sink.html#abfaca8044c6895350a496b13982de363',1,'sl::log::ISink::ISink(const ISink &amp;)=delete'],['../d8/dda/classsl_1_1log_1_1_i_sink.html#aa9ba223d8652631e3f3d5fd5dcc2f760',1,'sl::log::ISink::ISink()=default'],['../d8/dda/classsl_1_1log_1_1_i_sink.html#aa63347f0758cd2b1583da994c8e89903',1,'sl::log::ISink::ISink(ISink &amp;&amp;)=default'],['../d8/dda/classsl_1_1log_1_1_i_sink.html',1,'sl::log::ISink&lt; TRecord &gt;']]],
+  ['isink_2ehpp_62',['ISink.hpp',['../d2/d5f/_i_sink_8hpp.html',1,'']]],
+  ['isink_5ft_63',['ISink_t',['../df/d5b/group___prepared_types.html#ga441c31c9fe7ec7745acfa5cd24a5e6c6',1,'sl::log::pre']]]
 ];
