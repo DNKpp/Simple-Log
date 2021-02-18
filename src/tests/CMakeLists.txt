@@ -20,6 +20,7 @@ add_executable(
 	FilterTests.cpp
 	RecordQueueTests.cpp
 	StringPatternTest.cpp
+	BasicSinkTests.cpp
 	#LogTest.cpp
 )
 
