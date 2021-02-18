@@ -18,14 +18,9 @@ using namespace sl::log;
 using Record_t = BaseRecord<int, int>;
 using BasicSink_t = BasicSink<Record_t>;
 
-static std::size_t logAndCount(BasicSink_t& sink, std::ostringstream& out, std::string_view message)
+static std::size_t countString(const std::ostringstream& out, std::string_view message)
 {
-	Record_t record;
-	record.setMessage(std::string{ message });
-	sink.log(record);
-
 	auto outStr = out.str();
-
 	auto itr = std::begin(outStr);
 	std::size_t count = 0;
 	for (;;)
@@ -49,6 +44,14 @@ static std::size_t logAndCount(BasicSink_t& sink, std::ostringstream& out, std::
 	return count;
 }
 
+static std::size_t logAndCountString(BasicSink_t& sink, const std::ostringstream& out, std::string_view message)
+{
+	Record_t record;
+	record.setMessage(std::string{ message });
+	sink.log(record);
+	return countString(out, message);
+}
+
 SCENARIO("log", "[BasicSink]")
 {
 	std::ostringstream out;
@@ -61,8 +64,7 @@ SCENARIO("log", "[BasicSink]")
 	{
 		THEN("target ostream contains message string")
 		{
-			const std::string str = "Hello, World!";
-			REQUIRE(logAndCount(sink, out, str) == 1);
+			REQUIRE(logAndCountString(sink, out, "Hello, World!") == 1);
 		}
 	}
 
@@ -70,10 +72,9 @@ SCENARIO("log", "[BasicSink]")
 	{
 		THEN("target ostream contains every message string")
 		{
-			const std::string str = "Hello, World!";
 			for (std::size_t i = 1; i < 10; ++i)
 			{
-				REQUIRE(logAndCount(sink, out, str) == i);
+				REQUIRE(logAndCountString(sink, out, "Hello, World!") == i);
 			}
 		}
 	}
@@ -121,8 +122,7 @@ SCENARIO("enable", "[BasicSink]")
 		{
 			THEN("Record will be skipped")
 			{
-				const std::string str = "Hello, World!";
-				REQUIRE(logAndCount(sink, out, str) == 0);
+				REQUIRE(logAndCountString(sink, out, "Hello, World!") == 0);
 			}
 		}
 	}
@@ -136,7 +136,84 @@ SCENARIO("enable", "[BasicSink]")
 			THEN("target ostream contains message string")
 			{
 				const std::string str = "Hello, World!";
-				REQUIRE(logAndCount(sink, out, str) == 1);
+				REQUIRE(logAndCountString(sink, out, str) == 1);
+			}
+		}
+	}
+}
+
+SCENARIO("filtering", "[BasicSink]")
+{
+	std::ostringstream out;
+	BasicSink_t sink{ out };
+	sink.enable();
+
+	REQUIRE(std::empty(out.str()));
+
+	WHEN("filter is set")
+	{
+		sink.setFilter(
+						[](const Record_t& record)
+						{
+							return record.severity() != 0;
+						}
+					);
+		AND_WHEN("Record, which should be skipped, is received")
+		{
+			THEN("target ostream doesn't contain the message string")
+			{
+				REQUIRE(logAndCountString(sink, out, "Hello, World!") == 0);
+			}
+		}
+
+		AND_WHEN("removing the filter")
+		{
+			sink.removeFilter();
+			AND_WHEN("Record, which should be skipped before, is received")
+			{
+				THEN("target ostream contains the message string")
+				{
+					REQUIRE(logAndCountString(sink, out, "Hello, World!") == 1);
+				}
+			}
+		}
+	}
+}
+
+SCENARIO("formatting", "[BasicSink]")
+{
+	std::ostringstream out;
+	BasicSink_t sink{ out };
+	sink.enable();
+
+	REQUIRE(std::empty(out.str()));
+
+	WHEN("formatter is set")
+	{
+		const auto* overridingStr = "my overriding message!";
+		sink.setFormatter(
+						[overridingStr](std::ostream& out, const Record_t& record)
+						{
+							out << overridingStr;
+						}
+					);
+		
+		AND_WHEN("receiving Record")
+		{
+			THEN("formatter overrides outgoing message")
+			{
+				REQUIRE(logAndCountString(sink, out, "Hello, World!") == 0);
+				REQUIRE(countString(out, overridingStr) == 1);
+			}
+		}
+
+		AND_WHEN("removing the formatter")
+		{
+			sink.removeFormatter();
+			THEN("target ostream contains the message string")
+			{
+				REQUIRE(logAndCountString(sink, out, "Hello, World!") == 1);
+				REQUIRE(countString(out, overridingStr) == 0);
 			}
 		}
 	}
