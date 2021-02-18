@@ -39,15 +39,15 @@ namespace sl::log::detail
 	{
 		using Super = AbstractFlushPolicyWrapper<TRecord>;
 	public:
-		using Record_t = TRecord;
-		using FlushPolicy_t = TFlushPolicy;
+		using Record_t = std::remove_cvref_t<TRecord>;
+		using FlushPolicy_t = std::remove_reference_t<TFlushPolicy>;
 
-		explicit FlushPolicyWrapper() noexcept(std::is_nothrow_constructible_v<TFlushPolicy>) :
+		explicit FlushPolicyWrapper() noexcept(std::is_nothrow_constructible_v<FlushPolicy_t>) :
 			m_FlushPolicy{}
 		{
 		}
 
-		explicit FlushPolicyWrapper(TFlushPolicy flushPolicy) noexcept(std::is_nothrow_move_constructible_v<TFlushPolicy>) :
+		explicit FlushPolicyWrapper(TFlushPolicy flushPolicy) noexcept(std::is_nothrow_move_constructible_v<FlushPolicy_t>) :
 			m_FlushPolicy{ std::move(flushPolicy) }
 		{
 		}
@@ -63,7 +63,7 @@ namespace sl::log::detail
 		}
 
 	private:
-		TFlushPolicy m_FlushPolicy;
+		FlushPolicy_t m_FlushPolicy;
 	};
 
 	template <auto Constant>
@@ -88,7 +88,6 @@ namespace sl::log
 	 * Users can use the provided Flush-Policy classes or create their own. Custom policies do not have to inherit from any base-class but must follow the interface defined by the FlushPolicyFor concept.
 	 */
 
-
 	/**
 	 * \brief A customizable FlushPolicy class
 	 * \tparam TPredicate The predicate must be invokable with the used Record type and must boolean-comparable results.
@@ -101,13 +100,13 @@ namespace sl::log
 	class FlushPolicy
 	{
 	public:
-		using Predicate_t = TPredicate;
+		using Predicate_t = std::remove_cvref_t<TPredicate>;
 
 		/**
 		 * \brief Constructor
 		 * \param predicate Used predicate. May be default constructed via default argument.
 		 */
-		explicit FlushPolicy(Predicate_t predicate = Predicate_t{}):
+		explicit FlushPolicy(TPredicate predicate = Predicate_t{}):
 			m_Predicate{ std::move(predicate) }
 		{
 		}
