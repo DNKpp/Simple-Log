@@ -1334,7 +1334,7 @@ template&lt;class TData &gt; </div>
 </div><div class="memdoc">
 
 <p>Writes to the internal stream. </p>
-<p>This functions writes directly to the stream object. No filter or formatter will be involved. This might be useful for writing custom header or footer data to the stream. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
+<p>This functions writes directly to the stream object. No filter or formatter will be involved and stream will be flush afterwards. This might be useful for writing custom header or footer data to the stream. </p><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">TData</td><td>Type of data (automatically deduced) </td></tr>
   </table>
