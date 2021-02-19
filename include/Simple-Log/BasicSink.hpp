@@ -246,7 +246,8 @@ namespace sl::log
 	protected:
 		/**
 		 * \brief Writes to the internal stream
-		 * \details This functions writes directly to the stream object. No filter or formatter will be involved. This might be useful for writing custom header or footer data to the stream.
+		 * \details This functions writes directly to the stream object. No filter or formatter will be involved and stream will be flush afterwards.
+		 * This might be useful for writing custom header or footer data to the stream.
 		 * \tparam TData Type of data (automatically deduced)
 		 * \param data Data which will be written to the stream.
 		 */
@@ -255,7 +256,7 @@ namespace sl::log
 		{
 			std::scoped_lock lock{ m_StreamMx };
 			m_Stream << std::forward<TData>(data);
-			handleNewlineAndFlush();
+			flush();
 		}
 
 		/**
@@ -291,13 +292,18 @@ namespace sl::log
 
 			if (std::scoped_lock lock{ m_FlushPolicyMx }; std::invoke(*m_FlushPolicy, record, messageByteSize))
 			{
-				m_Stream << std::endl;
-				m_FlushPolicy->flushed();
+				flush();
 			}
 			else
 			{
 				m_Stream << "\n";
 			}
+		}
+
+		void flush()
+		{
+			m_Stream << std::endl;
+			m_FlushPolicy->flushed();
 		}
 	};
 
