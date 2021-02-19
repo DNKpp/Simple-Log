@@ -47,7 +47,7 @@ namespace sl::log
 		using FlushPolicy_t = std::unique_ptr<detail::AbstractFlushPolicyWrapper<Record_t>>;
 
 	protected:
-		static Formatter_t defaultFormatter() noexcept
+		static constexpr Formatter_t defaultFormatter() noexcept
 		{
 			return [](const Record_t& rec)
 			{
@@ -75,7 +75,7 @@ namespace sl::log
 			};
 		}
 
-		static auto defaultFilter() noexcept
+		static constexpr Filter_t defaultFilter() noexcept
 		{
 			return [](const Record_t& rec) { return true; };
 		}
@@ -92,11 +92,8 @@ namespace sl::log
 		 * \param stream The stream object, which will receive finally formatted messages
 		 */
 		explicit BasicSink(std::ostream& stream) :
-			m_Stream{ stream },
-			m_FlushPolicy{ defaultFlushPolicy() }
+			m_Stream{ stream }
 		{
-			m_Formatter = defaultFormatter();
-			m_Filter = defaultFilter();
 		}
 
 		/**
@@ -277,13 +274,13 @@ namespace sl::log
 		std::ostream& m_Stream;
 
 		std::mutex m_FormatterMx;
-		Formatter_t m_Formatter;
+		Formatter_t m_Formatter{ defaultFormatter() };
 
 		std::mutex m_FilterMx;
-		Filter_t m_Filter;
+		Filter_t m_Filter{ defaultFilter() };
 
 		std::mutex m_FlushPolicyMx;
-		FlushPolicy_t m_FlushPolicy;
+		FlushPolicy_t m_FlushPolicy{ defaultFlushPolicy() };
 
 		std::atomic_bool m_Enabled{ false };
 
