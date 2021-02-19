@@ -134,8 +134,8 @@ namespace sl::log
 				{
 					auto message = std::invoke(m_Formatter, record);
 					auto size = std::size(message) * sizeof(typename decltype(message)::value_type);
-					m_Stream << message;
-					handleNewlineAndFlush(record, size);
+					m_Stream << message << "\n";
+					handleFlushPolicy(record, size);
 				}
 			}
 		}
@@ -243,6 +243,15 @@ namespace sl::log
 			m_FlushPolicy = defaultFlushPolicy();
 		}
 
+		/**
+		 * \brief Flushes all pending output of the internal stream
+		 */
+		void flush()
+		{
+			m_Stream << std::flush;
+			m_FlushPolicy->flushed();
+		}
+
 	protected:
 		/**
 		 * \brief Writes to the internal stream
@@ -285,25 +294,12 @@ namespace sl::log
 
 		std::atomic_bool m_Enabled{ false };
 
-		void handleNewlineAndFlush(const Record_t& record, std::size_t messageByteSize)
+		void handleFlushPolicy(const Record_t& record, std::size_t messageByteSize)
 		{
-			if (messageByteSize == 0)
-				return;
-
 			if (std::scoped_lock lock{ m_FlushPolicyMx }; std::invoke(*m_FlushPolicy, record, messageByteSize))
 			{
 				flush();
 			}
-			else
-			{
-				m_Stream << "\n";
-			}
-		}
-
-		void flush()
-		{
-			m_Stream << std::endl;
-			m_FlushPolicy->flushed();
 		}
 	};
 
