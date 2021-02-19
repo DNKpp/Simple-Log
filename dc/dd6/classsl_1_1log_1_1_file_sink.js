@@ -15,6 +15,7 @@ var classsl_1_1log_1_1_file_sink =
     [ "defaultFlushPolicy", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a1e5b379e5907f8a0a38001cbc060f777", null ],
     [ "defaultFormatter", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a42f994be6d0fbc499bb57d3ac59311db", null ],
     [ "enable", "dc/dd6/classsl_1_1log_1_1_file_sink.html#adfa142c4cbcd5fda6a7b354d82b23eee", null ],
+    [ "flush", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a7006d3e1c4a7f352867cc20310603c5b", null ],
     [ "isEnabled", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a44f6e8ea8f784d42280bfd824990edec", null ],
     [ "log", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a751bd1367c8492449c4e83f3588ee2af", null ],
     [ "logDerived", "dc/dd6/classsl_1_1log_1_1_file_sink.html#aabdad51a7125261d37d75f97b3603c15", null ],

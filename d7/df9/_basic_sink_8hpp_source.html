@@ -184,8 +184,8 @@ $(document).ready(function(){initNavTree('d7/df9/_basic_sink_8hpp_source.html','
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                {</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                    <span class="keyword">auto</span> message = std::invoke(m_Formatter, record);</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                    <span class="keyword">auto</span> size = std::size(message) * <span class="keyword">sizeof</span>(<span class="keyword">typename</span> decltype(message)::value_type);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                    m_Stream &lt;&lt; message;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                    handleNewlineAndFlush(record, size);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                    m_Stream &lt;&lt; message &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                    handleFlushPolicy(record, size);</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                }</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            }</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        }</div>
@@ -240,65 +240,58 @@ $(document).ready(function(){initNavTree('d7/df9/_basic_sink_8hpp_source.html','
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            m_FlushPolicy = <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a1e5b379e5907f8a0a38001cbc060f777">defaultFlushPolicy</a>();</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        }</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">class</span> TData&gt;</div>
-<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a01b37a48110effd9fdfadfacc05e17c2">  255</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a01b37a48110effd9fdfadfacc05e17c2">writeToStream</a>(TData&amp;&amp; data)</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        {</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            std::scoped_lock lock{ m_StreamMx };</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            m_Stream &lt;&lt; std::forward&lt;TData&gt;(data);</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            flush();</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        }</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
-<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa58c3a763630e7738a6e61b8b90e33b4">  268</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa58c3a763630e7738a6e61b8b90e33b4">logDerived</a>(<span class="keyword">const</span> <a class="code" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a>&amp; record)</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        {</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        }</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        std::mutex m_StreamMx;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        std::ostream&amp; m_Stream;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        std::mutex m_FormatterMx;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596">Formatter_t</a> m_Formatter{ <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a42f994be6d0fbc499bb57d3ac59311db">defaultFormatter</a>() };</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        std::mutex m_FilterMx;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381">Filter_t</a> m_Filter{ <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ae620bc01174a6f65b0b19cea19b2b715">defaultFilter</a>() };</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        std::mutex m_FlushPolicyMx;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a9f4e4d88cbb51b678e535d37ee50bcaf">FlushPolicy_t</a> m_FlushPolicy{ <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a1e5b379e5907f8a0a38001cbc060f777">defaultFlushPolicy</a>() };</div>
+<div class="line"><a name="l00249"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a7006d3e1c4a7f352867cc20310603c5b">  249</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a7006d3e1c4a7f352867cc20310603c5b">flush</a>()</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            m_Stream &lt;&lt; std::flush;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            m_FlushPolicy-&gt;flushed();</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">class</span> TData&gt;</div>
+<div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a01b37a48110effd9fdfadfacc05e17c2">  264</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a01b37a48110effd9fdfadfacc05e17c2">writeToStream</a>(TData&amp;&amp; data)</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            std::scoped_lock lock{ m_StreamMx };</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            m_Stream &lt;&lt; std::forward&lt;TData&gt;(data);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a7006d3e1c4a7f352867cc20310603c5b">flush</a>();</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00277"></a><span class="lineno"><a class="line" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa58c3a763630e7738a6e61b8b90e33b4">  277</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa58c3a763630e7738a6e61b8b90e33b4">logDerived</a>(<span class="keyword">const</span> <a class="code" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a>&amp; record)</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        {</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        }</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        std::mutex m_StreamMx;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        std::ostream&amp; m_Stream;</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        std::atomic_bool m_Enabled{ <span class="keyword">false</span> };</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keywordtype">void</span> handleNewlineAndFlush(<span class="keyword">const</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a>&amp; record, std::size_t messageByteSize)</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            <span class="keywordflow">if</span> (messageByteSize == 0)</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            <span class="keywordflow">if</span> (std::scoped_lock lock{ m_FlushPolicyMx }; std::invoke(*m_FlushPolicy, record, messageByteSize))</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            {</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                flush();</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            }</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            {</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                m_Stream &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            }</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        }</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keywordtype">void</span> flush()</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        {</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            m_Stream &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            m_FlushPolicy-&gt;flushed();</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        }</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    };</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;}</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        std::mutex m_FormatterMx;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596">Formatter_t</a> m_Formatter{ <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a42f994be6d0fbc499bb57d3ac59311db">defaultFormatter</a>() };</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        std::mutex m_FilterMx;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381">Filter_t</a> m_Filter{ <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ae620bc01174a6f65b0b19cea19b2b715">defaultFilter</a>() };</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        std::mutex m_FlushPolicyMx;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a9f4e4d88cbb51b678e535d37ee50bcaf">FlushPolicy_t</a> m_FlushPolicy{ <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a1e5b379e5907f8a0a38001cbc060f777">defaultFlushPolicy</a>() };</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        std::atomic_bool m_Enabled{ <span class="keyword">false</span> };</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="keywordtype">void</span> handleFlushPolicy(<span class="keyword">const</span> <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a>&amp; record, std::size_t messageByteSize)</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        {</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            <span class="keywordflow">if</span> (std::scoped_lock lock{ m_FlushPolicyMx }; std::invoke(*m_FlushPolicy, record, messageByteSize))</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                <a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a7006d3e1c4a7f352867cc20310603c5b">flush</a>();</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            }</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    };</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;}</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="a_concepts_8hpp_html"><div class="ttname"><a href="../../d9/db9/_concepts_8hpp.html">Concepts.hpp</a></div></div>
 <div class="ttc" id="a_flush_policies_8hpp_html"><div class="ttname"><a href="../../dc/d59/_flush_policies_8hpp.html">FlushPolicies.hpp</a></div></div>
 <div class="ttc" id="a_i_sink_8hpp_html"><div class="ttname"><a href="../../d2/d5f/_i_sink_8hpp.html">ISink.hpp</a></div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a></div><div class="ttdoc">std::ostream orientated Sink class</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:40</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a01b37a48110effd9fdfadfacc05e17c2"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a01b37a48110effd9fdfadfacc05e17c2">sl::log::BasicSink::writeToStream</a></div><div class="ttdeci">void writeToStream(TData &amp;&amp;data)</div><div class="ttdoc">Writes to the internal stream.</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:255</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a01b37a48110effd9fdfadfacc05e17c2"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a01b37a48110effd9fdfadfacc05e17c2">sl::log::BasicSink::writeToStream</a></div><div class="ttdeci">void writeToStream(TData &amp;&amp;data)</div><div class="ttdoc">Writes to the internal stream.</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:264</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a1ae19a6fe284f7a59929918d180c3bf1"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a1ae19a6fe284f7a59929918d180c3bf1">sl::log::BasicSink::setFilter</a></div><div class="ttdeci">void setFilter(TFilter &amp;&amp;filter) noexcept</div><div class="ttdoc">Sets the active filter.</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:209</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a1e5b379e5907f8a0a38001cbc060f777"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a1e5b379e5907f8a0a38001cbc060f777">sl::log::BasicSink::defaultFlushPolicy</a></div><div class="ttdeci">static constexpr FlushPolicy_t defaultFlushPolicy() noexcept</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:84</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a30f3e717d2ba9ffae23cb19b3c53e381"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381">sl::log::BasicSink::Filter_t</a></div><div class="ttdeci">std::function&lt; bool(const Record_t &amp;)&gt; Filter_t</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:46</div></div>
@@ -306,12 +299,13 @@ $(document).ready(function(){initNavTree('d7/df9/_basic_sink_8hpp_source.html','
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a42ec066fa02a2d798517934eea7330d4"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a42ec066fa02a2d798517934eea7330d4">sl::log::BasicSink::removeFilter</a></div><div class="ttdeci">void removeFilter() noexcept</div><div class="ttdoc">Replaces the active filter with the default one.</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:218</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a42f994be6d0fbc499bb57d3ac59311db"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a42f994be6d0fbc499bb57d3ac59311db">sl::log::BasicSink::defaultFormatter</a></div><div class="ttdeci">static constexpr Formatter_t defaultFormatter() noexcept</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:50</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a44f6e8ea8f784d42280bfd824990edec"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a44f6e8ea8f784d42280bfd824990edec">sl::log::BasicSink::isEnabled</a></div><div class="ttdeci">bool isEnabled() const noexcept final override</div><div class="ttdoc">Checks if the Sink object is enabled.</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:158</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a7006d3e1c4a7f352867cc20310603c5b"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a7006d3e1c4a7f352867cc20310603c5b">sl::log::BasicSink::flush</a></div><div class="ttdeci">void flush()</div><div class="ttdoc">Flushes all pending output of the internal stream.</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:249</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a751bd1367c8492449c4e83f3588ee2af"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a751bd1367c8492449c4e83f3588ee2af">sl::log::BasicSink::log</a></div><div class="ttdeci">void log(const Record_t &amp;record) final override</div><div class="ttdoc">Filters, formats and writes the passed record to the internal stream if this instance is enabled.</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:129</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a77e2fd9a42c954effed159f2c83a4cb0"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a77e2fd9a42c954effed159f2c83a4cb0">sl::log::BasicSink::BasicSink</a></div><div class="ttdeci">BasicSink(std::ostream &amp;stream)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:94</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a7bfb39f251515ade3e356d533246d1a0"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a7bfb39f251515ade3e356d533246d1a0">sl::log::BasicSink::removeFlushPolicy</a></div><div class="ttdeci">void removeFlushPolicy() noexcept</div><div class="ttdoc">Replaces the current Flush-Policy with the default one.</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:240</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a84c4f321caf9c3c4c2586c7698206596"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596">sl::log::BasicSink::Formatter_t</a></div><div class="ttdeci">std::function&lt; std::string(const Record_t &amp;)&gt; Formatter_t</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:45</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_a9f4e4d88cbb51b678e535d37ee50bcaf"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a9f4e4d88cbb51b678e535d37ee50bcaf">sl::log::BasicSink::FlushPolicy_t</a></div><div class="ttdeci">std::unique_ptr&lt; detail::AbstractFlushPolicyWrapper&lt; Record_t &gt; &gt; FlushPolicy_t</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:47</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_aa58c3a763630e7738a6e61b8b90e33b4"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa58c3a763630e7738a6e61b8b90e33b4">sl::log::BasicSink::logDerived</a></div><div class="ttdeci">virtual bool logDerived(const Record_t &amp;record)</div><div class="ttdoc">This function gets called before the actual writing.</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:268</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_aa58c3a763630e7738a6e61b8b90e33b4"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa58c3a763630e7738a6e61b8b90e33b4">sl::log::BasicSink::logDerived</a></div><div class="ttdeci">virtual bool logDerived(const Record_t &amp;record)</div><div class="ttdoc">This function gets called before the actual writing.</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:277</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_ab571dba0bae50ace5604f08a8d3ad5fe"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ab571dba0bae50ace5604f08a8d3ad5fe">sl::log::BasicSink::setFlushPolicy</a></div><div class="ttdeci">void setFlushPolicy(TPolicy &amp;&amp;policy) noexcept</div><div class="ttdoc">Sets the active Flush-Policy.</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:230</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_abb58ac95a0a1ad03bedd1e52756d2b0c"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#abb58ac95a0a1ad03bedd1e52756d2b0c">sl::log::BasicSink::removeFormatter</a></div><div class="ttdeci">void removeFormatter() noexcept</div><div class="ttdoc">Replaces the active formatter with the default one.</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:191</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html_ad79d9e5f6c4e07be42c84a281dc45082"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">sl::log::BasicSink::Record_t</a></div><div class="ttdeci">TRecord Record_t</div><div class="ttdoc">Used Record type.</div><div class="ttdef"><b>Definition:</b> ISink.hpp:31</div></div>

@@ -17,11 +17,12 @@ var searchData=
   ['filterchain_3c_20detail_3a_3atuplenoneof_2c_20tfilter_2e_2e_2e_20_3e_45',['FilterChain&lt; detail::TupleNoneOf, TFilter... &gt;',['../d7/d40/classsl_1_1log_1_1_filter_chain.html',1,'sl::log']]],
   ['filternoneof_46',['FilterNoneOf',['../de/db4/classsl_1_1log_1_1_filter_none_of.html#a3f16bb9a5423704c6584176f579bcd62',1,'sl::log::FilterNoneOf::FilterNoneOf()'],['../de/db4/classsl_1_1log_1_1_filter_none_of.html',1,'sl::log::FilterNoneOf&lt; TFilter &gt;']]],
   ['filters_2ehpp_47',['Filters.hpp',['../de/d95/_filters_8hpp.html',1,'']]],
-  ['flush_2dpolicy_48',['Flush-Policy',['../d5/dfa/group___flush-_policy.html',1,'']]],
-  ['flushed_49',['flushed',['../d4/d87/classsl_1_1log_1_1_byte_count_flush_policy.html#a7c8e27c19ba1e79d0da4ed496d5577a5',1,'sl::log::ByteCountFlushPolicy::flushed()'],['../dc/d25/classsl_1_1log_1_1_timed_flush_policy.html#a768a50ca9e238031f876d3b3fc43b0e7',1,'sl::log::TimedFlushPolicy::flushed()'],['../d8/df6/classsl_1_1log_1_1_flush_policy.html#a453609f8f165dea0c7ee6158f0278f44',1,'sl::log::FlushPolicy::flushed()']]],
-  ['flushpolicies_2ehpp_50',['FlushPolicies.hpp',['../dc/d59/_flush_policies_8hpp.html',1,'']]],
-  ['flushpolicy_51',['FlushPolicy',['../d8/df6/classsl_1_1log_1_1_flush_policy.html#a7d16d9962aadec2833386cccd139dc26',1,'sl::log::FlushPolicy::FlushPolicy(TPredicate predicate=Predicate_t{}, TProjection projection=Projection_t{}, TInvocationRule invocation=InvocationRule_t{})'],['../d8/df6/classsl_1_1log_1_1_flush_policy.html#a2cbb2510dfa0788c5f9f68b9dd030107',1,'sl::log::FlushPolicy::FlushPolicy(std::in_place_t _, TArgs &amp;&amp;... args)'],['../d8/df6/classsl_1_1log_1_1_flush_policy.html',1,'sl::log::FlushPolicy&lt; TPredicate, TProjection, TInvocationRule &gt;']]],
-  ['flushpolicy_5ft_52',['FlushPolicy_t',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a9f4e4d88cbb51b678e535d37ee50bcaf',1,'sl::log::BasicSink']]],
-  ['flushpolicyfor_53',['FlushPolicyFor',['../d4/df0/group__concepts.html#gaf5daeadaa8a98715671cee34171d5380',1,'sl::log']]],
-  ['formatter_5ft_54',['Formatter_t',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596',1,'sl::log::BasicSink']]]
+  ['flush_48',['flush',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a7006d3e1c4a7f352867cc20310603c5b',1,'sl::log::BasicSink']]],
+  ['flush_2dpolicy_49',['Flush-Policy',['../d5/dfa/group___flush-_policy.html',1,'']]],
+  ['flushed_50',['flushed',['../d4/d87/classsl_1_1log_1_1_byte_count_flush_policy.html#a7c8e27c19ba1e79d0da4ed496d5577a5',1,'sl::log::ByteCountFlushPolicy::flushed()'],['../dc/d25/classsl_1_1log_1_1_timed_flush_policy.html#a768a50ca9e238031f876d3b3fc43b0e7',1,'sl::log::TimedFlushPolicy::flushed()'],['../d8/df6/classsl_1_1log_1_1_flush_policy.html#a453609f8f165dea0c7ee6158f0278f44',1,'sl::log::FlushPolicy::flushed()']]],
+  ['flushpolicies_2ehpp_51',['FlushPolicies.hpp',['../dc/d59/_flush_policies_8hpp.html',1,'']]],
+  ['flushpolicy_52',['FlushPolicy',['../d8/df6/classsl_1_1log_1_1_flush_policy.html#a7d16d9962aadec2833386cccd139dc26',1,'sl::log::FlushPolicy::FlushPolicy(TPredicate predicate=Predicate_t{}, TProjection projection=Projection_t{}, TInvocationRule invocation=InvocationRule_t{})'],['../d8/df6/classsl_1_1log_1_1_flush_policy.html#a2cbb2510dfa0788c5f9f68b9dd030107',1,'sl::log::FlushPolicy::FlushPolicy(std::in_place_t _, TArgs &amp;&amp;... args)'],['../d8/df6/classsl_1_1log_1_1_flush_policy.html',1,'sl::log::FlushPolicy&lt; TPredicate, TProjection, TInvocationRule &gt;']]],
+  ['flushpolicy_5ft_53',['FlushPolicy_t',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a9f4e4d88cbb51b678e535d37ee50bcaf',1,'sl::log::BasicSink']]],
+  ['flushpolicyfor_54',['FlushPolicyFor',['../d4/df0/group__concepts.html#gaf5daeadaa8a98715671cee34171d5380',1,'sl::log']]],
+  ['formatter_5ft_55',['Formatter_t',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596',1,'sl::log::BasicSink']]]
 ];
