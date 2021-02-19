@@ -220,7 +220,7 @@ SCENARIO("formatting", "[BasicSink]")
 	}
 }
 
-struct Policy
+struct FlushPolicy
 {
 	bool operator ()(const Record_t& rec, std::size_t byteCount) const noexcept
 	{
@@ -249,7 +249,7 @@ SCENARIO("flush-policy", "[BasicSink]")
 	std::size_t invocationCount = 0;
 	std::size_t flushedSignalCount = 0;
 
-	Policy policy{ &invocationCount, &flushedSignalCount };
+	::FlushPolicy policy{ &invocationCount, &flushedSignalCount };
 
 	WHEN("enabled")
 	{
@@ -281,6 +281,33 @@ SCENARIO("flush-policy", "[BasicSink]")
 				sink.log(dummy);
 				REQUIRE(invocationCount == 0);
 				REQUIRE(flushedSignalCount == 0);
+			}
+		}
+	}
+}
+
+SCENARIO("flush()", "[BasicSink]")
+{
+	std::ostringstream out;
+	BasicSink_t sink{ out };
+
+	REQUIRE(std::empty(out.str()));
+
+	std::size_t invocationCount = 0;
+	std::size_t flushedSignalCount = 0;
+
+	::FlushPolicy policy{ &invocationCount, &flushedSignalCount };
+
+	WHEN("flush is called")
+	{
+		sink.setFlushPolicy(policy);
+
+		THEN("Policiy receives flushed signal")
+		{
+			for (std::size_t i = 1; i <= 10; ++i)
+			{
+				sink.flush();
+				REQUIRE(flushedSignalCount == i);
 			}
 		}
 	}
