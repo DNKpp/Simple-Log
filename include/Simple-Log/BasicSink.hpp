@@ -101,12 +101,9 @@ namespace sl::log
 
 		/**
 		 * \brief Default destructor
-		 * \details Flushes the internal stream
+		 * \details Destructor does not perform any actions on the internal stream objects, due to it's potential dangling state. Derived classes must handle closing and flushing themselves.
 		 */
-		~BasicSink() noexcept
-		{
-			m_Stream.flush();
-		}
+		~BasicSink() noexcept = default;
 
 		/**
 		 * \brief Deleted copy constructor
@@ -226,7 +223,6 @@ namespace sl::log
 			std::scoped_lock lock{ m_FilterMx };
 			m_Filter = defaultFilter();
 		}
-
 
 		/**
 		 * \brief Sets the active Flush-Policy
