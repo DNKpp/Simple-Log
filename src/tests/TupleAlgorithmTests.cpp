@@ -3,270 +3,115 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          https://www.boost.org/LICENSE_1_0.txt)
 
-#include "catch2/catch.hpp"
+#include <catch2/catch.hpp>
+
+#include <functional>
 
 #include "Simple-Log/Filters.hpp"
-#include "Simple-Log/PresetTypes.hpp"
+#include "Simple-Log/Record.hpp"
 
 using namespace sl::log;
 
-constexpr auto trueCb = [](auto& rec) { return true;  };
+using Record_t = BaseRecord<int, int>;
+using Func_t = std::function<bool(const Record_t&)>;
+
+constexpr auto trueCb = [](auto& rec) { return true; };
 constexpr auto falseCb = [](auto& rec) { return false; };
+inline const Record_t record;
 
-SCENARIO("TupleAllOf", "[filters/tuple-algorithms]")
+template <class TAlgorithm, class... TElements>
+bool testAlgorithm(TElements&&... elements)
 {
-	detail::TupleAllOf algorithm;
-	pre::Record_t record;
-
-	GIVEN("empty tuple")
-	{
-		std::tuple<> tuple;
-
-		THEN("algorithm returns true")
-		{
-			REQUIRE(algorithm(tuple, record));
-		}
-	}
-
-	GIVEN("tuple with one constant true element")
-	{
-		std::tuple tuple{ trueCb };
-
-		THEN("algorithm returns true")
-		{
-			REQUIRE(algorithm(tuple, record));
-		}
-	}
-
-	GIVEN("tuple with three true element")
-	{
-		std::tuple tuple{ trueCb, trueCb, trueCb };
-
-		THEN("algorithm returns true")
-		{
-			REQUIRE(algorithm(tuple, record));
-		}
-	}
-
-	GIVEN("tuple with one constant false element")
-	{
-		std::tuple tuple{ falseCb };
-
-		THEN("algorithm returns false")
-		{
-			REQUIRE_FALSE(algorithm(tuple, record));
-		}
-	}
-
-	GIVEN("tuple with three but first false element")
-	{
-		std::tuple tuple{ falseCb, trueCb, trueCb };
-
-		THEN("algorithm returns false")
-		{
-			REQUIRE_FALSE(algorithm(tuple, record));
-		}
-	}
-
-	GIVEN("tuple with three but last false element")
-	{
-		std::tuple tuple{ trueCb, trueCb, falseCb };
-
-		THEN("algorithm returns false")
-		{
-			REQUIRE_FALSE(algorithm(tuple, record));
-		}
-	}
-
-	GIVEN("tuple with three but mid false element")
-	{
-		std::tuple tuple{ trueCb, falseCb, trueCb };
-
-		THEN("algorithm returns false")
-		{
-			REQUIRE_FALSE(algorithm(tuple, record));
-		}
-	}
-
-	GIVEN("tuple with three false element")
-	{
-		std::tuple tuple{ falseCb, falseCb, falseCb };
-
-		THEN("algorithm returns false")
-		{
-			REQUIRE_FALSE(algorithm(tuple, record));
-		}
-	}
+	auto tuple = std::tie(std::forward<TElements>(elements)...);
+	return std::invoke(TAlgorithm{}, tuple, record);
 }
 
-SCENARIO("TupleAnyOf", "[filters/tuple-algorithms]")
+struct VariadicAnd
 {
-	detail::TupleAnyOf algorithm;
-	pre::Record_t record;
-
-	GIVEN("empty tuple")
+	template <class... TElements>
+	bool operator ()(TElements&&... elements) const
 	{
-		std::tuple<> tuple;
-
-		THEN("algorithm returns false")
-		{
-			REQUIRE_FALSE(algorithm(tuple, record));
-		}
+		return (true && ... && elements(record));
 	}
+};
 
-	GIVEN("tuple with one constant true element")
-	{
-		std::tuple tuple{ trueCb };
-
-		THEN("algorithm returns true")
-		{
-			REQUIRE(algorithm(tuple, record));
-		}
-	}
-
-	GIVEN("tuple with three true element")
-	{
-		std::tuple tuple{ trueCb, trueCb, trueCb };
-
-		THEN("algorithm returns true")
-		{
-			REQUIRE(algorithm(tuple, record));
-		}
-	}
-
-	GIVEN("tuple with one constant false element")
-	{
-		std::tuple tuple{ falseCb };
-
-		THEN("algorithm returns false")
-		{
-			REQUIRE_FALSE(algorithm(tuple, record));
-		}
-	}
-
-	GIVEN("tuple with three but first false element")
-	{
-		std::tuple tuple{ falseCb, trueCb, trueCb };
-
-		THEN("algorithm returns true")
-		{
-			REQUIRE(algorithm(tuple, record));
-		}
-	}
-
-	GIVEN("tuple with three but last false element")
-	{
-		std::tuple tuple{ trueCb, trueCb, falseCb };
-
-		THEN("algorithm returns true")
-		{
-			REQUIRE(algorithm(tuple, record));
-		}
-	}
-
-	GIVEN("tuple with three but mid false element")
-	{
-		std::tuple tuple{ trueCb, falseCb, trueCb };
-
-		THEN("algorithm returns true")
-		{
-			REQUIRE(algorithm(tuple, record));
-		}
-	}
-
-	GIVEN("tuple with three false element")
-	{
-		std::tuple tuple{ falseCb, falseCb, falseCb };
-
-		THEN("algorithm returns false")
-		{
-			REQUIRE_FALSE(algorithm(tuple, record));
-		}
-	}
-}
-
-SCENARIO("TupleNoneOf", "[filters/tuple-algorithms]")
+struct VariadicOr
 {
-	detail::TupleNoneOf algorithm;
-	pre::Record_t record;
-
-	GIVEN("empty tuple")
+	template <class... TElements>
+	bool operator ()(TElements&&... elements) const
 	{
-		std::tuple<> tuple;
+		return (false || ... || elements(record));
+	}
+};
 
-		THEN("algorithm returns true")
-		{
-			REQUIRE(algorithm(tuple, record));
-		}
+struct VariadicNone
+{
+	template <class... TElements>
+	bool operator ()(TElements&&... elements) const
+	{
+		return !(false || ... || elements(record));
+	}
+};
+
+TEMPLATE_TEST_CASE(
+					"Testing tuple algorithms",
+					"[Tuple_Algorithms]",
+					(std::tuple<detail::TupleAllOf, VariadicAnd>),
+					(std::tuple<detail::TupleAnyOf, VariadicOr>),
+					(std::tuple<detail::TupleNoneOf, VariadicNone>)
+				)
+{
+	using Algo_t = std::tuple_element_t<0, TestType>;
+	using BoolCombine_t = std::tuple_element_t<1, TestType>;
+	BoolCombine_t combine;
+
+	SECTION("invoking with zero elements")
+	{
+		REQUIRE(testAlgorithm<Algo_t>() == combine());
 	}
 
-	GIVEN("tuple with one constant true element")
+	SECTION("invoking with one element")
 	{
-		std::tuple tuple{ trueCb };
-
-		THEN("algorithm returns false")
-		{
-			REQUIRE_FALSE(algorithm(tuple, record));
-		}
+		auto first = GENERATE(as<Func_t>{}, trueCb, falseCb);
+		auto expectedResult = combine(first);
+		REQUIRE(testAlgorithm<Algo_t>(first) == expectedResult);
 	}
 
-	GIVEN("tuple with three true element")
+	SECTION("invoking with two elements")
 	{
-		std::tuple tuple{ trueCb, trueCb, trueCb };
-
-		THEN("algorithm returns false")
-		{
-			REQUIRE_FALSE(algorithm(tuple, record));
-		}
+		auto first = GENERATE(as<Func_t>{}, trueCb, falseCb);
+		auto second = GENERATE(as<Func_t>{}, trueCb, falseCb);
+		auto expectedResult = combine(first, second);
+		REQUIRE(testAlgorithm<Algo_t>(first, second) == expectedResult);
 	}
 
-	GIVEN("tuple with one constant false element")
+	SECTION("invoking with three elements")
 	{
-		std::tuple tuple{ falseCb };
-
-		THEN("algorithm returns true")
-		{
-			REQUIRE(algorithm(tuple, record));
-		}
+		auto first = GENERATE(as<Func_t>{}, trueCb, falseCb);
+		auto second = GENERATE(as<Func_t>{}, trueCb, falseCb);
+		auto three = GENERATE(as<Func_t>{}, trueCb, falseCb);
+		auto expectedResult = combine(first, second, three);
+		REQUIRE(testAlgorithm<Algo_t>(first, second, three) == expectedResult);
 	}
 
-	GIVEN("tuple with three but first false element")
+	SECTION("invoking with four elements")
 	{
-		std::tuple tuple{ falseCb, trueCb, trueCb };
-
-		THEN("algorithm returns false")
-		{
-			REQUIRE_FALSE(algorithm(tuple, record));
-		}
+		auto first = GENERATE(as<Func_t>{}, trueCb, falseCb);
+		auto second = GENERATE(as<Func_t>{}, trueCb, falseCb);
+		auto three = GENERATE(as<Func_t>{}, trueCb, falseCb);
+		auto four = GENERATE(as<Func_t>{}, trueCb, falseCb);
+		auto expectedResult = combine(first, second, three, four);
+		REQUIRE(testAlgorithm<Algo_t>(first, second, three, four) == expectedResult);
 	}
 
-	GIVEN("tuple with three but last false element")
+	SECTION("invoking with five elements")
 	{
-		std::tuple tuple{ trueCb, trueCb, falseCb };
-
-		THEN("algorithm returns false")
-		{
-			REQUIRE_FALSE(algorithm(tuple, record));
-		}
-	}
-
-	GIVEN("tuple with three but mid false element")
-	{
-		std::tuple tuple{ trueCb, falseCb, trueCb };
-
-		THEN("algorithm returns false")
-		{
-			REQUIRE_FALSE(algorithm(tuple, record));
-		}
-	}
-
-	GIVEN("tuple with three false element")
-	{
-		std::tuple tuple{ falseCb, falseCb, falseCb };
-
-		THEN("algorithm returns true")
-		{
-			REQUIRE(algorithm(tuple, record));
-		}
+		auto first = GENERATE(as<Func_t>{}, trueCb, falseCb);
+		auto second = GENERATE(as<Func_t>{}, trueCb, falseCb);
+		auto three = GENERATE(as<Func_t>{}, trueCb, falseCb);
+		auto four = GENERATE(as<Func_t>{}, trueCb, falseCb);
+		auto five = GENERATE(as<Func_t>{}, trueCb, falseCb);
+		auto expectedResult = combine(first, second, three, four, five);
+		REQUIRE(testAlgorithm<Algo_t>(first, second, three, four, five) == expectedResult);
 	}
 }
