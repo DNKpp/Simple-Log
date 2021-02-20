@@ -20,21 +20,29 @@ TEST_CASE("IncNumberGenerator generates consecutive numbers of minimum given wid
 	REQUIRE(incNoGen.current == 1);
 	REQUIRE(incNoGen.minWidth == 0);
 
-	auto width = GENERATE(0, 1, take(5, random(0, 100)));
+	auto [current, width, expectedStr] = GENERATE(
+												table<unsigned,
+												unsigned,
+												std::string_view>(
+													{
+													{ 1, 0, "1" },
+													{ 1, 1, "1" },
+													{ 1, 2, "01" },
+													{ 10, 0, "10" },
+													{ 10, 3, "010" }
+													}
+												)
+												);
+
+	incNoGen.current = current;
 	incNoGen.minWidth = width;
 
-	for (std::size_t i = 1; i <= 100; ++i)
-	{
-		std::ostringstream out;
-		incNoGen(out);
+	std::ostringstream out;
+	incNoGen(out);
 
-		std::ostringstream rhs;
-		rhs << std::setfill('0') << std::setw(width) << i;
-		REQUIRE(out.str() == rhs.str());
-
-		REQUIRE(incNoGen.current == i + 1);
-		REQUIRE(incNoGen.minWidth == width);
-	}
+	REQUIRE(out.str() == expectedStr);
+	REQUIRE(incNoGen.current == current + 1);
+	REQUIRE(incNoGen.minWidth == width);
 }
 
 TEST_CASE("StringGenerator generates constant string each time", "[StringPattern]")
@@ -45,14 +53,11 @@ TEST_CASE("StringGenerator generates constant string each time", "[StringPattern
 	auto str = GENERATE("", " ", "test", "Hello, World!");
 	strGen.str = str;
 
-	for (std::size_t i = 0; i < 5; ++i)
-	{
-		std::ostringstream out;
-		strGen(out);
+	std::ostringstream out;
+	strGen(out);
 
-		REQUIRE(out.str() == str);
-		REQUIRE(strGen.str == str);
-	}
+	REQUIRE(out.str() == str);
+	REQUIRE(strGen.str == str);
 }
 
 TEST_CASE("DateTimeGenerator generates string from current date-time", "[StringPattern]")
