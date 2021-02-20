@@ -15,7 +15,7 @@ using namespace sl::log;
 
 using Record_t = BaseRecord<int, int, int, int>;
 
-TEST_CASE("ProjectionFilter should act on specified Record member", "[Filter]")
+TEST_CASE("ProjectionFilter should watch on specified Record member", "[Filter]")
 {
 	ProjectionFilter filter{ &Record_t::message, Equals{ 0 } };
 
@@ -36,29 +36,78 @@ TEST_CASE("ProjectionFilter should act on specified Record member", "[Filter]")
 	}
 }
 
-TEMPLATE_TEST_CASE_SIG(
-						"make...FilterFor functions should create Filters watching for the corresponding Record member",
-						"[Filter]",
-						((auto MakeFunction, auto SetterFunc), MakeFunction, SetterFunc),
-						([](auto predicate) { return makeMessageFilterFor<Record_t>(predicate); },
-							[](Record_t& rec, auto msg) { rec.setMessage(std::move(msg)); }),
-						([](auto predicate) { return makeSeverityFilterFor<Record_t>(predicate); },
-							[](Record_t& rec, auto msg) { rec.setSeverity(std::move(msg)); }),
-						([](auto predicate) { return makeChannelFilterFor<Record_t>(predicate); },
-							[](Record_t& rec, auto msg) { rec.setChannel(std::move(msg)); }),
-						([](auto predicate) { return makeTimePointFilterFor<Record_t>(predicate); },
-							[](Record_t& rec, auto msg) { rec.setTimePoint(std::move(msg)); })
-					)
+TEST_CASE("makeMessageFilterFor function should create Filter watching on Record's message member", "[Filter]")
 {
 	Record_t record;
-	auto filter = std::invoke(MakeFunction, Equals{ 1337 });
+	auto filter = makeMessageFilterFor<Record_t>(Equals{ 1337 });
 
 	REQUIRE_FALSE(std::invoke(filter, record));
 
-	std::invoke(SetterFunc, record, 1337);
+	record.setMessage(1337);
 
 	REQUIRE(std::invoke(filter, record));
 }
+
+TEST_CASE("makeSeverityFilterFor function should create Filter watching on Record's severity member", "[Filter]")
+{
+	Record_t record;
+	auto filter = makeSeverityFilterFor<Record_t>(Equals{ 1337 });
+
+	REQUIRE_FALSE(std::invoke(filter, record));
+
+	record.setSeverity(1337);
+
+	REQUIRE(std::invoke(filter, record));
+}
+
+TEST_CASE("makeChannelFilterFor function should create Filter watching on Record's channel member", "[Filter]")
+{
+	Record_t record;
+	auto filter = makeChannelFilterFor<Record_t>(Equals{ 1337 });
+
+	REQUIRE_FALSE(std::invoke(filter, record));
+
+	record.setChannel(1337);
+
+	REQUIRE(std::invoke(filter, record));
+}
+
+TEST_CASE("makeTimePointFilterFor function should create Filter watching on Record's timePoint member", "[Filter]")
+{
+	Record_t record;
+	auto filter = makeTimePointFilterFor<Record_t>(Equals{ 1337 });
+
+	REQUIRE_FALSE(std::invoke(filter, record));
+
+	record.setTimePoint(1337);
+
+	REQUIRE(std::invoke(filter, record));
+}
+
+// ToDo: Enable if clang is able to compile
+//TEMPLATE_TEST_CASE_SIG(
+//						"make...FilterFor functions should create Filters watching for the corresponding Record member",
+//						"[Filter]",
+//						((auto MakeFunction, auto SetterFunc), MakeFunction, SetterFunc),
+//						([](auto predicate) { return makeMessageFilterFor<Record_t>(predicate); },
+//							[](Record_t& rec, auto msg) { rec.setMessage(std::move(msg)); }),
+//						([](auto predicate) { return makeSeverityFilterFor<Record_t>(predicate); },
+//							[](Record_t& rec, auto msg) { rec.setSeverity(std::move(msg)); }),
+//						([](auto predicate) { return makeChannelFilterFor<Record_t>(predicate); },
+//							[](Record_t& rec, auto msg) { rec.setChannel(std::move(msg)); }),
+//						([](auto predicate) { return makeTimePointFilterFor<Record_t>(predicate); },
+//							[](Record_t& rec, auto msg) { rec.setTimePoint(std::move(msg)); })
+//					)
+//{
+//	Record_t record;
+//	auto filter = std::invoke(MakeFunction, Equals{ 1337 });
+//
+//	REQUIRE_FALSE(std::invoke(filter, record));
+//
+//	std::invoke(SetterFunc, record, 1337);
+//
+//	REQUIRE(std::invoke(filter, record));
+//}
 
 TEST_CASE("FilterChain should determine the amount of attached sub-filters", "[Filter]")
 {
