@@ -90,7 +90,7 @@ namespace sl::log
 	 *
 	 * There are already some convenience factory function present (e.g. makeMessageProjectionFor), which may help setting up filters quickly.
 	 */
-	
+
 	/**
 	 * \brief Combines a projection on Record type with a predicate into an invokable object
 	 * \tparam TProjection A Projection type, which has to accept an object of the used Record type and must return something
@@ -175,6 +175,26 @@ namespace sl::log
 		constexpr bool operator()(const TRecord& rec)
 		{
 			return std::invoke(m_Algorithm, m_Filter, rec);
+		}
+
+		/**
+		 * \brief Returns whether the are no sub-filters attached.
+		 * \return true if there aren't have any sub-filters attached.
+		 */
+		[[nodiscard]]
+		constexpr bool empty() const noexcept
+		{
+			return std::tuple_size_v<decltype(m_Filter)> == 0;
+		}
+
+		/**
+		 * \brief Obtains the amount of attached sub-filters
+		 * \return The amount of attached sub-filters
+		 */
+		[[nodiscard]]
+		constexpr std::size_t size() const noexcept
+		{
+			return std::tuple_size_v<decltype(m_Filter)>;
 		}
 
 	private:
