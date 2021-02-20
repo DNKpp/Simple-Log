@@ -20,8 +20,8 @@ namespace sl::log::detail
 {
 	struct IncNumberGenerator
 	{
-		int minWidth = 0;
-		std::uint32_t current = 1;
+		unsigned minWidth = 0;
+		unsigned current = 1;
 
 		void operator()(std::ostream& stream)
 		{
@@ -73,7 +73,7 @@ namespace sl::log::detail
 
 			case 'N':
 				token.remove_prefix(1);
-				int width = 0;
+				unsigned width = 0;
 				std::from_chars(token.data(), &token.back(), width);
 				return IncNumberGenerator{ .minWidth = width };
 			}
