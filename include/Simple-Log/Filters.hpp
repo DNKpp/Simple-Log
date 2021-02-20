@@ -83,7 +83,7 @@ namespace sl::log::detail
 
 namespace sl::log
 {
-	/** \addtogroup filter
+	/** \addtogroup Filter
 	 * @{
 	 * \details Filters operate on Sink level and determine if a Record will be handled by that Sink object or skipped. Users are able apply provided filter like the ProjectionFilter types
 	 * or use custom types. Those custom types can be from any type which is invokable by the used Record type and returning a bool (or at least a bool-comparable-type) as result.

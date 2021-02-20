@@ -23,7 +23,8 @@ TEST_CASE("IncNumberGenerator generates consecutive numbers of minimum given wid
 	auto [current, width, expectedStr] = GENERATE(
 												table<unsigned,
 												unsigned,
-												std::string_view>(
+												std::string_view>
+												(
 													{
 													{ 1, 0, "1" },
 													{ 1, 1, "1" },
