@@ -54,7 +54,7 @@ struct VariadicNone
 };
 
 TEMPLATE_TEST_CASE(
-					"Testing tuple algorithms",
+					"Testing tuple algorithms invoking with different amount of invocable objects",
 					"[Tuple_Algorithms]",
 					(std::tuple<detail::TupleAllOf, VariadicAnd>),
 					(std::tuple<detail::TupleAnyOf, VariadicOr>),

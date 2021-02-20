@@ -21,7 +21,6 @@ TEST_CASE("IncNumberGenerator generates consecutive numbers of minimum given wid
 	REQUIRE(incNoGen.minWidth == 0);
 
 	auto width = GENERATE(0, 1, take(5, random(0, 100)));
-
 	incNoGen.minWidth = width;
 
 	for (std::size_t i = 1; i <= 100; ++i)
@@ -87,7 +86,7 @@ TEST_CASE("DateTimeGenerator generates string from current date-time", "[StringP
 	}
 }
 
-TEST_CASE("makeGeneratorFromMatch", "[StringPattern]")
+TEST_CASE("makeGeneratorFromMatch makes generators by token", "[StringPattern]")
 {
 	SECTION("generating from constant string")
 	{
@@ -129,7 +128,7 @@ TEST_CASE("makeGeneratorFromMatch", "[StringPattern]")
 	}
 }
 
-TEST_CASE("makeTokenGeneratorsFromPatternString", "[StringPattern]")
+TEST_CASE("makeTokenGeneratorsFromPatternString makes one or multiple generators from string pattern", "[StringPattern]")
 {
 	SECTION("generate from empty string")
 	{
@@ -172,7 +171,7 @@ TEST_CASE("makeTokenGeneratorsFromPatternString", "[StringPattern]")
 	}
 }
 
-TEST_CASE("StringPattern invocation", "[StringPattern]")
+TEST_CASE("StringPattern invocation produces strings, which will be generated on the fly on each invokation", "[StringPattern]")
 {
 	SECTION("generating from constant pattern")
 	{
