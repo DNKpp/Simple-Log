@@ -4,12 +4,9 @@
 //          https://www.boost.org/LICENSE_1_0.txt)
 
 #define CATCH_CONFIG_RUNNER
-#include "catch2/catch.hpp"
-
-#include <iostream>
+#include <catch2/catch.hpp>
 
 int main(int argc, char** argv)
 {
-	const int result = Catch::Session().run(argc, argv);
-	return result;
+	return Catch::Session().run(argc, argv);
 }
