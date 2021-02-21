@@ -3,224 +3,23 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          https://www.boost.org/LICENSE_1_0.txt)
 
-#include "catch2/catch.hpp"
+#include <catch2/catch.hpp>
+
+#include <cassert>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <string_view>
 
 #include "Simple-Log/BasicSink.hpp"
 #include "Simple-Log/Record.hpp"
-
-#include <algorithm>
-#include <cassert>
-#include <ranges>
-#include <sstream>
-#include <string_view>
 
 using namespace sl::log;
 
 using Record_t = BaseRecord<int, int>;
 using BasicSink_t = BasicSink<Record_t>;
 
-static std::size_t countString(const std::ostringstream& out, std::string_view message)
-{
-	auto outStr = out.str();
-	auto itr = std::begin(outStr);
-	std::size_t count = 0;
-	for (;;)
-	{
-		itr = std::search(
-						itr,
-						std::end(outStr),
-						std::boyer_moore_searcher{
-							std::begin(message),
-							std::end(message)
-						}
-						);
-		if (itr == std::end(outStr))
-		{
-			break;
-		}
-
-		std::advance(itr, std::size(message));
-		++count;
-	}
-	return count;
-}
-
-static std::size_t logAndCountString(BasicSink_t& sink, const std::ostringstream& out, std::string_view message)
-{
-	Record_t record;
-	record.setMessage(std::string{ message });
-	sink.log(record);
-	return countString(out, message);
-}
-
-SCENARIO("log", "[BasicSink]")
-{
-	std::ostringstream out;
-	BasicSink_t sink{ out };
-	sink.enable();
-
-	REQUIRE(std::empty(out.str()));
-
-	WHEN("logging Records")
-	{
-		THEN("target ostream contains message string")
-		{
-			REQUIRE(logAndCountString(sink, out, "Hello, World!") == 1);
-		}
-	}
-
-	WHEN("logging multiple Records")
-	{
-		THEN("target ostream contains every message string")
-		{
-			for (std::size_t i = 1; i < 10; ++i)
-			{
-				REQUIRE(logAndCountString(sink, out, "Hello, World!") == i);
-			}
-		}
-	}
-}
-
-SCENARIO("enable", "[BasicSink]")
-{
-	std::ostringstream out;
-	BasicSink_t sink{ out };
-
-	REQUIRE(std::empty(out.str()));
-	REQUIRE_FALSE(sink.isEnabled());
-
-	WHEN("disabled")
-	{
-		AND_WHEN("enabling")
-		{
-			sink.enable();
-
-			THEN("Sink becomes enabled")
-			{
-				REQUIRE(sink.isEnabled());
-			}
-
-			AND_WHEN("disabling again")
-			{
-				sink.enable(false);
-
-				THEN("Sink becomes disabled again")
-				{
-					REQUIRE_FALSE(sink.isEnabled());
-				}
-			}
-
-			AND_WHEN("enabling again")
-			{
-				THEN("Sink state doesn't change")
-				{
-					REQUIRE(sink.isEnabled());
-				}
-			}
-		}
-
-		AND_WHEN("logging Records")
-		{
-			THEN("Record will be skipped")
-			{
-				REQUIRE(logAndCountString(sink, out, "Hello, World!") == 0);
-			}
-		}
-	}
-
-	WHEN("enabled")
-	{
-		sink.enable();
-
-		AND_WHEN("logging Records")
-		{
-			THEN("target ostream contains message string")
-			{
-				const std::string str = "Hello, World!";
-				REQUIRE(logAndCountString(sink, out, str) == 1);
-			}
-		}
-	}
-}
-
-SCENARIO("filtering", "[BasicSink]")
-{
-	std::ostringstream out;
-	BasicSink_t sink{ out };
-	sink.enable();
-
-	REQUIRE(std::empty(out.str()));
-
-	WHEN("filter is set")
-	{
-		sink.setFilter(
-						[](const Record_t& record)
-						{
-							return record.severity() != 0;
-						}
-					);
-		AND_WHEN("Record, which should be skipped, is received")
-		{
-			THEN("target ostream doesn't contain the message string")
-			{
-				REQUIRE(logAndCountString(sink, out, "Hello, World!") == 0);
-			}
-		}
-
-		AND_WHEN("removing the filter")
-		{
-			sink.removeFilter();
-			AND_WHEN("Record, which should be skipped before, is received")
-			{
-				THEN("target ostream contains the message string")
-				{
-					REQUIRE(logAndCountString(sink, out, "Hello, World!") == 1);
-				}
-			}
-		}
-	}
-}
-
-SCENARIO("formatting", "[BasicSink]")
-{
-	std::ostringstream out;
-	BasicSink_t sink{ out };
-	sink.enable();
-
-	REQUIRE(std::empty(out.str()));
-
-	WHEN("formatter is set")
-	{
-		const auto* overridingStr = "my overriding message!";
-		sink.setFormatter(
-						[overridingStr](const Record_t& record) -> std::string
-						{
-							return overridingStr;
-						}
-						);
-
-		AND_WHEN("receiving Record")
-		{
-			THEN("formatter overrides outgoing message")
-			{
-				REQUIRE(logAndCountString(sink, out, "Hello, World!") == 0);
-				REQUIRE(countString(out, overridingStr) == 1);
-			}
-		}
-
-		AND_WHEN("removing the formatter")
-		{
-			sink.removeFormatter();
-			THEN("target ostream contains the message string")
-			{
-				REQUIRE(logAndCountString(sink, out, "Hello, World!") == 1);
-				REQUIRE(countString(out, overridingStr) == 0);
-			}
-		}
-	}
-}
-
-struct FlushPolicy
+struct FlushPolicyMoc
 {
 	bool operator ()(const Record_t& rec, std::size_t byteCount) const noexcept
 	{
@@ -239,76 +38,207 @@ struct FlushPolicy
 	std::size_t* flushedSignalCount;
 };
 
-SCENARIO("flush-policy", "[BasicSink]")
+struct FormatterMoc
+{
+	std::string operator ()(const Record_t& rec) const
+	{
+		assert(invoked);
+		*invoked = true;
+		return std::string(overridingStr);
+	}
+
+	std::string_view overridingStr;
+	bool* invoked;
+};
+
+struct FilterMoc
+{
+	bool operator ()(const Record_t& rec) const
+	{
+		assert(invoked);
+		*invoked = true;
+		return invocationResult;
+	}
+
+	bool invocationResult;
+	bool* invoked;
+};
+
+SCENARIO("BasicSinks should be in disabled state when construction succeeded", "[BasicSink][Sink]")
+{
+	GIVEN("a newly constructed BasicSink instance")
+	WHEN("construction succeeded")
+	THEN("BasicSink should be disabled by default")
+	{
+		BasicSink_t sink{ std::cout };
+		REQUIRE_FALSE(sink.isEnabled());
+	}
+}
+
+SCENARIO("BasicSinks::setEnabled should modify member.", "[BasicSink][Sink]")
+{
+	GIVEN("a disabled BasicSink instance")
+	WHEN("setting as enabled")
+	THEN("isEnabled should yield a positive result")
+	{
+		BasicSink_t sink{ std::cout };
+		sink.setEnabled(true);
+		REQUIRE(sink.isEnabled());
+	}
+}
+
+SCENARIO("BasicSink's log function should be controled by enabled property", "[BasicSink][Sink]")
 {
 	std::ostringstream out;
 	BasicSink_t sink{ out };
 
-	REQUIRE(std::empty(out.str()));
-
-	std::size_t invocationCount = 0;
-	std::size_t flushedSignalCount = 0;
-
-	::FlushPolicy policy{ &invocationCount, &flushedSignalCount };
-
-	WHEN("enabled")
+	GIVEN("a disabled BasicSink instance")
+	WHEN("calling log")
+	THEN("nothing should have been written to the stream")
 	{
-		sink.setFlushPolicy(policy);
-		sink.enable();
-
-		THEN("Policiy is invoked for each Record")
-		{
-			Record_t dummy;
-			for (std::size_t i = 1; i <= 10; ++i)
-			{
-				sink.log(dummy);
-				REQUIRE(invocationCount == i);
-				auto flushedCountExpected = (i + 1) / 2;
-				REQUIRE(flushedSignalCount == flushedCountExpected);
-			}
-		}
+		sink.log({});
+		REQUIRE(std::empty(out.str()));
 	}
 
-	WHEN("disabled")
+	GIVEN("a enabled BasicSink instance")
+	WHEN("calling log")
+	THEN("record should have been written to the stream")
 	{
-		sink.setFlushPolicy(policy);
+		sink.setEnabled(true);
+		sink.log({});
+		REQUIRE_FALSE(std::empty(out.str()));
+	}
+}
 
-		THEN("Policiy is not invoked at all")
+SCENARIO("BasicSink's filter property should determine if records get processed or skipped", "[BasicSink][Sink]")
+{
+	std::ostringstream out;
+	BasicSink_t sink{ out };
+	bool invoked = false;
+	sink.setFilter(FilterMoc{ .invocationResult = true, .invoked = &invoked });
+	sink.setEnabled();
+
+	GIVEN("an enabled BasicSink instance")
+	{
+		WHEN("calling log")
 		{
-			Record_t dummy;
-			for (std::size_t i = 1; i <= 10; ++i)
+			THEN("filter property should get invoked ")
 			{
-				sink.log(dummy);
-				REQUIRE(invocationCount == 0);
-				REQUIRE(flushedSignalCount == 0);
+				sink.log({});
+				REQUIRE(invoked);
 			}
+
+			AND_THEN("filter should determine if record gets handled")
+			{
+				auto shallHandle = GENERATE(true, false);
+				sink.setFilter(FilterMoc{ .invocationResult = shallHandle, .invoked = &invoked });
+				sink.log({});
+				REQUIRE(std::empty(out.str()) != shallHandle);
+			}
+		}
+
+		AND_WHEN("removeFilter is called")
+		THEN("then previous filter should get replaced")
+		{
+			sink.removeFilter();
+			sink.log({});
+			REQUIRE_FALSE(invoked);
 		}
 	}
 }
 
-SCENARIO("flush()", "[BasicSink]")
+SCENARIO("BasicSink's formatter property should format processed records", "[BasicSink][Sink]")
 {
 	std::ostringstream out;
 	BasicSink_t sink{ out };
+	bool invoked = false;
+	sink.setFormatter(FormatterMoc{ .invoked = &invoked });
+	sink.setEnabled();
 
-	REQUIRE(std::empty(out.str()));
+	GIVEN("an enabled BasicSink instance")
+	{
+		WHEN("calling log")
+		{
+			THEN("formatter property should get invoked ")
+			{
+				sink.log({});
+				REQUIRE(invoked);
+			}
+
+			AND_THEN("formatter should format records")
+			{
+				const auto overridingStr = GENERATE(as<std::string>{}, "", "Hello, World!");
+				sink.setFormatter(FormatterMoc{ .overridingStr = overridingStr, .invoked = &invoked });
+				sink.log({});
+				REQUIRE(out.str() == overridingStr + "\n");
+			}
+		}
+
+		AND_WHEN("removeFormatter is called")
+		THEN("then previous formatter should get replaced")
+		{
+			sink.removeFormatter();
+			sink.log({});
+			REQUIRE_FALSE(invoked);
+		}
+	}
+}
+
+SCENARIO("BasicSink's FlushPolicy property should determine when stream has to be flushed.", "[BasicSink][Sink]")
+{
+	std::ostringstream out;
+	BasicSink_t sink{ out };
+	sink.setEnabled();
 
 	std::size_t invocationCount = 0;
 	std::size_t flushedSignalCount = 0;
 
-	::FlushPolicy policy{ &invocationCount, &flushedSignalCount };
+	sink.setFlushPolicy(
+						FlushPolicyMoc{
+							.invocationCount = &invocationCount,
+							.flushedSignalCount = &flushedSignalCount
+						}
+						);
 
-	WHEN("flush is called")
+	GIVEN("an enabled BasicSink instance")
 	{
-		sink.setFlushPolicy(policy);
-
-		THEN("Policiy receives flushed signal")
+		WHEN("calling log")
 		{
-			for (std::size_t i = 1; i <= 10; ++i)
+			sink.log({});
+			THEN("FlushPolicy property should get invoked")
 			{
-				sink.flush();
-				REQUIRE(flushedSignalCount == i);
+				REQUIRE(invocationCount == 1);
 			}
+
+			AND_THEN("FlushPolicy property should get notified about flushed")
+			{
+				REQUIRE(flushedSignalCount == 1);
+			}
+		}
+
+		AND_WHEN("calling flushed")
+		AND_THEN("FlushPolicy property should get notified about flushed")
+		{
+			sink.flush();
+			REQUIRE(flushedSignalCount == 1);
+		}
+
+		AND_WHEN("removeFlushPolicy is called")
+		THEN("then previous FlushPolicy should get replaced")
+		{
+			sink.removeFlushPolicy();
+			sink.log({});
+			REQUIRE(invocationCount == 0);
+		}
+	}
+
+	GIVEN("a disabled BasicSink instance")
+	{
+		sink.setEnabled(false);
+		WHEN("calling flush")
+		THEN("the flush action should get rejected")
+		{
+			REQUIRE(invocationCount == 0);
 		}
 	}
 }
