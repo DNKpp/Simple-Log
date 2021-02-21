@@ -20,8 +20,9 @@ add_executable(
 	FilterTests.cpp
 	RecordQueueTests.cpp
 	StringPatternTest.cpp
-	BasicSinkTests.cpp
 	FlushPolicyTests.cpp
+	BasicSinkTests.cpp
+	FileSinkTests.cpp
 	#LogTest.cpp
 )
 
