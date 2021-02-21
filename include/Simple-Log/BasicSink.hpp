@@ -245,27 +245,30 @@ namespace sl::log
 
 		/**
 		 * \brief Flushes all pending output of the internal stream
+		 * \details Internally locks the associated stream mutex.
 		 */
 		void flush()
 		{
-			m_Stream << std::flush;
-			m_FlushPolicy->flushed();
+			std::scoped_lock lock{ m_StreamMx };
+			flushImpl();
 		}
 
 	protected:
 		/**
 		 * \brief Writes to the internal stream
-		 * \details This functions writes directly to the stream object. No filter or formatter will be involved and stream will be flush afterwards.
-		 * This might be useful for writing custom header or footer data to the stream.
 		 * \tparam TData Type of data (automatically deduced)
 		 * \param data Data which will be written to the stream.
+		 * 
+		 * \details This functions writes directly to the stream object. No filter or formatter will be involved and stream will be flush afterwards.
+		 * This might be useful for writing custom header or footer data to the stream.\n
+		 * Internally locks the associated stream mutex.
 		 */
 		template <class TData>
 		void writeToStream(TData&& data)
 		{
 			std::scoped_lock lock{ m_StreamMx };
 			m_Stream << std::forward<TData>(data);
-			flush();
+			flushImpl();
 		}
 
 		/**
@@ -298,8 +301,14 @@ namespace sl::log
 		{
 			if (std::scoped_lock lock{ m_FlushPolicyMx }; std::invoke(*m_FlushPolicy, record, messageByteSize))
 			{
-				flush();
+				flushImpl();
 			}
+		}
+
+		void flushImpl()
+		{
+			m_Stream << std::flush;
+			m_FlushPolicy->flushed();
 		}
 	};
 
