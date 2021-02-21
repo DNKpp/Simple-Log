@@ -138,7 +138,7 @@ SCENARIO("FileSink's rotate function should switch files.", "[FileSink][Sink]")
 	WHEN("calling rotate")
 	THEN("sink should switch to new file")
 	{
-		sink.enable();
+		sink.setEnabled();
 		sink.log({});
 
 		REQUIRE(exists(sink.directory() / "log1.file"));
@@ -171,7 +171,7 @@ SCENARIO("FileSink openingHandler property should get invoked on file opening.",
 
 	GIVEN("an enabled FileSink instance")
 	{
-		sink.enable();
+		sink.setEnabled();
 		sink.log({});
 		WHEN("opening a file by logging the first record")
 		THEN("openingHandler should get invoked")
@@ -202,7 +202,7 @@ SCENARIO("FileSink closingHandler property should get invoked on file closing.",
 							}
 							);
 
-	sink->enable();
+	sink->setEnabled();
 	sink->log({});
 
 	GIVEN("an enabled FileSink instance which has an existing and open file")
