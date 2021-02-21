@@ -167,6 +167,19 @@ namespace sl::log
 		}
 
 		/**
+		 * \brief Rotates the current file
+		 * \details This function has no effect, if the file stream is not already open.
+		 */
+		void rotate()
+		{
+			if (m_FileStream.is_open())
+			{
+				closeFile();
+				openFile();
+			}
+		}
+
+		/**
 		 * \brief Applies a new CleanupRule configuration.
 		 * \param rule The new CleanupRule configuration.
 		 */
@@ -261,9 +274,9 @@ namespace sl::log
 		{
 			if (std::empty(fileNamePattern))
 			{
-				throw SinkException{ "FileNamePattern must not be empty."};
+				throw SinkException{ "FileNamePattern must not be empty." };
 			}
-			
+
 			std::scoped_lock lock{ m_FilePathNameMx };
 			m_FileNamePattern.setPatternString(std::move(fileNamePattern));
 		}
