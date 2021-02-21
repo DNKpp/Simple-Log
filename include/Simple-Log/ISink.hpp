@@ -8,6 +8,8 @@
 
 #pragma once
 
+#include <stdexcept>
+
 #include "Concepts.hpp"
 
 namespace sl::log
@@ -161,6 +163,21 @@ namespace sl::log
 
 	private:
 		TSink* m_Sink = nullptr;
+	};
+
+	class SinkException final :
+		public std::runtime_error
+	{
+	public:
+		explicit SinkException(const std::string& message) :
+			runtime_error{ message }
+		{
+		}
+
+		explicit SinkException(const char* message) :
+			runtime_error{ message }
+		{
+		}
 	};
 
 	/** @}*/
