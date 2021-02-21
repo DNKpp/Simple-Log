@@ -145,7 +145,7 @@ namespace sl::log
 		 * \details Disabled Sinks will not handle any incoming Record s
 		 * \param enable True will enable the Sink object.
 		 */
-		void enable(bool enable = true) noexcept final override
+		void setEnabled(bool enable = true) noexcept final override
 		{
 			m_Enabled = enable;
 		}

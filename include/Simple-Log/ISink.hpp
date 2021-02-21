@@ -58,7 +58,7 @@ namespace sl::log
 		 * \details Disabled Sinks will not handle any incoming Record s
 		 * \param enable True will enable the Sink object.
 		 */
-		virtual void enable(bool enable = true) noexcept = 0;
+		virtual void setEnabled(bool enable = true) noexcept = 0;
 
 		/**
 		 * \brief Checks if the Sink object is enabled.
@@ -100,7 +100,7 @@ namespace sl::log
 		ScopedSinkDisabling(TSink& sink) noexcept :
 			m_Sink{ &sink }
 		{
-			m_Sink->enable(false);
+			m_Sink->setEnabled(false);
 		}
 
 		/**
@@ -110,7 +110,7 @@ namespace sl::log
 		{
 			if (m_Sink)
 			{
-				m_Sink->enable();
+				m_Sink->setEnabled();
 				m_Sink = nullptr;
 			}
 		}

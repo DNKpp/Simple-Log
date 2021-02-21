@@ -126,7 +126,7 @@ namespace sl::log
 		TSink& makeSink(TArgs&&... args)
 		{
 			auto& ref = makeSinkImpl<TSink>(std::forward<TArgs>(args)...);
-			ref.enable();
+			ref.setEnabled();
 			return ref;
 		}
 
