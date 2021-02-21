@@ -120,6 +120,13 @@ namespace sl::log
 	{
 	public:
 		/**
+		 * \brief Default Constructor
+		 */
+		StringPattern() noexcept
+		{
+		}
+		
+		/**
 		 * \brief Constructor
 		 * \param patternString Pattern
 		 */
@@ -148,6 +155,26 @@ namespace sl::log
 						);
 			}
 			return std::move(ss).str();
+		}
+
+		/**
+		 * \brief Getter of the used pattern string
+		 * \return A std::string_view on the pattern string 
+		 */
+		[[nodiscard]]
+		std::string_view patternString() const noexcept
+		{
+			return m_PatternString;
+		}
+
+		/**
+		 * \brief Sets the pattern string
+		 * \param patternString The given pattern string
+		 */
+		void setPatternString(std::string patternString)
+		{
+			m_PatternString = std::move(patternString);
+			m_TokenGenerators = detail::makeTokenGeneratorsFromPatternString(m_PatternString);
 		}
 
 	private:
