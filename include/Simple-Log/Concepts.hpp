@@ -54,6 +54,21 @@ namespace sl::log
 			{ rec.setChannel(std::declval<typename T::Channel_t>()) };
 		};
 
+	template <Record TRecord>
+	class RecordBuilder;
+
+	/**
+	 * \brief Concept for Logger classes
+	*/
+	template <class T>
+	concept Logger =
+		requires (T logger)
+		{
+			typename T::Record_t;
+		} &&
+		Record<typename T::Record_t> &&
+		std::is_convertible_v<std::invoke_result_t<T>, RecordBuilder<typename T::Record_t>>;
+
 	/**
 	 * \brief Concept for invokable formatter objects
 	*/

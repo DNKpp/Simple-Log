@@ -69,7 +69,7 @@ namespace sl::log::pre
 	/**
 	 * \brief Type alias for log::Logger which uses prep::Record_t as Record type
 	 */
-	using Logger_t = Logger<Record_t>;
+	using Logger_t = BaseLogger<Record_t>;
 	/**
 	 * \brief Type alias for log::ISink which uses prep::Record_t as Record type
 	 */

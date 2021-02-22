@@ -36,8 +36,8 @@ inline std::unique_ptr<logging::Core_t> makeLoggingCore()
 	return core;
 }
 
-inline std::unique_ptr<logging::Core_t> gLoggingCore{ makeLoggingCore() };
-inline logging::Logger_t gLog{ *gLoggingCore, logging::SeverityLevel::info };
+inline auto gLoggingCore{ makeLoggingCore() };
+inline auto gLog{ sl::log::makeLogger<logging::Logger_t>(*gLoggingCore, logging::SeverityLevel::info) };
 
 int main()
 {
