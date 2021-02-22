@@ -131,6 +131,24 @@ namespace sl::log
 		}
 
 		/**
+		 * \brief Creates Sink disabled and registers it at this Core instance
+		 * \tparam TSink Concrete Sink type
+		 * \tparam TArgs Constructor argument types (will be deducted automatically)
+		 * \param args The constructor arguments for the newly generated Sink object. Will be forwarded as is.
+		 * \return Wrapped reference to the managed Sink object.
+		 * \details This function creates a new disabled Sink object and returns a wrapped reference to the caller. When this wrapper goes out of scope or gets destructed otherwise,
+		 * the attached Sink will become enabled. Use this if you want to make sure, that no messages will be handled before your Sink is finally setup.
+		 * This Sink will be linked to and managed by the called Core instance.
+		 */
+		template <std::derived_from<ISink_t> TSink, class... TArgs>
+		requires std::constructible_from<TSink, TArgs...>
+		ScopedSinkDisabling<Record_t, TSink> makeDisabledSink(TArgs&&... args)
+		{
+			auto& ref = makeSinkImpl<TSink>(std::forward<TArgs>(args)...);
+			return ref;
+		}
+
+		/**
 		 * \brief Removes the given Sink and destroys it
 		 * \param sink The sink which will be destroyed
 		 * \return Returns true, if sink has been destroyed.
@@ -148,24 +166,6 @@ namespace sl::log
 				return true;
 			}
 			return false;
-		}
-
-		/**
-		 * \brief Creates Sink disabled and registers it at this Core instance
-		 * \tparam TSink Concrete Sink type
-		 * \tparam TArgs Constructor argument types (will be deducted automatically)
-		 * \param args The constructor arguments for the newly generated Sink object. Will be forwarded as is.
-		 * \return Wrapped reference to the managed Sink object.
-		 * \details This function creates a new disabled Sink object and returns a wrapped reference to the caller. When this wrapper goes out of scope or gets destructed otherwise,
-		 * the attached Sink will become enabled. Use this if you want to make sure, that no messages will be handled before your Sink is finally setup.
-		 * This Sink will be linked to and managed by the called Core instance.
-		 */
-		template <std::derived_from<ISink_t> TSink, class... TArgs>
-		requires std::constructible_from<TSink, TArgs...>
-		ScopedSinkDisabling<Record_t, TSink> makeDisabledSink(TArgs&&... args)
-		{
-			auto& ref = makeSinkImpl<TSink>(std::forward<TArgs>(args)...);
-			return ref;
 		}
 
 	private:
