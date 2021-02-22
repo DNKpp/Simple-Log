@@ -140,7 +140,7 @@ namespace sl::log
 		{
 			std::scoped_lock lock{ m_SinkMx };
 
-			if (auto itr = std::ranges::find(m_Sinks, &std::unique_ptr<ISink_t>::get, &sink); itr != std::end(m_Sinks))
+			if (auto itr = std::ranges::find(m_Sinks, &sink, &std::unique_ptr<ISink_t>::get); itr != std::end(m_Sinks))
 			{
 				using std::swap;
 				swap(*itr, m_Sinks.back());
