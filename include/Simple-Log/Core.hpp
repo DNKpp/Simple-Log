@@ -131,6 +131,26 @@ namespace sl::log
 		}
 
 		/**
+		 * \brief Removes the given Sink and destroys it
+		 * \param sink The sink which will be destroyed
+		 * \return Returns true, if sink has been destroyed.
+		 * \details If this sink is registered at this Core instance, then it will be destroyed immediately. Otherwise nothing will change.
+		 */
+		bool removeSink(const ISink_t& sink)
+		{
+			std::scoped_lock lock{ m_SinkMx };
+
+			if (auto itr = std::ranges::find(m_Sinks, &std::unique_ptr<ISink_t>::get, &sink); itr != std::end(m_Sinks))
+			{
+				using std::swap;
+				swap(*itr, m_Sinks.back());
+				m_Sinks.resize(std::size(m_Sinks) - 1);
+				return true;
+			}
+			return false;
+		}
+
+		/**
 		 * \brief Creates Sink disabled and registers it at this Core instance
 		 * \tparam TSink Concrete Sink type
 		 * \tparam TArgs Constructor argument types (will be deducted automatically)
