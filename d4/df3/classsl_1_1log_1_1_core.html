@@ -133,6 +133,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3af914cb7a7eeec70b3e06211d110fc4"><td class="memTemplItemLeft" align="right" valign="top">requires std::constructible_from&lt; TSink, TArgs... &gt; <a class="el" href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html">ScopedSinkDisabling</a>&lt; <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">Record_t</a>, TSink &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4">makeDisabledSink</a> (TArgs &amp;&amp;... args)</td></tr>
 <tr class="memdesc:a3af914cb7a7eeec70b3e06211d110fc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates Sink disabled and registers it at this <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4">More...</a><br /></td></tr>
 <tr class="separator:a3af914cb7a7eeec70b3e06211d110fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acee4e8ded4f939bd0e18f1a017469634"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#acee4e8ded4f939bd0e18f1a017469634">removeSink</a> (const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">ISink_t</a> &amp;sink)</td></tr>
+<tr class="memdesc:acee4e8ded4f939bd0e18f1a017469634"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the given Sink and destroys it.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#acee4e8ded4f939bd0e18f1a017469634">More...</a><br /></td></tr>
+<tr class="separator:acee4e8ded4f939bd0e18f1a017469634"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;Record TRecord&gt;<br />
@@ -145,7 +148,7 @@ class sl::log::Core&lt; TRecord &gt;</h3>
   </table>
   </dd>
 </dl>
-<p>Objects of this class act like a broker between the (multiple) <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> s on the frontend and the (multiple) Sink s on the backend. Due to this there must at least one living instance of <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> during the whole program runtime, but it isn't restricted to exist uniquely. It can be totally fine to create one global <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a>, which will be used for general logging purposes, and multiple others for a much lesser scope, like state logging on entity level. <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> will be permanently linked to one specific <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance, thus <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instances must outlive their corresponding <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> s.</p>
+<p>Objects of this class act like a broker between the (multiple) Logger s on the frontend and the (multiple) Sink s on the backend. Due to this there must at least one living instance of <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> during the whole program runtime, but it isn't restricted to exist uniquely. It can be totally fine to create one global <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a>, which will be used for general logging purposes, and multiple others for a much lesser scope, like state logging on entity level. Logger will be permanently linked to one specific <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance, thus <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instances must outlive their corresponding Logger s.</p>
 <p>Each instance of <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> consists of the following: </p><ul>
 <li>one BlockingQueue in which all Records will get added </li>
 <li>multiple Sink objects </li>
@@ -326,7 +329,7 @@ template&lt;Record TRecord&gt; </div>
   </table>
   </dd>
 </dl>
-<p>This function should not be called directly on logging purposes. It serves as a simple interface for the corresponding <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> objects. </p>
+<p>This function should not be called directly on logging purposes. It serves as a simple interface for the corresponding Logger objects. </p>
 
 </div>
 </div>
@@ -481,6 +484,44 @@ template&lt;Record TRecord&gt; </div>
 </div><div class="memdoc">
 
 <p>Deleted move assign operator. </p>
+
+</div>
+</div>
+<a id="acee4e8ded4f939bd0e18f1a017469634"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acee4e8ded4f939bd0e18f1a017469634">&#9670;&nbsp;</a></span>removeSink()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::removeSink </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">ISink_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>sink</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Removes the given Sink and destroys it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sink</td><td>The sink which will be destroyed </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns true, if sink has been destroyed.</dd></dl>
+<p>If this sink is registered at this <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance, then it will be destroyed immediately. Otherwise nothing will change. </p>
 
 </div>
 </div>

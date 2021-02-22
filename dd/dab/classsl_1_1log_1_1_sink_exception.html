@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Simple-Log: sl::log::GreaterEqual&lt; T &gt; Class Template Reference</title>
+<title>Simple-Log: sl::log::SinkException Class Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('db/ddb/classsl_1_1log_1_1_greater_equal.html','../../'); initResizable(); });
+$(document).ready(function(){initNavTree('dd/dab/classsl_1_1log_1_1_sink_exception.html','../../'); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -84,84 +84,74 @@ $(document).ready(function(){initNavTree('db/ddb/classsl_1_1log_1_1_greater_equa
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="../../d9/dec/classsl_1_1log_1_1_greater_equal-members.html">List of all members</a>  </div>
+<a href="../../d5/d78/classsl_1_1log_1_1_sink_exception-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">sl::log::GreaterEqual&lt; T &gt; Class Template Reference<div class="ingroups"><a class="el" href="../../d4/d38/group__filter.html">Filter</a> &raquo; <a class="el" href="../../de/dfc/group__predicates.html">Predicates</a></div></div>  </div>
+<div class="title">sl::log::SinkException Class Reference<span class="mlabels"><span class="mlabel">final</span></span><div class="ingroups"><a class="el" href="../../df/d3a/group__sink.html">Sink</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Compares greater-equality-ordering with constant at invocation.  
- <a href="../../db/ddb/classsl_1_1log_1_1_greater_equal.html#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="../../d4/d46/_predicates_8hpp_source.html">Predicates.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="../../d2/d5f/_i_sink_8hpp_source.html">ISink.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for sl::log::SinkException:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="../../dd/dab/classsl_1_1log_1_1_sink_exception.png" alt=""/>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af52a4977e112c57a237a435aa965e02b"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/ddb/classsl_1_1log_1_1_greater_equal.html#af52a4977e112c57a237a435aa965e02b">GreaterEqual</a> (T to)</td></tr>
-<tr class="separator:af52a4977e112c57a237a435aa965e02b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9efaf4e77d2770daffdf44ad2d189586"><td class="memTemplParams" colspan="2">template&lt;std::totally_ordered_with&lt; T &gt; U&gt; </td></tr>
-<tr class="memitem:a9efaf4e77d2770daffdf44ad2d189586"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../db/ddb/classsl_1_1log_1_1_greater_equal.html#a9efaf4e77d2770daffdf44ad2d189586">operator()</a> (const U &amp;other) const</td></tr>
-<tr class="separator:a9efaf4e77d2770daffdf44ad2d189586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61048bde43bf3a87be9a087770f9605d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dab/classsl_1_1log_1_1_sink_exception.html#a61048bde43bf3a87be9a087770f9605d">SinkException</a> (const std::string &amp;message)</td></tr>
+<tr class="separator:a61048bde43bf3a87be9a087770f9605d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b8bc770234f47f4acd17dd190fd130f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/dab/classsl_1_1log_1_1_sink_exception.html#a6b8bc770234f47f4acd17dd190fd130f">SinkException</a> (const char *message)</td></tr>
+<tr class="separator:a6b8bc770234f47f4acd17dd190fd130f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;std::totally_ordered T&gt;<br />
-class sl::log::GreaterEqual&lt; T &gt;</h3>
-
-<p>Compares greater-equality-ordering with constant at invocation. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="af52a4977e112c57a237a435aa965e02b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af52a4977e112c57a237a435aa965e02b">&#9670;&nbsp;</a></span>GreaterEqual()</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a61048bde43bf3a87be9a087770f9605d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61048bde43bf3a87be9a087770f9605d">&#9670;&nbsp;</a></span>SinkException() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;std::totally_ordered T&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="../../db/ddb/classsl_1_1log_1_1_greater_equal.html">sl::log::GreaterEqual</a>&lt; T &gt;::<a class="el" href="../../db/ddb/classsl_1_1log_1_1_greater_equal.html">GreaterEqual</a> </td>
+          <td class="memname">sl::log::SinkException::SinkException </td>
           <td>(</td>
-          <td class="paramtype">T&#160;</td>
-          <td class="paramname"><em>to</em></td><td>)</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9efaf4e77d2770daffdf44ad2d189586"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9efaf4e77d2770daffdf44ad2d189586">&#9670;&nbsp;</a></span>operator()()</h2>
+<a id="a6b8bc770234f47f4acd17dd190fd130f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b8bc770234f47f4acd17dd190fd130f">&#9670;&nbsp;</a></span>SinkException() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;std::totally_ordered T&gt; </div>
-<div class="memtemplate">
-template&lt;std::totally_ordered_with&lt; T &gt; U&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr bool <a class="el" href="../../db/ddb/classsl_1_1log_1_1_greater_equal.html">sl::log::GreaterEqual</a>&lt; T &gt;::operator() </td>
+          <td class="memname">sl::log::SinkException::SinkException </td>
           <td>(</td>
-          <td class="paramtype">const U &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -169,14 +159,14 @@ template&lt;std::totally_ordered_with&lt; T &gt; U&gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="../../d4/d46/_predicates_8hpp_source.html">Predicates.hpp</a></li>
+<li><a class="el" href="../../d2/d5f/_i_sink_8hpp_source.html">ISink.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dd/d2c/namespacesl.html">sl</a></li><li class="navelem"><a class="el" href="../../de/d83/namespacesl_1_1log.html">log</a></li><li class="navelem"><a class="el" href="../../db/ddb/classsl_1_1log_1_1_greater_equal.html">GreaterEqual</a></li>
+    <li class="navelem"><a class="el" href="../../dd/d2c/namespacesl.html">sl</a></li><li class="navelem"><a class="el" href="../../de/d83/namespacesl_1_1log.html">log</a></li><li class="navelem"><a class="el" href="../../dd/dab/classsl_1_1log_1_1_sink_exception.html">SinkException</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

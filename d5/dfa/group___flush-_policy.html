@@ -111,6 +111,10 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:gafd2084b61e0e19b5cfac465eac9a88f1"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const typename TRecord::SeverityLevel_t &amp; &gt; TUnaryPredicate&gt; </td></tr>
+<tr class="memitem:gafd2084b61e0e19b5cfac465eac9a88f1"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dfa/group___flush-_policy.html#gafd2084b61e0e19b5cfac465eac9a88f1">sl::log::makeMessageFlushPolicyFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
+<tr class="memdesc:gafd2084b61e0e19b5cfac465eac9a88f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating Flush-Policies based on Record::message member.  <a href="../../d5/dfa/group___flush-_policy.html#gafd2084b61e0e19b5cfac465eac9a88f1">More...</a><br /></td></tr>
+<tr class="separator:gafd2084b61e0e19b5cfac465eac9a88f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab9b3e1b941de7c29475debaa1b6a1cac"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const typename TRecord::SeverityLevel_t &amp; &gt; TUnaryPredicate&gt; </td></tr>
 <tr class="memitem:gab9b3e1b941de7c29475debaa1b6a1cac"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dfa/group___flush-_policy.html#gab9b3e1b941de7c29475debaa1b6a1cac">sl::log::makeSeverityFlushPolicyFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
 <tr class="memdesc:gab9b3e1b941de7c29475debaa1b6a1cac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating Flush-Policies based on Record::severity member.  <a href="../../d5/dfa/group___flush-_policy.html#gab9b3e1b941de7c29475debaa1b6a1cac">More...</a><br /></td></tr>
@@ -186,7 +190,52 @@ template&lt;Record TRecord, std::predicate&lt; const typename TRecord::Channel_t
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Flush-Policy object</dd></dl>
-<p>This is the preferable way creating a Flush-Policies based on the Record::channel member, because the predicate becomes strong checked via concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will potentially result in harder to read error message. </p>
+<p>This is the preferable way creating a Flush-Policies based on the Record::channel member, because the predicate becomes strong checked via concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will potentially result in harder to read error messages. </p>
+
+</div>
+</div>
+<a id="gafd2084b61e0e19b5cfac465eac9a88f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafd2084b61e0e19b5cfac465eac9a88f1">&#9670;&nbsp;</a></span>makeMessageFlushPolicyFor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord, std::predicate&lt; const typename TRecord::SeverityLevel_t &amp; &gt; TUnaryPredicate&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr auto sl::log::makeMessageFlushPolicyFor </td>
+          <td>(</td>
+          <td class="paramtype">TUnaryPredicate &amp;&amp;&#160;</td>
+          <td class="paramname"><em>predicate</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Factory function for creating Flush-Policies based on Record::message member. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">TRecord</td><td>Concrete Record type on which to apply the projection </td></tr>
+    <tr><td class="paramname">TUnaryPredicate</td><td>Invokable type, which has to accept objects the actual Record::Message_t type </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">predicate</td><td>Predicate object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Flush-Policy object</dd></dl>
+<p>This is the preferable way creating a Flush-Policies based on the Record::message member, because the predicate becomes strong checked via concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will potentially result in harder to read error messages. </p>
 
 </div>
 </div>
@@ -231,7 +280,7 @@ template&lt;Record TRecord, std::predicate&lt; const typename TRecord::SeverityL
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Flush-Policy object</dd></dl>
-<p>This is the preferable way creating a Flush-Policies based on the Record::severity member, because the predicate becomes strong checked via concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will potentially result in harder to read error message. </p>
+<p>This is the preferable way creating a Flush-Policies based on the Record::severity member, because the predicate becomes strong checked via concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will potentially result in harder to read error messages. </p>
 
 </div>
 </div>
@@ -276,7 +325,7 @@ template&lt;Record TRecord, std::predicate&lt; const typename TRecord::TimePoint
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Flush-Policy object</dd></dl>
-<p>This is the preferable way creating a Flush-Policies based on the Record::timePoint member, because the predicate becomes strong checked via concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will potentially result in harder to read error message. </p>
+<p>This is the preferable way creating a Flush-Policies based on the Record::timePoint member, because the predicate becomes strong checked via concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will potentially result in harder to read error messages. </p>
 
 </div>
 </div>

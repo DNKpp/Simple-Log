@@ -164,7 +164,7 @@ Simple usage example</h1>
 <div class="line"><span class="comment">/* For conveniences we will simply store the core and our default logger as a global. Feel free to do it</span></div>
 <div class="line"><span class="comment">otherwise. Just make sure the Core instance doesn&#39;t get destructed before all related Logger instances.*/</span></div>
 <div class="line"><span class="keyword">inline</span> std::unique_ptr&lt;logging::Core_t&gt; gLoggingCore{ makeLoggingCore() };</div>
-<div class="line"><span class="keyword">inline</span> <a class="code" href="df/d5b/group___prepared_types.html#ga056916e99d3c6cb4490a14821ccf1a35">logging::Logger_t</a> gLog{ *gLoggingCore, logging::SeverityLevel::info };</div>
+<div class="line"><span class="keyword">inline</span> <a class="code" href="df/d5b/group___prepared_types.html#ga62368dd44f720afe928180062ff31a15">logging::Logger_t</a> gLog{ *gLoggingCore, logging::SeverityLevel::info };</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
@@ -191,8 +191,8 @@ Simple usage example</h1>
 <div class="line"><span class="comment"> * Keep in mind, you are completely free how you are going to format your message. This is just the default one.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="ttc" id="a_preset_types_8hpp_html"><div class="ttname"><a href="d7/d89/_preset_types_8hpp.html">PresetTypes.hpp</a></div></div>
-<div class="ttc" id="agroup___prepared_types_html_ga056916e99d3c6cb4490a14821ccf1a35"><div class="ttname"><a href="df/d5b/group___prepared_types.html#ga056916e99d3c6cb4490a14821ccf1a35">sl::log::pre::Logger_t</a></div><div class="ttdeci">Logger&lt; Record_t &gt; Logger_t</div><div class="ttdoc">Type alias for log::Logger which uses prep::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:72</div></div>
 <div class="ttc" id="agroup___prepared_types_html_ga099a00be4e155fcbb4c5f6378d56612e"><div class="ttname"><a href="df/d5b/group___prepared_types.html#ga099a00be4e155fcbb4c5f6378d56612e">sl::log::pre::BasicSink_t</a></div><div class="ttdeci">BasicSink&lt; Record_t &gt; BasicSink_t</div><div class="ttdoc">Type alias for log::BasicSink which uses prep::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:80</div></div>
+<div class="ttc" id="agroup___prepared_types_html_ga62368dd44f720afe928180062ff31a15"><div class="ttname"><a href="df/d5b/group___prepared_types.html#ga62368dd44f720afe928180062ff31a15">sl::log::pre::Logger_t</a></div><div class="ttdeci">BaseLogger&lt; Record_t &gt; Logger_t</div><div class="ttdoc">Type alias for log::Logger which uses prep::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:72</div></div>
 <div class="ttc" id="anamespacesl_1_1log_1_1pre_html"><div class="ttname"><a href="d5/d4f/namespacesl_1_1log_1_1pre.html">sl::log::pre</a></div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:14</div></div>
 </div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->

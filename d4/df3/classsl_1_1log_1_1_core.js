@@ -9,5 +9,6 @@ var classsl_1_1log_1_1_core =
     [ "makeDisabledSink", "d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4", null ],
     [ "makeSink", "d4/df3/classsl_1_1log_1_1_core.html#ad828429edf3e849e9e88042c43a7da2e", null ],
     [ "operator=", "d4/df3/classsl_1_1log_1_1_core.html#adc78afd80397c528f5db37929dd29f88", null ],
-    [ "operator=", "d4/df3/classsl_1_1log_1_1_core.html#ab7c105bac33fd9bf5e9b4f3df5156a0d", null ]
+    [ "operator=", "d4/df3/classsl_1_1log_1_1_core.html#ab7c105bac33fd9bf5e9b4f3df5156a0d", null ],
+    [ "removeSink", "d4/df3/classsl_1_1log_1_1_core.html#acee4e8ded4f939bd0e18f1a017469634", null ]
 ];

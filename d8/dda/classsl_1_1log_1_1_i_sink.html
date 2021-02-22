@@ -127,9 +127,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a35ba629214d49e3afe4de5612b13ea2c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a35ba629214d49e3afe4de5612b13ea2c">log</a> (const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;record)=0</td></tr>
 <tr class="memdesc:a35ba629214d49e3afe4de5612b13ea2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">virtual log function  <a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a35ba629214d49e3afe4de5612b13ea2c">More...</a><br /></td></tr>
 <tr class="separator:a35ba629214d49e3afe4de5612b13ea2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a392f4f1912b6a15d2ff4401d70a4170b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a392f4f1912b6a15d2ff4401d70a4170b">enable</a> (bool enable=true) noexcept=0</td></tr>
-<tr class="memdesc:a392f4f1912b6a15d2ff4401d70a4170b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables the Sink object.  <a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a392f4f1912b6a15d2ff4401d70a4170b">More...</a><br /></td></tr>
-<tr class="separator:a392f4f1912b6a15d2ff4401d70a4170b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac6aeba2e1ef0131481179a5f426b027"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#aac6aeba2e1ef0131481179a5f426b027">setEnabled</a> (bool enable=true) noexcept=0</td></tr>
+<tr class="memdesc:aac6aeba2e1ef0131481179a5f426b027"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enables or disables the Sink object.  <a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#aac6aeba2e1ef0131481179a5f426b027">More...</a><br /></td></tr>
+<tr class="separator:aac6aeba2e1ef0131481179a5f426b027"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a423855fc43c04f2785399330f38a4005"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a423855fc43c04f2785399330f38a4005">isEnabled</a> () const noexcept=0</td></tr>
 <tr class="memdesc:a423855fc43c04f2785399330f38a4005"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the Sink object is enabled.  <a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a423855fc43c04f2785399330f38a4005">More...</a><br /></td></tr>
 <tr class="separator:a423855fc43c04f2785399330f38a4005"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -297,44 +297,6 @@ template&lt;Record TRecord&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a392f4f1912b6a15d2ff4401d70a4170b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a392f4f1912b6a15d2ff4401d70a4170b">&#9670;&nbsp;</a></span>enable()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;Record TRecord&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">sl::log::ISink</a>&lt; TRecord &gt;::enable </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>enable</em> = <code>true</code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Enables or disables the Sink object. </p>
-<p>Disabled Sinks will not handle any incoming Record s </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">enable</td><td>True will enable the Sink object. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implemented in <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#adfa142c4cbcd5fda6a7b354d82b23eee">sl::log::BasicSink&lt; TRecord &gt;</a>.</p>
-
-</div>
-</div>
 <a id="a423855fc43c04f2785399330f38a4005"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a423855fc43c04f2785399330f38a4005">&#9670;&nbsp;</a></span>isEnabled()</h2>
 
@@ -462,6 +424,44 @@ template&lt;Record TRecord&gt; </div>
 </div><div class="memdoc">
 
 <p>Default move-assign operator. </p>
+
+</div>
+</div>
+<a id="aac6aeba2e1ef0131481179a5f426b027"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac6aeba2e1ef0131481179a5f426b027">&#9670;&nbsp;</a></span>setEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">sl::log::ISink</a>&lt; TRecord &gt;::setEnabled </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enable</em> = <code>true</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Enables or disables the Sink object. </p>
+<p>Disabled Sinks will not handle any incoming Record s </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enable</td><td>True will enable the Sink object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a2fc2ef4635beb23aae7a27597cb31d8a">sl::log::BasicSink&lt; TRecord &gt;</a>.</p>
 
 </div>
 </div>

@@ -121,6 +121,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae473bf8ebc54fd054b8b4ea552093a45"><td class="memItemLeft" align="right" valign="top">TSink *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html#ae473bf8ebc54fd054b8b4ea552093a45">operator-&gt;</a> () const noexcept</td></tr>
 <tr class="memdesc:ae473bf8ebc54fd054b8b4ea552093a45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dereferencing operator.  <a href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html#ae473bf8ebc54fd054b8b4ea552093a45">More...</a><br /></td></tr>
 <tr class="separator:ae473bf8ebc54fd054b8b4ea552093a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0a4d9bb23cff66991296dbb2e5f40ac"><td class="memItemLeft" align="right" valign="top">TSink *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html#aa0a4d9bb23cff66991296dbb2e5f40ac">get</a> () const noexcept</td></tr>
+<tr class="memdesc:aa0a4d9bb23cff66991296dbb2e5f40ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to the Sink instance.  <a href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html#aa0a4d9bb23cff66991296dbb2e5f40ac">More...</a><br /></td></tr>
+<tr class="separator:aa0a4d9bb23cff66991296dbb2e5f40ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;Record TRecord, std::derived_from&lt; ISink&lt; TRecord &gt;&gt; TSink&gt;<br />
@@ -262,6 +265,36 @@ template&lt;Record TRecord, std::derived_from&lt; ISink&lt; TRecord &gt;&gt; TSi
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa0a4d9bb23cff66991296dbb2e5f40ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0a4d9bb23cff66991296dbb2e5f40ac">&#9670;&nbsp;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord, std::derived_from&lt; ISink&lt; TRecord &gt;&gt; TSink&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TSink* <a class="el" href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html">sl::log::ScopedSinkDisabling</a>&lt; TRecord, TSink &gt;::get </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a pointer to the Sink instance. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the wrapped Sink instance. </dd></dl>
+
+</div>
+</div>
 <a id="a42f9c6d46815d83a4c1a31cd4948650a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a42f9c6d46815d83a4c1a31cd4948650a">&#9670;&nbsp;</a></span>operator*()</h2>
 
@@ -288,7 +321,7 @@ template&lt;Record TRecord, std::derived_from&lt; ISink&lt; TRecord &gt;&gt; TSi
 </div><div class="memdoc">
 
 <p>Dereferencing operator. </p>
-<dl class="section return"><dt>Returns</dt><dd>Reference to the internal Sink object. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Reference to the wrapped Sink instance. </dd></dl>
 
 </div>
 </div>
@@ -318,7 +351,7 @@ template&lt;Record TRecord, std::derived_from&lt; ISink&lt; TRecord &gt;&gt; TSi
 </div><div class="memdoc">
 
 <p>Dereferencing operator. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the internal Sink object. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the wrapped Sink instance. </dd></dl>
 
 </div>
 </div>

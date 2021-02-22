@@ -85,6 +85,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a id="index_b"></a>- b -</h3><ul>
+<li>BaseLogger()
+: <a class="el" href="da/d7e/classsl_1_1log_1_1_base_logger.html#a78e1c2825b5d11ed5f7b989ef5b4ef06">sl::log::BaseLogger&lt; TRecord &gt;</a>
+</li>
 <li>BasicSink()
 : <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#a77e2fd9a42c954effed159f2c83a4cb0">sl::log::BasicSink&lt; TRecord &gt;</a>
 </li>
@@ -105,8 +108,8 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="dd/d7a/classsl_1_1log_1_1_base_record.html#ab17c7d6a539408838aa576261ddef9eb">sl::log::BaseRecord&lt; TSeverityLevel, TChannel, TMessage, TTimePoint &gt;</a>
 </li>
 <li>Channel_t
-: <a class="el" href="dd/d7a/classsl_1_1log_1_1_base_record.html#a60afd39a9a13ca50e6aabc4a828b170e">sl::log::BaseRecord&lt; TSeverityLevel, TChannel, TMessage, TTimePoint &gt;</a>
-, <a class="el" href="df/da8/classsl_1_1log_1_1_logger.html#a8829a599efd5cd8f09d53d666e08352f">sl::log::Logger&lt; TRecord &gt;</a>
+: <a class="el" href="da/d7e/classsl_1_1log_1_1_base_logger.html#a54e6f05c39ae8011b95848092c2d4ee0">sl::log::BaseLogger&lt; TRecord &gt;</a>
+, <a class="el" href="dd/d7a/classsl_1_1log_1_1_base_record.html#a60afd39a9a13ca50e6aabc4a828b170e">sl::log::BaseRecord&lt; TSeverityLevel, TChannel, TMessage, TTimePoint &gt;</a>
 , <a class="el" href="db/d9a/classsl_1_1log_1_1_record_builder.html#a665c4ea92e11899cf197b09236590684">sl::log::RecordBuilder&lt; TRecord &gt;</a>
 </li>
 <li>cleanupRule()
@@ -118,9 +121,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>Core()
 : <a class="el" href="d4/df3/classsl_1_1log_1_1_core.html#ac33638d6ad36d3fdd1492c49831300f2">sl::log::Core&lt; TRecord &gt;</a>
 </li>
-<li>Core_t
-: <a class="el" href="df/da8/classsl_1_1log_1_1_logger.html#a985392f2f06e1fa0fd6ae2f42c462d7e">sl::log::Logger&lt; TRecord &gt;</a>
-</li>
 </ul>
 
 
@@ -129,7 +129,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html#ae6d70a8615ce48b1f567e32cd6d31753">sl::log::pre::SetSev</a>
 </li>
 <li>defaultChannel()
-: <a class="el" href="df/da8/classsl_1_1log_1_1_logger.html#aba49bd146399559270ed84f2247e8b56">sl::log::Logger&lt; TRecord &gt;</a>
+: <a class="el" href="da/d7e/classsl_1_1log_1_1_base_logger.html#a61878c9d5f2b20d1e6483cda1c40af38">sl::log::BaseLogger&lt; TRecord &gt;</a>
 </li>
 <li>defaultFilter()
 : <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#ae620bc01174a6f65b0b19cea19b2b715">sl::log::BasicSink&lt; TRecord &gt;</a>
@@ -140,8 +140,11 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>defaultFormatter()
 : <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#a42f994be6d0fbc499bb57d3ac59311db">sl::log::BasicSink&lt; TRecord &gt;</a>
 </li>
-<li>defaultSeverityLevel()
-: <a class="el" href="df/da8/classsl_1_1log_1_1_logger.html#a1ea4fbe883c9e1905172dd06358850bd">sl::log::Logger&lt; TRecord &gt;</a>
+<li>defaultSeverity()
+: <a class="el" href="da/d7e/classsl_1_1log_1_1_base_logger.html#a71aa434deab9c216dfde61c98e616401">sl::log::BaseLogger&lt; TRecord &gt;</a>
+</li>
+<li>directory()
+: <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#ade31a54d2653e53b00ed29ec2a735616">sl::log::FileSink&lt; TRecord &gt;</a>
 </li>
 <li>directorySize
 : <a class="el" href="dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html#aed6d3aa7dce332c56aa8ab32f58c3a20">sl::log::FileSink&lt; TRecord &gt;::CleanupRule</a>
@@ -157,14 +160,11 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_e"></a>- e -</h3><ul>
 <li>empty()
-: <a class="el" href="d1/de1/classsl_1_1log_1_1_record_queue.html#ad9edb42e48cea7c3084dbd8a5fded2d4">sl::log::RecordQueue&lt; TRecord &gt;</a>
+: <a class="el" href="d7/d40/classsl_1_1log_1_1_filter_chain.html#ad8361fba14bbfd61046b102ce7f21ca7">sl::log::FilterChain&lt; TAlgorithm, TFilter &gt;</a>
+, <a class="el" href="d1/de1/classsl_1_1log_1_1_record_queue.html#ad9edb42e48cea7c3084dbd8a5fded2d4">sl::log::RecordQueue&lt; TRecord &gt;</a>
 </li>
-<li>enable()
-: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#adfa142c4cbcd5fda6a7b354d82b23eee">sl::log::BasicSink&lt; TRecord &gt;</a>
-, <a class="el" href="d8/dda/classsl_1_1log_1_1_i_sink.html#a392f4f1912b6a15d2ff4401d70a4170b">sl::log::ISink&lt; TRecord &gt;</a>
-</li>
-<li>EqualsTo()
-: <a class="el" href="de/d3a/classsl_1_1log_1_1_equals_to.html#a0bab3284658a2dac3f181d58fe77a45f">sl::log::EqualsTo&lt; T &gt;</a>
+<li>Equals()
+: <a class="el" href="d2/dce/classsl_1_1log_1_1_equals.html#a231c24c27293382b3b92275569f94c66">sl::log::Equals&lt; T &gt;</a>
 </li>
 <li>error
 : <a class="el" href="df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html#a4c36a63e540f436adbd52a85da196995">sl::log::pre::SetSev</a>
@@ -178,6 +178,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>fileCount
 : <a class="el" href="dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html#a28107c8c9d34b5dfca7dc136c6d8dc90">sl::log::FileSink&lt; TRecord &gt;::CleanupRule</a>
+</li>
+<li>fileNamePattern()
+: <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#adaa28dc777f6c88002c8a93ea5913765">sl::log::FileSink&lt; TRecord &gt;</a>
 </li>
 <li>FileSink()
 : <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#a6a317ccf34b1bb1960ae94922126cef0">sl::log::FileSink&lt; TRecord &gt;</a>
@@ -195,7 +198,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="d3/d63/classsl_1_1log_1_1_filter_any_of.html#a96c4e2e7be686c53e7f47be87b7b3b7a">sl::log::FilterAnyOf&lt; TFilter &gt;</a>
 </li>
 <li>FilterChain()
-: <a class="el" href="d7/d40/classsl_1_1log_1_1_filter_chain.html#a026486b0e7b0d645d18484269643e9eb">sl::log::FilterChain&lt; TAlgorithm, TFilter &gt;</a>
+: <a class="el" href="d7/d40/classsl_1_1log_1_1_filter_chain.html#a35ed0b7b0027ebbd84ba082302366c30">sl::log::FilterChain&lt; TAlgorithm, TFilter &gt;</a>
 </li>
 <li>FilterNoneOf()
 : <a class="el" href="de/db4/classsl_1_1log_1_1_filter_none_of.html#a3f16bb9a5423704c6584176f579bcd62">sl::log::FilterNoneOf&lt; TFilter &gt;</a>
@@ -221,11 +224,14 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
+<li>get()
+: <a class="el" href="d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html#aa0a4d9bb23cff66991296dbb2e5f40ac">sl::log::ScopedSinkDisabling&lt; TRecord, TSink &gt;</a>
+</li>
 <li>Greater()
 : <a class="el" href="d5/d69/classsl_1_1log_1_1_greater.html#a14747db81645decfac94fca52f8fa558">sl::log::Greater&lt; T &gt;</a>
 </li>
-<li>GreaterEqual()
-: <a class="el" href="db/ddb/classsl_1_1log_1_1_greater_equal.html#af52a4977e112c57a237a435aa965e02b">sl::log::GreaterEqual&lt; T &gt;</a>
+<li>GreaterEquals()
+: <a class="el" href="dc/d79/classsl_1_1log_1_1_greater_equals.html#a802319edec91d282fa9fa84393a7c4b3">sl::log::GreaterEquals&lt; T &gt;</a>
 </li>
 </ul>
 
@@ -266,12 +272,12 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 , <a class="el" href="d4/df3/classsl_1_1log_1_1_core.html#ac978894c8846ae6539d9f57ad2d4f8ed">sl::log::Core&lt; TRecord &gt;</a>
 , <a class="el" href="d8/dda/classsl_1_1log_1_1_i_sink.html#a35ba629214d49e3afe4de5612b13ea2c">sl::log::ISink&lt; TRecord &gt;</a>
 </li>
+<li>LogCallback_t
+: <a class="el" href="da/d7e/classsl_1_1log_1_1_base_logger.html#a4aa67a73722753b8b1ed06a1a47acd1e">sl::log::BaseLogger&lt; TRecord &gt;</a>
+</li>
 <li>logDerived()
 : <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#aa58c3a763630e7738a6e61b8b90e33b4">sl::log::BasicSink&lt; TRecord &gt;</a>
 , <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#aabdad51a7125261d37d75f97b3603c15">sl::log::FileSink&lt; TRecord &gt;</a>
-</li>
-<li>Logger()
-: <a class="el" href="df/da8/classsl_1_1log_1_1_logger.html#a86be5ee39202fb79329ca446b2858fb3">sl::log::Logger&lt; TRecord &gt;</a>
 </li>
 </ul>
 
@@ -304,17 +310,17 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_o"></a>- o -</h3><ul>
 <li>operator()()
-: <a class="el" href="d3/d9b/classsl_1_1log_1_1_between.html#ad7775d587857b4ee5cd17f8d1f1401a6">sl::log::Between&lt; T &gt;</a>
+: <a class="el" href="da/d7e/classsl_1_1log_1_1_base_logger.html#a31101289ccd5df7847304662a7f64234">sl::log::BaseLogger&lt; TRecord &gt;</a>
+, <a class="el" href="d3/d9b/classsl_1_1log_1_1_between.html#ad7775d587857b4ee5cd17f8d1f1401a6">sl::log::Between&lt; T &gt;</a>
 , <a class="el" href="db/da1/classsl_1_1log_1_1_between_equals.html#a2152ce6ae21e03bb3aba0c357e7e4282">sl::log::BetweenEquals&lt; T &gt;</a>
 , <a class="el" href="d4/d87/classsl_1_1log_1_1_byte_count_flush_policy.html#a222701ebb53a1a65d87b2048f6c28a91">sl::log::ByteCountFlushPolicy</a>
-, <a class="el" href="de/d3a/classsl_1_1log_1_1_equals_to.html#ae5d08ce8e304d3cdef6dbd737cf33a84">sl::log::EqualsTo&lt; T &gt;</a>
+, <a class="el" href="d2/dce/classsl_1_1log_1_1_equals.html#a7edb87acbe15a414b290df37ec34188a">sl::log::Equals&lt; T &gt;</a>
 , <a class="el" href="d7/d40/classsl_1_1log_1_1_filter_chain.html#ad52c815ca33b84587f5413660e3dbddb">sl::log::FilterChain&lt; TAlgorithm, TFilter &gt;</a>
 , <a class="el" href="d8/df6/classsl_1_1log_1_1_flush_policy.html#aeae9c7b48cfd5055ccb26b1bc4c8dcaf">sl::log::FlushPolicy&lt; TPredicate, TProjection, TInvocationRule &gt;</a>
 , <a class="el" href="d5/d69/classsl_1_1log_1_1_greater.html#a1aa53392133ac74cf45ec2835e71187e">sl::log::Greater&lt; T &gt;</a>
-, <a class="el" href="db/ddb/classsl_1_1log_1_1_greater_equal.html#a9efaf4e77d2770daffdf44ad2d189586">sl::log::GreaterEqual&lt; T &gt;</a>
+, <a class="el" href="dc/d79/classsl_1_1log_1_1_greater_equals.html#a16208567742ad31a9aa7586b8617ea88">sl::log::GreaterEquals&lt; T &gt;</a>
 , <a class="el" href="d6/deb/classsl_1_1log_1_1_less.html#af34daa6e6bc010215386408589316c26">sl::log::Less&lt; T &gt;</a>
 , <a class="el" href="df/d10/classsl_1_1log_1_1_less_equals.html#a5fc822ca6812956f3ce763d20028b5a3">sl::log::LessEquals&lt; T &gt;</a>
-, <a class="el" href="df/da8/classsl_1_1log_1_1_logger.html#a9409d959a66746644b69f53a8770da0d">sl::log::Logger&lt; TRecord &gt;</a>
 , <a class="el" href="d7/d21/classsl_1_1log_1_1_not_equals.html#a730347e7b083fafdd43d92fa21572897">sl::log::NotEquals&lt; T &gt;</a>
 , <a class="el" href="d4/d36/classsl_1_1log_1_1_projection_filter.html#a8bec383f32cff6a5b2eeb2a9cc23a969">sl::log::ProjectionFilter&lt; TProjection, TUnaryPredicate &gt;</a>
 , <a class="el" href="d9/d84/classsl_1_1log_1_1_set_chan.html#a389f9272a12e0cc451f2f5ab715b9faf">sl::log::SetChan&lt; TChannel &gt;</a>
@@ -331,11 +337,11 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="db/d9a/classsl_1_1log_1_1_record_builder.html#ac176c282b5613d66e80fbf812d6e1f6e">sl::log::RecordBuilder&lt; TRecord &gt;</a>
 </li>
 <li>operator=()
-: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#aa4b47a060c3ad8a3e42f334b1a6614b7">sl::log::BasicSink&lt; TRecord &gt;</a>
+: <a class="el" href="da/d7e/classsl_1_1log_1_1_base_logger.html#aaae614fb320af21ac8ab8b3904ebba52">sl::log::BaseLogger&lt; TRecord &gt;</a>
+, <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#aa4b47a060c3ad8a3e42f334b1a6614b7">sl::log::BasicSink&lt; TRecord &gt;</a>
 , <a class="el" href="d4/df3/classsl_1_1log_1_1_core.html#adc78afd80397c528f5db37929dd29f88">sl::log::Core&lt; TRecord &gt;</a>
 , <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#aa89fd28eea86d2402a6bb1cab21d0ef5">sl::log::FileSink&lt; TRecord &gt;</a>
 , <a class="el" href="d8/dda/classsl_1_1log_1_1_i_sink.html#a4e0520bcb878b9d4f15449e32f9aad07">sl::log::ISink&lt; TRecord &gt;</a>
-, <a class="el" href="df/da8/classsl_1_1log_1_1_logger.html#a4c9d593d3f747d41d57288c19d06c3fd">sl::log::Logger&lt; TRecord &gt;</a>
 , <a class="el" href="db/d9a/classsl_1_1log_1_1_record_builder.html#aab432dfaef0326957ea46e5ddeab7d55">sl::log::RecordBuilder&lt; TRecord &gt;</a>
 , <a class="el" href="d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html#ab8313c1d89fff6d71ccc9319f0ebff7c">sl::log::ScopedSinkDisabling&lt; TRecord, TSink &gt;</a>
 </li>
@@ -343,6 +349,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_p"></a>- p -</h3><ul>
+<li>patternString()
+: <a class="el" href="d1/d81/classsl_1_1log_1_1_string_pattern.html#aa9add6b963c5bab9e7c2147a3c5ffca5">sl::log::StringPattern</a>
+</li>
 <li>Predicate_t
 : <a class="el" href="d8/df6/classsl_1_1log_1_1_flush_policy.html#a35204bbc45e2b51854f41c5a20280b02">sl::log::FlushPolicy&lt; TPredicate, TProjection, TInvocationRule &gt;</a>
 </li>
@@ -364,37 +373,43 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="db/d9a/classsl_1_1log_1_1_record_builder.html#a2e5f0dca1c400a9b22db6770e2b50825">sl::log::RecordBuilder&lt; TRecord &gt;</a>
 </li>
 <li>Record_t
-: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">sl::log::BasicSink&lt; TRecord &gt;</a>
+: <a class="el" href="da/d7e/classsl_1_1log_1_1_base_logger.html#a617f3f56f6eee6112b4db89e9ed425f5">sl::log::BaseLogger&lt; TRecord &gt;</a>
+, <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">sl::log::BasicSink&lt; TRecord &gt;</a>
 , <a class="el" href="d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">sl::log::Core&lt; TRecord &gt;</a>
 , <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">sl::log::FileSink&lt; TRecord &gt;</a>
 , <a class="el" href="d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">sl::log::ISink&lt; TRecord &gt;</a>
-, <a class="el" href="df/da8/classsl_1_1log_1_1_logger.html#a31fe03763fb8d519f25c2e673a58f748">sl::log::Logger&lt; TRecord &gt;</a>
 , <a class="el" href="db/d9a/classsl_1_1log_1_1_record_builder.html#abc8c50b198f8404d4dd3c077bbf028b3">sl::log::RecordBuilder&lt; TRecord &gt;</a>
 , <a class="el" href="d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab">sl::log::RecordQueue&lt; TRecord &gt;</a>
 </li>
 <li>RecordBuilder()
-: <a class="el" href="db/d9a/classsl_1_1log_1_1_record_builder.html#a27945ab696667ec55c7476190c3c3715">sl::log::RecordBuilder&lt; TRecord &gt;</a>
+: <a class="el" href="db/d9a/classsl_1_1log_1_1_record_builder.html#ada97845e7eba192545ad9f3867ddf76a">sl::log::RecordBuilder&lt; TRecord &gt;</a>
 </li>
 <li>RecordBuilder_t
-: <a class="el" href="df/da8/classsl_1_1log_1_1_logger.html#a6499436864bad1175c7da7d3060a952b">sl::log::Logger&lt; TRecord &gt;</a>
+: <a class="el" href="da/d7e/classsl_1_1log_1_1_base_logger.html#aa0fe8534edf7b83e346bb41ed2afee94">sl::log::BaseLogger&lt; TRecord &gt;</a>
 </li>
 <li>removeClosingHandler()
 : <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#abc687c0ec5a26e93d31f46e71cac5f9a">sl::log::FileSink&lt; TRecord &gt;</a>
 </li>
 <li>removeFilter()
-: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#a42ec066fa02a2d798517934eea7330d4">sl::log::BasicSink&lt; TRecord &gt;</a>
+: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#a1a81b07533c8050c4390015cd1740f9f">sl::log::BasicSink&lt; TRecord &gt;</a>
 </li>
 <li>removeFlushPolicy()
-: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#a7bfb39f251515ade3e356d533246d1a0">sl::log::BasicSink&lt; TRecord &gt;</a>
+: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#abae868f7a3a8533a3301d460a4a8ffb8">sl::log::BasicSink&lt; TRecord &gt;</a>
 </li>
 <li>removeFormatter()
-: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#abb58ac95a0a1ad03bedd1e52756d2b0c">sl::log::BasicSink&lt; TRecord &gt;</a>
+: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#a590d8b49a856a0ad1beee76540c18098">sl::log::BasicSink&lt; TRecord &gt;</a>
 </li>
 <li>removeOpeningHandler()
 : <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#a8c9922120e8707d13a0eee2e1cc94f31">sl::log::FileSink&lt; TRecord &gt;</a>
 </li>
+<li>removeSink()
+: <a class="el" href="d4/df3/classsl_1_1log_1_1_core.html#acee4e8ded4f939bd0e18f1a017469634">sl::log::Core&lt; TRecord &gt;</a>
+</li>
 <li>requires()
 : <a class="el" href="db/d9a/classsl_1_1log_1_1_record_builder.html#aa52a0217a59650f84365ca4d76e43727">sl::log::RecordBuilder&lt; TRecord &gt;</a>
+</li>
+<li>rotate()
+: <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#afe1f90dc6bc39f9b57b585b916560162">sl::log::FileSink&lt; TRecord &gt;</a>
 </li>
 <li>rotationRule()
 : <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#af9c4abacadb9ffecdb729b032ab59301">sl::log::FileSink&lt; TRecord &gt;</a>
@@ -419,25 +434,38 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#af6002436e41630f6851958cacefb658b">sl::log::FileSink&lt; TRecord &gt;</a>
 </li>
 <li>setDefaultChannel()
-: <a class="el" href="df/da8/classsl_1_1log_1_1_logger.html#a1e79446ef43407c6bd5a35be5ef801ce">sl::log::Logger&lt; TRecord &gt;</a>
+: <a class="el" href="da/d7e/classsl_1_1log_1_1_base_logger.html#a9c6653af9e2d0fe20db2eb8ced71b6d2">sl::log::BaseLogger&lt; TRecord &gt;</a>
 </li>
-<li>setDefaultSeverityLevel()
-: <a class="el" href="df/da8/classsl_1_1log_1_1_logger.html#a8fbfeb2b2a102f3c39103f8e90debcbc">sl::log::Logger&lt; TRecord &gt;</a>
+<li>setDefaultSeverity()
+: <a class="el" href="da/d7e/classsl_1_1log_1_1_base_logger.html#a43ba29860797ebf6a257fd333925c00f">sl::log::BaseLogger&lt; TRecord &gt;</a>
+</li>
+<li>setDirectory()
+: <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#a62f20e66659f4e849886831e247c7083">sl::log::FileSink&lt; TRecord &gt;</a>
+</li>
+<li>setEnabled()
+: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#a2fc2ef4635beb23aae7a27597cb31d8a">sl::log::BasicSink&lt; TRecord &gt;</a>
+, <a class="el" href="d8/dda/classsl_1_1log_1_1_i_sink.html#aac6aeba2e1ef0131481179a5f426b027">sl::log::ISink&lt; TRecord &gt;</a>
+</li>
+<li>setFileNamePattern()
+: <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#ad436b3bac4041286af748e3f030e71aa">sl::log::FileSink&lt; TRecord &gt;</a>
 </li>
 <li>setFilter()
-: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#a1ae19a6fe284f7a59929918d180c3bf1">sl::log::BasicSink&lt; TRecord &gt;</a>
+: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#a0691496a23266b39a30a1d289d7bcc8a">sl::log::BasicSink&lt; TRecord &gt;</a>
 </li>
 <li>setFlushPolicy()
-: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#ab571dba0bae50ace5604f08a8d3ad5fe">sl::log::BasicSink&lt; TRecord &gt;</a>
+: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#ae19ff08860c67cbb3f9c2ed7be15e8b1">sl::log::BasicSink&lt; TRecord &gt;</a>
 </li>
 <li>setFormatter()
-: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#ae9c781514bb81f5d6856047613877f16">sl::log::BasicSink&lt; TRecord &gt;</a>
+: <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#ad07fdb2b00a65bcf28272f222d2298ad">sl::log::BasicSink&lt; TRecord &gt;</a>
 </li>
 <li>setMessage()
 : <a class="el" href="dd/d7a/classsl_1_1log_1_1_base_record.html#aedf882a4689b91227bb84ce016de25e3">sl::log::BaseRecord&lt; TSeverityLevel, TChannel, TMessage, TTimePoint &gt;</a>
 </li>
 <li>setOpeningHandler()
 : <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#a01f6d5df2c0e9dee1b8908d6b3fbddb6">sl::log::FileSink&lt; TRecord &gt;</a>
+</li>
+<li>setPatternString()
+: <a class="el" href="d1/d81/classsl_1_1log_1_1_string_pattern.html#a7727d9f1c6072148fdee9e8caf3b92be">sl::log::StringPattern</a>
 </li>
 <li>setRotationRule()
 : <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#a4d13807625e2ad764355ab95988b788d">sl::log::FileSink&lt; TRecord &gt;</a>
@@ -458,15 +486,19 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="dd/d7a/classsl_1_1log_1_1_base_record.html#ac16302bcf25d27c7497612e10fd53c3f">sl::log::BaseRecord&lt; TSeverityLevel, TChannel, TMessage, TTimePoint &gt;</a>
 </li>
 <li>SeverityLevel_t
-: <a class="el" href="dd/d7a/classsl_1_1log_1_1_base_record.html#a85f1936e05df490e17c1ab601aecc38e">sl::log::BaseRecord&lt; TSeverityLevel, TChannel, TMessage, TTimePoint &gt;</a>
-, <a class="el" href="df/da8/classsl_1_1log_1_1_logger.html#aa28d961913948749cb7fd2f544e27035">sl::log::Logger&lt; TRecord &gt;</a>
+: <a class="el" href="da/d7e/classsl_1_1log_1_1_base_logger.html#adf0e5cd1ac06e19a9be4baaef9cf33f1">sl::log::BaseLogger&lt; TRecord &gt;</a>
+, <a class="el" href="dd/d7a/classsl_1_1log_1_1_base_record.html#a85f1936e05df490e17c1ab601aecc38e">sl::log::BaseRecord&lt; TSeverityLevel, TChannel, TMessage, TTimePoint &gt;</a>
 , <a class="el" href="db/d9a/classsl_1_1log_1_1_record_builder.html#a47508529cfd40837f1f269001649f731">sl::log::RecordBuilder&lt; TRecord &gt;</a>
 </li>
+<li>SinkException()
+: <a class="el" href="dd/dab/classsl_1_1log_1_1_sink_exception.html#a61048bde43bf3a87be9a087770f9605d">sl::log::SinkException</a>
+</li>
 <li>size()
-: <a class="el" href="d1/de1/classsl_1_1log_1_1_record_queue.html#a5cead06ef00abe47041528f8bc400849">sl::log::RecordQueue&lt; TRecord &gt;</a>
+: <a class="el" href="d7/d40/classsl_1_1log_1_1_filter_chain.html#a4a46d22b066b4b202171bb59b5cab739">sl::log::FilterChain&lt; TAlgorithm, TFilter &gt;</a>
+, <a class="el" href="d1/de1/classsl_1_1log_1_1_record_queue.html#a5cead06ef00abe47041528f8bc400849">sl::log::RecordQueue&lt; TRecord &gt;</a>
 </li>
 <li>StringPattern()
-: <a class="el" href="d1/d81/classsl_1_1log_1_1_string_pattern.html#a527ec73a1607f2f43c4ced45cc974852">sl::log::StringPattern</a>
+: <a class="el" href="d1/d81/classsl_1_1log_1_1_string_pattern.html#a9db424dee5f42445f7c9b91c3feb00c1">sl::log::StringPattern</a>
 </li>
 </ul>
 
@@ -506,6 +538,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index__7E"></a>- ~ -</h3><ul>
+<li>~BaseLogger()
+: <a class="el" href="da/d7e/classsl_1_1log_1_1_base_logger.html#aa6950d5a42b3025d95102546a728920b">sl::log::BaseLogger&lt; TRecord &gt;</a>
+</li>
 <li>~BasicSink()
 : <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#a3d32a8ae46419eaae763ac001935bcd2">sl::log::BasicSink&lt; TRecord &gt;</a>
 </li>
@@ -517,9 +552,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>~ISink()
 : <a class="el" href="d8/dda/classsl_1_1log_1_1_i_sink.html#a33d8137c0f9f0e0a7e77f8fa461c9a2b">sl::log::ISink&lt; TRecord &gt;</a>
-</li>
-<li>~Logger()
-: <a class="el" href="df/da8/classsl_1_1log_1_1_logger.html#ab1c8c7bad269dee57b0de0a7dfb5ccee">sl::log::Logger&lt; TRecord &gt;</a>
 </li>
 <li>~RecordBuilder()
 : <a class="el" href="db/d9a/classsl_1_1log_1_1_record_builder.html#aa91db3e07ed07aba4793678525764ad7">sl::log::RecordBuilder&lt; TRecord &gt;</a>

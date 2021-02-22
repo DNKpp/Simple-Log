@@ -86,7 +86,7 @@ $(document).ready(function(){initNavTree('de/db4/classsl_1_1log_1_1_filter_none_
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="../../da/de1/classsl_1_1log_1_1_filter_none_of-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">sl::log::FilterNoneOf&lt; TFilter &gt; Class Template Reference<div class="ingroups"><a class="el" href="../../d4/d38/group__filter.html">Filter</a></div></div>  </div>
+<div class="title">sl::log::FilterNoneOf&lt; TFilter &gt; Class Template Reference<div class="ingroups"><a class="el" href="../../df/d7c/group___filter.html">Filter</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -112,6 +112,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad52c815ca33b84587f5413660e3dbddb"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#ad52c815ca33b84587f5413660e3dbddb">operator()</a> (const TRecord &amp;rec)</td></tr>
 <tr class="memdesc:ad52c815ca33b84587f5413660e3dbddb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call-operator.  <a href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#ad52c815ca33b84587f5413660e3dbddb">More...</a><br /></td></tr>
 <tr class="separator:ad52c815ca33b84587f5413660e3dbddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8361fba14bbfd61046b102ce7f21ca7"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#ad8361fba14bbfd61046b102ce7f21ca7">empty</a> () const noexcept</td></tr>
+<tr class="memdesc:ad8361fba14bbfd61046b102ce7f21ca7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether the are no sub-filters attached.  <a href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#ad8361fba14bbfd61046b102ce7f21ca7">More...</a><br /></td></tr>
+<tr class="separator:ad8361fba14bbfd61046b102ce7f21ca7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a46d22b066b4b202171bb59b5cab739"><td class="memItemLeft" align="right" valign="top">constexpr std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a4a46d22b066b4b202171bb59b5cab739">size</a> () const noexcept</td></tr>
+<tr class="memdesc:a4a46d22b066b4b202171bb59b5cab739"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the amount of attached sub-filters.  <a href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a4a46d22b066b4b202171bb59b5cab739">More...</a><br /></td></tr>
+<tr class="separator:a4a46d22b066b4b202171bb59b5cab739"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class... TFilter&gt;<br />
@@ -162,6 +168,34 @@ template&lt;class... TFilter&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad8361fba14bbfd61046b102ce7f21ca7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8361fba14bbfd61046b102ce7f21ca7">&#9670;&nbsp;</a></span>empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr bool <a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html">sl::log::FilterChain</a>&lt; detail::TupleNoneOf , TFilter &gt;::empty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns whether the are no sub-filters attached. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if there aren't have any sub-filters attached. </dd></dl>
+
+</div>
+</div>
 <a id="ad52c815ca33b84587f5413660e3dbddb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad52c815ca33b84587f5413660e3dbddb">&#9670;&nbsp;</a></span>operator()()</h2>
 
@@ -200,6 +234,34 @@ template&lt;class... TFilter&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns true, if the Record should be handled. False if skipped. </dd></dl>
+
+</div>
+</div>
+<a id="a4a46d22b066b4b202171bb59b5cab739"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a46d22b066b4b202171bb59b5cab739">&#9670;&nbsp;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::size_t <a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html">sl::log::FilterChain</a>&lt; detail::TupleNoneOf , TFilter &gt;::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Obtains the amount of attached sub-filters. </p>
+<dl class="section return"><dt>Returns</dt><dd>The amount of attached sub-filters </dd></dl>
 
 </div>
 </div>

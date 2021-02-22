@@ -4,7 +4,7 @@ var _preset_types_8hpp =
     [ "Core_t", "d7/d89/_preset_types_8hpp.html#ga62237602874e49e1c35f1da9c2393e48", null ],
     [ "FileSink_t", "d7/d89/_preset_types_8hpp.html#ga99c4108152ca0187e2a4c4d1359ef33d", null ],
     [ "ISink_t", "d7/d89/_preset_types_8hpp.html#ga441c31c9fe7ec7745acfa5cd24a5e6c6", null ],
-    [ "Logger_t", "d7/d89/_preset_types_8hpp.html#ga056916e99d3c6cb4490a14821ccf1a35", null ],
+    [ "Logger_t", "d7/d89/_preset_types_8hpp.html#ga62368dd44f720afe928180062ff31a15", null ],
     [ "Record_t", "d7/d89/_preset_types_8hpp.html#gabf4790854bf35dd27d223fbecf8e8307", null ],
     [ "SeverityLevel", "d7/d89/_preset_types_8hpp.html#ga1233009dc7a50b2f4d4a14c7e9b087d2", [
       [ "debug", "d7/d89/_preset_types_8hpp.html#gga1233009dc7a50b2f4d4a14c7e9b087d2aad42f6697b035b7580e4fef93be20b4d", null ],

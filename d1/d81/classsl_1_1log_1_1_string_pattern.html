@@ -97,19 +97,55 @@ $(document).ready(function(){initNavTree('d1/d81/classsl_1_1log_1_1_string_patte
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a527ec73a1607f2f43c4ced45cc974852"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html#a527ec73a1607f2f43c4ced45cc974852">StringPattern</a> (std::string patternString)</td></tr>
+<tr class="memitem:a9db424dee5f42445f7c9b91c3feb00c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html#a9db424dee5f42445f7c9b91c3feb00c1">StringPattern</a> () noexcept</td></tr>
+<tr class="memdesc:a9db424dee5f42445f7c9b91c3feb00c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default Constructor.  <a href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html#a9db424dee5f42445f7c9b91c3feb00c1">More...</a><br /></td></tr>
+<tr class="separator:a9db424dee5f42445f7c9b91c3feb00c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a527ec73a1607f2f43c4ced45cc974852"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html#a527ec73a1607f2f43c4ced45cc974852">StringPattern</a> (std::string <a class="el" href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html#aa9add6b963c5bab9e7c2147a3c5ffca5">patternString</a>)</td></tr>
 <tr class="memdesc:a527ec73a1607f2f43c4ced45cc974852"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html#a527ec73a1607f2f43c4ced45cc974852">More...</a><br /></td></tr>
 <tr class="separator:a527ec73a1607f2f43c4ced45cc974852"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad723a5f700640cd566cbf292f9a19f81"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html#ad723a5f700640cd566cbf292f9a19f81">next</a> ()</td></tr>
 <tr class="memdesc:ad723a5f700640cd566cbf292f9a19f81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new string.  <a href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html#ad723a5f700640cd566cbf292f9a19f81">More...</a><br /></td></tr>
 <tr class="separator:ad723a5f700640cd566cbf292f9a19f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9add6b963c5bab9e7c2147a3c5ffca5"><td class="memItemLeft" align="right" valign="top">std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html#aa9add6b963c5bab9e7c2147a3c5ffca5">patternString</a> () const noexcept</td></tr>
+<tr class="memdesc:aa9add6b963c5bab9e7c2147a3c5ffca5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter of the used pattern string.  <a href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html#aa9add6b963c5bab9e7c2147a3c5ffca5">More...</a><br /></td></tr>
+<tr class="separator:aa9add6b963c5bab9e7c2147a3c5ffca5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7727d9f1c6072148fdee9e8caf3b92be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html#a7727d9f1c6072148fdee9e8caf3b92be">setPatternString</a> (std::string <a class="el" href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html#aa9add6b963c5bab9e7c2147a3c5ffca5">patternString</a>)</td></tr>
+<tr class="memdesc:a7727d9f1c6072148fdee9e8caf3b92be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the pattern string.  <a href="../../d1/d81/classsl_1_1log_1_1_string_pattern.html#a7727d9f1c6072148fdee9e8caf3b92be">More...</a><br /></td></tr>
+<tr class="separator:a7727d9f1c6072148fdee9e8caf3b92be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Helper class for generating patterned strings. </p>
 <p>Tokenize the pattern string and creates generators, which will then create the actual substrings on demand. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a9db424dee5f42445f7c9b91c3feb00c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9db424dee5f42445f7c9b91c3feb00c1">&#9670;&nbsp;</a></span>StringPattern() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sl::log::StringPattern::StringPattern </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Default Constructor. </p>
+
+</div>
+</div>
 <a id="a527ec73a1607f2f43c4ced45cc974852"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a527ec73a1607f2f43c4ced45cc974852">&#9670;&nbsp;</a></span>StringPattern()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a527ec73a1607f2f43c4ced45cc974852">&#9670;&nbsp;</a></span>StringPattern() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -168,6 +204,68 @@ Public Member Functions</h2></td></tr>
 
 <p>Creates a new string. </p>
 <p>The returned string will be created on demand and follows the pattern string rules. </p><dl class="section return"><dt>Returns</dt><dd>Generated string. </dd></dl>
+
+</div>
+</div>
+<a id="aa9add6b963c5bab9e7c2147a3c5ffca5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9add6b963c5bab9e7c2147a3c5ffca5">&#9670;&nbsp;</a></span>patternString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string_view sl::log::StringPattern::patternString </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Getter of the used pattern string. </p>
+<dl class="section return"><dt>Returns</dt><dd>A std::string_view on the pattern string </dd></dl>
+
+</div>
+</div>
+<a id="a7727d9f1c6072148fdee9e8caf3b92be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7727d9f1c6072148fdee9e8caf3b92be">&#9670;&nbsp;</a></span>setPatternString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sl::log::StringPattern::setPatternString </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>patternString</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the pattern string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">patternString</td><td>The given pattern string </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

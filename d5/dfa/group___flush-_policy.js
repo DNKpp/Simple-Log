@@ -24,6 +24,7 @@ var group___flush__policy =
     ] ],
     [ "AlwaysFlushPolicy", "d5/dfa/group___flush-_policy.html#gaa231417ed2bdea57eaab58c82f2939f4", null ],
     [ "makeChannelFlushPolicyFor", "d5/dfa/group___flush-_policy.html#ga14bfb1b391c85b40d7a1e6a99e16d495", null ],
+    [ "makeMessageFlushPolicyFor", "d5/dfa/group___flush-_policy.html#gafd2084b61e0e19b5cfac465eac9a88f1", null ],
     [ "makeSeverityFlushPolicyFor", "d5/dfa/group___flush-_policy.html#gab9b3e1b941de7c29475debaa1b6a1cac", null ],
     [ "makeTimePointFlushPolicyFor", "d5/dfa/group___flush-_policy.html#gafc0f3598ec58dda217e635c7fe2abe4f", null ]
 ];

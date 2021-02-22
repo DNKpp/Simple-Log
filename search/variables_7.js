@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['warning_321',['warning',['../df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html#a88e9c1cda3901a3bef4979d111b97695',1,'sl::log::pre::SetSev']]]
+  ['record_346',['Record',['../d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081',1,'sl::log']]],
+  ['recordfilterfor_347',['RecordFilterFor',['../d4/df0/group__concepts.html#ga37ddba3404d4136b7f370c8b5c4261b0',1,'sl::log']]],
+  ['recordformatterfor_348',['RecordFormatterFor',['../d4/df0/group__concepts.html#ga524680d39e771fd1fa808e92614a355b',1,'sl::log']]]
 ];

@@ -87,7 +87,7 @@ $(document).ready(function(){initNavTree('db/d9a/classsl_1_1log_1_1_record_build
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="../../d9/d2d/classsl_1_1log_1_1_record_builder-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">sl::log::RecordBuilder&lt; TRecord &gt; Class Template Reference<div class="ingroups"><a class="el" href="../../d0/de9/group__record.html">Record</a> &raquo; <a class="el" href="../../d2/dce/group___record_builder.html">RecordBuilder</a></div></div>  </div>
+<div class="title">sl::log::RecordBuilder&lt; TRecord &gt; Class Template Reference<div class="ingroups"><a class="el" href="../../d4/df0/group__concepts.html">Concepts</a> &#124; <a class="el" href="../../d0/de9/group__record.html">Record</a> &raquo; <a class="el" href="../../d2/dce/group___record_builder.html">RecordBuilder</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -153,7 +153,7 @@ class sl::log::RecordBuilder&lt; TRecord &gt;</h3>
   </table>
   </dd>
 </dl>
-<p>This is class provides the simple and elegant interface for making logging expressions. Its objects are non-copyable but movable. When a <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object gets destroyed (mainly because going out of scope) it will automatically send its created Record to the designated <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> object. Users should not instantiate objects themselves, but should instead use the <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> objects. </p>
+<p>This is class provides the simple and elegant interface for making logging expressions. Its objects are non-copyable but movable. When a <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> object gets destroyed (mainly because going out of scope) it will automatically send its created Record to the designated Logger object. Users should not instantiate objects themselves, but should instead use the Logger objects. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a665c4ea92e11899cf197b09236590684"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a665c4ea92e11899cf197b09236590684">&#9670;&nbsp;</a></span>Channel_t</h2>
@@ -244,11 +244,11 @@ template&lt;Record TRecord&gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">prefabRec</td><td>Prefabricated Record </td></tr>
-    <tr><td class="paramname">cb</td><td>Callback to the associated <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> object</td></tr>
+    <tr><td class="paramname">cb</td><td>Callback to the associated Logger object</td></tr>
   </table>
   </dd>
 </dl>
-<p>This constructor requires a callback to the associated <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> objects log function. The callback should have the following signature: </p><div class="fragment"><div class="line">void(<a class="code" href="../../d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081">Record</a>)</div>
+<p>This constructor requires a callback to the associated Logger objects log function. The callback should have the following signature: </p><div class="fragment"><div class="line">void(<a class="code" href="../../d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081">Record</a>)</div>
 <div class="ttc" id="agroup__concepts_html_ga7e49931624e51b19627bef18ff763081"><div class="ttname"><a href="../../d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081">sl::log::Record</a></div><div class="ttdeci">concept Record</div><div class="ttdoc">Concept for Record types.</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:33</div></div>
 </div><!-- fragment --> 
 </div>
@@ -279,7 +279,7 @@ template&lt;Record TRecord&gt; </div>
 </div><div class="memdoc">
 
 <p>Destructor. </p>
-<p>If <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> is valid (in fact, if a callback is installed) it moves its created Record object to the <a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html" title="Convenience class for generating Record s.">Logger</a> object. </p>
+<p>If <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> is valid (in fact, if a callback is installed) it moves its created Record object to the Logger object. </p>
 
 </div>
 </div>
@@ -587,7 +587,8 @@ template&lt;class T &gt; </div>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li><a class="el" href="../../d9/db9/_concepts_8hpp_source.html">Concepts.hpp</a></li>
 <li><a class="el" href="../../dc/d3b/_record_builder_8hpp_source.html">RecordBuilder.hpp</a></li>
 </ul>
 </div><!-- contents -->

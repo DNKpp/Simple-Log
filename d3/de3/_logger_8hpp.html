@@ -84,12 +84,14 @@ $(document).ready(function(){initNavTree('d3/de3/_logger_8hpp.html','../../'); i
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Logger.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;cassert&gt;</code><br />
+<code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;version&gt;</code><br />
 <code>#include &quot;<a class="el" href="../../d9/db9/_concepts_8hpp_source.html">Concepts.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d5/d8e/_core_8hpp_source.html">Core.hpp</a>&quot;</code><br />
@@ -99,8 +101,8 @@ $(document).ready(function(){initNavTree('d3/de3/_logger_8hpp.html','../../'); i
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/da8/classsl_1_1log_1_1_logger.html">sl::log::Logger&lt; TRecord &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience class for generating Record s.  <a href="../../df/da8/classsl_1_1log_1_1_logger.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger&lt; TRecord &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience class for generating Record s.  <a href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -109,6 +111,13 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:de/d83/namespacesl_1_1log"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d83/namespacesl_1_1log.html">sl::log</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a52dbf3fd431df7f8338d9e8f394f7e68"><td class="memTemplParams" colspan="2">template&lt;Logger TLogger, class... TArgs&gt; </td></tr>
+<tr class="memitem:a52dbf3fd431df7f8338d9e8f394f7e68"><td class="memTemplItemLeft" align="right" valign="top">TLogger&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d83/namespacesl_1_1log.html#a52dbf3fd431df7f8338d9e8f394f7e68">sl::log::makeLogger</a> (Core&lt; typename TLogger::Record_t &gt; &amp;core, TArgs &amp;&amp;... args)</td></tr>
+<tr class="memdesc:a52dbf3fd431df7f8338d9e8f394f7e68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a Logger object and setup its callback to the given <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance.  <a href="../../de/d83/namespacesl_1_1log.html#a52dbf3fd431df7f8338d9e8f394f7e68">More...</a><br /></td></tr>
+<tr class="separator:a52dbf3fd431df7f8338d9e8f394f7e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
