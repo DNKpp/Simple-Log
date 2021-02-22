@@ -19,50 +19,53 @@ using namespace sl::log;
 using Record_t = BaseRecord<int, int>;
 using BasicSink_t = BasicSink<Record_t>;
 
-struct FlushPolicyMoc
+namespace
 {
-	bool operator ()(const Record_t& rec, std::size_t byteCount) const noexcept
+	struct FlushPolicyMoc
 	{
-		assert(invocationCount);
-		++(*invocationCount);
-		return (*invocationCount & 1ull) != 0;
-	}
+		bool operator ()(const Record_t& rec, std::size_t byteCount) const noexcept
+		{
+			assert(invocationCount);
+			++(*invocationCount);
+			return (*invocationCount & 1ull) != 0;
+		}
 
-	void flushed() const noexcept
+		void flushed() const noexcept
+		{
+			assert(flushedSignalCount);
+			++(*flushedSignalCount);
+		}
+
+		std::size_t* invocationCount;
+		std::size_t* flushedSignalCount;
+	};
+
+	struct FormatterMoc
 	{
-		assert(flushedSignalCount);
-		++(*flushedSignalCount);
-	}
+		std::string operator ()(const Record_t& rec) const
+		{
+			assert(invoked);
+			*invoked = true;
+			return std::string(overridingStr);
+		}
 
-	std::size_t* invocationCount;
-	std::size_t* flushedSignalCount;
-};
+		std::string_view overridingStr;
+		bool* invoked;
+	};
 
-struct FormatterMoc
-{
-	std::string operator ()(const Record_t& rec) const
+	struct FilterMoc
 	{
-		assert(invoked);
-		*invoked = true;
-		return std::string(overridingStr);
-	}
+		bool operator ()(const Record_t& rec) const
+		{
+			assert(invoked);
+			*invoked = true;
+			return invocationResult;
+		}
 
-	std::string_view overridingStr;
-	bool* invoked;
-};
-
-struct FilterMoc
-{
-	bool operator ()(const Record_t& rec) const
-	{
-		assert(invoked);
-		*invoked = true;
-		return invocationResult;
-	}
-
-	bool invocationResult;
-	bool* invoked;
-};
+		bool invocationResult;
+		bool* invoked;
+	};
+}
 
 SCENARIO("BasicSinks should be in disabled state when construction succeeded", "[BasicSink][Sink]")
 {

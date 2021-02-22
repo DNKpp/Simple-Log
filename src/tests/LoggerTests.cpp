@@ -10,19 +10,22 @@
 
 using namespace sl::log;
 
-struct LogCallbackMoc
+namespace
 {
-	template <class TRecord>
-	void operator ()(TRecord) const
+	struct LogCallbackMoc
 	{
-		if (invoked)
+		template <class TRecord>
+		void operator ()(TRecord) const
 		{
-			*invoked = true;
+			if (invoked)
+			{
+				*invoked = true;
+			}
 		}
-	}
 
-	bool* invoked = nullptr;
-};
+		bool* invoked = nullptr;
+	};
+}
 
 TEMPLATE_PRODUCT_TEST_CASE(
 							"BaseLoggers should have a valid state after default construction succeeded",
