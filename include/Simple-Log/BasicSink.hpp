@@ -179,7 +179,7 @@ namespace sl::log
 		 * \param formatter An invokable formatter object
 		 */
 		template <RecordFormatterFor<Record_t> TFormatter>
-		void setFormatter(TFormatter&& formatter) noexcept
+		void setFormatter(TFormatter&& formatter)
 		{
 			std::scoped_lock lock{ m_FormatterMx };
 			m_Formatter = std::forward<TFormatter>(formatter);
@@ -188,7 +188,7 @@ namespace sl::log
 		/**
 		 * \brief Replaces the active formatter with the default one
 		 */
-		void removeFormatter() noexcept
+		void removeFormatter()
 		{
 			std::scoped_lock lock{ m_FormatterMx };
 			m_Formatter = defaultFormatter();
@@ -206,7 +206,7 @@ namespace sl::log
 		 * \param filter  An invokable filter object
 		 */
 		template <RecordFilterFor<Record_t> TFilter>
-		void setFilter(TFilter&& filter) noexcept
+		void setFilter(TFilter&& filter)
 		{
 			std::scoped_lock lock{ m_FilterMx };
 			m_Filter = std::forward<TFilter>(filter);
@@ -215,7 +215,7 @@ namespace sl::log
 		/**
 		 * \brief  Replaces the active filter with the default one
 		 */
-		void removeFilter() noexcept
+		void removeFilter()
 		{
 			std::scoped_lock lock{ m_FilterMx };
 			m_Filter = defaultFilter();
@@ -227,7 +227,7 @@ namespace sl::log
 		 * \param policy The new Flush-Policy object
 		 */
 		template <FlushPolicyFor<Record_t> TPolicy>
-		void setFlushPolicy(TPolicy&& policy) noexcept
+		void setFlushPolicy(TPolicy&& policy)
 		{
 			std::scoped_lock lock{ m_FlushPolicyMx };
 			m_FlushPolicy = std::make_unique<detail::FlushPolicyWrapper<TRecord, TPolicy>>(std::forward<TPolicy>(policy));
@@ -237,7 +237,7 @@ namespace sl::log
 		 * \brief Replaces the current Flush-Policy with the default one
 		 * \details The default Flush-Policy flushes after each handled Record.
 		 */
-		void removeFlushPolicy() noexcept
+		void removeFlushPolicy()
 		{
 			std::scoped_lock lock{ m_FlushPolicyMx };
 			m_FlushPolicy = defaultFlushPolicy();
