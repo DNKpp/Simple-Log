@@ -24,8 +24,9 @@ add_executable(
 	FlushPolicyTests.cpp
 	BasicSinkTests.cpp
 	FileSinkTests.cpp
+	LoggerTests.cpp
 	#LogTest.cpp
- )
+  )
 
 target_link_libraries(
 	${PROJECT_NAME}
