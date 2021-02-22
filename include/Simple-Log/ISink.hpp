@@ -145,8 +145,9 @@ namespace sl::log
 
 		/**
 		 * \brief Dereferencing operator
-		 * \return Reference to the internal Sink object.
+		 * \return Reference to the wrapped Sink instance.
 		 */
+		[[nodiscard]]
 		TSink& operator *() const noexcept
 		{
 			return *m_Sink;
@@ -154,9 +155,20 @@ namespace sl::log
 
 		/**
 		 * \brief Dereferencing operator
-		 * \return Pointer to the internal Sink object.
+		 * \return Pointer to the wrapped Sink instance.
 		 */
+		[[nodiscard]]
 		TSink* operator ->() const noexcept
+		{
+			return m_Sink;
+		}
+
+		/**
+		 * \brief Returns a pointer to the Sink instance
+		 * \return Pointer to the wrapped Sink instance.
+		 */
+		[[nodiscard]]
+		TSink* get() const noexcept
 		{
 			return m_Sink;
 		}
