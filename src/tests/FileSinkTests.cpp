@@ -135,15 +135,28 @@ SCENARIO("FileSink's rotate function should switch files.", "[FileSink][Sink]")
 	}
 
 	GIVEN("a FileSink instance which has an existing and open file")
-	WHEN("calling rotate")
-	THEN("sink should switch to new file")
 	{
 		sink.setEnabled();
 		sink.log({});
 
-		REQUIRE(exists(sink.directory() / "log1.file"));
-		sink.rotate();
-		REQUIRE(exists(sink.directory() / "log2.file"));
+		WHEN("calling rotate")
+		THEN("sink should switch to new file")
+		{
+			REQUIRE(exists(sink.directory() / "log1.file"));
+			sink.rotate();
+			REQUIRE(exists(sink.directory() / "log2.file"));
+		}
+
+		WHEN("setting up pattern name and directory pointing on an existing directory")
+		AND_WHEN("calling rotate")
+		THEN("rotate should throw a SinkException")
+		{
+			sink.setDirectory(std::filesystem::current_path());
+			sink.setFileNamePattern("FileSinkTest");
+			sink.setEnabled(true);
+
+			REQUIRE_THROWS_AS(sink.rotate(), SinkException);
+		}
 	}
 }
 
