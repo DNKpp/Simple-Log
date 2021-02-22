@@ -345,8 +345,6 @@ namespace sl::log
 				return m_Directory / m_FileNamePattern.next();
 			}();
 
-			assert(!is_directory(filePath) && "Must not point on an existing directory.");
-
 			m_FileStream.open(filePath);
 			if (!m_FileStream.is_open())
 			{
