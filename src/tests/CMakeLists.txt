@@ -14,6 +14,7 @@ FetchContent_MakeAvailable(catch2)
 add_executable(
 	${PROJECT_NAME}
 	main.cpp
+	CoreTests.cpp
 	BaseRecordTests.cpp
 	TupleAlgorithmTests.cpp
 	PredicateTests.cpp
@@ -24,7 +25,7 @@ add_executable(
 	BasicSinkTests.cpp
 	FileSinkTests.cpp
 	#LogTest.cpp
-)
+ )
 
 target_link_libraries(
 	${PROJECT_NAME}
