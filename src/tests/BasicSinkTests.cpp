@@ -231,14 +231,4 @@ SCENARIO("BasicSink's FlushPolicy property should determine when stream has to b
 			REQUIRE(invocationCount == 0);
 		}
 	}
-
-	GIVEN("a disabled BasicSink instance")
-	{
-		sink.setEnabled(false);
-		WHEN("calling flush")
-		THEN("the flush action should get rejected")
-		{
-			REQUIRE(invocationCount == 0);
-		}
-	}
 }

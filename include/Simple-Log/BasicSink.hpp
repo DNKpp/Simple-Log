@@ -245,16 +245,12 @@ namespace sl::log
 
 		/**
 		 * \brief Flushes all pending output of the internal stream
-		 * \details Does nothing if sink is not enabled.\n
-		 * Internally locks the associated stream mutex.
+		 * \details Internally locks the associated stream mutex.
 		 */
 		void flush()
 		{
-			if (m_Enabled)
-			{
-				std::scoped_lock lock{ m_StreamMx };
-				flushImpl();
-			}
+			std::scoped_lock lock{ m_StreamMx };
+			flushImpl();
 		}
 
 	protected:
