@@ -21,7 +21,7 @@ inline std::unique_ptr<logging::Core_t> makeLoggingCore()
 	auto& consoleSink = core->makeSink<logging::BasicSink_t>(std::cout);
 	consoleSink.setFilter(
 		// setup a simple filter
-		sl::log::makeSeverityFilterFor<logging::Record_t>(sl::log::GreaterEqual{ logging::SeverityLevel::warning })
+		sl::log::makeSeverityFilterFor<logging::Record_t>(sl::log::GreaterEquals{ logging::SeverityLevel::warning })
 	);
 
 	auto& welcomeChannelSink = core->makeSink<logging::BasicSink_t>(std::cout);
@@ -29,15 +29,15 @@ inline std::unique_ptr<logging::Core_t> makeLoggingCore()
 		// This will simply combine any filter via AND. There exist also FilterAnyOf or FilterNoneOf utilities. You could even chain them together! Be creative ;)
 		sl::log::FilterAllOf
 		{
-			sl::log::makeChannelFilterFor<logging::Record_t>(sl::log::EqualsTo{ "Welcome" }),	// use factory make...FilterFor functions
+			sl::log::makeChannelFilterFor<logging::Record_t>(sl::log::Equals{ "Welcome" }),	// use factory make...FilterFor functions
 			[](const auto& rec) { return rec.severity() != logging::SeverityLevel::debug; }		// or even lambdas
 		}
 	);
 	return core;
 }
 
-inline std::unique_ptr<logging::Core_t> gLoggingCore{ makeLoggingCore() };
-inline logging::Logger_t gLog{ *gLoggingCore, logging::SeverityLevel::info };
+inline auto gLoggingCore{ makeLoggingCore() };
+inline auto gLog{ sl::log::makeLogger<logging::Logger_t>(*gLoggingCore, logging::SeverityLevel::info) };
 
 int main()
 {

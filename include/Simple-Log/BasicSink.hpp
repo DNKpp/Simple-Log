@@ -145,7 +145,7 @@ namespace sl::log
 		 * \details Disabled Sinks will not handle any incoming Record s
 		 * \param enable True will enable the Sink object.
 		 */
-		void enable(bool enable = true) noexcept final override
+		void setEnabled(bool enable = true) noexcept final override
 		{
 			m_Enabled = enable;
 		}
@@ -179,7 +179,7 @@ namespace sl::log
 		 * \param formatter An invokable formatter object
 		 */
 		template <RecordFormatterFor<Record_t> TFormatter>
-		void setFormatter(TFormatter&& formatter) noexcept
+		void setFormatter(TFormatter&& formatter)
 		{
 			std::scoped_lock lock{ m_FormatterMx };
 			m_Formatter = std::forward<TFormatter>(formatter);
@@ -188,7 +188,7 @@ namespace sl::log
 		/**
 		 * \brief Replaces the active formatter with the default one
 		 */
-		void removeFormatter() noexcept
+		void removeFormatter()
 		{
 			std::scoped_lock lock{ m_FormatterMx };
 			m_Formatter = defaultFormatter();
@@ -206,7 +206,7 @@ namespace sl::log
 		 * \param filter  An invokable filter object
 		 */
 		template <RecordFilterFor<Record_t> TFilter>
-		void setFilter(TFilter&& filter) noexcept
+		void setFilter(TFilter&& filter)
 		{
 			std::scoped_lock lock{ m_FilterMx };
 			m_Filter = std::forward<TFilter>(filter);
@@ -215,7 +215,7 @@ namespace sl::log
 		/**
 		 * \brief  Replaces the active filter with the default one
 		 */
-		void removeFilter() noexcept
+		void removeFilter()
 		{
 			std::scoped_lock lock{ m_FilterMx };
 			m_Filter = defaultFilter();
@@ -227,7 +227,7 @@ namespace sl::log
 		 * \param policy The new Flush-Policy object
 		 */
 		template <FlushPolicyFor<Record_t> TPolicy>
-		void setFlushPolicy(TPolicy&& policy) noexcept
+		void setFlushPolicy(TPolicy&& policy)
 		{
 			std::scoped_lock lock{ m_FlushPolicyMx };
 			m_FlushPolicy = std::make_unique<detail::FlushPolicyWrapper<TRecord, TPolicy>>(std::forward<TPolicy>(policy));
@@ -237,7 +237,7 @@ namespace sl::log
 		 * \brief Replaces the current Flush-Policy with the default one
 		 * \details The default Flush-Policy flushes after each handled Record.
 		 */
-		void removeFlushPolicy() noexcept
+		void removeFlushPolicy()
 		{
 			std::scoped_lock lock{ m_FlushPolicyMx };
 			m_FlushPolicy = defaultFlushPolicy();
@@ -245,27 +245,30 @@ namespace sl::log
 
 		/**
 		 * \brief Flushes all pending output of the internal stream
+		 * \details Internally locks the associated stream mutex.
 		 */
 		void flush()
 		{
-			m_Stream << std::flush;
-			m_FlushPolicy->flushed();
+			std::scoped_lock lock{ m_StreamMx };
+			flushImpl();
 		}
 
 	protected:
 		/**
 		 * \brief Writes to the internal stream
-		 * \details This functions writes directly to the stream object. No filter or formatter will be involved and stream will be flush afterwards.
-		 * This might be useful for writing custom header or footer data to the stream.
 		 * \tparam TData Type of data (automatically deduced)
 		 * \param data Data which will be written to the stream.
+		 * 
+		 * \details This functions writes directly to the stream object. No filter or formatter will be involved and stream will be flush afterwards.
+		 * This might be useful for writing custom header or footer data to the stream.\n
+		 * Internally locks the associated stream mutex.
 		 */
 		template <class TData>
 		void writeToStream(TData&& data)
 		{
 			std::scoped_lock lock{ m_StreamMx };
 			m_Stream << std::forward<TData>(data);
-			flush();
+			flushImpl();
 		}
 
 		/**
@@ -298,8 +301,14 @@ namespace sl::log
 		{
 			if (std::scoped_lock lock{ m_FlushPolicyMx }; std::invoke(*m_FlushPolicy, record, messageByteSize))
 			{
-				flush();
+				flushImpl();
 			}
+		}
+
+		void flushImpl()
+		{
+			m_Stream << std::flush;
+			m_FlushPolicy->flushed();
 		}
 	};
 

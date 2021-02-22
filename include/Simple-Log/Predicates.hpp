@@ -15,11 +15,7 @@
 
 namespace sl::log
 {
-	/** \addtogroup filter
-	 * @{
-	 */
-	
-	/** \addtogroup predicates
+	/** \addtogroup Predicates Predicates
 	 * @{
 	 */
 
@@ -27,10 +23,10 @@ namespace sl::log
 	 * \brief Compares equality with constant at invocation
 	 */
 	template <std::equality_comparable T>
-	class EqualsTo
+	class Equals
 	{
 	public:
-		constexpr explicit EqualsTo(T to) :
+		constexpr explicit Equals(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -137,10 +133,10 @@ namespace sl::log
 	 * \brief Compares greater-equality-ordering with constant at invocation
 	 */
 	template <std::totally_ordered T>
-	class GreaterEqual
+	class GreaterEquals
 	{
 	public:
-		constexpr explicit GreaterEqual(T to) :
+		constexpr explicit GreaterEquals(T to) :
 			m_To{ std::move(to) }
 		{
 		}
@@ -202,8 +198,6 @@ namespace sl::log
 		T m_Low;
 		T m_High;
 	};
-
-	/** @}*/
 
 	/** @}*/
 }

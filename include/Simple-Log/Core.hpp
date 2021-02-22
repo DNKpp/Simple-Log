@@ -126,7 +126,7 @@ namespace sl::log
 		TSink& makeSink(TArgs&&... args)
 		{
 			auto& ref = makeSinkImpl<TSink>(std::forward<TArgs>(args)...);
-			ref.enable();
+			ref.setEnabled();
 			return ref;
 		}
 
@@ -146,6 +146,26 @@ namespace sl::log
 		{
 			auto& ref = makeSinkImpl<TSink>(std::forward<TArgs>(args)...);
 			return ref;
+		}
+
+		/**
+		 * \brief Removes the given Sink and destroys it
+		 * \param sink The sink which will be destroyed
+		 * \return Returns true, if sink has been destroyed.
+		 * \details If this sink is registered at this Core instance, then it will be destroyed immediately. Otherwise nothing will change.
+		 */
+		bool removeSink(const ISink_t& sink)
+		{
+			std::scoped_lock lock{ m_SinkMx };
+
+			if (auto itr = std::ranges::find(m_Sinks, &sink, &std::unique_ptr<ISink_t>::get); itr != std::end(m_Sinks))
+			{
+				using std::swap;
+				swap(*itr, m_Sinks.back());
+				m_Sinks.resize(std::size(m_Sinks) - 1);
+				return true;
+			}
+			return false;
 		}
 
 	private:

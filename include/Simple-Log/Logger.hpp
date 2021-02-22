@@ -9,6 +9,7 @@
 #pragma once
 
 #include <cassert>
+#include <functional>
 #include <version>
 
 #ifdef __cpp_lib_source_location
@@ -29,28 +30,28 @@ namespace sl::log
 	 * in an effective and elegant manner. Logger instances are rather lightweight, thus could be instantiated on class level, but it is also fine using the same instance in the whole program.
 	 */
 	template <Record TRecord>
-	class Logger
+	class BaseLogger
 	{
 	public:
 		using Record_t = TRecord;
 		using SeverityLevel_t = typename Record_t::SeverityLevel_t;
 		using Channel_t = typename Record_t::Channel_t;
-		using Core_t = Core<Record_t>;
 		using RecordBuilder_t = RecordBuilder<Record_t>;
+		using LogCallback_t = std::function<void(Record_t)>;
 
 		/**
 		 * \brief Constructor
 		 * \details Creates a Logger instance and links it to the specified core instance
-		 * \param core Specific core instance
+		 * \param logCallback Callback which will receive created Records.
 		 * \param defaultSeverityLvl Default severity level for generated Records.
 		 * \param defaultChannel Default channel for generated Records.
 		 */
-		explicit Logger(
-			Core_t& core,
+		explicit BaseLogger(
+			LogCallback_t logCallback,
 			SeverityLevel_t defaultSeverityLvl = {},
 			Channel_t defaultChannel = {}
 		) noexcept :
-			m_Core{ &core },
+			m_LogCallback{ std::move(logCallback) },
 			m_DefaultSeverityLvl{ std::move(defaultSeverityLvl) },
 			m_DefaultChannel{ std::move(defaultChannel) }
 		{
@@ -59,25 +60,25 @@ namespace sl::log
 		/**
 		 * \brief Destructor
 		 */
-		~Logger() noexcept = default;
+		~BaseLogger() noexcept = default;
 
 		/**
 		 * \brief Copy constructor
 		 */
-		Logger(const Logger&) noexcept = default;
+		BaseLogger(const BaseLogger&) noexcept = default;
 		/**
 		 * \brief Copy-assign operator
 		 */
-		Logger& operator =(const Logger&) noexcept = default;
+		BaseLogger& operator =(const BaseLogger&) noexcept = default;
 
 		/**
 		 * \brief Move constructor
 		 */
-		Logger(Logger&&) noexcept = default;
+		BaseLogger(BaseLogger&&) noexcept = default;
 		/**
 		 * \brief Move-assign operator
 		 */
-		Logger& operator =(Logger&&) noexcept = default;
+		BaseLogger& operator =(BaseLogger&&) noexcept = default;
 
 		/**
 		 * \brief Creates a new instance of RecordBuilder
@@ -92,12 +93,12 @@ namespace sl::log
 		RecordBuilder_t operator ()()
 #endif
 		{
-			assert(m_Core && "Pointer to core instance must be set.");
+			assert(m_LogCallback != nullptr && "Log callback must be set.");
 			Record_t prefabRec;
 			prefabRec.setTimePoint(std::chrono::system_clock::now());
 			prefabRec.setSeverity(m_DefaultSeverityLvl);
 			prefabRec.setChannel(m_DefaultChannel);
-			RecordBuilder_t builder{ std::move(prefabRec), [&core = *m_Core](Record_t rec) { core.log(std::move(rec)); } };
+			RecordBuilder_t builder{ std::move(prefabRec), m_LogCallback };
 
 #ifdef __cpp_lib_source_location
 			builder.record().sourceLocation = srcLoc;
@@ -111,7 +112,7 @@ namespace sl::log
 		 * \param sevLvl New default value
 		 */
 		template <std::convertible_to<SeverityLevel_t> USeverityLevel>
-		void setDefaultSeverityLevel(USeverityLevel&& sevLvl) noexcept
+		void setDefaultSeverity(USeverityLevel&& sevLvl) noexcept
 		{
 			m_DefaultSeverityLvl = std::forward<USeverityLevel>(sevLvl);
 		}
@@ -121,7 +122,7 @@ namespace sl::log
 		 * \return Returns a const reference to the default severity level.
 		 */
 		[[nodiscard]]
-		const SeverityLevel_t& defaultSeverityLevel() const noexcept
+		const SeverityLevel_t& defaultSeverity() const noexcept
 		{
 			return m_DefaultSeverityLvl;
 		}
@@ -147,10 +148,32 @@ namespace sl::log
 		}
 
 	private:
-		Core_t* m_Core = nullptr;
+		LogCallback_t m_LogCallback;
 		SeverityLevel_t m_DefaultSeverityLvl;
 		Channel_t m_DefaultChannel;
 	};
+
+	/**
+	 * \brief Creates a Logger object and setup its callback to the given Core instance
+	 * \tparam TLogger Concrete Logger type
+	 * \tparam TArgs Constructor argument types (will be deducted automatically)
+	 * \param core The core instance the Logger object should contribute to.
+	 * \param args The constructor arguments for the newly generated Logger object. Will be forwarded as is.
+	 * \return Logger object
+	 * \details This function creates a new Logger object and returns it to the caller. This Logger will be linked to the given Core instance, but Core does not
+	 * take ownership of the created Logger object.
+	 */
+	template <Logger TLogger, class... TArgs>
+	TLogger makeLogger(Core<typename TLogger::Record_t>& core, TArgs&&... args)
+	{
+		return TLogger{
+			[&core](auto rec)
+			{
+				core.log(std::move(rec));
+			},
+			std::forward<TArgs>(args)...
+		};
+	}
 }
 
 #endif

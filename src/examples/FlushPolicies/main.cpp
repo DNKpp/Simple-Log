@@ -16,23 +16,26 @@ inline std::unique_ptr<logging::Core_t> makeLoggingCore()
 
 	// create Sink in disabled state, thus we are able to configure it before it does handle any records
 	// will be automatically enabled when current scoped is left
-	auto consoleSink = core->makeDisabledSink<logging::BasicSink_t>(std::cout);
+	auto consoleSink = core->makeDisabledSink<logging::FileSink_t>("test%N.log");
 
-	consoleSink->setFlushPolicy(
-		// flush if Record with SeverityLevel error or above has been handled
-		sl::log::makeSeverityFlushPolicyFor<logging::Record_t>(sl::log::Greater{ logging::SeverityLevel::error })
-	);
+	//consoleSink->setFlushPolicy(
+	//	// flush if Record with SeverityLevel error or above has been handled
+	//	sl::log::makeSeverityFlushPolicyFor<logging::Record_t>(sl::log::Greater{ logging::SeverityLevel::error })
+	//);
 
-	// note: this will override the previous policy
+	//// note: this will override the previous policy
+	//consoleSink->setFlushPolicy(
+	//	// flush when the threshold of 100 bytes is exceeded
+	//	sl::log::ByteCountFlushPolicy{ 100 }
+	//);
 	consoleSink->setFlushPolicy(
-		// flush when the threshold of 100 bytes is exceeded
-		sl::log::ByteCountFlushPolicy{ 100 }
+			sl::log::FlushPolicy<sl::log::detail::ConstantInvokable<false>>{}
 	);
 	return core;
 }
 
-inline std::unique_ptr<logging::Core_t> gLoggingCore{ makeLoggingCore() };
-inline logging::Logger_t gLog{ *gLoggingCore, logging::SeverityLevel::info };
+inline auto gLoggingCore{ makeLoggingCore() };
+inline auto gLog{ sl::log::makeLogger<logging::Logger_t>(*gLoggingCore, logging::SeverityLevel::info) };
 
 int main()
 {

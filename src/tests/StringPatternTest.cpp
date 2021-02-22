@@ -3,348 +3,207 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          https://www.boost.org/LICENSE_1_0.txt)
 
-#include "catch2/catch.hpp"
+#include <catch2/catch.hpp>
 
+#include <regex>
 #include <sstream>
-#include <cctype>
 
 #include "Simple-Log/StringPattern.hpp"
 
 using namespace sl::log;
+using namespace Catch::Matchers;
 
-SCENARIO("numbers on demand", "[IncNumberGenerator]")
+TEST_CASE("IncNumberGenerator generates consecutive numbers of minimum given width", "[StringPattern]")
 {
 	detail::IncNumberGenerator incNoGen;
-	std::ostringstream out;
 
 	REQUIRE(incNoGen.current == 1);
 	REQUIRE(incNoGen.minWidth == 0);
 
-	WHEN("demanding new number")
-	{
-		incNoGen(out);
+	auto [current, width, expectedStr] = GENERATE(
+												table<unsigned,
+												unsigned,
+												std::string_view>
+												(
+													{
+													{ 1, 0, "1" },
+													{ 1, 1, "1" },
+													{ 1, 2, "01" },
+													{ 10, 0, "10" },
+													{ 10, 3, "010" }
+													}
+												)
+												);
 
-		THEN("current must be incremented afterwards")
-		{
-			REQUIRE(incNoGen.current == 2);
-			REQUIRE(incNoGen.minWidth == 0);
+	incNoGen.current = current;
+	incNoGen.minWidth = width;
 
-			REQUIRE(out.str() == "1");
-		}
-	}
-
-	WHEN("demanding new number with specific width")
-	{
-		incNoGen.minWidth = 3;
-		incNoGen(out);
-
-		THEN("current must be incremented afterwards")
-		{
-			REQUIRE(incNoGen.current == 2);
-			REQUIRE(incNoGen.minWidth == 3);
-
-			REQUIRE(out.str() == "001");
-		}
-	}
-}
-
-SCENARIO("constant strings on demand", "[IncNumberGenerStringGeneratorator]")
-{
-	constexpr const char* str = "Hello, World!";
-	detail::StringGenerator strGen{ str };
 	std::ostringstream out;
+	incNoGen(out);
 
-	REQUIRE(strGen.str == str);
-
-	WHEN("demanding new string")
-	{
-		strGen(out);
-
-		THEN("internal string should not change")
-		{
-			REQUIRE(strGen.str == str);
-
-			REQUIRE(out.str() == str);
-		}
-	}
+	REQUIRE(out.str() == expectedStr);
+	REQUIRE(incNoGen.current == current + 1);
+	REQUIRE(incNoGen.minWidth == width);
 }
 
-SCENARIO("date time on demand", "[IncNumberGenerStringGeneratorator]")
+TEST_CASE("StringGenerator generates constant string each time", "[StringPattern]")
+{
+	detail::StringGenerator strGen;
+	REQUIRE(std::empty(strGen.str));
+
+	auto str = GENERATE("", " ", "test", "Hello, World!");
+	strGen.str = str;
+
+	std::ostringstream out;
+	strGen(out);
+
+	REQUIRE(out.str() == str);
+	REQUIRE(strGen.str == str);
+}
+
+TEST_CASE("DateTimeGenerator generates string from current date-time", "[StringPattern]")
 {
 	detail::DateTimeGenerator dateTimeGen;
-	std::ostringstream out;
-	REQUIRE(dateTimeGen.token.empty());
+	REQUIRE(std::empty(dateTimeGen.token));
 
-	WHEN("demanding with empty token")
+	auto [token, digits] = GENERATE(
+									table<std::string_view,
+									std::size_t>(
+										{
+										{ "", 0 },
+										{"%H", 2},
+										{"%M", 2},
+										{"%S", 2},
+										{"%Y", 4},
+										{"%m", 2},
+										{"%d", 2},
+										{"%j", 3}
+										})
+									);
+	dateTimeGen.token = token;
+
+	for (std::size_t i = 0; i < 5; ++i)
 	{
+		std::ostringstream out;
 		dateTimeGen(out);
 
-		THEN("nothing will be printed")
-		{
-			REQUIRE(out.str().empty());
-		}
-	}
-
-	WHEN("demanding with hour token")
-	{
-		dateTimeGen.token = "%H";
-		dateTimeGen(out);
-
-		THEN("number with width of two will be printed")
-		{
-			REQUIRE(std::ranges::count_if(out.str(), [](auto c) { return std::isdigit(c); }) == 2);
-		}
-	}
-
-	WHEN("demanding with minute token")
-	{
-		dateTimeGen.token = "%M";
-		dateTimeGen(out);
-
-		THEN("number with width of two will be printed")
-		{
-			REQUIRE(std::ranges::count_if(out.str(), [](auto c) { return std::isdigit(c); }) == 2);
-		}
-	}
-
-	WHEN("demanding with second token")
-	{
-		dateTimeGen.token = "%S";
-		dateTimeGen(out);
-
-		THEN("number with width of two will be printed")
-		{
-			REQUIRE(std::ranges::count_if(out.str(), [](auto c) { return std::isdigit(c); }) == 2);
-		}
-	}
-
-	WHEN("demanding with year token")
-	{
-		dateTimeGen.token = "%Y";
-		dateTimeGen(out);
-
-		THEN("number with width of four will be printed")
-		{
-			REQUIRE(std::ranges::count_if(out.str(), [](auto c) { return std::isdigit(c); }) == 4);
-		}
-	}
-
-	WHEN("demanding with month token")
-	{
-		dateTimeGen.token = "%m";
-		dateTimeGen(out);
-
-		THEN("number with width of two will be printed")
-		{
-			REQUIRE(std::ranges::count_if(out.str(), [](auto c) { return std::isdigit(c); }) == 2);
-		}
-	}
-
-	WHEN("demanding with day of month token")
-	{
-		dateTimeGen.token = "%d";
-		dateTimeGen(out);
-
-		THEN("number with width of two will be printed")
-		{
-			REQUIRE(std::ranges::count_if(out.str(), [](auto c) { return std::isdigit(c); }) == 2);
-		}
-	}
-
-	WHEN("demanding with day of month token")
-	{
-		dateTimeGen.token = "%j";
-		dateTimeGen(out);
-
-		THEN("number with width of three will be printed")
-		{
-			REQUIRE(std::ranges::count_if(out.str(), [](auto c) { return std::isdigit(c); }) == 3);
-		}
+		REQUIRE(dateTimeGen.token == token);
+		REQUIRE_THAT(out.str(), Matches("\\d{" + std::to_string(digits) + "}"));
 	}
 }
 
-SCENARIO("make generator for token", "[makeGeneratorFromMatch]")
+TEST_CASE("makeGeneratorFromMatch makes generators by token", "[StringPattern]")
 {
-	WHEN("demanding with empty token string")
+	SECTION("generating from constant string")
 	{
-		auto gen = detail::makeGeneratorFromMatch("");
-
-		THEN("receiving StringGenerator with empty string")
-		{
-			REQUIRE(std::holds_alternative<detail::StringGenerator>(gen));
-			REQUIRE(std::get<detail::StringGenerator>(gen).str.empty());
-		}
-	}
-
-	WHEN("demanding with string containing no tokens")
-	{
-		constexpr const char* str = "Hello, World!";
+		auto str = GENERATE("", " ", "test", "Hello, World!");
 		auto gen = detail::makeGeneratorFromMatch(str);
 
-		THEN("receiving StringGenerator")
-		{
-			REQUIRE(std::holds_alternative<detail::StringGenerator>(gen));
-			REQUIRE(std::get<detail::StringGenerator>(gen).str == str);
-		}
+		auto actualGen = std::get_if<detail::StringGenerator>(&gen);
+		REQUIRE(actualGen);
+		REQUIRE(actualGen->str == str);
 	}
 
-	WHEN("demanding with DateTime token")
+	auto checkIncNumberGen = [](const auto& variant, std::size_t width)
 	{
-		std::string str;
+		auto actualGen = std::get_if<detail::IncNumberGenerator>(&variant);
+		REQUIRE(actualGen);
+		REQUIRE(actualGen->current == 1);
+		REQUIRE(actualGen->minWidth == width);
+	};
 
-		THEN("receiving DateTimeGenerator")
-		{
-			GIVEN("%H")
-			{
-				str = "%H";
-			}
-
-			GIVEN("%M")
-			{
-				str = "%M";
-			}
-
-			GIVEN("%S")
-			{
-				str = "%S";
-			}
-
-			GIVEN("%Y")
-			{
-				str = "%Y";
-			}
-
-			GIVEN("%m")
-			{
-				str = "%m";
-			}
-
-			GIVEN("%d")
-			{
-				str = "%d";
-			}
-
-			GIVEN("%j")
-			{
-				str = "%j";
-			}
-
-			auto gen = detail::makeGeneratorFromMatch(str);
-			REQUIRE(std::holds_alternative<detail::DateTimeGenerator>(gen));
-			REQUIRE(std::get<detail::DateTimeGenerator>(gen).token == str);
-		}
+	SECTION("generating via %N token")
+	{
+		checkIncNumberGen(detail::makeGeneratorFromMatch("%N"), 0);
 	}
 
-	WHEN("demanding with IncNumber token")
+	SECTION("generating via variations of %XN token")
 	{
-		std::string str;
+		auto width = GENERATE(0, 1, take(5, random(0, 100)));
+		checkIncNumberGen(detail::makeGeneratorFromMatch("%" + std::to_string(width) + "N"), width);
+	}
 
-		THEN("receiving IncNumberGenerator")
-		{
-			GIVEN("%N")
-			{
-				str = "%N";
-			}
+	SECTION("generating via date-time %XN token")
+	{
+		auto token = GENERATE("%H", "%M", "%S", "%Y", "%m", "%d", "%j");
+		auto gen = detail::makeGeneratorFromMatch(token);
 
-			GIVEN("%1N")
-			{
-				str = "%1N";
-			}
-
-			GIVEN("%10N")
-			{
-				str = "%10N";
-			}
-
-			auto gen = detail::makeGeneratorFromMatch(str);
-			REQUIRE(std::holds_alternative<detail::IncNumberGenerator>(gen));
-		}
+		auto actualGen = std::get_if<detail::DateTimeGenerator>(&gen);
+		REQUIRE(actualGen);
+		REQUIRE(actualGen->token == token);
 	}
 }
 
-SCENARIO("make generators from pattern string", "[makeTokenGeneratorsFromPatternString]")
+TEST_CASE("makeTokenGeneratorsFromPatternString makes one or multiple generators from string pattern", "[StringPattern]")
 {
-	WHEN("empty string")
+	SECTION("generate from empty string")
 	{
 		auto gens = detail::makeTokenGeneratorsFromPatternString("");
-
-		THEN("no generators")
-		{
-			REQUIRE(std::empty(gens));
-		}
+		REQUIRE(std::empty(gens));
 	}
 
-	WHEN("no-token string")
+	SECTION("generating from string without any token")
 	{
 		auto gens = detail::makeTokenGeneratorsFromPatternString("Hello, World!");
-
-		THEN("one ConstantString generator")
-		{
-			REQUIRE(std::size(gens) == 1);
-			REQUIRE(std::holds_alternative<detail::StringGenerator>(gens.front()));
-		}
+		REQUIRE(std::size(gens) == 1);
+		REQUIRE(std::holds_alternative<detail::StringGenerator>(gens.front()));
 	}
 
-	WHEN("date_time-token string")
+	SECTION("generating from string with mixed date-time and string tokens")
 	{
 		auto gens = detail::makeTokenGeneratorsFromPatternString("Hello%M%H%S, World%Y%m%d%j!");
-
-		THEN("ten generators")
-		{
-			REQUIRE(std::size(gens) == 10);
-			REQUIRE(std::holds_alternative<detail::StringGenerator>(gens[0]));
-			REQUIRE(std::holds_alternative<detail::DateTimeGenerator>(gens[1]));
-			REQUIRE(std::holds_alternative<detail::DateTimeGenerator>(gens[2]));
-			REQUIRE(std::holds_alternative<detail::DateTimeGenerator>(gens[3]));
-			REQUIRE(std::holds_alternative<detail::StringGenerator>(gens[4]));
-			REQUIRE(std::holds_alternative<detail::DateTimeGenerator>(gens[5]));
-			REQUIRE(std::holds_alternative<detail::DateTimeGenerator>(gens[6]));
-			REQUIRE(std::holds_alternative<detail::DateTimeGenerator>(gens[7]));
-			REQUIRE(std::holds_alternative<detail::DateTimeGenerator>(gens[8]));
-			REQUIRE(std::holds_alternative<detail::StringGenerator>(gens[9]));
-		}
+		REQUIRE(std::size(gens) == 10);
+		REQUIRE(std::holds_alternative<detail::StringGenerator>(gens[0]));
+		REQUIRE(std::holds_alternative<detail::DateTimeGenerator>(gens[1]));
+		REQUIRE(std::holds_alternative<detail::DateTimeGenerator>(gens[2]));
+		REQUIRE(std::holds_alternative<detail::DateTimeGenerator>(gens[3]));
+		REQUIRE(std::holds_alternative<detail::StringGenerator>(gens[4]));
+		REQUIRE(std::holds_alternative<detail::DateTimeGenerator>(gens[5]));
+		REQUIRE(std::holds_alternative<detail::DateTimeGenerator>(gens[6]));
+		REQUIRE(std::holds_alternative<detail::DateTimeGenerator>(gens[7]));
+		REQUIRE(std::holds_alternative<detail::DateTimeGenerator>(gens[8]));
+		REQUIRE(std::holds_alternative<detail::StringGenerator>(gens[9]));
 	}
 
-	WHEN("IncNumber-Token string")
+	SECTION("generating from string with mixed inc-number and string tokens")
 	{
 		auto gens = detail::makeTokenGeneratorsFromPatternString("Hello%N, World%1337N!");
-
-		THEN("five generators")
-		{
-			REQUIRE(std::size(gens) == 5);
-			REQUIRE(std::holds_alternative<detail::StringGenerator>(gens[0]));
-			REQUIRE(std::holds_alternative<detail::IncNumberGenerator>(gens[1]));
-			REQUIRE(std::holds_alternative<detail::StringGenerator>(gens[2]));
-			REQUIRE(std::holds_alternative<detail::IncNumberGenerator>(gens[3]));
-			REQUIRE(std::holds_alternative<detail::StringGenerator>(gens[4]));
-		}
+		REQUIRE(std::size(gens) == 5);
+		REQUIRE(std::holds_alternative<detail::StringGenerator>(gens[0]));
+		REQUIRE(std::holds_alternative<detail::IncNumberGenerator>(gens[1]));
+		REQUIRE(std::holds_alternative<detail::StringGenerator>(gens[2]));
+		REQUIRE(std::holds_alternative<detail::IncNumberGenerator>(gens[3]));
+		REQUIRE(std::holds_alternative<detail::StringGenerator>(gens[4]));
 	}
 }
 
-SCENARIO("generate string via pattern", "[StringPattern]")
+TEST_CASE("StringPattern invocation produces strings, which will be generated on the fly on each invokation", "[StringPattern]")
 {
-	WHEN("providing constant pattern")
+	SECTION("generating from constant pattern")
 	{
-		constexpr const char* str{ "Hello, World!" };
+		auto str = GENERATE("", " ", "test", "Hello, World!");
 		StringPattern pattern{ str };
-		THEN("receiving constant strings each time")
+
+		for (std::size_t i = 0; i < 5; ++i)
 		{
-			REQUIRE(pattern.next() == str);
-			REQUIRE(pattern.next() == str);
 			REQUIRE(pattern.next() == str);
 		}
 	}
 
-	WHEN("providing inc number pattern")
+	SECTION("generating from string with tokens")
 	{
 		using namespace std::string_literals;
-		constexpr const char* str{ "Hello, World!" };
-		StringPattern pattern{ str + "%N"s };
-		THEN("receiving updated strings each time")
+		auto pattern = GENERATE("%N", ".%N", "%Ntest%N", "%NHello%N%N,World!%N");
+		StringPattern patternedGen{ pattern };
+		std::regex regex{ "%N" };
+		for (std::size_t i = 1; i <= 5; ++i)
 		{
-			REQUIRE(pattern.next() == str + "1"s);
-			REQUIRE(pattern.next() == str + "2"s);
-			REQUIRE(pattern.next() == str + "3"s);
+			auto expectedStr = std::regex_replace(
+												pattern,
+												regex,
+												std::to_string(i)
+												);
+			REQUIRE(patternedGen.next() == expectedStr);
 		}
 	}
 }

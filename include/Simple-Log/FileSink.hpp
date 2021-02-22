@@ -105,10 +105,10 @@ namespace sl::log
 		 * \param directory			The directory where all files of this sink will be generated.
 		 */
 		explicit FileSink(std::string fileNamePattern, std::filesystem::path directory = std::filesystem::current_path()) :
-			Super{ m_FileStream },
-			m_FileNamePattern{ std::move(fileNamePattern) },
-			m_Directory{ std::move(directory.remove_filename()) }
+			Super{ m_FileStream }
 		{
+			setFileNamePattern(std::move(fileNamePattern));
+			setDirectory(std::move(directory));
 		}
 
 		/**
@@ -119,7 +119,10 @@ namespace sl::log
 		{
 			try
 			{
-				closeFile();
+				if (m_FileStream.is_open())
+				{
+					closeFile();
+				}
 			}
 			catch (...)
 			{
@@ -160,6 +163,19 @@ namespace sl::log
 		RotationRule rotationRule() const noexcept
 		{
 			return load(m_RotationRule, m_RotationRuleMx);
+		}
+
+		/**
+		 * \brief Rotates the current file
+		 * \details This function has no effect, if the file stream is not already open.
+		 */
+		void rotate()
+		{
+			if (m_FileStream.is_open())
+			{
+				closeFile();
+				openFile();
+			}
 		}
 
 		/**
@@ -225,6 +241,56 @@ namespace sl::log
 			m_ClosingHandler = nullptr;
 		}
 
+		/**
+		 * \brief Sets the directory in which the log files will be created
+		 * \param directory Path object
+		 * \details If the given directory does not exist, it will be created.
+		 */
+		void setDirectory(std::filesystem::path directory)
+		{
+			std::scoped_lock lock{ m_FilePathNameMx };
+			m_Directory = std::move(directory);
+			create_directories(m_Directory);
+		}
+
+		/**
+		 * \brief Getter of the directory member
+		 * \return A copy of the path object
+		 */
+		[[nodiscard]]
+		std::filesystem::path directory() const noexcept
+		{
+			std::scoped_lock lock{ m_FilePathNameMx };
+			return m_Directory;
+		}
+
+		/**
+		 * \brief Sets the file name pattern for generated log files
+		 * \param fileNamePattern Pattern string
+		 * \details For further details look \ref FileNamePattern "here".
+		 */
+		void setFileNamePattern(std::string fileNamePattern)
+		{
+			if (std::empty(fileNamePattern))
+			{
+				throw SinkException{ "FileNamePattern must not be empty." };
+			}
+
+			std::scoped_lock lock{ m_FilePathNameMx };
+			m_FileNamePattern.setPatternString(std::move(fileNamePattern));
+		}
+
+		/**
+		 * \brief Getter of the used file name pattern string
+		 * \return Returns a copy of the active pattern string
+		 */
+		[[nodiscard]]
+		std::string fileNamePattern() const noexcept
+		{
+			std::scoped_lock lock{ m_FilePathNameMx };
+			return std::string{ m_FileNamePattern.patternString() };
+		}
+
 	protected:
 		/**
 		 * \brief Filters, formats and writes the passed record to the internal stream
@@ -249,8 +315,10 @@ namespace sl::log
 	private:
 		using FileStateHandler = std::function<std::string()>;
 
+		mutable std::mutex m_FilePathNameMx;
 		StringPattern m_FileNamePattern;
 		std::filesystem::path m_Directory;
+
 		std::ofstream m_FileStream;
 		std::optional<std::filesystem::path> m_CurrentFilePath;
 
@@ -271,9 +339,18 @@ namespace sl::log
 
 		void openFile()
 		{
-			auto filePath = m_Directory;
-			filePath.append(m_FileNamePattern.next());
+			auto filePath = [&]
+			{
+				std::scoped_lock lock{ m_FilePathNameMx };
+				return m_Directory / m_FileNamePattern.next();
+			}();
+
 			m_FileStream.open(filePath);
+			if (!m_FileStream.is_open())
+			{
+				throw SinkException{ "FileSink: Attempted opening file \"" + filePath.string() + "\" but failed." };
+			}
+
 			m_CurrentFilePath = std::move(filePath);
 			m_FileOpeningTime = std::chrono::steady_clock::now();
 
@@ -292,9 +369,11 @@ namespace sl::log
 			{
 				Super::writeToStream(m_ClosingHandler());
 			}
-			m_FileStream.close();
 
+			m_FileStream.close();
 			removeFilesIfNecessary();
+			m_CurrentFilePath.reset();
+			m_FileOpeningTime.store({});
 		}
 
 		void removeFilesIfNecessary()

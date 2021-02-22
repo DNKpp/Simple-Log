@@ -190,6 +190,26 @@ namespace sl::log
 	using AlwaysFlushPolicy = FlushPolicy<detail::ConstantInvokable<true>>;
 
 	/**
+	 * \brief Factory function for creating Flush-Policies based on Record::message member
+	 * \tparam TRecord Concrete Record type on which to apply the projection
+	 * \tparam TUnaryPredicate Invokable type, which has to accept objects the actual Record::Message_t type
+	 * \param predicate Predicate object
+	 * \return Flush-Policy object
+	 * \details This is the preferable way creating a Flush-Policies based on the Record::message member, because the predicate becomes strong checked via
+	 * concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will
+	 * potentially result in harder to read error messages. 
+	 */
+	template <Record TRecord, std::predicate<const typename TRecord::SeverityLevel_t&> TUnaryPredicate>
+	constexpr auto makeMessageFlushPolicyFor(TUnaryPredicate&& predicate)
+	{
+		return FlushPolicy{
+			std::forward<TUnaryPredicate>(predicate),
+			&TRecord::message,
+			detail::PredProjInvocationIgnoreArgs{}
+		};
+	}
+
+	/**
 	 * \brief Factory function for creating Flush-Policies based on Record::severity member
 	 * \tparam TRecord Concrete Record type on which to apply the projection
 	 * \tparam TUnaryPredicate Invokable type, which has to accept objects the actual Record::SeverityLevel_t type
@@ -197,7 +217,7 @@ namespace sl::log
 	 * \return Flush-Policy object
 	 * \details This is the preferable way creating a Flush-Policies based on the Record::severity member, because the predicate becomes strong checked via
 	 * concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will
-	 * potentially result in harder to read error message. 
+	 * potentially result in harder to read error messages. 
 	 */
 	template <Record TRecord, std::predicate<const typename TRecord::SeverityLevel_t&> TUnaryPredicate>
 	constexpr auto makeSeverityFlushPolicyFor(TUnaryPredicate&& predicate)
@@ -217,7 +237,7 @@ namespace sl::log
 	 * \return Flush-Policy object
 	 * \details This is the preferable way creating a Flush-Policies based on the Record::channel member, because the predicate becomes strong checked via
 	 * concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will
-	 * potentially result in harder to read error message. 
+	 * potentially result in harder to read error messages. 
 	 */
 	template <Record TRecord, std::predicate<const typename TRecord::Channel_t&> TUnaryPredicate>
 	constexpr auto makeChannelFlushPolicyFor(TUnaryPredicate&& predicate)
@@ -237,7 +257,7 @@ namespace sl::log
 	 * \return Flush-Policy object
 	 * \details This is the preferable way creating a Flush-Policies based on the Record::timePoint member, because the predicate becomes strong checked via
 	 * concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will
-	 * potentially result in harder to read error message. 
+	 * potentially result in harder to read error messages. 
 	 */
 	template <Record TRecord, std::predicate<const typename TRecord::TimePoint_t&> TUnaryPredicate>
 	constexpr auto makeTimePointFlushPolicyFor(TUnaryPredicate&& predicate)
@@ -264,8 +284,8 @@ namespace sl::log
 
 		/**
 		 * \brief Constructs the object with the specified duration threshold
-		 * \tparam TRep 
-		 * \tparam TPeriod 
+		 * \tparam TRep An arithmetic type representing the number of ticks
+		 * \tparam TPeriod Period type
 		 * \param duration The duration threshold.
 		 * \details Any provided duration will be casted to milliseconds, thus finer thresholds will be lost.
 		 */

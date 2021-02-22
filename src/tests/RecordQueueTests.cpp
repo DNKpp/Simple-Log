@@ -31,106 +31,125 @@ static std::vector<Record_t> generateRecordsWithIncrMsg(std::size_t count)
 	return records;
 }
 
-SCENARIO("size/empty/push/take - non-blocking", "[RecordQueue]")
+SCENARIO("RecordQueue's empty and size should yield expected results.", "[RecordQueue]")
 {
 	RecordQueue<Record_t> queue;
-	REQUIRE(std::empty(queue));
-	REQUIRE(std::size(queue) == 0);
 
-	WHEN("pushing new Records")
+	GIVEN("an empty queue")
 	{
-		THEN("queue will grow")
+		WHEN("calling empty()")
+		THEN("should yield true")
 		{
-			auto records = generateRecordsWithIncrMsg(10);
-			for (std::size_t i = 0; i < std::size(records); ++i)
-			{
-				queue.push(records[i]);
-				REQUIRE(!std::empty(queue));
-				auto expectedSize = i + 1;
-				REQUIRE(std::size(queue) == expectedSize);
-			}
+			REQUIRE(queue.empty());
+		}
 
-			AND_WHEN("taking these values")
-			{
-				THEN("receiving them in insertion order")
-				{
-					for (std::size_t i = 0; i < std::size(records); ++i)
-					{
-						REQUIRE(!std::empty(queue));
-						auto expectedSize = std::size(records) - i;
-						REQUIRE(std::size(queue) == expectedSize);
-						auto rec = queue.take();
+		WHEN("calling size()")
+		THEN("should yield 0")
+		{
+			REQUIRE(queue.size() == 0); // NOLINT(readability-container-size-empty)
+		}
+	}
 
-						REQUIRE(rec);
-						REQUIRE(rec->message() == records[i].message());
-					}
-				}
-			}
+	GIVEN("a non-empty queue")
+	{
+		queue.push({});
+		WHEN("calling empty()")
+		THEN("should yield false")
+		{
+			REQUIRE_FALSE(queue.empty());
+		}
+
+		WHEN("calling size()")
+		THEN("should yield expected size")
+		{
+			REQUIRE(queue.size() == 1);
 		}
 	}
 }
 
-SCENARIO("push/take - blocking", "[RecordQueue]")
+SCENARIO("RecordQueue should provide values in insertion-order (FIFO).", "[RecordQueue]")
+{
+	RecordQueue<Record_t> queue;
+
+	GIVEN("an empty queue")
+	WHEN("pushing new Records")
+	THEN("queue will grow")
+	{
+		auto records = generateRecordsWithIncrMsg(10);
+		for (std::size_t i = 0; i < std::size(records); ++i)
+		{
+			queue.push(records[i]);
+		}
+
+		REQUIRE(std::size(queue) == std::size(records));
+
+		AND_WHEN("taking these Records")
+		THEN("caller will receive them in insertion-order")
+		{
+			for (auto& record : records)
+			{
+				auto takenRecord = queue.take();
+				REQUIRE(takenRecord);
+				REQUIRE(takenRecord->message() == record.message());
+			}
+
+			REQUIRE(std::empty(queue));
+		}
+	}
+}
+
+SCENARIO("Calling take should behave as expected in blocking and non-blocking cases.", "[RecordQueue]")
 {
 	RecordQueue<Record_t> queue;
 	REQUIRE(std::empty(queue));
 	REQUIRE(std::size(queue) == 0);
 
+	GIVEN("an empty queue")
 	WHEN("requesting Records on empty queue")
+	THEN("will block and break after specified duration")
 	{
-		THEN("will wait and break after some time")
-		{
-			std::chrono::milliseconds duration{ 100 };
+		std::chrono::milliseconds duration{ 100 };
 
-			for (int i = 1; i < 5; ++i)
-			{
-				auto actualDuration = i * duration;
-				auto begin = std::chrono::steady_clock::now();
-				auto record = queue.take(actualDuration);
+		auto begin = std::chrono::steady_clock::now();
+		auto record = queue.take(duration);
+		auto end = std::chrono::steady_clock::now();
+		auto diff = end - begin;
 
-				REQUIRE(record == std::nullopt);
-
-				auto end = std::chrono::steady_clock::now();
-				auto diff = end - begin;
-				REQUIRE(actualDuration <= diff);
-			}
-		}
+		REQUIRE(record == std::nullopt);
+		REQUIRE(duration <= diff);
 	}
 
-	WHEN("requesting Records on empty queue")
+	GIVEN("an empty queue")
+	WHEN("requesting Records")
+	THEN("will wait until Record is inserted and will return an valid Record")
 	{
-		AND_WHEN("pushing value afterwards")
+		std::chrono::milliseconds waitDuration{ 100 };
+		std::atomic_bool finished{ false };
+		auto future = std::async(
+								std::launch::async,
+								[&queue, &finished]()
+								{
+									const auto rec = queue.take();
+									finished = true;
+									return rec;
+								}
+								);
+
+		std::this_thread::sleep_for(waitDuration);
+		REQUIRE(finished == false);
+
+		AND_WHEN("pushing Records while blocking")
+		THEN("will break and return that Record")
 		{
-			THEN("will wait and return record")
-			{
-				std::chrono::milliseconds waitDuration{ 100 };
-				auto records = generateRecordsWithIncrMsg(10);
-				for (std::size_t i = 0; i < std::size(records); ++i)
-				{
-					std::atomic_bool finished{ false };
-					auto future = std::async(
-											std::launch::async,
-											[&queue, &finished]()
-											{
-												auto rec = queue.take();
-												finished = true;
-												return rec;
-											}
-											);
+			Record_t inRecord;
+			inRecord.setMessage(1337);
+			queue.push(inRecord);
+			auto futureState = future.wait_for(waitDuration);
+			auto record = future.get();
 
-					std::this_thread::sleep_for(waitDuration);
-					REQUIRE(finished == false);
-
-					queue.push(records[i]);
-
-					auto futureState = future.wait_for(waitDuration);
-					REQUIRE(futureState == std::future_status::ready);
-
-					auto record = future.get();
-					REQUIRE(record != std::nullopt);
-					REQUIRE(record->message() == i);
-				}
-			}
+			REQUIRE(futureState == std::future_status::ready);
+			REQUIRE(record != std::nullopt);
+			REQUIRE(record->message() == inRecord.message());
 		}
 	}
 }
