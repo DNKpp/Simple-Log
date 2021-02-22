@@ -107,7 +107,6 @@ namespace sl::log
 		explicit FileSink(std::string fileNamePattern, std::filesystem::path directory = std::filesystem::current_path()) :
 			Super{ m_FileStream }
 		{
-			m_FileStream.exceptions(std::ifstream::failbit);
 			setFileNamePattern(std::move(fileNamePattern));
 			setDirectory(std::move(directory));
 		}
@@ -346,9 +345,13 @@ namespace sl::log
 				return m_Directory / m_FileNamePattern.next();
 			}();
 
-			assert(!is_directory(filePath) && "Must not point on a existing directory.");
+			assert(!is_directory(filePath) && "Must not point on an existing directory.");
 
 			m_FileStream.open(filePath);
+			if (!m_FileStream.is_open())
+			{
+				throw SinkException{ "FileSink: Attempted opening file \"" + filePath.string() + "\" but failed." };
+			}
 
 			m_CurrentFilePath = std::move(filePath);
 			m_FileOpeningTime = std::chrono::steady_clock::now();
@@ -368,9 +371,11 @@ namespace sl::log
 			{
 				Super::writeToStream(m_ClosingHandler());
 			}
-			m_FileStream.close();
 
+			m_FileStream.close();
 			removeFilesIfNecessary();
+			m_CurrentFilePath.reset();
+			m_FileOpeningTime.store({});
 		}
 
 		void removeFilesIfNecessary()
