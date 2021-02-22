@@ -31,7 +31,7 @@ static std::vector<Record_t> generateRecordsWithIncrMsg(std::size_t count)
 	return records;
 }
 
-SCENARIO("RecordQuee empty and size should yield expected results.", "[RecordQueue]")
+SCENARIO("RecordQueue's empty and size should yield expected results.", "[RecordQueue]")
 {
 	RecordQueue<Record_t> queue;
 
@@ -98,7 +98,7 @@ SCENARIO("RecordQueue should provide values in insertion-order (FIFO).", "[Recor
 	}
 }
 
-SCENARIO("push/take - blocking", "[RecordQueue]")
+SCENARIO("Calling take should behave as expected in blocking and non-blocking cases.", "[RecordQueue]")
 {
 	RecordQueue<Record_t> queue;
 	REQUIRE(std::empty(queue));
