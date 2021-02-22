@@ -25,6 +25,7 @@ add_executable(
 	BasicSinkTests.cpp
 	FileSinkTests.cpp
 	LoggerTests.cpp
+	RecordBuilderTests.cpp
 )
 
 target_link_libraries(
