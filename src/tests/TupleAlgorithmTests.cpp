@@ -115,3 +115,12 @@ TEMPLATE_TEST_CASE(
 		REQUIRE(testAlgorithm<Algo_t>(first, second, three, four, five) == expectedResult);
 	}
 }
+
+TEST_CASE("TupleForEach should invoke the given function with each element of the passed tuple instance", "[Tuple_Algorithms]")
+{
+	std::tuple tuple{ 1, 2, 3, 4, 5 };
+	int invocationCounter = 0;
+	detail::TupleForEach{}(tuple, [&invocationCounter](auto x) { ++invocationCounter; });
+
+	REQUIRE(invocationCounter == std::tuple_size_v<decltype(tuple)>);
+}
