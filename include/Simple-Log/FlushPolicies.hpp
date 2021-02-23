@@ -15,6 +15,7 @@
 #include <utility>
 
 #include "Concepts.hpp"
+#include "TupleAlgorithms.hpp"
 
 namespace sl::log::detail
 {
@@ -182,6 +183,153 @@ namespace sl::log
 		Projection_t m_Projection;
 		//[[no_unique_address]]
 		InvocationRule_t m_Invocation;
+	};
+
+	/**
+	 * \brief Chains multiple FlushPolicy objects together
+	 * \tparam TAlgorithm The used algorithm, which will determine how each invoke result will be treated.
+	 * \tparam TFlushPolicies Type of provided FlushPolicy objects
+	 * \details This class simply calls each provided FlushPolicy successively. The provided algorithm will determine, how each invocation result will be treated.
+	 */
+	template <class TAlgorithm, class... TFlushPolicies>
+	class FlushPolicyChain
+	{
+	public:
+		/**
+		 * \brief Constructor
+		 * \param policies FlushPolicy objects
+		 */
+		constexpr explicit FlushPolicyChain(TFlushPolicies ... policies) :
+			m_Algorithm{},
+			m_Policies{ std::move(policies)... }
+		{
+		}
+
+		/**
+		 * \brief Constructor overload
+		 * \param algorithm Algorithm object
+		 * \param policies FlushPolicy objects
+		 */
+		constexpr explicit FlushPolicyChain(TAlgorithm algorithm, TFlushPolicies ... policies) :
+			m_Algorithm{ std::move(algorithm) },
+			m_Policies{ std::forward<TFlushPolicies>(policies)... }
+		{
+		}
+
+		/**
+		 * \brief Invoke operator
+		 * \tparam TRecord Used Record type
+		 * \param record The current handled Record object
+		 * \param messageByteSize The size of the current handled message in bytes
+		 * \return Returns the result of the predicate invocation
+		 * \details Just invokes all internal policies and returns the result of the algorithm
+		 */
+		template <Record TRecord>
+		bool operator ()(const TRecord& record, std::size_t messageByteSize)
+		{
+			return std::invoke(m_Algorithm, m_Policies, record, messageByteSize);
+		}
+
+		/**
+		 * \brief Calls flushed on all FlushPolicy objects
+		 */
+		constexpr void flushed()
+		{
+			detail::TupleForEach{}(
+									m_Policies,
+									[](auto&& policy)
+									{
+										policy.flushed();
+									}
+								);
+		}
+
+		/**
+		 * \brief Returns whether the are no FlushPolicy objects attached.
+		 * \return true if there aren't have any FlushPolicy objects attached.
+		 */
+		[[nodiscard]]
+		constexpr bool empty() const noexcept
+		{
+			return std::tuple_size_v<decltype(m_Policies)> == 0;
+		}
+
+		/**
+		 * \brief Obtains the amount of attached FlushPolicy objects
+		 * \return The amount of attached FlushPolicy objects
+		 */
+		[[nodiscard]]
+		constexpr std::size_t size() const noexcept
+		{
+			return std::tuple_size_v<decltype(m_Policies)>;
+		}
+
+	private:
+		TAlgorithm m_Algorithm;
+		std::tuple<TFlushPolicies...> m_Policies;
+	};
+
+	/**
+	 * \brief Convenience type for chaining multiple FlushPolicies with AND
+	 * \tparam TFlushPolicies Type of provided FlushPolicy objects
+	 */
+	template <class... TFlushPolicies>
+	class FlushPolicyAllOf :
+		public FlushPolicyChain<detail::TupleAllOf, TFlushPolicies...>
+	{
+		using Algorithm = detail::TupleAllOf;
+
+	public:
+		/**
+		 * \brief Constructor
+		 * \param policies FlushPolicy objects
+		 */
+		constexpr explicit FlushPolicyAllOf(TFlushPolicies ... policies) :
+			FlushPolicyChain<Algorithm, TFlushPolicies...>{ std::move(policies)... }
+		{
+		}
+	};
+
+	/**
+	 * \brief Convenience type for chaining multiple FlushPolicies with OR
+	 * \tparam TFlushPolicies Type of provided FlushPolicy objects
+	 */
+	template <class... TFlushPolicies>
+	class FlushPolicyAnyOf :
+		public FlushPolicyChain<detail::TupleAnyOf, TFlushPolicies...>
+	{
+		using Algorithm = detail::TupleAnyOf;
+
+	public:
+		/**
+		 * \brief Constructor
+		 * \param policies FlushPolicy objects
+		 */
+		constexpr explicit FlushPolicyAnyOf(TFlushPolicies ... policies) :
+			FlushPolicyChain<Algorithm, TFlushPolicies...>{ std::move(policies)... }
+		{
+		}
+	};
+
+	/**
+	 * \brief Convenience type for chaining multiple FlushPolicies with NOR
+	 * \tparam TFlushPolicies Type of provided FlushPolicy objects
+	 */
+	template <class... TFlushPolicies>
+	class FlushPolicyNoneOf :
+		public FlushPolicyChain<detail::TupleNoneOf, TFlushPolicies...>
+	{
+		using Algorithm = detail::TupleNoneOf;
+
+	public:
+		/**
+		 * \brief Constructor
+		 * \param policies FlushPolicy objects
+		 */
+		constexpr explicit FlushPolicyNoneOf(TFlushPolicies ... policies) :
+			FlushPolicyChain<Algorithm, TFlushPolicies...>{ std::move(policies)... }
+		{
+		}
 	};
 
 	/**

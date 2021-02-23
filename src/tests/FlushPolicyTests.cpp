@@ -15,6 +15,33 @@ using namespace sl::log;
 
 using Record_t = BaseRecord<int, int, int, int>;
 
+namespace
+{
+	struct FlushPolicyMoc
+	{
+		template <class TRecord>
+		bool operator ()(const TRecord& record, std::size_t count)
+		{
+			if (invocationCounter)
+			{
+				++(*invocationCounter);
+			}
+			return true;
+		}
+
+		void flushed()
+		{
+			if (flushedCounter)
+			{
+				++(*flushedCounter);
+			}
+		}
+
+		int* invocationCounter = nullptr;
+		int* flushedCounter = nullptr;
+	};
+}
+
 TEST_CASE("ConstInvokable should always return the expected result", "[Flush-Policy]")
 {
 	detail::ConstantInvokable<true> alwaysTrue;
@@ -39,6 +66,76 @@ TEST_CASE("FlushPolicy should return results determined by predicate", "[Flush-P
 	FlushPolicy policy{ predicate };
 
 	REQUIRE(policy(Record_t{}, 0) == shallFilter);
+}
+
+TEST_CASE("FlushPolicyChain should determine invocation result based on their applied algorithm", "[Flush-Policy]")
+{
+	SECTION("With AllOf algorithm, and each FlushPolicy returning true, every policy should be invoked")
+	{
+		int invokeCounter = 0;
+		int flushedCounter = 0;
+		FlushPolicyChain policies
+		{
+			detail::TupleAllOf{},
+			FlushPolicyMoc{ .invocationCounter = &invokeCounter, .flushedCounter = &flushedCounter },
+			FlushPolicyMoc{ .invocationCounter = &invokeCounter, .flushedCounter = &flushedCounter },
+			FlushPolicyMoc{ .invocationCounter = &invokeCounter, .flushedCounter = &flushedCounter }
+		};
+
+		policies(Record_t{}, 0);
+		policies.flushed();
+
+		REQUIRE(invokeCounter == std::size(policies));
+		REQUIRE(flushedCounter == std::size(policies));
+	}
+}
+
+TEST_CASE("FlushPolicyChain based types should compile fine.", "[Flush-Policy]")
+{
+	SECTION("FlushPolicyAllOf should compile fine.")
+	{
+		FlushPolicyAllOf policies
+		{
+			FlushPolicyMoc{},
+			FlushPolicyMoc{},
+			FlushPolicyMoc{},
+		};
+
+		policies(Record_t{}, 0);
+		policies.flushed();
+		REQUIRE_FALSE(policies.empty());
+		REQUIRE(policies.size() == 3);
+	}
+
+	SECTION("FlushPolicyAnyOf should compile fine.")
+	{
+		FlushPolicyAllOf policies
+		{
+			FlushPolicyMoc{},
+			FlushPolicyMoc{},
+			FlushPolicyMoc{},
+		};
+
+		policies(Record_t{}, 0);
+		policies.flushed();
+		REQUIRE_FALSE(policies.empty());
+		REQUIRE(policies.size() == 3);
+	}
+
+	SECTION("FlushPolicyNoneOf should compile fine.")
+	{
+		FlushPolicyAllOf policies
+		{
+			FlushPolicyMoc{},
+			FlushPolicyMoc{},
+			FlushPolicyMoc{},
+		};
+
+		policies(Record_t{}, 0);
+		policies.flushed();
+		REQUIRE_FALSE(policies.empty());
+		REQUIRE(policies.size() == 3);
+	}
 }
 
 TEST_CASE("AlwaysFlushPolicy should always return true", "[Flush-Policy]")
