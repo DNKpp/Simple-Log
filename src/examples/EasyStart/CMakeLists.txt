@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
-project(simple_log_example_filtering)
+project(simple_log_example_easy_start)
 
 add_executable(
 	${PROJECT_NAME}

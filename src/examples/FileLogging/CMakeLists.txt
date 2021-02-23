@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
-project(simple_log_example_flush_policies)
+project(simple_log_example_file_logging)
 
 add_executable(
 	${PROJECT_NAME}

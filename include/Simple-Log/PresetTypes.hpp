@@ -10,7 +10,7 @@
 
 #include "Simple-Log.hpp"
 
-namespace sl::log::pre
+namespace sl::log::preset
 {
 	/** \addtogroup PreparedTypes Prepared Types
 	 * @{
@@ -22,7 +22,7 @@ namespace sl::log::pre
 	 * \brief A simple severity level enum type
 	 * \details Each value reflects a distinguishable severity level on which formatter and filter of Sink objects can react.
 	 */
-	enum class SeverityLevel
+	enum class SevLvl
 	{
 		debug,
 		info,
@@ -38,48 +38,36 @@ namespace sl::log::pre
 	 * \param lvl the severity level
 	 * \return Returns the parameter out as reference
 	 */
-	inline std::ostream& operator <<(std::ostream& out, SeverityLevel lvl)
+	inline std::ostream& operator <<(std::ostream& out, SevLvl lvl)
 	{
 		constexpr const char* str[] = { "debug", "info", "hint", "warning", "error", "fatal" };
 		out << str[static_cast<std::size_t>(lvl)];
 		return out;
 	}
 
-	struct SetSev
-	{
-		using SetSev_t = log::SetSev<SeverityLevel>;
-		
-		constexpr static SetSev_t debug{ SeverityLevel::debug };
-		constexpr static SetSev_t info{ SeverityLevel::info };
-		constexpr static SetSev_t hint{ SeverityLevel::hint };
-		constexpr static SetSev_t warning{ SeverityLevel::warning };
-		constexpr static SetSev_t error{ SeverityLevel::error };
-		constexpr static SetSev_t fatal{ SeverityLevel::fatal };
-	};
-
 	/**
 	 * \brief Prepared Record type
 	 * \details Record_t is an type alias for the BaseRecord and uses SeverityLevel as severity level type and std::string as channel identifier.
 	 */
-	using Record_t = BaseRecord<SeverityLevel, std::string>;
+	using Record_t = BaseRecord<SevLvl, std::string>;
 	/**
-	 * \brief Type alias for log::Core which uses prep::Record_t as Record type
+	 * \brief Type alias for log::Core which uses preset::Record_t as Record type
 	 */
 	using Core_t = Core<Record_t>;
 	/**
-	 * \brief Type alias for log::Logger which uses prep::Record_t as Record type
+	 * \brief Type alias for log::Logger which uses preset::Record_t as Record type
 	 */
 	using Logger_t = BaseLogger<Record_t>;
 	/**
-	 * \brief Type alias for log::ISink which uses prep::Record_t as Record type
+	 * \brief Type alias for log::ISink which uses preset::Record_t as Record type
 	 */
 	using ISink_t = ISink<Record_t>;
 	/**
-	 * \brief Type alias for log::BasicSink which uses prep::Record_t as Record type
+	 * \brief Type alias for log::BasicSink which uses preset::Record_t as Record type
 	 */
 	using BasicSink_t = BasicSink<Record_t>;
 	/**
-	 * \brief Type alias for log::FileSink which uses prep::Record_t as Record type
+	 * \brief Type alias for log::FileSink which uses preset::Record_t as Record type
 	 */
 	using FileSink_t = FileSink<Record_t>;
 

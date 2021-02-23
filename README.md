@@ -22,7 +22,15 @@ Mail: [DNKpp2011@gmail.com](mailto:dnkpp2011@gmail.com)
 ```
 
 ## Description
-Currently under development, thus not stable.
+This is a highly customizable multithreaded logging library, which makes heavy use of loosly coupled concepts rather than macros. Other than many other libraries, there are no singleton classes or forced global objects. It's up to the users if they
+want globals or not.
+
+If your goal is simply logging everything to console or a file, than you may want to begin with the ``<ReadyToGo>``-header, which will set-up everything you'll need to be able start logging (also look at the short examples at the bottom of this readme).
+As you'll get used to the library you'll probably want to start customizing the behaviour of your sinks or even exchange types of Record's properties. This library lets you do this. Just head over to docs page https://dnkpp.github.io/Simple-Log/ or have a look at /src/examples directory.
+If you need an example for some advanced technics, don't hesitate asking me. As this library is growing I'll add more and more (hopefully useful) examples.
+
+A friendly reminder at the end: This library is currently in an alpha state, where it may be possible that some API breaks will happen. If you need a fully stable library from now on, this is unfortunatly not what you're looking for. I'm sorry, but perhaps
+it will be worth a second look in the near future.
 
 ## Installation with CMake
 This library can easily be integrated into your project via CMake target_link_libraries command.
@@ -62,62 +70,58 @@ target_link_libraries(
 )
 ```
 
-## Simple usage example
+## Examples
+
+### Easy Start
+This is an example, which will print every message onto the console. Users will automatically receive a Core instance (gCore), Console Sink (gConsoleSink) and a Logger (gLog).
 ```cpp
-// This header contains preset types, which users can use to get an easy start with the library.
-#include <Simple-Log/PresetTypes.hpp>
+/* With inclusion of this header, there will be automatically gCore, gConsoleSink and gLog constructed, which you might use.*/
+#include <Simple-Log/ReadyToGo.hpp>
 
-#include <iostream>
-#include <memory>
-
-/* let's use a namespace alias for convenience; be aware: if you use cmath, some stl implementations will bloat your global namespace with a log function declaration (c-relict).
-Thus to make it compatible with all compilers, I'll use logging as alias instead.
-
-All preset type alias are located in the sl::log::pre namespace, thus they do not interfere with the actual library if you don't want them to.
-It is no good style just importing everything into your namespace. Just create an namespace alias like so. This way it's very easy to make it less verbose for you.
-*/
-namespace logging = sl::log::pre;
-
-// We're using a factory function here, but this isn't necessary. You could also create a plain Core instance and set it up later in main
-inline std::unique_ptr<logging::Core_t> makeLoggingCore()
-{
-	/* an sl::log::Core is non-copy and non-movable, thus we will store it in an unique_ptr, so we
-	 * can safely move it into our global.*/
-	auto core = std::make_unique<logging::Core_t>();
-
-	/* register a BasicSink and link it to the std::cout stream. This will simply print all incoming
-	messages onto the console.*/
-	core->makeSink<logging::BasicSink_t>(std::cout);
-	return core;
-}
-
-/* For conveniences we will simply store the core and our default logger as a global. Feel free to do it
-otherwise. Just make sure the Core instance doesn't get destructed before all related Logger instances.*/
-inline std::unique_ptr<logging::Core_t> gLoggingCore{ makeLoggingCore() };
-inline logging::Logger_t gLog{ *gLoggingCore, logging::SeverityLevel::info };
+// just import everything into the current namespace
+using namespace sl::log::ready_to_go;
 
 int main()
 {
-	gLog() << "Hello, World!";	// This will print this message with the "info" severity
-	// override default logger settings at the beginning
-	gLog() << logging::SetSev::debug << "Mighty debug message";
-	// or at the end
-	gLog() << "Print my important hint!" << logging::SetSev::hint;
-	// or in between of messages
-	gLog() << "This" << " will " << logging::SetSev::warning << " create " << " a " << " concatenated " << " warning " << " message";
-	// and using default setup again
-	gLog() << "Back to info";
+	// This line will be printed on the console with the severity "info".
+	gLog() << "Hello, World!";
+	// You may adjust the severity for the currently created Record like so.
+	gLog() << SetSev(SevLvl::debug) << "Mighty debug message";
+	// The severity manipulator doesn't has to appear at front. Place it anywhere in your Record construction chain.
+	gLog() << "Print my important hint!" << SetSev(SevLvl::hint);
 }
 
 /*Core will make sure, that all pending Records will be processed before it gets destructed.*/
 /*
- * The above code will for example generate this output:
- *	18:49:32.047 >>> info:: Hello, World!
- *	18:49:32.047 >>> debug:: Mighty debug message
- *	18:49:32.047 >>> hint:: Print my important hint!
- *	18:49:32.047 >>> warning:: This will  create  a  concatenated  warning  message
- *	18:49:32.047 >>> info:: Back to info
+ * The above code may generate this output:
+20:18:59.357 >>> info:: Hello, World!
+20:18:59.357 >>> debug:: Mighty debug message
+20:18:59.357 >>> hint:: Print my important hint!
  *
  * Keep in mind, you are completely free how you are going to format your message. This is just the default one.
  */
+```
+
+### Easy File logging
+```cpp
+/* With inclusion of this header, there will be automatically gCore, gConsoleSink and gLog constructed, which you might use.*/
+#include <Simple-Log/ReadyToGo.hpp>
+
+// just pull everything into the current namespace
+using namespace sl::log::ready_to_go;
+
+// this creates a new FileSink object, which will store all incoming messages in logfile.log
+auto& gFileSink = gCore.makeSink<FileSink_t>("logfile.log");
+
+int main()
+{
+	// Let our FileSink only handle important messages, e.g. warning and above
+	gFileSink.setFilter(makeSeverityFilterFor<Record_t>(GreaterEquals{ SevLvl::warning }));
+
+	// this message will only appear on the console
+	gLog() << "Hello, World!";
+
+	// while this message will also be saved in our logfile.log. Go ahead and see it yourself ;)
+	gLog() << SetSev(SevLvl::warning) << "I'm an exemplary warning!";
+}
 ```
