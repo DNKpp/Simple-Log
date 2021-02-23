@@ -19,10 +19,6 @@ namespace sl::log
 	 * @{
 	 */
 
-	/** \addtogroup RecordBuilder
-	 * @{
-	 */
-
 	/**
 	 * \brief Manipulates the channel of the current RecordBuilder object
 	 * \tparam TSeverityLevel Severity level type which must later on be convertible to Record's severity level type.
@@ -232,7 +228,6 @@ namespace sl::log
 		LogCallback_t m_LogCallback;
 	};
 
-	/** @}*/
 	/** @}*/
 }
 
