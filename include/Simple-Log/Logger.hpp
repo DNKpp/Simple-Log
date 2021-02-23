@@ -22,6 +22,10 @@
 
 namespace sl::log
 {
+	/** \addtogroup Logger
+	 * @{
+	 */
+
 	/**
 	 * \brief Convenience class for generating Record s
 	 * \tparam TRecord Used Record type.
@@ -155,13 +159,14 @@ namespace sl::log
 
 	/**
 	 * \brief Creates a Logger object and setup its callback to the given Core instance
+	 * \relates BaseLogger
 	 * \tparam TLogger Concrete Logger type
 	 * \tparam TArgs Constructor argument types (will be deducted automatically)
 	 * \param core The core instance the Logger object should contribute to.
 	 * \param args The constructor arguments for the newly generated Logger object. Will be forwarded as is.
 	 * \return Logger object
-	 * \details This function creates a new Logger object and returns it to the caller. This Logger will be linked to the given Core instance, but Core does not
-	 * take ownership of the created Logger object.
+	 * \details This function creates a new Logger object and returns it to the caller. This Logger will receive a callback to the given Core instance, but Core does not
+	 * take over ownership of the created Logger object. If users does not need the Logger object any longer, they may simply let them go out of scope.
 	 */
 	template <Logger TLogger, class... TArgs>
 	TLogger makeLogger(Core<typename TLogger::Record_t>& core, TArgs&&... args)
@@ -174,6 +179,8 @@ namespace sl::log
 			std::forward<TArgs>(args)...
 		};
 	}
+
+	/** @}*/
 }
 
 #endif
