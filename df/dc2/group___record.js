@@ -1,4 +1,4 @@
-var group__record =
+var group___record =
 [
     [ "RecordBuilder", "d2/dce/group___record_builder.html", "d2/dce/group___record_builder" ],
     [ "BaseRecord", "dd/d7a/classsl_1_1log_1_1_base_record.html", [
@@ -14,12 +14,5 @@ var group__record =
       [ "setTimePoint", "dd/d7a/classsl_1_1log_1_1_base_record.html#ac7558030528a941cc20c0831212aca6e", null ],
       [ "severity", "dd/d7a/classsl_1_1log_1_1_base_record.html#ac16302bcf25d27c7497612e10fd53c3f", null ],
       [ "timePoint", "dd/d7a/classsl_1_1log_1_1_base_record.html#a9783369731c6f2c3b64b49913e80c231", null ]
-    ] ],
-    [ "RecordQueue", "d1/de1/classsl_1_1log_1_1_record_queue.html", [
-      [ "Record_t", "d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab", null ],
-      [ "empty", "d1/de1/classsl_1_1log_1_1_record_queue.html#ad9edb42e48cea7c3084dbd8a5fded2d4", null ],
-      [ "push", "d1/de1/classsl_1_1log_1_1_record_queue.html#a9b33e0216d87d6ee94af3c872007c4d1", null ],
-      [ "size", "d1/de1/classsl_1_1log_1_1_record_queue.html#a5cead06ef00abe47041528f8bc400849", null ],
-      [ "take", "d1/de1/classsl_1_1log_1_1_record_queue.html#a8b6bcbb58a14a851bbd396a9227ecb01", null ]
     ] ]
 ];

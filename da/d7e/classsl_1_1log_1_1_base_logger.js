@@ -15,5 +15,6 @@ var classsl_1_1log_1_1_base_logger =
     [ "operator=", "da/d7e/classsl_1_1log_1_1_base_logger.html#aae630721bd31e04c23f4c61d428d8c60", null ],
     [ "operator=", "da/d7e/classsl_1_1log_1_1_base_logger.html#aaae614fb320af21ac8ab8b3904ebba52", null ],
     [ "setDefaultChannel", "da/d7e/classsl_1_1log_1_1_base_logger.html#a9c6653af9e2d0fe20db2eb8ced71b6d2", null ],
-    [ "setDefaultSeverity", "da/d7e/classsl_1_1log_1_1_base_logger.html#a43ba29860797ebf6a257fd333925c00f", null ]
+    [ "setDefaultSeverity", "da/d7e/classsl_1_1log_1_1_base_logger.html#a43ba29860797ebf6a257fd333925c00f", null ],
+    [ "makeLogger", "de/da7/group___logger.html#ga3038db9cc61fb94dd32ad6d02fc2ac11", null ]
 ];

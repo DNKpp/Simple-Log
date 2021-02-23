@@ -9,7 +9,7 @@ var indexSectionsWithContent =
   6: "abcdfilmprstu",
   7: "s",
   8: "defhiw",
-  9: "cfprs",
+  9: "cflprs",
   10: "s"
 };
 

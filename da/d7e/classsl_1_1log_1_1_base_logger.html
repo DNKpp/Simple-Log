@@ -85,9 +85,10 @@ $(document).ready(function(){initNavTree('da/d7e/classsl_1_1log_1_1_base_logger.
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#related">Related Functions</a> &#124;
 <a href="../../d8/d08/classsl_1_1log_1_1_base_logger-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">sl::log::BaseLogger&lt; TRecord &gt; Class Template Reference</div>  </div>
+<div class="title">sl::log::BaseLogger&lt; TRecord &gt; Class Template Reference<div class="ingroups"><a class="el" href="../../de/da7/group___logger.html">Logger</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -146,6 +147,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a61878c9d5f2b20d1e6483cda1c40af38"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a54e6f05c39ae8011b95848092c2d4ee0">Channel_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a61878c9d5f2b20d1e6483cda1c40af38">defaultChannel</a> () const noexcept</td></tr>
 <tr class="memdesc:a61878c9d5f2b20d1e6483cda1c40af38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the default channel.  <a href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a61878c9d5f2b20d1e6483cda1c40af38">More...</a><br /></td></tr>
 <tr class="separator:a61878c9d5f2b20d1e6483cda1c40af38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="related"></a>
+Related Functions</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p>(Note that these are not member functions.) </p>
+</td></tr>
+<tr class="memitem:ga3038db9cc61fb94dd32ad6d02fc2ac11"><td class="memTemplParams" colspan="2">template&lt;Logger TLogger, class... TArgs&gt; </td></tr>
+<tr class="memitem:ga3038db9cc61fb94dd32ad6d02fc2ac11"><td class="memTemplItemLeft" align="right" valign="top">TLogger&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/da7/group___logger.html#ga3038db9cc61fb94dd32ad6d02fc2ac11">makeLogger</a> (<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&lt; typename TLogger::Record_t &gt; &amp;core, TArgs &amp;&amp;... args)</td></tr>
+<tr class="memdesc:ga3038db9cc61fb94dd32ad6d02fc2ac11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a Logger object and setup its callback to the given <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance.  <a href="../../de/da7/group___logger.html#ga3038db9cc61fb94dd32ad6d02fc2ac11">More...</a><br /></td></tr>
+<tr class="separator:ga3038db9cc61fb94dd32ad6d02fc2ac11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;Record TRecord&gt;<br />

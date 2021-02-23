@@ -3,7 +3,7 @@ var searchData=
   ['makechannelfilterfor_76',['makeChannelFilterFor',['../df/d7c/group___filter.html#gad6e836c03209fc28f9c910e3b3886c5b',1,'sl::log']]],
   ['makechannelflushpolicyfor_77',['makeChannelFlushPolicyFor',['../d5/dfa/group___flush-_policy.html#ga14bfb1b391c85b40d7a1e6a99e16d495',1,'sl::log']]],
   ['makedisabledsink_78',['makeDisabledSink',['../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4',1,'sl::log::Core']]],
-  ['makelogger_79',['makeLogger',['../de/d83/namespacesl_1_1log.html#a52dbf3fd431df7f8338d9e8f394f7e68',1,'sl::log']]],
+  ['makelogger_79',['makeLogger',['../de/da7/group___logger.html#ga3038db9cc61fb94dd32ad6d02fc2ac11',1,'sl::log::BaseLogger']]],
   ['makemessagefilterfor_80',['makeMessageFilterFor',['../df/d7c/group___filter.html#ga24e7670965f3f000d4df436c0054d92f',1,'sl::log']]],
   ['makemessageflushpolicyfor_81',['makeMessageFlushPolicyFor',['../d5/dfa/group___flush-_policy.html#gafd2084b61e0e19b5cfac465eac9a88f1',1,'sl::log']]],
   ['makeseverityfilterfor_82',['makeSeverityFilterFor',['../df/d7c/group___filter.html#ga2b59233f3a1ffef4e4f89be18836ee62',1,'sl::log']]],

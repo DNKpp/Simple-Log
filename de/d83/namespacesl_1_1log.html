@@ -227,10 +227,6 @@ Functions</h2></td></tr>
 <tr class="memitem:gafc0f3598ec58dda217e635c7fe2abe4f"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dfa/group___flush-_policy.html#gafc0f3598ec58dda217e635c7fe2abe4f">makeTimePointFlushPolicyFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
 <tr class="memdesc:gafc0f3598ec58dda217e635c7fe2abe4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating Flush-Policies based on Record::timePoint member.  <a href="../../d5/dfa/group___flush-_policy.html#gafc0f3598ec58dda217e635c7fe2abe4f">More...</a><br /></td></tr>
 <tr class="separator:gafc0f3598ec58dda217e635c7fe2abe4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52dbf3fd431df7f8338d9e8f394f7e68"><td class="memTemplParams" colspan="2">template&lt;Logger TLogger, class... TArgs&gt; </td></tr>
-<tr class="memitem:a52dbf3fd431df7f8338d9e8f394f7e68"><td class="memTemplItemLeft" align="right" valign="top">TLogger&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/d83/namespacesl_1_1log.html#a52dbf3fd431df7f8338d9e8f394f7e68">makeLogger</a> (<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&lt; typename TLogger::Record_t &gt; &amp;core, TArgs &amp;&amp;... args)</td></tr>
-<tr class="memdesc:a52dbf3fd431df7f8338d9e8f394f7e68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a Logger object and setup its callback to the given <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance.  <a href="../../de/d83/namespacesl_1_1log.html#a52dbf3fd431df7f8338d9e8f394f7e68">More...</a><br /></td></tr>
-<tr class="separator:a52dbf3fd431df7f8338d9e8f394f7e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -263,55 +259,6 @@ Variables</h2></td></tr>
 <tr class="memdesc:gaf5daeadaa8a98715671cee34171d5380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable flush policies.  <a href="../../d4/df0/group__concepts.html#gaf5daeadaa8a98715671cee34171d5380">More...</a><br /></td></tr>
 <tr class="separator:gaf5daeadaa8a98715671cee34171d5380"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a52dbf3fd431df7f8338d9e8f394f7e68"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52dbf3fd431df7f8338d9e8f394f7e68">&#9670;&nbsp;</a></span>makeLogger()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;Logger TLogger, class... TArgs&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">TLogger sl::log::makeLogger </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&lt; typename TLogger::Record_t &gt; &amp;&#160;</td>
-          <td class="paramname"><em>core</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">TArgs &amp;&amp;...&#160;</td>
-          <td class="paramname"><em>args</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Creates a Logger object and setup its callback to the given <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance. </p>
-<dl class="tparams"><dt>Template Parameters</dt><dd>
-  <table class="tparams">
-    <tr><td class="paramname">TLogger</td><td>Concrete Logger type </td></tr>
-    <tr><td class="paramname">TArgs</td><td>Constructor argument types (will be deducted automatically) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">core</td><td>The core instance the Logger object should contribute to. </td></tr>
-    <tr><td class="paramname">args</td><td>The constructor arguments for the newly generated Logger object. Will be forwarded as is. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Logger object</dd></dl>
-<p>This function creates a new Logger object and returns it to the caller. This Logger will be linked to the given <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance, but <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> does not take ownership of the created Logger object. </p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

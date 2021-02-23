@@ -33,7 +33,6 @@ var namespacesl_1_1log =
     [ "AlwaysFlushPolicy", "d5/dfa/group___flush-_policy.html#gaa231417ed2bdea57eaab58c82f2939f4", null ],
     [ "makeChannelFilterFor", "df/d7c/group___filter.html#gad6e836c03209fc28f9c910e3b3886c5b", null ],
     [ "makeChannelFlushPolicyFor", "d5/dfa/group___flush-_policy.html#ga14bfb1b391c85b40d7a1e6a99e16d495", null ],
-    [ "makeLogger", "de/d83/namespacesl_1_1log.html#a52dbf3fd431df7f8338d9e8f394f7e68", null ],
     [ "makeMessageFilterFor", "df/d7c/group___filter.html#ga24e7670965f3f000d4df436c0054d92f", null ],
     [ "makeMessageFlushPolicyFor", "d5/dfa/group___flush-_policy.html#gafd2084b61e0e19b5cfac465eac9a88f1", null ],
     [ "makeSeverityFilterFor", "df/d7c/group___filter.html#ga2b59233f3a1ffef4e4f89be18836ee62", null ],
