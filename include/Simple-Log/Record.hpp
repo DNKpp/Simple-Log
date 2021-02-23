@@ -18,7 +18,7 @@
 
 namespace sl::log
 {
-	/** \addtogroup record
+	/** \addtogroup Record
 	 * @{
 	 */
 
