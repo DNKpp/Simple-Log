@@ -9,77 +9,12 @@
 #pragma once
 
 #include <algorithm>
-#include <array>
 #include <concepts>
+#include <tuple>
 #include <functional>
 
 #include "Concepts.hpp"
-
-namespace sl::log::detail
-{
-	class TupleAllOf
-	{
-	public:
-		template <class TTuple, Record TRecord>
-		constexpr bool operator ()(TTuple& tuple, const TRecord& record) const
-		{
-			return invoke<0>(tuple, record);
-		}
-
-	private:
-		template <std::size_t Index, class TTuple, Record TRecord>
-		constexpr bool invoke(TTuple& tuple, const TRecord& record) const
-		{
-			if constexpr (Index < std::tuple_size_v<TTuple>)
-			{
-				if (!std::invoke(std::get<Index>(tuple), record))
-				{
-					return false;
-				}
-				return invoke<Index + 1>(tuple, record);
-			}
-			return true;
-		}
-	};
-
-	class TupleAnyOf
-	{
-	public:
-		template <class TTuple, Record TRecord>
-		constexpr bool operator ()(TTuple& tuple, const TRecord& record) const
-		{
-			return invoke<0>(tuple, record);
-		}
-
-	private:
-		template <std::size_t Index, class TTuple, Record TRecord>
-		constexpr bool invoke(TTuple& tuple, const TRecord& record) const
-		{
-			if constexpr (Index < std::tuple_size_v<TTuple>)
-			{
-				if (std::invoke(std::get<Index>(tuple), record))
-				{
-					return true;
-				}
-				return invoke<Index + 1>(tuple, record);
-			}
-			return false;
-		}
-	};
-
-	class TupleNoneOf :
-		private TupleAnyOf
-	{
-		using Super = TupleAnyOf;
-
-	public:
-		template <class TTuple, Record TRecord>
-		constexpr bool operator ()(TTuple& tuple, const TRecord& record) const
-		{
-			return !Super::operator()(tuple, record);
-		}
-	};
-}
+#include "TupleAlgorithms.hpp"
 
 namespace sl::log
 {
