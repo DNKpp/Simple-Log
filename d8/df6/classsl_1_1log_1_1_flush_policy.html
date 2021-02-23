@@ -107,13 +107,13 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7d16d9962aadec2833386cccd139dc26"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#a7d16d9962aadec2833386cccd139dc26">FlushPolicy</a> (TPredicate predicate=<a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#a35204bbc45e2b51854f41c5a20280b02">Predicate_t</a>{}, TProjection projection=<a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#ad6484050ce99a625f2dd0eb575c1572f">Projection_t</a>{}, TInvocationRule invocation=<a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#a668675b87bf5ec1f42d1ac63cb44f40b">InvocationRule_t</a>{})</td></tr>
-<tr class="memdesc:a7d16d9962aadec2833386cccd139dc26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#a7d16d9962aadec2833386cccd139dc26">More...</a><br /></td></tr>
-<tr class="separator:a7d16d9962aadec2833386cccd139dc26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cbb2510dfa0788c5f9f68b9dd030107"><td class="memTemplParams" colspan="2">template&lt;class... TArgs&gt; </td></tr>
-<tr class="memitem:a2cbb2510dfa0788c5f9f68b9dd030107"><td class="memTemplItemLeft" align="right" valign="top">requires std::constructible_from&lt; <a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#a35204bbc45e2b51854f41c5a20280b02">Predicate_t</a>, TArgs... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#a2cbb2510dfa0788c5f9f68b9dd030107">FlushPolicy</a> (std::in_place_t _, TArgs &amp;&amp;... args)</td></tr>
-<tr class="memdesc:a2cbb2510dfa0788c5f9f68b9dd030107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor overload for in_place predicate initializing.  <a href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#a2cbb2510dfa0788c5f9f68b9dd030107">More...</a><br /></td></tr>
-<tr class="separator:a2cbb2510dfa0788c5f9f68b9dd030107"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8c6ef36909d2e5b10be85a22b60aaa5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#ac8c6ef36909d2e5b10be85a22b60aaa5">FlushPolicy</a> (TPredicate predicate=<a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#a35204bbc45e2b51854f41c5a20280b02">Predicate_t</a>{}, TProjection projection=<a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#ad6484050ce99a625f2dd0eb575c1572f">Projection_t</a>{}, TInvocationRule invocation=<a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#a668675b87bf5ec1f42d1ac63cb44f40b">InvocationRule_t</a>{}) noexcept(std::is_nothrow_move_constructible_v&lt; TPredicate &gt; &amp;&amp;std::is_nothrow_move_constructible_v&lt; TProjection &gt; &amp;&amp;std::is_nothrow_move_constructible_v&lt; TInvocationRule &gt;)</td></tr>
+<tr class="memdesc:ac8c6ef36909d2e5b10be85a22b60aaa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#ac8c6ef36909d2e5b10be85a22b60aaa5">More...</a><br /></td></tr>
+<tr class="separator:ac8c6ef36909d2e5b10be85a22b60aaa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40c4a539eaacbc66591c00e05dd9cf60"><td class="memTemplParams" colspan="2">template&lt;class... TArgs&gt; </td></tr>
+<tr class="memitem:a40c4a539eaacbc66591c00e05dd9cf60"><td class="memTemplItemLeft" align="right" valign="top">requires std::constructible_from&lt; <a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#a35204bbc45e2b51854f41c5a20280b02">Predicate_t</a>, TArgs... &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#a40c4a539eaacbc66591c00e05dd9cf60">FlushPolicy</a> (std::in_place_t _, TArgs &amp;&amp;... args) noexcept(std::is_nothrow_constructible_v&lt; TPredicate, TArgs... &gt; &amp;&amp;std::is_nothrow_constructible_v&lt; TProjection &gt; &amp;&amp;std::is_nothrow_constructible_v&lt; TInvocationRule &gt;)</td></tr>
+<tr class="memdesc:a40c4a539eaacbc66591c00e05dd9cf60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor overload for in_place predicate initializing.  <a href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#a40c4a539eaacbc66591c00e05dd9cf60">More...</a><br /></td></tr>
+<tr class="separator:a40c4a539eaacbc66591c00e05dd9cf60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeae9c7b48cfd5055ccb26b1bc4c8dcaf"><td class="memTemplParams" colspan="2">template&lt;Record TRecord&gt; </td></tr>
 <tr class="memitem:aeae9c7b48cfd5055ccb26b1bc4c8dcaf"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#aeae9c7b48cfd5055ccb26b1bc4c8dcaf">operator()</a> (const TRecord &amp;record, std::size_t messageByteSize)</td></tr>
 <tr class="memdesc:aeae9c7b48cfd5055ccb26b1bc4c8dcaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoke operator.  <a href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html#aeae9c7b48cfd5055ccb26b1bc4c8dcaf">More...</a><br /></td></tr>
@@ -186,8 +186,8 @@ template&lt;class TPredicate , class TProjection  = std::identity, class TInvoca
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a7d16d9962aadec2833386cccd139dc26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d16d9962aadec2833386cccd139dc26">&#9670;&nbsp;</a></span>FlushPolicy() <span class="overload">[1/2]</span></h2>
+<a id="ac8c6ef36909d2e5b10be85a22b60aaa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8c6ef36909d2e5b10be85a22b60aaa5">&#9670;&nbsp;</a></span>FlushPolicy() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -223,7 +223,7 @@ template&lt;class TPredicate , class TProjection  = std::identity, class TInvoca
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -240,8 +240,8 @@ template&lt;class TPredicate , class TProjection  = std::identity, class TInvoca
 
 </div>
 </div>
-<a id="a2cbb2510dfa0788c5f9f68b9dd030107"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2cbb2510dfa0788c5f9f68b9dd030107">&#9670;&nbsp;</a></span>FlushPolicy() <span class="overload">[2/2]</span></h2>
+<a id="a40c4a539eaacbc66591c00e05dd9cf60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40c4a539eaacbc66591c00e05dd9cf60">&#9670;&nbsp;</a></span>FlushPolicy() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -273,7 +273,7 @@ template&lt;class... TArgs&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -287,7 +287,7 @@ template&lt;class... TArgs&gt; </div>
 </dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">_</td><td>Dummy value used for detecting the overload </td></tr>
+    <tr><td class="paramname">_</td><td>Dummy value used for detecting the overload. Simply pass std::in_place as argument. </td></tr>
     <tr><td class="paramname">args</td><td>Constructor arguments for the predicate</td></tr>
   </table>
   </dd>

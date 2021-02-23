@@ -106,9 +106,9 @@ Inheritance diagram for sl::log::FlushPolicyAnyOf&lt; TFlushPolicies &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a97f5657c1b1518f80b19469196bb678d"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d2e/classsl_1_1log_1_1_flush_policy_any_of.html#a97f5657c1b1518f80b19469196bb678d">FlushPolicyAnyOf</a> (TFlushPolicies ... policies)</td></tr>
-<tr class="memdesc:a97f5657c1b1518f80b19469196bb678d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="../../de/d2e/classsl_1_1log_1_1_flush_policy_any_of.html#a97f5657c1b1518f80b19469196bb678d">More...</a><br /></td></tr>
-<tr class="separator:a97f5657c1b1518f80b19469196bb678d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a331856de66793bc2144bf9fdea8734"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d2e/classsl_1_1log_1_1_flush_policy_any_of.html#a2a331856de66793bc2144bf9fdea8734">FlushPolicyAnyOf</a> (TFlushPolicies ... policies) noexcept((std::is_nothrow_move_constructible_v&lt; TFlushPolicies &gt; &amp;&amp;...))</td></tr>
+<tr class="memdesc:a2a331856de66793bc2144bf9fdea8734"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="../../de/d2e/classsl_1_1log_1_1_flush_policy_any_of.html#a2a331856de66793bc2144bf9fdea8734">More...</a><br /></td></tr>
+<tr class="separator:a2a331856de66793bc2144bf9fdea8734"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8a810444d7abac9351e4ef1d8838b66"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#ac8a810444d7abac9351e4ef1d8838b66">operator()</a> (const TRecord &amp;record, std::size_t messageByteSize)</td></tr>
 <tr class="memdesc:ac8a810444d7abac9351e4ef1d8838b66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoke operator.  <a href="../../d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#ac8a810444d7abac9351e4ef1d8838b66">More...</a><br /></td></tr>
 <tr class="separator:ac8a810444d7abac9351e4ef1d8838b66"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -134,8 +134,8 @@ class sl::log::FlushPolicyAnyOf&lt; TFlushPolicies &gt;</h3>
   </dd>
 </dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a97f5657c1b1518f80b19469196bb678d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97f5657c1b1518f80b19469196bb678d">&#9670;&nbsp;</a></span>FlushPolicyAnyOf()</h2>
+<a id="a2a331856de66793bc2144bf9fdea8734"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a331856de66793bc2144bf9fdea8734">&#9670;&nbsp;</a></span>FlushPolicyAnyOf()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -155,7 +155,7 @@ template&lt;class... TFlushPolicies&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

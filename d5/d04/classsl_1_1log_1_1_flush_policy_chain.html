@@ -97,12 +97,12 @@ $(document).ready(function(){initNavTree('d5/d04/classsl_1_1log_1_1_flush_policy
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6e3804c70ffb021829acd8c750346038"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#a6e3804c70ffb021829acd8c750346038">FlushPolicyChain</a> (TFlushPolicies ... policies)</td></tr>
-<tr class="memdesc:a6e3804c70ffb021829acd8c750346038"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="../../d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#a6e3804c70ffb021829acd8c750346038">More...</a><br /></td></tr>
-<tr class="separator:a6e3804c70ffb021829acd8c750346038"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af01d6bd3ec42829673de567d6355c5de"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#af01d6bd3ec42829673de567d6355c5de">FlushPolicyChain</a> (TAlgorithm algorithm, TFlushPolicies ... policies)</td></tr>
-<tr class="memdesc:af01d6bd3ec42829673de567d6355c5de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor overload.  <a href="../../d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#af01d6bd3ec42829673de567d6355c5de">More...</a><br /></td></tr>
-<tr class="separator:af01d6bd3ec42829673de567d6355c5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa10662eedd287c354bef2a81ef1757ed"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#aa10662eedd287c354bef2a81ef1757ed">FlushPolicyChain</a> (TFlushPolicies ... policies) noexcept(std::is_nothrow_constructible_v&lt; TAlgorithm &gt; &amp;&amp;(std::is_nothrow_move_constructible_v&lt; TFlushPolicies &gt; &amp;&amp;...))</td></tr>
+<tr class="memdesc:aa10662eedd287c354bef2a81ef1757ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="../../d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#aa10662eedd287c354bef2a81ef1757ed">More...</a><br /></td></tr>
+<tr class="separator:aa10662eedd287c354bef2a81ef1757ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad20fa815659b0a45cc58bb27bebf65ba"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#ad20fa815659b0a45cc58bb27bebf65ba">FlushPolicyChain</a> (TAlgorithm algorithm, TFlushPolicies ... policies) noexcept(std::is_nothrow_move_constructible_v&lt; TAlgorithm &gt; &amp;&amp;(std::is_nothrow_move_constructible_v&lt; TFlushPolicies &gt; &amp;&amp;...))</td></tr>
+<tr class="memdesc:ad20fa815659b0a45cc58bb27bebf65ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor overload.  <a href="../../d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#ad20fa815659b0a45cc58bb27bebf65ba">More...</a><br /></td></tr>
+<tr class="separator:ad20fa815659b0a45cc58bb27bebf65ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8a810444d7abac9351e4ef1d8838b66"><td class="memTemplParams" colspan="2">template&lt;Record TRecord&gt; </td></tr>
 <tr class="memitem:ac8a810444d7abac9351e4ef1d8838b66"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#ac8a810444d7abac9351e4ef1d8838b66">operator()</a> (const TRecord &amp;record, std::size_t messageByteSize)</td></tr>
 <tr class="memdesc:ac8a810444d7abac9351e4ef1d8838b66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invoke operator.  <a href="../../d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#ac8a810444d7abac9351e4ef1d8838b66">More...</a><br /></td></tr>
@@ -131,8 +131,8 @@ class sl::log::FlushPolicyChain&lt; TAlgorithm, TFlushPolicies &gt;</h3>
 </dl>
 <p>This class simply calls each provided <a class="el" href="../../d8/df6/classsl_1_1log_1_1_flush_policy.html" title="A customizable FlushPolicy class.">FlushPolicy</a> successively. The provided algorithm will determine, how each invocation result will be treated. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a6e3804c70ffb021829acd8c750346038"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e3804c70ffb021829acd8c750346038">&#9670;&nbsp;</a></span>FlushPolicyChain() <span class="overload">[1/2]</span></h2>
+<a id="aa10662eedd287c354bef2a81ef1757ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa10662eedd287c354bef2a81ef1757ed">&#9670;&nbsp;</a></span>FlushPolicyChain() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -152,7 +152,7 @@ template&lt;class TAlgorithm , class... TFlushPolicies&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -167,8 +167,8 @@ template&lt;class TAlgorithm , class... TFlushPolicies&gt; </div>
 
 </div>
 </div>
-<a id="af01d6bd3ec42829673de567d6355c5de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af01d6bd3ec42829673de567d6355c5de">&#9670;&nbsp;</a></span>FlushPolicyChain() <span class="overload">[2/2]</span></h2>
+<a id="ad20fa815659b0a45cc58bb27bebf65ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad20fa815659b0a45cc58bb27bebf65ba">&#9670;&nbsp;</a></span>FlushPolicyChain() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -198,7 +198,7 @@ template&lt;class TAlgorithm , class... TFlushPolicies&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

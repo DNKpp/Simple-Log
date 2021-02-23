@@ -97,12 +97,12 @@ $(document).ready(function(){initNavTree('d7/d40/classsl_1_1log_1_1_filter_chain
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a35ed0b7b0027ebbd84ba082302366c30"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a35ed0b7b0027ebbd84ba082302366c30">FilterChain</a> (TFilter ...filter)</td></tr>
-<tr class="memdesc:a35ed0b7b0027ebbd84ba082302366c30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a35ed0b7b0027ebbd84ba082302366c30">More...</a><br /></td></tr>
-<tr class="separator:a35ed0b7b0027ebbd84ba082302366c30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a026486b0e7b0d645d18484269643e9eb"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a026486b0e7b0d645d18484269643e9eb">FilterChain</a> (TAlgorithm algorithm, TFilter ...filter)</td></tr>
-<tr class="memdesc:a026486b0e7b0d645d18484269643e9eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor overload.  <a href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a026486b0e7b0d645d18484269643e9eb">More...</a><br /></td></tr>
-<tr class="separator:a026486b0e7b0d645d18484269643e9eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04b7cabcff1b83a97eb8f26158637c46"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a04b7cabcff1b83a97eb8f26158637c46">FilterChain</a> (TFilter ...filter) noexcept(std::is_nothrow_constructible_v&lt; TAlgorithm &gt; &amp;&amp;(std::is_nothrow_move_constructible_v&lt; TFilter &gt; &amp;&amp;...))</td></tr>
+<tr class="memdesc:a04b7cabcff1b83a97eb8f26158637c46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a04b7cabcff1b83a97eb8f26158637c46">More...</a><br /></td></tr>
+<tr class="separator:a04b7cabcff1b83a97eb8f26158637c46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab65953e7ef23d6afa618581a01795b6e"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#ab65953e7ef23d6afa618581a01795b6e">FilterChain</a> (TAlgorithm algorithm, TFilter ...filter) noexcept((std::is_nothrow_move_constructible_v&lt; TFilter &gt; &amp;&amp;...))</td></tr>
+<tr class="memdesc:ab65953e7ef23d6afa618581a01795b6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor overload.  <a href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#ab65953e7ef23d6afa618581a01795b6e">More...</a><br /></td></tr>
+<tr class="separator:ab65953e7ef23d6afa618581a01795b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad52c815ca33b84587f5413660e3dbddb"><td class="memTemplParams" colspan="2">template&lt;Record TRecord&gt; </td></tr>
 <tr class="memitem:ad52c815ca33b84587f5413660e3dbddb"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#ad52c815ca33b84587f5413660e3dbddb">operator()</a> (const TRecord &amp;rec)</td></tr>
 <tr class="memdesc:ad52c815ca33b84587f5413660e3dbddb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call-operator.  <a href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#ad52c815ca33b84587f5413660e3dbddb">More...</a><br /></td></tr>
@@ -128,8 +128,8 @@ class sl::log::FilterChain&lt; TAlgorithm, TFilter &gt;</h3>
 </dl>
 <p>This class simply calls each provided filter successively. The provided algorithm will determine, how each invocation result will be treated. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a35ed0b7b0027ebbd84ba082302366c30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35ed0b7b0027ebbd84ba082302366c30">&#9670;&nbsp;</a></span>FilterChain() <span class="overload">[1/2]</span></h2>
+<a id="a04b7cabcff1b83a97eb8f26158637c46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04b7cabcff1b83a97eb8f26158637c46">&#9670;&nbsp;</a></span>FilterChain() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -149,7 +149,7 @@ template&lt;class TAlgorithm , class... TFilter&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -164,8 +164,8 @@ template&lt;class TAlgorithm , class... TFilter&gt; </div>
 
 </div>
 </div>
-<a id="a026486b0e7b0d645d18484269643e9eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a026486b0e7b0d645d18484269643e9eb">&#9670;&nbsp;</a></span>FilterChain() <span class="overload">[2/2]</span></h2>
+<a id="ab65953e7ef23d6afa618581a01795b6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab65953e7ef23d6afa618581a01795b6e">&#9670;&nbsp;</a></span>FilterChain() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -195,7 +195,7 @@ template&lt;class TAlgorithm , class... TFilter&gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">constexpr</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
