@@ -1,18 +1,18 @@
 var _preset_types_8hpp =
 [
-    [ "BasicSink_t", "d7/d89/_preset_types_8hpp.html#ga099a00be4e155fcbb4c5f6378d56612e", null ],
-    [ "Core_t", "d7/d89/_preset_types_8hpp.html#ga62237602874e49e1c35f1da9c2393e48", null ],
-    [ "FileSink_t", "d7/d89/_preset_types_8hpp.html#ga99c4108152ca0187e2a4c4d1359ef33d", null ],
-    [ "ISink_t", "d7/d89/_preset_types_8hpp.html#ga441c31c9fe7ec7745acfa5cd24a5e6c6", null ],
-    [ "Logger_t", "d7/d89/_preset_types_8hpp.html#ga62368dd44f720afe928180062ff31a15", null ],
-    [ "Record_t", "d7/d89/_preset_types_8hpp.html#gabf4790854bf35dd27d223fbecf8e8307", null ],
-    [ "SeverityLevel", "d7/d89/_preset_types_8hpp.html#ga1233009dc7a50b2f4d4a14c7e9b087d2", [
-      [ "debug", "d7/d89/_preset_types_8hpp.html#gga1233009dc7a50b2f4d4a14c7e9b087d2aad42f6697b035b7580e4fef93be20b4d", null ],
-      [ "info", "d7/d89/_preset_types_8hpp.html#gga1233009dc7a50b2f4d4a14c7e9b087d2acaf9b6b99962bf5c2264824231d7a40c", null ],
-      [ "hint", "d7/d89/_preset_types_8hpp.html#gga1233009dc7a50b2f4d4a14c7e9b087d2aee2faeed038501c1deab01c7b54f2fa9", null ],
-      [ "warning", "d7/d89/_preset_types_8hpp.html#gga1233009dc7a50b2f4d4a14c7e9b087d2a7b83d3f08fa392b79e3f553b585971cd", null ],
-      [ "error", "d7/d89/_preset_types_8hpp.html#gga1233009dc7a50b2f4d4a14c7e9b087d2acb5e100e5a9a3e7f6d1fd97512215282", null ],
-      [ "fatal", "d7/d89/_preset_types_8hpp.html#gga1233009dc7a50b2f4d4a14c7e9b087d2adf6402fd9ecc60f5a2159fdf45711cd4", null ]
+    [ "BasicSink_t", "d7/d89/_preset_types_8hpp.html#ga5f9961f80c57af68873f2e915e6c0246", null ],
+    [ "Core_t", "d7/d89/_preset_types_8hpp.html#gaaa0e319ca877be6293a74ee97a937593", null ],
+    [ "FileSink_t", "d7/d89/_preset_types_8hpp.html#gaf18a546e417058826c8d721f56c1ed4a", null ],
+    [ "ISink_t", "d7/d89/_preset_types_8hpp.html#gaf6d5c96ac5b76255b7e4d697b82a340d", null ],
+    [ "Logger_t", "d7/d89/_preset_types_8hpp.html#gaac85e03739aa8f712c7c492d348a55bb", null ],
+    [ "Record_t", "d7/d89/_preset_types_8hpp.html#gab7fd2d7ae0f18b1e2d4857c04dd160bb", null ],
+    [ "SevLvl", "d7/d89/_preset_types_8hpp.html#gaa30e95bdde6414a22c02e8c98d5dcf3f", [
+      [ "debug", "d7/d89/_preset_types_8hpp.html#ggaa30e95bdde6414a22c02e8c98d5dcf3faad42f6697b035b7580e4fef93be20b4d", null ],
+      [ "info", "d7/d89/_preset_types_8hpp.html#ggaa30e95bdde6414a22c02e8c98d5dcf3facaf9b6b99962bf5c2264824231d7a40c", null ],
+      [ "hint", "d7/d89/_preset_types_8hpp.html#ggaa30e95bdde6414a22c02e8c98d5dcf3faee2faeed038501c1deab01c7b54f2fa9", null ],
+      [ "warning", "d7/d89/_preset_types_8hpp.html#ggaa30e95bdde6414a22c02e8c98d5dcf3fa7b83d3f08fa392b79e3f553b585971cd", null ],
+      [ "error", "d7/d89/_preset_types_8hpp.html#ggaa30e95bdde6414a22c02e8c98d5dcf3facb5e100e5a9a3e7f6d1fd97512215282", null ],
+      [ "fatal", "d7/d89/_preset_types_8hpp.html#ggaa30e95bdde6414a22c02e8c98d5dcf3fadf6402fd9ecc60f5a2159fdf45711cd4", null ]
     ] ],
-    [ "operator<<", "d7/d89/_preset_types_8hpp.html#ga18ada7dd40a42ddd800b87a9f30bd7d5", null ]
+    [ "operator<<", "d7/d89/_preset_types_8hpp.html#gae8d34e9120f5d92ca3143cbbee799e49", null ]
 ];

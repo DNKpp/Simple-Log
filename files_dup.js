@@ -13,6 +13,7 @@ var files_dup =
     [ "Logger.hpp", "d3/de3/_logger_8hpp.html", null ],
     [ "Predicates.hpp", "d4/d46/_predicates_8hpp.html", null ],
     [ "PresetTypes.hpp", "d7/d89/_preset_types_8hpp.html", "d7/d89/_preset_types_8hpp" ],
+    [ "ReadyToGo.hpp", "d1/d79/_ready_to_go_8hpp.html", "d1/d79/_ready_to_go_8hpp" ],
     [ "Record.hpp", "dc/d79/_record_8hpp.html", null ],
     [ "RecordBuilder.hpp", "dc/d3b/_record_builder_8hpp.html", null ],
     [ "RecordQueue.hpp", "da/d8d/_record_queue_8hpp.html", null ],

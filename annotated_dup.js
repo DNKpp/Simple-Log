@@ -2,9 +2,6 @@ var annotated_dup =
 [
     [ "sl", "dd/d2c/namespacesl.html", [
       [ "log", "de/d83/namespacesl_1_1log.html", [
-        [ "pre", "d5/d4f/namespacesl_1_1log_1_1pre.html", [
-          [ "SetSev", "df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html", "df/d5b/structsl_1_1log_1_1pre_1_1_set_sev" ]
-        ] ],
         [ "BasicSink", "dd/d48/classsl_1_1log_1_1_basic_sink.html", "dd/d48/classsl_1_1log_1_1_basic_sink" ],
         [ "RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html", "db/d9a/classsl_1_1log_1_1_record_builder" ],
         [ "Core", "d4/df3/classsl_1_1log_1_1_core.html", "d4/df3/classsl_1_1log_1_1_core" ],

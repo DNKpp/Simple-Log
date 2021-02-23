@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">v0.5.a</span>
    </div>
   </td>
  </tr>
@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('d9/db9/_concepts_8hpp_source.html','..
 <div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../d4/df0/group__concepts.html#gad4f4445c43488ca9e4850e862dbc4d14">   64</a></span>&#160;    concept <a class="code" href="../../d4/df0/group__concepts.html#gad4f4445c43488ca9e4850e862dbc4d14">Logger</a> =</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        requires (T logger)</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keyword">typename</span> <a class="code" href="../../df/d5b/group___prepared_types.html#gabf4790854bf35dd27d223fbecf8e8307">T::Record_t</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keyword">typename</span> <a class="code" href="../../df/d5b/group___prepared_types.html#gab7fd2d7ae0f18b1e2d4857c04dd160bb">T::Record_t</a>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        } &amp;&amp;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        Record&lt;typename T::Record_t&gt; &amp;&amp;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        std::is_convertible_v&lt;std::invoke_result_t&lt;T&gt;, RecordBuilder&lt;typename T::Record_t&gt;&gt;;</div>
@@ -166,7 +166,7 @@ $(document).ready(function(){initNavTree('d9/db9/_concepts_8hpp_source.html','..
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="agroup___prepared_types_html_gabf4790854bf35dd27d223fbecf8e8307"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#gabf4790854bf35dd27d223fbecf8e8307">sl::log::pre::Record_t</a></div><div class="ttdeci">BaseRecord&lt; SeverityLevel, std::string &gt; Record_t</div><div class="ttdoc">Prepared Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:64</div></div>
+<div class="ttc" id="agroup___prepared_types_html_gab7fd2d7ae0f18b1e2d4857c04dd160bb"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#gab7fd2d7ae0f18b1e2d4857c04dd160bb">sl::log::preset::Record_t</a></div><div class="ttdeci">BaseRecord&lt; SevLvl, std::string &gt; Record_t</div><div class="ttdoc">Prepared Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:52</div></div>
 <div class="ttc" id="agroup__concepts_html_ga020e0b2248bb393589aa5e0495384493"><div class="ttname"><a href="../../d4/df0/group__concepts.html#ga020e0b2248bb393589aa5e0495384493">sl::log::NotVoid</a></div><div class="ttdeci">concept NotVoid</div><div class="ttdoc">Concept checking for void type.</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:26</div></div>
 <div class="ttc" id="agroup__concepts_html_ga1c5760e773e9a0c3ab0d608139bce497"><div class="ttname"><a href="../../d4/df0/group__concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">sl::log::FileStateHandler</a></div><div class="ttdeci">concept FileStateHandler</div><div class="ttdoc">Concept for invokable file state handler objects.</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:91</div></div>
 <div class="ttc" id="agroup__concepts_html_ga37ddba3404d4136b7f370c8b5c4261b0"><div class="ttname"><a href="../../d4/df0/group__concepts.html#ga37ddba3404d4136b7f370c8b5c4261b0">sl::log::RecordFilterFor</a></div><div class="ttdeci">concept RecordFilterFor</div><div class="ttdoc">Concept for invokable filter objects.</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:85</div></div>

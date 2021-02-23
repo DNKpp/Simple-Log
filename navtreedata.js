@@ -32,7 +32,10 @@ var NAVTREE =
       [ "Installation with CMake", "index.html#autotoc_md4", [
         [ "FetchContent", "index.html#autotoc_md5", null ]
       ] ],
-      [ "Simple usage example", "index.html#autotoc_md6", null ]
+      [ "Examples", "index.html#autotoc_md6", [
+        [ "Easy Start", "index.html#autotoc_md7", null ],
+        [ "Easy File logging", "index.html#autotoc_md8", null ]
+      ] ]
     ] ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
@@ -65,7 +68,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"dc/d25/classsl_1_1log_1_1_timed_flush_policy.html#a768a50ca9e238031f876d3b3fc43b0e7"
+"db/da1/classsl_1_1log_1_1_between_equals.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

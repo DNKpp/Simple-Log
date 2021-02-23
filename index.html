@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">v0.5.a</span>
    </div>
   </td>
  </tr>
@@ -101,7 +101,9 @@ License</h1>
 <div class="line">         https://www.boost.org/LICENSE_1_0.txt)</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
 Description</h1>
-<p>Currently under development, thus not stable.</p>
+<p>This is a highly customizable multithreaded logging library, which makes heavy use of loosly coupled concepts rather than macros. Other than many other libraries, there are no singleton classes or forced global objects. It's up to the users if they want globals or not.</p>
+<p>If your goal is simply logging everything to console or a file, than you may want to begin with the <code>&lt;ReadyToGo&gt;</code>-header, which will set-up everything you'll need to be able start logging (also look at the short examples at the bottom of this readme). As you'll get used to the library you'll probably want to start customizing the behaviour of your sinks or even exchange types of Record's properties. This library lets you do this. Just head over to docs page <a href="https://dnkpp.github.io/Simple-Log/">https://dnkpp.github.io/Simple-Log/</a> or have a look at /src/examples directory. If you need an example for some advanced technics, don't hesitate asking me. As this library is growing I'll add more and more (hopefully useful) examples.</p>
+<p>A friendly reminder at the end: This library is currently in an alpha state, where it may be possible that some API breaks will happen. If you need a fully stable library from now on, this is unfortunatly not what you're looking for. I'm sorry, but perhaps it will be worth a second look in the near future.</p>
 <h1><a class="anchor" id="autotoc_md4"></a>
 Installation with CMake</h1>
 <p>This library can easily be integrated into your project via CMake target_link_libraries command.</p>
@@ -133,67 +135,62 @@ FetchContent</h2>
 <div class="line">    PRIVATE simple_log</div>
 <div class="line">)</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
-Simple usage example</h1>
-<div class="fragment"><div class="line"><span class="comment">// This header contains preset types, which users can use to get an easy start with the library.</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="d7/d89/_preset_types_8hpp.html">Simple-Log/PresetTypes.hpp</a>&gt;</span></div>
+Examples</h1>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Easy Start</h2>
+<p>This is an example, which will print every message onto the console. Users will automatically receive a Core instance (gCore), Console Sink (gConsoleSink) and a Logger (gLog). </p><div class="fragment"><div class="line"><span class="comment">/* With inclusion of this header, there will be automatically gCore, gConsoleSink and gLog constructed, which you might use.*/</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="d1/d79/_ready_to_go_8hpp.html">Simple-Log/ReadyToGo.hpp</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="comment">/* let&#39;s use a namespace alias for convenience; be aware: if you use cmath, some stl implementations will bloat your global namespace with a log function declaration (c-relict).</span></div>
-<div class="line"><span class="comment">Thus to make it compatible with all compilers, I&#39;ll use logging as alias instead.</span></div>
-<div class="line"><span class="comment"></span> </div>
-<div class="line"><span class="comment">All preset type alias are located in the sl::log::pre namespace, thus they do not interfere with the actual library if you don&#39;t want them to.</span></div>
-<div class="line"><span class="comment">It is no good style just importing everything into your namespace. Just create an namespace alias like so. This way it&#39;s very easy to make it less verbose for you.</span></div>
-<div class="line"><span class="comment">*/</span></div>
-<div class="line"><span class="keyword">namespace </span>logging = <a class="code" href="d5/d4f/namespacesl_1_1log_1_1pre.html">sl::log::pre</a>;</div>
-<div class="line"> </div>
-<div class="line"><span class="comment">// We&#39;re using a factory function here, but this isn&#39;t necessary. You could also create a plain Core instance and set it up later in main</span></div>
-<div class="line"><span class="keyword">inline</span> std::unique_ptr&lt;logging::Core_t&gt; makeLoggingCore()</div>
-<div class="line">{</div>
-<div class="line">    <span class="comment">/* an sl::log::Core is non-copy and non-movable, thus we will store it in an unique_ptr, so we</span></div>
-<div class="line"><span class="comment">     * can safely move it into our global.*/</span></div>
-<div class="line">    <span class="keyword">auto</span> core = std::make_unique&lt;logging::Core_t&gt;();</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">/* register a BasicSink and link it to the std::cout stream. This will simply print all incoming</span></div>
-<div class="line"><span class="comment">    messages onto the console.*/</span></div>
-<div class="line">    core-&gt;makeSink&lt;<a class="code" href="df/d5b/group___prepared_types.html#ga099a00be4e155fcbb4c5f6378d56612e">logging::BasicSink_t</a>&gt;(std::cout);</div>
-<div class="line">    <span class="keywordflow">return</span> core;</div>
-<div class="line">}</div>
-<div class="line"> </div>
-<div class="line"><span class="comment">/* For conveniences we will simply store the core and our default logger as a global. Feel free to do it</span></div>
-<div class="line"><span class="comment">otherwise. Just make sure the Core instance doesn&#39;t get destructed before all related Logger instances.*/</span></div>
-<div class="line"><span class="keyword">inline</span> std::unique_ptr&lt;logging::Core_t&gt; gLoggingCore{ makeLoggingCore() };</div>
-<div class="line"><span class="keyword">inline</span> <a class="code" href="df/d5b/group___prepared_types.html#ga62368dd44f720afe928180062ff31a15">logging::Logger_t</a> gLog{ *gLoggingCore, logging::SeverityLevel::info };</div>
+<div class="line"><span class="comment">// just import everything into the current namespace</span></div>
+<div class="line"><span class="keyword">using namespace </span><a class="code" href="dc/da1/namespacesl_1_1log_1_1ready__to__go.html">sl::log::ready_to_go</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main()</div>
 <div class="line">{</div>
-<div class="line">    gLog() &lt;&lt; <span class="stringliteral">&quot;Hello, World!&quot;</span>;  <span class="comment">// This will print this message with the &quot;info&quot; severity</span></div>
-<div class="line">    <span class="comment">// override default logger settings at the beginning</span></div>
-<div class="line">    gLog() &lt;&lt; logging::SetSev::debug &lt;&lt; <span class="stringliteral">&quot;Mighty debug message&quot;</span>;</div>
-<div class="line">    <span class="comment">// or at the end</span></div>
-<div class="line">    gLog() &lt;&lt; <span class="stringliteral">&quot;Print my important hint!&quot;</span> &lt;&lt; logging::SetSev::hint;</div>
-<div class="line">    <span class="comment">// or in between of messages</span></div>
-<div class="line">    gLog() &lt;&lt; <span class="stringliteral">&quot;This&quot;</span> &lt;&lt; <span class="stringliteral">&quot; will &quot;</span> &lt;&lt; logging::SetSev::warning &lt;&lt; <span class="stringliteral">&quot; create &quot;</span> &lt;&lt; <span class="stringliteral">&quot; a &quot;</span> &lt;&lt; <span class="stringliteral">&quot; concatenated &quot;</span> &lt;&lt; <span class="stringliteral">&quot; warning &quot;</span> &lt;&lt; <span class="stringliteral">&quot; message&quot;</span>;</div>
-<div class="line">    <span class="comment">// and using default setup again</span></div>
-<div class="line">    gLog() &lt;&lt; <span class="stringliteral">&quot;Back to info&quot;</span>;</div>
+<div class="line">    <span class="comment">// This line will be printed on the console with the severity &quot;info&quot;.</span></div>
+<div class="line">    <a class="code" href="dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a62b1d29b2cc04a77a40e4614450067fa">gLog</a>() &lt;&lt; <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
+<div class="line">    <span class="comment">// You may adjust the severity for the currently created Record like so.</span></div>
+<div class="line">    <a class="code" href="dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a62b1d29b2cc04a77a40e4614450067fa">gLog</a>() &lt;&lt; SetSev(SevLvl::debug) &lt;&lt; <span class="stringliteral">&quot;Mighty debug message&quot;</span>;</div>
+<div class="line">    <span class="comment">// The severity manipulator doesn&#39;t has to appear at front. Place it anywhere in your Record construction chain.</span></div>
+<div class="line">    <a class="code" href="dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a62b1d29b2cc04a77a40e4614450067fa">gLog</a>() &lt;&lt; <span class="stringliteral">&quot;Print my important hint!&quot;</span> &lt;&lt; SetSev(SevLvl::hint);</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">/*Core will make sure, that all pending Records will be processed before it gets destructed.*/</span></div>
 <div class="line"><span class="comment">/*</span></div>
-<div class="line"><span class="comment"> * The above code will for example generate this output:</span></div>
-<div class="line"><span class="comment"> *  18:49:32.047 &gt;&gt;&gt; info:: Hello, World!</span></div>
-<div class="line"><span class="comment"> *  18:49:32.047 &gt;&gt;&gt; debug:: Mighty debug message</span></div>
-<div class="line"><span class="comment"> *  18:49:32.047 &gt;&gt;&gt; hint:: Print my important hint!</span></div>
-<div class="line"><span class="comment"> *  18:49:32.047 &gt;&gt;&gt; warning:: This will  create  a  concatenated  warning  message</span></div>
-<div class="line"><span class="comment"> *  18:49:32.047 &gt;&gt;&gt; info:: Back to info</span></div>
+<div class="line"><span class="comment"> * The above code may generate this output:</span></div>
+<div class="line"><span class="comment">20:18:59.357 &gt;&gt;&gt; info:: Hello, World!</span></div>
+<div class="line"><span class="comment">20:18:59.357 &gt;&gt;&gt; debug:: Mighty debug message</span></div>
+<div class="line"><span class="comment">20:18:59.357 &gt;&gt;&gt; hint:: Print my important hint!</span></div>
 <div class="line"><span class="comment"> *</span></div>
 <div class="line"><span class="comment"> * Keep in mind, you are completely free how you are going to format your message. This is just the default one.</span></div>
 <div class="line"><span class="comment"> */</span></div>
-<div class="ttc" id="a_preset_types_8hpp_html"><div class="ttname"><a href="d7/d89/_preset_types_8hpp.html">PresetTypes.hpp</a></div></div>
-<div class="ttc" id="agroup___prepared_types_html_ga099a00be4e155fcbb4c5f6378d56612e"><div class="ttname"><a href="df/d5b/group___prepared_types.html#ga099a00be4e155fcbb4c5f6378d56612e">sl::log::pre::BasicSink_t</a></div><div class="ttdeci">BasicSink&lt; Record_t &gt; BasicSink_t</div><div class="ttdoc">Type alias for log::BasicSink which uses prep::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:80</div></div>
-<div class="ttc" id="agroup___prepared_types_html_ga62368dd44f720afe928180062ff31a15"><div class="ttname"><a href="df/d5b/group___prepared_types.html#ga62368dd44f720afe928180062ff31a15">sl::log::pre::Logger_t</a></div><div class="ttdeci">BaseLogger&lt; Record_t &gt; Logger_t</div><div class="ttdoc">Type alias for log::Logger which uses prep::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:72</div></div>
-<div class="ttc" id="anamespacesl_1_1log_1_1pre_html"><div class="ttname"><a href="d5/d4f/namespacesl_1_1log_1_1pre.html">sl::log::pre</a></div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:14</div></div>
+<div class="ttc" id="a_ready_to_go_8hpp_html"><div class="ttname"><a href="d1/d79/_ready_to_go_8hpp.html">ReadyToGo.hpp</a></div></div>
+<div class="ttc" id="anamespacesl_1_1log_1_1ready__to__go_html"><div class="ttname"><a href="dc/da1/namespacesl_1_1log_1_1ready__to__go.html">sl::log::ready_to_go</a></div><div class="ttdef"><b>Definition:</b> ReadyToGo.hpp:16</div></div>
+<div class="ttc" id="anamespacesl_1_1log_1_1ready__to__go_html_a62b1d29b2cc04a77a40e4614450067fa"><div class="ttname"><a href="dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a62b1d29b2cc04a77a40e4614450067fa">sl::log::ready_to_go::gLog</a></div><div class="ttdeci">auto gLog</div><div class="ttdef"><b>Definition:</b> ReadyToGo.hpp:22</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+Easy File logging</h2>
+<div class="fragment"><div class="line"><span class="comment">/* With inclusion of this header, there will be automatically gCore, gConsoleSink and gLog constructed, which you might use.*/</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="d1/d79/_ready_to_go_8hpp.html">Simple-Log/ReadyToGo.hpp</a>&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// just pull everything into the current namespace</span></div>
+<div class="line"><span class="keyword">using namespace </span><a class="code" href="dc/da1/namespacesl_1_1log_1_1ready__to__go.html">sl::log::ready_to_go</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// this creates a new FileSink object, which will store all incoming messages in logfile.log</span></div>
+<div class="line"><span class="keyword">auto</span>&amp; gFileSink = <a class="code" href="dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a88d42dc8178df5f58e58a5a420690873">gCore</a>.<a class="code" href="d4/df3/classsl_1_1log_1_1_core.html#ad828429edf3e849e9e88042c43a7da2e">makeSink</a>&lt;<a class="code" href="df/d5b/group___prepared_types.html#gaf18a546e417058826c8d721f56c1ed4a">FileSink_t</a>&gt;(<span class="stringliteral">&quot;logfile.log&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">int</span> main()</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">// Let our FileSink only handle important messages, e.g. warning and above</span></div>
+<div class="line">    gFileSink.setFilter(makeSeverityFilterFor&lt;Record_t&gt;(GreaterEquals{ SevLvl::warning }));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// this message will only appear on the console</span></div>
+<div class="line">    <a class="code" href="dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a62b1d29b2cc04a77a40e4614450067fa">gLog</a>() &lt;&lt; <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// while this message will also be saved in our logfile.log. Go ahead and see it yourself ;)</span></div>
+<div class="line">    <a class="code" href="dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a62b1d29b2cc04a77a40e4614450067fa">gLog</a>() &lt;&lt; SetSev(SevLvl::warning) &lt;&lt; <span class="stringliteral">&quot;I&#39;m an exemplary warning!&quot;</span>;</div>
+<div class="line">}</div>
+<div class="ttc" id="aclasssl_1_1log_1_1_core_html_ad828429edf3e849e9e88042c43a7da2e"><div class="ttname"><a href="d4/df3/classsl_1_1log_1_1_core.html#ad828429edf3e849e9e88042c43a7da2e">sl::log::Core::makeSink</a></div><div class="ttdeci">requires std::constructible_from&lt; TSink, TArgs... &gt; TSink &amp; makeSink(TArgs &amp;&amp;... args)</div><div class="ttdoc">Creates Sink and registers it at this Core instance.</div><div class="ttdef"><b>Definition:</b> Core.hpp:130</div></div>
+<div class="ttc" id="agroup___prepared_types_html_gaf18a546e417058826c8d721f56c1ed4a"><div class="ttname"><a href="df/d5b/group___prepared_types.html#gaf18a546e417058826c8d721f56c1ed4a">sl::log::preset::FileSink_t</a></div><div class="ttdeci">FileSink&lt; Record_t &gt; FileSink_t</div><div class="ttdoc">Type alias for log::FileSink which uses preset::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:72</div></div>
+<div class="ttc" id="anamespacesl_1_1log_1_1ready__to__go_html_a88d42dc8178df5f58e58a5a420690873"><div class="ttname"><a href="dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a88d42dc8178df5f58e58a5a420690873">sl::log::ready_to_go::gCore</a></div><div class="ttdeci">Core_t gCore</div><div class="ttdef"><b>Definition:</b> ReadyToGo.hpp:20</div></div>
 </div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->

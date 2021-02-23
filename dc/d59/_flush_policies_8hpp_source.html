@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">0.1</span>
+   &#160;<span id="projectnumber">v0.5.a</span>
    </div>
   </td>
  </tr>
@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('dc/d59/_flush_policies_8hpp_source.htm
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">class </span>AbstractFlushPolicyWrapper</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">using</span> <a class="code" href="../../df/d5b/group___prepared_types.html#gabf4790854bf35dd27d223fbecf8e8307">Record_t</a> = TRecord;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">using</span> <a class="code" href="../../df/d5b/group___prepared_types.html#gab7fd2d7ae0f18b1e2d4857c04dd160bb">Record_t</a> = TRecord;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">virtual</span> ~AbstractFlushPolicyWrapper() noexcept = default;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        </div>
@@ -121,7 +121,7 @@ $(document).ready(function(){initNavTree('dc/d59/_flush_policies_8hpp_source.htm
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        AbstractFlushPolicyWrapper(AbstractFlushPolicyWrapper&amp;&amp;) = delete;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        AbstractFlushPolicyWrapper&amp; operator =(AbstractFlushPolicyWrapper&amp;&amp;) = delete;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        virtual <span class="keywordtype">bool</span> operator ()(const <a class="code" href="../../df/d5b/group___prepared_types.html#gabf4790854bf35dd27d223fbecf8e8307">Record_t</a>&amp; record, std::<span class="keywordtype">size_t</span> messageByteSize) = 0;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        virtual <span class="keywordtype">bool</span> operator ()(const <a class="code" href="../../df/d5b/group___prepared_types.html#gab7fd2d7ae0f18b1e2d4857c04dd160bb">Record_t</a>&amp; record, std::<span class="keywordtype">size_t</span> messageByteSize) = 0;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        virtual <span class="keywordtype">void</span> flushed() = 0;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    protected:</div>
@@ -134,7 +134,7 @@ $(document).ready(function(){initNavTree('dc/d59/_flush_policies_8hpp_source.htm
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    {</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">using</span> Super = AbstractFlushPolicyWrapper&lt;TRecord&gt;;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">using</span> <a class="code" href="../../df/d5b/group___prepared_types.html#gabf4790854bf35dd27d223fbecf8e8307">Record_t</a> = std::remove_cvref_t&lt;TRecord&gt;;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">using</span> <a class="code" href="../../df/d5b/group___prepared_types.html#gab7fd2d7ae0f18b1e2d4857c04dd160bb">Record_t</a> = std::remove_cvref_t&lt;TRecord&gt;;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">using</span> FlushPolicy_t = std::remove_reference_t&lt;TFlushPolicy&gt;;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keyword">explicit</span> FlushPolicyWrapper() noexcept(std::is_nothrow_constructible_v&lt;FlushPolicy_t&gt;) :</div>
@@ -147,7 +147,7 @@ $(document).ready(function(){initNavTree('dc/d59/_flush_policies_8hpp_source.htm
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">bool</span> operator ()(<span class="keyword">const</span> <a class="code" href="../../df/d5b/group___prepared_types.html#gabf4790854bf35dd27d223fbecf8e8307">Record_t</a>&amp; record, std::size_t messageByteSize)<span class="keyword"> override</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">bool</span> operator ()(<span class="keyword">const</span> <a class="code" href="../../df/d5b/group___prepared_types.html#gab7fd2d7ae0f18b1e2d4857c04dd160bb">Record_t</a>&amp; record, std::size_t messageByteSize)<span class="keyword"> override</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">        </span>{</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keywordflow">return</span> std::invoke(m_FlushPolicy, record, messageByteSize);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
@@ -482,7 +482,7 @@ $(document).ready(function(){initNavTree('dc/d59/_flush_policies_8hpp_source.htm
 <div class="ttc" id="agroup___flush-_policy_html_gab9b3e1b941de7c29475debaa1b6a1cac"><div class="ttname"><a href="../../d5/dfa/group___flush-_policy.html#gab9b3e1b941de7c29475debaa1b6a1cac">sl::log::makeSeverityFlushPolicyFor</a></div><div class="ttdeci">constexpr auto makeSeverityFlushPolicyFor(TUnaryPredicate &amp;&amp;predicate)</div><div class="ttdoc">Factory function for creating Flush-Policies based on Record::severity member.</div><div class="ttdef"><b>Definition:</b> FlushPolicies.hpp:401</div></div>
 <div class="ttc" id="agroup___flush-_policy_html_gafc0f3598ec58dda217e635c7fe2abe4f"><div class="ttname"><a href="../../d5/dfa/group___flush-_policy.html#gafc0f3598ec58dda217e635c7fe2abe4f">sl::log::makeTimePointFlushPolicyFor</a></div><div class="ttdeci">constexpr auto makeTimePointFlushPolicyFor(TUnaryPredicate &amp;&amp;predicate)</div><div class="ttdoc">Factory function for creating Flush-Policies based on Record::timePoint member.</div><div class="ttdef"><b>Definition:</b> FlushPolicies.hpp:441</div></div>
 <div class="ttc" id="agroup___flush-_policy_html_gafd2084b61e0e19b5cfac465eac9a88f1"><div class="ttname"><a href="../../d5/dfa/group___flush-_policy.html#gafd2084b61e0e19b5cfac465eac9a88f1">sl::log::makeMessageFlushPolicyFor</a></div><div class="ttdeci">constexpr auto makeMessageFlushPolicyFor(TUnaryPredicate &amp;&amp;predicate)</div><div class="ttdoc">Factory function for creating Flush-Policies based on Record::message member.</div><div class="ttdef"><b>Definition:</b> FlushPolicies.hpp:381</div></div>
-<div class="ttc" id="agroup___prepared_types_html_gabf4790854bf35dd27d223fbecf8e8307"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#gabf4790854bf35dd27d223fbecf8e8307">sl::log::pre::Record_t</a></div><div class="ttdeci">BaseRecord&lt; SeverityLevel, std::string &gt; Record_t</div><div class="ttdoc">Prepared Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:64</div></div>
+<div class="ttc" id="agroup___prepared_types_html_gab7fd2d7ae0f18b1e2d4857c04dd160bb"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#gab7fd2d7ae0f18b1e2d4857c04dd160bb">sl::log::preset::Record_t</a></div><div class="ttdeci">BaseRecord&lt; SevLvl, std::string &gt; Record_t</div><div class="ttdoc">Prepared Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:52</div></div>
 <div class="ttc" id="agroup__concepts_html_ga7e49931624e51b19627bef18ff763081"><div class="ttname"><a href="../../d4/df0/group__concepts.html#ga7e49931624e51b19627bef18ff763081">sl::log::Record</a></div><div class="ttdeci">concept Record</div><div class="ttdoc">Concept for Record types.</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:33</div></div>
 <div class="ttc" id="agroup__concepts_html_gaf5daeadaa8a98715671cee34171d5380"><div class="ttname"><a href="../../d4/df0/group__concepts.html#gaf5daeadaa8a98715671cee34171d5380">sl::log::FlushPolicyFor</a></div><div class="ttdeci">concept FlushPolicyFor</div><div class="ttdoc">Concept for invokable flush policies.</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:97</div></div>
 <div class="ttc" id="anamespacesl_1_1log_html"><div class="ttname"><a href="../../de/d83/namespacesl_1_1log.html">sl::log</a></div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:24</div></div>

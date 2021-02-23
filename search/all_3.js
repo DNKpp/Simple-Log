@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['debug_19',['debug',['../df/d5b/structsl_1_1log_1_1pre_1_1_set_sev.html#ae6d70a8615ce48b1f567e32cd6d31753',1,'sl::log::pre::SetSev::debug()'],['../df/d5b/group___prepared_types.html#gga1233009dc7a50b2f4d4a14c7e9b087d2aad42f6697b035b7580e4fef93be20b4d',1,'sl::log::pre::debug()']]],
+  ['debug_19',['debug',['../df/d5b/group___prepared_types.html#ggaa30e95bdde6414a22c02e8c98d5dcf3faad42f6697b035b7580e4fef93be20b4d',1,'sl::log::preset']]],
   ['defaultchannel_20',['defaultChannel',['../da/d7e/classsl_1_1log_1_1_base_logger.html#a61878c9d5f2b20d1e6483cda1c40af38',1,'sl::log::BaseLogger']]],
   ['defaultfilter_21',['defaultFilter',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#ae620bc01174a6f65b0b19cea19b2b715',1,'sl::log::BasicSink']]],
   ['defaultflushpolicy_22',['defaultFlushPolicy',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a1e5b379e5907f8a0a38001cbc060f777',1,'sl::log::BasicSink']]],
