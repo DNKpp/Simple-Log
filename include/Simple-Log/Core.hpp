@@ -21,6 +21,10 @@
 
 namespace sl::log
 {
+	/** \addtogroup Core
+	 * @{
+	 */
+	
 	/**
 	 * \brief The central point of the whole library. Needs to be instantiated at least once.
 	 * \tparam TRecord Used Record type.
@@ -244,6 +248,8 @@ namespace sl::log
 			return ref;
 		}
 	};
+
+	/** @}*/
 }
 
 #endif
