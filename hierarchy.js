@@ -24,6 +24,16 @@ var hierarchy =
       [ "sl::log::FilterNoneOf< TFilter >", "de/db4/classsl_1_1log_1_1_filter_none_of.html", null ]
     ] ],
     [ "sl::log::FlushPolicy< TPredicate, TProjection, TInvocationRule >", "d8/df6/classsl_1_1log_1_1_flush_policy.html", null ],
+    [ "sl::log::FlushPolicyChain< TAlgorithm, TFlushPolicies >", "d5/d04/classsl_1_1log_1_1_flush_policy_chain.html", null ],
+    [ "sl::log::FlushPolicyChain< detail::TupleAllOf, TFlushPolicies... >", "d5/d04/classsl_1_1log_1_1_flush_policy_chain.html", [
+      [ "sl::log::FlushPolicyAllOf< TFlushPolicies >", "d6/dc9/classsl_1_1log_1_1_flush_policy_all_of.html", null ]
+    ] ],
+    [ "sl::log::FlushPolicyChain< detail::TupleAnyOf, TFlushPolicies... >", "d5/d04/classsl_1_1log_1_1_flush_policy_chain.html", [
+      [ "sl::log::FlushPolicyAnyOf< TFlushPolicies >", "de/d2e/classsl_1_1log_1_1_flush_policy_any_of.html", null ]
+    ] ],
+    [ "sl::log::FlushPolicyChain< detail::TupleNoneOf, TFlushPolicies... >", "d5/d04/classsl_1_1log_1_1_flush_policy_chain.html", [
+      [ "sl::log::FlushPolicyNoneOf< TFlushPolicies >", "d9/d5f/classsl_1_1log_1_1_flush_policy_none_of.html", null ]
+    ] ],
     [ "sl::log::Greater< T >", "d5/d69/classsl_1_1log_1_1_greater.html", null ],
     [ "sl::log::GreaterEquals< T >", "dc/d79/classsl_1_1log_1_1_greater_equals.html", null ],
     [ "sl::log::ISink< TRecord >", "d8/dda/classsl_1_1log_1_1_i_sink.html", [

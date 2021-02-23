@@ -161,6 +161,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <h3><a id="index_e"></a>- e -</h3><ul>
 <li>empty()
 : <a class="el" href="d7/d40/classsl_1_1log_1_1_filter_chain.html#ad8361fba14bbfd61046b102ce7f21ca7">sl::log::FilterChain&lt; TAlgorithm, TFilter &gt;</a>
+, <a class="el" href="d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#a53f10c0af5ac578ab2b150fecf6505cd">sl::log::FlushPolicyChain&lt; TAlgorithm, TFlushPolicies &gt;</a>
 , <a class="el" href="d1/de1/classsl_1_1log_1_1_record_queue.html#ad9edb42e48cea7c3084dbd8a5fded2d4">sl::log::RecordQueue&lt; TRecord &gt;</a>
 </li>
 <li>Equals()
@@ -209,6 +210,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>flushed()
 : <a class="el" href="d4/d87/classsl_1_1log_1_1_byte_count_flush_policy.html#a7c8e27c19ba1e79d0da4ed496d5577a5">sl::log::ByteCountFlushPolicy</a>
 , <a class="el" href="d8/df6/classsl_1_1log_1_1_flush_policy.html#a453609f8f165dea0c7ee6158f0278f44">sl::log::FlushPolicy&lt; TPredicate, TProjection, TInvocationRule &gt;</a>
+, <a class="el" href="d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#a188ef79d6f4a7f033bd9aee6854fe38e">sl::log::FlushPolicyChain&lt; TAlgorithm, TFlushPolicies &gt;</a>
 , <a class="el" href="dc/d25/classsl_1_1log_1_1_timed_flush_policy.html#a768a50ca9e238031f876d3b3fc43b0e7">sl::log::TimedFlushPolicy</a>
 </li>
 <li>FlushPolicy()
@@ -216,6 +218,18 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>FlushPolicy_t
 : <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#a9f4e4d88cbb51b678e535d37ee50bcaf">sl::log::BasicSink&lt; TRecord &gt;</a>
+</li>
+<li>FlushPolicyAllOf()
+: <a class="el" href="d6/dc9/classsl_1_1log_1_1_flush_policy_all_of.html#adaad44556d1df75df12caa137624b1b6">sl::log::FlushPolicyAllOf&lt; TFlushPolicies &gt;</a>
+</li>
+<li>FlushPolicyAnyOf()
+: <a class="el" href="de/d2e/classsl_1_1log_1_1_flush_policy_any_of.html#a97f5657c1b1518f80b19469196bb678d">sl::log::FlushPolicyAnyOf&lt; TFlushPolicies &gt;</a>
+</li>
+<li>FlushPolicyChain()
+: <a class="el" href="d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#a6e3804c70ffb021829acd8c750346038">sl::log::FlushPolicyChain&lt; TAlgorithm, TFlushPolicies &gt;</a>
+</li>
+<li>FlushPolicyNoneOf()
+: <a class="el" href="d9/d5f/classsl_1_1log_1_1_flush_policy_none_of.html#a7fc3a046b399571358350a184972f2dc">sl::log::FlushPolicyNoneOf&lt; TFlushPolicies &gt;</a>
 </li>
 <li>Formatter_t
 : <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596">sl::log::BasicSink&lt; TRecord &gt;</a>
@@ -320,6 +334,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 , <a class="el" href="d2/dce/classsl_1_1log_1_1_equals.html#a7edb87acbe15a414b290df37ec34188a">sl::log::Equals&lt; T &gt;</a>
 , <a class="el" href="d7/d40/classsl_1_1log_1_1_filter_chain.html#ad52c815ca33b84587f5413660e3dbddb">sl::log::FilterChain&lt; TAlgorithm, TFilter &gt;</a>
 , <a class="el" href="d8/df6/classsl_1_1log_1_1_flush_policy.html#aeae9c7b48cfd5055ccb26b1bc4c8dcaf">sl::log::FlushPolicy&lt; TPredicate, TProjection, TInvocationRule &gt;</a>
+, <a class="el" href="d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#ac8a810444d7abac9351e4ef1d8838b66">sl::log::FlushPolicyChain&lt; TAlgorithm, TFlushPolicies &gt;</a>
 , <a class="el" href="d5/d69/classsl_1_1log_1_1_greater.html#a1aa53392133ac74cf45ec2835e71187e">sl::log::Greater&lt; T &gt;</a>
 , <a class="el" href="dc/d79/classsl_1_1log_1_1_greater_equals.html#a16208567742ad31a9aa7586b8617ea88">sl::log::GreaterEquals&lt; T &gt;</a>
 , <a class="el" href="d6/deb/classsl_1_1log_1_1_less.html#af34daa6e6bc010215386408589316c26">sl::log::Less&lt; T &gt;</a>
@@ -340,11 +355,11 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="db/d9a/classsl_1_1log_1_1_record_builder.html#ac176c282b5613d66e80fbf812d6e1f6e">sl::log::RecordBuilder&lt; TRecord &gt;</a>
 </li>
 <li>operator=()
-: <a class="el" href="da/d7e/classsl_1_1log_1_1_base_logger.html#aaae614fb320af21ac8ab8b3904ebba52">sl::log::BaseLogger&lt; TRecord &gt;</a>
+: <a class="el" href="da/d7e/classsl_1_1log_1_1_base_logger.html#aae630721bd31e04c23f4c61d428d8c60">sl::log::BaseLogger&lt; TRecord &gt;</a>
 , <a class="el" href="dd/d48/classsl_1_1log_1_1_basic_sink.html#aa4b47a060c3ad8a3e42f334b1a6614b7">sl::log::BasicSink&lt; TRecord &gt;</a>
 , <a class="el" href="d4/df3/classsl_1_1log_1_1_core.html#adc78afd80397c528f5db37929dd29f88">sl::log::Core&lt; TRecord &gt;</a>
-, <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#aa89fd28eea86d2402a6bb1cab21d0ef5">sl::log::FileSink&lt; TRecord &gt;</a>
-, <a class="el" href="d8/dda/classsl_1_1log_1_1_i_sink.html#a4e0520bcb878b9d4f15449e32f9aad07">sl::log::ISink&lt; TRecord &gt;</a>
+, <a class="el" href="dc/dd6/classsl_1_1log_1_1_file_sink.html#a9c2128616d21a4fbd6de29b72e892386">sl::log::FileSink&lt; TRecord &gt;</a>
+, <a class="el" href="d8/dda/classsl_1_1log_1_1_i_sink.html#ae79608129806b3e33732e28c442dfe8f">sl::log::ISink&lt; TRecord &gt;</a>
 , <a class="el" href="db/d9a/classsl_1_1log_1_1_record_builder.html#aab432dfaef0326957ea46e5ddeab7d55">sl::log::RecordBuilder&lt; TRecord &gt;</a>
 , <a class="el" href="d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html#ab8313c1d89fff6d71ccc9319f0ebff7c">sl::log::ScopedSinkDisabling&lt; TRecord, TSink &gt;</a>
 </li>
@@ -498,6 +513,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>size()
 : <a class="el" href="d7/d40/classsl_1_1log_1_1_filter_chain.html#a4a46d22b066b4b202171bb59b5cab739">sl::log::FilterChain&lt; TAlgorithm, TFilter &gt;</a>
+, <a class="el" href="d5/d04/classsl_1_1log_1_1_flush_policy_chain.html#a26188a051bd7343cbf0ae1a3bb197498">sl::log::FlushPolicyChain&lt; TAlgorithm, TFlushPolicies &gt;</a>
 , <a class="el" href="d1/de1/classsl_1_1log_1_1_record_queue.html#a5cead06ef00abe47041528f8bc400849">sl::log::RecordQueue&lt; TRecord &gt;</a>
 </li>
 <li>StringPattern()

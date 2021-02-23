@@ -19,5 +19,6 @@ var files_dup =
     [ "Simple-Log.hpp", "d0/d08/_simple-_log_8hpp.html", null ],
     [ "StringPattern.hpp", "d4/d47/_string_pattern_8hpp.html", [
       [ "StringPattern", "d1/d81/classsl_1_1log_1_1_string_pattern.html", "d1/d81/classsl_1_1log_1_1_string_pattern" ]
-    ] ]
+    ] ],
+    [ "TupleAlgorithms.hpp", "da/d76/_tuple_algorithms_8hpp.html", null ]
 ];
