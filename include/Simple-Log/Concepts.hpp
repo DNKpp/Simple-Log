@@ -13,8 +13,8 @@
 #include <string>
 
 namespace sl::log
-{
-	/** \addtogroup concepts
+{	
+	/** \addtogroup Concepts
 	 * @{
 	 */
 
@@ -54,8 +54,14 @@ namespace sl::log
 			{ rec.setChannel(std::declval<typename T::Channel_t>()) };
 		};
 
+	/** @}*/
+
 	template <Record TRecord>
 	class RecordBuilder;
+
+	/** \addtogroup Concepts
+	 * @{
+	 */
 
 	/**
 	 * \brief Concept for Logger classes
