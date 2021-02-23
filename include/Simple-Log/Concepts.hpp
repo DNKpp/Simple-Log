@@ -10,7 +10,7 @@
 
 #include <concepts>
 #include <string>
-#include <string_view>
+#include <string>
 
 namespace sl::log
 {
