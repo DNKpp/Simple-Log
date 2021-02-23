@@ -207,3 +207,11 @@ TEST_CASE("StringPattern invocation produces strings, which will be generated on
 		}
 	}
 }
+
+TEST_CASE("StringPattern should return strings as given to setter.", "[StringPattern]")
+{
+	std::string str = GENERATE("", " ", "test", "Hello, World!");
+	StringPattern pattern{ str };
+
+	REQUIRE(pattern.patternString() == str);
+}
