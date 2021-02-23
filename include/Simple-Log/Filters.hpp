@@ -12,6 +12,7 @@
 #include <concepts>
 #include <tuple>
 #include <functional>
+#include <type_traits>
 
 #include "Concepts.hpp"
 #include "TupleAlgorithms.hpp"
@@ -46,9 +47,13 @@ namespace sl::log
 		 * \param projection Invokable object
 		 * \param predicate Predicate object
 		 */
-		constexpr ProjectionFilter(TProjection projection, TUnaryPredicate predicate) :
-			m_Projection(std::move(projection)),
-			m_Predicate(std::move(predicate))
+		constexpr ProjectionFilter(
+			TProjection projection,
+			TUnaryPredicate predicate
+		)
+		noexcept(std::is_nothrow_move_constructible_v<TProjection> && std::is_nothrow_move_constructible_v<TUnaryPredicate>) :
+			m_Projection{ std::move(projection) },
+			m_Predicate{ std::move(predicate) }
 		{
 		}
 
@@ -83,7 +88,10 @@ namespace sl::log
 		 * \brief Constructor
 		 * \param filter Filter objects
 		 */
-		constexpr explicit FilterChain(TFilter ...filter) :
+		constexpr explicit FilterChain(
+			TFilter ...filter
+		)
+		noexcept(std::is_nothrow_constructible_v<TAlgorithm> && (std::is_nothrow_move_constructible_v<TFilter> && ...)) :
 			m_Algorithm{},
 			m_Filter{ std::move(filter)... }
 		{
@@ -94,7 +102,10 @@ namespace sl::log
 		 * \param algorithm Algorithm object
 		 * \param filter Filter objects
 		 */
-		constexpr explicit FilterChain(TAlgorithm algorithm, TFilter ...filter) :
+		constexpr explicit FilterChain(
+			TAlgorithm algorithm,
+			TFilter ...filter
+		) noexcept((std::is_nothrow_move_constructible_v<TFilter> && ...)) :
 			m_Algorithm(std::move(algorithm)),
 			m_Filter{ std::forward<TFilter>(filter)... }
 		{
@@ -159,7 +170,10 @@ namespace sl::log
 		 * \brief Constructor
 		 * \param filter Filter objects
 		 */
-		constexpr explicit FilterAllOf(TFilter ... filter) :
+		constexpr explicit FilterAllOf(
+			TFilter ... filter
+		)
+		noexcept((std::is_nothrow_move_constructible_v<TFilter> && ...)) :
 			FilterChain<Algorithm, TFilter...>{ std::move(filter)... }
 		{
 		}
@@ -180,7 +194,10 @@ namespace sl::log
 		 * \brief Constructor
 		 * \param filter Filter objects
 		 */
-		constexpr explicit FilterAnyOf(TFilter ... filter) :
+		constexpr explicit FilterAnyOf(
+			TFilter ... filter
+		)
+		noexcept((std::is_nothrow_move_constructible_v<TFilter> && ...)) :
 			FilterChain<Algorithm, TFilter...>{ std::move(filter)... }
 		{
 		}
@@ -201,7 +218,10 @@ namespace sl::log
 		 * \brief Constructor
 		 * \param filter Filter objects
 		 */
-		constexpr explicit FilterNoneOf(TFilter ... filter) :
+		constexpr explicit FilterNoneOf(
+			TFilter ... filter
+		)
+		noexcept((std::is_nothrow_move_constructible_v<TFilter> && ...)) :
 			FilterChain<Algorithm, TFilter...>{ std::move(filter)... }
 		{
 		}

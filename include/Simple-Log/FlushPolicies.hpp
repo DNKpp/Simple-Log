@@ -13,6 +13,7 @@
 #include <cstddef>
 #include <functional>
 #include <utility>
+#include <type_traits>
 
 #include "Concepts.hpp"
 #include "TupleAlgorithms.hpp"
@@ -26,6 +27,11 @@ namespace sl::log::detail
 		using Record_t = TRecord;
 
 		virtual ~AbstractFlushPolicyWrapper() noexcept = default;
+		
+		AbstractFlushPolicyWrapper(const AbstractFlushPolicyWrapper&) = delete;
+		AbstractFlushPolicyWrapper& operator =(const AbstractFlushPolicyWrapper&) = delete;
+		AbstractFlushPolicyWrapper(AbstractFlushPolicyWrapper&&) = delete;
+		AbstractFlushPolicyWrapper& operator =(AbstractFlushPolicyWrapper&&) = delete;
 
 		virtual bool operator ()(const Record_t& record, std::size_t messageByteSize) = 0;
 		virtual void flushed() = 0;
@@ -136,7 +142,9 @@ namespace sl::log
 			TPredicate predicate = Predicate_t{},
 			TProjection projection = Projection_t{},
 			TInvocationRule invocation = InvocationRule_t{}
-		) :
+		)
+		noexcept(std::is_nothrow_move_constructible_v<TPredicate> && std::is_nothrow_move_constructible_v<TProjection> &&
+			std::is_nothrow_move_constructible_v<TInvocationRule>) :
 			m_Predicate{ std::move(predicate) },
 			m_Projection{ std::move(projection) },
 			m_Invocation{ std::move(invocation) }
@@ -146,13 +154,18 @@ namespace sl::log
 		/**
 		 * \brief Constructor overload for in_place predicate initializing
 		 * \tparam TArgs Types of the predicate constructor arguments 
-		 * \param _ Dummy value used for detecting the overload
+		 * \param _ Dummy value used for detecting the overload. Simply pass std::in_place as argument.
 		 * \param args Constructor arguments for the predicate
 		 * \details Constructs the predicate in-place
 		 */
 		template <class... TArgs>
 		requires std::constructible_from<Predicate_t, TArgs...>
-		explicit FlushPolicy(std::in_place_t _, TArgs&&... args) :
+		explicit FlushPolicy(
+			std::in_place_t _,
+			TArgs&&... args
+		)
+		noexcept(std::is_nothrow_constructible_v<TPredicate, TArgs...> && std::is_nothrow_constructible_v<TProjection> &&
+			std::is_nothrow_constructible_v<TInvocationRule>) :
 			m_Predicate{ std::forward<TArgs>(args)... }
 		{
 		}
@@ -199,7 +212,10 @@ namespace sl::log
 		 * \brief Constructor
 		 * \param policies FlushPolicy objects
 		 */
-		constexpr explicit FlushPolicyChain(TFlushPolicies ... policies) :
+		constexpr explicit FlushPolicyChain(
+			TFlushPolicies ... policies
+		)
+		noexcept(std::is_nothrow_constructible_v<TAlgorithm> && (std::is_nothrow_move_constructible_v<TFlushPolicies> && ...)) :
 			m_Algorithm{},
 			m_Policies{ std::move(policies)... }
 		{
@@ -210,7 +226,12 @@ namespace sl::log
 		 * \param algorithm Algorithm object
 		 * \param policies FlushPolicy objects
 		 */
-		constexpr explicit FlushPolicyChain(TAlgorithm algorithm, TFlushPolicies ... policies) :
+		constexpr explicit FlushPolicyChain(
+			TAlgorithm algorithm,
+			TFlushPolicies ... policies
+		)
+		noexcept(std::is_nothrow_move_constructible_v<TAlgorithm> && (std::is_nothrow_move_constructible_v<TFlushPolicies> && ...)
+		) :
 			m_Algorithm{ std::move(algorithm) },
 			m_Policies{ std::forward<TFlushPolicies>(policies)... }
 		{
@@ -284,7 +305,10 @@ namespace sl::log
 		 * \brief Constructor
 		 * \param policies FlushPolicy objects
 		 */
-		constexpr explicit FlushPolicyAllOf(TFlushPolicies ... policies) :
+		constexpr explicit FlushPolicyAllOf(
+			TFlushPolicies ... policies
+		)
+		noexcept((std::is_nothrow_move_constructible_v<TFlushPolicies> && ...)) :
 			FlushPolicyChain<Algorithm, TFlushPolicies...>{ std::move(policies)... }
 		{
 		}
@@ -305,7 +329,10 @@ namespace sl::log
 		 * \brief Constructor
 		 * \param policies FlushPolicy objects
 		 */
-		constexpr explicit FlushPolicyAnyOf(TFlushPolicies ... policies) :
+		constexpr explicit FlushPolicyAnyOf(
+			TFlushPolicies ... policies
+		)
+		noexcept((std::is_nothrow_move_constructible_v<TFlushPolicies> && ...)) :
 			FlushPolicyChain<Algorithm, TFlushPolicies...>{ std::move(policies)... }
 		{
 		}
@@ -326,7 +353,10 @@ namespace sl::log
 		 * \brief Constructor
 		 * \param policies FlushPolicy objects
 		 */
-		constexpr explicit FlushPolicyNoneOf(TFlushPolicies ... policies) :
+		constexpr explicit FlushPolicyNoneOf(
+			TFlushPolicies ... policies
+		)
+		noexcept((std::is_nothrow_move_constructible_v<TFlushPolicies> && ...)) :
 			FlushPolicyChain<Algorithm, TFlushPolicies...>{ std::move(policies)... }
 		{
 		}
@@ -481,7 +511,7 @@ namespace sl::log
 		 * \brief Constructor
 		 * \param byteThreshold Threshold size in bytes 
 		 */
-		explicit ByteCountFlushPolicy(std::size_t byteThreshold) :
+		explicit ByteCountFlushPolicy(std::size_t byteThreshold) noexcept :
 			m_ByteThreshold{ byteThreshold }
 		{
 		}
