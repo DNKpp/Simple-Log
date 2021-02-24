@@ -56,6 +56,7 @@ namespace sl::log
 		 * \param stream The stream object, which will receive finally formatted messages
 		 */
 		explicit OStreamSink(std::ostream& stream) :
+			Super{},
 			m_Stream{ stream }
 		{
 		}
@@ -139,8 +140,18 @@ namespace sl::log
 			const auto msgSize = std::size(message) * sizeof(std::string_view::value_type);
 
 			std::scoped_lock lock{ m_StreamMx };
-			m_Stream << message;
+			writeBeforeMessage(m_Stream, record);
+			m_Stream << message << "\n";
+			writeAfterMessage(m_Stream, record);
 			handleFlushPolicy(record, msgSize);
+		}
+
+		virtual void writeBeforeMessage(std::ostream& stream, const Record_t& record)
+		{
+		}
+
+		virtual void writeAfterMessage(std::ostream& stream, const Record_t& record)
+		{
 		}
 
 	private:
