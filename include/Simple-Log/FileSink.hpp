@@ -19,7 +19,7 @@
 
 namespace sl::log
 {
-	/** \addtogroup sink
+	/** \addtogroup Sinks
 	 * @{
 	 */
 

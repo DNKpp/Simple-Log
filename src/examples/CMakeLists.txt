@@ -4,3 +4,5 @@ project(simple_log_examples)
 
 add_subdirectory(EasyStart)
 add_subdirectory(FileLogging)
+add_subdirectory(CustomizeBaseRecord)
+add_subdirectory(CustomRecordType)
