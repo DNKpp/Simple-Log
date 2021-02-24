@@ -39,7 +39,7 @@ inline Core_t gCore;
 inline auto gLog = makeLogger<Logger_t>(gCore, SevLvl::info, Channel::standard);
 inline auto& gConsoleSink
 {
-	[&]() -> auto&
+	[]() -> auto&
 	{
 		// let's create the console sink in disabled state. Will become automatically enabled after this scope is left.
 		auto wrappedSink = gCore.makeDisabledSink<BasicSink_t>(std::cout);
