@@ -24,6 +24,7 @@
 #include "Logger.hpp"
 
 #include "BasicSink.hpp"
+#include "ConsoleSink.hpp"
 #include "FileSink.hpp"
 #include "ISink.hpp"
 #include "OStreamSink.hpp"
