@@ -13,12 +13,12 @@
  * predefined types with their own. If you use any Filter, FlushPolicy or anything else which watches out for a specific Channel, it might be wise to exchange the std::string type with something less expensive to compare, e.g. an enum type or plain int.
  * For example users could use the BaseRecord type, but exchanging some member types with any other type or even create their custom Record type from scratch. Here is an example for the former:
  *
- * \dontinclude{lineno} CustomizeBaseRecord\main.cpp
+ * \dontinclude{lineno} CustomizeBaseRecord/main.cpp
  * \skip Simple-Log/
  * \until network >>
  *
  * If your needs are more specific and you want to add things such as custom properties to the Record type, this might be an example for you:
- * \dontinclude{lineno} CustomRecordType\main.cpp
+ * \dontinclude{lineno} CustomRecordType/main.cpp
  * \skip Simple-Log/
  * \until palindrome >>
  */

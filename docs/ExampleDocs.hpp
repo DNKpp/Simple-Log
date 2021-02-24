@@ -4,17 +4,17 @@
 //          https://www.boost.org/LICENSE_1_0.txt)
 
 /**
- * \example{lineno} EasyStart\main.cpp
+ * \example{lineno} EasyStart/main.cpp
  */
 
 /**
- * \example{lineno} FileLogging\main.cpp
+ * \example{lineno} FileLogging/main.cpp
  */
 
 /**
- * \example{lineno} CustomizeBaseRecord\main.cpp
+ * \example{lineno} CustomizeBaseRecord/main.cpp
  */
 
 /**
- * \example{lineno} CustomRecordType\main.cpp
+ * \example{lineno} CustomRecordType/main.cpp
  */
