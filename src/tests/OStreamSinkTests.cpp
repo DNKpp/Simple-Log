@@ -11,13 +11,13 @@
 #include <string>
 #include <string_view>
 
-#include "Simple-Log/BasicSink.hpp"
+#include "Simple-Log/OStreamSink.hpp"
 #include "Simple-Log/Record.hpp"
 
 using namespace sl::log;
 
 using Record_t = BaseRecord<int, int>;
-using BasicSink_t = BasicSink<Record_t>;
+using OStreamSink_t = OStreamSink<Record_t>;
 
 namespace
 {
@@ -67,35 +67,35 @@ namespace
 	};
 }
 
-SCENARIO("BasicSinks should be in disabled state when construction succeeded", "[BasicSink][Sink]")
+SCENARIO("OStreamSinks should be in disabled state when construction succeeded", "[OStreamSink][Sink]")
 {
-	GIVEN("a newly constructed BasicSink instance")
+	GIVEN("a newly constructed OStreamSink instance")
 	WHEN("construction succeeded")
-	THEN("BasicSink should be disabled by default")
+	THEN("OStreamSink should be disabled by default")
 	{
-		BasicSink_t sink{ std::cout };
+		OStreamSink_t sink{ std::cout };
 		REQUIRE_FALSE(sink.isEnabled());
 	}
 }
 
-SCENARIO("BasicSinks::setEnabled should modify member.", "[BasicSink][Sink]")
+SCENARIO("OStreamSinks::setEnabled should modify member.", "[OStreamSink][Sink]")
 {
-	GIVEN("a disabled BasicSink instance")
+	GIVEN("a disabled OStreamSink instance")
 	WHEN("setting as enabled")
 	THEN("isEnabled should yield a positive result")
 	{
-		BasicSink_t sink{ std::cout };
+		OStreamSink_t sink{ std::cout };
 		sink.setEnabled(true);
 		REQUIRE(sink.isEnabled());
 	}
 }
 
-SCENARIO("BasicSink's log function should be controled by enabled property", "[BasicSink][Sink]")
+SCENARIO("OStreamSink's log function should be controled by enabled property", "[OStreamSink][Sink]")
 {
 	std::ostringstream out;
-	BasicSink_t sink{ out };
+	OStreamSink_t sink{ out };
 
-	GIVEN("a disabled BasicSink instance")
+	GIVEN("a disabled OStreamSink instance")
 	WHEN("calling log")
 	THEN("nothing should have been written to the stream")
 	{
@@ -103,7 +103,7 @@ SCENARIO("BasicSink's log function should be controled by enabled property", "[B
 		REQUIRE(std::empty(out.str()));
 	}
 
-	GIVEN("a enabled BasicSink instance")
+	GIVEN("a enabled OStreamSink instance")
 	WHEN("calling log")
 	THEN("record should have been written to the stream")
 	{
@@ -113,15 +113,15 @@ SCENARIO("BasicSink's log function should be controled by enabled property", "[B
 	}
 }
 
-SCENARIO("BasicSink's filter property should determine if records get processed or skipped", "[BasicSink][Sink]")
+SCENARIO("OStreamSink's filter property should determine if records get processed or skipped", "[OStreamSink][Sink]")
 {
 	std::ostringstream out;
-	BasicSink_t sink{ out };
+	OStreamSink_t sink{ out };
 	bool invoked = false;
 	sink.setFilter(FilterMoc{ .invocationResult = true, .invoked = &invoked });
 	sink.setEnabled();
 
-	GIVEN("an enabled BasicSink instance")
+	GIVEN("an enabled OStreamSink instance")
 	{
 		WHEN("calling log")
 		{
@@ -150,15 +150,15 @@ SCENARIO("BasicSink's filter property should determine if records get processed 
 	}
 }
 
-SCENARIO("BasicSink's formatter property should format processed records", "[BasicSink][Sink]")
+SCENARIO("OStreamSink's formatter property should format processed records", "[OStreamSink][Sink]")
 {
 	std::ostringstream out;
-	BasicSink_t sink{ out };
+	OStreamSink_t sink{ out };
 	bool invoked = false;
 	sink.setFormatter(FormatterMoc{ .invoked = &invoked });
 	sink.setEnabled();
 
-	GIVEN("an enabled BasicSink instance")
+	GIVEN("an enabled OStreamSink instance")
 	{
 		WHEN("calling log")
 		{
@@ -187,10 +187,10 @@ SCENARIO("BasicSink's formatter property should format processed records", "[Bas
 	}
 }
 
-SCENARIO("BasicSink's FlushPolicy property should determine when stream has to be flushed.", "[BasicSink][Sink]")
+SCENARIO("OStreamSink's FlushPolicy property should determine when stream has to be flushed.", "[OStreamSink][Sink]")
 {
 	std::ostringstream out;
-	BasicSink_t sink{ out };
+	OStreamSink_t sink{ out };
 	sink.setEnabled();
 
 	std::size_t invocationCount = 0;
@@ -203,7 +203,7 @@ SCENARIO("BasicSink's FlushPolicy property should determine when stream has to b
 						}
 						);
 
-	GIVEN("an enabled BasicSink instance")
+	GIVEN("an enabled OStreamSink instance")
 	{
 		WHEN("calling log")
 		{

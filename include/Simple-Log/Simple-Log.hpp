@@ -26,5 +26,6 @@
 #include "BasicSink.hpp"
 #include "FileSink.hpp"
 #include "ISink.hpp"
+#include "OStreamSink.hpp"
 
 #endif

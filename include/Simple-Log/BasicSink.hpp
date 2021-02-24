@@ -9,15 +9,13 @@
 #pragma once
 
 #include <atomic>
+#include <chrono>
 #include <functional>
 #include <iomanip>
-#include <memory>
 #include <mutex>
-#include <ostream>
 #include <sstream>
 
 #include "Concepts.hpp"
-#include "FlushPolicies.hpp"
 #include "ISink.hpp"
 
 namespace sl::log
@@ -44,7 +42,6 @@ namespace sl::log
 		using typename Super::Record_t;
 		using Formatter_t = std::function<std::string(const Record_t&)>;
 		using Filter_t = std::function<bool(const Record_t&)>;
-		using FlushPolicy_t = std::unique_ptr<detail::AbstractFlushPolicyWrapper<Record_t>>;
 
 	protected:
 		static constexpr Formatter_t defaultFormatter() noexcept
@@ -80,25 +77,14 @@ namespace sl::log
 			return [](const Record_t& rec) { return true; };
 		}
 
-		[[nodiscard]]
-		static constexpr FlushPolicy_t defaultFlushPolicy() noexcept
-		{
-			return std::make_unique<detail::FlushPolicyWrapper<Record_t, AlwaysFlushPolicy>>();
-		}
-
 	public:
 		/**
 		 * \brief Constructor
-		 * \param stream The stream object, which will receive finally formatted messages
 		 */
-		explicit BasicSink(std::ostream& stream) :
-			m_Stream{ stream }
-		{
-		}
+		explicit BasicSink() noexcept = default;
 
 		/**
 		 * \brief Default destructor
-		 * \details Destructor does not perform any actions on the internal stream objects, due to it's potential dangling state. Derived classes must handle closing and flushing themselves.
 		 */
 		~BasicSink() noexcept = default;
 
@@ -128,16 +114,19 @@ namespace sl::log
 		 */
 		void log(const Record_t& record) final override
 		{
-			if (m_Enabled && logDerived(record))
+			if (!m_Enabled || !logDerived(record))
+				return;
+
+			if (std::scoped_lock lock{ m_FilterMx }; !std::invoke(m_Filter, record))
+				return;
+
+			auto message = [&]
 			{
-				if (std::scoped_lock lock{ m_FilterMx, m_FormatterMx, m_StreamMx }; std::invoke(m_Filter, record))
-				{
-					auto message = std::invoke(m_Formatter, record);
-					auto size = std::size(message) * sizeof(typename decltype(message)::value_type);
-					m_Stream << message << "\n";
-					handleFlushPolicy(record, size);
-				}
-			}
+				std::scoped_lock lock{ m_FormatterMx };
+				return std::invoke(m_Formatter, record);
+			}();
+
+			writeMessage(record, message);
 		}
 
 		/**
@@ -221,56 +210,7 @@ namespace sl::log
 			m_Filter = defaultFilter();
 		}
 
-		/**
-		 * \brief Sets the active Flush-Policy
-		 * \tparam TPolicy   Type of the passed Flush-Policy (automatically deduced)
-		 * \param policy The new Flush-Policy object
-		 */
-		template <FlushPolicyFor<Record_t> TPolicy>
-		void setFlushPolicy(TPolicy&& policy)
-		{
-			std::scoped_lock lock{ m_FlushPolicyMx };
-			m_FlushPolicy = std::make_unique<detail::FlushPolicyWrapper<TRecord, TPolicy>>(std::forward<TPolicy>(policy));
-		}
-
-		/**
-		 * \brief Replaces the current Flush-Policy with the default one
-		 * \details The default Flush-Policy flushes after each handled Record.
-		 */
-		void removeFlushPolicy()
-		{
-			std::scoped_lock lock{ m_FlushPolicyMx };
-			m_FlushPolicy = defaultFlushPolicy();
-		}
-
-		/**
-		 * \brief Flushes all pending output of the internal stream
-		 * \details Internally locks the associated stream mutex.
-		 */
-		void flush()
-		{
-			std::scoped_lock lock{ m_StreamMx };
-			flushImpl();
-		}
-
 	protected:
-		/**
-		 * \brief Writes to the internal stream
-		 * \tparam TData Type of data (automatically deduced)
-		 * \param data Data which will be written to the stream.
-		 * 
-		 * \details This functions writes directly to the stream object. No filter or formatter will be involved and stream will be flush afterwards.
-		 * This might be useful for writing custom header or footer data to the stream.\n
-		 * Internally locks the associated stream mutex.
-		 */
-		template <class TData>
-		void writeToStream(TData&& data)
-		{
-			std::scoped_lock lock{ m_StreamMx };
-			m_Stream << std::forward<TData>(data);
-			flushImpl();
-		}
-
 		/**
 		 * \brief This function gets called before the actual writing.
 		 * \details Subclasses may override this function if they want to perform any action before the actual logging process or apply custom filtering conditions (beside BasicSink s filter property).
@@ -282,34 +222,16 @@ namespace sl::log
 			return true;
 		}
 
-	private:
-		std::mutex m_StreamMx;
-		std::ostream& m_Stream;
+		virtual void writeMessage(const Record_t& record, std::string_view message) = 0;
 
+	private:
 		std::mutex m_FormatterMx;
 		Formatter_t m_Formatter{ defaultFormatter() };
 
 		std::mutex m_FilterMx;
 		Filter_t m_Filter{ defaultFilter() };
 
-		std::mutex m_FlushPolicyMx;
-		FlushPolicy_t m_FlushPolicy{ defaultFlushPolicy() };
-
 		std::atomic_bool m_Enabled{ false };
-
-		void handleFlushPolicy(const Record_t& record, std::size_t messageByteSize)
-		{
-			if (std::scoped_lock lock{ m_FlushPolicyMx }; std::invoke(*m_FlushPolicy, record, messageByteSize))
-			{
-				flushImpl();
-			}
-		}
-
-		void flushImpl()
-		{
-			m_Stream << std::flush;
-			m_FlushPolicy->flushed();
-		}
 	};
 
 	/** @}*/

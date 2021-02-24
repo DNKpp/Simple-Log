@@ -14,7 +14,7 @@
 #include <numeric>
 #include <optional>
 
-#include "BasicSink.hpp"
+#include "OStreamSink.hpp"
 #include "StringPattern.hpp"
 
 namespace sl::log
@@ -71,14 +71,15 @@ namespace sl::log
 	template <Record TRecord>
 	// ReSharper disable once CppClassCanBeFinal
 	class FileSink :
-		public BasicSink<TRecord>
+		public OStreamSink<TRecord>
 	{
-		using Super = BasicSink<TRecord>;
+		using Super = OStreamSink<TRecord>;
 
 	public:
 		using typename Super::Record_t;
 		using typename Super::Formatter_t;
 		using typename Super::Filter_t;
+		using typename Super::FlushPolicy_t;
 
 		/**
 		 * \brief Type for configuring FileSink rotation rules

@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-#include "Simple-Log/BasicSink.hpp"
+#include "Simple-Log/OStreamSink.hpp"
 #include "Simple-Log/Core.hpp"
 #include "Simple-Log/Record.hpp"
 
@@ -15,7 +15,7 @@ using namespace sl::log;
 
 using Record_t = BaseRecord<int, int>;
 using Core_t = Core<Record_t>;
-using Sink_t = BasicSink<Record_t>;
+using Sink_t = OStreamSink<Record_t>;
 
 SCENARIO("Core should create valid Sink instances.", "[Core]")
 {
