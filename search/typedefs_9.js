@@ -1,5 +1,0 @@
-var searchData=
-[
-  ['record_5ft_390',['Record_t',['../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19',1,'sl::log::Core::Record_t()'],['../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082',1,'sl::log::ISink::Record_t()'],['../da/d7e/classsl_1_1log_1_1_base_logger.html#a617f3f56f6eee6112b4db89e9ed425f5',1,'sl::log::BaseLogger::Record_t()'],['../db/d9a/classsl_1_1log_1_1_record_builder.html#abc8c50b198f8404d4dd3c077bbf028b3',1,'sl::log::RecordBuilder::Record_t()'],['../d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab',1,'sl::log::RecordQueue::Record_t()'],['../dd/d48/classsl_1_1log_1_1_basic_sink.html#ad79d9e5f6c4e07be42c84a281dc45082',1,'sl::log::BasicSink::Record_t()'],['../dc/dd6/classsl_1_1log_1_1_file_sink.html#ad79d9e5f6c4e07be42c84a281dc45082',1,'sl::log::FileSink::Record_t()'],['../df/d5b/group___prepared_types.html#gab7fd2d7ae0f18b1e2d4857c04dd160bb',1,'sl::log::preset::Record_t()']]],
-  ['recordbuilder_5ft_391',['RecordBuilder_t',['../da/d7e/classsl_1_1log_1_1_base_logger.html#aa0fe8534edf7b83e346bb41ed2afee94',1,'sl::log::BaseLogger']]]
-];
