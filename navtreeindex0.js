@@ -61,6 +61,7 @@ var NAVTREEINDEX0 =
 "d4/d46/_predicates_8hpp_source.html":[4,0,9],
 "d4/d47/_string_pattern_8hpp.html":[4,0,17],
 "d4/d47/_string_pattern_8hpp_source.html":[4,0,17],
+"d4/d5f/_custom_record_type_2main_8cpp-example.html":[5,3],
 "d4/d87/classsl_1_1log_1_1_byte_count_flush_policy.html":[1,4,6],
 "d4/d87/classsl_1_1log_1_1_byte_count_flush_policy.html#a222701ebb53a1a65d87b2048f6c28a91":[1,4,6,2],
 "d4/d87/classsl_1_1log_1_1_byte_count_flush_policy.html#a7c8e27c19ba1e79d0da4ed496d5577a5":[1,4,6,1],
@@ -96,6 +97,7 @@ var NAVTREEINDEX0 =
 "d5/d8e/_core_8hpp_source.html":[4,0,2],
 "d5/d99/_record_docs_8hpp.html":[4,0,14],
 "d5/d99/_record_docs_8hpp_source.html":[4,0,14],
+"d5/dc2/_file_logging_2main_8cpp-example.html":[5,1],
 "d5/de3/group___core.html":[1,2],
 "d5/df7/classsl_1_1log_1_1_set_sev.html":[1,8,1],
 "d5/df7/classsl_1_1log_1_1_set_sev.html#a3d6746ebdc8b6d8728480bf00814fce0":[1,8,1,0],
@@ -120,7 +122,6 @@ var NAVTREEINDEX0 =
 "d6/deb/classsl_1_1log_1_1_less.html":[1,6,2],
 "d6/deb/classsl_1_1log_1_1_less.html#ae2fe185d02f8ed3dd993f9fb43375474":[1,6,2,0],
 "d6/deb/classsl_1_1log_1_1_less.html#af34daa6e6bc010215386408589316c26":[1,6,2,1],
-"d6/dfa/_custom_record_type_0cmain_8cpp-example.html":[5,3],
 "d7/d21/classsl_1_1log_1_1_not_equals.html":[1,6,1],
 "d7/d21/classsl_1_1log_1_1_not_equals.html#a730347e7b083fafdd43d92fa21572897":[1,6,1,1],
 "d7/d21/classsl_1_1log_1_1_not_equals.html#aba15db62339930501244df9261ec4364":[1,6,1,0],
@@ -131,7 +132,6 @@ var NAVTREEINDEX0 =
 "d7/d40/classsl_1_1log_1_1_filter_chain.html#ad52c815ca33b84587f5413660e3dbddb":[1,3,1,3],
 "d7/d40/classsl_1_1log_1_1_filter_chain.html#ad8361fba14bbfd61046b102ce7f21ca7":[1,3,1,2],
 "d7/d78/group___predicates.html":[1,6],
-"d7/d85/_file_logging_0cmain_8cpp-example.html":[5,1],
 "d7/d89/_preset_types_8hpp.html":[4,0,10],
 "d7/d89/_preset_types_8hpp.html#ga5f9961f80c57af68873f2e915e6c0246":[4,0,10,0],
 "d7/d89/_preset_types_8hpp.html#gaa30e95bdde6414a22c02e8c98d5dcf3f":[4,0,10,6],
@@ -150,6 +150,7 @@ var NAVTREEINDEX0 =
 "d7/d89/_preset_types_8hpp_source.html":[4,0,10],
 "d7/df9/_basic_sink_8hpp.html":[4,0,0],
 "d7/df9/_basic_sink_8hpp_source.html":[4,0,0],
+"d8/d60/_easy_start_2main_8cpp-example.html":[5,0],
 "d8/d6c/_file_sink_8hpp.html":[4,0,4],
 "d8/d6c/_file_sink_8hpp_source.html":[4,0,4],
 "d8/dda/classsl_1_1log_1_1_i_sink.html":[1,0,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "dc/d79/_record_8hpp_source.html":[4,0,12],
 "dc/d79/classsl_1_1log_1_1_greater_equals.html":[1,6,5],
 "dc/d79/classsl_1_1log_1_1_greater_equals.html#a16208567742ad31a9aa7586b8617ea88":[1,6,5,1],
-"dc/d79/classsl_1_1log_1_1_greater_equals.html#a802319edec91d282fa9fa84393a7c4b3":[1,6,5,0],
-"dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html":[1,0,1,0]
+"dc/d79/classsl_1_1log_1_1_greater_equals.html#a802319edec91d282fa9fa84393a7c4b3":[1,6,5,0]
 };

@@ -300,7 +300,9 @@ Cleanup</h1>
 File state handler</h1>
 <p>These handler are used to generate messages on state changes for the internal managed file. Users can provide invokable objects, which will be called and shall return a std::string, which will then written synchronized to the std::fstream. The synchronization is the reason, why the user is not allowed to write to the stream themselves.<br  />
 Handlers shall have the following signature: </p><div class="fragment"><div class="line">std::string()</div>
-</div><!-- fragment --> </div><h2 class="groupheader">Member Typedef Documentation</h2>
+</div><!-- fragment --> <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="../../d4/d5f/_custom_record_type_2main_8cpp-example.html#_a7">CustomRecordType/main.cpp</a>, <a class="el" href="../../dc/dda/_customize_base_record_2main_8cpp-example.html#_a9">CustomizeBaseRecord/main.cpp</a>, and <a class="el" href="../../d5/dc2/_file_logging_2main_8cpp-example.html#_a2">FileLogging/main.cpp</a>.</dd>
+</dl>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a30f3e717d2ba9ffae23cb19b3c53e381"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a30f3e717d2ba9ffae23cb19b3c53e381">&#9670;&nbsp;</a></span>Filter_t</h2>
 
@@ -1338,6 +1340,8 @@ template&lt;RecordFilterFor&lt; Record_t &gt; TFilter&gt; </div>
     <tr><td class="paramname">filter</td><td>An invokable filter object </td></tr>
   </table>
   </dd>
+</dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="../../d5/dc2/_file_logging_2main_8cpp-example.html#a3">FileLogging/main.cpp</a>.</dd>
 </dl>
 
 </div>

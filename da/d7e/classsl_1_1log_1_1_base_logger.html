@@ -170,6 +170,8 @@ class sl::log::BaseLogger&lt; TRecord &gt;</h3>
 </dl>
 <dl class="section attention"><dt>Attention</dt><dd>The corresponding <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance must outlive all related Logger instances.</dd></dl>
 <p>This class is in fact a template for upcoming Record s. It stores default settings (e.g. severity level and channel) for newly generated Record s. Using its operator () users can start building Record s in an effective and elegant manner. Logger instances are rather lightweight, thus could be instantiated on class level, but it is also fine using the same instance in the whole program. </p>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="../../d4/d5f/_custom_record_type_2main_8cpp-example.html#_a9">CustomRecordType/main.cpp</a>, and <a class="el" href="../../dc/dda/_customize_base_record_2main_8cpp-example.html#_a11">CustomizeBaseRecord/main.cpp</a>.</dd>
+</dl>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a54e6f05c39ae8011b95848092c2d4ee0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a54e6f05c39ae8011b95848092c2d4ee0">&#9670;&nbsp;</a></span>Channel_t</h2>
