@@ -22,8 +22,9 @@ add_executable(
 	RecordQueueTests.cpp
 	StringPatternTest.cpp
 	FlushPolicyTests.cpp
-	"OStreamSinkTests.cpp"
+	OStreamSinkTests.cpp
 	FileSinkTests.cpp
+	ConsoleSinkTests.cpp
 	LoggerTests.cpp
 	RecordBuilderTests.cpp
 )
