@@ -19,7 +19,6 @@
 #include <iostream>
 #include <mutex>
 #include <unordered_map>
-#include <variant>
 
 namespace sl::log
 {
@@ -29,116 +28,77 @@ namespace sl::log
 
 	/** \addtogroup ConsoleSink
 	 * @{
+	 * 
 	 */
 
 	/**
 	 * \brief Collection of possible style and color options for text printed onto the console
-	 * \details This struct simply uses the types provided by the third-party lib rang. Some options might not work on every console.
-	 * Go to https://github.com/agauniyal/rang/tree/master if you are interested about all the details.
+	 * \details Each enum type will be casted to the third-party lib "rang" counterpart, which is responsible for all of the troublesome work.
+	 * Some options might not work on every console.
 	 * 
+	 * Go to https://github.com/agauniyal/rang/tree/master if you are interested about all the details.
 	 */
 	struct ConsoleTextStyle
 	{
-		/**
-		 * \brief Manipulates the font style
-		 * \details Determines the appearance of the printed text:
-		 * Code						|Linux/Win/Others	|	Old Win
-		 * -------------------------|-------------------|-------------
-		 * Style::bold				|	yes				|	yes
-		 * Style::dim				|	yes				|	no
-		 * Style::italic			|	yes				|	no
-		 * Style::underline			|	yes				|	no
-		 * Style::blink				|	no				|	no
-		 * Style::rblink			|	no				|	no
-		 * Style::reversed			|	yes				|	yes
-		 * Style::conceal			|	maybe			|	yes
-		 * Style::crossed			|	yes				|	no
-		 * Style::reset				|	yes				|	no
-		 */
-		using Style = rang::style;
+		enum class Color
+		{
+			black = 0,
+			red,
+			green,
+			yellow,
+			blue,
+			magenta,
+			cyan,
+			gray,
+			standard,
 
-		/**
-		 * \brief Manipulates the font color
-		 * \details Determines the color of the printed text:
-		 * Code						|Linux/Win/Others	|	Old Win
-		 * -------------------------|-------------------|-------------
-		 * TextColor::black			|	yes				|	yes
-		 * TextColor::red			|	yes				|	yes
-		 * TextColor::green			|	yes				|	yes
-		 * TextColor::yellow		|	yes				|	yes
-		 * TextColor::blue			|	yes				|	yes
-		 * TextColor::magenta		|	yes				|	yes
-		 * TextColor::cyan			|	yes				|	yes
-		 * TextColor::gray			|	yes				|	yes
-		 * TextColor::reset			|	yes				|	yes
-		 */
-		using TextColor = rang::fg;
-		
-		/**
-		 * \brief Manipulates the font color (slightly different tone than TextColor)
-		 * \details Determines the color of the printed text:
-		 * Code						|Linux/Win/Others	|	Old Win
-		 * -------------------------|-------------------|-------------
-		 * TextColorBright::black	|	yes				|	yes
-		 * TextColorBright::red		|	yes				|	yes
-		 * TextColorBright::green	|	yes				|	yes
-		 * TextColorBright::yellow	|	yes				|	yes
-		 * TextColorBright::blue	|	yes				|	yes
-		 * TextColorBright::magenta	|	yes				|	yes
-		 * TextColorBright::cyan	|	yes				|	yes
-		 * TextColorBright::gray	|	yes				|	yes
-		 */
-		using TextColorBright = rang::fgB;
+			brightBlack,
+			brightRed,
+			brightGreen,
+			brightYellow,
+			brightBlue,
+			brightMagenta,
+			brightCyan,
+			brightGray,
+		};
 
-		/**
-		 * \brief Manipulates the background color
-		 * \details Determines the background color of the printed text:
-		 * Code						|Linux/Win/Others	|	Old Win
-		 * -------------------------|-------------------|-------------
-		 * BgColor::black			|	yes				|	yes
-		 * BgColor::red				|	yes				|	yes
-		 * BgColor::green			|	yes				|	yes
-		 * BgColor::yellow			|	yes				|	yes
-		 * BgColor::blue			|	yes				|	yes
-		 * BgColor::magenta			|	yes				|	yes
-		 * BgColor::cyan			|	yes				|	yes
-		 * BgColor::gray			|	yes				|	yes
-		 * BgColor::reset			|	yes				|	yes
-		 */
-		using BgColor = rang::bg;
-
-		/**
-		 * \brief Manipulates the font color (slightly different tone than TextColor)
-		 * \details Determines the color of the printed text:
-		 * Code						|Linux/Win/Others	|	Old Win
-		 * -------------------------|-------------------|-------------
-		 * BgColorBright::black		|	yes				|	yes
-		 * BgColorBright::red		|	yes				|	yes
-		 * BgColorBright::green		|	yes				|	yes
-		 * BgColorBright::yellow	|	yes				|	yes
-		 * BgColorBright::blue		|	yes				|	yes
-		 * BgColorBright::magenta	|	yes				|	yes
-		 * BgColorBright::cyan		|	yes				|	yes
-		 * BgColorBright::gray		|	yes				|	yes
-		 */
-		using BgColorBright = rang::bgB;
+		enum class Style
+		{
+			standard = 0,
+			bold,
+			dim,
+			italic,
+			underline,
+			reversed = 7,
+			crossed = 9
+		};
 
 		/**
 		 * \brief determines the style
 		 */
-		Style style = Style::reset;
+		Style style = Style::standard;
 
 		/**
 		 * \brief determines the text color
 		 */
-		std::variant<TextColor, TextColorBright> textColor = TextColor::reset;
+		Color textColor = Color::standard;
 
 		/**
 		 * \brief determines the background color
 		 */
-		std::variant<BgColor, BgColorBright> bgColor = BgColor::reset;
+		Color bgColor = Color::standard;
 	};
+}
 
+namespace sl::log::detail
+{
+	std::ostream& applyTextColor(std::ostream& out, ConsoleTextStyle::Color color) noexcept;
+	std::ostream& applyBackgroundColor(std::ostream& out, ConsoleTextStyle::Color color) noexcept;
+	std::ostream& applyStyle(std::ostream& out, ConsoleTextStyle::Style style) noexcept;
+}
+
+namespace sl::log
+{
 	/**
 	 * \brief A constant object used for resetting the style back to default
 	 */
@@ -153,9 +113,9 @@ namespace sl::log
 	inline std::ostream& operator <<(std::ostream& out, const ConsoleTextStyle& style)
 	{
 		auto putColor = [&out](auto color) { out << color; };
-		out << style.style;
-		std::visit(putColor, style.textColor);
-		std::visit(putColor, style.bgColor);
+		detail::applyStyle(out, style.style);
+		detail::applyTextColor(out, style.textColor);
+		detail::applyBackgroundColor(out, style.bgColor);
 		return out;
 	}
 
@@ -234,8 +194,9 @@ namespace sl::log
 	/**
 	 * \brief Sink class for directly logging onto std::cout
 	 * \tparam TRecord Used Record type.
-	 * \details This Sink class directly uses a std::cout object for printing each recorded message. Users may register \ref ConsoleTextStyle "ConsoleTextStyles" which will then colorize or stylize
-	 * messages.
+	 * \details This Sink class directly uses a std::cout object for printing each recorded message. Users may register \ref ConsoleTextStyle "ConsoleTextStyles" which will then colorized or
+	 * printed the messages in a specific style.
+	 *
 	 */
 	template <Record TRecord>
 	class ConsoleSink final :
@@ -334,6 +295,54 @@ namespace sl::log
 
 	/** @}*/
 	/** @}*/
+}
+
+namespace sl::log::detail
+{
+	inline std::ostream& applyTextColor(std::ostream& out, ConsoleTextStyle::Color color) noexcept
+	{
+		using Color = ConsoleTextStyle::Color;
+		if (color < Color::brightBlack)
+		{
+			const auto begin = static_cast<unsigned>(rang::fg::black);
+			out << static_cast<rang::fg>(static_cast<unsigned>(color) + begin);
+		}
+		else
+		{
+			const auto begin = static_cast<unsigned>(rang::fgB::black);
+			const auto localColor = static_cast<Color>(begin +
+				static_cast<unsigned>(color) -
+				static_cast<unsigned>(Color::brightBlack));
+			out << static_cast<rang::fgB>(localColor);
+		}
+		return out;
+	}
+
+	inline std::ostream& applyBackgroundColor(std::ostream& out, ConsoleTextStyle::Color color) noexcept
+	{
+		using Color = ConsoleTextStyle::Color;
+		if (color < Color::brightBlack)
+		{
+			const auto begin = static_cast<unsigned>(rang::bg::black);
+			out << static_cast<rang::bg>(static_cast<unsigned>(color) + begin);
+		}
+		else
+		{
+			const auto begin = static_cast<unsigned>(rang::bgB::black);
+			const auto localColor = static_cast<Color>(begin +
+				static_cast<unsigned>(color) -
+				static_cast<unsigned>(Color::brightBlack));
+			out << static_cast<rang::bgB>(localColor);
+		}
+		return out;
+	}
+
+	inline std::ostream& applyStyle(std::ostream& out, ConsoleTextStyle::Style style) noexcept
+	{
+		const auto value = static_cast<rang::style>(style);
+		out << value;
+		return out;
+	}
 }
 
 #endif

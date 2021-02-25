@@ -22,21 +22,21 @@ TEST_CASE("ConsoleTextStyleTable should yield the same styles as inserted during
 	auto styleTable = makeConsoleTextStyleTableFor<Record_t>(
 															&Record_t::severity,
 															{
-																{ SevLvl::info, Style{ .bgColor = Style::BgColor::blue } },
-																{ SevLvl::debug, Style{ .bgColor = Style::BgColor::yellow } },
-																{ SevLvl::error, Style{ .bgColor = Style::BgColor::red } }
+																{ SevLvl::info, { .bgColor = Style::Color::blue } },
+																{ SevLvl::debug, { .bgColor = Style::Color::yellow } },
+																{ SevLvl::error, { .bgColor = Style::Color::red } }
 															}
 															);
 
 	Record_t record;
 	record.setSeverity(SevLvl::info);
-	REQUIRE(std::get<Style::BgColor>(styleTable(record).bgColor) == Style::BgColor::blue);
+	REQUIRE(styleTable(record).bgColor == Style::Color::blue);
 	record.setSeverity(SevLvl::debug);
-	REQUIRE(std::get<Style::BgColor>(styleTable(record).bgColor) == Style::BgColor::yellow);
+	REQUIRE(styleTable(record).bgColor == Style::Color::yellow);
 	record.setSeverity(SevLvl::error);
-	REQUIRE(std::get<Style::BgColor>(styleTable(record).bgColor) == Style::BgColor::red);
+	REQUIRE(styleTable(record).bgColor == Style::Color::red);
 	record.setSeverity(SevLvl::warning);
-	REQUIRE(std::get<Style::BgColor>(styleTable(record).bgColor) == Style::BgColor::reset);
+	REQUIRE(styleTable(record).bgColor == Style::Color::standard);
 }
 
 SCENARIO("ConsoleSink's TextStylePolicy property should be set- and removable.", "[ConsoleSink][Sink]")
