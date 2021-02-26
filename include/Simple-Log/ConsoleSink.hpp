@@ -38,6 +38,7 @@ namespace sl::log
 	 * Some style options might not work on every console.
 	 * 
 	 * Go to https://github.com/agauniyal/rang/tree/master if you are interested about all the details.
+	 * \version since alpha-0.6
 	 */
 	struct ConsoleTextStyle
 	{
@@ -92,6 +93,7 @@ namespace sl::log
 
 	/**
 	 * \brief A constant object used for resetting the style back to default
+	 * \version since alpha-0.6
 	 */
 	constexpr ConsoleTextStyle defaultConsoleTextStyle;
 
@@ -121,6 +123,7 @@ namespace sl::log
 	 * \param out the stream object
 	 * \param style the provided style
 	 * \return Returns the parameter out as reference
+	 * \version since alpha-0.6
 	 */
 	inline std::ostream& operator <<(std::ostream& out, const ConsoleTextStyle& style)
 	{
@@ -138,6 +141,7 @@ namespace sl::log
 	 * If no matching entry is found, defaultConsoleTextStyle will be used instead.
 	 *
 	 * Instead of directly constructing instances of this class, users should use the makeConsoleTextStyleTableFor function.
+	 * \version since alpha-0.6
 	 */
 	template <class TProjection, class TTable>
 	class ConsoleTextStyleTable
@@ -201,7 +205,8 @@ namespace sl::log
 	 * \return Returns a newly created ConsoleTextStyleTable instance
 	 * \details This is the preferable way creating a ConsoleTextStyleTable object for a Record property, because the projection and the table type
 	 * becomes strong checked via concept and therefore will provide much clearer feedback in cases of error, while creating ConsoleTextStyleTable objects
-	 * manually will probably result in harder to read error message. 
+	 * manually will probably result in harder to read error message.
+	 * \version since alpha-0.6
 	 */
 	template <Record TRecord,
 		std::invocable<const TRecord&> TProjection,
@@ -219,7 +224,7 @@ namespace sl::log
 	 * \tparam TRecord Used Record type.
 	 * \details This Sink class directly uses a std::cout object for printing each recorded message. Users may register \ref ConsoleTextStyle "ConsoleTextStyles" which will then colorized or
 	 * printed the messages in a specific style.
-	 *
+	 * \version since alpha-0.6
 	 */
 	template <Record TRecord>
 	class ConsoleSink final :
@@ -303,16 +308,16 @@ namespace sl::log
 		std::mutex m_TextStylePolicyMx;
 		TextStylePolicy_t m_TextStylePolicy{ defaultTextStylePolicy() };
 
-		void writeBeforeMessage(std::ostream& out, const Record_t& record) override
+		void beforeMessageWrite(const Record_t& record, std::string_view message) override
 		{
 			std::scoped_lock lock{ m_TextStylePolicyMx };
 			assert(m_TextStylePolicy && "TextStylePolicy must not be empty.");
-			out << std::invoke(m_TextStylePolicy, record);
+			std::cout << std::invoke(m_TextStylePolicy, record);
 		}
 
-		void writeAfterMessage(std::ostream& out, const Record_t& record) override
+		void afterMessageWrite(const Record_t& record, std::string_view message) override
 		{
-			out << defaultConsoleTextStyle;
+			std::cout << defaultConsoleTextStyle;
 		}
 	};
 
