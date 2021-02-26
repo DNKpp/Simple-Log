@@ -292,27 +292,6 @@ namespace sl::log
 			return std::string{ m_FileNamePattern.patternString() };
 		}
 
-	protected:
-		/**
-		 * \brief Filters, formats and writes the passed record to the internal stream
-		 * \details This function prints the passed record to the internal file. In forehand \ref Rotation "rotation" will be checked if a new file shall be opened. Internally uses to the
-		 * BasicSink::log function.
-		 * \param record Record object
-		 */
-		bool logDerived(const Record_t& record) override
-		{
-			if (!m_FileStream.is_open())
-			{
-				openFile();
-			}
-			else if (shallRotate())
-			{
-				closeFile();
-				openFile();
-			}
-			return true;
-		}
-
 	private:
 		using FileStateHandler = std::function<std::string()>;
 
@@ -447,6 +426,19 @@ namespace sl::log
 			auto rotationRule = load(m_RotationRule, m_RotationRuleMx);
 			return (rotationRule.fileSize && *rotationRule.fileSize < file_size(*m_CurrentFilePath)) ||
 				(rotationRule.duration && m_FileOpeningTime.load() + *rotationRule.duration < std::chrono::steady_clock::now());
+		}
+
+		void beforeMessageWrite(const Record_t& record, std::string_view message) override
+		{
+			if (!m_FileStream.is_open())
+			{
+				openFile();
+			}
+			else if (shallRotate())
+			{
+				closeFile();
+				openFile();
+			}
 		}
 	};
 

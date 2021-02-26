@@ -24,12 +24,10 @@ namespace sl::log
 	 */
 
 	/**
-	 * \brief std::ostream orientated Sink class
+	 * \brief An std::ostream orientated Sink class which extends BasicSink
 	 * \tparam TRecord Used Record type.
-	 * \details This Sink class uses a std::ostream reference for printing each recorded message and offers options to manipulate its behaviour: e.g. filtering and formatting messages. Due to the thread-safe design it is totally
-	 *	fine changing settings during program runtime. 
-	 *
-	 *	This class offers everything you'll need to print messages into console via std::cout, std::cerr or any other std::ostream object. For file related logging FileSink might be more suitable.
+	 * \details This Sink class uses a std::ostream reference for printing each recorded message and offers options to manipulate its behaviour: e.g. filtering and formatting messages.
+	 *	Users which would like to print messages onto the console, there is already an existing class ConsoleSink. For file related logging FileSink might be more suitable.
 	 */
 	template <Record TRecord>
 	class OStreamSink :
@@ -87,7 +85,7 @@ namespace sl::log
 
 		/**
 		 * \brief Sets the active Flush-Policy
-		 * \tparam TPolicy   Type of the passed Flush-Policy (automatically deduced)
+		 * \tparam TPolicy Type of the passed Flush-Policy (automatically deduced)
 		 * \param policy The new Flush-Policy object
 		 */
 		template <FlushPolicyFor<Record_t> TPolicy>
@@ -119,7 +117,7 @@ namespace sl::log
 
 	protected:
 		/**
-		 * \brief Writes to the internal stream
+		 * \brief Writes directly to the internal stream
 		 * \tparam TData Type of data (automatically deduced)
 		 * \param data Data which will be written to the stream.
 		 * 
@@ -135,22 +133,25 @@ namespace sl::log
 			flushImpl();
 		}
 
-		void writeMessage(const Record_t& record, std::string_view message) final override
-		{
-			const auto msgSize = std::size(message) * sizeof(std::string_view::value_type);
-
-			std::scoped_lock lock{ m_StreamMx };
-			writeBeforeMessage(m_Stream, record);
-			m_Stream << message << "\n";
-			writeAfterMessage(m_Stream, record);
-			handleFlushPolicy(record, msgSize);
-		}
-
-		virtual void writeBeforeMessage(std::ostream& stream, const Record_t& record)
+		/**
+		 * \brief Virtual method which will be called before the actual message is written to the stream
+		 * \param record The current handled Record object
+		 * \param message The final message
+		 * \details The stream associated mutex is locked before this function gets invoked.
+		 * \version since alpha-0.6
+		 */
+		virtual void beforeMessageWrite(const Record_t& record, std::string_view message)
 		{
 		}
 
-		virtual void writeAfterMessage(std::ostream& stream, const Record_t& record)
+		/**
+		 * \brief Virtual method which will be called after the actual message is written to the stream
+		 * \param record The current handled Record object
+		 * \param message The final message
+		 * \details The stream associated mutex is locked before this function gets invoked.
+		 * \version since alpha-0.6
+		 */
+		virtual void afterMessageWrite(const Record_t& record, std::string_view message)
 		{
 		}
 
@@ -173,6 +174,17 @@ namespace sl::log
 		{
 			m_Stream << std::flush;
 			m_FlushPolicy->flushed();
+		}
+
+		void writeMessage(const Record_t& record, std::string_view message) final override
+		{
+			const auto msgSize = std::size(message) * sizeof(std::string_view::value_type);
+
+			std::scoped_lock lock{ m_StreamMx };
+			beforeMessageWrite(record, message);
+			m_Stream << message << "\n";
+			afterMessageWrite(record, message);
+			handleFlushPolicy(record, msgSize);
 		}
 	};
 
