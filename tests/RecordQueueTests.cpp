@@ -98,9 +98,17 @@ SCENARIO("RecordQueue should provide values in insertion-order (FIFO).", "[Recor
 	}
 }
 
-SCENARIO("Calling take should behave as expected in blocking and non-blocking cases.", "[RecordQueue]")
+TEMPLATE_PRODUCT_TEST_CASE(
+							"RecordQueue's take should behave as expected in blocking and non-blocking cases.",
+							"[RecordQueue]",
+							RecordQueue,
+							(
+								Record_t,
+								(Record_t, detail::BlockingPushTake<Record_t, 10>)
+							)
+						)
 {
-	RecordQueue<Record_t> queue;
+	TestType queue;
 	REQUIRE(std::empty(queue));
 	REQUIRE(std::size(queue) == 0);
 
@@ -151,5 +159,79 @@ SCENARIO("Calling take should behave as expected in blocking and non-blocking ca
 			REQUIRE(record != std::nullopt);
 			REQUIRE(record->message() == inRecord.message());
 		}
+	}
+}
+
+SCENARIO("RecordQueue's push should behave as expected in blocking and non-blocking cases.", "[RecordQueue]")
+{
+	RecordQueue<Record_t, detail::BlockingPushTake<Record_t, 1>> queue;
+	REQUIRE(std::empty(queue));
+	REQUIRE(std::size(queue) == 0);
+
+	GIVEN("an empty queue")
+	WHEN("pushing a Record")
+	THEN("will neither block nor fail")
+	{
+		queue.push({});
+		REQUIRE_FALSE(std::empty(queue));
+	}
+
+	GIVEN("a full queue")
+	WHEN("pushing a Record")
+	THEN("RecordQueue will block")
+	{
+		queue.push({});
+		std::chrono::milliseconds waitDuration{ 100 };
+		std::atomic_bool finished{ false };
+		auto future = std::async(
+								std::launch::async,
+								[&queue, &finished]()
+								{
+									queue.push({});
+									finished = true;
+								}
+								);
+
+		std::this_thread::sleep_for(waitDuration);
+		REQUIRE(finished == false);
+
+		AND_WHEN("taking a Record while blocking")
+		THEN("will break")
+		{
+			auto record = queue.take();
+			auto futureState = future.wait_for(waitDuration);
+
+			REQUIRE(futureState == std::future_status::ready);
+		}
+	}
+}
+
+TEMPLATE_PRODUCT_TEST_CASE(
+							"RecordQueue's push should discard new Records if a \"discard at push\"-Strategy is applied.",
+							"[RecordQueue]",
+							RecordQueue,
+							((Record_t, detail::DiscardedPushBlockingTake<Record_t, 1>))
+						)
+{
+	TestType queue;
+	REQUIRE(std::empty(queue));
+	REQUIRE(std::size(queue) == 0);
+
+	GIVEN("an empty queue")
+	WHEN("pushing a Record")
+	THEN("will neither block nor fail")
+	{
+		queue.push({});
+		REQUIRE_FALSE(std::empty(queue));
+	}
+
+	GIVEN("a full queue")
+	WHEN("pushing a Record")
+	THEN("RecordQueue will block")
+	{
+		queue.push({});
+		REQUIRE(std::size(queue) == 1);
+		queue.push({});
+		REQUIRE(std::size(queue) == 1);
 	}
 }
