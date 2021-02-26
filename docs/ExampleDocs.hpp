@@ -12,6 +12,10 @@
  */
 
 /**
+ * \example{lineno} ColorizedConsoleLogging/main.cpp
+ */
+
+/**
  * \example{lineno} CustomizeBaseRecord/main.cpp
  */
 

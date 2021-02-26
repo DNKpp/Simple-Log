@@ -11,8 +11,6 @@
 #include <algorithm>
 #include <concepts>
 
-#include "Concepts.hpp"
-
 namespace sl::log
 {
 	/** \addtogroup Predicates Predicates

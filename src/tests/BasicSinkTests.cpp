@@ -6,7 +6,6 @@
 #include <catch2/catch.hpp>
 
 #include <cassert>
-#include <iostream>
 #include <sstream>
 #include <string>
 #include <string_view>
@@ -17,27 +16,28 @@
 using namespace sl::log;
 
 using Record_t = BaseRecord<int, int>;
-using BasicSink_t = BasicSink<Record_t>;
 
 namespace
 {
-	struct FlushPolicyMoc
+	class BasicSinkMoc :
+		public BasicSink<Record_t>
 	{
-		bool operator ()(const Record_t& rec, std::size_t byteCount) const noexcept
+	public:
+		BasicSinkMoc(std::ostream* out = nullptr) :
+			m_Out{ out }
 		{
-			assert(invocationCount);
-			++(*invocationCount);
-			return (*invocationCount & 1ull) != 0;
 		}
 
-		void flushed() const noexcept
+	private:
+		void writeMessage(const Record_t& record, std::string_view message) override
 		{
-			assert(flushedSignalCount);
-			++(*flushedSignalCount);
+			if (m_Out)
+			{
+				(*m_Out) << message << "\n";
+			}
 		}
 
-		std::size_t* invocationCount;
-		std::size_t* flushedSignalCount;
+		std::ostream* m_Out = nullptr;
 	};
 
 	struct FormatterMoc
@@ -73,7 +73,7 @@ SCENARIO("BasicSinks should be in disabled state when construction succeeded", "
 	WHEN("construction succeeded")
 	THEN("BasicSink should be disabled by default")
 	{
-		BasicSink_t sink{ std::cout };
+		BasicSinkMoc sink;
 		REQUIRE_FALSE(sink.isEnabled());
 	}
 }
@@ -84,7 +84,7 @@ SCENARIO("BasicSinks::setEnabled should modify member.", "[BasicSink][Sink]")
 	WHEN("setting as enabled")
 	THEN("isEnabled should yield a positive result")
 	{
-		BasicSink_t sink{ std::cout };
+		BasicSinkMoc sink;
 		sink.setEnabled(true);
 		REQUIRE(sink.isEnabled());
 	}
@@ -93,7 +93,7 @@ SCENARIO("BasicSinks::setEnabled should modify member.", "[BasicSink][Sink]")
 SCENARIO("BasicSink's log function should be controled by enabled property", "[BasicSink][Sink]")
 {
 	std::ostringstream out;
-	BasicSink_t sink{ out };
+	BasicSinkMoc sink{ &out };
 
 	GIVEN("a disabled BasicSink instance")
 	WHEN("calling log")
@@ -116,7 +116,7 @@ SCENARIO("BasicSink's log function should be controled by enabled property", "[B
 SCENARIO("BasicSink's filter property should determine if records get processed or skipped", "[BasicSink][Sink]")
 {
 	std::ostringstream out;
-	BasicSink_t sink{ out };
+	BasicSinkMoc sink{ &out };
 	bool invoked = false;
 	sink.setFilter(FilterMoc{ .invocationResult = true, .invoked = &invoked });
 	sink.setEnabled();
@@ -153,7 +153,7 @@ SCENARIO("BasicSink's filter property should determine if records get processed 
 SCENARIO("BasicSink's formatter property should format processed records", "[BasicSink][Sink]")
 {
 	std::ostringstream out;
-	BasicSink_t sink{ out };
+	BasicSinkMoc sink{ &out };
 	bool invoked = false;
 	sink.setFormatter(FormatterMoc{ .invoked = &invoked });
 	sink.setEnabled();
@@ -183,55 +183,6 @@ SCENARIO("BasicSink's formatter property should format processed records", "[Bas
 			sink.removeFormatter();
 			sink.log({});
 			REQUIRE_FALSE(invoked);
-		}
-	}
-}
-
-SCENARIO("BasicSink's FlushPolicy property should determine when stream has to be flushed.", "[BasicSink][Sink]")
-{
-	std::ostringstream out;
-	BasicSink_t sink{ out };
-	sink.setEnabled();
-
-	std::size_t invocationCount = 0;
-	std::size_t flushedSignalCount = 0;
-
-	sink.setFlushPolicy(
-						FlushPolicyMoc{
-							.invocationCount = &invocationCount,
-							.flushedSignalCount = &flushedSignalCount
-						}
-						);
-
-	GIVEN("an enabled BasicSink instance")
-	{
-		WHEN("calling log")
-		{
-			sink.log({});
-			THEN("FlushPolicy property should get invoked")
-			{
-				REQUIRE(invocationCount == 1);
-			}
-
-			AND_THEN("FlushPolicy property should get notified about flushed")
-			{
-				REQUIRE(flushedSignalCount == 1);
-			}
-		}
-
-		AND_WHEN("calling flushed")
-		AND_THEN("FlushPolicy property should get notified about flushed")
-		{
-			sink.flush();
-			REQUIRE(flushedSignalCount == 1);
-		}
-
-		AND_WHEN("removeFlushPolicy is called")
-		THEN("then previous FlushPolicy should get replaced")
-		{
-			sink.removeFlushPolicy();
-			sink.log({});
-			REQUIRE(invocationCount == 0);
 		}
 	}
 }

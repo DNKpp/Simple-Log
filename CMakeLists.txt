@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
-project(simple_log)
+project(simple_log
+	VERSION 0.6
+	LANGUAGES CXX
+)
 
 include(CTest)
 

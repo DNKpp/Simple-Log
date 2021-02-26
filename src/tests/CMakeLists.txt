@@ -22,10 +22,12 @@ add_executable(
 	RecordQueueTests.cpp
 	StringPatternTest.cpp
 	FlushPolicyTests.cpp
-	BasicSinkTests.cpp
+	OStreamSinkTests.cpp
 	FileSinkTests.cpp
+	ConsoleSinkTests.cpp
 	LoggerTests.cpp
 	RecordBuilderTests.cpp
+	BasicSinkTests.cpp
 )
 
 target_link_libraries(

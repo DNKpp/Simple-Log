@@ -73,7 +73,7 @@ namespace sl::log
 			typename T::Record_t;
 		} &&
 		Record<typename T::Record_t> &&
-		std::is_convertible_v<std::invoke_result_t<T>, RecordBuilder<typename T::Record_t>>;
+		std::is_invocable_r_v<RecordBuilder<typename T::Record_t>, T>;
 
 	/**
 	 * \brief Concept for invokable formatter objects
@@ -81,8 +81,7 @@ namespace sl::log
 	template <class T, class TRecord>
 	concept RecordFormatterFor =
 		Record<TRecord> &&
-		std::invocable<T, const TRecord&> &&
-		std::same_as<std::invoke_result_t<T, const TRecord&>, std::string>;
+		std::is_invocable_r_v<std::string, T, const TRecord&>;
 
 	/**
 	 * \brief Concept for invokable filter objects
@@ -94,7 +93,7 @@ namespace sl::log
 	 * \brief Concept for invokable file state handler objects
 	*/
 	template <class T>
-	concept FileStateHandler = std::invocable<T> && std::convertible_to<std::invoke_result_t<T>, std::string>;
+	concept FileStateHandler = std::is_invocable_r_v<std::string, T>;
 
 	/**
 	 * \brief Concept for invokable flush policies
@@ -107,6 +106,19 @@ namespace sl::log
 		{
 			{ policy.flushed() };
 		};
+
+	/** @}*/
+
+	struct ConsoleTextStyle;
+
+	/** \addtogroup Concepts
+	 * @{
+	 */
+
+	template <class T, class TRecord>
+	concept ConsoleTextStylePolicyFor =
+		Record<TRecord> &&
+		std::is_invocable_r_v<ConsoleTextStyle, T, const TRecord&>;
 
 	/** @}*/
 }

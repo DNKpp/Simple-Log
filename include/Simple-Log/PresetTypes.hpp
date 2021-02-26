@@ -67,9 +67,17 @@ namespace sl::log::preset
 	 */
 	using BasicSink_t = BasicSink<Record_t>;
 	/**
+	 * \brief Type alias for log::OStreamSink which uses preset::Record_t as Record type
+	 */
+	using OStreamSink_t = OStreamSink<Record_t>;
+	/**
 	 * \brief Type alias for log::FileSink which uses preset::Record_t as Record type
 	 */
 	using FileSink_t = FileSink<Record_t>;
+	/**
+	 * \brief Type alias for log::ConsoleSink which uses preset::Record_t as Record type
+	 */
+	using ConsoleSink_t = ConsoleSink<Record_t>;
 
 	/** @}*/
 }
