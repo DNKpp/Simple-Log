@@ -6,7 +6,6 @@
 #include <Simple-Log/PresetTypes.hpp>
 #include <Simple-Log/Simple-Log.hpp>
 
-#include <iostream>
 #include <sstream>
 
 using namespace sl::log;
@@ -30,7 +29,7 @@ inline std::ostream& operator <<(std::ostream& out, Channel lvl)
 // Yes, these are a few typedefs which might seem tedious at the first glance, but you'll usually need to do this once per program.
 using Record_t = BaseRecord<SevLvl, Channel>;
 using Core_t = Core<Record_t>;
-using OStreamSink_t = OStreamSink<Record_t>;
+using ConsoleSink_t = ConsoleSink<Record_t>;
 using FileSink_t = FileSink<Record_t>;
 using Logger_t = BaseLogger<Record_t>;
 
@@ -42,7 +41,7 @@ inline auto& gConsoleSink
 	[]() -> auto&
 	{
 		// let's create the console sink in disabled state. Will become automatically enabled after this scope is left.
-		auto wrappedSink = gCore.makeDisabledSink<OStreamSink_t>(std::cout);
+		auto wrappedSink = gCore.makeDisabledSink<ConsoleSink_t>();
 		// Only messages with the Channel network shall be printed onto the console
 		wrappedSink->setFilter(makeChannelFilterFor<Record_t>(Equals{ Channel::network }));
 		// setting up a custom formatter, thus for each Record only the channel followed by the message will be printed.

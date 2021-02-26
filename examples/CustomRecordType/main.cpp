@@ -6,7 +6,6 @@
 #include <Simple-Log/PresetTypes.hpp>
 #include <Simple-Log/Simple-Log.hpp>
 
-#include <iostream>
 #include <sstream>
 
 using namespace sl::log;
@@ -23,7 +22,7 @@ public:
 
 // Yes, these are a few typedefs which might seem tedious at the first glance, but you'll usually need to do this once per program.
 using Core_t = Core<MyCustomRecord>;
-using OStreamSink_t = OStreamSink<MyCustomRecord>;
+using ConsoleSink_t = ConsoleSink<MyCustomRecord>;
 using FileSink_t = FileSink<MyCustomRecord>;
 using Logger_t = BaseLogger<MyCustomRecord>;
 
@@ -56,7 +55,7 @@ inline auto& gConsoleSink
 	[]() -> auto&
 	{
 		// let's create the console sink in disabled state. Will become automatically enabled after this scope is left.
-		auto wrappedSink = gCore.makeDisabledSink<OStreamSink_t>(std::cout);
+		auto wrappedSink = gCore.makeDisabledSink<ConsoleSink_t>();
 		// setting up a custom formatter, thus for each Record only the domain followed by the message will be printed.
 		wrappedSink->setFormatter(
 								[](const MyCustomRecord& record)
