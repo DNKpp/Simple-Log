@@ -39,6 +39,29 @@ TEST_CASE("ConsoleTextStyleTable should yield the same styles as inserted during
 	REQUIRE(styleTable(record).bgColor == Style::Color::standard);
 }
 
+TEST_CASE("ConsoleTextStyleTable should yield the same styles as inserted after construction.", "[ConsoleSink][Sink]")
+{
+	using Style = ConsoleTextStyle;
+	using SevLvl = preset::SevLvl;
+	auto styleTable = makeConsoleTextStyleTableFor<Record_t>(
+															&Record_t::severity,
+															{
+																{ SevLvl::info, { .bgColor = Style::Color::blue } },
+																{ SevLvl::debug, { .bgColor = Style::Color::yellow } },
+																{ SevLvl::error, { .bgColor = Style::Color::red } }
+															}
+															);
+
+	styleTable.insert(SevLvl::warning, { .bgColor = Style::Color::blue });
+	styleTable.insert(SevLvl::debug, { .bgColor = Style::Color::standard });
+
+	Record_t record;
+	record.setSeverity(SevLvl::warning);
+	REQUIRE(styleTable(record).bgColor == Style::Color::blue);
+	record.setSeverity(SevLvl::debug);
+	REQUIRE(styleTable(record).bgColor == Style::Color::standard);
+}
+
 SCENARIO("ConsoleSink's TextStylePolicy property should be set- and removable.", "[ConsoleSink][Sink]")
 {
 	ConsoleSink_t sink;
