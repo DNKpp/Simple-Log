@@ -91,6 +91,36 @@ SCENARIO("FileSink::setFileNamePattern should modify member.", "[FileSink][Sink]
 		{
 			REQUIRE_THROWS_AS(sink.setFileNamePattern(""), SinkException);
 		}
+
+		WHEN("setting file pattern name with an non-empty tokenized string")
+		THEN("setFileNamePattern should not throw an SinkException")
+		{
+			REQUIRE_NOTHROW(sink.setFileNamePattern("log%N.file"));
+		}
+
+		WHEN("setting file pattern name with an filename string and containing path info")
+		THEN("setFileNamePattern should throw an SinkException")
+		{
+			REQUIRE_THROWS_AS(sink.setFileNamePattern("test/log.file"), SinkException);
+		}
+
+		WHEN("setting file pattern name with an tokenized string and containing path info")
+		THEN("setFileNamePattern should throw an SinkException")
+		{
+			REQUIRE_THROWS_AS(sink.setFileNamePattern("test/log%N.file"), SinkException);
+		}
+
+		WHEN("setting file pattern name with only path info")
+		THEN("setFileNamePattern should throw an SinkException")
+		{
+			REQUIRE_THROWS_AS(sink.setFileNamePattern("test/"), SinkException);
+		}
+
+		WHEN("setting file pattern name with only path info containing a token")
+		THEN("setFileNamePattern should throw an SinkException")
+		{
+			REQUIRE_THROWS_AS(sink.setFileNamePattern("test%N/"), SinkException);
+		}
 	}
 }
 

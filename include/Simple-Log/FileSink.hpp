@@ -101,9 +101,11 @@ namespace sl::log
 
 		/**
 		 * \brief Constructor
-		 * \details Constructs a new FileSink instance, which uses the provided file name pattern for newly opened files at the specified directory.
 		 * \param fileNamePattern	Pattern string from which new file names will be generated.
 		 * \param directory			The directory where all files of this sink will be generated.
+		 * \details Constructs a new FileSink instance, which uses the provided file name pattern for newly opened files at the specified directory.
+		 * \remark It is not intended, that the pattern string contains any directory information. Use the directory property instead.
+		 * \throws SinkException if pattern string is empty or contains directory information
 		 */
 		explicit FileSink(std::string fileNamePattern, std::filesystem::path directory = std::filesystem::current_path()) :
 			Super{ m_FileStream }
@@ -269,12 +271,19 @@ namespace sl::log
 		 * \brief Sets the file name pattern for generated log files
 		 * \param fileNamePattern Pattern string
 		 * \details For further details look \ref FileNamePattern "here".
+		 * \remark It is not intended, that the pattern string contains any directory information. Use the directory property instead.
+		 * \throws SinkException if pattern string is empty or contains directory information
 		 */
 		void setFileNamePattern(std::string fileNamePattern)
 		{
 			if (std::empty(fileNamePattern))
 			{
 				throw SinkException{ "FileNamePattern must not be empty." };
+			}
+
+			if (std::filesystem::path(fileNamePattern).has_parent_path())
+			{
+				throw SinkException{ "FileNamePattern must contain any directory information. Use directory property instead." };
 			}
 
 			std::scoped_lock lock{ m_FilePathNameMx };
