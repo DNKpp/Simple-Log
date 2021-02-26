@@ -24,7 +24,7 @@ namespace sl::log
 	/** \addtogroup Core
 	 * @{
 	 */
-	
+
 	/**
 	 * \brief The central point of the whole library. Needs to be instantiated at least once.
 	 * \tparam TRecord Used Record type.
@@ -46,7 +46,11 @@ namespace sl::log
 	 * Core instances are neither copy- nor movable.
 	 */
 
-	template <Record TRecord>
+	template <Record TRecord, class TQueueStrategy = BlockingTakeQueueStrategy>
+	requires requires
+	{
+		typename detail::MakeRecordQueueHelper<TRecord, TQueueStrategy>::RecordQueue_t;
+	}
 	class Core
 	{
 	public:
@@ -54,7 +58,7 @@ namespace sl::log
 
 	private:
 		using ISink_t = ISink<Record_t>;
-		using RecordQueue_t = RecordQueue<Record_t>;
+		using RecordQueue_t = typename detail::MakeRecordQueueHelper<TRecord, TQueueStrategy>::RecordQueue_t;
 		using SinkContainer_t = std::vector<std::unique_ptr<ISink_t>>;
 
 	public:
