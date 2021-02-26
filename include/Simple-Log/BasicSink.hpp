@@ -25,12 +25,10 @@ namespace sl::log
 	 */
 
 	/**
-	 * \brief std::ostream orientated Sink class
+	 * \brief Abstract Sink class which offers basic filtering, formatting functionality
 	 * \tparam TRecord Used Record type.
-	 * \details This Sink class uses a std::ostream reference for printing each recorded message and offers options to manipulate its behaviour: e.g. filtering and formatting messages. Due to the thread-safe design it is totally
-	 *	fine changing settings during program runtime. 
-	 *
-	 *	This class offers everything you'll need to print messages into console via std::cout, std::cerr or any other std::ostream object. For file related logging FileSink might be more suitable.
+	 * \details This Sink class implements the enabling functionality, as well as filtering and formatting Records. Users who want to print messages into a std::ostream like object, should
+	 * look at the OStreamSink or its derived classes.
 	 */
 	template <Record TRecord>
 	class BasicSink :
@@ -107,20 +105,20 @@ namespace sl::log
 		BasicSink& operator =(BasicSink&&) = delete;
 
 		/**
-		 * \brief Filters, formats and writes the passed record to the internal stream if this instance is enabled.
-		 * \details This function prints the passed record to the internal stream object. In forehand, the active filter provides feedback if the record should be passed to the stream or not. If not, the call has no effect to any state.
-		 *	The active formatter will be used to hand-over the necessary information of the Record object to the stream object.
+		 * \brief Handles the given Record object
+		 * \details Before the Record gets passed to the actual destination, it will be checked if the Sink object is enabled and if the Record should be filtered.
+		 * If these checks are passed, the abstract writeMessage function will be invoked with the finally formatted message string.
 		 * \param record Record object
 		 */
 		void log(const Record_t& record) final override
 		{
-			if (!m_Enabled || !logDerived(record))
+			if (!m_Enabled)
 				return;
 
 			if (std::scoped_lock lock{ m_FilterMx }; !std::invoke(m_Filter, record))
 				return;
 
-			auto message = [&]
+			const auto message = [&]
 			{
 				std::scoped_lock lock{ m_FormatterMx };
 				return std::invoke(m_Formatter, record);
@@ -151,18 +149,12 @@ namespace sl::log
 
 		/**
 		 * \brief Sets the active formatter
-		 * \details It's the formatters job to:
-		 * \li extract the necessary information from Records
-		 * \li pass the extracted infos to the stream object
+		 * \details It's the formatters job to extract the necessary information from Records and built the final message string.
 		 *
-		 * This design decision is motivated by the fact, that it would be unnecessarily inefficient letting the formatter creating a temporary string object, which would simply get passed to the internal stream.
-		 * Thus, a custom formatter also has to pass everything to the stream by itself.
-		 *
-		 * A formatter should use the following signature:
+		 * A custom formatter should use the following signature:
 		 * \code{.cpp}
-		 * void(std::ostream&, const Record&)
+		 * std::string(const Record&)
 		 * \endcode
-		 * \remark The formatters return type does not have to be void, but any returned information will be ignored.
 		 *
 		 * \tparam TFormatter Type of the passed formatter (automatically deduced)
 		 * \param formatter An invokable formatter object
@@ -212,16 +204,12 @@ namespace sl::log
 
 	protected:
 		/**
-		 * \brief This function gets called before the actual writing.
-		 * \details Subclasses may override this function if they want to perform any action before the actual logging process or apply custom filtering conditions (beside BasicSink s filter property).
+		 * \brief This function will be called when the actual message should be printed.
+		 * \details Subclasses must implement this function and have to print the message to the desired destination themselves.
 		 * \param record The Record object.
-		 * \return If false is returned, the Record will be skipped.
+		 * \param message The actual message, which should be printed.
+		 * \version since alpha-0.6
 		 */
-		virtual bool logDerived(const Record_t& record)
-		{
-			return true;
-		}
-
 		virtual void writeMessage(const Record_t& record, std::string_view message) = 0;
 
 	private:
