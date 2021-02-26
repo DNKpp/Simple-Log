@@ -11,6 +11,7 @@
 #include "Concepts.hpp"
 #include "OStreamSink.hpp"
 
+// rang.hpp includes windows.hpp internally, thus macros min and max will be defined. This macro prevents this.
 #define NOMINMAX
 #include "third_party/rang/rang.hpp"
 
@@ -34,7 +35,7 @@ namespace sl::log
 	/**
 	 * \brief Collection of possible style and color options for text printed onto the console
 	 * \details Each enum type will be casted to the third-party lib "rang" counterpart, which is responsible for all of the troublesome work.
-	 * Some options might not work on every console.
+	 * Some style options might not work on every console.
 	 * 
 	 * Go to https://github.com/agauniyal/rang/tree/master if you are interested about all the details.
 	 */
@@ -88,6 +89,14 @@ namespace sl::log
 		 */
 		Color bgColor = Color::standard;
 	};
+
+	/**
+	 * \brief A constant object used for resetting the style back to default
+	 */
+	constexpr ConsoleTextStyle defaultConsoleTextStyle;
+
+	/** @}*/
+	/** @}*/
 }
 
 namespace sl::log::detail
@@ -99,10 +108,13 @@ namespace sl::log::detail
 
 namespace sl::log
 {
-	/**
-	 * \brief A constant object used for resetting the style back to default
+	/** \addtogroup Sinks
+	 * @{
 	 */
-	constexpr ConsoleTextStyle defaultConsoleTextStyle;
+
+	/** \addtogroup ConsoleSink
+	 * @{
+	 */
 
 	/**
 	 * \brief Operator << overload for ConsoleTextStyle type
@@ -112,7 +124,6 @@ namespace sl::log
 	 */
 	inline std::ostream& operator <<(std::ostream& out, const ConsoleTextStyle& style)
 	{
-		auto putColor = [&out](auto color) { out << color; };
 		detail::applyStyle(out, style.style);
 		detail::applyTextColor(out, style.textColor);
 		detail::applyBackgroundColor(out, style.bgColor);
@@ -134,6 +145,7 @@ namespace sl::log
 	public:
 		using Projection_t = std::remove_cvref_t<TProjection>;
 		using Table_t = std::remove_cvref_t<TTable>;
+		using Key_t = typename Table_t::key_type;
 
 		/**
 		 * \brief Constructor
@@ -161,6 +173,17 @@ namespace sl::log
 				return itr->second;
 			}
 			return defaultConsoleTextStyle;
+		}
+
+		/**
+		 * \brief Inserts a style policy
+		 * \param key The key, on which the style will be applied
+		 * \param style The style which will be used, when the key is detected
+		 * \details Inserts or, if key is already present, overrides the style.
+		 */
+		void insert(Key_t key, ConsoleTextStyle style)
+		{
+			m_StyleTable.insert_or_assign(std::move(key), std::move(style));
 		}
 
 	private:
