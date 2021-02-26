@@ -76,12 +76,12 @@ namespace sl::log
 		{
 			try
 			{
-				m_WorkerInstruction = Instruction::quit;
+				m_WorkerInstruction = Worker::Instruction::quit;
 				m_WorkerFuture.wait();
 			}
 			catch (...)
 			{
-				m_WorkerInstruction = Instruction::forceQuit;
+				m_WorkerInstruction = Worker::Instruction::forceQuit;
 			}
 		}
 
@@ -111,7 +111,7 @@ namespace sl::log
 		void log(Record_t&& record)
 		{
 			// will reject newly generated records, after run has become false
-			if (m_WorkerInstruction == Instruction::run)
+			if (m_WorkerInstruction == Worker::Instruction::run)
 			{
 				m_Records.push(std::move(record));
 			}
@@ -173,16 +173,16 @@ namespace sl::log
 		}
 
 	private:
-		enum class Instruction
-		{
-			run,
-			quit,
-			forceQuit
-		};
-
 		class Worker
 		{
 		public:
+			enum class Instruction
+			{
+				run,
+				quit,
+				forceQuit
+			};
+
 			Worker(
 				const std::atomic<Instruction>& instruction,
 				RecordQueue_t& records,
@@ -233,7 +233,7 @@ namespace sl::log
 		std::mutex m_SinkMx;
 		SinkContainer_t m_Sinks;
 
-		std::atomic<Instruction> m_WorkerInstruction{ Instruction::run };
+		std::atomic<typename Worker::Instruction> m_WorkerInstruction{ Worker::Instruction::run };
 		Worker m_Worker;
 		std::future<void> m_WorkerFuture;
 
