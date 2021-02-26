@@ -107,7 +107,7 @@ namespace sl::log
 
 		/**
 		 * \brief Flushes all pending output of the internal stream
-		 * \details Internally locks the associated stream mutex.
+		 * \remark Internally locks the associated stream mutex.
 		 */
 		void flush()
 		{
@@ -122,8 +122,8 @@ namespace sl::log
 		 * \param data Data which will be written to the stream.
 		 * 
 		 * \details This functions writes directly to the stream object. No filter or formatter will be involved and stream will be flush afterwards.
-		 * This might be useful for writing custom header or footer data to the stream.\n
-		 * Internally locks the associated stream mutex.
+		 * This might be useful for writing custom header or footer data to the stream.
+		 * \remark If not already locked, this function will lock the stream associated mutex.
 		 */
 		template <class TData>
 		void writeToStream(TData&& data)
@@ -137,7 +137,7 @@ namespace sl::log
 		 * \brief Virtual method which will be called before the actual message is written to the stream
 		 * \param record The current handled Record object
 		 * \param message The final message
-		 * \details The stream associated mutex is locked before this function gets invoked.
+		 * \remark The stream associated mutex is locked before this function gets invoked.
 		 * \version since alpha-0.6
 		 */
 		virtual void beforeMessageWrite(const Record_t& record, std::string_view message)
@@ -148,7 +148,7 @@ namespace sl::log
 		 * \brief Virtual method which will be called after the actual message is written to the stream
 		 * \param record The current handled Record object
 		 * \param message The final message
-		 * \details The stream associated mutex is locked before this function gets invoked.
+		 * \remark The stream associated mutex is locked before this function gets invoked.
 		 * \version since alpha-0.6
 		 */
 		virtual void afterMessageWrite(const Record_t& record, std::string_view message)
@@ -156,7 +156,7 @@ namespace sl::log
 		}
 
 	private:
-		std::mutex m_StreamMx;
+		std::recursive_mutex m_StreamMx;
 		std::ostream& m_Stream;
 
 		std::mutex m_FlushPolicyMx;
