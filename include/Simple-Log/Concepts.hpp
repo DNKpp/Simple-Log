@@ -9,8 +9,11 @@
 #pragma once
 
 #include <concepts>
+#include <mutex>
+#include <optional>
+#include <queue>
 #include <string>
-#include <string>
+#include <type_traits>
 
 namespace sl::log
 {	
@@ -115,10 +118,26 @@ namespace sl::log
 	 * @{
 	 */
 
+	/**
+	 * \brief Concept for StylePolicies of ConsoleSink
+	*/
 	template <class T, class TRecord>
 	concept ConsoleTextStylePolicyFor =
 		Record<TRecord> &&
 		std::is_invocable_r_v<ConsoleTextStyle, T, const TRecord&>;
+
+	/**
+	 * \brief Concept RecordQueue strategies
+	*/
+	template <class T, class TRecord>
+	concept QueueStrategyFor =
+		Record<TRecord> &&
+		std::constructible_from<T, std::mutex&, std::queue<TRecord>&> &&
+		requires(T strategy)
+		{
+			{ strategy.push(std::declval<TRecord>()) };
+			{ strategy.take() } -> std::convertible_to<std::optional<TRecord>>;
+		};
 
 	/** @}*/
 }
