@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['timepoint_5ft_397',['TimePoint_t',['../dc/d25/classsl_1_1log_1_1_timed_flush_policy.html#adbd0e41534680ff5395ba2202c2eb7cc',1,'sl::log::TimedFlushPolicy::TimePoint_t()'],['../dd/d7a/classsl_1_1log_1_1_base_record.html#aa4dc29db0018fdb7b2582e003e56929c',1,'sl::log::BaseRecord::TimePoint_t()']]]
+  ['predicate_5ft_509',['Predicate_t',['../d8/df6/classsl_1_1log_1_1_flush_policy.html#a35204bbc45e2b51854f41c5a20280b02',1,'sl::log::FlushPolicy']]],
+  ['projection_5ft_510',['Projection_t',['../d5/d54/classsl_1_1log_1_1_console_text_style_table.html#affb6e22be13916626f2ca516dc5c6063',1,'sl::log::ConsoleTextStyleTable::Projection_t()'],['../d4/d36/classsl_1_1log_1_1_projection_filter.html#ae58e1705b3fda54376a92e20cff1ec6f',1,'sl::log::ProjectionFilter::Projection_t()'],['../d8/df6/classsl_1_1log_1_1_flush_policy.html#ad6484050ce99a625f2dd0eb575c1572f',1,'sl::log::FlushPolicy::Projection_t()']]]
 ];

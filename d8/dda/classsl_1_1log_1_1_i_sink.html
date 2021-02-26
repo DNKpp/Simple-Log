@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">v0.5-alpha</span>
+   &#160;<span id="projectnumber">alpha-v0.6</span>
    </div>
   </td>
  </tr>
@@ -102,8 +102,10 @@ Inheritance diagram for sl::log::ISink&lt; TRecord &gt;:</div>
  <div class="center">
   <img src="../../d8/dda/classsl_1_1log_1_1_i_sink.png" usemap="#sl::log::ISink_3C_20TRecord_20_3E_map" alt=""/>
   <map id="sl::log::ISink_3C_20TRecord_20_3E_map" name="sl::log::ISink_3C_20TRecord_20_3E_map">
-<area href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html" title="std::ostream orientated Sink class" alt="sl::log::BasicSink&lt; TRecord &gt;" shape="rect" coords="0,56,177,80"/>
-<area href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html" title="Class for logging into files." alt="sl::log::FileSink&lt; TRecord &gt;" shape="rect" coords="0,112,177,136"/>
+<area href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html" title="Abstract Sink class which offers basic filtering, formatting functionality." alt="sl::log::BasicSink&lt; TRecord &gt;" shape="rect" coords="102,56,297,80"/>
+<area href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html" title="An std::ostream orientated Sink class which extends BasicSink." alt="sl::log::OStreamSink&lt; TRecord &gt;" shape="rect" coords="102,112,297,136"/>
+<area href="../../d2/df0/classsl_1_1log_1_1_console_sink.html" title="Sink class for directly logging onto std::cout." alt="sl::log::ConsoleSink&lt; TRecord &gt;" shape="rect" coords="0,168,195,192"/>
+<area href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html" title="Class for logging into files." alt="sl::log::FileSink&lt; TRecord &gt;" shape="rect" coords="205,168,400,192"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -157,7 +159,7 @@ class sl::log::ISink&lt; TRecord &gt;</h3>
   </table>
   </dd>
 </dl>
-<p>The interface class for each derived Sink type. If you want to implement your custom Sink type, have a look at <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html" title="std::ostream orientated Sink class">BasicSink</a> first. This might be a better starting point for customizations. </p>
+<p>The interface class for each derived Sink type. If you want to implement your custom Sink type, have a look at <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html" title="Abstract Sink class which offers basic filtering, formatting functionality.">BasicSink</a> first. This might be a better starting point for customizations. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="ad79d9e5f6c4e07be42c84a281dc45082"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad79d9e5f6c4e07be42c84a281dc45082">&#9670;&nbsp;</a></span>Record_t</h2>

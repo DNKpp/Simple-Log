@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['directorysize_363',['directorySize',['../dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html#aed6d3aa7dce332c56aa8ab32f58c3a20',1,'sl::log::FileSink::CleanupRule']]],
-  ['duration_364',['duration',['../d0/d82/structsl_1_1log_1_1_file_sink_1_1_rotation_rule.html#a428518ce06a596ceabeb0727c3cc6400',1,'sl::log::FileSink::RotationRule']]]
+  ['bgcolor_471',['bgColor',['../d8/d37/structsl_1_1log_1_1_console_text_style.html#a421c6e68494bc5574de89a983bc8e3e4',1,'sl::log::ConsoleTextStyle']]]
 ];

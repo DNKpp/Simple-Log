@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">v0.5-alpha</span>
+   &#160;<span id="projectnumber">alpha-v0.6</span>
    </div>
   </td>
  </tr>
@@ -94,101 +94,100 @@ $(document).ready(function(){initNavTree('d4/d5f/_custom_record_type_2main_8cpp-
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d7/d89/_preset_types_8hpp.html">Simple-Log/PresetTypes.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/d08/_simple-_log_8hpp.html">Simple-Log/Simple-Log.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using namespace </span><a class="code" href="../../de/d83/namespacesl_1_1log.html">sl::log</a>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using</span> <a name="a0"></a><a class="code" href="../../df/d5b/group___prepared_types.html#gaa30e95bdde6414a22c02e8c98d5dcf3f">preset::SevLvl</a>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">class </span>MyCustomRecord :</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">public</span> <a name="_a1"></a><a class="code" href="../../dd/d7a/classsl_1_1log_1_1_base_record.html">preset::Record_t</a></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">using</span> Domain_t = std::string;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    Domain_t domain;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;};</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// Yes, these are a few typedefs which might seem tedious at the first glance, but you&#39;ll usually need to do this once per program.</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using</span> <a name="a2"></a><a class="code" href="../../df/d5b/group___prepared_types.html#gaaa0e319ca877be6293a74ee97a937593">Core_t</a> = <a name="_a3"></a><a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core&lt;MyCustomRecord&gt;</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using</span> <a name="a4"></a><a class="code" href="../../df/d5b/group___prepared_types.html#ga5f9961f80c57af68873f2e915e6c0246">BasicSink_t</a> = <a name="_a5"></a><a class="code" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink&lt;MyCustomRecord&gt;</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> <a name="a6"></a><a class="code" href="../../df/d5b/group___prepared_types.html#gaf18a546e417058826c8d721f56c1ed4a">FileSink_t</a> = <a name="_a7"></a><a class="code" href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html">FileSink&lt;MyCustomRecord&gt;</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using</span> <a name="a8"></a><a class="code" href="../../df/d5b/group___prepared_types.html#gaac85e03739aa8f712c7c492d348a55bb">Logger_t</a> = <a name="_a9"></a><a class="code" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">BaseLogger&lt;MyCustomRecord&gt;</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// Now that our Record class contains an additional domain property, we would like to have a manipulator for our RecordBuilder</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> RecordBuilder_t = <a name="_a10"></a><a class="code" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html">RecordBuilder&lt;MyCustomRecord&gt;</a>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">class </span>SetDomain</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">using</span> Domain_t = MyCustomRecord::Domain_t;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">explicit</span> SetDomain(Domain_t data) :</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        m_Data{ std::move(data) }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> operator ()(MyCustomRecord&amp; rec)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        rec.domain = std::move(m_Data);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    Domain_t m_Data;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">inline</span> <a class="code" href="../../df/d5b/group___prepared_types.html#gaaa0e319ca877be6293a74ee97a937593">Core_t</a> <a name="a11"></a><a class="code" href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a88d42dc8178df5f58e58a5a420690873">gCore</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> <a name="a12"></a><a class="code" href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a62b1d29b2cc04a77a40e4614450067fa">gLog</a> = makeLogger&lt;Logger_t&gt;(<a class="code" href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a88d42dc8178df5f58e58a5a420690873">gCore</a>, SevLvl::info);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span>&amp; <a name="a13"></a><a class="code" href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#aa924695d8fb3e4c238eb43daadf69c8b">gConsoleSink</a></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    []() -&gt; <span class="keyword">auto</span>&amp;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">// let&#39;s create the console sink in disabled state. Will become automatically enabled after this scope is left.</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">auto</span> wrappedSink = <a class="code" href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a88d42dc8178df5f58e58a5a420690873">gCore</a>.<a name="a14"></a><a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4">makeDisabledSink</a>&lt;<a class="code" href="../../df/d5b/group___prepared_types.html#ga5f9961f80c57af68873f2e915e6c0246">BasicSink_t</a>&gt;(std::cout);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">// setting up a custom formatter, thus for each Record only the domain followed by the message will be printed.</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        wrappedSink-&gt;setFormatter(</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                [](<span class="keyword">const</span> MyCustomRecord&amp; record)</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                    std::stringstream out;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                    out &lt;&lt; record.domain &lt;&lt; <span class="stringliteral">&quot; &gt;&gt; &quot;</span> &lt;&lt; record.message();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                    <span class="keywordflow">return</span> std::move(out).str();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                );</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">return</span> *wrappedSink;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }()</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;};</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">int</span> main()</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a62b1d29b2cc04a77a40e4614450067fa">gLog</a>() &lt;&lt; <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// this clearly belongs to the domain of palindromes, thus let&#39;s tag it like this!</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a62b1d29b2cc04a77a40e4614450067fa">gLog</a>() &lt;&lt; SetDomain(<span class="stringliteral">&quot;palindrome&quot;</span>) &lt;&lt; <span class="stringliteral">&quot;A Man, A Plan, A Canal, Panama!&quot;</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">/* The output of the console looks like this:</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment"> &gt;&gt; Hello, World!</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">palindrome &gt;&gt; A Man, A Plan, A Canal, Panama!</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment"> </span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using namespace </span><a class="code" href="../../de/d83/namespacesl_1_1log.html">sl::log</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using</span> <a name="a0"></a><a class="code" href="../../df/d5b/group___prepared_types.html#gaa30e95bdde6414a22c02e8c98d5dcf3f">preset::SevLvl</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">class </span>MyCustomRecord :</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span> <a name="_a1"></a><a class="code" href="../../dd/d7a/classsl_1_1log_1_1_base_record.html">preset::Record_t</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">using</span> Domain_t = std::string;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    Domain_t domain;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Yes, these are a few typedefs which might seem tedious at the first glance, but you&#39;ll usually need to do this once per program.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">using</span> <a name="a2"></a><a class="code" href="../../df/d5b/group___prepared_types.html#gaaa0e319ca877be6293a74ee97a937593">Core_t</a> = <a name="_a3"></a><a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core&lt;MyCustomRecord&gt;</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">using</span> <a name="a4"></a><a class="code" href="../../df/d5b/group___prepared_types.html#ga275e47a72646ba38095e28bca891b152">ConsoleSink_t</a> = <a name="_a5"></a><a class="code" href="../../d2/df0/classsl_1_1log_1_1_console_sink.html">ConsoleSink&lt;MyCustomRecord&gt;</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">using</span> <a name="a6"></a><a class="code" href="../../df/d5b/group___prepared_types.html#gaf18a546e417058826c8d721f56c1ed4a">FileSink_t</a> = <a name="_a7"></a><a class="code" href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html">FileSink&lt;MyCustomRecord&gt;</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> <a name="a8"></a><a class="code" href="../../df/d5b/group___prepared_types.html#gaac85e03739aa8f712c7c492d348a55bb">Logger_t</a> = <a name="_a9"></a><a class="code" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">BaseLogger&lt;MyCustomRecord&gt;</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// Now that our Record class contains an additional domain property, we would like to have a manipulator for our RecordBuilder</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> RecordBuilder_t = <a name="_a10"></a><a class="code" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html">RecordBuilder&lt;MyCustomRecord&gt;</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">class </span>SetDomain</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">using</span> Domain_t = MyCustomRecord::Domain_t;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">explicit</span> SetDomain(Domain_t data) :</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        m_Data{ std::move(data) }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> operator ()(MyCustomRecord&amp; rec)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        rec.domain = std::move(m_Data);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    Domain_t m_Data;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">inline</span> <a class="code" href="../../df/d5b/group___prepared_types.html#gaaa0e319ca877be6293a74ee97a937593">Core_t</a> <a name="a11"></a><a class="code" href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a88d42dc8178df5f58e58a5a420690873">gCore</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span> <a name="a12"></a><a class="code" href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a62b1d29b2cc04a77a40e4614450067fa">gLog</a> = makeLogger&lt;Logger_t&gt;(<a class="code" href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a88d42dc8178df5f58e58a5a420690873">gCore</a>, SevLvl::info);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">inline</span> <span class="keyword">auto</span>&amp; <a name="a13"></a><a class="code" href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#aa924695d8fb3e4c238eb43daadf69c8b">gConsoleSink</a></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    []() -&gt; <span class="keyword">auto</span>&amp;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment">// let&#39;s create the console sink in disabled state. Will become automatically enabled after this scope is left.</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">auto</span> wrappedSink = <a class="code" href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a88d42dc8178df5f58e58a5a420690873">gCore</a>.<a name="a14"></a><a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4">makeDisabledSink</a>&lt;<a class="code" href="../../df/d5b/group___prepared_types.html#ga275e47a72646ba38095e28bca891b152">ConsoleSink_t</a>&gt;();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">// setting up a custom formatter, thus for each Record only the domain followed by the message will be printed.</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        wrappedSink-&gt;setFormatter(</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                [](<span class="keyword">const</span> MyCustomRecord&amp; record)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                    std::stringstream out;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                    out &lt;&lt; record.domain &lt;&lt; <span class="stringliteral">&quot; &gt;&gt; &quot;</span> &lt;&lt; record.message();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                    <span class="keywordflow">return</span> std::move(out).str();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                );</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> *wrappedSink;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }()</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">int</span> main()</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a62b1d29b2cc04a77a40e4614450067fa">gLog</a>() &lt;&lt; <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">// this clearly belongs to the domain of palindromes, thus let&#39;s tag it like this!</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a62b1d29b2cc04a77a40e4614450067fa">gLog</a>() &lt;&lt; SetDomain(<span class="stringliteral">&quot;palindrome&quot;</span>) &lt;&lt; <span class="stringliteral">&quot;A Man, A Plan, A Canal, Panama!&quot;</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/* The output of the console looks like this:</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"> &gt;&gt; Hello, World!</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">palindrome &gt;&gt; A Man, A Plan, A Canal, Panama!</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment"> </span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment"> */</span></div>
 <div class="ttc" id="a_preset_types_8hpp_html"><div class="ttname"><a href="../../d7/d89/_preset_types_8hpp.html">PresetTypes.hpp</a></div></div>
 <div class="ttc" id="a_simple-_log_8hpp_html"><div class="ttname"><a href="../../d0/d08/_simple-_log_8hpp.html">Simple-Log.hpp</a></div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_base_logger_html"><div class="ttname"><a href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a></div><div class="ttdoc">Convenience class for generating Record s.</div><div class="ttdef"><b>Definition:</b> Logger.hpp:38</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_base_record_html"><div class="ttname"><a href="../../dd/d7a/classsl_1_1log_1_1_base_record.html">sl::log::BaseRecord</a></div><div class="ttdoc">A collection of logging related information.</div><div class="ttdef"><b>Definition:</b> Record.hpp:40</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_basic_sink_html"><div class="ttname"><a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a></div><div class="ttdoc">std::ostream orientated Sink class</div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:40</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_console_sink_html"><div class="ttname"><a href="../../d2/df0/classsl_1_1log_1_1_console_sink.html">sl::log::ConsoleSink</a></div><div class="ttdoc">Sink class for directly logging onto std::cout.</div><div class="ttdef"><b>Definition:</b> ConsoleSink.hpp:232</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_core_html"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a></div><div class="ttdoc">The central point of the whole library. Needs to be instantiated at least once.</div><div class="ttdef"><b>Definition:</b> Core.hpp:51</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_core_html_a3af914cb7a7eeec70b3e06211d110fc4"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4">sl::log::Core::makeDisabledSink</a></div><div class="ttdeci">requires std::constructible_from&lt; TSink, TArgs... &gt; ScopedSinkDisabling&lt; Record_t, TSink &gt; makeDisabledSink(TArgs &amp;&amp;... args)</div><div class="ttdoc">Creates Sink disabled and registers it at this Core instance.</div><div class="ttdef"><b>Definition:</b> Core.hpp:149</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_file_sink_html"><div class="ttname"><a href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html">sl::log::FileSink</a></div><div class="ttdoc">Class for logging into files.</div><div class="ttdef"><b>Definition:</b> FileSink.hpp:75</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_record_builder_html"><div class="ttname"><a href="../../db/d9a/classsl_1_1log_1_1_record_builder.html">sl::log::RecordBuilder</a></div><div class="ttdoc">Helper class for building new Records.</div><div class="ttdef"><b>Definition:</b> RecordBuilder.hpp:99</div></div>
-<div class="ttc" id="agroup___prepared_types_html_ga5f9961f80c57af68873f2e915e6c0246"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#ga5f9961f80c57af68873f2e915e6c0246">sl::log::preset::BasicSink_t</a></div><div class="ttdeci">BasicSink&lt; Record_t &gt; BasicSink_t</div><div class="ttdoc">Type alias for log::BasicSink which uses preset::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:68</div></div>
+<div class="ttc" id="agroup___prepared_types_html_ga275e47a72646ba38095e28bca891b152"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#ga275e47a72646ba38095e28bca891b152">sl::log::preset::ConsoleSink_t</a></div><div class="ttdeci">ConsoleSink&lt; Record_t &gt; ConsoleSink_t</div><div class="ttdoc">Type alias for log::ConsoleSink which uses preset::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:80</div></div>
 <div class="ttc" id="agroup___prepared_types_html_gaa30e95bdde6414a22c02e8c98d5dcf3f"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#gaa30e95bdde6414a22c02e8c98d5dcf3f">sl::log::preset::SevLvl</a></div><div class="ttdeci">SevLvl</div><div class="ttdoc">A simple severity level enum type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:26</div></div>
 <div class="ttc" id="agroup___prepared_types_html_gaaa0e319ca877be6293a74ee97a937593"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#gaaa0e319ca877be6293a74ee97a937593">sl::log::preset::Core_t</a></div><div class="ttdeci">Core&lt; Record_t &gt; Core_t</div><div class="ttdoc">Type alias for log::Core which uses preset::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:56</div></div>
 <div class="ttc" id="agroup___prepared_types_html_gaac85e03739aa8f712c7c492d348a55bb"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#gaac85e03739aa8f712c7c492d348a55bb">sl::log::preset::Logger_t</a></div><div class="ttdeci">BaseLogger&lt; Record_t &gt; Logger_t</div><div class="ttdoc">Type alias for log::Logger which uses preset::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:60</div></div>
-<div class="ttc" id="agroup___prepared_types_html_gaf18a546e417058826c8d721f56c1ed4a"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#gaf18a546e417058826c8d721f56c1ed4a">sl::log::preset::FileSink_t</a></div><div class="ttdeci">FileSink&lt; Record_t &gt; FileSink_t</div><div class="ttdoc">Type alias for log::FileSink which uses preset::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:72</div></div>
+<div class="ttc" id="agroup___prepared_types_html_gaf18a546e417058826c8d721f56c1ed4a"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#gaf18a546e417058826c8d721f56c1ed4a">sl::log::preset::FileSink_t</a></div><div class="ttdeci">FileSink&lt; Record_t &gt; FileSink_t</div><div class="ttdoc">Type alias for log::FileSink which uses preset::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:76</div></div>
 <div class="ttc" id="anamespacesl_1_1log_1_1ready__to__go_html_a62b1d29b2cc04a77a40e4614450067fa"><div class="ttname"><a href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a62b1d29b2cc04a77a40e4614450067fa">sl::log::ready_to_go::gLog</a></div><div class="ttdeci">auto gLog</div><div class="ttdef"><b>Definition:</b> ReadyToGo.hpp:22</div></div>
 <div class="ttc" id="anamespacesl_1_1log_1_1ready__to__go_html_a88d42dc8178df5f58e58a5a420690873"><div class="ttname"><a href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a88d42dc8178df5f58e58a5a420690873">sl::log::ready_to_go::gCore</a></div><div class="ttdeci">Core_t gCore</div><div class="ttdef"><b>Definition:</b> ReadyToGo.hpp:20</div></div>
 <div class="ttc" id="anamespacesl_1_1log_1_1ready__to__go_html_aa924695d8fb3e4c238eb43daadf69c8b"><div class="ttname"><a href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#aa924695d8fb3e4c238eb43daadf69c8b">sl::log::ready_to_go::gConsoleSink</a></div><div class="ttdeci">auto &amp; gConsoleSink</div><div class="ttdef"><b>Definition:</b> ReadyToGo.hpp:21</div></div>
-<div class="ttc" id="anamespacesl_1_1log_html"><div class="ttname"><a href="../../de/d83/namespacesl_1_1log.html">sl::log</a></div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:24</div></div>
+<div class="ttc" id="anamespacesl_1_1log_html"><div class="ttname"><a href="../../de/d83/namespacesl_1_1log.html">sl::log</a></div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:22</div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

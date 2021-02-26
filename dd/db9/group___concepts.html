@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">v0.5-alpha</span>
+   &#160;<span id="projectnumber">alpha-v0.6</span>
    </div>
   </td>
  </tr>
@@ -112,16 +112,38 @@ Variables</h2></td></tr>
 <tr class="memdesc:ga37ddba3404d4136b7f370c8b5c4261b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable filter objects.  <a href="../../dd/db9/group___concepts.html#ga37ddba3404d4136b7f370c8b5c4261b0">More...</a><br /></td></tr>
 <tr class="separator:ga37ddba3404d4136b7f370c8b5c4261b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
-<tr class="memitem:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/db9/group___concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">sl::log::FileStateHandler</a> = std::invocable&lt;T&gt; &amp;&amp; std::convertible_to&lt;std::invoke_result_t&lt;T&gt;, std::string&gt;</td></tr>
+<tr class="memitem:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/db9/group___concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">sl::log::FileStateHandler</a> = std::is_invocable_r_v&lt;std::string, T&gt;</td></tr>
 <tr class="memdesc:ga1c5760e773e9a0c3ab0d608139bce497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable file state handler objects.  <a href="../../dd/db9/group___concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">More...</a><br /></td></tr>
 <tr class="separator:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf5daeadaa8a98715671cee34171d5380"><td class="memTemplParams" colspan="2">template&lt;class T , class TRecord &gt; </td></tr>
 <tr class="memitem:gaf5daeadaa8a98715671cee34171d5380"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/db9/group___concepts.html#gaf5daeadaa8a98715671cee34171d5380">sl::log::FlushPolicyFor</a></td></tr>
 <tr class="memdesc:gaf5daeadaa8a98715671cee34171d5380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable flush policies.  <a href="../../dd/db9/group___concepts.html#gaf5daeadaa8a98715671cee34171d5380">More...</a><br /></td></tr>
 <tr class="separator:gaf5daeadaa8a98715671cee34171d5380"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabce0461a36f4161bdbe47bca09e37b25"><td class="memTemplParams" colspan="2">template&lt;class T , class TRecord &gt; </td></tr>
+<tr class="memitem:gabce0461a36f4161bdbe47bca09e37b25"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/db9/group___concepts.html#gabce0461a36f4161bdbe47bca09e37b25">sl::log::ConsoleTextStylePolicyFor</a></td></tr>
+<tr class="separator:gabce0461a36f4161bdbe47bca09e37b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="gabce0461a36f4161bdbe47bca09e37b25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabce0461a36f4161bdbe47bca09e37b25">&#9670;&nbsp;</a></span>ConsoleTextStylePolicyFor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class TRecord &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">concept sl::log::ConsoleTextStylePolicyFor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">        Record&lt;TRecord&gt; &amp;&amp;</div>
+<div class="line">        std::is_invocable_r_v&lt;ConsoleTextStyle, T, const TRecord&amp;&gt;</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="ga1c5760e773e9a0c3ab0d608139bce497"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga1c5760e773e9a0c3ab0d608139bce497">&#9670;&nbsp;</a></span>FileStateHandler</h2>
 
@@ -131,7 +153,7 @@ Variables</h2></td></tr>
 template&lt;class T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">concept sl::log::FileStateHandler = std::invocable&lt;T&gt; &amp;&amp; std::convertible_to&lt;std::invoke_result_t&lt;T&gt;, std::string&gt;</td>
+          <td class="memname">concept sl::log::FileStateHandler = std::is_invocable_r_v&lt;std::string, T&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -184,7 +206,7 @@ template&lt;class T &gt; </div>
 <div class="line">            <span class="keyword">typename</span> <a class="code" href="../../df/d5b/group___prepared_types.html#gab7fd2d7ae0f18b1e2d4857c04dd160bb">T::Record_t</a>;</div>
 <div class="line">        } &amp;&amp;</div>
 <div class="line">        Record&lt;typename T::Record_t&gt; &amp;&amp;</div>
-<div class="line">        std::is_convertible_v&lt;std::invoke_result_t&lt;T&gt;, RecordBuilder&lt;typename T::Record_t&gt;&gt;</div>
+<div class="line">        std::is_invocable_r_v&lt;RecordBuilder&lt;typename T::Record_t&gt;, T&gt;</div>
 <div class="ttc" id="agroup___prepared_types_html_gab7fd2d7ae0f18b1e2d4857c04dd160bb"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#gab7fd2d7ae0f18b1e2d4857c04dd160bb">sl::log::preset::Record_t</a></div><div class="ttdeci">BaseRecord&lt; SevLvl, std::string &gt; Record_t</div><div class="ttdoc">Prepared Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:52</div></div>
 </div><!-- fragment -->
 <p>Concept for Logger classes. </p>
@@ -286,8 +308,7 @@ template&lt;class T , class TRecord &gt; </div>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">        Record&lt;TRecord&gt; &amp;&amp;</div>
-<div class="line">        std::invocable&lt;T, const TRecord&amp;&gt; &amp;&amp;</div>
-<div class="line">        std::same_as&lt;std::invoke_result_t&lt;T, const TRecord&amp;&gt;, std::string&gt;</div>
+<div class="line">        std::is_invocable_r_v&lt;std::string, T, const TRecord&amp;&gt;</div>
 </div><!-- fragment -->
 <p>Concept for invokable formatter objects. </p>
 

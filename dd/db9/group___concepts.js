@@ -1,5 +1,6 @@
 var group___concepts =
 [
+    [ "ConsoleTextStylePolicyFor", "dd/db9/group___concepts.html#gabce0461a36f4161bdbe47bca09e37b25", null ],
     [ "FileStateHandler", "dd/db9/group___concepts.html#ga1c5760e773e9a0c3ab0d608139bce497", null ],
     [ "FlushPolicyFor", "dd/db9/group___concepts.html#gaf5daeadaa8a98715671cee34171d5380", null ],
     [ "Logger", "dd/db9/group___concepts.html#gad4f4445c43488ca9e4850e862dbc4d14", null ],

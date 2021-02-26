@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">v0.5-alpha</span>
+   &#160;<span id="projectnumber">alpha-v0.6</span>
    </div>
   </td>
  </tr>
@@ -103,10 +103,19 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">BasicSink</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">std::ostream orientated Sink class  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract Sink class which offers basic filtering, formatting functionality.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html">RecordBuilder</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper class for building new Records.  <a href="../../db/d9a/classsl_1_1log_1_1_record_builder.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d37/structsl_1_1log_1_1_console_text_style.html">ConsoleTextStyle</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collection of possible style and color options for text printed onto the console.  <a href="../../d8/d37/structsl_1_1log_1_1_console_text_style.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d54/classsl_1_1log_1_1_console_text_style_table.html">ConsoleTextStyleTable</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience class for setting up style policies for a given Record member.  <a href="../../d5/d54/classsl_1_1log_1_1_console_text_style_table.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/df0/classsl_1_1log_1_1_console_sink.html">ConsoleSink</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sink class for directly logging onto std::cout.  <a href="../../d2/df0/classsl_1_1log_1_1_console_sink.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The central point of the whole library. Needs to be instantiated at least once.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#details">More...</a><br /></td></tr>
@@ -161,6 +170,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">BaseLogger</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convenience class for generating Record s.  <a href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html">OStreamSink</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An std::ostream orientated Sink class which extends <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html" title="Abstract Sink class which offers basic filtering, formatting functionality.">BasicSink</a>.  <a href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dce/classsl_1_1log_1_1_equals.html">Equals</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares equality with constant at invocation.  <a href="../../d2/dce/classsl_1_1log_1_1_equals.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,6 +221,13 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:gaeb779fb6e758a317d35ba1c78c231574"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dbf/group___console_sink.html#gaeb779fb6e758a317d35ba1c78c231574">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="../../d8/d37/structsl_1_1log_1_1_console_text_style.html">ConsoleTextStyle</a> &amp;style)</td></tr>
+<tr class="memdesc:gaeb779fb6e758a317d35ba1c78c231574"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operator &lt;&lt; overload for <a class="el" href="../../d8/d37/structsl_1_1log_1_1_console_text_style.html" title="Collection of possible style and color options for text printed onto the console.">ConsoleTextStyle</a> type.  <a href="../../d7/dbf/group___console_sink.html#gaeb779fb6e758a317d35ba1c78c231574">More...</a><br /></td></tr>
+<tr class="separator:gaeb779fb6e758a317d35ba1c78c231574"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae2f7c0a256d4965422ac90222afc8e8e"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::invocable&lt; const TRecord &amp; &gt; TProjection, class TTable  = std::unordered_map&lt;			std::remove_cvref_t&lt;std::invoke_result_t&lt;TProjection, const TRecord&amp;&gt;&gt;,			ConsoleTextStyle		&gt;&gt; </td></tr>
+<tr class="memitem:gae2f7c0a256d4965422ac90222afc8e8e"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/dbf/group___console_sink.html#gae2f7c0a256d4965422ac90222afc8e8e">makeConsoleTextStyleTableFor</a> (TProjection projection, TTable table)</td></tr>
+<tr class="memdesc:gae2f7c0a256d4965422ac90222afc8e8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The factory function for creating <a class="el" href="../../d5/d54/classsl_1_1log_1_1_console_text_style_table.html" title="Convenience class for setting up style policies for a given Record member.">ConsoleTextStyleTable</a> instances.  <a href="../../d7/dbf/group___console_sink.html#gae2f7c0a256d4965422ac90222afc8e8e">More...</a><br /></td></tr>
+<tr class="separator:gae2f7c0a256d4965422ac90222afc8e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga24e7670965f3f000d4df436c0054d92f"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const typename TRecord::Message_t &amp; &gt; TUnaryPredicate&gt; </td></tr>
 <tr class="memitem:ga24e7670965f3f000d4df436c0054d92f"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d7c/group___filter.html#ga24e7670965f3f000d4df436c0054d92f">makeMessageFilterFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
 <tr class="memdesc:ga24e7670965f3f000d4df436c0054d92f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating <a class="el" href="../../d4/d36/classsl_1_1log_1_1_projection_filter.html" title="Combines a projection on Record type with a predicate into an invokable object.">ProjectionFilter</a> of Record::message member.  <a href="../../df/d7c/group___filter.html#ga24e7670965f3f000d4df436c0054d92f">More...</a><br /></td></tr>
@@ -265,13 +284,19 @@ Variables</h2></td></tr>
 <tr class="memdesc:ga37ddba3404d4136b7f370c8b5c4261b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable filter objects.  <a href="../../dd/db9/group___concepts.html#ga37ddba3404d4136b7f370c8b5c4261b0">More...</a><br /></td></tr>
 <tr class="separator:ga37ddba3404d4136b7f370c8b5c4261b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
-<tr class="memitem:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/db9/group___concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">FileStateHandler</a> = std::invocable&lt;T&gt; &amp;&amp; std::convertible_to&lt;std::invoke_result_t&lt;T&gt;, std::string&gt;</td></tr>
+<tr class="memitem:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/db9/group___concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">FileStateHandler</a> = std::is_invocable_r_v&lt;std::string, T&gt;</td></tr>
 <tr class="memdesc:ga1c5760e773e9a0c3ab0d608139bce497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable file state handler objects.  <a href="../../dd/db9/group___concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">More...</a><br /></td></tr>
 <tr class="separator:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf5daeadaa8a98715671cee34171d5380"><td class="memTemplParams" colspan="2">template&lt;class T , class TRecord &gt; </td></tr>
 <tr class="memitem:gaf5daeadaa8a98715671cee34171d5380"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/db9/group___concepts.html#gaf5daeadaa8a98715671cee34171d5380">FlushPolicyFor</a></td></tr>
 <tr class="memdesc:gaf5daeadaa8a98715671cee34171d5380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable flush policies.  <a href="../../dd/db9/group___concepts.html#gaf5daeadaa8a98715671cee34171d5380">More...</a><br /></td></tr>
 <tr class="separator:gaf5daeadaa8a98715671cee34171d5380"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabce0461a36f4161bdbe47bca09e37b25"><td class="memTemplParams" colspan="2">template&lt;class T , class TRecord &gt; </td></tr>
+<tr class="memitem:gabce0461a36f4161bdbe47bca09e37b25"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/db9/group___concepts.html#gabce0461a36f4161bdbe47bca09e37b25">ConsoleTextStylePolicyFor</a></td></tr>
+<tr class="separator:gabce0461a36f4161bdbe47bca09e37b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga315028fe8f50a093f977b624560ec307"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../d8/d37/structsl_1_1log_1_1_console_text_style.html">ConsoleTextStyle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dbf/group___console_sink.html#ga315028fe8f50a093f977b624560ec307">defaultConsoleTextStyle</a></td></tr>
+<tr class="memdesc:ga315028fe8f50a093f977b624560ec307"><td class="mdescLeft">&#160;</td><td class="mdescRight">A constant object used for resetting the style back to default.  <a href="../../d7/dbf/group___console_sink.html#ga315028fe8f50a093f977b624560ec307">More...</a><br /></td></tr>
+<tr class="separator:ga315028fe8f50a093f977b624560ec307"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

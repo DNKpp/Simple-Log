@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['sevlvl_399',['SevLvl',['../df/d5b/group___prepared_types.html#gaa30e95bdde6414a22c02e8c98d5dcf3f',1,'sl::log::preset']]]
+  ['bg_518',['bg',['../d1/df2/namespacerang.html#ad33ed681a0b63f07283bbb55d19da7d2',1,'rang']]],
+  ['bgb_519',['bgB',['../d1/df2/namespacerang.html#a42edf1c1b0d8e843ceb1208259177f08',1,'rang']]]
 ];

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">v0.5-alpha</span>
+   &#160;<span id="projectnumber">alpha-v0.6</span>
    </div>
   </td>
  </tr>
@@ -157,7 +157,7 @@ class sl::log::Core&lt; TRecord &gt;</h3>
 <p>Due to this the <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> is thread-safe by design.</p>
 <p>It is fine to add Sinks during later stages of your program. This hasn't necessarily to be done right after <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a>'s creation. When <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> goes out of scope, or is about to get destructed otherwise, it will block any new Records which could be pushed into but will also let the Worker finish its work. Therefor it will wait in the destructor, unless there is an exception throwing, in which case <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> will force the Worker to quit its work instantly.</p>
 <p><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instances are neither copy- nor movable. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="../../d4/d5f/_custom_record_type_2main_8cpp-example.html#_a3">CustomRecordType/main.cpp</a>, and <a class="el" href="../../dc/dda/_customize_base_record_2main_8cpp-example.html#_a5">CustomizeBaseRecord/main.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="../../d4/d80/_colorized_console_logging_2main_8cpp-example.html#_a0">ColorizedConsoleLogging/main.cpp</a>, <a class="el" href="../../d4/d5f/_custom_record_type_2main_8cpp-example.html#_a3">CustomRecordType/main.cpp</a>, and <a class="el" href="../../dc/dda/_customize_base_record_2main_8cpp-example.html#_a5">CustomizeBaseRecord/main.cpp</a>.</dd>
 </dl>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="aa43f564cd56d8c5b878dcc99d0505d19"></a>
@@ -428,7 +428,7 @@ template&lt;std::derived_from&lt; ISink_t &gt; TSink, class... TArgs&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>reference to the managed Sink object</dd></dl>
 <p>This function creates a new Sink object and returns a reference to the caller. This Sink will be linked to and managed by the called <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="../../d5/dc2/_file_logging_2main_8cpp-example.html#a1">FileLogging/main.cpp</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="../../d4/d80/_colorized_console_logging_2main_8cpp-example.html#a3">ColorizedConsoleLogging/main.cpp</a>, and <a class="el" href="../../d5/dc2/_file_logging_2main_8cpp-example.html#a1">FileLogging/main.cpp</a>.</dd>
 </dl>
 
 </div>

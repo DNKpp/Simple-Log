@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['message_5ft_391',['Message_t',['../dd/d7a/classsl_1_1log_1_1_base_record.html#a756f90f181a5cd126679a9e37c0d36bd',1,'sl::log::BaseRecord']]]
+  ['key_5ft_504',['Key_t',['../d5/d54/classsl_1_1log_1_1_console_text_style_table.html#a09f1e9c153b2829e197775ef3b6d2e29',1,'sl::log::ConsoleTextStyleTable']]]
 ];

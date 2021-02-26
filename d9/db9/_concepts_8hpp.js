@@ -1,5 +1,6 @@
 var _concepts_8hpp =
 [
+    [ "ConsoleTextStylePolicyFor", "d9/db9/_concepts_8hpp.html#gabce0461a36f4161bdbe47bca09e37b25", null ],
     [ "FileStateHandler", "d9/db9/_concepts_8hpp.html#ga1c5760e773e9a0c3ab0d608139bce497", null ],
     [ "FlushPolicyFor", "d9/db9/_concepts_8hpp.html#gaf5daeadaa8a98715671cee34171d5380", null ],
     [ "Logger", "d9/db9/_concepts_8hpp.html#gad4f4445c43488ca9e4850e862dbc4d14", null ],

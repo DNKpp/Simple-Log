@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">v0.5-alpha</span>
+   &#160;<span id="projectnumber">alpha-v0.6</span>
    </div>
   </td>
  </tr>
@@ -124,13 +124,16 @@ Variables</h2></td></tr>
 <tr class="memdesc:ga37ddba3404d4136b7f370c8b5c4261b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable filter objects.  <a href="../../dd/db9/group___concepts.html#ga37ddba3404d4136b7f370c8b5c4261b0">More...</a><br /></td></tr>
 <tr class="separator:ga37ddba3404d4136b7f370c8b5c4261b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
-<tr class="memitem:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/db9/group___concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">sl::log::FileStateHandler</a> = std::invocable&lt;T&gt; &amp;&amp; std::convertible_to&lt;std::invoke_result_t&lt;T&gt;, std::string&gt;</td></tr>
+<tr class="memitem:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/db9/group___concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">sl::log::FileStateHandler</a> = std::is_invocable_r_v&lt;std::string, T&gt;</td></tr>
 <tr class="memdesc:ga1c5760e773e9a0c3ab0d608139bce497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable file state handler objects.  <a href="../../dd/db9/group___concepts.html#ga1c5760e773e9a0c3ab0d608139bce497">More...</a><br /></td></tr>
 <tr class="separator:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf5daeadaa8a98715671cee34171d5380"><td class="memTemplParams" colspan="2">template&lt;class T , class TRecord &gt; </td></tr>
 <tr class="memitem:gaf5daeadaa8a98715671cee34171d5380"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/db9/group___concepts.html#gaf5daeadaa8a98715671cee34171d5380">sl::log::FlushPolicyFor</a></td></tr>
 <tr class="memdesc:gaf5daeadaa8a98715671cee34171d5380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable flush policies.  <a href="../../dd/db9/group___concepts.html#gaf5daeadaa8a98715671cee34171d5380">More...</a><br /></td></tr>
 <tr class="separator:gaf5daeadaa8a98715671cee34171d5380"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabce0461a36f4161bdbe47bca09e37b25"><td class="memTemplParams" colspan="2">template&lt;class T , class TRecord &gt; </td></tr>
+<tr class="memitem:gabce0461a36f4161bdbe47bca09e37b25"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../dd/db9/group___concepts.html#gabce0461a36f4161bdbe47bca09e37b25">sl::log::ConsoleTextStylePolicyFor</a></td></tr>
+<tr class="separator:gabce0461a36f4161bdbe47bca09e37b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

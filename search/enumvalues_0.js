@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['debug_400',['debug',['../df/d5b/group___prepared_types.html#ggaa30e95bdde6414a22c02e8c98d5dcf3faad42f6697b035b7580e4fef93be20b4d',1,'sl::log::preset']]]
+  ['ansi_528',['Ansi',['../d1/df2/namespacerang.html#af70222b38ecff8fc5aef0958d052b433a0f94b628f89319fb787e49e325d8bac8',1,'rang']]],
+  ['auto_529',['Auto',['../d1/df2/namespacerang.html#a9a0ad8048ed47f032f5bdb687ba64164a06b9281e396db002010bde1de57262eb',1,'rang::Auto()'],['../d1/df2/namespacerang.html#af70222b38ecff8fc5aef0958d052b433a06b9281e396db002010bde1de57262eb',1,'rang::Auto()']]]
 ];

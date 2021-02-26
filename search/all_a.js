@@ -1,16 +1,10 @@
 var searchData=
 [
-  ['makechannelfilterfor_87',['makeChannelFilterFor',['../df/d7c/group___filter.html#gad6e836c03209fc28f9c910e3b3886c5b',1,'sl::log']]],
-  ['makechannelflushpolicyfor_88',['makeChannelFlushPolicyFor',['../d5/dfa/group___flush-_policy.html#ga14bfb1b391c85b40d7a1e6a99e16d495',1,'sl::log']]],
-  ['makedisabledsink_89',['makeDisabledSink',['../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4',1,'sl::log::Core']]],
-  ['makelogger_90',['makeLogger',['../de/da7/group___logger.html#ga3038db9cc61fb94dd32ad6d02fc2ac11',1,'sl::log::BaseLogger']]],
-  ['makemessagefilterfor_91',['makeMessageFilterFor',['../df/d7c/group___filter.html#ga24e7670965f3f000d4df436c0054d92f',1,'sl::log']]],
-  ['makemessageflushpolicyfor_92',['makeMessageFlushPolicyFor',['../d5/dfa/group___flush-_policy.html#gafd2084b61e0e19b5cfac465eac9a88f1',1,'sl::log']]],
-  ['makeseverityfilterfor_93',['makeSeverityFilterFor',['../df/d7c/group___filter.html#ga2b59233f3a1ffef4e4f89be18836ee62',1,'sl::log']]],
-  ['makeseverityflushpolicyfor_94',['makeSeverityFlushPolicyFor',['../d5/dfa/group___flush-_policy.html#gab9b3e1b941de7c29475debaa1b6a1cac',1,'sl::log']]],
-  ['makesink_95',['makeSink',['../d4/df3/classsl_1_1log_1_1_core.html#ad828429edf3e849e9e88042c43a7da2e',1,'sl::log::Core']]],
-  ['maketimepointfilterfor_96',['makeTimePointFilterFor',['../df/d7c/group___filter.html#ga73263b59074d4b554ea36b6d488785ea',1,'sl::log']]],
-  ['maketimepointflushpolicyfor_97',['makeTimePointFlushPolicyFor',['../d5/dfa/group___flush-_policy.html#gafc0f3598ec58dda217e635c7fe2abe4f',1,'sl::log']]],
-  ['message_98',['message',['../dd/d7a/classsl_1_1log_1_1_base_record.html#a439f27449dc191ac46071bc1097b2469',1,'sl::log::BaseRecord']]],
-  ['message_5ft_99',['Message_t',['../dd/d7a/classsl_1_1log_1_1_base_record.html#a756f90f181a5cd126679a9e37c0d36bd',1,'sl::log::BaseRecord']]]
+  ['less_124',['Less',['../d6/deb/classsl_1_1log_1_1_less.html#ae2fe185d02f8ed3dd993f9fb43375474',1,'sl::log::Less::Less()'],['../d6/deb/classsl_1_1log_1_1_less.html',1,'sl::log::Less&lt; T &gt;']]],
+  ['lessequals_125',['LessEquals',['../df/d10/classsl_1_1log_1_1_less_equals.html#ad7e802e601a4c4dff8e1bc7e660e4cf6',1,'sl::log::LessEquals::LessEquals()'],['../df/d10/classsl_1_1log_1_1_less_equals.html',1,'sl::log::LessEquals&lt; T &gt;']]],
+  ['log_126',['log',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a751bd1367c8492449c4e83f3588ee2af',1,'sl::log::BasicSink::log()'],['../d4/df3/classsl_1_1log_1_1_core.html#ac978894c8846ae6539d9f57ad2d4f8ed',1,'sl::log::Core::log()'],['../d8/dda/classsl_1_1log_1_1_i_sink.html#a35ba629214d49e3afe4de5612b13ea2c',1,'sl::log::ISink::log()']]],
+  ['logcallback_5ft_127',['LogCallback_t',['../da/d7e/classsl_1_1log_1_1_base_logger.html#a4aa67a73722753b8b1ed06a1a47acd1e',1,'sl::log::BaseLogger']]],
+  ['logger_128',['Logger',['../dd/db9/group___concepts.html#gad4f4445c43488ca9e4850e862dbc4d14',1,'sl::log::Logger()'],['../de/da7/group___logger.html',1,'(Global Namespace)']]],
+  ['logger_2ehpp_129',['Logger.hpp',['../d3/de3/_logger_8hpp.html',1,'']]],
+  ['logger_5ft_130',['Logger_t',['../df/d5b/group___prepared_types.html#gaac85e03739aa8f712c7c492d348a55bb',1,'sl::log::preset']]]
 ];

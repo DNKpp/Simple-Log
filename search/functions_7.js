@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['less_291',['Less',['../d6/deb/classsl_1_1log_1_1_less.html#ae2fe185d02f8ed3dd993f9fb43375474',1,'sl::log::Less']]],
-  ['lessequals_292',['LessEquals',['../df/d10/classsl_1_1log_1_1_less_equals.html#ad7e802e601a4c4dff8e1bc7e660e4cf6',1,'sl::log::LessEquals']]],
-  ['log_293',['log',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a751bd1367c8492449c4e83f3588ee2af',1,'sl::log::BasicSink::log()'],['../d4/df3/classsl_1_1log_1_1_core.html#ac978894c8846ae6539d9f57ad2d4f8ed',1,'sl::log::Core::log()'],['../d8/dda/classsl_1_1log_1_1_i_sink.html#a35ba629214d49e3afe4de5612b13ea2c',1,'sl::log::ISink::log()']]],
-  ['logderived_294',['logDerived',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#aa58c3a763630e7738a6e61b8b90e33b4',1,'sl::log::BasicSink::logDerived()'],['../dc/dd6/classsl_1_1log_1_1_file_sink.html#aabdad51a7125261d37d75f97b3603c15',1,'sl::log::FileSink::logDerived()']]]
+  ['insert_384',['insert',['../d5/d54/classsl_1_1log_1_1_console_text_style_table.html#a46938321f8924d654c1f8699ff04a28c',1,'sl::log::ConsoleTextStyleTable']]],
+  ['isenabled_385',['isEnabled',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a44f6e8ea8f784d42280bfd824990edec',1,'sl::log::BasicSink::isEnabled()'],['../d8/dda/classsl_1_1log_1_1_i_sink.html#a423855fc43c04f2785399330f38a4005',1,'sl::log::ISink::isEnabled() const noexcept=0']]],
+  ['isink_386',['ISink',['../d8/dda/classsl_1_1log_1_1_i_sink.html#abfaca8044c6895350a496b13982de363',1,'sl::log::ISink::ISink(const ISink &amp;)=delete'],['../d8/dda/classsl_1_1log_1_1_i_sink.html#aa9ba223d8652631e3f3d5fd5dcc2f760',1,'sl::log::ISink::ISink()=default'],['../d8/dda/classsl_1_1log_1_1_i_sink.html#aa63347f0758cd2b1583da994c8e89903',1,'sl::log::ISink::ISink(ISink &amp;&amp;)=default']]],
+  ['isterminal_387',['isTerminal',['../d4/d32/namespacerang_1_1rang__implementation.html#af195c8344db945b8027c500cdf835964',1,'rang::rang_implementation']]]
 ];

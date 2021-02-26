@@ -6,6 +6,8 @@ var hierarchy =
     [ "sl::log::BetweenEquals< T >", "db/da1/classsl_1_1log_1_1_between_equals.html", null ],
     [ "sl::log::ByteCountFlushPolicy", "d4/d87/classsl_1_1log_1_1_byte_count_flush_policy.html", null ],
     [ "sl::log::FileSink< TRecord >::CleanupRule", "dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html", null ],
+    [ "sl::log::ConsoleTextStyle", "d8/d37/structsl_1_1log_1_1_console_text_style.html", null ],
+    [ "sl::log::ConsoleTextStyleTable< TProjection, TTable >", "d5/d54/classsl_1_1log_1_1_console_text_style_table.html", null ],
     [ "sl::log::Core< TRecord >", "d4/df3/classsl_1_1log_1_1_core.html", null ],
     [ "sl::log::Equals< T >", "d2/dce/classsl_1_1log_1_1_equals.html", null ],
     [ "std::exception", null, [
@@ -38,7 +40,10 @@ var hierarchy =
     [ "sl::log::GreaterEquals< T >", "dc/d79/classsl_1_1log_1_1_greater_equals.html", null ],
     [ "sl::log::ISink< TRecord >", "d8/dda/classsl_1_1log_1_1_i_sink.html", [
       [ "sl::log::BasicSink< TRecord >", "dd/d48/classsl_1_1log_1_1_basic_sink.html", [
-        [ "sl::log::FileSink< TRecord >", "dc/dd6/classsl_1_1log_1_1_file_sink.html", null ]
+        [ "sl::log::OStreamSink< TRecord >", "d1/d2f/classsl_1_1log_1_1_o_stream_sink.html", [
+          [ "sl::log::ConsoleSink< TRecord >", "d2/df0/classsl_1_1log_1_1_console_sink.html", null ],
+          [ "sl::log::FileSink< TRecord >", "dc/dd6/classsl_1_1log_1_1_file_sink.html", null ]
+        ] ]
       ] ]
     ] ],
     [ "sl::log::Less< T >", "d6/deb/classsl_1_1log_1_1_less.html", null ],

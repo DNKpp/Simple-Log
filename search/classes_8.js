@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['projectionfilter_222',['ProjectionFilter',['../d4/d36/classsl_1_1log_1_1_projection_filter.html',1,'sl::log']]]
+  ['ostreamsink_304',['OStreamSink',['../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html',1,'sl::log']]]
 ];

@@ -1,0 +1,77 @@
+var group___console_sink =
+[
+    [ "ConsoleTextStyle", "d8/d37/structsl_1_1log_1_1_console_text_style.html", [
+      [ "Color", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730", [
+        [ "black", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730a1ffd9e753c8054cc61456ac7fac1ac89", null ],
+        [ "red", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730abda9643ac6601722a28f238714274da4", null ],
+        [ "green", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730a9f27410725ab8cc8854a2769c7a516b8", null ],
+        [ "yellow", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730ad487dd0b55dfcacdd920ccbdaeafa351", null ],
+        [ "blue", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730a48d6215903dff56238e52e8891380c8f", null ],
+        [ "magenta", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730a4c2a4a7078da0ac6733464eacfd00f86", null ],
+        [ "cyan", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730a6411532ba4971f378391776a9db629d3", null ],
+        [ "gray", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730acda7a650c5856cf2f6738072447d7825", null ],
+        [ "standard", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730ac00f0c4675b91fb8b918e4079a0b1bac", null ],
+        [ "brightBlack", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730a854ab52a96f278c15836574ef238be91", null ],
+        [ "brightRed", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730a62b9e4d3f1280432feff792d137a39f5", null ],
+        [ "brightGreen", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730a2a34ed351a5656a53652ab65b09ce03e", null ],
+        [ "brightYellow", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730a45b9642ee389b9e115c033285f3018ba", null ],
+        [ "brightBlue", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730ab8d4c615536b1d3b8fc7079e5b8ba083", null ],
+        [ "brightMagenta", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730a85c3d252ab573d3adbe3280fb7148cc7", null ],
+        [ "brightCyan", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730a4b750c7808ca982dd89b63c10117a3d9", null ],
+        [ "brightGray", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730acb77a9c4eac80aefe08900c474643800", null ]
+      ] ],
+      [ "Style", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a2288b3f116a37ff0dcd1479462e04ed6", [
+        [ "standard", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a2288b3f116a37ff0dcd1479462e04ed6ac00f0c4675b91fb8b918e4079a0b1bac", null ],
+        [ "bold", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a2288b3f116a37ff0dcd1479462e04ed6a69dcab4a73aeec2113f69b61e6263da8", null ],
+        [ "dim", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a2288b3f116a37ff0dcd1479462e04ed6a563728df0fdd90631ac1e51258e2857d", null ],
+        [ "italic", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a2288b3f116a37ff0dcd1479462e04ed6a030c5b6d1e5715105943ac111d9671bf", null ],
+        [ "underline", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a2288b3f116a37ff0dcd1479462e04ed6a6dc7b4483f8c2c701a48e42db552806d", null ],
+        [ "reversed", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a2288b3f116a37ff0dcd1479462e04ed6a943c52935ea927b80f63243a41a3980b", null ],
+        [ "crossed", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a2288b3f116a37ff0dcd1479462e04ed6afade7e5041fdebd013b445486161c31c", null ]
+      ] ],
+      [ "bgColor", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a421c6e68494bc5574de89a983bc8e3e4", null ],
+      [ "style", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a2f67abfb95bca4293137e91adab8227f", null ],
+      [ "textColor", "d8/d37/structsl_1_1log_1_1_console_text_style.html#a19840a765ff874b74853c1cc73c79232", null ]
+    ] ],
+    [ "ConsoleTextStyleTable", "d5/d54/classsl_1_1log_1_1_console_text_style_table.html", [
+      [ "Key_t", "d5/d54/classsl_1_1log_1_1_console_text_style_table.html#a09f1e9c153b2829e197775ef3b6d2e29", null ],
+      [ "Projection_t", "d5/d54/classsl_1_1log_1_1_console_text_style_table.html#affb6e22be13916626f2ca516dc5c6063", null ],
+      [ "Table_t", "d5/d54/classsl_1_1log_1_1_console_text_style_table.html#af1b1fd3e6cd7a5894a7c299f36a1ba15", null ],
+      [ "ConsoleTextStyleTable", "d5/d54/classsl_1_1log_1_1_console_text_style_table.html#a4ba8edbed030c86af11eeae8f33e11b3", null ],
+      [ "insert", "d5/d54/classsl_1_1log_1_1_console_text_style_table.html#a46938321f8924d654c1f8699ff04a28c", null ],
+      [ "operator()", "d5/d54/classsl_1_1log_1_1_console_text_style_table.html#a15b208b0bebf34db978b7fc2e0861217", null ]
+    ] ],
+    [ "ConsoleSink", "d2/df0/classsl_1_1log_1_1_console_sink.html", [
+      [ "Filter_t", "d2/df0/classsl_1_1log_1_1_console_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381", null ],
+      [ "FlushPolicy_t", "d2/df0/classsl_1_1log_1_1_console_sink.html#a0f59dc9971f0be5d4a8d018d72e4fdb4", null ],
+      [ "Formatter_t", "d2/df0/classsl_1_1log_1_1_console_sink.html#a84c4f321caf9c3c4c2586c7698206596", null ],
+      [ "Record_t", "d2/df0/classsl_1_1log_1_1_console_sink.html#ad79d9e5f6c4e07be42c84a281dc45082", null ],
+      [ "TextStylePolicy_t", "d2/df0/classsl_1_1log_1_1_console_sink.html#ad59d99c7ed7bd9f0fc5393d7e19ca1e0", null ],
+      [ "ConsoleSink", "d2/df0/classsl_1_1log_1_1_console_sink.html#a5d279c951b1cea10605bcfc2e4079d4b", null ],
+      [ "~ConsoleSink", "d2/df0/classsl_1_1log_1_1_console_sink.html#a2bb6933214fd33be1b16f3ecf4bac422", null ],
+      [ "ConsoleSink", "d2/df0/classsl_1_1log_1_1_console_sink.html#abccd083c64544d4cc025d832262e5de5", null ],
+      [ "ConsoleSink", "d2/df0/classsl_1_1log_1_1_console_sink.html#a98e8669b3adc38b19516de0c464351af", null ],
+      [ "defaultFilter", "d2/df0/classsl_1_1log_1_1_console_sink.html#ae620bc01174a6f65b0b19cea19b2b715", null ],
+      [ "defaultFlushPolicy", "d2/df0/classsl_1_1log_1_1_console_sink.html#aad781c96d7a1281cc1098bbf40988529", null ],
+      [ "defaultFormatter", "d2/df0/classsl_1_1log_1_1_console_sink.html#a42f994be6d0fbc499bb57d3ac59311db", null ],
+      [ "defaultTextStylePolicy", "d2/df0/classsl_1_1log_1_1_console_sink.html#a9f0e4adbae4bd13ca226cdbac0d2e0b3", null ],
+      [ "flush", "d2/df0/classsl_1_1log_1_1_console_sink.html#a6622698108bf75680b1d58401e120b8d", null ],
+      [ "isEnabled", "d2/df0/classsl_1_1log_1_1_console_sink.html#a44f6e8ea8f784d42280bfd824990edec", null ],
+      [ "log", "d2/df0/classsl_1_1log_1_1_console_sink.html#a751bd1367c8492449c4e83f3588ee2af", null ],
+      [ "operator=", "d2/df0/classsl_1_1log_1_1_console_sink.html#a3fa8a44aa00fc80b87ee99c6a0acf3ab", null ],
+      [ "operator=", "d2/df0/classsl_1_1log_1_1_console_sink.html#aec187f7cf6c1e4a0d2dacc6c9796d3a7", null ],
+      [ "removeFilter", "d2/df0/classsl_1_1log_1_1_console_sink.html#a1a81b07533c8050c4390015cd1740f9f", null ],
+      [ "removeFlushPolicy", "d2/df0/classsl_1_1log_1_1_console_sink.html#a111b2dca16cf27b16487875d52751cdf", null ],
+      [ "removeFormatter", "d2/df0/classsl_1_1log_1_1_console_sink.html#a590d8b49a856a0ad1beee76540c18098", null ],
+      [ "removeTextStylePolicy", "d2/df0/classsl_1_1log_1_1_console_sink.html#a31a60c04d37611398e47b18b656e879a", null ],
+      [ "setEnabled", "d2/df0/classsl_1_1log_1_1_console_sink.html#a2fc2ef4635beb23aae7a27597cb31d8a", null ],
+      [ "setFilter", "d2/df0/classsl_1_1log_1_1_console_sink.html#a0691496a23266b39a30a1d289d7bcc8a", null ],
+      [ "setFlushPolicy", "d2/df0/classsl_1_1log_1_1_console_sink.html#aeb96917f1fe84ff7cb36fb0272403479", null ],
+      [ "setFormatter", "d2/df0/classsl_1_1log_1_1_console_sink.html#ad07fdb2b00a65bcf28272f222d2298ad", null ],
+      [ "setTextStylePolicy", "d2/df0/classsl_1_1log_1_1_console_sink.html#a1d5a9af43f2e133a3116c53c22576fcc", null ],
+      [ "writeToStream", "d2/df0/classsl_1_1log_1_1_console_sink.html#a3300ffbcf0a253b9df4a761aafbd6c41", null ]
+    ] ],
+    [ "makeConsoleTextStyleTableFor", "d7/dbf/group___console_sink.html#gae2f7c0a256d4965422ac90222afc8e8e", null ],
+    [ "operator<<", "d7/dbf/group___console_sink.html#gaeb779fb6e758a317d35ba1c78c231574", null ],
+    [ "defaultConsoleTextStyle", "d7/dbf/group___console_sink.html#ga315028fe8f50a093f977b624560ec307", null ]
+];

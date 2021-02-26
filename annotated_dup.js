@@ -4,6 +4,9 @@ var annotated_dup =
       [ "log", "de/d83/namespacesl_1_1log.html", [
         [ "BasicSink", "dd/d48/classsl_1_1log_1_1_basic_sink.html", "dd/d48/classsl_1_1log_1_1_basic_sink" ],
         [ "RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html", "db/d9a/classsl_1_1log_1_1_record_builder" ],
+        [ "ConsoleTextStyle", "d8/d37/structsl_1_1log_1_1_console_text_style.html", "d8/d37/structsl_1_1log_1_1_console_text_style" ],
+        [ "ConsoleTextStyleTable", "d5/d54/classsl_1_1log_1_1_console_text_style_table.html", "d5/d54/classsl_1_1log_1_1_console_text_style_table" ],
+        [ "ConsoleSink", "d2/df0/classsl_1_1log_1_1_console_sink.html", "d2/df0/classsl_1_1log_1_1_console_sink" ],
         [ "Core", "d4/df3/classsl_1_1log_1_1_core.html", "d4/df3/classsl_1_1log_1_1_core" ],
         [ "FileSink", "dc/dd6/classsl_1_1log_1_1_file_sink.html", "dc/dd6/classsl_1_1log_1_1_file_sink" ],
         [ "ProjectionFilter", "d4/d36/classsl_1_1log_1_1_projection_filter.html", "d4/d36/classsl_1_1log_1_1_projection_filter" ],
@@ -22,6 +25,7 @@ var annotated_dup =
         [ "ScopedSinkDisabling", "d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html", "d0/d40/classsl_1_1log_1_1_scoped_sink_disabling" ],
         [ "SinkException", "dd/dab/classsl_1_1log_1_1_sink_exception.html", "dd/dab/classsl_1_1log_1_1_sink_exception" ],
         [ "BaseLogger", "da/d7e/classsl_1_1log_1_1_base_logger.html", "da/d7e/classsl_1_1log_1_1_base_logger" ],
+        [ "OStreamSink", "d1/d2f/classsl_1_1log_1_1_o_stream_sink.html", "d1/d2f/classsl_1_1log_1_1_o_stream_sink" ],
         [ "Equals", "d2/dce/classsl_1_1log_1_1_equals.html", "d2/dce/classsl_1_1log_1_1_equals" ],
         [ "NotEquals", "d7/d21/classsl_1_1log_1_1_not_equals.html", "d7/d21/classsl_1_1log_1_1_not_equals" ],
         [ "Less", "d6/deb/classsl_1_1log_1_1_less.html", "d6/deb/classsl_1_1log_1_1_less" ],
