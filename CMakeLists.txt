@@ -9,8 +9,8 @@ include(CTest)
 
 option(SIMPLE_LOG_BUILD_EXAMPLES "Enables example building" OFF)
 
-set(TestsDir "${CMAKE_CURRENT_SOURCE_DIR}/src/tests/")
-set(ExamplesDir "${CMAKE_CURRENT_SOURCE_DIR}/src/examples/")
+set(TestsDir "${CMAKE_CURRENT_SOURCE_DIR}/tests/")
+set(ExamplesDir "${CMAKE_CURRENT_SOURCE_DIR}/examples/")
 
 add_library(${PROJECT_NAME} INTERFACE)
 target_include_directories(
