@@ -172,7 +172,7 @@ namespace sl::log
 	TLogger makeLogger(Core<typename TLogger::Record_t>& core, TArgs&&... args)
 	{
 		return TLogger{
-			[&core](auto rec)
+			[&core](typename TLogger::Record_t&& rec)
 			{
 				core.log(std::move(rec));
 			},

@@ -24,7 +24,7 @@ namespace sl::log
 	/** \addtogroup Core
 	 * @{
 	 */
-	
+
 	/**
 	 * \brief The central point of the whole library. Needs to be instantiated at least once.
 	 * \tparam TRecord Used Record type.
@@ -108,7 +108,7 @@ namespace sl::log
 		 * \param record The record which will be queued
 		 * \details This function should not be called directly on logging purposes. It serves as a simple interface for the corresponding Logger objects.
 		 */
-		void log(Record_t record)
+		void log(Record_t&& record)
 		{
 			// will reject newly generated records, after run has become false
 			if (m_WorkerInstruction == Instruction::run)
