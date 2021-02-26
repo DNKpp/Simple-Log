@@ -16,6 +16,199 @@
 
 #include "Concepts.hpp"
 
+namespace sl::log::detail
+{
+	template <Record TRecord>
+	[[nodiscard]]
+	auto takeNextAsOpt(std::queue<TRecord>& queue)
+	{
+		auto record = std::move(queue.front());
+		queue.pop();
+		return std::optional<TRecord>{ std::in_place, std::move(record) };
+	}
+
+	template <Record TRecord>
+	[[nodiscard]]
+	std::optional<TRecord> blockingTake(
+		std::queue<TRecord>& queue,
+		std::mutex& queueMx,
+		std::condition_variable& condVar,
+		const std::optional<std::chrono::milliseconds>& waitDur
+	)
+	{
+		auto isQueueNotEmpty = [&records = queue]() { return !std::empty(records); };
+
+		std::unique_lock lock{ queueMx };
+		if (waitDur)
+		{
+			if (condVar.wait_for(lock, *waitDur, isQueueNotEmpty))
+			{
+				return detail::takeNextAsOpt(queue);
+			}
+			return std::nullopt;
+		}
+
+		condVar.wait(lock, isQueueNotEmpty);
+		return detail::takeNextAsOpt(queue);
+	}
+
+	template <Record TRecord>
+	class BlockingTake
+	{
+	public:
+		using Record_t = std::remove_cvref_t<TRecord>;
+		using Queue_t = std::queue<Record_t>;
+
+		BlockingTake(std::mutex& queueMx, Queue_t& queue) :
+			m_QueueMx{ queueMx },
+			m_Queue{ queue }
+		{
+		}
+
+		/**
+		 * \brief Pushes \ref Record Records to the internal queue
+		 * \tparam URecord Must be implicitly convertible to Record_t
+		 * \param record The queued Record object.
+		 */
+		template <class URecord = Record_t&&>
+		void push(URecord&& record)
+		{
+			{
+				std::scoped_lock lock{ m_QueueMx };
+				m_Queue.emplace(std::forward<URecord>(record));
+			}
+			m_PushVar.notify_one();
+		}
+
+		/**
+		 * \brief Takes the first Record from the queue
+		 * \param waitDur The max waiting duration for an element.
+		 * \return Returns an element as optional. Might be std::nullopt.
+		 * \details If the internal queue is not empty, this functions takes the first element and returns it. If the queue is empty, this function will block until a new Record
+		 * gets pushed into the queue or the duration exceeds.
+		 */
+		[[nodiscard]]
+		std::optional<Record_t> take(std::optional<std::chrono::milliseconds> waitDur = std::nullopt)
+		{
+			return detail::blockingTake(m_Queue, m_QueueMx, m_PushVar, waitDur);
+		}
+
+	private:
+		std::mutex& m_QueueMx;
+		Queue_t& m_Queue;
+		std::condition_variable m_PushVar;
+	};
+
+	template <Record TRecord, std::size_t VMaxQueueSize>
+	requires (0 < VMaxQueueSize)
+	class BlockingPushTake
+	{
+	public:
+		using Record_t = std::remove_cvref_t<TRecord>;
+		using Queue_t = std::queue<Record_t>;
+
+		BlockingPushTake(std::mutex& queueMx, Queue_t& queue) :
+			m_QueueMx{ queueMx },
+			m_Queue{ queue }
+		{
+		}
+
+		/**
+		 * \brief Inserts the given record into the queue or discards it if queue is full
+		 * \tparam URecord Must be implicitly convertible to Record_t
+		 * \param record The Record which is about to be inserted
+		 */
+		template <class URecord = Record_t&&>
+		void push(URecord&& record)
+		{
+			auto isQueueNotFull = [&queue = m_Queue]()
+			{
+				return std::size(queue) < VMaxQueueSize;
+			};
+
+			std::unique_lock lock{ m_QueueMx };
+			m_TakeVar.wait(lock, isQueueNotFull);
+			m_Queue.emplace(std::forward<URecord>(record));
+			m_PushVar.notify_one();
+		}
+
+		/**
+		 * \brief Takes the first Record from the queue
+		 * \param waitDur The max waiting duration for an element.
+		 * \return Returns an element as optional. Might be std::nullopt.
+		 * \details If the internal queue is not empty, this functions takes the first element and returns it. If the queue is empty, this function will block until a new Record
+		 * gets pushed into the queue or the duration exceeds.
+		 */
+		[[nodiscard]]
+		std::optional<Record_t> take(std::optional<std::chrono::milliseconds> waitDur = std::nullopt)
+		{
+			auto result = detail::blockingTake(m_Queue, m_QueueMx, m_PushVar, waitDur);
+			if (result)
+			{
+				m_TakeVar.notify_one();
+			}
+			return result;
+		}
+
+	private:
+		std::mutex& m_QueueMx;
+		Queue_t& m_Queue;
+		std::condition_variable m_PushVar;
+		std::condition_variable m_TakeVar;
+	};
+
+	template <Record TRecord, std::size_t VMaxQueueSize>
+	requires (0 < VMaxQueueSize)
+	class DiscardedPushBlockingTake
+	{
+	public:
+		using Record_t = std::remove_cvref_t<TRecord>;
+		using Queue_t = std::queue<Record_t>;
+
+		DiscardedPushBlockingTake(std::mutex& queueMx, Queue_t& queue) :
+			m_QueueMx{ queueMx },
+			m_Queue{ queue }
+		{
+		}
+
+		/**
+		 * \brief Inserts the given record into the queue or waits if queue is full
+		 * \tparam URecord Must be implicitly convertible to Record_t
+		 * \param record The Record which is about to be inserted
+		 */
+		template <class URecord = Record_t&&>
+		void push(URecord record)
+		{
+			if (std::scoped_lock lock{ m_QueueMx }; std::size(m_Queue) < VMaxQueueSize)
+			{
+				m_Queue.emplace(std::forward<URecord>(record));
+			}
+			else
+				return;
+
+			m_PushVar.notify_one();
+		}
+
+		/**
+		 * \brief Takes the first Record from the queue
+		 * \param waitDur The max waiting duration for an element.
+		 * \return Returns an element as optional. Might be std::nullopt.
+		 * \details If the internal queue is not empty, this functions takes the first element and returns it. If the queue is empty, this function will block until a new Record
+		 * gets pushed into the queue or the duration exceeds.
+		 */
+		[[nodiscard]]
+		std::optional<Record_t> take(std::optional<std::chrono::milliseconds> waitDur = std::nullopt)
+		{
+			return detail::blockingTake(m_Queue, m_QueueMx, m_PushVar, waitDur);
+		}
+
+	private:
+		std::mutex& m_QueueMx;
+		Queue_t& m_Queue;
+		std::condition_variable m_PushVar;
+	};
+}
+
 namespace sl::log
 {
 	/** \addtogroup Core
@@ -23,56 +216,23 @@ namespace sl::log
 	 */
 
 	/**
-	 * \brief Storage for Record s
+	 * \brief Storage for \ref Record Records
 	 * \tparam TRecord Used Record type.
 	 * \details This class is a simple representation of a blocking queue. Its take() function blocks until an element is present in the internal queue or
 	 * the duration exceeded. Each function is thread-safe by design.
 	 */
-	template <Record TRecord>
-	class RecordQueue
+	template <Record TRecord, QueueStrategyFor<TRecord> TQueueStrategy = detail::BlockingTake<TRecord>>
+	class RecordQueue :
+		public TQueueStrategy
 	{
+		using Super = TQueueStrategy;
+
 	public:
-		using Record_t = TRecord;
+		using Record_t = std::remove_cvref_t<TRecord>;
 
-		/**
-		 * \brief Pushes Record s to the internal queue
-		 * \details Thread-safe
-		 * \param record The queued Record object.
-		 */
-		void push(Record_t record)
+		RecordQueue() :
+			Super{ m_RecordMx, m_QueuedRecords }
 		{
-			{
-				std::scoped_lock lock{ m_RecordMx };
-				m_QueuedRecords.emplace(std::move(record));
-			}
-			m_PushVar.notify_one();
-		}
-
-		/**
-		 * \brief Takes the first Record from the queue
-		 * \details Thread-safe
-		 * If the internal queue is not empty, this functions takes the first element and returns it. If the queue is empty, this function will block until a new Record gets pushed into the queue
-		 * or the duration exceeds.
-		 * \param waitingDuration The max waiting duration for an element.
-		 * \return Returns an element as optional. Might be nullopt.
-		 */
-		[[nodiscard]]
-		std::optional<Record_t> take(std::optional<std::chrono::milliseconds> waitingDuration = std::nullopt)
-		{
-			auto isQueueNotEmpty = [&records = m_QueuedRecords]() { return !std::empty(records); };
-
-			std::unique_lock lock{ m_RecordMx };
-			if (waitingDuration)
-			{
-				if (m_PushVar.wait_for(lock, *waitingDuration, isQueueNotEmpty))
-				{
-					return takeNextAsOpt();
-				}
-				return std::nullopt;
-			}
-
-			m_PushVar.wait(lock, isQueueNotEmpty);
-			return takeNextAsOpt();
 		}
 
 		/**
@@ -100,20 +260,51 @@ namespace sl::log
 		}
 
 	private:
-		[[nodiscard]]
-		std::optional<Record_t> takeNextAsOpt()
-		{
-			auto record = std::move(m_QueuedRecords.front());
-			m_QueuedRecords.pop();
-			return std::optional<Record_t>{ std::in_place, std::move(record) };
-		}
-
 		mutable std::mutex m_RecordMx;
 		std::queue<Record_t> m_QueuedRecords;
-		std::condition_variable m_PushVar;
+	};
+
+	struct BlockingTakeQueueStrategy
+	{
+	};
+
+	template <std::size_t VMaxQueueSize>
+	struct BlockingPushTakeQueueStrategy
+	{
+	};
+
+	template <std::size_t VMaxQueueSize>
+	struct DiscardingPushBlockingTakeQueueStrategy
+	{
 	};
 
 	/** @}*/
+}
+
+namespace sl::log::detail
+{
+	template <Record TRecord, class TUnknownStrategy>
+	struct MakeRecordQueueHelper
+	{
+	};
+
+	template <Record TRecord>
+	struct MakeRecordQueueHelper<TRecord, BlockingTakeQueueStrategy>
+	{
+		using RecordQueue_t = RecordQueue<TRecord, BlockingTake<TRecord>>;
+	};
+
+	template <Record TRecord, std::size_t VMaxSize>
+	struct MakeRecordQueueHelper<TRecord, DiscardingPushBlockingTakeQueueStrategy<VMaxSize>>
+	{
+		using RecordQueue_t = RecordQueue<TRecord, DiscardedPushBlockingTake<TRecord, VMaxSize>>;
+	};
+
+	template <Record TRecord, std::size_t VMaxSize>
+	struct MakeRecordQueueHelper<TRecord, BlockingPushTakeQueueStrategy<VMaxSize>>
+	{
+		using RecordQueue_t = RecordQueue<TRecord, BlockingPushTake<TRecord, VMaxSize>>;
+	};
 }
 
 #endif
