@@ -26,11 +26,22 @@ namespace sl::log
 	 * @{
 	 */
 
+	/** \addtogroup LoggerConcepts Logger Concepts
+	 * @{
+	 */
+
+	/**
+	 * \typedef LoggerRecord_t
+	 * \brief Typedef for easier access to \ref Logger "Logger's" Record type.
+	 * \tparam TLogger The used Logger type.
+	 */
 	template <class TLogger>
+	/** \cond Requires */
 	requires requires
 	{
 		typename TLogger::Record_t;
 	}
+	/** \endcond */
 	using LoggerRecord_t = typename TLogger::Record_t;
 
 	/**
@@ -44,6 +55,8 @@ namespace sl::log
 	} &&
 	Record<LoggerRecord_t<T>> &&
 	std::is_invocable_r_v<RecordBuilder<LoggerRecord_t<T>>, T>;
+
+	/** @}*/
 
 	/**
 	 * \brief Convenience class for generating Record s
