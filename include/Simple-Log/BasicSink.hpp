@@ -54,7 +54,7 @@ namespace sl::log
 
 	public:
 		using typename Super::Record_t;
-		using Projections_t = RecordProjections<Record_t>;
+		using Projections_t = RecordGetters<Record_t>;
 		using Formatter_t = std::function<std::string(const Record_t&)>;
 		using Filter_t = std::function<bool(const Record_t&)>;
 

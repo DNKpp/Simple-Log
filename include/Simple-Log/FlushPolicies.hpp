@@ -400,7 +400,7 @@ namespace sl::log
 	{
 		return FlushPolicy{
 			std::forward<TUnaryPredicate>(predicate),
-			RecordProjections<TRecord>::message,
+			RecordGetters<TRecord>::message,
 			detail::PredProjInvocationIgnoreArgs{}
 		};
 	}
@@ -420,7 +420,7 @@ namespace sl::log
 	{
 		return FlushPolicy{
 			std::forward<TUnaryPredicate>(predicate),
-			RecordProjections<TRecord>::severity,
+			RecordGetters<TRecord>::severity,
 			detail::PredProjInvocationIgnoreArgs{}
 		};
 	}
@@ -440,7 +440,7 @@ namespace sl::log
 	{
 		return FlushPolicy{
 			std::forward<TUnaryPredicate>(predicate),
-			RecordProjections<TRecord>::channel,
+			RecordGetters<TRecord>::channel,
 			detail::PredProjInvocationIgnoreArgs{}
 		};
 	}
@@ -460,7 +460,7 @@ namespace sl::log
 	{
 		return FlushPolicy{
 			std::forward<TUnaryPredicate>(predicate),
-			RecordProjections<TRecord>::timePoint,
+			RecordGetters<TRecord>::timePoint,
 			detail::PredProjInvocationIgnoreArgs{}
 		};
 	}

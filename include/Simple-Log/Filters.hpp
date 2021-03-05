@@ -242,7 +242,7 @@ namespace sl::log
 	template <Record TRecord, std::predicate<const RecordMessage_t<TRecord>&> TUnaryPredicate>
 	constexpr auto makeMessageFilterFor(TUnaryPredicate&& predicate)
 	{
-		return ProjectionFilter{ RecordProjections<TRecord>::message, std::forward<TUnaryPredicate>(predicate) };
+		return ProjectionFilter{ RecordGetters<TRecord>::message, std::forward<TUnaryPredicate>(predicate) };
 	}
 
 	/**
@@ -258,7 +258,7 @@ namespace sl::log
 	template <Record TRecord, std::predicate<const RecordSeverity_t<TRecord>&> TUnaryPredicate>
 	constexpr auto makeSeverityFilterFor(TUnaryPredicate&& predicate)
 	{
-		return ProjectionFilter{ RecordProjections<TRecord>::severity, std::forward<TUnaryPredicate>(predicate) };
+		return ProjectionFilter{ RecordGetters<TRecord>::severity, std::forward<TUnaryPredicate>(predicate) };
 	}
 
 	/**
@@ -274,7 +274,7 @@ namespace sl::log
 	template <Record TRecord, std::predicate<const RecordChannel_t<TRecord>&> TUnaryPredicate>
 	constexpr auto makeChannelFilterFor(TUnaryPredicate&& predicate)
 	{
-		return ProjectionFilter{ RecordProjections<TRecord>::channel, std::forward<TUnaryPredicate>(predicate) };
+		return ProjectionFilter{ RecordGetters<TRecord>::channel, std::forward<TUnaryPredicate>(predicate) };
 	}
 
 	/**
@@ -290,7 +290,7 @@ namespace sl::log
 	template <Record TRecord, std::predicate<const RecordTimePoint_t<TRecord>&> TUnaryPredicate>
 	constexpr auto makeTimePointFilterFor(TUnaryPredicate&& predicate)
 	{
-		return ProjectionFilter{ RecordProjections<TRecord>::timePoint, std::forward<TUnaryPredicate>(predicate) };
+		return ProjectionFilter{ RecordGetters<TRecord>::timePoint, std::forward<TUnaryPredicate>(predicate) };
 	}
 
 	/** @}*/
