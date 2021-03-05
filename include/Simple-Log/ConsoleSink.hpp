@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "Concepts.hpp"
+#include "Record.hpp"
 #include "OStreamSink.hpp"
 
 // rang.hpp includes windows.hpp internally, thus macros min and max will be defined. This macro prevents this.
@@ -29,7 +29,6 @@ namespace sl::log
 
 	/** \addtogroup ConsoleSink
 	 * @{
-	 * 
 	 */
 
 	/**
@@ -90,6 +89,11 @@ namespace sl::log
 		 */
 		Color bgColor = Color::standard;
 	};
+
+	template <class T, class TRecord>
+	concept ConsoleTextStylePolicyFor =
+	Record<TRecord> &&
+	std::is_invocable_r_v<ConsoleTextStyle, T, const TRecord&>;
 
 	/**
 	 * \brief A constant object used for resetting the style back to default
@@ -339,8 +343,8 @@ namespace sl::log::detail
 		{
 			const auto begin = static_cast<unsigned>(rang::fgB::black);
 			const auto localColor = static_cast<Color>(begin +
-				static_cast<unsigned>(color) -
-				static_cast<unsigned>(Color::brightBlack));
+														static_cast<unsigned>(color) -
+														static_cast<unsigned>(Color::brightBlack));
 			out << static_cast<rang::fgB>(localColor);
 		}
 		return out;
@@ -358,8 +362,8 @@ namespace sl::log::detail
 		{
 			const auto begin = static_cast<unsigned>(rang::bgB::black);
 			const auto localColor = static_cast<Color>(begin +
-				static_cast<unsigned>(color) -
-				static_cast<unsigned>(Color::brightBlack));
+														static_cast<unsigned>(color) -
+														static_cast<unsigned>(Color::brightBlack));
 			out << static_cast<rang::bgB>(localColor);
 		}
 		return out;
