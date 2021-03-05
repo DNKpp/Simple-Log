@@ -8,20 +8,27 @@
 
 #pragma once
 
+#include "Record.hpp"
+#include "OStreamSink.hpp"
+#include "StringPattern.hpp"
+
 #include <cassert>
 #include <filesystem>
 #include <fstream>
 #include <numeric>
 #include <optional>
 
-#include "OStreamSink.hpp"
-#include "StringPattern.hpp"
-
 namespace sl::log
 {
 	/** \addtogroup Sinks
 	 * @{
 	 */
+
+	/**
+	 * \brief Concept for invokable file state handler objects
+	*/
+	template <class T>
+	concept FileStateHandler = std::is_invocable_r_v<std::string, T>;
 
 	/**
 	 * \brief Class for logging into files
@@ -69,8 +76,7 @@ namespace sl::log
 	 * \endcode
 	 */
 	template <Record TRecord>
-	// ReSharper disable once CppClassCanBeFinal
-	class FileSink :
+	class FileSink final :
 		public OStreamSink<TRecord>
 	{
 		using Super = OStreamSink<TRecord>;
@@ -434,7 +440,8 @@ namespace sl::log
 
 			auto rotationRule = load(m_RotationRule, m_RotationRuleMx);
 			return (rotationRule.fileSize && *rotationRule.fileSize < file_size(*m_CurrentFilePath)) ||
-				(rotationRule.duration && m_FileOpeningTime.load() + *rotationRule.duration < std::chrono::steady_clock::now());
+					(rotationRule.duration && m_FileOpeningTime.load() + *rotationRule.duration < std::chrono::steady_clock::now()
+					);
 		}
 
 		void beforeMessageWrite(const Record_t& record, std::string_view message) override

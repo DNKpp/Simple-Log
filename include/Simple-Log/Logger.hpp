@@ -8,6 +8,10 @@
 
 #pragma once
 
+#include "Core.hpp"
+#include "Record.hpp"
+#include "RecordBuilder.hpp"
+
 #include <cassert>
 #include <functional>
 #include <version>
@@ -16,15 +20,30 @@
 #include <source_location>
 #endif
 
-#include "Concepts.hpp"
-#include "Core.hpp"
-#include "RecordBuilder.hpp"
-
 namespace sl::log
 {
 	/** \addtogroup Logger
 	 * @{
 	 */
+
+	template <class TLogger>
+	requires requires
+	{
+		typename TLogger::Record_t;
+	}
+	using LoggerRecord_t = typename TLogger::Record_t;
+
+	/**
+	 * \brief Concept for Logger classes
+	*/
+	template <class T>
+	concept Logger =
+	requires
+	{
+		typename LoggerRecord_t<T>;
+	} &&
+	Record<LoggerRecord_t<T>> &&
+	std::is_invocable_r_v<RecordBuilder<LoggerRecord_t<T>>, T>;
 
 	/**
 	 * \brief Convenience class for generating Record s
@@ -37,9 +56,10 @@ namespace sl::log
 	class BaseLogger
 	{
 	public:
-		using Record_t = TRecord;
-		using SeverityLevel_t = typename Record_t::SeverityLevel_t;
-		using Channel_t = typename Record_t::Channel_t;
+		using Record_t = std::remove_cvref_t<TRecord>;
+		using RecordSetters_t = RecordSetters<Record_t>;
+		using SeverityLevel_t = RecordSeverity_t<Record_t>;
+		using Channel_t = RecordChannel_t<Record_t>;
 		using RecordBuilder_t = RecordBuilder<Record_t>;
 		using LogCallback_t = std::function<void(Record_t)>;
 
@@ -99,9 +119,9 @@ namespace sl::log
 		{
 			assert(m_LogCallback != nullptr && "Log callback must be set.");
 			Record_t prefabRec;
-			prefabRec.setTimePoint(std::chrono::system_clock::now());
-			prefabRec.setSeverity(m_DefaultSeverityLvl);
-			prefabRec.setChannel(m_DefaultChannel);
+			RecordSetters_t::setTimePoint(prefabRec, std::chrono::system_clock::now());
+			RecordSetters_t::setSeverity(prefabRec, m_DefaultSeverityLvl);
+			RecordSetters_t::setChannel(prefabRec, m_DefaultChannel);
 			RecordBuilder_t builder{ std::move(prefabRec), m_LogCallback };
 
 #ifdef __cpp_lib_source_location
@@ -169,10 +189,10 @@ namespace sl::log
 	 * take over ownership of the created Logger object. If users does not need the Logger object any longer, they may simply let them go out of scope.
 	 */
 	template <Logger TLogger, class... TArgs>
-	TLogger makeLogger(Core<typename TLogger::Record_t>& core, TArgs&&... args)
+	TLogger makeLogger(Core<LoggerRecord_t<TLogger>>& core, TArgs&&... args)
 	{
 		return TLogger{
-			[&core](typename TLogger::Record_t&& rec)
+			[&core](LoggerRecord_t<TLogger>&& rec)
 			{
 				core.log(std::move(rec));
 			},

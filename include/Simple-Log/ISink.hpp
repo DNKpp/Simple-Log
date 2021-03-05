@@ -8,9 +8,10 @@
 
 #pragma once
 
-#include <stdexcept>
+#include "Record.hpp"
 
-#include "Concepts.hpp"
+#include <stdexcept>
+#include <type_traits>
 
 namespace sl::log
 {
@@ -30,7 +31,7 @@ namespace sl::log
 		/**
 		 * \brief Used Record type.
 		 */
-		using Record_t = TRecord;
+		using Record_t = std::remove_cvref_t<TRecord>;
 
 		/**
 		 * \brief Deleted copy-constructor

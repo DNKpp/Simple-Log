@@ -8,15 +8,30 @@
 
 #pragma once
 
+#include "Record.hpp"
+#include "TupleAlgorithms.hpp"
+
 #include <chrono>
 #include <concepts>
 #include <cstddef>
 #include <functional>
-#include <utility>
 #include <type_traits>
+#include <utility>
 
-#include "Concepts.hpp"
-#include "TupleAlgorithms.hpp"
+namespace sl::log
+{
+	/**
+	 * \brief Concept for invokable flush policies
+	*/
+	template <class T, class TRecord>
+	concept FlushPolicyFor =
+	Record<TRecord> &&
+	std::predicate<T, const TRecord&, std::size_t> &&
+	requires(T policy)
+	{
+		{ policy.flushed() };
+	};
+}
 
 namespace sl::log::detail
 {
@@ -24,10 +39,10 @@ namespace sl::log::detail
 	class AbstractFlushPolicyWrapper
 	{
 	public:
-		using Record_t = TRecord;
+		using Record_t = std::remove_cvref_t<TRecord>;
 
 		virtual ~AbstractFlushPolicyWrapper() noexcept = default;
-		
+
 		AbstractFlushPolicyWrapper(const AbstractFlushPolicyWrapper&) = delete;
 		AbstractFlushPolicyWrapper& operator =(const AbstractFlushPolicyWrapper&) = delete;
 		AbstractFlushPolicyWrapper(AbstractFlushPolicyWrapper&&) = delete;
@@ -46,7 +61,7 @@ namespace sl::log::detail
 	{
 		using Super = AbstractFlushPolicyWrapper<TRecord>;
 	public:
-		using Record_t = std::remove_cvref_t<TRecord>;
+		using typename Super::Record_t;
 		using FlushPolicy_t = std::remove_reference_t<TFlushPolicy>;
 
 		explicit FlushPolicyWrapper() noexcept(std::is_nothrow_constructible_v<FlushPolicy_t>) :
@@ -73,13 +88,13 @@ namespace sl::log::detail
 		FlushPolicy_t m_FlushPolicy;
 	};
 
-	template <auto Constant>
+	template <auto VConstant>
 	struct ConstantInvokable
 	{
 		template <class... TArgs>
 		constexpr auto operator()(TArgs&&...) const noexcept
 		{
-			return Constant;
+			return VConstant;
 		}
 	};
 
@@ -144,7 +159,7 @@ namespace sl::log
 			TInvocationRule invocation = InvocationRule_t{}
 		)
 		noexcept(std::is_nothrow_move_constructible_v<TPredicate> && std::is_nothrow_move_constructible_v<TProjection> &&
-			std::is_nothrow_move_constructible_v<TInvocationRule>) :
+				std::is_nothrow_move_constructible_v<TInvocationRule>) :
 			m_Predicate{ std::move(predicate) },
 			m_Projection{ std::move(projection) },
 			m_Invocation{ std::move(invocation) }
@@ -165,7 +180,7 @@ namespace sl::log
 			TArgs&&... args
 		)
 		noexcept(std::is_nothrow_constructible_v<TPredicate, TArgs...> && std::is_nothrow_constructible_v<TProjection> &&
-			std::is_nothrow_constructible_v<TInvocationRule>) :
+				std::is_nothrow_constructible_v<TInvocationRule>) :
 			m_Predicate{ std::forward<TArgs>(args)... }
 		{
 		}
@@ -208,6 +223,8 @@ namespace sl::log
 	class FlushPolicyChain
 	{
 	public:
+		using Algorithm_t = TAlgorithm;
+
 		/**
 		 * \brief Constructor
 		 * \param policies FlushPolicy objects
@@ -215,7 +232,7 @@ namespace sl::log
 		constexpr explicit FlushPolicyChain(
 			TFlushPolicies ... policies
 		)
-		noexcept(std::is_nothrow_constructible_v<TAlgorithm> && (std::is_nothrow_move_constructible_v<TFlushPolicies> && ...)) :
+		noexcept(std::is_nothrow_constructible_v<Algorithm_t> && (std::is_nothrow_move_constructible_v<TFlushPolicies> && ...)) :
 			m_Algorithm{},
 			m_Policies{ std::move(policies)... }
 		{
@@ -230,7 +247,8 @@ namespace sl::log
 			TAlgorithm algorithm,
 			TFlushPolicies ... policies
 		)
-		noexcept(std::is_nothrow_move_constructible_v<TAlgorithm> && (std::is_nothrow_move_constructible_v<TFlushPolicies> && ...)
+		noexcept(std::is_nothrow_move_constructible_v<Algorithm_t> && (std::is_nothrow_move_constructible_v<TFlushPolicies> && ...
+				)
 		) :
 			m_Algorithm{ std::move(algorithm) },
 			m_Policies{ std::forward<TFlushPolicies>(policies)... }
@@ -286,7 +304,7 @@ namespace sl::log
 		}
 
 	private:
-		TAlgorithm m_Algorithm;
+		Algorithm_t m_Algorithm;
 		std::tuple<TFlushPolicies...> m_Policies;
 	};
 
@@ -298,7 +316,7 @@ namespace sl::log
 	class FlushPolicyAllOf :
 		public FlushPolicyChain<detail::TupleAllOf, TFlushPolicies...>
 	{
-		using Algorithm = detail::TupleAllOf;
+		using Algorithm_t = detail::TupleAllOf;
 
 	public:
 		/**
@@ -309,7 +327,7 @@ namespace sl::log
 			TFlushPolicies ... policies
 		)
 		noexcept((std::is_nothrow_move_constructible_v<TFlushPolicies> && ...)) :
-			FlushPolicyChain<Algorithm, TFlushPolicies...>{ std::move(policies)... }
+			FlushPolicyChain<Algorithm_t, TFlushPolicies...>{ std::move(policies)... }
 		{
 		}
 	};
@@ -322,7 +340,7 @@ namespace sl::log
 	class FlushPolicyAnyOf :
 		public FlushPolicyChain<detail::TupleAnyOf, TFlushPolicies...>
 	{
-		using Algorithm = detail::TupleAnyOf;
+		using Algorithm_t = detail::TupleAnyOf;
 
 	public:
 		/**
@@ -333,7 +351,7 @@ namespace sl::log
 			TFlushPolicies ... policies
 		)
 		noexcept((std::is_nothrow_move_constructible_v<TFlushPolicies> && ...)) :
-			FlushPolicyChain<Algorithm, TFlushPolicies...>{ std::move(policies)... }
+			FlushPolicyChain<Algorithm_t, TFlushPolicies...>{ std::move(policies)... }
 		{
 		}
 	};
@@ -346,7 +364,7 @@ namespace sl::log
 	class FlushPolicyNoneOf :
 		public FlushPolicyChain<detail::TupleNoneOf, TFlushPolicies...>
 	{
-		using Algorithm = detail::TupleNoneOf;
+		using Algorithm_t = detail::TupleNoneOf;
 
 	public:
 		/**
@@ -357,7 +375,7 @@ namespace sl::log
 			TFlushPolicies ... policies
 		)
 		noexcept((std::is_nothrow_move_constructible_v<TFlushPolicies> && ...)) :
-			FlushPolicyChain<Algorithm, TFlushPolicies...>{ std::move(policies)... }
+			FlushPolicyChain<Algorithm_t, TFlushPolicies...>{ std::move(policies)... }
 		{
 		}
 	};
@@ -377,12 +395,12 @@ namespace sl::log
 	 * concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will
 	 * potentially result in harder to read error messages. 
 	 */
-	template <Record TRecord, std::predicate<const typename TRecord::SeverityLevel_t&> TUnaryPredicate>
+	template <Record TRecord, std::predicate<const RecordMessage_t<TRecord>&> TUnaryPredicate>
 	constexpr auto makeMessageFlushPolicyFor(TUnaryPredicate&& predicate)
 	{
 		return FlushPolicy{
 			std::forward<TUnaryPredicate>(predicate),
-			&TRecord::message,
+			RecordProjections<TRecord>::message,
 			detail::PredProjInvocationIgnoreArgs{}
 		};
 	}
@@ -397,12 +415,12 @@ namespace sl::log
 	 * concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will
 	 * potentially result in harder to read error messages. 
 	 */
-	template <Record TRecord, std::predicate<const typename TRecord::SeverityLevel_t&> TUnaryPredicate>
+	template <Record TRecord, std::predicate<const RecordSeverity_t<TRecord>&> TUnaryPredicate>
 	constexpr auto makeSeverityFlushPolicyFor(TUnaryPredicate&& predicate)
 	{
 		return FlushPolicy{
 			std::forward<TUnaryPredicate>(predicate),
-			&TRecord::severity,
+			RecordProjections<TRecord>::severity,
 			detail::PredProjInvocationIgnoreArgs{}
 		};
 	}
@@ -417,12 +435,12 @@ namespace sl::log
 	 * concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will
 	 * potentially result in harder to read error messages. 
 	 */
-	template <Record TRecord, std::predicate<const typename TRecord::Channel_t&> TUnaryPredicate>
+	template <Record TRecord, std::predicate<const RecordChannel_t<TRecord>&> TUnaryPredicate>
 	constexpr auto makeChannelFlushPolicyFor(TUnaryPredicate&& predicate)
 	{
 		return FlushPolicy{
 			std::forward<TUnaryPredicate>(predicate),
-			&TRecord::channel,
+			RecordProjections<TRecord>::channel,
 			detail::PredProjInvocationIgnoreArgs{}
 		};
 	}
@@ -437,12 +455,12 @@ namespace sl::log
 	 * concept and therefore will provide much clearer feedback in cases of error, while creating such Flush-Policies objects manually will
 	 * potentially result in harder to read error messages. 
 	 */
-	template <Record TRecord, std::predicate<const typename TRecord::TimePoint_t&> TUnaryPredicate>
+	template <Record TRecord, std::predicate<const RecordTimePoint_t<TRecord>&> TUnaryPredicate>
 	constexpr auto makeTimePointFlushPolicyFor(TUnaryPredicate&& predicate)
 	{
 		return FlushPolicy{
 			std::forward<TUnaryPredicate>(predicate),
-			&TRecord::timePoint,
+			RecordProjections<TRecord>::timePoint,
 			detail::PredProjInvocationIgnoreArgs{}
 		};
 	}

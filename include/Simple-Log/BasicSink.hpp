@@ -8,6 +8,9 @@
 
 #pragma once
 
+#include "ISink.hpp"
+#include "Record.hpp"
+
 #include <atomic>
 #include <chrono>
 #include <functional>
@@ -15,14 +18,27 @@
 #include <mutex>
 #include <sstream>
 
-#include "Concepts.hpp"
-#include "ISink.hpp"
-
 namespace sl::log
 {
 	/** \addtogroup Sinks
 	 * @{
 	 */
+
+	/**
+	 * \brief Concept for invokable formatter objects
+	*/
+	template <class T, class TRecord>
+	concept RecordFormatterFor =
+		Record<TRecord> &&
+		std::is_invocable_r_v<std::string, T, const TRecord&>;
+
+	/**
+	 * \brief Concept for invokable filter objects
+	*/
+	template <class T, class TRecord>
+	concept RecordFilterFor =
+		Record<TRecord> &&
+		std::predicate<T, const TRecord&>;
 
 	/**
 	 * \brief Abstract Sink class which offers basic filtering, formatting functionality
@@ -38,6 +54,7 @@ namespace sl::log
 
 	public:
 		using typename Super::Record_t;
+		using Projections_t = RecordProjections<Record_t>;
 		using Formatter_t = std::function<std::string(const Record_t&)>;
 		using Filter_t = std::function<bool(const Record_t&)>;
 
@@ -50,7 +67,7 @@ namespace sl::log
 				using namespace std::chrono_literals;
 
 				// ToDo: replace with c++20 chrono and format
-				const auto today = rec.timePoint().time_since_epoch() % 24h;
+				const auto today = Projections_t::timePoint(rec).time_since_epoch() % 24h;
 				const auto hour = duration_cast<hours>(today);
 				const auto minute = duration_cast<minutes>(today) % 1h;
 				const auto second = duration_cast<seconds>(today) % 1min;
@@ -64,8 +81,8 @@ namespace sl::log
 					std::setw(3) << millisecond.count() <<
 					" >>> ";
 
-				out << rec.severity() << ":: ";
-				out << rec.message();
+				out << Projections_t::severity(rec) << ":: ";
+				out << Projections_t::message(rec);
 				return std::move(out).str();
 			};
 		}

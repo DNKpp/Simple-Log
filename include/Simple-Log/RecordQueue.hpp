@@ -8,13 +8,14 @@
 
 #pragma once
 
+#include "Record.hpp"
+
 #include <chrono>
 #include <condition_variable>
 #include <mutex>
 #include <optional>
 #include <queue>
-
-#include "Concepts.hpp"
+#include <type_traits>
 
 namespace sl::log
 {
@@ -32,7 +33,7 @@ namespace sl::log
 	class RecordQueue
 	{
 	public:
-		using Record_t = TRecord;
+		using Record_t = std::remove_cvref_t<TRecord>;
 
 		/**
 		 * \brief Pushes Record s to the internal queue

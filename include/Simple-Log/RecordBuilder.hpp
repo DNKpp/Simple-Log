@@ -8,10 +8,11 @@
 
 #pragma once
 
+#include "Record.hpp"
+
 #include <functional>
 #include <sstream>
-
-#include "Concepts.hpp"
+#include <type_traits>
 
 namespace sl::log
 {
@@ -29,11 +30,16 @@ namespace sl::log
 	class SetSev
 	{
 	public:
+		using Sev_t = TSeverityLevel;
+
 		/**
 		 * \brief Constructor accepting severity level data
 		 * \param data Severity level data.
 		 */
-		explicit constexpr SetSev(TSeverityLevel data) noexcept(std::is_nothrow_move_constructible_v<TSeverityLevel>) :
+		explicit constexpr SetSev(
+			TSeverityLevel data
+		)
+		noexcept(std::is_nothrow_move_constructible_v<Sev_t>) :
 			m_Data{ std::move(data) }
 		{
 		}
@@ -50,7 +56,7 @@ namespace sl::log
 		}
 
 	private:
-		TSeverityLevel m_Data;
+		Sev_t m_Data;
 	};
 
 	/**
@@ -63,11 +69,16 @@ namespace sl::log
 	class SetChan
 	{
 	public:
+		using Chan_t = TChannel;
+
 		/**
 		 * \brief Constructor accepting channel data
 		 * \param data Channel data.
 		 */
-		explicit constexpr SetChan(TChannel data) noexcept(std::is_nothrow_move_constructible_v<TChannel>) :
+		explicit constexpr SetChan(
+			TChannel data
+		) noexcept(
+			std::is_nothrow_move_constructible_v<Chan_t>) :
 			m_Data{ std::move(data) }
 		{
 		}
@@ -84,7 +95,7 @@ namespace sl::log
 		}
 
 	private:
-		TChannel m_Data;
+		Chan_t m_Data;
 	};
 
 	/**
@@ -98,9 +109,9 @@ namespace sl::log
 	class RecordBuilder
 	{
 	public:
-		using Record_t = TRecord;
-		using SeverityLevel_t = typename Record_t::SeverityLevel_t;
-		using Channel_t = typename Record_t::Channel_t;
+		using Record_t = std::remove_cvref_t<TRecord>;
+		using SeverityLevel_t = RecordSeverity_t<Record_t>;
+		using Channel_t = RecordChannel_t<Record_t>;
 
 	private:
 		using LogCallback_t = std::function<void(Record_t)>;

@@ -22,6 +22,124 @@ namespace sl::log
 	 * @{
 	 */
 
+	template <class TRecord>
+	requires requires { typename TRecord::Message_t; }
+	using RecordMessage_t = typename TRecord::Message_t;
+
+	template <class TRecord>
+	requires requires { typename TRecord::SeverityLevel_t; }
+	using RecordSeverity_t = typename TRecord::SeverityLevel_t;
+
+	template <class TRecord>
+	requires requires { typename TRecord::Channel_t; }
+	using RecordChannel_t = typename TRecord::Channel_t;
+
+	template <class TRecord>
+	requires requires { typename TRecord::TimePoint_t; }
+	using RecordTimePoint_t = typename TRecord::TimePoint_t;
+
+	template <class TRecord>
+	concept RecordMemberTypedefs =
+	requires
+	{
+		typename RecordMessage_t<TRecord>;
+		typename RecordSeverity_t<TRecord>;
+		typename RecordChannel_t<TRecord>;
+		typename RecordTimePoint_t<TRecord>;
+	};
+
+	template <class TRecord>
+	requires RecordMemberTypedefs<TRecord> &&
+			requires(const TRecord& rec)
+			{
+				{ rec.message() } -> std::convertible_to<RecordMessage_t<TRecord>>;
+				{ rec.severity() } -> std::convertible_to<RecordSeverity_t<TRecord>>;
+				{ rec.channel() } -> std::convertible_to<RecordChannel_t<TRecord>>;
+				{ rec.timePoint() } -> std::convertible_to<RecordTimePoint_t<TRecord>>;
+			}
+	struct RecordProjections
+	{
+		constexpr static auto message{ [](auto& record) { return record.message(); } };
+		constexpr static auto severity{ [](auto& record) { return record.severity(); } };
+		constexpr static auto channel{ [](auto& record) { return record.channel(); } };
+		constexpr static auto timePoint{ [](auto& record) { return record.timePoint(); } };
+	};
+
+	template <class TRecord>
+	concept RecordMemberProjections =
+	RecordMemberTypedefs<TRecord> &&
+	requires(const TRecord& rec)
+	{
+		{ RecordProjections<TRecord>::message(rec) } -> std::convertible_to<RecordMessage_t<TRecord>>;
+		{ RecordProjections<TRecord>::severity(rec) } -> std::convertible_to<RecordSeverity_t<TRecord>>;
+		{ RecordProjections<TRecord>::channel(rec) } -> std::convertible_to<RecordChannel_t<TRecord>>;
+		{ RecordProjections<TRecord>::timePoint(rec) } -> std::convertible_to<RecordTimePoint_t<TRecord>>;
+	};
+
+	template <class TRecord>
+	requires RecordMemberTypedefs<TRecord> &&
+			requires(TRecord& rec)
+			{
+				{ rec.setMessage(std::declval<RecordMessage_t<TRecord>>()) };
+				{ rec.setTimePoint(std::declval<RecordTimePoint_t<TRecord>>()) };
+				{ rec.setSeverity(std::declval<RecordSeverity_t<TRecord>>()) };
+				{ rec.setChannel(std::declval<RecordChannel_t<TRecord>>()) };
+			}
+	struct RecordSetters
+	{
+		using Record_t = std::remove_cvref_t<TRecord>;
+
+		constexpr static auto setMessage
+		{
+			[]<class TMessage>(Record_t& record, TMessage&& msg)
+			{
+				return record.setMessage(std::forward<TMessage>(msg));
+			}
+		};
+
+		constexpr static auto setSeverity
+		{
+			[]<class TSeverity>(Record_t& record, TSeverity&& sev)
+			{
+				return record.setSeverity(std::forward<TSeverity>(sev));
+			}
+		};
+
+		constexpr static auto setChannel
+		{
+			[]<class TChannel>(Record_t& record, TChannel&& chan)
+			{
+				return record.setChannel(std::forward<TChannel>(chan));
+			}
+		};
+
+		constexpr static auto setTimePoint
+		{
+			[]<class TTimePoint>(Record_t& record, TTimePoint&& timePoint)
+			{
+				return record.setTimePoint(std::forward<TTimePoint>(timePoint));
+			}
+		};
+	};
+
+	template <class TRecord>
+	concept RecordMemberSetters =
+	RecordMemberTypedefs<TRecord> &&
+	requires(TRecord& rec)
+	{
+		{ RecordSetters<TRecord>::setMessage(rec, std::declval<RecordMessage_t<TRecord>>()) };
+		{ RecordSetters<TRecord>::setTimePoint(rec, std::declval<RecordTimePoint_t<TRecord>>()) };
+		{ RecordSetters<TRecord>::setSeverity(rec, std::declval<RecordSeverity_t<TRecord>>()) };
+		{ RecordSetters<TRecord>::setChannel(rec, std::declval<RecordChannel_t<TRecord>>()) };
+	};
+
+	template <class TRecord>
+	concept Record =
+	std::movable<TRecord> &&
+	RecordMemberTypedefs<TRecord> &&
+	RecordMemberProjections<TRecord> &&
+	RecordMemberSetters<TRecord>;
+
 	/**
 	 * \brief A collection of logging related information
 	 * \tparam TSeverityLevel Severity level type
@@ -39,12 +157,12 @@ namespace sl::log
 	class BaseRecord
 	{
 	public:
-		using Message_t = TMessage;
-		using SeverityLevel_t = TSeverityLevel;
-		using Channel_t = TChannel;
-		using TimePoint_t = TTimePoint;
+		using Message_t = std::remove_cvref_t<TMessage>;
+		using SeverityLevel_t = std::remove_cvref_t<TSeverityLevel>;
+		using Channel_t = std::remove_cvref_t<TChannel>;
+		using TimePoint_t = std::remove_cvref_t<TTimePoint>;
 #ifdef __cpp_lib_source_location
-		using SourceLocation_t = std::source_location;
+		using SourceLocation_t = std::remove_cvref_t<std::source_location>;
 #endif
 
 		/**
