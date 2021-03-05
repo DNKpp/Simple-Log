@@ -8,14 +8,14 @@
 
 #pragma once
 
+#include "Record.hpp"
+#include "TupleAlgorithms.hpp"
+
 #include <algorithm>
 #include <concepts>
-#include <tuple>
 #include <functional>
+#include <tuple>
 #include <type_traits>
-
-#include "Concepts.hpp"
-#include "TupleAlgorithms.hpp"
 
 namespace sl::log
 {
@@ -39,8 +39,8 @@ namespace sl::log
 	class ProjectionFilter
 	{
 	public:
-		using Projection_t = TProjection;
-		using UnaryPredicate_t = TUnaryPredicate;
+		using Projection_t = std::remove_cvref_t<TProjection>;
+		using UnaryPredicate_t = std::remove_cvref_t<TUnaryPredicate>;
 
 		/**
 		 * \brief Constructor
@@ -51,7 +51,7 @@ namespace sl::log
 			TProjection projection,
 			TUnaryPredicate predicate
 		)
-		noexcept(std::is_nothrow_move_constructible_v<TProjection> && std::is_nothrow_move_constructible_v<TUnaryPredicate>) :
+		noexcept(std::is_nothrow_move_constructible_v<Projection_t> && std::is_nothrow_move_constructible_v<UnaryPredicate_t>) :
 			m_Projection{ std::move(projection) },
 			m_Predicate{ std::move(predicate) }
 		{
@@ -84,6 +84,8 @@ namespace sl::log
 	class FilterChain
 	{
 	public:
+		using Algorithm_t = std::remove_cvref_t<TAlgorithm>;
+
 		/**
 		 * \brief Constructor
 		 * \param filter Filter objects
@@ -91,7 +93,7 @@ namespace sl::log
 		constexpr explicit FilterChain(
 			TFilter ...filter
 		)
-		noexcept(std::is_nothrow_constructible_v<TAlgorithm> && (std::is_nothrow_move_constructible_v<TFilter> && ...)) :
+		noexcept(std::is_nothrow_constructible_v<Algorithm_t> && (std::is_nothrow_move_constructible_v<TFilter> && ...)) :
 			m_Algorithm{},
 			m_Filter{ std::move(filter)... }
 		{
@@ -105,8 +107,8 @@ namespace sl::log
 		constexpr explicit FilterChain(
 			TAlgorithm algorithm,
 			TFilter ...filter
-		) noexcept((std::is_nothrow_move_constructible_v<TFilter> && ...)) :
-			m_Algorithm(std::move(algorithm)),
+		) noexcept(std::is_nothrow_move_constructible_v<Algorithm_t> && (std::is_nothrow_move_constructible_v<TFilter> && ...)) :
+			m_Algorithm{ std::move(algorithm) },
 			m_Filter{ std::forward<TFilter>(filter)... }
 		{
 		}
@@ -144,7 +146,7 @@ namespace sl::log
 		}
 
 	private:
-		TAlgorithm m_Algorithm;
+		Algorithm_t m_Algorithm;
 		std::tuple<TFilter...> m_Filter;
 	};
 
@@ -163,7 +165,7 @@ namespace sl::log
 	class FilterAllOf :
 		public FilterChain<detail::TupleAllOf, TFilter...>
 	{
-		using Algorithm = detail::TupleAllOf;
+		using Algorithm_t = detail::TupleAllOf;
 
 	public:
 		/**
@@ -174,7 +176,7 @@ namespace sl::log
 			TFilter ... filter
 		)
 		noexcept((std::is_nothrow_move_constructible_v<TFilter> && ...)) :
-			FilterChain<Algorithm, TFilter...>{ std::move(filter)... }
+			FilterChain<Algorithm_t, TFilter...>{ std::move(filter)... }
 		{
 		}
 	};
@@ -187,7 +189,7 @@ namespace sl::log
 	class FilterAnyOf :
 		public FilterChain<detail::TupleAnyOf, TFilter...>
 	{
-		using Algorithm = detail::TupleAnyOf;
+		using Algorithm_t = detail::TupleAnyOf;
 
 	public:
 		/**
@@ -198,7 +200,7 @@ namespace sl::log
 			TFilter ... filter
 		)
 		noexcept((std::is_nothrow_move_constructible_v<TFilter> && ...)) :
-			FilterChain<Algorithm, TFilter...>{ std::move(filter)... }
+			FilterChain<Algorithm_t, TFilter...>{ std::move(filter)... }
 		{
 		}
 	};
@@ -211,7 +213,7 @@ namespace sl::log
 	class FilterNoneOf :
 		public FilterChain<detail::TupleNoneOf, TFilter...>
 	{
-		using Algorithm = detail::TupleNoneOf;
+		using Algorithm_t = detail::TupleNoneOf;
 
 	public:
 		/**
@@ -222,7 +224,7 @@ namespace sl::log
 			TFilter ... filter
 		)
 		noexcept((std::is_nothrow_move_constructible_v<TFilter> && ...)) :
-			FilterChain<Algorithm, TFilter...>{ std::move(filter)... }
+			FilterChain<Algorithm_t, TFilter...>{ std::move(filter)... }
 		{
 		}
 	};
@@ -237,10 +239,10 @@ namespace sl::log
 	 * concept and therefore will provide much clearer feedback in cases of error, while creating ProjectionFilter objects manually will
 	 * potentially result in harder to read error message. 
 	 */
-	template <Record TRecord, std::predicate<const typename TRecord::Message_t&> TUnaryPredicate>
+	template <Record TRecord, std::predicate<const RecordMessage_t<TRecord>&> TUnaryPredicate>
 	constexpr auto makeMessageFilterFor(TUnaryPredicate&& predicate)
 	{
-		return ProjectionFilter{ &TRecord::message, std::forward<TUnaryPredicate>(predicate) };
+		return ProjectionFilter{ RecordProjections<TRecord>::message, std::forward<TUnaryPredicate>(predicate) };
 	}
 
 	/**
@@ -253,10 +255,10 @@ namespace sl::log
 	 * concept and therefore will provide much clearer feedback in cases of error, while creating ProjectionFilter objects manually will
 	 * potentially result in harder to read error message. 
 	 */
-	template <Record TRecord, std::predicate<const typename TRecord::SeverityLevel_t&> TUnaryPredicate>
+	template <Record TRecord, std::predicate<const RecordSeverity_t<TRecord>&> TUnaryPredicate>
 	constexpr auto makeSeverityFilterFor(TUnaryPredicate&& predicate)
 	{
-		return ProjectionFilter{ &TRecord::severity, std::forward<TUnaryPredicate>(predicate) };
+		return ProjectionFilter{ RecordProjections<TRecord>::severity, std::forward<TUnaryPredicate>(predicate) };
 	}
 
 	/**
@@ -269,10 +271,10 @@ namespace sl::log
 	 * concept and therefore will provide much clearer feedback in cases of error, while creating ProjectionFilter objects manually will
 	 * potentially result in harder to read error message. 
 	 */
-	template <Record TRecord, std::predicate<const typename TRecord::Channel_t&> TUnaryPredicate>
+	template <Record TRecord, std::predicate<const RecordChannel_t<TRecord>&> TUnaryPredicate>
 	constexpr auto makeChannelFilterFor(TUnaryPredicate&& predicate)
 	{
-		return ProjectionFilter{ &TRecord::channel, std::forward<TUnaryPredicate>(predicate) };
+		return ProjectionFilter{ RecordProjections<TRecord>::channel, std::forward<TUnaryPredicate>(predicate) };
 	}
 
 	/**
@@ -285,10 +287,10 @@ namespace sl::log
 	 * concept and therefore will provide much clearer feedback in cases of error, while creating ProjectionFilter objects manually will
 	 * potentially result in harder to read error message. 
 	 */
-	template <Record TRecord, std::predicate<const typename TRecord::TimePoint_t&> TUnaryPredicate>
+	template <Record TRecord, std::predicate<const RecordTimePoint_t<TRecord>&> TUnaryPredicate>
 	constexpr auto makeTimePointFilterFor(TUnaryPredicate&& predicate)
 	{
-		return ProjectionFilter{ &TRecord::timePoint, std::forward<TUnaryPredicate>(predicate) };
+		return ProjectionFilter{ RecordProjections<TRecord>::timePoint, std::forward<TUnaryPredicate>(predicate) };
 	}
 
 	/** @}*/

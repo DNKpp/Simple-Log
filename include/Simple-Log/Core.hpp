@@ -8,16 +8,16 @@
 
 #pragma once
 
+#include "ISink.hpp"
+#include "Record.hpp"
+#include "RecordQueue.hpp"
+
 #include <algorithm>
 #include <execution>
 #include <future>
 #include <memory>
 #include <mutex>
 #include <vector>
-
-#include "Concepts.hpp"
-#include "ISink.hpp"
-#include "RecordQueue.hpp"
 
 namespace sl::log
 {
@@ -50,7 +50,7 @@ namespace sl::log
 	class Core
 	{
 	public:
-		using Record_t = TRecord;
+		using Record_t = std::remove_cvref_t<TRecord>;
 
 	private:
 		using ISink_t = ISink<Record_t>;
