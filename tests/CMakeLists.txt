@@ -13,21 +13,21 @@ FetchContent_MakeAvailable(catch2)
 
 add_executable(
 	${PROJECT_NAME}
-	main.cpp
-	CoreTests.cpp
-	BaseRecordTests.cpp
-	TupleAlgorithmTests.cpp
-	PredicateTests.cpp
-	FilterTests.cpp
-	RecordQueueTests.cpp
-	StringPatternTest.cpp
-	FlushPolicyTests.cpp
-	OStreamSinkTests.cpp
-	FileSinkTests.cpp
-	ConsoleSinkTests.cpp
-	LoggerTests.cpp
-	RecordBuilderTests.cpp
-	BasicSinkTests.cpp
+	"main.cpp"
+	"CoreTests.cpp"
+	"RecordTests.cpp"
+	"TupleAlgorithmTests.cpp"
+	"PredicateTests.cpp"
+	"FilterTests.cpp"
+	"RecordQueueTests.cpp"
+	"StringPatternTest.cpp"
+	"FlushPolicyTests.cpp"
+	"OStreamSinkTests.cpp"
+	"FileSinkTests.cpp"
+	"ConsoleSinkTests.cpp"
+	"LoggerTests.cpp"
+	"RecordBuilderTests.cpp"
+	"BasicSinkTests.cpp"
 )
 
 target_link_libraries(
