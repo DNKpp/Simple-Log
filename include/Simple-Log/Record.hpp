@@ -24,6 +24,8 @@ namespace sl::log
 
 	/** \addtogroup RecordConcepts Record Concepts
 	 * @{
+	 * \details Users usually do not have to dig into the details of this part of the library, unless they try to inject an already existing but with incompatible interface Record type
+	 * into the framework. Therefore the library provides several helper structs, which built a layer of abstraction onto the regular Record type interface, which users may specialize for their given types.
 	 */
 
 	/**
