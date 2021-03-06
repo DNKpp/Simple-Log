@@ -35,7 +35,7 @@ namespace sl::log
 	 * \tparam TLogger The used Logger type
 	 * \details There is no need for the users using this type of indirection. The library makes use of this abstraction, thus
 	 * users may specialize it to use Logger types, which does not fit in the original concept and trait syntax provided by this library.
-	 * \version since alpha-0.7
+	 * \version since alpha-v0.7
 	 */
 	template <class TLogger>
 	struct LoggerTypedefs
@@ -47,7 +47,7 @@ namespace sl::log
 	 * \typedef LoggerRecord_t
 	 * \brief Typedef for easier access to \ref Logger "Logger's" Record type.
 	 * \tparam TLogger The used Logger type.
-	 * \version since alpha-0.7
+	 * \version since alpha-v0.7
 	 */
 	template <class TLogger>
 	/** \cond Requires */

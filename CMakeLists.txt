@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 
 project(simple_log
-	VERSION 0.6
+	VERSION 0.7
 	LANGUAGES CXX
 )
 
