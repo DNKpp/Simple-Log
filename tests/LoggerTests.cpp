@@ -103,7 +103,7 @@ namespace custom
 		using RecordBuilder_t = RecordBuilder<ORecord_t>;
 
 		template <class TCallback>
-		Logger(TCallback cb)
+		explicit Logger(TCallback cb)
 		{
 		}
 
