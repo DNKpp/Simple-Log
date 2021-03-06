@@ -2,7 +2,8 @@ var classsl_1_1log_1_1_basic_sink =
 [
     [ "Filter_t", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381", null ],
     [ "Formatter_t", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596", null ],
-    [ "Record_t", "dd/d48/classsl_1_1log_1_1_basic_sink.html#ad79d9e5f6c4e07be42c84a281dc45082", null ],
+    [ "Projections_t", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a8fae464ec47801782463a38ced080b98", null ],
+    [ "Record_t", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3", null ],
     [ "BasicSink", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a521a8c811dd0c7879dddfcd19cf255c9", null ],
     [ "~BasicSink", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a3d32a8ae46419eaae763ac001935bcd2", null ],
     [ "BasicSink", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a9befd674f26382887b07f8e46277be18", null ],

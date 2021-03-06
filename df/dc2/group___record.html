@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">alpha-v0.6</span>
+   &#160;<span id="projectnumber">alpha-v0.7</span>
    </div>
   </td>
  </tr>
@@ -83,12 +83,18 @@ $(document).ready(function(){initNavTree('df/dc2/group___record.html','../../');
 
 <div class="header">
   <div class="summary">
+<a href="#groups">Modules</a> &#124;
 <a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
 <div class="title">Record</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:da/de0/group___record_concepts"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de0/group___record_concepts.html">Record Concepts</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d7a/classsl_1_1log_1_1_base_record.html">sl::log::BaseRecord&lt; TSeverityLevel, TChannel, TMessage, TTimePoint &gt;</a></td></tr>
@@ -175,24 +181,24 @@ Custom Record Types</h1>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment"> network &gt;&gt; Hello, Network!</span></div>
 <div class="ttc" id="a_preset_types_8hpp_html"><div class="ttname"><a href="../../d7/d89/_preset_types_8hpp.html">PresetTypes.hpp</a></div></div>
 <div class="ttc" id="a_simple-_log_8hpp_html"><div class="ttname"><a href="../../d0/d08/_simple-_log_8hpp.html">Simple-Log.hpp</a></div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_base_logger_html"><div class="ttname"><a href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a></div><div class="ttdoc">Convenience class for generating Record s.</div><div class="ttdef"><b>Definition:</b> Logger.hpp:38</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_base_record_html"><div class="ttname"><a href="../../dd/d7a/classsl_1_1log_1_1_base_record.html">sl::log::BaseRecord</a></div><div class="ttdoc">A collection of logging related information.</div><div class="ttdef"><b>Definition:</b> Record.hpp:40</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_console_sink_html"><div class="ttname"><a href="../../d2/df0/classsl_1_1log_1_1_console_sink.html">sl::log::ConsoleSink</a></div><div class="ttdoc">Sink class for directly logging onto std::cout.</div><div class="ttdef"><b>Definition:</b> ConsoleSink.hpp:232</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_base_logger_html"><div class="ttname"><a href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a></div><div class="ttdoc">Convenience class for generating Record s.</div><div class="ttdef"><b>Definition:</b> Logger.hpp:84</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_base_record_html"><div class="ttname"><a href="../../dd/d7a/classsl_1_1log_1_1_base_record.html">sl::log::BaseRecord</a></div><div class="ttdoc">A collection of logging related information.</div><div class="ttdef"><b>Definition:</b> Record.hpp:227</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_console_sink_html"><div class="ttname"><a href="../../d2/df0/classsl_1_1log_1_1_console_sink.html">sl::log::ConsoleSink</a></div><div class="ttdoc">Sink class for directly logging onto std::cout.</div><div class="ttdef"><b>Definition:</b> ConsoleSink.hpp:239</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_core_html"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a></div><div class="ttdoc">The central point of the whole library. Needs to be instantiated at least once.</div><div class="ttdef"><b>Definition:</b> Core.hpp:51</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_core_html_a3af914cb7a7eeec70b3e06211d110fc4"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4">sl::log::Core::makeDisabledSink</a></div><div class="ttdeci">requires std::constructible_from&lt; TSink, TArgs... &gt; ScopedSinkDisabling&lt; Record_t, TSink &gt; makeDisabledSink(TArgs &amp;&amp;... args)</div><div class="ttdoc">Creates Sink disabled and registers it at this Core instance.</div><div class="ttdef"><b>Definition:</b> Core.hpp:149</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_equals_html"><div class="ttname"><a href="../../d2/dce/classsl_1_1log_1_1_equals.html">sl::log::Equals</a></div><div class="ttdoc">Compares equality with constant at invocation.</div><div class="ttdef"><b>Definition:</b> Predicates.hpp:25</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_file_sink_html"><div class="ttname"><a href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html">sl::log::FileSink</a></div><div class="ttdoc">Class for logging into files.</div><div class="ttdef"><b>Definition:</b> FileSink.hpp:75</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_set_chan_html"><div class="ttname"><a href="../../d9/d84/classsl_1_1log_1_1_set_chan.html">sl::log::SetChan</a></div><div class="ttdoc">Manipulates the channel of the current RecordBuilder object.</div><div class="ttdef"><b>Definition:</b> RecordBuilder.hpp:64</div></div>
-<div class="ttc" id="agroup___console_sink_html_gaeb779fb6e758a317d35ba1c78c231574"><div class="ttname"><a href="../../d7/dbf/group___console_sink.html#gaeb779fb6e758a317d35ba1c78c231574">sl::log::operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, const ConsoleTextStyle &amp;style)</div><div class="ttdoc">Operator &lt;&lt; overload for ConsoleTextStyle type.</div><div class="ttdef"><b>Definition:</b> ConsoleSink.hpp:128</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_file_sink_html"><div class="ttname"><a href="../../dc/dd6/classsl_1_1log_1_1_file_sink.html">sl::log::FileSink</a></div><div class="ttdoc">Class for logging into files.</div><div class="ttdef"><b>Definition:</b> FileSink.hpp:81</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_set_chan_html"><div class="ttname"><a href="../../d9/d84/classsl_1_1log_1_1_set_chan.html">sl::log::SetChan</a></div><div class="ttdoc">Manipulates the channel of the current RecordBuilder object.</div><div class="ttdef"><b>Definition:</b> RecordBuilder.hpp:70</div></div>
+<div class="ttc" id="agroup___console_sink_html_gaeb779fb6e758a317d35ba1c78c231574"><div class="ttname"><a href="../../d7/dbf/group___console_sink.html#gaeb779fb6e758a317d35ba1c78c231574">sl::log::operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, const ConsoleTextStyle &amp;style)</div><div class="ttdoc">Operator &lt;&lt; overload for ConsoleTextStyle type.</div><div class="ttdef"><b>Definition:</b> ConsoleSink.hpp:135</div></div>
 <div class="ttc" id="agroup___prepared_types_html_ga275e47a72646ba38095e28bca891b152"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#ga275e47a72646ba38095e28bca891b152">sl::log::preset::ConsoleSink_t</a></div><div class="ttdeci">ConsoleSink&lt; Record_t &gt; ConsoleSink_t</div><div class="ttdoc">Type alias for log::ConsoleSink which uses preset::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:80</div></div>
 <div class="ttc" id="agroup___prepared_types_html_gaa30e95bdde6414a22c02e8c98d5dcf3f"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#gaa30e95bdde6414a22c02e8c98d5dcf3f">sl::log::preset::SevLvl</a></div><div class="ttdeci">SevLvl</div><div class="ttdoc">A simple severity level enum type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:26</div></div>
 <div class="ttc" id="agroup___prepared_types_html_gaaa0e319ca877be6293a74ee97a937593"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#gaaa0e319ca877be6293a74ee97a937593">sl::log::preset::Core_t</a></div><div class="ttdeci">Core&lt; Record_t &gt; Core_t</div><div class="ttdoc">Type alias for log::Core which uses preset::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:56</div></div>
 <div class="ttc" id="agroup___prepared_types_html_gaac85e03739aa8f712c7c492d348a55bb"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#gaac85e03739aa8f712c7c492d348a55bb">sl::log::preset::Logger_t</a></div><div class="ttdeci">BaseLogger&lt; Record_t &gt; Logger_t</div><div class="ttdoc">Type alias for log::Logger which uses preset::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:60</div></div>
 <div class="ttc" id="agroup___prepared_types_html_gab7fd2d7ae0f18b1e2d4857c04dd160bb"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#gab7fd2d7ae0f18b1e2d4857c04dd160bb">sl::log::preset::Record_t</a></div><div class="ttdeci">BaseRecord&lt; SevLvl, std::string &gt; Record_t</div><div class="ttdoc">Prepared Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:52</div></div>
 <div class="ttc" id="agroup___prepared_types_html_gaf18a546e417058826c8d721f56c1ed4a"><div class="ttname"><a href="../../df/d5b/group___prepared_types.html#gaf18a546e417058826c8d721f56c1ed4a">sl::log::preset::FileSink_t</a></div><div class="ttdeci">FileSink&lt; Record_t &gt; FileSink_t</div><div class="ttdoc">Type alias for log::FileSink which uses preset::Record_t as Record type.</div><div class="ttdef"><b>Definition:</b> PresetTypes.hpp:76</div></div>
-<div class="ttc" id="anamespacesl_1_1log_1_1ready__to__go_html_a62b1d29b2cc04a77a40e4614450067fa"><div class="ttname"><a href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a62b1d29b2cc04a77a40e4614450067fa">sl::log::ready_to_go::gLog</a></div><div class="ttdeci">auto gLog</div><div class="ttdef"><b>Definition:</b> ReadyToGo.hpp:22</div></div>
-<div class="ttc" id="anamespacesl_1_1log_1_1ready__to__go_html_a88d42dc8178df5f58e58a5a420690873"><div class="ttname"><a href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a88d42dc8178df5f58e58a5a420690873">sl::log::ready_to_go::gCore</a></div><div class="ttdeci">Core_t gCore</div><div class="ttdef"><b>Definition:</b> ReadyToGo.hpp:20</div></div>
-<div class="ttc" id="anamespacesl_1_1log_1_1ready__to__go_html_aa924695d8fb3e4c238eb43daadf69c8b"><div class="ttname"><a href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#aa924695d8fb3e4c238eb43daadf69c8b">sl::log::ready_to_go::gConsoleSink</a></div><div class="ttdeci">auto &amp; gConsoleSink</div><div class="ttdef"><b>Definition:</b> ReadyToGo.hpp:21</div></div>
+<div class="ttc" id="anamespacesl_1_1log_1_1ready__to__go_html_a62b1d29b2cc04a77a40e4614450067fa"><div class="ttname"><a href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a62b1d29b2cc04a77a40e4614450067fa">sl::log::ready_to_go::gLog</a></div><div class="ttdeci">auto gLog</div><div class="ttdef"><b>Definition:</b> ReadyToGo.hpp:20</div></div>
+<div class="ttc" id="anamespacesl_1_1log_1_1ready__to__go_html_a88d42dc8178df5f58e58a5a420690873"><div class="ttname"><a href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#a88d42dc8178df5f58e58a5a420690873">sl::log::ready_to_go::gCore</a></div><div class="ttdeci">Core_t gCore</div><div class="ttdef"><b>Definition:</b> ReadyToGo.hpp:18</div></div>
+<div class="ttc" id="anamespacesl_1_1log_1_1ready__to__go_html_aa924695d8fb3e4c238eb43daadf69c8b"><div class="ttname"><a href="../../dc/da1/namespacesl_1_1log_1_1ready__to__go.html#aa924695d8fb3e4c238eb43daadf69c8b">sl::log::ready_to_go::gConsoleSink</a></div><div class="ttdeci">auto &amp; gConsoleSink</div><div class="ttdef"><b>Definition:</b> ReadyToGo.hpp:19</div></div>
 <div class="ttc" id="anamespacesl_1_1log_html"><div class="ttname"><a href="../../de/d83/namespacesl_1_1log.html">sl::log</a></div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:22</div></div>
 </div><!-- fragment --><p> If your needs are more specific and you want to add things such as custom properties to the Record type, this might be an example for you:  <div class="fragment"><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d7/d89/_preset_types_8hpp.html">Simple-Log/PresetTypes.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/d08/_simple-_log_8hpp.html">Simple-Log/Simple-Log.hpp</a>&gt;</span></div>
@@ -271,7 +277,7 @@ Custom Record Types</h1>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/* The output of the console looks like this:</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"> &gt;&gt; Hello, World!</span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">palindrome &gt;&gt; A Man, A Plan, A Canal, Panama!</span></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_record_builder_html"><div class="ttname"><a href="../../db/d9a/classsl_1_1log_1_1_record_builder.html">sl::log::RecordBuilder</a></div><div class="ttdoc">Helper class for building new Records.</div><div class="ttdef"><b>Definition:</b> RecordBuilder.hpp:99</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_record_builder_html"><div class="ttname"><a href="../../db/d9a/classsl_1_1log_1_1_record_builder.html">sl::log::RecordBuilder</a></div><div class="ttdoc">Helper class for building new Records.</div><div class="ttdef"><b>Definition:</b> RecordBuilder.hpp:110</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

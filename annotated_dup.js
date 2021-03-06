@@ -3,7 +3,6 @@ var annotated_dup =
     [ "sl", "dd/d2c/namespacesl.html", [
       [ "log", "de/d83/namespacesl_1_1log.html", [
         [ "BasicSink", "dd/d48/classsl_1_1log_1_1_basic_sink.html", "dd/d48/classsl_1_1log_1_1_basic_sink" ],
-        [ "RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html", "db/d9a/classsl_1_1log_1_1_record_builder" ],
         [ "ConsoleTextStyle", "d8/d37/structsl_1_1log_1_1_console_text_style.html", "d8/d37/structsl_1_1log_1_1_console_text_style" ],
         [ "ConsoleTextStyleTable", "d5/d54/classsl_1_1log_1_1_console_text_style_table.html", "d5/d54/classsl_1_1log_1_1_console_text_style_table" ],
         [ "ConsoleSink", "d2/df0/classsl_1_1log_1_1_console_sink.html", "d2/df0/classsl_1_1log_1_1_console_sink" ],
@@ -24,6 +23,7 @@ var annotated_dup =
         [ "ISink", "d8/dda/classsl_1_1log_1_1_i_sink.html", "d8/dda/classsl_1_1log_1_1_i_sink" ],
         [ "ScopedSinkDisabling", "d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html", "d0/d40/classsl_1_1log_1_1_scoped_sink_disabling" ],
         [ "SinkException", "dd/dab/classsl_1_1log_1_1_sink_exception.html", "dd/dab/classsl_1_1log_1_1_sink_exception" ],
+        [ "LoggerTypedefs", "d7/dbb/structsl_1_1log_1_1_logger_typedefs.html", "d7/dbb/structsl_1_1log_1_1_logger_typedefs" ],
         [ "BaseLogger", "da/d7e/classsl_1_1log_1_1_base_logger.html", "da/d7e/classsl_1_1log_1_1_base_logger" ],
         [ "OStreamSink", "d1/d2f/classsl_1_1log_1_1_o_stream_sink.html", "d1/d2f/classsl_1_1log_1_1_o_stream_sink" ],
         [ "Equals", "d2/dce/classsl_1_1log_1_1_equals.html", "d2/dce/classsl_1_1log_1_1_equals" ],
@@ -34,9 +34,13 @@ var annotated_dup =
         [ "GreaterEquals", "dc/d79/classsl_1_1log_1_1_greater_equals.html", "dc/d79/classsl_1_1log_1_1_greater_equals" ],
         [ "Between", "d3/d9b/classsl_1_1log_1_1_between.html", "d3/d9b/classsl_1_1log_1_1_between" ],
         [ "BetweenEquals", "db/da1/classsl_1_1log_1_1_between_equals.html", "db/da1/classsl_1_1log_1_1_between_equals" ],
+        [ "RecordTypedefs", "d5/d3c/structsl_1_1log_1_1_record_typedefs.html", "d5/d3c/structsl_1_1log_1_1_record_typedefs" ],
+        [ "RecordGetters", "d5/dee/structsl_1_1log_1_1_record_getters.html", "d5/dee/structsl_1_1log_1_1_record_getters" ],
+        [ "RecordSetters", "d5/d91/structsl_1_1log_1_1_record_setters.html", "d5/d91/structsl_1_1log_1_1_record_setters" ],
         [ "BaseRecord", "dd/d7a/classsl_1_1log_1_1_base_record.html", "dd/d7a/classsl_1_1log_1_1_base_record" ],
         [ "SetSev", "d5/df7/classsl_1_1log_1_1_set_sev.html", "d5/df7/classsl_1_1log_1_1_set_sev" ],
         [ "SetChan", "d9/d84/classsl_1_1log_1_1_set_chan.html", "d9/d84/classsl_1_1log_1_1_set_chan" ],
+        [ "RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html", "db/d9a/classsl_1_1log_1_1_record_builder" ],
         [ "RecordQueue", "d1/de1/classsl_1_1log_1_1_record_queue.html", "d1/de1/classsl_1_1log_1_1_record_queue" ],
         [ "StringPattern", "d1/d81/classsl_1_1log_1_1_string_pattern.html", "d1/d81/classsl_1_1log_1_1_string_pattern" ]
       ] ]

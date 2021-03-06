@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">alpha-v0.6</span>
+   &#160;<span id="projectnumber">alpha-v0.7</span>
    </div>
   </td>
  </tr>
@@ -111,9 +111,9 @@ Inheritance diagram for sl::log::ISink&lt; TRecord &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ad79d9e5f6c4e07be42c84a281dc45082"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> = TRecord</td></tr>
-<tr class="memdesc:ad79d9e5f6c4e07be42c84a281dc45082"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used Record type.  <a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">More...</a><br /></td></tr>
-<tr class="separator:ad79d9e5f6c4e07be42c84a281dc45082"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9defe1ac8b150ee8ee49364b863dcfb3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> = std::remove_cvref_t&lt; TRecord &gt;</td></tr>
+<tr class="memdesc:a9defe1ac8b150ee8ee49364b863dcfb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used Record type.  <a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">More...</a><br /></td></tr>
+<tr class="separator:a9defe1ac8b150ee8ee49364b863dcfb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -126,7 +126,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a33d8137c0f9f0e0a7e77f8fa461c9a2b"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a33d8137c0f9f0e0a7e77f8fa461c9a2b">~ISink</a> () noexcept=default</td></tr>
 <tr class="memdesc:a33d8137c0f9f0e0a7e77f8fa461c9a2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">virtual default destructor  <a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a33d8137c0f9f0e0a7e77f8fa461c9a2b">More...</a><br /></td></tr>
 <tr class="separator:a33d8137c0f9f0e0a7e77f8fa461c9a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35ba629214d49e3afe4de5612b13ea2c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a35ba629214d49e3afe4de5612b13ea2c">log</a> (const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;record)=0</td></tr>
+<tr class="memitem:a35ba629214d49e3afe4de5612b13ea2c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a35ba629214d49e3afe4de5612b13ea2c">log</a> (const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> &amp;record)=0</td></tr>
 <tr class="memdesc:a35ba629214d49e3afe4de5612b13ea2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">virtual log function  <a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a35ba629214d49e3afe4de5612b13ea2c">More...</a><br /></td></tr>
 <tr class="separator:a35ba629214d49e3afe4de5612b13ea2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac6aeba2e1ef0131481179a5f426b027"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#aac6aeba2e1ef0131481179a5f426b027">setEnabled</a> (bool enable=true) noexcept=0</td></tr>
@@ -161,8 +161,8 @@ class sl::log::ISink&lt; TRecord &gt;</h3>
 </dl>
 <p>The interface class for each derived Sink type. If you want to implement your custom Sink type, have a look at <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html" title="Abstract Sink class which offers basic filtering, formatting functionality.">BasicSink</a> first. This might be a better starting point for customizations. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="ad79d9e5f6c4e07be42c84a281dc45082"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad79d9e5f6c4e07be42c84a281dc45082">&#9670;&nbsp;</a></span>Record_t</h2>
+<a id="a9defe1ac8b150ee8ee49364b863dcfb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9defe1ac8b150ee8ee49364b863dcfb3">&#9670;&nbsp;</a></span>Record_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -170,7 +170,7 @@ class sl::log::ISink&lt; TRecord &gt;</h3>
 template&lt;Record TRecord&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">sl::log::ISink</a>&lt; TRecord &gt;::<a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> =  TRecord</td>
+          <td class="memname">using <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">sl::log::ISink</a>&lt; TRecord &gt;::<a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> =  std::remove_cvref_t&lt;TRecord&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -345,7 +345,7 @@ template&lt;Record TRecord&gt; </div>
         <tr>
           <td class="memname">virtual void <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">sl::log::ISink</a>&lt; TRecord &gt;::log </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> &amp;&#160;</td>
           <td class="paramname"><em>record</em></td><td>)</td>
           <td></td>
         </tr>

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">alpha-v0.6</span>
+   &#160;<span id="projectnumber">alpha-v0.7</span>
    </div>
   </td>
  </tr>
@@ -99,8 +99,8 @@ $(document).ready(function(){initNavTree('d4/df3/classsl_1_1log_1_1_core.html','
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:aa43f564cd56d8c5b878dcc99d0505d19"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">Record_t</a> = TRecord</td></tr>
-<tr class="separator:aa43f564cd56d8c5b878dcc99d0505d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a254048006ca4dd3b67bb8c96cc301f56"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a254048006ca4dd3b67bb8c96cc301f56">Record_t</a> = std::remove_cvref_t&lt; TRecord &gt;</td></tr>
+<tr class="separator:a254048006ca4dd3b67bb8c96cc301f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -122,15 +122,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab7c105bac33fd9bf5e9b4f3df5156a0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#ab7c105bac33fd9bf5e9b4f3df5156a0d">operator=</a> (<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a> &amp;&amp;)=delete</td></tr>
 <tr class="memdesc:ab7c105bac33fd9bf5e9b4f3df5156a0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted move assign operator.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#ab7c105bac33fd9bf5e9b4f3df5156a0d">More...</a><br /></td></tr>
 <tr class="separator:ab7c105bac33fd9bf5e9b4f3df5156a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac978894c8846ae6539d9f57ad2d4f8ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#ac978894c8846ae6539d9f57ad2d4f8ed">log</a> (<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">Record_t</a> record)</td></tr>
-<tr class="memdesc:ac978894c8846ae6539d9f57ad2d4f8ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues the Record internally.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#ac978894c8846ae6539d9f57ad2d4f8ed">More...</a><br /></td></tr>
-<tr class="separator:ac978894c8846ae6539d9f57ad2d4f8ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac833ffa6e582cd9405417f3e8b0aaa4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#ac833ffa6e582cd9405417f3e8b0aaa4a">log</a> (<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a254048006ca4dd3b67bb8c96cc301f56">Record_t</a> &amp;&amp;record)</td></tr>
+<tr class="memdesc:ac833ffa6e582cd9405417f3e8b0aaa4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues the Record internally.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#ac833ffa6e582cd9405417f3e8b0aaa4a">More...</a><br /></td></tr>
+<tr class="separator:ac833ffa6e582cd9405417f3e8b0aaa4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad828429edf3e849e9e88042c43a7da2e"><td class="memTemplParams" colspan="2">template&lt;std::derived_from&lt; ISink_t &gt; TSink, class... TArgs&gt; </td></tr>
 <tr class="memitem:ad828429edf3e849e9e88042c43a7da2e"><td class="memTemplItemLeft" align="right" valign="top">requires std::constructible_from&lt; TSink, TArgs... &gt; TSink &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#ad828429edf3e849e9e88042c43a7da2e">makeSink</a> (TArgs &amp;&amp;... args)</td></tr>
 <tr class="memdesc:ad828429edf3e849e9e88042c43a7da2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates Sink and registers it at this <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#ad828429edf3e849e9e88042c43a7da2e">More...</a><br /></td></tr>
 <tr class="separator:ad828429edf3e849e9e88042c43a7da2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3af914cb7a7eeec70b3e06211d110fc4"><td class="memTemplParams" colspan="2">template&lt;std::derived_from&lt; ISink_t &gt; TSink, class... TArgs&gt; </td></tr>
-<tr class="memitem:a3af914cb7a7eeec70b3e06211d110fc4"><td class="memTemplItemLeft" align="right" valign="top">requires std::constructible_from&lt; TSink, TArgs... &gt; <a class="el" href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html">ScopedSinkDisabling</a>&lt; <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">Record_t</a>, TSink &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4">makeDisabledSink</a> (TArgs &amp;&amp;... args)</td></tr>
+<tr class="memitem:a3af914cb7a7eeec70b3e06211d110fc4"><td class="memTemplItemLeft" align="right" valign="top">requires std::constructible_from&lt; TSink, TArgs... &gt; <a class="el" href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html">ScopedSinkDisabling</a>&lt; <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a254048006ca4dd3b67bb8c96cc301f56">Record_t</a>, TSink &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4">makeDisabledSink</a> (TArgs &amp;&amp;... args)</td></tr>
 <tr class="memdesc:a3af914cb7a7eeec70b3e06211d110fc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates Sink disabled and registers it at this <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance.  <a href="../../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4">More...</a><br /></td></tr>
 <tr class="separator:a3af914cb7a7eeec70b3e06211d110fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acee4e8ded4f939bd0e18f1a017469634"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#acee4e8ded4f939bd0e18f1a017469634">removeSink</a> (const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">ISink_t</a> &amp;sink)</td></tr>
@@ -160,8 +160,8 @@ class sl::log::Core&lt; TRecord &gt;</h3>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="../../d4/d80/_colorized_console_logging_2main_8cpp-example.html#_a0">ColorizedConsoleLogging/main.cpp</a>, <a class="el" href="../../d4/d5f/_custom_record_type_2main_8cpp-example.html#_a3">CustomRecordType/main.cpp</a>, and <a class="el" href="../../dc/dda/_customize_base_record_2main_8cpp-example.html#_a5">CustomizeBaseRecord/main.cpp</a>.</dd>
 </dl>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="aa43f564cd56d8c5b878dcc99d0505d19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa43f564cd56d8c5b878dcc99d0505d19">&#9670;&nbsp;</a></span>Record_t</h2>
+<a id="a254048006ca4dd3b67bb8c96cc301f56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a254048006ca4dd3b67bb8c96cc301f56">&#9670;&nbsp;</a></span>Record_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -169,7 +169,7 @@ class sl::log::Core&lt; TRecord &gt;</h3>
 template&lt;Record TRecord&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">Record_t</a> =  TRecord</td>
+          <td class="memname">using <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a254048006ca4dd3b67bb8c96cc301f56">Record_t</a> =  std::remove_cvref_t&lt;TRecord&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -298,8 +298,8 @@ template&lt;Record TRecord&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac978894c8846ae6539d9f57ad2d4f8ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac978894c8846ae6539d9f57ad2d4f8ed">&#9670;&nbsp;</a></span>log()</h2>
+<a id="ac833ffa6e582cd9405417f3e8b0aaa4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac833ffa6e582cd9405417f3e8b0aaa4a">&#9670;&nbsp;</a></span>log()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -312,7 +312,7 @@ template&lt;Record TRecord&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::log </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">Record_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a254048006ca4dd3b67bb8c96cc301f56">Record_t</a> &amp;&amp;&#160;</td>
           <td class="paramname"><em>record</em></td><td>)</td>
           <td></td>
         </tr>
@@ -349,7 +349,7 @@ template&lt;std::derived_from&lt; ISink_t &gt; TSink, class... TArgs&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">requires std::constructible_from&lt;TSink, TArgs...&gt; <a class="el" href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html">ScopedSinkDisabling</a>&lt;<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">Record_t</a>, TSink&gt; <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::makeDisabledSink </td>
+          <td class="memname">requires std::constructible_from&lt;TSink, TArgs...&gt; <a class="el" href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html">ScopedSinkDisabling</a>&lt;<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html#a254048006ca4dd3b67bb8c96cc301f56">Record_t</a>, TSink&gt; <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a>&lt; TRecord &gt;::makeDisabledSink </td>
           <td>(</td>
           <td class="paramtype">TArgs &amp;&amp;...&#160;</td>
           <td class="paramname"><em>args</em></td><td>)</td>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['notvoid_484',['NotVoid',['../dd/db9/group___concepts.html#ga020e0b2248bb393589aa5e0495384493',1,'sl::log']]]
+  ['message_468',['message',['../d5/dee/structsl_1_1log_1_1_record_getters.html#a54800ede4bba373e22599c360055cc46',1,'sl::log::RecordGetters']]]
 ];

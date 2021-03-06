@@ -1,8 +1,8 @@
 var classsl_1_1log_1_1_record_builder =
 [
-    [ "Channel_t", "db/d9a/classsl_1_1log_1_1_record_builder.html#a665c4ea92e11899cf197b09236590684", null ],
-    [ "Record_t", "db/d9a/classsl_1_1log_1_1_record_builder.html#abc8c50b198f8404d4dd3c077bbf028b3", null ],
-    [ "SeverityLevel_t", "db/d9a/classsl_1_1log_1_1_record_builder.html#a47508529cfd40837f1f269001649f731", null ],
+    [ "Channel_t", "db/d9a/classsl_1_1log_1_1_record_builder.html#a39d99f330f62a591baa2de1a55d52ff5", null ],
+    [ "Record_t", "db/d9a/classsl_1_1log_1_1_record_builder.html#ac0591c33421dcd62c2c364e0d043768f", null ],
+    [ "SeverityLevel_t", "db/d9a/classsl_1_1log_1_1_record_builder.html#ac94d2e5d7ec3fa28ab5562870e0e9dfd", null ],
     [ "RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html#af2494f47ecc84d7f12008afeedc6e386", null ],
     [ "~RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html#aa91db3e07ed07aba4793678525764ad7", null ],
     [ "RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html#a27945ab696667ec55c7476190c3c3715", null ],

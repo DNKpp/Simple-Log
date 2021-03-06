@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">alpha-v0.6</span>
+   &#160;<span id="projectnumber">alpha-v0.7</span>
    </div>
   </td>
  </tr>
@@ -83,6 +83,7 @@ $(document).ready(function(){initNavTree('de/da7/group___logger.html','../../');
 
 <div class="header">
   <div class="summary">
+<a href="#groups">Modules</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -90,6 +91,11 @@ $(document).ready(function(){initNavTree('de/da7/group___logger.html','../../');
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+Modules</h2></td></tr>
+<tr class="memitem:d5/dc9/group___logger_concepts"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dc9/group___logger_concepts.html">Logger Concepts</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger&lt; TRecord &gt;</a></td></tr>
@@ -98,15 +104,15 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga3038db9cc61fb94dd32ad6d02fc2ac11"><td class="memTemplParams" colspan="2">template&lt;Logger TLogger, class... TArgs&gt; </td></tr>
-<tr class="memitem:ga3038db9cc61fb94dd32ad6d02fc2ac11"><td class="memTemplItemLeft" align="right" valign="top">TLogger&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/da7/group___logger.html#ga3038db9cc61fb94dd32ad6d02fc2ac11">makeLogger</a> (<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&lt; typename TLogger::Record_t &gt; &amp;core, TArgs &amp;&amp;... args)</td></tr>
-<tr class="memdesc:ga3038db9cc61fb94dd32ad6d02fc2ac11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a Logger object and setup its callback to the given <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance.  <a href="../../de/da7/group___logger.html#ga3038db9cc61fb94dd32ad6d02fc2ac11">More...</a><br /></td></tr>
-<tr class="separator:ga3038db9cc61fb94dd32ad6d02fc2ac11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa48a1a4ffa294b238a60cc88ba848bc0"><td class="memTemplParams" colspan="2">template&lt;Logger TLogger, class... TArgs&gt; </td></tr>
+<tr class="memitem:gaa48a1a4ffa294b238a60cc88ba848bc0"><td class="memTemplItemLeft" align="right" valign="top">TLogger&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/da7/group___logger.html#gaa48a1a4ffa294b238a60cc88ba848bc0">makeLogger</a> (<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&lt; <a class="el" href="../../d5/dc9/group___logger_concepts.html#ga6f7d7e5c7a15081e50977ee9bd840cc0">LoggerRecord_t</a>&lt; TLogger &gt;&gt; &amp;core, TArgs &amp;&amp;... args)</td></tr>
+<tr class="memdesc:gaa48a1a4ffa294b238a60cc88ba848bc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a Logger object and setup its callback to the given <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance.  <a href="../../de/da7/group___logger.html#gaa48a1a4ffa294b238a60cc88ba848bc0">More...</a><br /></td></tr>
+<tr class="separator:gaa48a1a4ffa294b238a60cc88ba848bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga3038db9cc61fb94dd32ad6d02fc2ac11"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3038db9cc61fb94dd32ad6d02fc2ac11">&#9670;&nbsp;</a></span>makeLogger()</h2>
+<a id="gaa48a1a4ffa294b238a60cc88ba848bc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa48a1a4ffa294b238a60cc88ba848bc0">&#9670;&nbsp;</a></span>makeLogger()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -119,7 +125,7 @@ template&lt;Logger TLogger, class... TArgs&gt; </div>
         <tr>
           <td class="memname">TLogger makeLogger </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&lt; typename TLogger::Record_t &gt; &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&lt; <a class="el" href="../../d5/dc9/group___logger_concepts.html#ga6f7d7e5c7a15081e50977ee9bd840cc0">LoggerRecord_t</a>&lt; TLogger &gt;&gt; &amp;&#160;</td>
           <td class="paramname"><em>core</em>, </td>
         </tr>
         <tr>

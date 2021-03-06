@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">alpha-v0.6</span>
+   &#160;<span id="projectnumber">alpha-v0.7</span>
    </div>
   </td>
  </tr>
@@ -84,7 +84,9 @@ $(document).ready(function(){initNavTree('dc/d79/_record_8hpp.html','../../'); i
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Record.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -97,6 +99,15 @@ $(document).ready(function(){initNavTree('dc/d79/_record_8hpp.html','../../'); i
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d3c/structsl_1_1log_1_1_record_typedefs.html">sl::log::RecordTypedefs&lt; TRecord &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a layer of abstraction to Record member types.  <a href="../../d5/d3c/structsl_1_1log_1_1_record_typedefs.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dee/structsl_1_1log_1_1_record_getters.html">sl::log::RecordGetters&lt; TRecord &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a layer of abstraction to Record member setter.  <a href="../../d5/dee/structsl_1_1log_1_1_record_getters.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d91/structsl_1_1log_1_1_record_setters.html">sl::log::RecordSetters&lt; TRecord &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides a layer of abstraction to Record member setter.  <a href="../../d5/d91/structsl_1_1log_1_1_record_setters.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d7a/classsl_1_1log_1_1_base_record.html">sl::log::BaseRecord&lt; TSeverityLevel, TChannel, TMessage, TTimePoint &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A collection of logging related information.  <a href="../../dd/d7a/classsl_1_1log_1_1_base_record.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -107,6 +118,44 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:de/d83/namespacesl_1_1log"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d83/namespacesl_1_1log.html">sl::log</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga379fc0aedfd68341c4079a74c775be80"><td class="memTemplParams" colspan="2">template&lt;class TRecord &gt; </td></tr>
+<tr class="memitem:ga379fc0aedfd68341c4079a74c775be80"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/de0/group___record_concepts.html#ga379fc0aedfd68341c4079a74c775be80">sl::log::RecordMessage_t</a> = typename RecordTypedefs&lt; TRecord &gt;::Message_t</td></tr>
+<tr class="memdesc:ga379fc0aedfd68341c4079a74c775be80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef for easier access to <a class="el" href="../../df/dc2/group___record.html">Record's</a> message type.  <a href="../../da/de0/group___record_concepts.html#ga379fc0aedfd68341c4079a74c775be80">More...</a><br /></td></tr>
+<tr class="separator:ga379fc0aedfd68341c4079a74c775be80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga60a2ebfebf9c42c4d586b0ea86255b26"><td class="memTemplParams" colspan="2">template&lt;class TRecord &gt; </td></tr>
+<tr class="memitem:ga60a2ebfebf9c42c4d586b0ea86255b26"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/de0/group___record_concepts.html#ga60a2ebfebf9c42c4d586b0ea86255b26">sl::log::RecordSeverity_t</a> = typename RecordTypedefs&lt; TRecord &gt;::Severity_t</td></tr>
+<tr class="memdesc:ga60a2ebfebf9c42c4d586b0ea86255b26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef for easier access to <a class="el" href="../../df/dc2/group___record.html">Record's</a> severity type.  <a href="../../da/de0/group___record_concepts.html#ga60a2ebfebf9c42c4d586b0ea86255b26">More...</a><br /></td></tr>
+<tr class="separator:ga60a2ebfebf9c42c4d586b0ea86255b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf2b410b9ad6c7a684f6efa7f8aea30ae"><td class="memTemplParams" colspan="2">template&lt;class TRecord &gt; </td></tr>
+<tr class="memitem:gaf2b410b9ad6c7a684f6efa7f8aea30ae"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/de0/group___record_concepts.html#gaf2b410b9ad6c7a684f6efa7f8aea30ae">sl::log::RecordChannel_t</a> = typename RecordTypedefs&lt; TRecord &gt;::Channel_t</td></tr>
+<tr class="memdesc:gaf2b410b9ad6c7a684f6efa7f8aea30ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef for easier access to <a class="el" href="../../df/dc2/group___record.html">Record's</a> channel type.  <a href="../../da/de0/group___record_concepts.html#gaf2b410b9ad6c7a684f6efa7f8aea30ae">More...</a><br /></td></tr>
+<tr class="separator:gaf2b410b9ad6c7a684f6efa7f8aea30ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7d507e78ab057e6887708a53ecfcaa0f"><td class="memTemplParams" colspan="2">template&lt;class TRecord &gt; </td></tr>
+<tr class="memitem:ga7d507e78ab057e6887708a53ecfcaa0f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/de0/group___record_concepts.html#ga7d507e78ab057e6887708a53ecfcaa0f">sl::log::RecordTimePoint_t</a> = typename RecordTypedefs&lt; TRecord &gt;::TimePoint_t</td></tr>
+<tr class="memdesc:ga7d507e78ab057e6887708a53ecfcaa0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef for easier access to <a class="el" href="../../df/dc2/group___record.html">Record's</a> time-point type.  <a href="../../da/de0/group___record_concepts.html#ga7d507e78ab057e6887708a53ecfcaa0f">More...</a><br /></td></tr>
+<tr class="separator:ga7d507e78ab057e6887708a53ecfcaa0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga94a52f736d9adf3006619ee64eed0a23"><td class="memTemplParams" colspan="2">template&lt;class TRecord &gt; </td></tr>
+<tr class="memitem:ga94a52f736d9adf3006619ee64eed0a23"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/de0/group___record_concepts.html#ga94a52f736d9adf3006619ee64eed0a23">sl::log::RecordMemberTypedefs</a></td></tr>
+<tr class="memdesc:ga94a52f736d9adf3006619ee64eed0a23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept which checks for the necessary member typedefs of a Record type.  <a href="../../da/de0/group___record_concepts.html#ga94a52f736d9adf3006619ee64eed0a23">More...</a><br /></td></tr>
+<tr class="separator:ga94a52f736d9adf3006619ee64eed0a23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga54ec4f399406359fe22f4d82f4b8269b"><td class="memTemplParams" colspan="2">template&lt;class TRecord &gt; </td></tr>
+<tr class="memitem:ga54ec4f399406359fe22f4d82f4b8269b"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/de0/group___record_concepts.html#ga54ec4f399406359fe22f4d82f4b8269b">sl::log::RecordMemberGetters</a></td></tr>
+<tr class="memdesc:ga54ec4f399406359fe22f4d82f4b8269b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept which checks for the necessary member projections of a Record type.  <a href="../../da/de0/group___record_concepts.html#ga54ec4f399406359fe22f4d82f4b8269b">More...</a><br /></td></tr>
+<tr class="separator:ga54ec4f399406359fe22f4d82f4b8269b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e1f461e75a8a5d5e1aa7c6e756dfefc"><td class="memTemplParams" colspan="2">template&lt;class TRecord &gt; </td></tr>
+<tr class="memitem:ga7e1f461e75a8a5d5e1aa7c6e756dfefc"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/de0/group___record_concepts.html#ga7e1f461e75a8a5d5e1aa7c6e756dfefc">sl::log::RecordMemberSetters</a></td></tr>
+<tr class="memdesc:ga7e1f461e75a8a5d5e1aa7c6e756dfefc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept which checks for the necessary member setters of a Record type.  <a href="../../da/de0/group___record_concepts.html#ga7e1f461e75a8a5d5e1aa7c6e756dfefc">More...</a><br /></td></tr>
+<tr class="separator:ga7e1f461e75a8a5d5e1aa7c6e756dfefc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e49931624e51b19627bef18ff763081"><td class="memTemplParams" colspan="2">template&lt;class TRecord &gt; </td></tr>
+<tr class="memitem:ga7e49931624e51b19627bef18ff763081"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/de0/group___record_concepts.html#ga7e49931624e51b19627bef18ff763081">sl::log::Record</a></td></tr>
+<tr class="memdesc:ga7e49931624e51b19627bef18ff763081"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept which all the necessary concepts for Record types.  <a href="../../da/de0/group___record_concepts.html#ga7e49931624e51b19627bef18ff763081">More...</a><br /></td></tr>
+<tr class="separator:ga7e49931624e51b19627bef18ff763081"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">alpha-v0.6</span>
+   &#160;<span id="projectnumber">alpha-v0.7</span>
    </div>
   </td>
  </tr>
@@ -83,6 +83,7 @@ $(document).ready(function(){initNavTree('d5/df7/classsl_1_1log_1_1_set_sev.html
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="../../d6/dd1/classsl_1_1log_1_1_set_sev-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -95,11 +96,16 @@ $(document).ready(function(){initNavTree('d5/df7/classsl_1_1log_1_1_set_sev.html
 
 <p><code>#include &lt;<a class="el" href="../../dc/d3b/_record_builder_8hpp_source.html">RecordBuilder.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a4d8583526027bbb39eb036bf0d536899"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df7/classsl_1_1log_1_1_set_sev.html#a4d8583526027bbb39eb036bf0d536899">Sev_t</a> = TSeverityLevel</td></tr>
+<tr class="separator:a4d8583526027bbb39eb036bf0d536899"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3d6746ebdc8b6d8728480bf00814fce0"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df7/classsl_1_1log_1_1_set_sev.html#a3d6746ebdc8b6d8728480bf00814fce0">SetSev</a> (TSeverityLevel data) noexcept(std::is_nothrow_move_constructible_v&lt; TSeverityLevel &gt;)</td></tr>
-<tr class="memdesc:a3d6746ebdc8b6d8728480bf00814fce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor accepting severity level data.  <a href="../../d5/df7/classsl_1_1log_1_1_set_sev.html#a3d6746ebdc8b6d8728480bf00814fce0">More...</a><br /></td></tr>
-<tr class="separator:a3d6746ebdc8b6d8728480bf00814fce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cf1a8dab64ee93f9f3184225f4d828f"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/df7/classsl_1_1log_1_1_set_sev.html#a0cf1a8dab64ee93f9f3184225f4d828f">SetSev</a> (TSeverityLevel data) noexcept(std::is_nothrow_move_constructible_v&lt; <a class="el" href="../../d5/df7/classsl_1_1log_1_1_set_sev.html#a4d8583526027bbb39eb036bf0d536899">Sev_t</a> &gt;)</td></tr>
+<tr class="memdesc:a0cf1a8dab64ee93f9f3184225f4d828f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor accepting severity level data.  <a href="../../d5/df7/classsl_1_1log_1_1_set_sev.html#a0cf1a8dab64ee93f9f3184225f4d828f">More...</a><br /></td></tr>
+<tr class="separator:a0cf1a8dab64ee93f9f3184225f4d828f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a227adbbd475c9da954e587708c07df"><td class="memTemplParams" colspan="2">template&lt;Record TRecord&gt; </td></tr>
 <tr class="memitem:a5a227adbbd475c9da954e587708c07df"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/df7/classsl_1_1log_1_1_set_sev.html#a5a227adbbd475c9da954e587708c07df">operator()</a> (TRecord &amp;rec) const</td></tr>
 <tr class="memdesc:a5a227adbbd475c9da954e587708c07df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes severity level of the passed Record object.  <a href="../../d5/df7/classsl_1_1log_1_1_set_sev.html#a5a227adbbd475c9da954e587708c07df">More...</a><br /></td></tr>
@@ -119,9 +125,26 @@ class sl::log::SetSev&lt; TSeverityLevel &gt;</h3>
 <p>This type is generally designed to be directly used in logging expressions. When handed-over to a <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html" title="Helper class for building new Records.">RecordBuilder</a> instance by operator &lt;&lt;, it will then manipulate the severity level data of its constructing Record object. </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="../../d4/d80/_colorized_console_logging_2main_8cpp-example.html#_a13">ColorizedConsoleLogging/main.cpp</a>, <a class="el" href="../../d8/d60/_easy_start_2main_8cpp-example.html#_a1">EasyStart/main.cpp</a>, and <a class="el" href="../../d5/dc2/_file_logging_2main_8cpp-example.html#_a6">FileLogging/main.cpp</a>.</dd>
 </dl>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a3d6746ebdc8b6d8728480bf00814fce0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d6746ebdc8b6d8728480bf00814fce0">&#9670;&nbsp;</a></span>SetSev()</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a4d8583526027bbb39eb036bf0d536899"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d8583526027bbb39eb036bf0d536899">&#9670;&nbsp;</a></span>Sev_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TSeverityLevel &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../d5/df7/classsl_1_1log_1_1_set_sev.html">sl::log::SetSev</a>&lt; TSeverityLevel &gt;::<a class="el" href="../../d5/df7/classsl_1_1log_1_1_set_sev.html#a4d8583526027bbb39eb036bf0d536899">Sev_t</a> =  TSeverityLevel</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a0cf1a8dab64ee93f9f3184225f4d828f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cf1a8dab64ee93f9f3184225f4d828f">&#9670;&nbsp;</a></span>SetSev()</h2>
 
 <div class="memitem">
 <div class="memproto">

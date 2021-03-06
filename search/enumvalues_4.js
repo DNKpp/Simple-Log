@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['error_547',['error',['../df/d5b/group___prepared_types.html#ggaa30e95bdde6414a22c02e8c98d5dcf3facb5e100e5a9a3e7f6d1fd97512215282',1,'sl::log::preset']]]
+  ['fatal_540',['fatal',['../df/d5b/group___prepared_types.html#ggaa30e95bdde6414a22c02e8c98d5dcf3fadf6402fd9ecc60f5a2159fdf45711cd4',1,'sl::log::preset']]]
 ];

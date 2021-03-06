@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">alpha-v0.6</span>
+   &#160;<span id="projectnumber">alpha-v0.7</span>
    </div>
   </td>
  </tr>
@@ -90,13 +90,13 @@ $(document).ready(function(){initNavTree('de/d95/_filters_8hpp.html','../../'); 
 <div class="title">Filters.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
-<code>#include &lt;concepts&gt;</code><br />
-<code>#include &lt;tuple&gt;</code><br />
-<code>#include &lt;functional&gt;</code><br />
-<code>#include &lt;type_traits&gt;</code><br />
-<code>#include &quot;<a class="el" href="../../d9/db9/_concepts_8hpp_source.html">Concepts.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="../../dc/d79/_record_8hpp_source.html">Record.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../da/d76/_tuple_algorithms_8hpp_source.html">TupleAlgorithms.hpp</a>&quot;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;concepts&gt;</code><br />
+<code>#include &lt;functional&gt;</code><br />
+<code>#include &lt;tuple&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
 </div>
 <p><a href="../../de/d95/_filters_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -127,19 +127,19 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga24e7670965f3f000d4df436c0054d92f"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const typename TRecord::Message_t &amp; &gt; TUnaryPredicate&gt; </td></tr>
+<tr class="memitem:ga24e7670965f3f000d4df436c0054d92f"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const RecordMessage_t&lt; TRecord &gt; &amp; &gt; TUnaryPredicate&gt; </td></tr>
 <tr class="memitem:ga24e7670965f3f000d4df436c0054d92f"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d7c/group___filter.html#ga24e7670965f3f000d4df436c0054d92f">sl::log::makeMessageFilterFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
 <tr class="memdesc:ga24e7670965f3f000d4df436c0054d92f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating <a class="el" href="../../d4/d36/classsl_1_1log_1_1_projection_filter.html" title="Combines a projection on Record type with a predicate into an invokable object.">ProjectionFilter</a> of Record::message member.  <a href="../../df/d7c/group___filter.html#ga24e7670965f3f000d4df436c0054d92f">More...</a><br /></td></tr>
 <tr class="separator:ga24e7670965f3f000d4df436c0054d92f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2b59233f3a1ffef4e4f89be18836ee62"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const typename TRecord::SeverityLevel_t &amp; &gt; TUnaryPredicate&gt; </td></tr>
+<tr class="memitem:ga2b59233f3a1ffef4e4f89be18836ee62"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const RecordSeverity_t&lt; TRecord &gt; &amp; &gt; TUnaryPredicate&gt; </td></tr>
 <tr class="memitem:ga2b59233f3a1ffef4e4f89be18836ee62"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d7c/group___filter.html#ga2b59233f3a1ffef4e4f89be18836ee62">sl::log::makeSeverityFilterFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
 <tr class="memdesc:ga2b59233f3a1ffef4e4f89be18836ee62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating <a class="el" href="../../d4/d36/classsl_1_1log_1_1_projection_filter.html" title="Combines a projection on Record type with a predicate into an invokable object.">ProjectionFilter</a> of Record::severity member.  <a href="../../df/d7c/group___filter.html#ga2b59233f3a1ffef4e4f89be18836ee62">More...</a><br /></td></tr>
 <tr class="separator:ga2b59233f3a1ffef4e4f89be18836ee62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad6e836c03209fc28f9c910e3b3886c5b"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const typename TRecord::Channel_t &amp; &gt; TUnaryPredicate&gt; </td></tr>
+<tr class="memitem:gad6e836c03209fc28f9c910e3b3886c5b"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const RecordChannel_t&lt; TRecord &gt; &amp; &gt; TUnaryPredicate&gt; </td></tr>
 <tr class="memitem:gad6e836c03209fc28f9c910e3b3886c5b"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d7c/group___filter.html#gad6e836c03209fc28f9c910e3b3886c5b">sl::log::makeChannelFilterFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
 <tr class="memdesc:gad6e836c03209fc28f9c910e3b3886c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating <a class="el" href="../../d4/d36/classsl_1_1log_1_1_projection_filter.html" title="Combines a projection on Record type with a predicate into an invokable object.">ProjectionFilter</a> of Record::channel member.  <a href="../../df/d7c/group___filter.html#gad6e836c03209fc28f9c910e3b3886c5b">More...</a><br /></td></tr>
 <tr class="separator:gad6e836c03209fc28f9c910e3b3886c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga73263b59074d4b554ea36b6d488785ea"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const typename TRecord::TimePoint_t &amp; &gt; TUnaryPredicate&gt; </td></tr>
+<tr class="memitem:ga73263b59074d4b554ea36b6d488785ea"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const RecordTimePoint_t&lt; TRecord &gt; &amp; &gt; TUnaryPredicate&gt; </td></tr>
 <tr class="memitem:ga73263b59074d4b554ea36b6d488785ea"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d7c/group___filter.html#ga73263b59074d4b554ea36b6d488785ea">sl::log::makeTimePointFilterFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
 <tr class="memdesc:ga73263b59074d4b554ea36b6d488785ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating <a class="el" href="../../d4/d36/classsl_1_1log_1_1_projection_filter.html" title="Combines a projection on Record type with a predicate into an invokable object.">ProjectionFilter</a> of Record::timePoint member.  <a href="../../df/d7c/group___filter.html#ga73263b59074d4b554ea36b6d488785ea">More...</a><br /></td></tr>
 <tr class="separator:ga73263b59074d4b554ea36b6d488785ea"><td class="memSeparator" colspan="2">&#160;</td></tr>

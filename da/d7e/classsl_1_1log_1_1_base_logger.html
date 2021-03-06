@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">alpha-v0.6</span>
+   &#160;<span id="projectnumber">alpha-v0.7</span>
    </div>
   </td>
  </tr>
@@ -99,20 +99,22 @@ $(document).ready(function(){initNavTree('da/d7e/classsl_1_1log_1_1_base_logger.
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a617f3f56f6eee6112b4db89e9ed425f5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a617f3f56f6eee6112b4db89e9ed425f5">Record_t</a> = TRecord</td></tr>
-<tr class="separator:a617f3f56f6eee6112b4db89e9ed425f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf0e5cd1ac06e19a9be4baaef9cf33f1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#adf0e5cd1ac06e19a9be4baaef9cf33f1">SeverityLevel_t</a> = typename Record_t::SeverityLevel_t</td></tr>
-<tr class="separator:adf0e5cd1ac06e19a9be4baaef9cf33f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54e6f05c39ae8011b95848092c2d4ee0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a54e6f05c39ae8011b95848092c2d4ee0">Channel_t</a> = typename Record_t::Channel_t</td></tr>
-<tr class="separator:a54e6f05c39ae8011b95848092c2d4ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0fe8534edf7b83e346bb41ed2afee94"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#aa0fe8534edf7b83e346bb41ed2afee94">RecordBuilder_t</a> = <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html">RecordBuilder</a>&lt; <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a617f3f56f6eee6112b4db89e9ed425f5">Record_t</a> &gt;</td></tr>
+<tr class="memitem:ac1e3d896ff06fbd019a114976fb1051c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#ac1e3d896ff06fbd019a114976fb1051c">Record_t</a> = std::remove_cvref_t&lt; TRecord &gt;</td></tr>
+<tr class="separator:ac1e3d896ff06fbd019a114976fb1051c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d36eb0368e29c160318b607949ec4dd"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a1d36eb0368e29c160318b607949ec4dd">RecordSetters_t</a> = <a class="el" href="../../d5/d91/structsl_1_1log_1_1_record_setters.html">RecordSetters</a>&lt; <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#ac1e3d896ff06fbd019a114976fb1051c">Record_t</a> &gt;</td></tr>
+<tr class="separator:a1d36eb0368e29c160318b607949ec4dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74e34c0443676bf1fc65053d9ffde3d4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a74e34c0443676bf1fc65053d9ffde3d4">SeverityLevel_t</a> = <a class="el" href="../../da/de0/group___record_concepts.html#ga60a2ebfebf9c42c4d586b0ea86255b26">RecordSeverity_t</a>&lt; <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#ac1e3d896ff06fbd019a114976fb1051c">Record_t</a> &gt;</td></tr>
+<tr class="separator:a74e34c0443676bf1fc65053d9ffde3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1afc756fadc2a61f08e8c7f62bd96ca4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a1afc756fadc2a61f08e8c7f62bd96ca4">Channel_t</a> = <a class="el" href="../../da/de0/group___record_concepts.html#gaf2b410b9ad6c7a684f6efa7f8aea30ae">RecordChannel_t</a>&lt; <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#ac1e3d896ff06fbd019a114976fb1051c">Record_t</a> &gt;</td></tr>
+<tr class="separator:a1afc756fadc2a61f08e8c7f62bd96ca4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0fe8534edf7b83e346bb41ed2afee94"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#aa0fe8534edf7b83e346bb41ed2afee94">RecordBuilder_t</a> = <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html">RecordBuilder</a>&lt; <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#ac1e3d896ff06fbd019a114976fb1051c">Record_t</a> &gt;</td></tr>
 <tr class="separator:aa0fe8534edf7b83e346bb41ed2afee94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4aa67a73722753b8b1ed06a1a47acd1e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a4aa67a73722753b8b1ed06a1a47acd1e">LogCallback_t</a> = std::function&lt; void(<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a617f3f56f6eee6112b4db89e9ed425f5">Record_t</a>)&gt;</td></tr>
+<tr class="memitem:a4aa67a73722753b8b1ed06a1a47acd1e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a4aa67a73722753b8b1ed06a1a47acd1e">LogCallback_t</a> = std::function&lt; void(<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#ac1e3d896ff06fbd019a114976fb1051c">Record_t</a>)&gt;</td></tr>
 <tr class="separator:a4aa67a73722753b8b1ed06a1a47acd1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a78e1c2825b5d11ed5f7b989ef5b4ef06"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a78e1c2825b5d11ed5f7b989ef5b4ef06">BaseLogger</a> (<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a4aa67a73722753b8b1ed06a1a47acd1e">LogCallback_t</a> logCallback, <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#adf0e5cd1ac06e19a9be4baaef9cf33f1">SeverityLevel_t</a> defaultSeverityLvl={}, <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a54e6f05c39ae8011b95848092c2d4ee0">Channel_t</a> <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a61878c9d5f2b20d1e6483cda1c40af38">defaultChannel</a>={}) noexcept</td></tr>
+<tr class="memitem:a78e1c2825b5d11ed5f7b989ef5b4ef06"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a78e1c2825b5d11ed5f7b989ef5b4ef06">BaseLogger</a> (<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a4aa67a73722753b8b1ed06a1a47acd1e">LogCallback_t</a> logCallback, <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a74e34c0443676bf1fc65053d9ffde3d4">SeverityLevel_t</a> defaultSeverityLvl={}, <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a1afc756fadc2a61f08e8c7f62bd96ca4">Channel_t</a> <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a61878c9d5f2b20d1e6483cda1c40af38">defaultChannel</a>={}) noexcept</td></tr>
 <tr class="memdesc:a78e1c2825b5d11ed5f7b989ef5b4ef06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a78e1c2825b5d11ed5f7b989ef5b4ef06">More...</a><br /></td></tr>
 <tr class="separator:a78e1c2825b5d11ed5f7b989ef5b4ef06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6950d5a42b3025d95102546a728920b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#aa6950d5a42b3025d95102546a728920b">~BaseLogger</a> () noexcept=default</td></tr>
@@ -137,14 +139,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a43ba29860797ebf6a257fd333925c00f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a43ba29860797ebf6a257fd333925c00f">setDefaultSeverity</a> (USeverityLevel &amp;&amp;sevLvl) noexcept</td></tr>
 <tr class="memdesc:a43ba29860797ebf6a257fd333925c00f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for the default severity level.  <a href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a43ba29860797ebf6a257fd333925c00f">More...</a><br /></td></tr>
 <tr class="separator:a43ba29860797ebf6a257fd333925c00f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71aa434deab9c216dfde61c98e616401"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#adf0e5cd1ac06e19a9be4baaef9cf33f1">SeverityLevel_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a71aa434deab9c216dfde61c98e616401">defaultSeverity</a> () const noexcept</td></tr>
+<tr class="memitem:a71aa434deab9c216dfde61c98e616401"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a74e34c0443676bf1fc65053d9ffde3d4">SeverityLevel_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a71aa434deab9c216dfde61c98e616401">defaultSeverity</a> () const noexcept</td></tr>
 <tr class="memdesc:a71aa434deab9c216dfde61c98e616401"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the default severity level.  <a href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a71aa434deab9c216dfde61c98e616401">More...</a><br /></td></tr>
 <tr class="separator:a71aa434deab9c216dfde61c98e616401"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c6653af9e2d0fe20db2eb8ced71b6d2"><td class="memTemplParams" colspan="2">template&lt;std::convertible_to&lt; Channel_t &gt; UChannel&gt; </td></tr>
 <tr class="memitem:a9c6653af9e2d0fe20db2eb8ced71b6d2"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a9c6653af9e2d0fe20db2eb8ced71b6d2">setDefaultChannel</a> (UChannel &amp;&amp;channel) noexcept</td></tr>
 <tr class="memdesc:a9c6653af9e2d0fe20db2eb8ced71b6d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for the default channel.  <a href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a9c6653af9e2d0fe20db2eb8ced71b6d2">More...</a><br /></td></tr>
 <tr class="separator:a9c6653af9e2d0fe20db2eb8ced71b6d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61878c9d5f2b20d1e6483cda1c40af38"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a54e6f05c39ae8011b95848092c2d4ee0">Channel_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a61878c9d5f2b20d1e6483cda1c40af38">defaultChannel</a> () const noexcept</td></tr>
+<tr class="memitem:a61878c9d5f2b20d1e6483cda1c40af38"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a1afc756fadc2a61f08e8c7f62bd96ca4">Channel_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a61878c9d5f2b20d1e6483cda1c40af38">defaultChannel</a> () const noexcept</td></tr>
 <tr class="memdesc:a61878c9d5f2b20d1e6483cda1c40af38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the default channel.  <a href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a61878c9d5f2b20d1e6483cda1c40af38">More...</a><br /></td></tr>
 <tr class="separator:a61878c9d5f2b20d1e6483cda1c40af38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -152,10 +154,10 @@ Public Member Functions</h2></td></tr>
 Related Functions</h2></td></tr>
 <tr><td class="ititle" colspan="2"><p>(Note that these are not member functions.) </p>
 </td></tr>
-<tr class="memitem:ga3038db9cc61fb94dd32ad6d02fc2ac11"><td class="memTemplParams" colspan="2">template&lt;Logger TLogger, class... TArgs&gt; </td></tr>
-<tr class="memitem:ga3038db9cc61fb94dd32ad6d02fc2ac11"><td class="memTemplItemLeft" align="right" valign="top">TLogger&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/da7/group___logger.html#ga3038db9cc61fb94dd32ad6d02fc2ac11">makeLogger</a> (<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&lt; typename TLogger::Record_t &gt; &amp;core, TArgs &amp;&amp;... args)</td></tr>
-<tr class="memdesc:ga3038db9cc61fb94dd32ad6d02fc2ac11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a Logger object and setup its callback to the given <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance.  <a href="../../de/da7/group___logger.html#ga3038db9cc61fb94dd32ad6d02fc2ac11">More...</a><br /></td></tr>
-<tr class="separator:ga3038db9cc61fb94dd32ad6d02fc2ac11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa48a1a4ffa294b238a60cc88ba848bc0"><td class="memTemplParams" colspan="2">template&lt;Logger TLogger, class... TArgs&gt; </td></tr>
+<tr class="memitem:gaa48a1a4ffa294b238a60cc88ba848bc0"><td class="memTemplItemLeft" align="right" valign="top">TLogger&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../de/da7/group___logger.html#gaa48a1a4ffa294b238a60cc88ba848bc0">makeLogger</a> (<a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&lt; <a class="el" href="../../d5/dc9/group___logger_concepts.html#ga6f7d7e5c7a15081e50977ee9bd840cc0">LoggerRecord_t</a>&lt; TLogger &gt;&gt; &amp;core, TArgs &amp;&amp;... args)</td></tr>
+<tr class="memdesc:gaa48a1a4ffa294b238a60cc88ba848bc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a Logger object and setup its callback to the given <a class="el" href="../../d4/df3/classsl_1_1log_1_1_core.html" title="The central point of the whole library. Needs to be instantiated at least once.">Core</a> instance.  <a href="../../de/da7/group___logger.html#gaa48a1a4ffa294b238a60cc88ba848bc0">More...</a><br /></td></tr>
+<tr class="separator:gaa48a1a4ffa294b238a60cc88ba848bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;Record TRecord&gt;<br />
@@ -173,8 +175,8 @@ class sl::log::BaseLogger&lt; TRecord &gt;</h3>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="../../d4/d5f/_custom_record_type_2main_8cpp-example.html#_a9">CustomRecordType/main.cpp</a>, and <a class="el" href="../../dc/dda/_customize_base_record_2main_8cpp-example.html#_a11">CustomizeBaseRecord/main.cpp</a>.</dd>
 </dl>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a54e6f05c39ae8011b95848092c2d4ee0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54e6f05c39ae8011b95848092c2d4ee0">&#9670;&nbsp;</a></span>Channel_t</h2>
+<a id="a1afc756fadc2a61f08e8c7f62bd96ca4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1afc756fadc2a61f08e8c7f62bd96ca4">&#9670;&nbsp;</a></span>Channel_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -182,7 +184,7 @@ class sl::log::BaseLogger&lt; TRecord &gt;</h3>
 template&lt;Record TRecord&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a>&lt; TRecord &gt;::<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a54e6f05c39ae8011b95848092c2d4ee0">Channel_t</a> =  typename Record_t::Channel_t</td>
+          <td class="memname">using <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a>&lt; TRecord &gt;::<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a1afc756fadc2a61f08e8c7f62bd96ca4">Channel_t</a> =  <a class="el" href="../../da/de0/group___record_concepts.html#gaf2b410b9ad6c7a684f6efa7f8aea30ae">RecordChannel_t</a>&lt;<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#ac1e3d896ff06fbd019a114976fb1051c">Record_t</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -198,15 +200,15 @@ template&lt;Record TRecord&gt; </div>
 template&lt;Record TRecord&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a>&lt; TRecord &gt;::<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a4aa67a73722753b8b1ed06a1a47acd1e">LogCallback_t</a> =  std::function&lt;void(<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a617f3f56f6eee6112b4db89e9ed425f5">Record_t</a>)&gt;</td>
+          <td class="memname">using <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a>&lt; TRecord &gt;::<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a4aa67a73722753b8b1ed06a1a47acd1e">LogCallback_t</a> =  std::function&lt;void(<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#ac1e3d896ff06fbd019a114976fb1051c">Record_t</a>)&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a617f3f56f6eee6112b4db89e9ed425f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a617f3f56f6eee6112b4db89e9ed425f5">&#9670;&nbsp;</a></span>Record_t</h2>
+<a id="ac1e3d896ff06fbd019a114976fb1051c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1e3d896ff06fbd019a114976fb1051c">&#9670;&nbsp;</a></span>Record_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -214,7 +216,7 @@ template&lt;Record TRecord&gt; </div>
 template&lt;Record TRecord&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a>&lt; TRecord &gt;::<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a617f3f56f6eee6112b4db89e9ed425f5">Record_t</a> =  TRecord</td>
+          <td class="memname">using <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a>&lt; TRecord &gt;::<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#ac1e3d896ff06fbd019a114976fb1051c">Record_t</a> =  std::remove_cvref_t&lt;TRecord&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -230,15 +232,15 @@ template&lt;Record TRecord&gt; </div>
 template&lt;Record TRecord&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a>&lt; TRecord &gt;::<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#aa0fe8534edf7b83e346bb41ed2afee94">RecordBuilder_t</a> =  <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html">RecordBuilder</a>&lt;<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a617f3f56f6eee6112b4db89e9ed425f5">Record_t</a>&gt;</td>
+          <td class="memname">using <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a>&lt; TRecord &gt;::<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#aa0fe8534edf7b83e346bb41ed2afee94">RecordBuilder_t</a> =  <a class="el" href="../../db/d9a/classsl_1_1log_1_1_record_builder.html">RecordBuilder</a>&lt;<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#ac1e3d896ff06fbd019a114976fb1051c">Record_t</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="adf0e5cd1ac06e19a9be4baaef9cf33f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf0e5cd1ac06e19a9be4baaef9cf33f1">&#9670;&nbsp;</a></span>SeverityLevel_t</h2>
+<a id="a1d36eb0368e29c160318b607949ec4dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d36eb0368e29c160318b607949ec4dd">&#9670;&nbsp;</a></span>RecordSetters_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -246,7 +248,23 @@ template&lt;Record TRecord&gt; </div>
 template&lt;Record TRecord&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a>&lt; TRecord &gt;::<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#adf0e5cd1ac06e19a9be4baaef9cf33f1">SeverityLevel_t</a> =  typename Record_t::SeverityLevel_t</td>
+          <td class="memname">using <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a>&lt; TRecord &gt;::<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a1d36eb0368e29c160318b607949ec4dd">RecordSetters_t</a> =  <a class="el" href="../../d5/d91/structsl_1_1log_1_1_record_setters.html">RecordSetters</a>&lt;<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#ac1e3d896ff06fbd019a114976fb1051c">Record_t</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a74e34c0443676bf1fc65053d9ffde3d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74e34c0443676bf1fc65053d9ffde3d4">&#9670;&nbsp;</a></span>SeverityLevel_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a>&lt; TRecord &gt;::<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a74e34c0443676bf1fc65053d9ffde3d4">SeverityLevel_t</a> =  <a class="el" href="../../da/de0/group___record_concepts.html#ga60a2ebfebf9c42c4d586b0ea86255b26">RecordSeverity_t</a>&lt;<a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#ac1e3d896ff06fbd019a114976fb1051c">Record_t</a>&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -274,13 +292,13 @@ template&lt;Record TRecord&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#adf0e5cd1ac06e19a9be4baaef9cf33f1">SeverityLevel_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a74e34c0443676bf1fc65053d9ffde3d4">SeverityLevel_t</a>&#160;</td>
           <td class="paramname"><em>defaultSeverityLvl</em> = <code>{}</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a54e6f05c39ae8011b95848092c2d4ee0">Channel_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a1afc756fadc2a61f08e8c7f62bd96ca4">Channel_t</a>&#160;</td>
           <td class="paramname"><em>defaultChannel</em> = <code>{}</code>&#160;</td>
         </tr>
         <tr>
@@ -410,7 +428,7 @@ template&lt;Record TRecord&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a54e6f05c39ae8011b95848092c2d4ee0">Channel_t</a>&amp; <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a>&lt; TRecord &gt;::defaultChannel </td>
+          <td class="memname">const <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a1afc756fadc2a61f08e8c7f62bd96ca4">Channel_t</a>&amp; <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a>&lt; TRecord &gt;::defaultChannel </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -440,7 +458,7 @@ template&lt;Record TRecord&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#adf0e5cd1ac06e19a9be4baaef9cf33f1">SeverityLevel_t</a>&amp; <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a>&lt; TRecord &gt;::defaultSeverity </td>
+          <td class="memname">const <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html#a74e34c0443676bf1fc65053d9ffde3d4">SeverityLevel_t</a>&amp; <a class="el" href="../../da/d7e/classsl_1_1log_1_1_base_logger.html">sl::log::BaseLogger</a>&lt; TRecord &gt;::defaultSeverity </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>

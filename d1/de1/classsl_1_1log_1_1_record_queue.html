@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">alpha-v0.6</span>
+   &#160;<span id="projectnumber">alpha-v0.7</span>
    </div>
   </td>
  </tr>
@@ -98,15 +98,15 @@ $(document).ready(function(){initNavTree('d1/de1/classsl_1_1log_1_1_record_queue
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a9bfdaa527ad874a72e14eccf169b3bab"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab">Record_t</a> = TRecord</td></tr>
-<tr class="separator:a9bfdaa527ad874a72e14eccf169b3bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aced15b99c374253ca0b69fe70754ebd6"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#aced15b99c374253ca0b69fe70754ebd6">Record_t</a> = std::remove_cvref_t&lt; TRecord &gt;</td></tr>
+<tr class="separator:aced15b99c374253ca0b69fe70754ebd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9b33e0216d87d6ee94af3c872007c4d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9b33e0216d87d6ee94af3c872007c4d1">push</a> (<a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab">Record_t</a> record)</td></tr>
+<tr class="memitem:a9b33e0216d87d6ee94af3c872007c4d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9b33e0216d87d6ee94af3c872007c4d1">push</a> (<a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#aced15b99c374253ca0b69fe70754ebd6">Record_t</a> record)</td></tr>
 <tr class="memdesc:a9b33e0216d87d6ee94af3c872007c4d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes Record s to the internal queue.  <a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9b33e0216d87d6ee94af3c872007c4d1">More...</a><br /></td></tr>
 <tr class="separator:a9b33e0216d87d6ee94af3c872007c4d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b6bcbb58a14a851bbd396a9227ecb01"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab">Record_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a8b6bcbb58a14a851bbd396a9227ecb01">take</a> (std::optional&lt; std::chrono::milliseconds &gt; waitingDuration=std::nullopt)</td></tr>
+<tr class="memitem:a8b6bcbb58a14a851bbd396a9227ecb01"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#aced15b99c374253ca0b69fe70754ebd6">Record_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a8b6bcbb58a14a851bbd396a9227ecb01">take</a> (std::optional&lt; std::chrono::milliseconds &gt; waitingDuration=std::nullopt)</td></tr>
 <tr class="memdesc:a8b6bcbb58a14a851bbd396a9227ecb01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes the first Record from the queue.  <a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a8b6bcbb58a14a851bbd396a9227ecb01">More...</a><br /></td></tr>
 <tr class="separator:a8b6bcbb58a14a851bbd396a9227ecb01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9edb42e48cea7c3084dbd8a5fded2d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#ad9edb42e48cea7c3084dbd8a5fded2d4">empty</a> () const noexcept</td></tr>
@@ -129,8 +129,8 @@ class sl::log::RecordQueue&lt; TRecord &gt;</h3>
 </dl>
 <p>This class is a simple representation of a blocking queue. Its <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a8b6bcbb58a14a851bbd396a9227ecb01" title="Takes the first Record from the queue.">take()</a> function blocks until an element is present in the internal queue or the duration exceeded. Each function is thread-safe by design. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a9bfdaa527ad874a72e14eccf169b3bab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9bfdaa527ad874a72e14eccf169b3bab">&#9670;&nbsp;</a></span>Record_t</h2>
+<a id="aced15b99c374253ca0b69fe70754ebd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aced15b99c374253ca0b69fe70754ebd6">&#9670;&nbsp;</a></span>Record_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -138,7 +138,7 @@ class sl::log::RecordQueue&lt; TRecord &gt;</h3>
 template&lt;Record TRecord&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html">sl::log::RecordQueue</a>&lt; TRecord &gt;::<a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab">Record_t</a> =  TRecord</td>
+          <td class="memname">using <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html">sl::log::RecordQueue</a>&lt; TRecord &gt;::<a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#aced15b99c374253ca0b69fe70754ebd6">Record_t</a> =  std::remove_cvref_t&lt;TRecord&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -190,7 +190,7 @@ template&lt;Record TRecord&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html">sl::log::RecordQueue</a>&lt; TRecord &gt;::push </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab">Record_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#aced15b99c374253ca0b69fe70754ebd6">Record_t</a>&#160;</td>
           <td class="paramname"><em>record</em></td><td>)</td>
           <td></td>
         </tr>
@@ -254,7 +254,7 @@ template&lt;Record TRecord&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt;<a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9bfdaa527ad874a72e14eccf169b3bab">Record_t</a>&gt; <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html">sl::log::RecordQueue</a>&lt; TRecord &gt;::take </td>
+          <td class="memname">std::optional&lt;<a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#aced15b99c374253ca0b69fe70754ebd6">Record_t</a>&gt; <a class="el" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html">sl::log::RecordQueue</a>&lt; TRecord &gt;::take </td>
           <td>(</td>
           <td class="paramtype">std::optional&lt; std::chrono::milliseconds &gt;&#160;</td>
           <td class="paramname"><em>waitingDuration</em> = <code>std::nullopt</code></td><td>)</td>

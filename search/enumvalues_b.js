@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['off_557',['Off',['../d1/df2/namespacerang.html#a9a0ad8048ed47f032f5bdb687ba64164ad15305d7a4e34e02489c74a5ef542f36',1,'rang']]]
+  ['underline_550',['underline',['../d8/d37/structsl_1_1log_1_1_console_text_style.html#a2288b3f116a37ff0dcd1479462e04ed6a6dc7b4483f8c2c701a48e42db552806d',1,'sl::log::ConsoleTextStyle']]]
 ];

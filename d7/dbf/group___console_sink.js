@@ -45,7 +45,8 @@ var group___console_sink =
       [ "Filter_t", "d2/df0/classsl_1_1log_1_1_console_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381", null ],
       [ "FlushPolicy_t", "d2/df0/classsl_1_1log_1_1_console_sink.html#a0f59dc9971f0be5d4a8d018d72e4fdb4", null ],
       [ "Formatter_t", "d2/df0/classsl_1_1log_1_1_console_sink.html#a84c4f321caf9c3c4c2586c7698206596", null ],
-      [ "Record_t", "d2/df0/classsl_1_1log_1_1_console_sink.html#ad79d9e5f6c4e07be42c84a281dc45082", null ],
+      [ "Projections_t", "d2/df0/classsl_1_1log_1_1_console_sink.html#a8fae464ec47801782463a38ced080b98", null ],
+      [ "Record_t", "d2/df0/classsl_1_1log_1_1_console_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3", null ],
       [ "TextStylePolicy_t", "d2/df0/classsl_1_1log_1_1_console_sink.html#ad59d99c7ed7bd9f0fc5393d7e19ca1e0", null ],
       [ "ConsoleSink", "d2/df0/classsl_1_1log_1_1_console_sink.html#a5d279c951b1cea10605bcfc2e4079d4b", null ],
       [ "~ConsoleSink", "d2/df0/classsl_1_1log_1_1_console_sink.html#a2bb6933214fd33be1b16f3ecf4bac422", null ],
@@ -73,5 +74,6 @@ var group___console_sink =
     ] ],
     [ "makeConsoleTextStyleTableFor", "d7/dbf/group___console_sink.html#gae2f7c0a256d4965422ac90222afc8e8e", null ],
     [ "operator<<", "d7/dbf/group___console_sink.html#gaeb779fb6e758a317d35ba1c78c231574", null ],
+    [ "ConsoleTextStylePolicyFor", "d7/dbf/group___console_sink.html#gabce0461a36f4161bdbe47bca09e37b25", null ],
     [ "defaultConsoleTextStyle", "d7/dbf/group___console_sink.html#ga315028fe8f50a093f977b624560ec307", null ]
 ];

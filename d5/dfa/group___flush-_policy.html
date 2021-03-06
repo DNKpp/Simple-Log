@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">alpha-v0.6</span>
+   &#160;<span id="projectnumber">alpha-v0.7</span>
    </div>
   </td>
  </tr>
@@ -123,19 +123,19 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gafd2084b61e0e19b5cfac465eac9a88f1"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const typename TRecord::SeverityLevel_t &amp; &gt; TUnaryPredicate&gt; </td></tr>
+<tr class="memitem:gafd2084b61e0e19b5cfac465eac9a88f1"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const RecordMessage_t&lt; TRecord &gt; &amp; &gt; TUnaryPredicate&gt; </td></tr>
 <tr class="memitem:gafd2084b61e0e19b5cfac465eac9a88f1"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dfa/group___flush-_policy.html#gafd2084b61e0e19b5cfac465eac9a88f1">sl::log::makeMessageFlushPolicyFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
 <tr class="memdesc:gafd2084b61e0e19b5cfac465eac9a88f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating Flush-Policies based on Record::message member.  <a href="../../d5/dfa/group___flush-_policy.html#gafd2084b61e0e19b5cfac465eac9a88f1">More...</a><br /></td></tr>
 <tr class="separator:gafd2084b61e0e19b5cfac465eac9a88f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab9b3e1b941de7c29475debaa1b6a1cac"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const typename TRecord::SeverityLevel_t &amp; &gt; TUnaryPredicate&gt; </td></tr>
+<tr class="memitem:gab9b3e1b941de7c29475debaa1b6a1cac"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const RecordSeverity_t&lt; TRecord &gt; &amp; &gt; TUnaryPredicate&gt; </td></tr>
 <tr class="memitem:gab9b3e1b941de7c29475debaa1b6a1cac"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dfa/group___flush-_policy.html#gab9b3e1b941de7c29475debaa1b6a1cac">sl::log::makeSeverityFlushPolicyFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
 <tr class="memdesc:gab9b3e1b941de7c29475debaa1b6a1cac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating Flush-Policies based on Record::severity member.  <a href="../../d5/dfa/group___flush-_policy.html#gab9b3e1b941de7c29475debaa1b6a1cac">More...</a><br /></td></tr>
 <tr class="separator:gab9b3e1b941de7c29475debaa1b6a1cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga14bfb1b391c85b40d7a1e6a99e16d495"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const typename TRecord::Channel_t &amp; &gt; TUnaryPredicate&gt; </td></tr>
+<tr class="memitem:ga14bfb1b391c85b40d7a1e6a99e16d495"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const RecordChannel_t&lt; TRecord &gt; &amp; &gt; TUnaryPredicate&gt; </td></tr>
 <tr class="memitem:ga14bfb1b391c85b40d7a1e6a99e16d495"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dfa/group___flush-_policy.html#ga14bfb1b391c85b40d7a1e6a99e16d495">sl::log::makeChannelFlushPolicyFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
 <tr class="memdesc:ga14bfb1b391c85b40d7a1e6a99e16d495"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating Flush-Policies based on Record::channel member.  <a href="../../d5/dfa/group___flush-_policy.html#ga14bfb1b391c85b40d7a1e6a99e16d495">More...</a><br /></td></tr>
 <tr class="separator:ga14bfb1b391c85b40d7a1e6a99e16d495"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafc0f3598ec58dda217e635c7fe2abe4f"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const typename TRecord::TimePoint_t &amp; &gt; TUnaryPredicate&gt; </td></tr>
+<tr class="memitem:gafc0f3598ec58dda217e635c7fe2abe4f"><td class="memTemplParams" colspan="2">template&lt;Record TRecord, std::predicate&lt; const RecordTimePoint_t&lt; TRecord &gt; &amp; &gt; TUnaryPredicate&gt; </td></tr>
 <tr class="memitem:gafc0f3598ec58dda217e635c7fe2abe4f"><td class="memTemplItemLeft" align="right" valign="top">constexpr auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d5/dfa/group___flush-_policy.html#gafc0f3598ec58dda217e635c7fe2abe4f">sl::log::makeTimePointFlushPolicyFor</a> (TUnaryPredicate &amp;&amp;predicate)</td></tr>
 <tr class="memdesc:gafc0f3598ec58dda217e635c7fe2abe4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory function for creating Flush-Policies based on Record::timePoint member.  <a href="../../d5/dfa/group___flush-_policy.html#gafc0f3598ec58dda217e635c7fe2abe4f">More...</a><br /></td></tr>
 <tr class="separator:gafc0f3598ec58dda217e635c7fe2abe4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,7 +167,7 @@ Functions</h2></td></tr>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;Record TRecord, std::predicate&lt; const typename TRecord::Channel_t &amp; &gt; TUnaryPredicate&gt; </div>
+template&lt;Record TRecord, std::predicate&lt; const RecordChannel_t&lt; TRecord &gt; &amp; &gt; TUnaryPredicate&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -212,7 +212,7 @@ template&lt;Record TRecord, std::predicate&lt; const typename TRecord::Channel_t
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;Record TRecord, std::predicate&lt; const typename TRecord::SeverityLevel_t &amp; &gt; TUnaryPredicate&gt; </div>
+template&lt;Record TRecord, std::predicate&lt; const RecordMessage_t&lt; TRecord &gt; &amp; &gt; TUnaryPredicate&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -257,7 +257,7 @@ template&lt;Record TRecord, std::predicate&lt; const typename TRecord::SeverityL
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;Record TRecord, std::predicate&lt; const typename TRecord::SeverityLevel_t &amp; &gt; TUnaryPredicate&gt; </div>
+template&lt;Record TRecord, std::predicate&lt; const RecordSeverity_t&lt; TRecord &gt; &amp; &gt; TUnaryPredicate&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -302,7 +302,7 @@ template&lt;Record TRecord, std::predicate&lt; const typename TRecord::SeverityL
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;Record TRecord, std::predicate&lt; const typename TRecord::TimePoint_t &amp; &gt; TUnaryPredicate&gt; </div>
+template&lt;Record TRecord, std::predicate&lt; const RecordTimePoint_t&lt; TRecord &gt; &amp; &gt; TUnaryPredicate&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">

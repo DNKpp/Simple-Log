@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['less_301',['Less',['../d6/deb/classsl_1_1log_1_1_less.html',1,'sl::log']]],
-  ['lessequals_302',['LessEquals',['../df/d10/classsl_1_1log_1_1_less_equals.html',1,'sl::log']]]
+  ['less_291',['Less',['../d6/deb/classsl_1_1log_1_1_less.html',1,'sl::log']]],
+  ['lessequals_292',['LessEquals',['../df/d10/classsl_1_1log_1_1_less_equals.html',1,'sl::log']]],
+  ['loggertypedefs_293',['LoggerTypedefs',['../d7/dbb/structsl_1_1log_1_1_logger_typedefs.html',1,'sl::log']]]
 ];

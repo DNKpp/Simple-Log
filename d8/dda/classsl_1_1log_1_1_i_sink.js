@@ -1,6 +1,6 @@
 var classsl_1_1log_1_1_i_sink =
 [
-    [ "Record_t", "d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082", null ],
+    [ "Record_t", "d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3", null ],
     [ "ISink", "d8/dda/classsl_1_1log_1_1_i_sink.html#abfaca8044c6895350a496b13982de363", null ],
     [ "~ISink", "d8/dda/classsl_1_1log_1_1_i_sink.html#a33d8137c0f9f0e0a7e77f8fa461c9a2b", null ],
     [ "ISink", "d8/dda/classsl_1_1log_1_1_i_sink.html#aa9ba223d8652631e3f3d5fd5dcc2f760", null ],

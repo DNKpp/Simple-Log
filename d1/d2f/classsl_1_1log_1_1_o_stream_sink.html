@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">alpha-v0.6</span>
+   &#160;<span id="projectnumber">alpha-v0.7</span>
    </div>
   </td>
  </tr>
@@ -112,14 +112,16 @@ Inheritance diagram for sl::log::OStreamSink&lt; TRecord &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a0f59dc9971f0be5d4a8d018d72e4fdb4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a0f59dc9971f0be5d4a8d018d72e4fdb4">FlushPolicy_t</a> = std::unique_ptr&lt; detail::AbstractFlushPolicyWrapper&lt; <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &gt; &gt;</td></tr>
+<tr class="memitem:a0f59dc9971f0be5d4a8d018d72e4fdb4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a0f59dc9971f0be5d4a8d018d72e4fdb4">FlushPolicy_t</a> = std::unique_ptr&lt; detail::AbstractFlushPolicyWrapper&lt; <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> &gt; &gt;</td></tr>
 <tr class="separator:a0f59dc9971f0be5d4a8d018d72e4fdb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad79d9e5f6c4e07be42c84a281dc45082"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> = TRecord</td></tr>
-<tr class="memdesc:ad79d9e5f6c4e07be42c84a281dc45082"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used Record type.  <a href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">More...</a><br /></td></tr>
-<tr class="separator:ad79d9e5f6c4e07be42c84a281dc45082"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84c4f321caf9c3c4c2586c7698206596"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596">Formatter_t</a> = std::function&lt; std::string(const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;)&gt;</td></tr>
+<tr class="memitem:a9defe1ac8b150ee8ee49364b863dcfb3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> = std::remove_cvref_t&lt; TRecord &gt;</td></tr>
+<tr class="memdesc:a9defe1ac8b150ee8ee49364b863dcfb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used Record type.  <a href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">More...</a><br /></td></tr>
+<tr class="separator:a9defe1ac8b150ee8ee49364b863dcfb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fae464ec47801782463a38ced080b98"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a8fae464ec47801782463a38ced080b98">Projections_t</a> = <a class="el" href="../../d5/dee/structsl_1_1log_1_1_record_getters.html">RecordGetters</a>&lt; <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> &gt;</td></tr>
+<tr class="separator:a8fae464ec47801782463a38ced080b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84c4f321caf9c3c4c2586c7698206596"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596">Formatter_t</a> = std::function&lt; std::string(const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> &amp;)&gt;</td></tr>
 <tr class="separator:a84c4f321caf9c3c4c2586c7698206596"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30f3e717d2ba9ffae23cb19b3c53e381"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381">Filter_t</a> = std::function&lt; bool(const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;)&gt;</td></tr>
+<tr class="memitem:a30f3e717d2ba9ffae23cb19b3c53e381"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381">Filter_t</a> = std::function&lt; bool(const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> &amp;)&gt;</td></tr>
 <tr class="separator:a30f3e717d2ba9ffae23cb19b3c53e381"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -152,7 +154,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6622698108bf75680b1d58401e120b8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a6622698108bf75680b1d58401e120b8d">flush</a> ()</td></tr>
 <tr class="memdesc:a6622698108bf75680b1d58401e120b8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flushes all pending output of the internal stream.  <a href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a6622698108bf75680b1d58401e120b8d">More...</a><br /></td></tr>
 <tr class="separator:a6622698108bf75680b1d58401e120b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a751bd1367c8492449c4e83f3588ee2af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a751bd1367c8492449c4e83f3588ee2af">log</a> (const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;record) final override</td></tr>
+<tr class="memitem:a751bd1367c8492449c4e83f3588ee2af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a751bd1367c8492449c4e83f3588ee2af">log</a> (const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> &amp;record) final override</td></tr>
 <tr class="memdesc:a751bd1367c8492449c4e83f3588ee2af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the given Record object.  <a href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a751bd1367c8492449c4e83f3588ee2af">More...</a><br /></td></tr>
 <tr class="separator:a751bd1367c8492449c4e83f3588ee2af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fc2ef4635beb23aae7a27597cb31d8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a2fc2ef4635beb23aae7a27597cb31d8a">setEnabled</a> (bool enable=true) noexcept final override</td></tr>
@@ -182,10 +184,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a3300ffbcf0a253b9df4a761aafbd6c41"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a3300ffbcf0a253b9df4a761aafbd6c41">writeToStream</a> (TData &amp;&amp;data)</td></tr>
 <tr class="memdesc:a3300ffbcf0a253b9df4a761aafbd6c41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes directly to the internal stream.  <a href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a3300ffbcf0a253b9df4a761aafbd6c41">More...</a><br /></td></tr>
 <tr class="separator:a3300ffbcf0a253b9df4a761aafbd6c41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab4612bab048efb8e3a59df7aebbc8b4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#aab4612bab048efb8e3a59df7aebbc8b4">beforeMessageWrite</a> (const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;record, std::string_view message)</td></tr>
+<tr class="memitem:aab4612bab048efb8e3a59df7aebbc8b4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#aab4612bab048efb8e3a59df7aebbc8b4">beforeMessageWrite</a> (const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> &amp;record, std::string_view message)</td></tr>
 <tr class="memdesc:aab4612bab048efb8e3a59df7aebbc8b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual method which will be called before the actual message is written to the stream.  <a href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#aab4612bab048efb8e3a59df7aebbc8b4">More...</a><br /></td></tr>
 <tr class="separator:aab4612bab048efb8e3a59df7aebbc8b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed73aec3a704fdec3ff569fdde24fbc8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#aed73aec3a704fdec3ff569fdde24fbc8">afterMessageWrite</a> (const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;record, std::string_view message)</td></tr>
+<tr class="memitem:aed73aec3a704fdec3ff569fdde24fbc8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#aed73aec3a704fdec3ff569fdde24fbc8">afterMessageWrite</a> (const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> &amp;record, std::string_view message)</td></tr>
 <tr class="memdesc:aed73aec3a704fdec3ff569fdde24fbc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual method which will be called after the actual message is written to the stream.  <a href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#aed73aec3a704fdec3ff569fdde24fbc8">More...</a><br /></td></tr>
 <tr class="separator:aed73aec3a704fdec3ff569fdde24fbc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -223,7 +225,7 @@ template&lt;Record TRecord&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::<a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381">Filter_t</a> =  std::function&lt;bool(const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a>&amp;)&gt;</td>
+          <td class="memname">using <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::<a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381">Filter_t</a> =  std::function&lt;bool(const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a>&amp;)&gt;</td>
         </tr>
       </table>
   </td>
@@ -244,7 +246,7 @@ template&lt;Record TRecord&gt; </div>
 template&lt;Record TRecord&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html">sl::log::OStreamSink</a>&lt; TRecord &gt;::<a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a0f59dc9971f0be5d4a8d018d72e4fdb4">FlushPolicy_t</a> =  std::unique_ptr&lt;detail::AbstractFlushPolicyWrapper&lt;<a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a>&gt; &gt;</td>
+          <td class="memname">using <a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html">sl::log::OStreamSink</a>&lt; TRecord &gt;::<a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a0f59dc9971f0be5d4a8d018d72e4fdb4">FlushPolicy_t</a> =  std::unique_ptr&lt;detail::AbstractFlushPolicyWrapper&lt;<a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a>&gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -263,7 +265,7 @@ template&lt;Record TRecord&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::<a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596">Formatter_t</a> =  std::function&lt;std::string(const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a>&amp;)&gt;</td>
+          <td class="memname">using <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::<a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596">Formatter_t</a> =  std::function&lt;std::string(const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a>&amp;)&gt;</td>
         </tr>
       </table>
   </td>
@@ -275,8 +277,32 @@ template&lt;Record TRecord&gt; </div>
 
 </div>
 </div>
-<a id="ad79d9e5f6c4e07be42c84a281dc45082"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad79d9e5f6c4e07be42c84a281dc45082">&#9670;&nbsp;</a></span>Record_t</h2>
+<a id="a8fae464ec47801782463a38ced080b98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fae464ec47801782463a38ced080b98">&#9670;&nbsp;</a></span>Projections_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;Record TRecord&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::<a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html#a8fae464ec47801782463a38ced080b98">Projections_t</a> =  <a class="el" href="../../d5/dee/structsl_1_1log_1_1_record_getters.html">RecordGetters</a>&lt;<a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a>&gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9defe1ac8b150ee8ee49364b863dcfb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9defe1ac8b150ee8ee49364b863dcfb3">&#9670;&nbsp;</a></span>Record_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -284,7 +310,7 @@ template&lt;Record TRecord&gt; </div>
 template&lt;Record TRecord&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">sl::log::ISink</a>&lt; TRecord &gt;::<a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> =  TRecord</td>
+          <td class="memname">using <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">sl::log::ISink</a>&lt; TRecord &gt;::<a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> =  std::remove_cvref_t&lt;TRecord&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -435,7 +461,7 @@ template&lt;Record TRecord&gt; </div>
         <tr>
           <td class="memname">virtual void <a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html">sl::log::OStreamSink</a>&lt; TRecord &gt;::afterMessageWrite </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> &amp;&#160;</td>
           <td class="paramname"><em>record</em>, </td>
         </tr>
         <tr>
@@ -484,7 +510,7 @@ template&lt;Record TRecord&gt; </div>
         <tr>
           <td class="memname">virtual void <a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html">sl::log::OStreamSink</a>&lt; TRecord &gt;::beforeMessageWrite </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> &amp;&#160;</td>
           <td class="paramname"><em>record</em>, </td>
         </tr>
         <tr>
@@ -676,7 +702,7 @@ template&lt;Record TRecord&gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html">sl::log::BasicSink</a>&lt; TRecord &gt;::log </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082">Record_t</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3">Record_t</a> &amp;&#160;</td>
           <td class="paramname"><em>record</em></td><td>)</td>
           <td></td>
         </tr>
@@ -915,8 +941,8 @@ template&lt;RecordFilterFor&lt; Record_t &gt; TFilter&gt; </div>
 </div><div class="memdoc">
 
 <p>Sets the active filter. </p>
-<p>It's the filters job to decide, which Record will be printed (filter returns true) and which will be skipped (filter returns false). Therefore a filter must be an invokable of the following signature: </p><div class="fragment"><div class="line">bool(<span class="keyword">const</span> <a class="code" href="../../dd/db9/group___concepts.html#ga7e49931624e51b19627bef18ff763081">Record</a>&amp;)</div>
-<div class="ttc" id="agroup___concepts_html_ga7e49931624e51b19627bef18ff763081"><div class="ttname"><a href="../../dd/db9/group___concepts.html#ga7e49931624e51b19627bef18ff763081">sl::log::Record</a></div><div class="ttdeci">concept Record</div><div class="ttdoc">Concept for Record types.</div><div class="ttdef"><b>Definition:</b> Concepts.hpp:33</div></div>
+<p>It's the filters job to decide, which Record will be printed (filter returns true) and which will be skipped (filter returns false). Therefore a filter must be an invokable of the following signature: </p><div class="fragment"><div class="line">bool(<span class="keyword">const</span> <a class="code" href="../../da/de0/group___record_concepts.html#ga7e49931624e51b19627bef18ff763081">Record</a>&amp;)</div>
+<div class="ttc" id="agroup___record_concepts_html_ga7e49931624e51b19627bef18ff763081"><div class="ttname"><a href="../../da/de0/group___record_concepts.html#ga7e49931624e51b19627bef18ff763081">sl::log::Record</a></div><div class="ttdeci">concept Record</div><div class="ttdoc">Concept which all the necessary concepts for Record types.</div><div class="ttdef"><b>Definition:</b> Record.hpp:204</div></div>
 </div><!-- fragment --> <dl class="section remark"><dt>Remarks</dt><dd>The filters return type doesn't have to be bool, but the returned object must at least be implicitly convertible to bool.</dd></dl>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
@@ -1009,7 +1035,7 @@ template&lt;RecordFormatterFor&lt; Record_t &gt; TFormatter&gt; </div>
 
 <p>Sets the active formatter. </p>
 <p>It's the formatters job to extract the necessary information from Records and built the final message string.</p>
-<p>A custom formatter should use the following signature: </p><div class="fragment"><div class="line">std::string(<span class="keyword">const</span> <a class="code" href="../../dd/db9/group___concepts.html#ga7e49931624e51b19627bef18ff763081">Record</a>&amp;)</div>
+<p>A custom formatter should use the following signature: </p><div class="fragment"><div class="line">std::string(<span class="keyword">const</span> <a class="code" href="../../da/de0/group___record_concepts.html#ga7e49931624e51b19627bef18ff763081">Record</a>&amp;)</div>
 </div><!-- fragment --><dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">TFormatter</td><td>Type of the passed formatter (automatically deduced) </td></tr>

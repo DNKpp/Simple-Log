@@ -1,10 +1,11 @@
 var group___record =
 [
+    [ "Record Concepts", "da/de0/group___record_concepts.html", "da/de0/group___record_concepts" ],
     [ "BaseRecord", "dd/d7a/classsl_1_1log_1_1_base_record.html", [
-      [ "Channel_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#a60afd39a9a13ca50e6aabc4a828b170e", null ],
-      [ "Message_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#a756f90f181a5cd126679a9e37c0d36bd", null ],
-      [ "SeverityLevel_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#a85f1936e05df490e17c1ab601aecc38e", null ],
-      [ "TimePoint_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#aa4dc29db0018fdb7b2582e003e56929c", null ],
+      [ "Channel_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#af279a8a29bcbea45b9d5bcd22383b294", null ],
+      [ "Message_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#a8e6fd541fb750dc28dfe05c7d3d095cc", null ],
+      [ "SeverityLevel_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#adfaae24929b38eb74da9362f4d48c1c7", null ],
+      [ "TimePoint_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#ac7c0f9878168100994cc386f917730b6", null ],
       [ "channel", "dd/d7a/classsl_1_1log_1_1_base_record.html#ab17c7d6a539408838aa576261ddef9eb", null ],
       [ "message", "dd/d7a/classsl_1_1log_1_1_base_record.html#a439f27449dc191ac46071bc1097b2469", null ],
       [ "setChannel", "dd/d7a/classsl_1_1log_1_1_base_record.html#a338a10a75755881359786346721e255f", null ],
@@ -15,17 +16,19 @@ var group___record =
       [ "timePoint", "dd/d7a/classsl_1_1log_1_1_base_record.html#a9783369731c6f2c3b64b49913e80c231", null ]
     ] ],
     [ "SetSev", "d5/df7/classsl_1_1log_1_1_set_sev.html", [
-      [ "SetSev", "d5/df7/classsl_1_1log_1_1_set_sev.html#a3d6746ebdc8b6d8728480bf00814fce0", null ],
+      [ "Sev_t", "d5/df7/classsl_1_1log_1_1_set_sev.html#a4d8583526027bbb39eb036bf0d536899", null ],
+      [ "SetSev", "d5/df7/classsl_1_1log_1_1_set_sev.html#a0cf1a8dab64ee93f9f3184225f4d828f", null ],
       [ "operator()", "d5/df7/classsl_1_1log_1_1_set_sev.html#a5a227adbbd475c9da954e587708c07df", null ]
     ] ],
     [ "SetChan", "d9/d84/classsl_1_1log_1_1_set_chan.html", [
-      [ "SetChan", "d9/d84/classsl_1_1log_1_1_set_chan.html#a6f0986452d5b3aa26d872b518ccb6f54", null ],
+      [ "Chan_t", "d9/d84/classsl_1_1log_1_1_set_chan.html#a4ac0398ad7522e87e7eb75c79df996f7", null ],
+      [ "SetChan", "d9/d84/classsl_1_1log_1_1_set_chan.html#aba1e0df6fdf43b6224af3989d91b7f3b", null ],
       [ "operator()", "d9/d84/classsl_1_1log_1_1_set_chan.html#a389f9272a12e0cc451f2f5ab715b9faf", null ]
     ] ],
     [ "RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html", [
-      [ "Channel_t", "db/d9a/classsl_1_1log_1_1_record_builder.html#a665c4ea92e11899cf197b09236590684", null ],
-      [ "Record_t", "db/d9a/classsl_1_1log_1_1_record_builder.html#abc8c50b198f8404d4dd3c077bbf028b3", null ],
-      [ "SeverityLevel_t", "db/d9a/classsl_1_1log_1_1_record_builder.html#a47508529cfd40837f1f269001649f731", null ],
+      [ "Channel_t", "db/d9a/classsl_1_1log_1_1_record_builder.html#a39d99f330f62a591baa2de1a55d52ff5", null ],
+      [ "Record_t", "db/d9a/classsl_1_1log_1_1_record_builder.html#ac0591c33421dcd62c2c364e0d043768f", null ],
+      [ "SeverityLevel_t", "db/d9a/classsl_1_1log_1_1_record_builder.html#ac94d2e5d7ec3fa28ab5562870e0e9dfd", null ],
       [ "RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html#af2494f47ecc84d7f12008afeedc6e386", null ],
       [ "~RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html#aa91db3e07ed07aba4793678525764ad7", null ],
       [ "RecordBuilder", "db/d9a/classsl_1_1log_1_1_record_builder.html#a27945ab696667ec55c7476190c3c3715", null ],

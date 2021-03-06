@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">alpha-v0.6</span>
+   &#160;<span id="projectnumber">alpha-v0.7</span>
    </div>
   </td>
  </tr>
@@ -84,7 +84,8 @@ $(document).ready(function(){initNavTree('df/d38/group___sinks.html','../../'); 
 <div class="header">
   <div class="summary">
 <a href="#groups">Modules</a> &#124;
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">Sinks</div>  </div>
 </div><!--header-->
@@ -114,8 +115,84 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html">sl::log::OStreamSink&lt; TRecord &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An std::ostream orientated Sink class which extends <a class="el" href="../../dd/d48/classsl_1_1log_1_1_basic_sink.html" title="Abstract Sink class which offers basic filtering, formatting functionality.">BasicSink</a>.  <a href="../../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ga524680d39e771fd1fa808e92614a355b"><td class="memTemplParams" colspan="2">template&lt;class T , class TRecord &gt; </td></tr>
+<tr class="memitem:ga524680d39e771fd1fa808e92614a355b"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d38/group___sinks.html#ga524680d39e771fd1fa808e92614a355b">sl::log::RecordFormatterFor</a></td></tr>
+<tr class="memdesc:ga524680d39e771fd1fa808e92614a355b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable formatter objects.  <a href="../../df/d38/group___sinks.html#ga524680d39e771fd1fa808e92614a355b">More...</a><br /></td></tr>
+<tr class="separator:ga524680d39e771fd1fa808e92614a355b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga37ddba3404d4136b7f370c8b5c4261b0"><td class="memTemplParams" colspan="2">template&lt;class T , class TRecord &gt; </td></tr>
+<tr class="memitem:ga37ddba3404d4136b7f370c8b5c4261b0"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d38/group___sinks.html#ga37ddba3404d4136b7f370c8b5c4261b0">sl::log::RecordFilterFor</a></td></tr>
+<tr class="memdesc:ga37ddba3404d4136b7f370c8b5c4261b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable filter objects.  <a href="../../df/d38/group___sinks.html#ga37ddba3404d4136b7f370c8b5c4261b0">More...</a><br /></td></tr>
+<tr class="separator:ga37ddba3404d4136b7f370c8b5c4261b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../df/d38/group___sinks.html#ga1c5760e773e9a0c3ab0d608139bce497">sl::log::FileStateHandler</a> = std::is_invocable_r_v&lt;std::string, T&gt;</td></tr>
+<tr class="memdesc:ga1c5760e773e9a0c3ab0d608139bce497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concept for invokable file state handler objects.  <a href="../../df/d38/group___sinks.html#ga1c5760e773e9a0c3ab0d608139bce497">More...</a><br /></td></tr>
+<tr class="separator:ga1c5760e773e9a0c3ab0d608139bce497"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ga1c5760e773e9a0c3ab0d608139bce497"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1c5760e773e9a0c3ab0d608139bce497">&#9670;&nbsp;</a></span>FileStateHandler</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">concept sl::log::FileStateHandler = std::is_invocable_r_v&lt;std::string, T&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Concept for invokable file state handler objects. </p>
+
+</div>
+</div>
+<a id="ga37ddba3404d4136b7f370c8b5c4261b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga37ddba3404d4136b7f370c8b5c4261b0">&#9670;&nbsp;</a></span>RecordFilterFor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class TRecord &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">concept sl::log::RecordFilterFor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">        Record&lt;TRecord&gt; &amp;&amp;</div>
+<div class="line">        std::predicate&lt;T, const TRecord&amp;&gt;</div>
+</div><!-- fragment -->
+<p>Concept for invokable filter objects. </p>
+
+</div>
+</div>
+<a id="ga524680d39e771fd1fa808e92614a355b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga524680d39e771fd1fa808e92614a355b">&#9670;&nbsp;</a></span>RecordFormatterFor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class TRecord &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">concept sl::log::RecordFormatterFor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">        Record&lt;TRecord&gt; &amp;&amp;</div>
+<div class="line">        std::is_invocable_r_v&lt;std::string, T, const TRecord&amp;&gt;</div>
+</div><!-- fragment -->
+<p>Concept for invokable formatter objects. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

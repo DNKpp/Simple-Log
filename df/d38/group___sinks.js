@@ -4,7 +4,8 @@ var group___sinks =
     [ "BasicSink", "dd/d48/classsl_1_1log_1_1_basic_sink.html", [
       [ "Filter_t", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381", null ],
       [ "Formatter_t", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596", null ],
-      [ "Record_t", "dd/d48/classsl_1_1log_1_1_basic_sink.html#ad79d9e5f6c4e07be42c84a281dc45082", null ],
+      [ "Projections_t", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a8fae464ec47801782463a38ced080b98", null ],
+      [ "Record_t", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3", null ],
       [ "BasicSink", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a521a8c811dd0c7879dddfcd19cf255c9", null ],
       [ "~BasicSink", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a3d32a8ae46419eaae763ac001935bcd2", null ],
       [ "BasicSink", "dd/d48/classsl_1_1log_1_1_basic_sink.html#a9befd674f26382887b07f8e46277be18", null ],
@@ -34,7 +35,8 @@ var group___sinks =
       [ "Filter_t", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381", null ],
       [ "FlushPolicy_t", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a0f59dc9971f0be5d4a8d018d72e4fdb4", null ],
       [ "Formatter_t", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a84c4f321caf9c3c4c2586c7698206596", null ],
-      [ "Record_t", "dc/dd6/classsl_1_1log_1_1_file_sink.html#ad79d9e5f6c4e07be42c84a281dc45082", null ],
+      [ "Projections_t", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a8fae464ec47801782463a38ced080b98", null ],
+      [ "Record_t", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3", null ],
       [ "FileSink", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a6a317ccf34b1bb1960ae94922126cef0", null ],
       [ "~FileSink", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a6ae297d43cb827d3d0401cdfb0a69a70", null ],
       [ "FileSink", "dc/dd6/classsl_1_1log_1_1_file_sink.html#ac316441be075b974c94e3f9c37e55ff3", null ],
@@ -71,7 +73,7 @@ var group___sinks =
       [ "writeToStream", "dc/dd6/classsl_1_1log_1_1_file_sink.html#a3300ffbcf0a253b9df4a761aafbd6c41", null ]
     ] ],
     [ "ISink", "d8/dda/classsl_1_1log_1_1_i_sink.html", [
-      [ "Record_t", "d8/dda/classsl_1_1log_1_1_i_sink.html#ad79d9e5f6c4e07be42c84a281dc45082", null ],
+      [ "Record_t", "d8/dda/classsl_1_1log_1_1_i_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3", null ],
       [ "ISink", "d8/dda/classsl_1_1log_1_1_i_sink.html#abfaca8044c6895350a496b13982de363", null ],
       [ "~ISink", "d8/dda/classsl_1_1log_1_1_i_sink.html#a33d8137c0f9f0e0a7e77f8fa461c9a2b", null ],
       [ "ISink", "d8/dda/classsl_1_1log_1_1_i_sink.html#aa9ba223d8652631e3f3d5fd5dcc2f760", null ],
@@ -101,7 +103,8 @@ var group___sinks =
       [ "Filter_t", "d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381", null ],
       [ "FlushPolicy_t", "d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a0f59dc9971f0be5d4a8d018d72e4fdb4", null ],
       [ "Formatter_t", "d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a84c4f321caf9c3c4c2586c7698206596", null ],
-      [ "Record_t", "d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#ad79d9e5f6c4e07be42c84a281dc45082", null ],
+      [ "Projections_t", "d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a8fae464ec47801782463a38ced080b98", null ],
+      [ "Record_t", "d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a9defe1ac8b150ee8ee49364b863dcfb3", null ],
       [ "OStreamSink", "d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a9441005ff0626694682e7c82f571aae3", null ],
       [ "~OStreamSink", "d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a4107a133633918b94522045fcfa81848", null ],
       [ "OStreamSink", "d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a946592c3195e9bb7d357c2f00f078bf5", null ],
@@ -124,5 +127,8 @@ var group___sinks =
       [ "setFlushPolicy", "d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#aeb96917f1fe84ff7cb36fb0272403479", null ],
       [ "setFormatter", "d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#ad07fdb2b00a65bcf28272f222d2298ad", null ],
       [ "writeToStream", "d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a3300ffbcf0a253b9df4a761aafbd6c41", null ]
-    ] ]
+    ] ],
+    [ "FileStateHandler", "df/d38/group___sinks.html#ga1c5760e773e9a0c3ab0d608139bce497", null ],
+    [ "RecordFilterFor", "df/d38/group___sinks.html#ga37ddba3404d4136b7f370c8b5c4261b0", null ],
+    [ "RecordFormatterFor", "df/d38/group___sinks.html#ga524680d39e771fd1fa808e92614a355b", null ]
 ];

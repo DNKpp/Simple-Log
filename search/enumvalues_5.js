@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['fatal_548',['fatal',['../df/d5b/group___prepared_types.html#ggaa30e95bdde6414a22c02e8c98d5dcf3fadf6402fd9ecc60f5a2159fdf45711cd4',1,'sl::log::preset']]],
-  ['force_549',['Force',['../d1/df2/namespacerang.html#a9a0ad8048ed47f032f5bdb687ba64164a9eb6b78a99cdb6ffd3d40d18621d9f80',1,'rang']]]
+  ['gray_541',['gray',['../d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730acda7a650c5856cf2f6738072447d7825',1,'sl::log::ConsoleTextStyle']]],
+  ['green_542',['green',['../d8/d37/structsl_1_1log_1_1_console_text_style.html#a4e5a85c6e9f761f0d2575e73b5b81730a9f27410725ab8cc8854a2769c7a516b8',1,'sl::log::ConsoleTextStyle']]]
 ];

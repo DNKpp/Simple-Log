@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">alpha-v0.6</span>
+   &#160;<span id="projectnumber">alpha-v0.7</span>
    </div>
   </td>
  </tr>
@@ -83,6 +83,7 @@ $(document).ready(function(){initNavTree('d7/d40/classsl_1_1log_1_1_filter_chain
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="../../d5/d9d/classsl_1_1log_1_1_filter_chain-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -95,14 +96,19 @@ $(document).ready(function(){initNavTree('d7/d40/classsl_1_1log_1_1_filter_chain
 
 <p><code>#include &lt;<a class="el" href="../../de/d95/_filters_8hpp_source.html">Filters.hpp</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a50cfaa39f39d07957885063a831ec54c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a50cfaa39f39d07957885063a831ec54c">Algorithm_t</a> = std::remove_cvref_t&lt; TAlgorithm &gt;</td></tr>
+<tr class="separator:a50cfaa39f39d07957885063a831ec54c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a04b7cabcff1b83a97eb8f26158637c46"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a04b7cabcff1b83a97eb8f26158637c46">FilterChain</a> (TFilter ...filter) noexcept(std::is_nothrow_constructible_v&lt; TAlgorithm &gt; &amp;&amp;(std::is_nothrow_move_constructible_v&lt; TFilter &gt; &amp;&amp;...))</td></tr>
-<tr class="memdesc:a04b7cabcff1b83a97eb8f26158637c46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a04b7cabcff1b83a97eb8f26158637c46">More...</a><br /></td></tr>
-<tr class="separator:a04b7cabcff1b83a97eb8f26158637c46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab65953e7ef23d6afa618581a01795b6e"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#ab65953e7ef23d6afa618581a01795b6e">FilterChain</a> (TAlgorithm algorithm, TFilter ...filter) noexcept((std::is_nothrow_move_constructible_v&lt; TFilter &gt; &amp;&amp;...))</td></tr>
-<tr class="memdesc:ab65953e7ef23d6afa618581a01795b6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor overload.  <a href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#ab65953e7ef23d6afa618581a01795b6e">More...</a><br /></td></tr>
-<tr class="separator:ab65953e7ef23d6afa618581a01795b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6318968c0a82d9fe054a39a3df32c9cb"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a6318968c0a82d9fe054a39a3df32c9cb">FilterChain</a> (TFilter ...filter) noexcept(std::is_nothrow_constructible_v&lt; <a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a50cfaa39f39d07957885063a831ec54c">Algorithm_t</a> &gt; &amp;&amp;(std::is_nothrow_move_constructible_v&lt; TFilter &gt; &amp;&amp;...))</td></tr>
+<tr class="memdesc:a6318968c0a82d9fe054a39a3df32c9cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a6318968c0a82d9fe054a39a3df32c9cb">More...</a><br /></td></tr>
+<tr class="separator:a6318968c0a82d9fe054a39a3df32c9cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fd99e07f5b1a05e9664f5e8c498a7d4"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a4fd99e07f5b1a05e9664f5e8c498a7d4">FilterChain</a> (TAlgorithm algorithm, TFilter ...filter) noexcept(std::is_nothrow_move_constructible_v&lt; <a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a50cfaa39f39d07957885063a831ec54c">Algorithm_t</a> &gt; &amp;&amp;(std::is_nothrow_move_constructible_v&lt; TFilter &gt; &amp;&amp;...))</td></tr>
+<tr class="memdesc:a4fd99e07f5b1a05e9664f5e8c498a7d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor overload.  <a href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a4fd99e07f5b1a05e9664f5e8c498a7d4">More...</a><br /></td></tr>
+<tr class="separator:a4fd99e07f5b1a05e9664f5e8c498a7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad52c815ca33b84587f5413660e3dbddb"><td class="memTemplParams" colspan="2">template&lt;Record TRecord&gt; </td></tr>
 <tr class="memitem:ad52c815ca33b84587f5413660e3dbddb"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#ad52c815ca33b84587f5413660e3dbddb">operator()</a> (const TRecord &amp;rec)</td></tr>
 <tr class="memdesc:ad52c815ca33b84587f5413660e3dbddb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call-operator.  <a href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#ad52c815ca33b84587f5413660e3dbddb">More...</a><br /></td></tr>
@@ -127,9 +133,26 @@ class sl::log::FilterChain&lt; TAlgorithm, TFilter &gt;</h3>
   </dd>
 </dl>
 <p>This class simply calls each provided filter successively. The provided algorithm will determine, how each invocation result will be treated. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a04b7cabcff1b83a97eb8f26158637c46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04b7cabcff1b83a97eb8f26158637c46">&#9670;&nbsp;</a></span>FilterChain() <span class="overload">[1/2]</span></h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a50cfaa39f39d07957885063a831ec54c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50cfaa39f39d07957885063a831ec54c">&#9670;&nbsp;</a></span>Algorithm_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class TAlgorithm , class... TFilter&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html">sl::log::FilterChain</a>&lt; TAlgorithm, TFilter &gt;::<a class="el" href="../../d7/d40/classsl_1_1log_1_1_filter_chain.html#a50cfaa39f39d07957885063a831ec54c">Algorithm_t</a> =  std::remove_cvref_t&lt;TAlgorithm&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a6318968c0a82d9fe054a39a3df32c9cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6318968c0a82d9fe054a39a3df32c9cb">&#9670;&nbsp;</a></span>FilterChain() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -164,8 +187,8 @@ template&lt;class TAlgorithm , class... TFilter&gt; </div>
 
 </div>
 </div>
-<a id="ab65953e7ef23d6afa618581a01795b6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab65953e7ef23d6afa618581a01795b6e">&#9670;&nbsp;</a></span>FilterChain() <span class="overload">[2/2]</span></h2>
+<a id="a4fd99e07f5b1a05e9664f5e8c498a7d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fd99e07f5b1a05e9664f5e8c498a7d4">&#9670;&nbsp;</a></span>FilterChain() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">

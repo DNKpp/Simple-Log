@@ -74,8 +74,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d5/dfa/group___flush-_policy.html#gafc0f3598ec58dda217e635c7fe2abe4f",
-"dc/d9c/structsl_1_1log_1_1_file_sink_1_1_cleanup_rule.html#aed6d3aa7dce332c56aa8ab32f58c3a20"
+"d7/d89/_preset_types_8hpp_source.html",
+"dd/dab/classsl_1_1log_1_1_sink_exception.html#a61048bde43bf3a87be9a087770f9605d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

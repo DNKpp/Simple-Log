@@ -1,9 +1,9 @@
 var classsl_1_1log_1_1_base_record =
 [
-    [ "Channel_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#a60afd39a9a13ca50e6aabc4a828b170e", null ],
-    [ "Message_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#a756f90f181a5cd126679a9e37c0d36bd", null ],
-    [ "SeverityLevel_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#a85f1936e05df490e17c1ab601aecc38e", null ],
-    [ "TimePoint_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#aa4dc29db0018fdb7b2582e003e56929c", null ],
+    [ "Channel_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#af279a8a29bcbea45b9d5bcd22383b294", null ],
+    [ "Message_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#a8e6fd541fb750dc28dfe05c7d3d095cc", null ],
+    [ "SeverityLevel_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#adfaae24929b38eb74da9362f4d48c1c7", null ],
+    [ "TimePoint_t", "dd/d7a/classsl_1_1log_1_1_base_record.html#ac7c0f9878168100994cc386f917730b6", null ],
     [ "channel", "dd/d7a/classsl_1_1log_1_1_base_record.html#ab17c7d6a539408838aa576261ddef9eb", null ],
     [ "message", "dd/d7a/classsl_1_1log_1_1_base_record.html#a439f27449dc191ac46071bc1097b2469", null ],
     [ "setChannel", "dd/d7a/classsl_1_1log_1_1_base_record.html#a338a10a75755881359786346721e255f", null ],

@@ -1,14 +1,15 @@
 var group___filter =
 [
     [ "ProjectionFilter", "d4/d36/classsl_1_1log_1_1_projection_filter.html", [
-      [ "Projection_t", "d4/d36/classsl_1_1log_1_1_projection_filter.html#ae58e1705b3fda54376a92e20cff1ec6f", null ],
-      [ "UnaryPredicate_t", "d4/d36/classsl_1_1log_1_1_projection_filter.html#a9e5a9de098162262166d7d3a887a1896", null ],
-      [ "ProjectionFilter", "d4/d36/classsl_1_1log_1_1_projection_filter.html#a852cfaa3a9d47d08c0853e90e0ab869f", null ],
+      [ "Projection_t", "d4/d36/classsl_1_1log_1_1_projection_filter.html#a284e76e0de058019bbafb688136ba9fc", null ],
+      [ "UnaryPredicate_t", "d4/d36/classsl_1_1log_1_1_projection_filter.html#aa9d7595ed0e39861acdbacf5c0d7d181", null ],
+      [ "ProjectionFilter", "d4/d36/classsl_1_1log_1_1_projection_filter.html#ae1b7248fdf42558bce15783024ae156c", null ],
       [ "operator()", "d4/d36/classsl_1_1log_1_1_projection_filter.html#a8bec383f32cff6a5b2eeb2a9cc23a969", null ]
     ] ],
     [ "FilterChain", "d7/d40/classsl_1_1log_1_1_filter_chain.html", [
-      [ "FilterChain", "d7/d40/classsl_1_1log_1_1_filter_chain.html#a04b7cabcff1b83a97eb8f26158637c46", null ],
-      [ "FilterChain", "d7/d40/classsl_1_1log_1_1_filter_chain.html#ab65953e7ef23d6afa618581a01795b6e", null ],
+      [ "Algorithm_t", "d7/d40/classsl_1_1log_1_1_filter_chain.html#a50cfaa39f39d07957885063a831ec54c", null ],
+      [ "FilterChain", "d7/d40/classsl_1_1log_1_1_filter_chain.html#a6318968c0a82d9fe054a39a3df32c9cb", null ],
+      [ "FilterChain", "d7/d40/classsl_1_1log_1_1_filter_chain.html#a4fd99e07f5b1a05e9664f5e8c498a7d4", null ],
       [ "empty", "d7/d40/classsl_1_1log_1_1_filter_chain.html#ad8361fba14bbfd61046b102ce7f21ca7", null ],
       [ "operator()", "d7/d40/classsl_1_1log_1_1_filter_chain.html#ad52c815ca33b84587f5413660e3dbddb", null ],
       [ "size", "d7/d40/classsl_1_1log_1_1_filter_chain.html#a4a46d22b066b4b202171bb59b5cab739", null ]

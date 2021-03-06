@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Simple-Log
-   &#160;<span id="projectnumber">alpha-v0.6</span>
+   &#160;<span id="projectnumber">alpha-v0.7</span>
    </div>
   </td>
  </tr>
@@ -96,16 +96,16 @@ $(document).ready(function(){initNavTree('d5/d8e/_core_8hpp_source.html','../../
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;execution&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;future&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/db9/_concepts_8hpp.html">Concepts.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d5f/_i_sink_8hpp.html">ISink.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../da/d8d/_record_queue_8hpp.html">RecordQueue.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d5f/_i_sink_8hpp.html">ISink.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/d79/_record_8hpp.html">Record.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../da/d8d/_record_queue_8hpp.html">RecordQueue.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;execution&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;future&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/d83/namespacesl_1_1log.html">sl::log</a></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
@@ -113,7 +113,7 @@ $(document).ready(function(){initNavTree('d5/d8e/_core_8hpp_source.html','../../
 <div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../d4/df3/classsl_1_1log_1_1_core.html">   50</a></span>&#160;    <span class="keyword">class </span><a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">   53</a></span>&#160;        <span class="keyword">using</span> <a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">Record_t</a> = TRecord;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d4/df3/classsl_1_1log_1_1_core.html#a254048006ca4dd3b67bb8c96cc301f56">   53</a></span>&#160;        <span class="keyword">using</span> <a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html#a254048006ca4dd3b67bb8c96cc301f56">Record_t</a> = std::remove_cvref_t&lt;TRecord&gt;;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">using</span> <a class="code" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">ISink_t</a> = <a class="code" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">ISink&lt;Record_t&gt;</a>;</div>
@@ -131,12 +131,12 @@ $(document).ready(function(){initNavTree('d5/d8e/_core_8hpp_source.html','../../
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">try</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                m_WorkerInstruction = Instruction::quit;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                m_WorkerInstruction = Worker::Instruction::quit;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                m_WorkerFuture.wait();</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">catch</span> (...)</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                m_WorkerInstruction = Instruction::forceQuit;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                m_WorkerInstruction = Worker::Instruction::forceQuit;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            }</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
@@ -146,10 +146,10 @@ $(document).ready(function(){initNavTree('d5/d8e/_core_8hpp_source.html','../../
 <div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="../../d4/df3/classsl_1_1log_1_1_core.html#ac274dbc45f334449d626d4cce1f54137">  100</a></span>&#160;        <a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html#ac274dbc45f334449d626d4cce1f54137">Core</a>(<a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="../../d4/df3/classsl_1_1log_1_1_core.html#ab7c105bac33fd9bf5e9b4f3df5156a0d">  104</a></span>&#160;        <a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&amp; <a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html#adc78afd80397c528f5db37929dd29f88">operator =</a>(<a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html">Core</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="../../d4/df3/classsl_1_1log_1_1_core.html#ac978894c8846ae6539d9f57ad2d4f8ed">  111</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html#ac978894c8846ae6539d9f57ad2d4f8ed">log</a>(<a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">Record_t</a> record)</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="../../d4/df3/classsl_1_1log_1_1_core.html#ac833ffa6e582cd9405417f3e8b0aaa4a">  111</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html#ac833ffa6e582cd9405417f3e8b0aaa4a">log</a>(<a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html#a254048006ca4dd3b67bb8c96cc301f56">Record_t</a>&amp;&amp; record)</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        {</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="comment">// will reject newly generated records, after run has become false</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordflow">if</span> (m_WorkerInstruction == Instruction::run)</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordflow">if</span> (m_WorkerInstruction == Worker::Instruction::run)</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            {</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                m_Records.<a class="code" href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9b33e0216d87d6ee94af3c872007c4d1">push</a>(std::move(record));</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            }</div>
@@ -169,7 +169,7 @@ $(document).ready(function(){initNavTree('d5/d8e/_core_8hpp_source.html','../../
 <div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="../../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4">  149</a></span>&#160;        <a class="code" href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html">ScopedSinkDisabling&lt;Record_t, TSink&gt;</a> <a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4">makeDisabledSink</a>(TArgs&amp;&amp;... args)</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        {</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keyword">auto</span>&amp; ref = makeSinkImpl&lt;TSink&gt;(std::forward&lt;TArgs&gt;(args)...);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">return</span> ref;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html">ScopedSinkDisabling&lt;Record_t, TSink&gt;</a>{ ref };</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        }</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
 <div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="../../d4/df3/classsl_1_1log_1_1_core.html#acee4e8ded4f939bd0e18f1a017469634">  161</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="../../d4/df3/classsl_1_1log_1_1_core.html#acee4e8ded4f939bd0e18f1a017469634">removeSink</a>(<span class="keyword">const</span> <a class="code" href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">ISink_t</a>&amp; sink)</div>
@@ -187,16 +187,16 @@ $(document).ready(function(){initNavTree('d5/d8e/_core_8hpp_source.html','../../
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keyword">enum class</span> Instruction</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keyword">class </span>Worker</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        {</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            run,</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            quit,</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            forceQuit</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        };</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="keyword">class </span>Worker</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        {</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keyword">enum class</span> Instruction</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                run,</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                quit,</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                forceQuit</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            };</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            Worker(</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                <span class="keyword">const</span> std::atomic&lt;Instruction&gt;&amp; instruction,</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                RecordQueue_t&amp; records,</div>
@@ -247,7 +247,7 @@ $(document).ready(function(){initNavTree('d5/d8e/_core_8hpp_source.html','../../
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        std::mutex m_SinkMx;</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        SinkContainer_t m_Sinks;</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        std::atomic&lt;Instruction&gt; m_WorkerInstruction{ Instruction::run };</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        std::atomic&lt;typename Worker::Instruction&gt; m_WorkerInstruction{ Worker::Instruction::run };</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        Worker m_Worker;</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        std::future&lt;void&gt; m_WorkerFuture;</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
@@ -266,24 +266,24 @@ $(document).ready(function(){initNavTree('d5/d8e/_core_8hpp_source.html','../../
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;}</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="a_concepts_8hpp_html"><div class="ttname"><a href="../../d9/db9/_concepts_8hpp.html">Concepts.hpp</a></div></div>
 <div class="ttc" id="a_i_sink_8hpp_html"><div class="ttname"><a href="../../d2/d5f/_i_sink_8hpp.html">ISink.hpp</a></div></div>
+<div class="ttc" id="a_record_8hpp_html"><div class="ttname"><a href="../../dc/d79/_record_8hpp.html">Record.hpp</a></div></div>
 <div class="ttc" id="a_record_queue_8hpp_html"><div class="ttname"><a href="../../da/d8d/_record_queue_8hpp.html">RecordQueue.hpp</a></div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_core_html"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html">sl::log::Core</a></div><div class="ttdoc">The central point of the whole library. Needs to be instantiated at least once.</div><div class="ttdef"><b>Definition:</b> Core.hpp:51</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_core_html_a254048006ca4dd3b67bb8c96cc301f56"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html#a254048006ca4dd3b67bb8c96cc301f56">sl::log::Core::Record_t</a></div><div class="ttdeci">std::remove_cvref_t&lt; TRecord &gt; Record_t</div><div class="ttdef"><b>Definition:</b> Core.hpp:53</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_core_html_a3af914cb7a7eeec70b3e06211d110fc4"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html#a3af914cb7a7eeec70b3e06211d110fc4">sl::log::Core::makeDisabledSink</a></div><div class="ttdeci">requires std::constructible_from&lt; TSink, TArgs... &gt; ScopedSinkDisabling&lt; Record_t, TSink &gt; makeDisabledSink(TArgs &amp;&amp;... args)</div><div class="ttdoc">Creates Sink disabled and registers it at this Core instance.</div><div class="ttdef"><b>Definition:</b> Core.hpp:149</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_core_html_a8f1e1c2bfbd72e1bcc6c2d20e79b406d"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html#a8f1e1c2bfbd72e1bcc6c2d20e79b406d">sl::log::Core::Core</a></div><div class="ttdeci">Core(const Core &amp;)=delete</div><div class="ttdoc">Deleted copy constructor.</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_core_html_aa43f564cd56d8c5b878dcc99d0505d19"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html#aa43f564cd56d8c5b878dcc99d0505d19">sl::log::Core::Record_t</a></div><div class="ttdeci">TRecord Record_t</div><div class="ttdef"><b>Definition:</b> Core.hpp:53</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_core_html_abcfb0b306ce0de6a5df5acfb01d881cf"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html#abcfb0b306ce0de6a5df5acfb01d881cf">sl::log::Core::~Core</a></div><div class="ttdeci">~Core() noexcept</div><div class="ttdoc">Destructor.</div><div class="ttdef"><b>Definition:</b> Core.hpp:75</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_core_html_ac274dbc45f334449d626d4cce1f54137"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html#ac274dbc45f334449d626d4cce1f54137">sl::log::Core::Core</a></div><div class="ttdeci">Core(Core &amp;&amp;)=delete</div><div class="ttdoc">Deleted move constructor.</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_core_html_ac33638d6ad36d3fdd1492c49831300f2"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html#ac33638d6ad36d3fdd1492c49831300f2">sl::log::Core::Core</a></div><div class="ttdeci">Core() noexcept</div><div class="ttdoc">Default Constructor.</div><div class="ttdef"><b>Definition:</b> Core.hpp:65</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_core_html_ac978894c8846ae6539d9f57ad2d4f8ed"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html#ac978894c8846ae6539d9f57ad2d4f8ed">sl::log::Core::log</a></div><div class="ttdeci">void log(Record_t record)</div><div class="ttdoc">Queues the Record internally.</div><div class="ttdef"><b>Definition:</b> Core.hpp:111</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_core_html_ac833ffa6e582cd9405417f3e8b0aaa4a"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html#ac833ffa6e582cd9405417f3e8b0aaa4a">sl::log::Core::log</a></div><div class="ttdeci">void log(Record_t &amp;&amp;record)</div><div class="ttdoc">Queues the Record internally.</div><div class="ttdef"><b>Definition:</b> Core.hpp:111</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_core_html_acee4e8ded4f939bd0e18f1a017469634"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html#acee4e8ded4f939bd0e18f1a017469634">sl::log::Core::removeSink</a></div><div class="ttdeci">bool removeSink(const ISink_t &amp;sink)</div><div class="ttdoc">Removes the given Sink and destroys it.</div><div class="ttdef"><b>Definition:</b> Core.hpp:161</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_core_html_ad828429edf3e849e9e88042c43a7da2e"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html#ad828429edf3e849e9e88042c43a7da2e">sl::log::Core::makeSink</a></div><div class="ttdeci">requires std::constructible_from&lt; TSink, TArgs... &gt; TSink &amp; makeSink(TArgs &amp;&amp;... args)</div><div class="ttdoc">Creates Sink and registers it at this Core instance.</div><div class="ttdef"><b>Definition:</b> Core.hpp:130</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_core_html_adc78afd80397c528f5db37929dd29f88"><div class="ttname"><a href="../../d4/df3/classsl_1_1log_1_1_core.html#adc78afd80397c528f5db37929dd29f88">sl::log::Core::operator=</a></div><div class="ttdeci">Core &amp; operator=(const Core &amp;)=delete</div><div class="ttdoc">Deleted copy assign operator.</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_i_sink_html"><div class="ttname"><a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">sl::log::ISink</a></div><div class="ttdoc">Sink interface class.</div><div class="ttdef"><b>Definition:</b> ISink.hpp:28</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_i_sink_html"><div class="ttname"><a href="../../d8/dda/classsl_1_1log_1_1_i_sink.html">sl::log::ISink</a></div><div class="ttdoc">Sink interface class.</div><div class="ttdef"><b>Definition:</b> ISink.hpp:29</div></div>
 <div class="ttc" id="aclasssl_1_1log_1_1_record_queue_html"><div class="ttname"><a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html">sl::log::RecordQueue&lt; Record_t &gt;</a></div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_record_queue_html_a9b33e0216d87d6ee94af3c872007c4d1"><div class="ttname"><a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9b33e0216d87d6ee94af3c872007c4d1">sl::log::RecordQueue::push</a></div><div class="ttdeci">void push(Record_t record)</div><div class="ttdoc">Pushes Record s to the internal queue.</div><div class="ttdef"><b>Definition:</b> RecordQueue.hpp:42</div></div>
-<div class="ttc" id="aclasssl_1_1log_1_1_scoped_sink_disabling_html"><div class="ttname"><a href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html">sl::log::ScopedSinkDisabling</a></div><div class="ttdoc">Wrapper class which disables Sinks on construction and enables them on destruction.</div><div class="ttdef"><b>Definition:</b> ISink.hpp:94</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_record_queue_html_a9b33e0216d87d6ee94af3c872007c4d1"><div class="ttname"><a href="../../d1/de1/classsl_1_1log_1_1_record_queue.html#a9b33e0216d87d6ee94af3c872007c4d1">sl::log::RecordQueue::push</a></div><div class="ttdeci">void push(Record_t record)</div><div class="ttdoc">Pushes Record s to the internal queue.</div><div class="ttdef"><b>Definition:</b> RecordQueue.hpp:43</div></div>
+<div class="ttc" id="aclasssl_1_1log_1_1_scoped_sink_disabling_html"><div class="ttname"><a href="../../d0/d40/classsl_1_1log_1_1_scoped_sink_disabling.html">sl::log::ScopedSinkDisabling</a></div><div class="ttdoc">Wrapper class which disables Sinks on construction and enables them on destruction.</div><div class="ttdef"><b>Definition:</b> ISink.hpp:95</div></div>
 <div class="ttc" id="anamespacesl_1_1log_html"><div class="ttname"><a href="../../de/d83/namespacesl_1_1log.html">sl::log</a></div><div class="ttdef"><b>Definition:</b> BasicSink.hpp:22</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

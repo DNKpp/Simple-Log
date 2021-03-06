@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['enablestd_497',['enableStd',['../d4/d32/namespacerang_1_1rang__implementation.html#a769f245caecc8bdf2d741f39a48052ac',1,'rang::rang_implementation']]]
+  ['filesink_5ft_492',['FileSink_t',['../df/d5b/group___prepared_types.html#gaf18a546e417058826c8d721f56c1ed4a',1,'sl::log::preset']]],
+  ['filter_5ft_493',['Filter_t',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a30f3e717d2ba9ffae23cb19b3c53e381',1,'sl::log::BasicSink']]],
+  ['flushpolicy_5ft_494',['FlushPolicy_t',['../d1/d2f/classsl_1_1log_1_1_o_stream_sink.html#a0f59dc9971f0be5d4a8d018d72e4fdb4',1,'sl::log::OStreamSink']]],
+  ['formatter_5ft_495',['Formatter_t',['../dd/d48/classsl_1_1log_1_1_basic_sink.html#a84c4f321caf9c3c4c2586c7698206596',1,'sl::log::BasicSink']]]
 ];
