@@ -29,15 +29,30 @@ namespace sl::log
 	 */
 
 	/**
+	 * \brief Provides a layer of abstraction to Record member types
+	 * \tparam TRecord The used Record type
+	 * \details There is no need for the users using this type of indirection. The library makes use of this abstraction, thus
+	 * users may specialize it to use Record types, which does not fit in the original concept and trait syntax provided by this library.
+	 */
+	template <class TRecord>
+	struct RecordTypedefs
+	{
+		using Message_t = typename TRecord::Message_t;
+		using Severity_t = typename TRecord::SeverityLevel_t;
+		using Channel_t = typename TRecord::Channel_t;
+		using TimePoint_t = typename TRecord::TimePoint_t;
+	};
+
+	/**
 	 * \typedef RecordMessage_t
 	 * \brief Typedef for easier access to \ref Record "Record's" message type.
 	 * \tparam TRecord The used Record type.
 	 */
 	template <class TRecord>
 	/** \cond Requires */
-	requires requires { typename TRecord::Message_t; }
+	requires requires { typename RecordTypedefs<TRecord>::Message_t; }
 	/** \endcond */
-	using RecordMessage_t = typename TRecord::Message_t;
+	using RecordMessage_t = typename RecordTypedefs<TRecord>::Message_t;
 
 	/**
 	 * \typedef RecordSeverity_t
@@ -46,9 +61,9 @@ namespace sl::log
 	 */
 	template <class TRecord>
 	/** \cond Requires */
-	requires requires { typename TRecord::SeverityLevel_t; }
+	requires requires { typename RecordTypedefs<TRecord>::Severity_t; }
 	/** \endcond */
-	using RecordSeverity_t = typename TRecord::SeverityLevel_t;
+	using RecordSeverity_t = typename RecordTypedefs<TRecord>::Severity_t;
 
 	/**
 	 * \typedef RecordChannel_t
@@ -57,9 +72,9 @@ namespace sl::log
 	 */
 	template <class TRecord>
 	/** \cond Requires */
-	requires requires { typename TRecord::Channel_t; }
+	requires requires { typename RecordTypedefs<TRecord>::Channel_t; }
 	/** \endcond */
-	using RecordChannel_t = typename TRecord::Channel_t;
+	using RecordChannel_t = typename RecordTypedefs<TRecord>::Channel_t;
 
 	/**
 	 * \typedef RecordTimePoint_t
@@ -68,9 +83,9 @@ namespace sl::log
 	 */
 	template <class TRecord>
 	/** \cond Requires */
-	requires requires { typename TRecord::TimePoint_t; }
+	requires requires { typename RecordTypedefs<TRecord>::TimePoint_t; }
 	/** \endcond */
-	using RecordTimePoint_t = typename TRecord::TimePoint_t;
+	using RecordTimePoint_t = typename RecordTypedefs<TRecord>::TimePoint_t;
 
 	/**
 	 * \brief Concept which checks for the necessary member typedefs of a Record type.
@@ -92,16 +107,6 @@ namespace sl::log
 	 * users may specialize it to use Record types, which does not fit in the original concept and trait syntax provided by this library.
 	 */
 	template <class TRecord>
-	/** \cond Requires */
-	requires RecordMemberTypedefs<TRecord> &&
-			requires(const TRecord& rec)
-			{
-				{ rec.message() } -> std::convertible_to<RecordMessage_t<TRecord>>;
-				{ rec.severity() } -> std::convertible_to<RecordSeverity_t<TRecord>>;
-				{ rec.channel() } -> std::convertible_to<RecordChannel_t<TRecord>>;
-				{ rec.timePoint() } -> std::convertible_to<RecordTimePoint_t<TRecord>>;
-			}
-	/** \endcond */
 	struct RecordGetters
 	{
 		constexpr static auto message{ [](auto& record) { return record.message(); } };
@@ -131,16 +136,6 @@ namespace sl::log
 	 * users may specialize it to use Record types, which does not fit in the original concept and trait syntax provided by this library.
 	 */
 	template <class TRecord>
-	/** \cond Requires */
-	requires RecordMemberTypedefs<TRecord> &&
-			requires(TRecord& rec)
-			{
-				{ rec.setMessage(std::declval<RecordMessage_t<TRecord>>()) };
-				{ rec.setTimePoint(std::declval<RecordTimePoint_t<TRecord>>()) };
-				{ rec.setSeverity(std::declval<RecordSeverity_t<TRecord>>()) };
-				{ rec.setChannel(std::declval<RecordChannel_t<TRecord>>()) };
-			}
-	/** \endcond */
 	struct RecordSetters
 	{
 		using Record_t = std::remove_cvref_t<TRecord>;
