@@ -8,14 +8,14 @@
 
 #pragma once
 
-#include <memory>
-#include <ostream>
-#include <mutex>
-#include <string_view>
-
-#include "Concepts.hpp"
 #include "BasicSink.hpp"
 #include "FlushPolicies.hpp"
+#include "Record.hpp"
+
+#include <memory>
+#include <mutex>
+#include <ostream>
+#include <string_view>
 
 namespace sl::log
 {

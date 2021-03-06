@@ -122,10 +122,8 @@ namespace sl::log
 		/**
 		 * \brief Default Constructor
 		 */
-		StringPattern() noexcept
-		{
-		}
-		
+		StringPattern() noexcept = default;
+
 		/**
 		 * \brief Constructor
 		 * \param patternString Pattern

@@ -8,7 +8,6 @@
 
 #pragma once
 
-#include "Concepts.hpp"
 #include "Filters.hpp"
 #include "FlushPolicies.hpp"
 #include "Predicates.hpp"

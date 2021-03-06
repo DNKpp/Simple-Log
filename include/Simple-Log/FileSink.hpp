@@ -8,20 +8,27 @@
 
 #pragma once
 
+#include "Record.hpp"
+#include "OStreamSink.hpp"
+#include "StringPattern.hpp"
+
 #include <cassert>
 #include <filesystem>
 #include <fstream>
 #include <numeric>
 #include <optional>
 
-#include "OStreamSink.hpp"
-#include "StringPattern.hpp"
-
 namespace sl::log
 {
 	/** \addtogroup Sinks
 	 * @{
 	 */
+
+	/**
+	 * \brief Concept for invokable file state handler objects
+	*/
+	template <class T>
+	concept FileStateHandler = std::is_invocable_r_v<std::string, T>;
 
 	/**
 	 * \brief Class for logging into files
@@ -69,8 +76,7 @@ namespace sl::log
 	 * \endcode
 	 */
 	template <Record TRecord>
-	// ReSharper disable once CppClassCanBeFinal
-	class FileSink :
+	class FileSink final :
 		public OStreamSink<TRecord>
 	{
 		using Super = OStreamSink<TRecord>;
@@ -101,9 +107,11 @@ namespace sl::log
 
 		/**
 		 * \brief Constructor
-		 * \details Constructs a new FileSink instance, which uses the provided file name pattern for newly opened files at the specified directory.
 		 * \param fileNamePattern	Pattern string from which new file names will be generated.
 		 * \param directory			The directory where all files of this sink will be generated.
+		 * \details Constructs a new FileSink instance, which uses the provided file name pattern for newly opened files at the specified directory.
+		 * \remark It is not intended, that the pattern string contains any directory information. Use the directory property instead.
+		 * \throws SinkException if pattern string is empty or contains directory information
 		 */
 		explicit FileSink(std::string fileNamePattern, std::filesystem::path directory = std::filesystem::current_path()) :
 			Super{ m_FileStream }
@@ -269,12 +277,19 @@ namespace sl::log
 		 * \brief Sets the file name pattern for generated log files
 		 * \param fileNamePattern Pattern string
 		 * \details For further details look \ref FileNamePattern "here".
+		 * \remark It is not intended, that the pattern string contains any directory information. Use the directory property instead.
+		 * \throws SinkException if pattern string is empty or contains directory information
 		 */
 		void setFileNamePattern(std::string fileNamePattern)
 		{
 			if (std::empty(fileNamePattern))
 			{
 				throw SinkException{ "FileNamePattern must not be empty." };
+			}
+
+			if (std::filesystem::path(fileNamePattern).has_parent_path())
+			{
+				throw SinkException{ "FileNamePattern must contain any directory information. Use directory property instead." };
 			}
 
 			std::scoped_lock lock{ m_FilePathNameMx };
@@ -425,7 +440,8 @@ namespace sl::log
 
 			auto rotationRule = load(m_RotationRule, m_RotationRuleMx);
 			return (rotationRule.fileSize && *rotationRule.fileSize < file_size(*m_CurrentFilePath)) ||
-				(rotationRule.duration && m_FileOpeningTime.load() + *rotationRule.duration < std::chrono::steady_clock::now());
+					(rotationRule.duration && m_FileOpeningTime.load() + *rotationRule.duration < std::chrono::steady_clock::now()
+					);
 		}
 
 		void beforeMessageWrite(const Record_t& record, std::string_view message) override

@@ -10,15 +10,13 @@
 
 #include "PresetTypes.hpp"
 
-#include <iostream>
-
 namespace sl::log::ready_to_go
 {
 	using namespace log;
 	using namespace preset;
 
 	inline Core_t gCore;
-	inline auto& gConsoleSink{ gCore.makeSink<OStreamSink_t>(std::cout) };
+	inline auto& gConsoleSink{ gCore.makeSink<ConsoleSink_t>() };
 	inline auto gLog{ makeLogger<Logger_t>(gCore, SevLvl::info) };
 }
 
