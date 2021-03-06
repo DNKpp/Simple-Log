@@ -117,7 +117,7 @@ namespace custom
 }
 
 template <>
-struct RecordTypedefs<custom::Record>
+struct sl::log::RecordTypedefs<custom::Record>
 {
 	using Message_t = std::string;
 	using Severity_t = int;
@@ -126,7 +126,7 @@ struct RecordTypedefs<custom::Record>
 };
 
 template <>
-struct RecordGetters<custom::Record>
+struct sl::log::RecordGetters<custom::Record>
 {
 	constexpr static auto message{ [](custom::Record& record) { return record.oMessage; } };
 	constexpr static auto severity{ [](custom::Record& record) { return record.oSev; } };
@@ -135,7 +135,7 @@ struct RecordGetters<custom::Record>
 };
 
 template <>
-struct RecordSetters<custom::Record>
+struct sl::log::RecordSetters<custom::Record>
 {
 	constexpr static auto setMessage{ [](custom::Record& record, auto msg) { record.oMessage = msg; } };
 	constexpr static auto setSeverity{ [](custom::Record& record, auto sev) { record.oSev = sev; } };

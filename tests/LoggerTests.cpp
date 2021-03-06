@@ -120,7 +120,7 @@ namespace custom
 }
 
 template <>
-struct LoggerTypedefs<custom::Logger>
+struct sl::log::LoggerTypedefs<custom::Logger>
 {
 	using Record_t = custom::Logger::ORecord_t;
 };
