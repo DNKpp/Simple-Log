@@ -98,7 +98,7 @@ namespace sl::log
 		 * \brief Constructor which disables passed sink
 		 * \param sink 
 		 */
-		ScopedSinkDisabling(TSink& sink) noexcept :
+		explicit ScopedSinkDisabling(TSink& sink) noexcept :
 			m_Sink{ &sink }
 		{
 			m_Sink->setEnabled(false);

@@ -149,7 +149,7 @@ namespace sl::log
 		ScopedSinkDisabling<Record_t, TSink> makeDisabledSink(TArgs&&... args)
 		{
 			auto& ref = makeSinkImpl<TSink>(std::forward<TArgs>(args)...);
-			return ref;
+			return ScopedSinkDisabling<Record_t, TSink>{ ref };
 		}
 
 		/**
