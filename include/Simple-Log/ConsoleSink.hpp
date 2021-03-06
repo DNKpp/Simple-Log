@@ -8,8 +8,8 @@
 
 #pragma once
 
-#include "Record.hpp"
 #include "OStreamSink.hpp"
+#include "Record.hpp"
 
 // rang.hpp includes windows.hpp internally, thus macros min and max will be defined. This macro prevents this.
 #define NOMINMAX
@@ -90,6 +90,9 @@ namespace sl::log
 		Color bgColor = Color::standard;
 	};
 
+	/**
+	 * \brief Concept which checks for validity of given text style policy.
+	 */
 	template <class T, class TRecord>
 	concept ConsoleTextStylePolicyFor =
 	Record<TRecord> &&

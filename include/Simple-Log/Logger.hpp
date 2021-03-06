@@ -31,18 +31,32 @@ namespace sl::log
 	 */
 
 	/**
+	 * \brief Provides a layer of abstraction to Record member types
+	 * \tparam TLogger The used Logger type
+	 * \details There is no need for the users using this type of indirection. The library makes use of this abstraction, thus
+	 * users may specialize it to use Logger types, which does not fit in the original concept and trait syntax provided by this library.
+	 * \version since alpha-0.7
+	 */
+	template <class TLogger>
+	struct LoggerTypedefs
+	{
+		using Record_t = typename TLogger::Record_t;
+	};
+
+	/**
 	 * \typedef LoggerRecord_t
 	 * \brief Typedef for easier access to \ref Logger "Logger's" Record type.
 	 * \tparam TLogger The used Logger type.
+	 * \version since alpha-0.7
 	 */
 	template <class TLogger>
 	/** \cond Requires */
 	requires requires
 	{
-		typename TLogger::Record_t;
+		typename LoggerTypedefs<TLogger>::Record_t;
 	}
 	/** \endcond */
-	using LoggerRecord_t = typename TLogger::Record_t;
+	using LoggerRecord_t = typename LoggerTypedefs<TLogger>::Record_t;
 
 	/**
 	 * \brief Concept for Logger classes

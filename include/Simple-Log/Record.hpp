@@ -33,6 +33,7 @@ namespace sl::log
 	 * \tparam TRecord The used Record type
 	 * \details There is no need for the users using this type of indirection. The library makes use of this abstraction, thus
 	 * users may specialize it to use Record types, which does not fit in the original concept and trait syntax provided by this library.
+	 * \version since alpha-0.7
 	 */
 	template <class TRecord>
 	struct RecordTypedefs
@@ -47,6 +48,7 @@ namespace sl::log
 	 * \typedef RecordMessage_t
 	 * \brief Typedef for easier access to \ref Record "Record's" message type.
 	 * \tparam TRecord The used Record type.
+	 * \version since alpha-0.7
 	 */
 	template <class TRecord>
 	/** \cond Requires */
@@ -58,6 +60,7 @@ namespace sl::log
 	 * \typedef RecordSeverity_t
 	 * \brief Typedef for easier access to \ref Record "Record's" severity type.
 	 * \tparam TRecord The used Record type.
+	 * \version since alpha-0.7
 	 */
 	template <class TRecord>
 	/** \cond Requires */
@@ -69,6 +72,7 @@ namespace sl::log
 	 * \typedef RecordChannel_t
 	 * \brief Typedef for easier access to \ref Record "Record's" channel type.
 	 * \tparam TRecord The used Record type.
+	 * \version since alpha-0.7
 	 */
 	template <class TRecord>
 	/** \cond Requires */
@@ -80,6 +84,7 @@ namespace sl::log
 	 * \typedef RecordTimePoint_t
 	 * \brief Typedef for easier access to \ref Record "Record's" time-point type.
 	 * \tparam TRecord The used Record type.
+	 * \version since alpha-0.7
 	 */
 	template <class TRecord>
 	/** \cond Requires */
@@ -89,6 +94,7 @@ namespace sl::log
 
 	/**
 	 * \brief Concept which checks for the necessary member typedefs of a Record type.
+	 * \version since alpha-0.7
 	 */
 	template <class TRecord>
 	concept RecordMemberTypedefs =
@@ -105,6 +111,7 @@ namespace sl::log
 	 * \tparam TRecord The used Record type
 	 * \details There is no need for the users using this type of indirection. The library makes use of this abstraction, thus
 	 * users may specialize it to use Record types, which does not fit in the original concept and trait syntax provided by this library.
+	 * \version since alpha-0.7
 	 */
 	template <class TRecord>
 	struct RecordGetters
@@ -117,6 +124,7 @@ namespace sl::log
 
 	/**
 	 * \brief Concept which checks for the necessary member projections of a Record type.
+	 * \version since alpha-0.7
 	 */
 	template <class TRecord>
 	concept RecordMemberGetters =
@@ -134,6 +142,7 @@ namespace sl::log
 	 * \tparam TRecord The used Record type
 	 * \details There is no need for the users using this type of indirection. The library makes use of this abstraction, thus
 	 * users may specialize it to use Record types, which does not fit in the original concept and trait syntax provided by this library.
+	 * \version since alpha-0.7
 	 */
 	template <class TRecord>
 	struct RecordSetters
@@ -175,6 +184,7 @@ namespace sl::log
 
 	/**
 	 * \brief Concept which checks for the necessary member setters of a Record type.
+	 * \version since alpha-0.7
 	 */
 	template <class TRecord>
 	concept RecordMemberSetters =
