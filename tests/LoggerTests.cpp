@@ -29,7 +29,7 @@ namespace
 
 TEMPLATE_PRODUCT_TEST_CASE(
 							"BaseLoggers should have a valid state after default construction succeeded",
-							"[BaseLogger]",
+							"[BaseLogger][Logger]",
 							BaseLogger,
 							(
 								(BaseRecord<std::string, int>),
@@ -38,7 +38,7 @@ TEMPLATE_PRODUCT_TEST_CASE(
 						)
 {
 	using Logger_t = TestType;
-	using Record_t = typename Logger_t::Record_t;
+	using Record_t = LoggerRecord_t<Logger_t>;
 
 	Logger_t logger{ LogCallbackMoc{} };
 	REQUIRE(logger.defaultSeverity() == typename Record_t::SeverityLevel_t{});
@@ -47,39 +47,39 @@ TEMPLATE_PRODUCT_TEST_CASE(
 
 TEMPLATE_TEST_CASE_SIG(
 						"BaseLoggers should have a valid state after construction succeeded",
-						"[BaseLogger]",
-						((auto sev, auto chan), sev, chan),
+						"[BaseLogger][Logger]",
+						((auto VSev, auto VChan), VSev, VChan),
 						(1, 2)
 					)
 {
-	using Record_t = BaseRecord<decltype(sev), decltype(chan)>;
+	using Record_t = BaseRecord<decltype(VSev), decltype(VChan)>;
 	using Logger_t = BaseLogger<Record_t>;
 
-	Logger_t logger{ LogCallbackMoc{}, sev, chan };
+	Logger_t logger{ LogCallbackMoc{}, VSev, VChan };
 
-	REQUIRE(logger.defaultSeverity() == sev);
-	REQUIRE(logger.defaultChannel() == chan);
+	REQUIRE(logger.defaultSeverity() == VSev);
+	REQUIRE(logger.defaultChannel() == VChan);
 }
 
 TEMPLATE_TEST_CASE_SIG(
 						"BaseLoggers getter should yield equal results after setter were used.",
-						"[BaseLogger]",
-						((auto sev, auto chan), sev, chan),
+						"[BaseLogger][Logger]",
+						((auto VSev, auto VChan), VSev, VChan),
 						(1, 2)
 					)
 {
-	using Record_t = BaseRecord<decltype(sev), decltype(chan)>;
+	using Record_t = BaseRecord<decltype(VSev), decltype(VChan)>;
 	using Logger_t = BaseLogger<Record_t>;
 
 	Logger_t logger{ LogCallbackMoc{} };
-	logger.setDefaultSeverity(sev);
-	logger.setDefaultChannel(chan);
+	logger.setDefaultSeverity(VSev);
+	logger.setDefaultChannel(VChan);
 
-	REQUIRE(logger.defaultSeverity() == sev);
-	REQUIRE(logger.defaultChannel() == chan);
+	REQUIRE(logger.defaultSeverity() == VSev);
+	REQUIRE(logger.defaultChannel() == VChan);
 }
 
-TEST_CASE("BaseLogger should invoke its callback after their created RecordBuilder gets destroyed.", "[BaseLogger]")
+TEST_CASE("BaseLogger should invoke its callback after their created RecordBuilder gets destroyed.", "[BaseLogger][Logger]")
 {
 	using Record_t = BaseRecord<int, int>;
 	using Logger_t = BaseLogger<Record_t>;
@@ -92,4 +92,49 @@ TEST_CASE("BaseLogger should invoke its callback after their created RecordBuild
 		REQUIRE_FALSE(invoked);
 	}
 	REQUIRE(invoked);
+}
+
+namespace custom
+{
+	struct Logger
+	{
+		using ORecord_t = BaseRecord<int, int>;
+
+		using RecordBuilder_t = RecordBuilder<ORecord_t>;
+
+		template <class TCallback>
+		Logger(TCallback cb)
+		{
+		}
+
+		RecordBuilder_t operator()()
+		{
+			return RecordBuilder_t{
+				{},
+				[](ORecord_t&&)
+				{
+				}
+			};
+		}
+	};
+}
+
+template <>
+struct LoggerTypedefs<custom::Logger>
+{
+	using Record_t = custom::Logger::ORecord_t;
+};
+
+TEST_CASE("Custom Logger type using the abstractions should compile successfully.", "[Logger]")
+{
+	using Logger_t = custom::Logger;
+	using Typedefs_t = LoggerTypedefs<Logger_t>;
+	using Core_t = Core<LoggerRecord_t<Logger_t>>;
+
+	REQUIRE(std::is_same_v<typename Typedefs_t::Record_t, Logger_t::ORecord_t>);
+	REQUIRE(std::is_same_v<LoggerRecord_t<Logger_t>, Logger_t::ORecord_t>);
+
+	Core_t core;
+	auto logger = makeLogger<Logger_t>(core);
+	logger();
 }
