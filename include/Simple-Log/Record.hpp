@@ -331,7 +331,7 @@ namespace sl::log
 
 		
 		template <std::convertible_to<SourceLocation_t> USourceLocation>
-		void setChannel(USourceLocation&& sourceLocation)
+		void setSourceLocation(USourceLocation&& sourceLocation)
 		{
 			m_SourceLocation = std::forward<USourceLocation>(sourceLocation);
 		}
