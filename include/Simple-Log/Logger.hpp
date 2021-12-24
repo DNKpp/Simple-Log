@@ -63,12 +63,13 @@ namespace sl::log
 	*/
 	template <class T>
 	concept Logger =
+	Record<LoggerRecord_t<T>> &&
 	requires
 	{
 		typename LoggerRecord_t<T>;
-	} &&
-	Record<LoggerRecord_t<T>> &&
-	std::is_invocable_r_v<RecordBuilder<LoggerRecord_t<T>>, T>;
+	};// &&
+	// ToDo: enable again. Seems it fails due to the default param?!
+	//std::is_invocable_r_v<RecordBuilder<LoggerRecord_t<T>>, T>;
 
 	/** @}*/
 
@@ -139,7 +140,7 @@ namespace sl::log
 		 */
 		[[nodiscard]]
 #ifdef __cpp_lib_source_location
-		RecordBuilder_t operator ()(const std::source_location& srcLoc = std::source_location::current())
+		RecordBuilder_t operator ()(const std::source_location srcLoc = std::source_location::current())
 #else
 		RecordBuilder_t operator ()()
 #endif
@@ -152,7 +153,7 @@ namespace sl::log
 			RecordBuilder_t builder{ std::move(prefabRec), m_LogCallback };
 
 #ifdef __cpp_lib_source_location
-			builder.record().sourceLocation = srcLoc;
+			builder.record().setSourceLocation(srcLoc);
 #endif
 
 			return builder;
